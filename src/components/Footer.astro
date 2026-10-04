@@ -1,0 +1,65 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+import { brands } from '../data/brands';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const L = (p: string) => localize(lang, p);
+const ext = { target: '_blank', rel: 'noopener noreferrer' };
+---
+<footer class="on-dark relative overflow-hidden bg-night-950 text-white/80">
+  <div class="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:py-20">
+    <div class="max-w-sm">
+      <img src="/brand/logo-light-96.png" srcset="/brand/logo-light-192.png 2x" width="47" height="48" alt="AlyTech" class="h-12 w-auto" loading="lazy" />
+      <p class="mt-6 text-[15px]">{t(lang, 'footer.tagline')}</p>
+      <p class="mt-3 text-sm text-white/60">{t(lang, 'footer.subsidiary')}</p>
+      <p class="label mt-6 inline-flex items-center gap-2 rounded-xs border border-white/15 px-3 py-2 text-white/80"><Icon name="shield" size={16} />{t(lang, 'footer.iso')}</p>
+    </div>
+
+    <div>
+      <p class="label mb-4 text-brand-300">{t(lang, 'nav.products')}</p>
+      <ul class="space-y-2 text-[15px]">
+        {brands.map((b) => (
+          <li><a class="hover:text-white" href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)}>{b.name}</a></li>
+        ))}
+        <li><a class="hover:text-white" href={L('/equipment/')}>{t(lang, 'nav.equipment')}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="label mb-4 text-brand-300">{t(lang, 'footer.company')}</p>
+      <ul class="space-y-2 text-[15px]">
+        <li><a class="hover:text-white" href={L('/services/')}>{t(lang, 'nav.services')}</a></li>
+        <li><a class="hover:text-white" href={L('/industries/')}>{t(lang, 'nav.industries')}</a></li>
+        <li><a class="hover:text-white" href={L('/about/')}>{t(lang, 'nav.about')}</a></li>
+        <li><a class="hover:text-white" href={L('/contact/')}>{t(lang, 'nav.contact')}</a></li>
+        <li><a class="hover:text-white" href={L('/privacy/')}>{t(lang, 'footer.privacy')}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="label mb-4 text-brand-300">{t(lang, 'footer.office')}</p>
+      <address class="text-[15px] not-italic">
+        {site.address.street}<br />{site.address.poBox}<br />{site.address.city}, {lang === 'ar' ? 'الإمارات العربية المتحدة' : site.address.country}
+      </address>
+      <ul class="mt-4 space-y-3 text-[15px]">
+        <li><button type="button" class="inline-flex items-center gap-2 hover:text-white" data-lead="whatsapp"><Icon name="whatsapp" size={18} />WhatsApp</button></li>
+        <li><a class="inline-flex items-center gap-2 hover:text-white" href={`mailto:${site.email}`}><Icon name="mail" size={18} />{site.email}</a></li>
+        <li><a class="inline-flex items-center gap-2 hover:text-white" href={site.mapUrl} {...ext}><Icon name="pin" size={18} />{lang === 'ar' ? 'افتح في الخرائط' : 'Open in Maps'}</a></li>
+      </ul>
+      <div class="mt-6 flex gap-4 text-sm">
+        <a class="hover:text-white" href={site.social.linkedin} {...ext}>LinkedIn</a>
+        <a class="hover:text-white" href={site.social.youtube} {...ext}>YouTube</a>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="wrap flex flex-col gap-2 py-6 text-[13px] text-white/60 sm:flex-row sm:justify-between">
+      <p>© <span data-year>2026</span> {site.legalName}. {t(lang, 'footer.rights')}</p>
+      <p>{lang === 'ar' ? 'GasMix™ علامة تجارية لشركة AlyTech فرنسا. العلامات الأخرى ملك لأصحابها.' : 'GasMix™ is a trademark of AlyTech France. Other brand names belong to their owners.'}</p>
+    </div>
+  </div>
+</footer>
+<script>document.querySelectorAll('[data-year]').forEach((el) => (el.textContent = String(new Date().getFullYear())));</script>

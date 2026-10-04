@@ -1,0 +1,935 @@
+{
+  "brand": "InstroTek",
+  "brandSlug": "instrotek",
+  "brandUrl": "https://www.instrotek.com",
+  "headquarters": "Research Triangle Park, North Carolina, USA",
+  "brandSummary": "InstroTek is a US maker of density measurement and asphalt testing equipment, covering nuclear and non-nuclear gauges, asphalt laboratory instruments and balanced mix design test systems. It also provides gauge calibration, radiation safety training and service from six US offices, and lists distributors in the UAE, Saudi Arabia and Qatar among other Near East countries. The company holds ISO/IEC 17025 accreditation for calibration.",
+  "logoUrl": "https://www.instrotek.com/cdn/shop/files/instroteklogo.png?v=1776190778",
+  "products": [
+    {
+      "name": "Xplorer 2 Nuclear Moisture/Density Gauge",
+      "model": "3500 Xplorer 2",
+      "slug": "xplorer-2-nuclear-density-gauge",
+      "category": "Nuclear Moisture/Density Gauge",
+      "priority": "flagship",
+      "summary": "Nuclear moisture and density gauge for soils, concrete and asphalt pavements, built on a machined aluminum base with a polycarbonate shell. It shows results on a backlit LCD, records GPS position, and exports data over Bluetooth or USB to the i2 MyGauge and Android apps. NukeTrack tracking and a three-year warranty are available.",
+      "description": "The Xplorer 2 measures in-place density and moisture using a cesium-137 density source and an americium-241:beryllium moisture source, in backscatter and direct transmission modes defined by ASTM D6938, D2950, D7013, D7759, C1040 and AASHTO T310. Geotechnical and paving crews use it to verify compaction of subgrade, base course and asphalt lifts. The Xplorer line has been on the market since 2006, and this generation adds a large backlit display that stays readable in sunlight, integrated GPS that tags each test location, Bluetooth links to Android and iOS devices, USB data storage, project memory and software updates by USB drive. The mobile apps save readings automatically, attach site photos, show test locations on a map and email PDF reports. The optional NukeTrack tracker combines GPS and Wi-Fi to locate the gauge, raise geofence and movement alerts and keep a five-year movement history. InstroTek offers a three-year warranty with a first calibration included. As a licensed radioactive device, InstroTek's guidance describes licensing by the NRC or an agreement state in the United States, two independent physical barriers for storage, Type A packaging for transport and radiation safety plus HAZMAT training for users.",
+      "keySpecs": [
+        {
+          "label": "Density measurement range",
+          "value": "1120 to 2720 kg/m3 (70 to 170 lb/ft3)"
+        },
+        {
+          "label": "Moisture measurement range",
+          "value": "0 to 640 kg/m3 (0 to 40 lb/ft3)"
+        },
+        {
+          "label": "Density source",
+          "value": "Cesium-137, maximum 370 MBq (10 mCi)"
+        },
+        {
+          "label": "Moisture source",
+          "value": "Americium-241:Beryllium, 1.48 GBq (40 mCi)"
+        },
+        {
+          "label": "Backscatter precision at 2000 kg/m3",
+          "value": "7.8 kg/m3 (0.49 lb/ft3)"
+        },
+        {
+          "label": "Direct transmission precision at 2000 kg/m3",
+          "value": "3.4 kg/m3 (0.21 lb/ft3)"
+        },
+        {
+          "label": "Moisture precision at 240 kg/m3",
+          "value": "4.9 kg/m3 (0.31 lb/ft3)"
+        },
+        {
+          "label": "Operating temperature (ambient)",
+          "value": "-10 to 70 °C"
+        },
+        {
+          "label": "Weight",
+          "value": "14 kg (31 lb)"
+        },
+        {
+          "label": "Connectivity",
+          "value": "GPS, Bluetooth, USB"
+        }
+      ],
+      "standards": [
+        "ASTM D6938",
+        "ASTM D2950",
+        "ASTM D7013",
+        "ASTM D7759",
+        "ASTM C1040",
+        "AASHTO T310"
+      ],
+      "applications": [
+        "Soil and base course compaction control",
+        "Asphalt pavement density testing",
+        "Concrete density and moisture checks",
+        "Field QC/QA reporting with GPS-tagged results",
+        "Gauge tracking with NukeTrack"
+      ],
+      "industries": [
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "nuclear density gauge",
+        "ASTM D6938 nuclear moisture density gauge",
+        "soil compaction testing equipment",
+        "nuclear gauge for asphalt density",
+        "Xplorer 2 nuclear gauge",
+        "nuclear density gauge supplier UAE"
+      ],
+      "whyMiddleEast": "InstroTek lists distributors in the UAE, Saudi Arabia and Qatar; importing and operating a nuclear gauge requires approval from the national radiation regulator.",
+      "sourceUrl": "https://www.instrotek.com/products/3500-xplorer-2",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/Xplorer2.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/Xplorer_2_Kit.jpg",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/X2_guy_holding.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/Xplorer_2_Spec_Sheet_581c4318-718b-40f7-9e19-a0397765718c.pdf"
+    },
+    {
+      "name": "MC-3 Elite Advanced Nuclear Density Gauge",
+      "model": "MC-3 Elite",
+      "slug": "mc-3-elite-nuclear-density-gauge",
+      "category": "Nuclear Moisture/Density Gauge",
+      "priority": "core",
+      "summary": "Lightweight nuclear moisture and density gauge with a backlit 4 x 20 LCD, illuminated keypad, USB data export and Bluetooth reporting through the i2 MyGauge app. Stores ten projects of 40 readings, weighs 13 kg and can be serviced at any qualified calibration facility.",
+      "description": "The MC-3 Elite is InstroTek's simplest current nuclear gauge, from the CPN product line and built for operators who want a short menu and dependable electronics. It determines in-place density with a cesium-137 source and moisture with an americium-241:beryllium source, following ASTM D6938, D2950, D7013, D7759, C1040 and AASHTO T310. The display is a backlit 4 x 20 character LCD that can be read from a standing position, the keypad is illuminated for night work, and density, moisture and related field values are calculated and stored automatically in up to ten projects of 40 readings each. Results move to a computer, printer or USB flash drive, and Bluetooth connects Android and Apple devices running the MyGauge app for maps, photos and PDF reports. A magnetic non-contact depth strip, moisture-resistant surface-mount electronics and a machined base support rugged use. At 13 kg it is the lightest gauge in InstroTek's range. NukeTrack tracking is optional, and the gauge carries a three-year warranty. Users must hold the radioactive materials license and training required in their jurisdiction.",
+      "keySpecs": [
+        {
+          "label": "Density measurement range",
+          "value": "70 to 170 pcf (1.120 to 2.73 g/cc)"
+        },
+        {
+          "label": "Moisture measurement range",
+          "value": "0 to 40 pcf (0 to 0.64 g/cc)"
+        },
+        {
+          "label": "Density source",
+          "value": "Cesium-137, maximum 370 MBq (10 mCi)"
+        },
+        {
+          "label": "Moisture source",
+          "value": "Americium-241:Beryllium, maximum 1.85 GBq (50 mCi)"
+        },
+        {
+          "label": "Backscatter precision (one-minute test)",
+          "value": "±0.50 pcf (0.008 g/cc) at 125 pcf"
+        },
+        {
+          "label": "Transmission precision (one-minute test)",
+          "value": "±0.25 pcf (0.004 g/cc) at 125 pcf"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "-10 to 75 °C ambient, surface up to 175 °C"
+        },
+        {
+          "label": "Memory",
+          "value": "10 projects with 40 readings each"
+        },
+        {
+          "label": "Weight",
+          "value": "13 kg (28.5 lb)"
+        },
+        {
+          "label": "Power",
+          "value": "6-cell AA NiMH pack with 9 V alkaline backup"
+        }
+      ],
+      "standards": [
+        "ASTM D6938",
+        "ASTM D2950",
+        "ASTM D7013",
+        "ASTM D7759",
+        "ASTM C1040",
+        "AASHTO T310"
+      ],
+      "applications": [
+        "Soil compaction control on roadworks and foundations",
+        "Asphalt density testing",
+        "Field density and moisture logging by project",
+        "Site reporting from mobile devices"
+      ],
+      "industries": [
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "MC-3 Elite nuclear gauge",
+        "lightweight nuclear density gauge",
+        "nuclear moisture density gauge price",
+        "soil density gauge for road construction",
+        "ASTM D2950 asphalt density gauge"
+      ],
+      "whyMiddleEast": "InstroTek lists distributors in the UAE, Saudi Arabia and Qatar; importing and operating a nuclear gauge requires approval from the national radiation regulator.",
+      "sourceUrl": "https://www.instrotek.com/products/mc-3-elite",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/MC-3_Elite.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/Phone_trackingdevice_cae46ce8-eea0-4d6d-a24f-1d8daa406044.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/MC3_Elite_spec_sheet_d42fa50b-5b5c-44f7-a580-797e121556c1.pdf"
+    },
+    {
+      "name": "ThinPave 5500 Overlay Nuclear Density Gauge",
+      "model": "ThinPave 5500",
+      "slug": "thinpave-5500-overlay-density-gauge",
+      "category": "Nuclear Thin-Layer Density Gauge",
+      "priority": "core",
+      "summary": "Nuclear density gauge for thin asphalt and concrete overlays, measuring lifts from 0.5 to 4 inches (12.5 to 100 mm). A smaller base, enclosed source assembly and indexed source rod improve repeatability, and built-in RTK GPS with sub-4-inch accuracy tags each test location.",
+      "description": "Thin overlays are difficult for conventional nuclear gauges because the measured volume extends below the new lift. The ThinPave 5500 is designed by the originators of thin-layer gauge technology to read layers between 0.5 and 4 inches (12.5 to 100 mm), using a cesium-137 source of up to 10 mCi and following ASTM D2950 and AASHTO T355. The base footprint is about 13% smaller than before, which reduces the effect of surface roughness, and the source assembly is fully enclosed so material cannot enter the source cavity and no routine cleaning is required. An index and guide tube hold the rod in a repeatable position for standard counts and field tests. A professional-grade RTK GPS gives positions to better than 10 cm for QC/QA documentation, and results can be read on the display or exported as CSV through USB or the MyGauge app. NukeTrack tracking is optional. The gauge ships in a DOT 7A Type A, Yellow II case with transport index 0.1, and its use is subject to radioactive materials licensing and training in the operator's jurisdiction.",
+      "keySpecs": [
+        {
+          "label": "Depth of measurement",
+          "value": "0.5 to 4 in. (12.5 to 100 mm)"
+        },
+        {
+          "label": "Density source",
+          "value": "Cesium-137, maximum 10 mCi (370 MBq)"
+        },
+        {
+          "label": "Density precision at 1 min count, 1 in. (25 mm) lift",
+          "value": "0.95 lb/ft3 (15 kg/m3) at 140 lb/ft3 material"
+        },
+        {
+          "label": "Density precision at 1 min count, 2.5 in. (63.5 mm) lift",
+          "value": "0.44 lb/ft3 (7 kg/m3) at 140 lb/ft3 material"
+        },
+        {
+          "label": "GPS",
+          "value": "Professional-grade RTK, sub 4 in. (10 cm) accuracy"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "-10 to 70 °C ambient, surface 170 °C"
+        },
+        {
+          "label": "Weight",
+          "value": "13.8 kg (30.6 lb)"
+        },
+        {
+          "label": "Shipping case",
+          "value": "DOT 7A, Type A, Yellow II, TI=0.1"
+        },
+        {
+          "label": "Data output",
+          "value": "On-screen, USB or MyGauge app (.CSV)"
+        }
+      ],
+      "standards": [
+        "ASTM D2950",
+        "AASHTO T355"
+      ],
+      "applications": [
+        "Density testing of thin asphalt overlays",
+        "Thin concrete overlay density checks",
+        "Pavement preservation and resurfacing QC/QA",
+        "GPS-referenced compaction documentation"
+      ],
+      "industries": [
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "thin layer nuclear density gauge",
+        "overlay density gauge",
+        "AASHTO T355 thin lift density",
+        "asphalt overlay compaction testing",
+        "ThinPave 5500"
+      ],
+      "whyMiddleEast": "Resurfacing work on regional highways needs density control on thin lifts, and the gauge is licensed radioactive equipment, so national radiation regulator approval applies.",
+      "sourceUrl": "https://www.instrotek.com/products/thinpave-5500-overlay-density-gauge",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/ThinPave.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/ThinPave_on_Block_900px.jpg",
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/ThinPave_w_Case_Accessories_900px.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/ThinPave_5500_Specification_Sheet.pdf"
+    },
+    {
+      "name": "503 Elite Hydroprobe Soil Moisture Probe",
+      "model": "503 Elite",
+      "slug": "503-elite-hydroprobe",
+      "category": "Neutron Soil Moisture Probe",
+      "priority": "niche",
+      "summary": "Subsurface neutron probe that measures soil moisture at depth for irrigation scheduling, agronomic research and vadose zone monitoring. A backlit 4 x 20 LCD, SD memory for over 10,000 readings, 32 stored calibrations and USB data export support long field campaigns with a lightweight, water-resistant body.",
+      "description": "The 503 Elite Hydroprobe lowers a neutron source into an access tube and counts the neutrons slowed by hydrogen in soil water, giving moisture content at chosen depths. It meets and exceeds ASTM D5220. The source is up to 50 mCi (1.85 GBq) of americium-241/beryllium in a double-sealed capsule. The instrument reads from 0.0 to 6.0 inches of water per foot of soil, with a stated precision of ±0.024 in/ft at one minute, and counting intervals of 15, 30 or 60 seconds or a user-selected time. A menu-driven interface on a backlit 4 x 20 LCD and a 12-button keypad lets operators label projects and add notes. The internal SD card stores over 10,000 readings and 32 linear calibrations for different tubing and soil conditions, and data transfer is by USB drive or cable. A rechargeable NiMH pack gives hundreds of hours between charges and recharges in about four hours. The gauge weighs 6.35 kg. Typical users are irrigation consultants, agronomists, hydrologists and environmental engineers monitoring moisture or contaminant movement. Neutron sources fall under radioactive materials regulation, so licensing and training requirements apply.",
+      "keySpecs": [
+        {
+          "label": "Measurement range",
+          "value": "0.0 to 6.0 in/ft (0.0 to 0.50 g/cc)"
+        },
+        {
+          "label": "Precision at 1 min",
+          "value": "±0.024 in/ft (±0.002 g/cc) at 2.88 in/ft"
+        },
+        {
+          "label": "Counting time",
+          "value": "15, 30 or 60 s, or user selectable"
+        },
+        {
+          "label": "Neutron source",
+          "value": "Americium-241/Be, maximum 50 mCi (1.85 GBq), double-sealed capsule"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "0 to 60 °C"
+        },
+        {
+          "label": "Data storage",
+          "value": "SD card, over 10,000 readings"
+        },
+        {
+          "label": "Stored calibrations",
+          "value": "32 linear calibrations"
+        },
+        {
+          "label": "Weight",
+          "value": "6.35 kg (14 lb)"
+        }
+      ],
+      "standards": [
+        "ASTM D5220"
+      ],
+      "applications": [
+        "Irrigation scheduling",
+        "Agronomic research",
+        "Vadose zone and contaminant movement monitoring",
+        "Soil moisture profiling by depth"
+      ],
+      "industries": [
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "neutron probe soil moisture",
+        "ASTM D5220 neutron probe",
+        "irrigation scheduling soil moisture probe",
+        "Hydroprobe 503",
+        "soil moisture profile measurement equipment"
+      ],
+      "whyMiddleEast": "Irrigation scheduling in arid agriculture is a use case, though neutron sources require radiation regulator approval in each country.",
+      "sourceUrl": "https://www.instrotek.com/products/503-elite-hydroprobe",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/503_Elite.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/503-Elite-with-Case-and-accessories.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/CPN_503_Elite_Hydroprobe_spec_sheet.pdf"
+    },
+    {
+      "name": "CoreLok Vacuum Sealing Gravity System",
+      "model": "CoreLok",
+      "slug": "corelok-specific-gravity-system",
+      "category": "Asphalt Specific Gravity Tester",
+      "priority": "flagship",
+      "summary": "Vacuum sealing system that determines bulk specific gravity of compacted asphalt, maximum theoretical specific gravity of loose mix and aggregate gravity and absorption. Samples are sealed in polymer bags and measured by water displacement, avoiding wax, film and operator-dependent saturated surface dry steps.",
+      "description": "Density is the most specified property in pavement construction, and conventional saturated surface dry weighing misjudges open-graded and absorptive mixes because water drains from the sample. CoreLok seals the specimen under vacuum inside a puncture-resistant, water-impermeable polymer bag so its true volume is found by displacement. The same machine measures bulk specific gravity of compacted field cores and laboratory specimens under ASTM D6752 and AASHTO T331, maximum specific gravity (Gmm) of loose mix as an alternative to the Rice test under ASTM D6857, and apparent specific gravity, absorption and bulk gravity of fine and coarse aggregate. A Gmm test takes about seven minutes with little water exposure and no dry-back step. The system needs no empirical calibration, and the readings are independent of the mix or aggregate type. Stated precision is ±0.002 g/cm3 for bulk gravity and ±0.007 g/cm3 for maximum gravity. A 1.25 hp rotary pump pulls the chamber to 1 Torr, and an automatic wire sealing strip closes the bags. GravitySuite and AggSpec PC software calculate and export results. Asphalt plants, contractors, agencies and universities use it.",
+      "keySpecs": [
+        {
+          "label": "Bulk specific gravity precision",
+          "value": "±0.002 g/cm3 (4 in. and 6 in. samples)"
+        },
+        {
+          "label": "Maximum specific gravity (Gmm) precision",
+          "value": "±0.007 g/cm3 (25 mm mixture, ten samples)"
+        },
+        {
+          "label": "Aggregate precision",
+          "value": "Apparent ±0.005 g/cm3, bulk (dry) ±0.008 g/cm3, absorption ±0.1%"
+        },
+        {
+          "label": "Gmm test time",
+          "value": "About 7 minutes"
+        },
+        {
+          "label": "Vacuum level",
+          "value": "29.95 in. Hg (1 Torr, 1.33 mbar)"
+        },
+        {
+          "label": "Pump",
+          "value": "1.25 hp rotary vacuum pump"
+        },
+        {
+          "label": "Chamber size",
+          "value": "425 x 184 x 497 mm (W x H x D)"
+        },
+        {
+          "label": "Weight",
+          "value": "55 kg (121 lb)"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "120 V 60 Hz 13 A, or optional 220 V 50 Hz 6.5 A"
+        }
+      ],
+      "standards": [
+        "ASTM D6752",
+        "ASTM D6857",
+        "AASHTO T331"
+      ],
+      "applications": [
+        "Bulk specific gravity of field cores and lab specimens",
+        "Maximum specific gravity (Gmm) of loose asphalt mix",
+        "Open-graded and absorptive mix density measurement",
+        "Aggregate specific gravity and absorption",
+        "Air void calculation for mix design"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "CoreLok asphalt",
+        "bulk specific gravity asphalt vacuum sealing",
+        "maximum specific gravity Gmm alternative to rice test",
+        "ASTM D6752 equipment",
+        "AASHTO T331 CoreLok",
+        "asphalt laboratory equipment UAE"
+      ],
+      "whyMiddleEast": "Supports the asphalt mix design and acceptance testing used on large highway and airport programs across the Gulf.",
+      "sourceUrl": "https://www.instrotek.com/products/corelok",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/CoreLok.png"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/Corelok_Spec_Sheet.pdf"
+    },
+    {
+      "name": "CoreDryPRO Rapid Asphalt Drying System",
+      "model": "CoreDryPRO",
+      "slug": "coredrypro-asphalt-core-drying",
+      "category": "Asphalt Core Drying System",
+      "priority": "core",
+      "summary": "Automatic, enclosed vacuum drier that brings wet asphalt cores to constant dry weight in under 15 minutes at near room temperature. A color touchscreen, progress bar, thermoelectric cold trap and an external vacuum port that can also run Rice tests set it apart from the earlier CoreDry.",
+      "description": "Cores taken from a pavement hold water that must be removed before a dry weight can be used in density calculations, and oven drying takes hours and can damage the specimen. CoreDryPRO uses a cycle of vacuum and ambient airflow, an electronic desiccation system and a thermoelectric cold trap that captures extracted moisture and protects the pump, so a core reaches constant mass in under 15 minutes with no heat. It meets ASTM D7227 and AASHTO R79 and is covered by U.S. patents. Cores up to 6 inches (150 mm) in diameter and 7.5 inches (190 mm) tall fit in the chamber. The PRO version adds a 6 x 3.5 inch color touchscreen, a drying progress bar with time to completion, a vacuum level indicator and maintenance prompts. A vacuum pump port with built-in PumpSaver lets the internal pump perform maximum specific gravity (Rice) tests, and an external control plug allows an AutoRice controller to automate that test. Paving crews use rapid dry weights to obtain density results while the paver is still working, and contractors and agencies use the unit to establish matching baselines and core offsets for nuclear and non-nuclear gauges. The standard unit runs on 120 V.",
+      "keySpecs": [
+        {
+          "label": "Drying time",
+          "value": "Under 15 minutes"
+        },
+        {
+          "label": "Maximum specimen size",
+          "value": "6 in. (150 mm) diameter by 7.5 in. (190 mm) tall"
+        },
+        {
+          "label": "Display",
+          "value": "6 x 3.5 in. color LCD touchscreen"
+        },
+        {
+          "label": "Dimensions",
+          "value": "18.75 in. W x 25.25 in. L x 16.5 in. H"
+        },
+        {
+          "label": "Weight",
+          "value": "91 lb with accessories"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "120 V, 15 A"
+        },
+        {
+          "label": "Moisture capture",
+          "value": "Thermoelectric cold trap"
+        },
+        {
+          "label": "Additional capability",
+          "value": "Vacuum pump port for Rice/specific gravity tests"
+        }
+      ],
+      "standards": [
+        "ASTM D7227",
+        "AASHTO R79"
+      ],
+      "applications": [
+        "Rapid drying of field cores before density calculation",
+        "Core offsets for nuclear and non-nuclear density gauges",
+        "Real-time density feedback for paving crews",
+        "Maximum specific gravity (Rice) testing using the pump port"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "asphalt core dryer",
+        "CoreDry asphalt",
+        "ASTM D7227 core drying",
+        "AASHTO R79 rapid drying",
+        "dry asphalt cores in 15 minutes",
+        "asphalt core density equipment"
+      ],
+      "whyMiddleEast": "Rapid core drying shortens acceptance testing on paving projects where hot, fast schedules limit time for oven drying.",
+      "sourceUrl": "https://www.instrotek.com/products/coredrypro-rapid-asphalt-drying-system",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/CoreDryPRO.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/CoreDryPro_Front.jpg",
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/CoreDryPro_LeftAngle.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/CoreDryPRO_spec_sheet_daa00cd5-5c85-4484-b632-1342818fb54d.pdf"
+    },
+    {
+      "name": "AutoRice Controller",
+      "model": "AutoRice",
+      "slug": "autorice-max-specific-gravity-controller",
+      "category": "Asphalt Max Specific Gravity Controller",
+      "priority": "core",
+      "summary": "Bench or wall-mounted control unit that automates the maximum specific gravity (Rice) test under AASHTO T209 and ASTM D2041. It starts the vacuum pump, regulates vacuum pressure, times the run, optionally monitors shaker frequency and acceleration, and stores test records that can be downloaded over USB for review.",
+      "description": "The theoretical maximum specific gravity test, widely called the Rice test, underpins mix design, air void calculation and pavement acceptance, yet its repeatability suffers when vacuum level, vacuum time or shaker vibration drift between technicians and laboratories. AutoRice takes over these variables. With one button press it switches on the pump, holds the set vacuum level, times the vacuum period and logs the run. An optional shaker sensor measures vibration frequency and acceleration, parameters that are rarely monitored, so excess agitation that strips fines from samples can be spotted. The controller replaces the digital vacuum gauge in a standard Rice setup, accepts glass flask or metal container setups and holds vacuum to ±0.4 mmHg at 27.5 mmHg. Records include pressure, time, frequency, acceleration, date and project, and download by USB. A menu lets users enter weights to calculate the result. The unit can also automate the saturation step of the AASHTO T283 moisture damage procedure. With a footprint of 12 x 9 x 4 inches and a weight of 5 lb, it fits on a bench or wall, and it pairs with the CoreDryPRO for an automated Rice setup.",
+      "keySpecs": [
+        {
+          "label": "Tests controlled",
+          "value": "AASHTO T209 and ASTM D2041 vacuum pressure and time"
+        },
+        {
+          "label": "Vacuum control",
+          "value": "±0.4 mmHg at 27.5 mmHg"
+        },
+        {
+          "label": "Footprint",
+          "value": "12 x 9 x 4 in. (30 x 22 x 10 cm)"
+        },
+        {
+          "label": "Weight",
+          "value": "5 lb (2.5 kg)"
+        },
+        {
+          "label": "Power supply",
+          "value": "110/220 V"
+        },
+        {
+          "label": "Maximum pump power",
+          "value": "3/4 HP"
+        },
+        {
+          "label": "Hose connection",
+          "value": "3/8 in. hose barb"
+        },
+        {
+          "label": "Optional sensor",
+          "value": "Shaker frequency and acceleration"
+        }
+      ],
+      "standards": [
+        "AASHTO T209",
+        "ASTM D2041",
+        "AASHTO T283"
+      ],
+      "applications": [
+        "Automated Rice (maximum specific gravity) testing",
+        "Shaker vibration verification during Rice tests",
+        "Vacuum saturation for moisture damage testing",
+        "Improved inter-laboratory repeatability"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "automatic rice test controller",
+        "AASHTO T209 vacuum controller",
+        "ASTM D2041 theoretical maximum specific gravity equipment",
+        "rice test automation asphalt",
+        "AutoRice"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.instrotek.com/products/autorice",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/AutoRice.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/AutoRice_setup_NEW_800x599_8995f8a2-652f-4c6e-ba27-78893012d2fc.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/AutoRice_Spec_Sheet_87e834ff-4c9f-4ec6-8572-e8fc0caf729e.pdf"
+    },
+    {
+      "name": "SmarTracker Hamburg Wheel Tracker",
+      "model": "SmarTracker",
+      "slug": "smartracker-hamburg-wheel-tracker",
+      "category": "Hamburg Wheel Tracker",
+      "priority": "flagship",
+      "summary": "Loaded wheel tracker for rutting and moisture damage testing of asphalt mixtures under AASHTO T324. A retracting wheel removes lifting of heavy parts, twin water tanks run wet and dry samples at once, and touchscreen controls with HWT-Report software produce multi-test PDF reports.",
+      "description": "The Hamburg wheel tracking test rolls a steel wheel back and forth across submerged asphalt specimens and records rut depth against passes, revealing resistance to permanent deformation and to stripping caused by water. Results feed balanced mix design and help predict field performance in hot climates. The SmarTracker meets AASHTO T324 and the recommendations of NCHRP 20-07 Project 361. Each wheel has its own motor, and an innovative roll-off mechanism retracts the wheel so technicians never lift heavy assemblies. Two independent tanks and a transport mechanism allow wet and dry samples to be tested simultaneously, while a hood, tank design and optional air heaters hold water and air temperatures steady between 20 and 70 °C. A mechanical recirculator keeps water within ±1 °C, and displacement transducers cover 0 to 50 mm with ±0.1 mm accuracy. The wheel load is 705 ±4.5 N at speeds from 30 to 60 passes per minute. Electronics are placed away from the water, the touchscreen runs Windows, and the test stops automatically when a specimen fails. HWT-Report software analyzes multiple tests, calculates stripping inflection point and exports graphs and Excel files. The machine requires 208 to 230 V single-phase power.",
+      "keySpecs": [
+        {
+          "label": "Test method",
+          "value": "AASHTO T324, NCHRP 20-07 Project 361"
+        },
+        {
+          "label": "Temperature range",
+          "value": "20 to 70 °C"
+        },
+        {
+          "label": "Wheel load",
+          "value": "705 ±4.5 N (158 ±1.0 lbf)"
+        },
+        {
+          "label": "Wheel speed",
+          "value": "Adjustable 30 to 60 passes per minute (15 to 30 cycles per minute)"
+        },
+        {
+          "label": "Water temperature control",
+          "value": "±1 °C by mechanical recirculator"
+        },
+        {
+          "label": "Displacement transducers",
+          "value": "0 to 50 mm, ±0.1 mm"
+        },
+        {
+          "label": "Dimensions",
+          "value": "54 in. W x 48 in. L x 50 in. H"
+        },
+        {
+          "label": "Weight",
+          "value": "1450 lb"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "Single phase 208-230 V"
+        }
+      ],
+      "standards": [
+        "AASHTO T324",
+        "NCHRP 20-07 Project 361"
+      ],
+      "applications": [
+        "Rutting resistance of asphalt mixtures",
+        "Moisture damage and stripping evaluation",
+        "Balanced mix design performance testing",
+        "Hot-climate mix qualification"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "Hamburg wheel tracker",
+        "AASHTO T324 wheel tracking test equipment",
+        "asphalt rutting tester",
+        "loaded wheel tester asphalt",
+        "balanced mix design rutting test",
+        "Hamburg wheel tracking device supplier UAE"
+      ],
+      "whyMiddleEast": "High pavement temperatures across the Gulf make rutting resistance a primary mix design criterion that wheel tracking addresses.",
+      "sourceUrl": "https://www.instrotek.com/products/smartracker",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/SmarTracker.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/Smartracker_closed_800x900_26fa4bd8-65b1-4df1-bb93-1fde77bb6820.jpg",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/Smartracker_front_open_800x900_9c6375a3-6c78-4f7e-9e7c-ff715ffbdbab.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/Smartracker_spec_sheet_dd8f8f03-7d88-42c4-9324-ff1468f37e4f.pdf"
+    },
+    {
+      "name": "HWT-Pro Hamburg Wheel Tracker Verification Device",
+      "model": "HWT-Pro",
+      "slug": "hwt-pro-hamburg-verification-device",
+      "category": "Calibration and Verification Device",
+      "priority": "niche",
+      "summary": "USB-powered verification tool that sits in a Hamburg wheel tracker tray and checks the AASHTO T324 requirements, covering wheel load, wheel position and speed, motion waveform, displacement readings and bath temperature. HWT-Spec software prepares a compliance report, and a NIST traceability certificate is supplied.",
+      "description": "A wheel tracker only gives trustworthy rutting data if its load, wheel travel and temperature are correct, and these drift with use. The HWT-Pro is a measuring device placed in the sample tray, with centering spacers to suit all major brands of tracker, so contact InstroTek to confirm a specific unit. It measures static and dynamic wheel load, the center point of the wheel track and track length of up to 9 inches. Wheel position is sampled every 10 milliseconds, which lets the software fit the motion to a sine wave and report the deviation as a least-squares RMSE. Rut depth is reported at the wheel contact point, not only through the LVDT readings. A NIST-traceable temperature indicator checks the water bath. Stated accuracy is ±0.2 lb at 158 lb for static load, ±0.05 in for center offset and ±0.3 °C for temperature. The HWT-Spec PC application, which runs on Windows 7 or later, walks the user through verification steps and creates a report showing compliance with AASHTO T324 and the recommendations of NCHRP 20-07 Task 361. The device also provides calibration capability. Laboratories use it before a project starts, after long periods of non-use or when troubleshooting.",
+      "keySpecs": [
+        {
+          "label": "Static load measurement",
+          "value": "±0.2 lb at 158 lb"
+        },
+        {
+          "label": "Center offset measurement",
+          "value": "±0.05 in."
+        },
+        {
+          "label": "Track length measurement",
+          "value": "Up to 9 in. (±0.05 in.)"
+        },
+        {
+          "label": "Waveform analysis",
+          "value": "RMSE least squares from sine wave"
+        },
+        {
+          "label": "Temperature measurement",
+          "value": "±0.3 °C"
+        },
+        {
+          "label": "Position sampling interval",
+          "value": "10 ms"
+        },
+        {
+          "label": "Software",
+          "value": "HWT-Spec, Windows 7 and up"
+        },
+        {
+          "label": "Power",
+          "value": "USB, supplied from computer"
+        }
+      ],
+      "standards": [
+        "AASHTO T324",
+        "NCHRP 20-07 Task 361"
+      ],
+      "applications": [
+        "Verification of Hamburg wheel tracker calibration",
+        "Pre-project equipment checks",
+        "Troubleshooting wheel load and position faults",
+        "Accreditation documentation"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "Hamburg wheel tracker calibration",
+        "wheel tracker verification device",
+        "AASHTO T324 verification",
+        "HWT calibration kit",
+        "wheel load and position verification"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.instrotek.com/products/hwt-pro",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/HWT_Pro_contents.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/HWTPro_tray1_white.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/HWTPro_spec_sheet.pdf"
+    },
+    {
+      "name": "AutoXtract Automatic Asphalt Extraction System",
+      "model": "AutoXtract",
+      "slug": "autoxtract-asphalt-extraction-system",
+      "category": "Asphalt Extraction System",
+      "priority": "core",
+      "summary": "Automated solvent extraction and recovery system for determining asphalt content and characterizing reclaimed asphalt pavement under ASTM D8159. Ultrasonic vibration, heating and a closed solvent loop complete a cycle in under 90 minutes, and a 7-inch touchscreen lets the operator program the washing and drying phases.",
+      "description": "Asphalt content and aggregate gradation must be verified in production mix and in reclaimed asphalt pavement (RAP), and conventional bottle-roll or centrifuge extractions are slow and expose staff to solvent vapors. The AutoXtract automates the process under ASTM D8159. A mesh drum holds the sample in a washing chamber, ultrasonic vibration and heat strip the binder, a high-speed centrifuge spins at up to 6000 rpm, and an integrated stainless steel distillation chamber recovers solvent for reuse in a closed loop that prevents fumes from escaping. Users can choose a pre-wash phase and set the number of washing and drying cycles, and a balance port records weights so the asphalt content is calculated automatically and exported as a text file. Sample capacity is 3500 g, filler recovery is up to 300 g, and a complete extraction takes under 90 minutes including drying. Safety locks, an inspection window and an optional connection to a rotary evaporator flask are provided. The unit rolls on four wheels. It is listed as 230 V, 60 Hz, three-phase delta, weighs 240 kg and has a one-year warranty, so buyers on 50 Hz networks should confirm the supply configuration with the manufacturer.",
+      "keySpecs": [
+        {
+          "label": "Maximum sample weight",
+          "value": "3500 g"
+        },
+        {
+          "label": "Centrifuge speed",
+          "value": "6000 rpm"
+        },
+        {
+          "label": "Extraction time",
+          "value": "Under 90 minutes including drying"
+        },
+        {
+          "label": "Cup dimensions",
+          "value": "4.7 x 7.9 in. (120 x 200 mm)"
+        },
+        {
+          "label": "Filler recovery",
+          "value": "Up to 300 g"
+        },
+        {
+          "label": "Optional scale",
+          "value": "10 kg, 0.1 g resolution"
+        },
+        {
+          "label": "Power supply",
+          "value": "230 V, 60 Hz, 3-phase delta"
+        },
+        {
+          "label": "Dimensions",
+          "value": "55 x 29 x 59 in. (1400 x 750 x 1500 mm)"
+        },
+        {
+          "label": "Weight",
+          "value": "529 lb (240 kg)"
+        },
+        {
+          "label": "Display",
+          "value": "7 in. touchscreen"
+        }
+      ],
+      "standards": [
+        "ASTM D8159"
+      ],
+      "applications": [
+        "Asphalt content determination in production mix",
+        "Characterization of reclaimed asphalt pavement (RAP)",
+        "Binder recovery for further testing",
+        "Gradation analysis of extracted aggregate"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "automatic asphalt extractor",
+        "ASTM D8159 asphalt extraction",
+        "RAP binder extraction equipment",
+        "asphalt content test solvent extraction machine",
+        "AutoXtract"
+      ],
+      "whyMiddleEast": "Asphalt plants in the region can verify binder content and RAP properties without manual solvent handling.",
+      "sourceUrl": "https://www.instrotek.com/products/autoxtract",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/AutoXtract.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/1309.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/AutoXtract_Specs_Pages.pdf"
+    },
+    {
+      "name": "SmartLoader Universal Load Frame",
+      "model": "SmartLoader",
+      "slug": "smartloader-universal-load-frame",
+      "category": "Asphalt Cracking and Load Test Frame",
+      "priority": "core",
+      "summary": "Electromechanical load frame preprogrammed for balanced mix design tests including IDEAL-CT, IDEAL-RT, I-FIT, SCB, TSR, Marshall and IDT. It operates in load or displacement control, runs on 110 V, and its analysis software compares up to ten tests with coefficient of variation.",
+      "description": "Balanced mix design relies on performance tests that look at cracking and rutting, and servo-hydraulic frames for them are costly. The SmartLoader is a lower-cost electromechanical frame built for these asphalt tests. It ships with programs for IDEAL-CT (ASTM D8225), IDEAL-RT, the Illinois Flexibility Index test (AASHTO TP124 or ASTM D8044), the Louisiana semi-circular bend test, indirect tensile strength and tensile strength ratio, Marshall testing, IDT creep compliance and direct shear on asphalt interlayers, and users can program their own tests. The machine adjusts test parameters, captures results and formats the data automatically, with a color touchscreen for control and real-time load-displacement curves. It can operate in load control or displacement control, and eight analog inputs accept load cells and displacement transducers. The frame holds specimen alignment during a test and the electromechanical drive needs little maintenance. Compression capacity is 50 kN, tension capacity is 25 kN and speed is adjustable from 0.01 to 51 mm/min with 100 mm of ram travel. Removable memory stores thousands of tests, and SmartLoader Analysis Software displays ten tests together, reports coefficient of variation and builds customizable reports. Power is 110/120 V, with 220 V optional.",
+      "keySpecs": [
+        {
+          "label": "Maximum compression capacity",
+          "value": "50 kN (11,000 lbf)"
+        },
+        {
+          "label": "Maximum tension capacity",
+          "value": "25 kN (5,600 lbf)"
+        },
+        {
+          "label": "Adjustable testing speed",
+          "value": "0.01 to 51 mm/min (0.0004 to 2.0 in/min)"
+        },
+        {
+          "label": "Maximum ram travel",
+          "value": "100 mm (4 in.)"
+        },
+        {
+          "label": "Control modes",
+          "value": "Load control and displacement control"
+        },
+        {
+          "label": "Analog inputs",
+          "value": "8 A/D inputs"
+        },
+        {
+          "label": "Dimensions",
+          "value": "500 x 550 x 1675 mm (20 x 22 x 66 in.)"
+        },
+        {
+          "label": "Weight",
+          "value": "130 kg (300 lb)"
+        },
+        {
+          "label": "Power supply",
+          "value": "110/120 V (220 V optional)"
+        }
+      ],
+      "standards": [
+        "ASTM D8225 (IDEAL-CT)",
+        "ASTM D8044 (SCB)",
+        "AASHTO TP124 (I-FIT)",
+        "AASHTO T283 (TSR)"
+      ],
+      "applications": [
+        "IDEAL-CT and IDEAL-RT balanced mix design tests",
+        "Semi-circular bend cracking tests (I-FIT, LSU SCB)",
+        "Indirect tensile strength and creep compliance",
+        "Tensile strength ratio moisture damage testing",
+        "Marshall and direct shear on asphalt interlayers"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "IDEAL-CT test equipment",
+        "balanced mix design load frame",
+        "asphalt cracking test machine",
+        "I-FIT SCB test equipment",
+        "AASHTO TP124 testing frame",
+        "asphalt performance testing equipment UAE"
+      ],
+      "whyMiddleEast": "Gives regional asphalt laboratories a lower-cost route to performance-based mix design testing than servo-hydraulic systems.",
+      "sourceUrl": "https://www.instrotek.com/products/smartloader-1",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/SmartLoader.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/SmartLoader_frnt_800x900_f3909851-78df-456c-b512-a6a08602e33a.jpg",
+        "https://cdn.shopify.com/s/files/1/1245/4913/products/SmartLoader_side2_800x900_3ee0fb94-b278-491f-907d-39d9b812a7fc.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/SmartLoader_spec_sheet_16fdf697-7741-458e-a6d3-a41ed00673d8.pdf"
+    },
+    {
+      "name": "MiST 2 Moisture Induced Stress Tester",
+      "model": "MiST 2",
+      "slug": "mist-2-moisture-induced-stress-tester",
+      "category": "Asphalt Moisture Conditioning System",
+      "priority": "core",
+      "summary": "Benchtop chamber that conditions compacted asphalt samples by forcing heated water back and forth through their pores under cyclic pressure, simulating tire action on a wet road. It conditions two 150 mm or three 100 mm specimens in 24 hours under ASTM D7870.",
+      "description": "Moisture damage strips binder from aggregate and is a leading cause of premature pavement failure, yet traditional screening tests can take up to seven days, show poor repeatability and give only partial information. The MiST 2 conditions samples in a pressurized chamber that drives heated water in and out of the pores of the compacted specimen, creating pore pressure and scouring that mimic repeated traffic loading on a wet surface. It meets AASHTO TP 140 and ASTM D7870, and conditioning finishes in about 24 hours with no need to vacuum-saturate specimens first. Temperature and pressure can be varied, with a maximum of 65 °C and 345 kPa (50 psi) apparent pressure. The chamber accepts two 150 mm cores, three 100 mm cores or three IDEAL-CT cores, with sample heights of 25 to 200 mm. After each test it drains automatically to stay dry, and an internal pneumatic pump has stand-by mode and automatic tank refill. The second generation is a quieter benchtop unit about three times lighter than the original, at 74 kg with a 0.76 x 0.61 m footprint. Data can be stored and sent to a PC.",
+      "keySpecs": [
+        {
+          "label": "Applicable methods",
+          "value": "AASHTO TP 140, ASTM D7870"
+        },
+        {
+          "label": "Maximum temperature",
+          "value": "65 °C (150 °F)"
+        },
+        {
+          "label": "Temperature accuracy",
+          "value": "±1 °C"
+        },
+        {
+          "label": "Maximum apparent pressure",
+          "value": "345 kPa (50 psi)"
+        },
+        {
+          "label": "Sample capacity",
+          "value": "2 x 150 mm, 3 x 100 mm or 3 IDEAL-CT cores"
+        },
+        {
+          "label": "Sample height",
+          "value": "25 mm up to 200 mm"
+        },
+        {
+          "label": "Conditioning time",
+          "value": "About 24 hours"
+        },
+        {
+          "label": "Weight",
+          "value": "74 kg (163 lb)"
+        },
+        {
+          "label": "Footprint",
+          "value": "0.76 m x 0.61 m, height 0.76 m"
+        },
+        {
+          "label": "Power",
+          "value": "115 VAC 20 A (230 VAC 10 A optional)"
+        }
+      ],
+      "standards": [
+        "AASHTO TP 140",
+        "ASTM D7870"
+      ],
+      "applications": [
+        "Moisture susceptibility conditioning of asphalt specimens",
+        "Stripping screening of aggregate and binder combinations",
+        "Evaluation of anti-stripping additives",
+        "Conditioning ahead of tensile strength ratio and modulus testing"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "MiST asphalt moisture conditioning",
+        "ASTM D7870 equipment",
+        "AASHTO TP 140 moisture induced stress tester",
+        "asphalt stripping test equipment",
+        "moisture damage conditioning chamber asphalt"
+      ],
+      "whyMiddleEast": "Evaluates stripping risk of local aggregate and binder combinations in coastal and humid areas of the Gulf.",
+      "sourceUrl": "https://www.instrotek.com/products/the-m-i-s-t-2",
+      "imageUrls": [
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/MiST2.png",
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/Mist2_3Qtr_right_800x900_2e4177d5-f924-4821-912d-0b0e35dc858d.jpg",
+        "https://cdn.shopify.com/s/files/1/1245/4913/files/Mist2_front_800x900_4696c6f9-6d56-4363-ad23-ad928169d560.jpg"
+      ],
+      "datasheetUrl": "https://cdn.shopify.com/s/files/1/1245/4913/files/Mist2_spec_sheet_d0c04047-94b9-4d89-9d02-fcd3a48cfaea.pdf"
+    }
+  ]
+}

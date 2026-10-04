@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import Ribbon from '../components/Ribbon.astro';
+import { breadcrumbLd } from '../data/schema';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.services') }];
+
+const services = [
+  {
+    icon: 'wrench',
+    h: { en: 'Installation & commissioning', ar: 'التركيب والتشغيل' },
+    p: { en: 'Our engineers unpack, install and commission the instrument at your site, connect gases and utilities, and verify performance against the manufacturer’s acceptance criteria before handover.', ar: 'يفكّ مهندسونا تغليف الجهاز ويركّبونه ويشغّلونه في موقعك، ويوصلون الغازات والمرافق، ويتحققون من أدائه وفق معايير قبول المصنّع قبل التسليم.' },
+  },
+  {
+    icon: 'graduation',
+    h: { en: 'Operator training', ar: 'تدريب المشغلين' },
+    p: { en: 'Hands-on training at handover on the method, the software and routine care, so your team runs the instrument correctly from the first sample. Refresher sessions for new staff on request.', ar: 'تدريب عملي عند التسليم على الطريقة والبرنامج والعناية الروتينية، ليشغّل فريقك الجهاز بالشكل الصحيح من العينة الأولى، مع جلسات تنشيطية للموظفين الجدد عند الطلب.' },
+  },
+  {
+    icon: 'calendar',
+    h: { en: 'Annual maintenance contracts', ar: 'عقود الصيانة السنوية' },
+    p: { en: 'Scheduled preventive visits, priority response and planned spare parts — one contract that keeps the instrument productive and your audits straightforward.', ar: 'زيارات وقائية مجدولة واستجابة ذات أولوية وقطع غيار مخططة — عقد واحد يحافظ على إنتاجية الجهاز ويسهّل عمليات التدقيق لديك.' },
+  },
+  {
+    icon: 'shield',
+    h: { en: 'Warranty service', ar: 'خدمة الضمان' },
+    p: { en: 'Warranty claims are handled locally: we diagnose on site and coordinate directly with the manufacturer, so you deal with one team in your time zone.', ar: 'تُعالج مطالبات الضمان محلياً: نشخّص العطل في الموقع وننسق مباشرة مع المصنّع، فتتعامل مع فريق واحد في منطقتك الزمنية.' },
+  },
+  {
+    icon: 'package',
+    h: { en: 'Spare parts & repairs', ar: 'قطع الغيار والإصلاح' },
+    p: { en: 'Genuine spares and consumables sourced through our principals, and repairs coordinated locally to keep downtime short.', ar: 'قطع غيار ومستهلكات أصلية عبر شركائنا المصنّعين، وإصلاحات تُدار محلياً لتقليل فترات التوقف.' },
+  },
+  {
+    icon: 'gauge',
+    h: { en: 'Calibration support', ar: 'دعم المعايرة' },
+    p: { en: 'Performance checks and calibration for the instruments where this can be done on site, coordinated with the manufacturer for everything else.', ar: 'فحوصات الأداء والمعايرة للأجهزة التي يمكن معايرتها في الموقع، وبالتنسيق مع المصنّع لما سوى ذلك.' },
+  },
+] as const;
+---
+<Base
+  lang={lang}
+  title={ar ? 'الخدمة والدعم | التركيب والتدريب وعقود الصيانة في الشرق الأوسط | AlyTech' : 'Service & Support | Installation, Training & Maintenance Contracts in the Middle East | AlyTech'}
+  description={ar ? 'تركيب وتشغيل الأجهزة المخبرية، وتدريب المشغلين، وعقود الصيانة السنوية، وخدمة الضمان، وقطع الغيار من AlyTech Scientific في أبوظبي. حاصلة على ISO 9001.' : 'Installation and commissioning, operator training, annual maintenance contracts, warranty service and spare parts for laboratory instruments — from AlyTech Scientific, Abu Dhabi. ISO 9001 certified.'}
+  schema={[breadcrumbLd(crumbs, L('/services/'))]}
+>
+  <section data-header="dark" class="on-dark relative overflow-hidden bg-night-950 pt-[72px] text-white">
+    <Ribbon class="absolute inset-0 h-full w-full text-brand-600 opacity-35" lines={36} />
+    <div class="wrap relative py-14 md:py-24">
+      <Breadcrumbs items={crumbs} tone="dark" />
+      <p class="label mt-10 text-brand-300">{t(lang, 'footer.iso')}</p>
+      <h1 class="display mt-4 max-w-4xl text-[clamp(2.3rem,5.4vw,4.4rem)]">{ar ? 'الجهاز هو البداية فقط.' : 'The instrument is only the beginning.'}</h1>
+      <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-white/75">{ar ? 'يبيع كثير من الموردين في المنطقة الأجهزة ثم يختفون. نحن نركّب وندرّب ونصون كل جهاز نورّده، بفريق مقره أبوظبي يخدم الشرق الأوسط بأكمله.' : 'Many suppliers in the region ship a crate and disappear. We install, train and maintain every instrument we supply, with a team based in Abu Dhabi serving the whole Middle East.'}</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <button type="button" class="btn btn-primary" data-lead="quote" data-product={ar ? 'طلب خدمة' : 'Service request'}>{ar ? 'اطلب زيارة خدمة' : 'Request a service visit'} <Icon name="arrow" size={18} flip /></button>
+        <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={ar ? 'الخدمة والدعم' : 'Service & support'}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'cta.whatsapp')}</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24" aria-label={t(lang, 'nav.services')}>
+    <ul class="wrap grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => (
+        <li class="flex flex-col gap-5 bg-card p-8">
+          <span class="flex h-11 w-11 items-center justify-center rounded-sm bg-brand-50 text-brand-600"><Icon name={s.icon} size={22} /></span>
+          <h2 class="display text-xl">{s.h[lang]}</h2>
+          <p class="text-[15.5px] leading-relaxed text-mute">{s.p[lang]}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="border-t border-line bg-card py-14">
+    <div class="wrap grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-center">
+      <div>
+        <h2 class="display text-[clamp(1.5rem,2.8vw,2.2rem)]">{ar ? 'هل لديك جهاز من مورد آخر؟' : 'Own an instrument bought elsewhere?'}</h2>
+        <p class="mt-3 max-w-xl text-mute">{ar ? 'أخبرنا بالطراز والحالة. إذا كان ضمن نطاق علاماتنا، يمكننا تقديم عقد صيانة له.' : 'Tell us the model and its condition. If it’s within our brands, we can put it under a maintenance contract.'}</p>
+      </div>
+      <button type="button" class="btn btn-primary md:justify-self-end" data-lead="interest" data-product={ar ? 'عقد صيانة سنوي' : 'Annual maintenance contract'}>{t(lang, 'cta.interest')} <Icon name="arrow" size={18} flip /></button>
+    </div>
+  </section>
+</Base>

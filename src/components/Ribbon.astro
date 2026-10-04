@@ -1,0 +1,31 @@
+---
+/**
+ * The GasMix string-art ribbon as static SVG — same maths as the 3D shell's side panel.
+ * Server-rendered: zero client JS.
+ */
+interface Props { class?: string; lines?: number; width?: number; height?: number }
+const { class: cls = '', lines = 36, width = 1200, height = 600 } = Astro.props;
+
+const bands = [
+  { c: 0.42, amp: 0.2, k: 1.1, ph: 0.6 },
+  { c: 0.6, amp: 0.16, k: 1.7, ph: 2.4 },
+];
+const steps = 120;
+const paths: { d: string; o: number }[] = [];
+for (const b of bands) {
+  for (let j = 0; j < lines; j++) {
+    const s = (j / (lines - 1)) * 2 - 1;
+    let d = '';
+    for (let i = 0; i <= steps; i++) {
+      const tt = i / steps;
+      const x = tt * width;
+      const y = (b.c + s * b.amp * Math.sin(b.k * Math.PI * tt * 2 + b.ph)) * height;
+      d += `${i ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`;
+    }
+    paths.push({ d, o: 1 - Math.abs(s) * 0.75 });
+  }
+}
+---
+<svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" fill="none" aria-hidden="true" class={cls}>
+  {paths.map((p) => <path d={p.d} stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" opacity={p.o.toFixed(2)} />)}
+</svg>

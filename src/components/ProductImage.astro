@@ -1,0 +1,31 @@
+---
+import { imageOf } from '../data/catalog';
+interface Props { brand: string; brandName: string; slug: string; alt: string; class?: string; eager?: boolean; sizes?: string }
+const { brand, brandName, slug, alt, class: cls = '', eager = false, sizes = '(min-width: 1024px) 40vw, 90vw' } = Astro.props;
+const img = imageOf(brand, slug);
+---
+{img ? (
+  <img
+    src={img.src}
+    width={img.w}
+    height={img.h}
+    alt={alt}
+    sizes={sizes}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding="async"
+    class:list={['object-contain', cls]}
+  />
+) : (
+  <div class:list={['placeholder flex items-center justify-center text-center', cls]} role="img" aria-label={alt}>
+    <span class="label max-w-[16ch] text-mute">{brandName} image pending</span>
+  </div>
+)}
+<style>
+  .placeholder {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    background: repeating-linear-gradient(45deg, #eceaf2, #eceaf2 10px, #f5f4f9 10px, #f5f4f9 20px);
+    border-radius: var(--radius-sm);
+  }
+</style>

@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { t, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+const i18n = {
+  lang,
+  none: ar ? 'لم نجد نتيجة مطابقة لـ' : 'No exact match for',
+  noneSub: ar ? 'نورّد أكثر مما هو مدرج هنا. أخبرنا بما تحتاجه وسيرد عليك مهندس.' : 'We source far more than is listed here. Tell us what you need and an engineer will come back to you.',
+  count: ar ? 'نتيجة' : 'results',
+  ask: t(lang, 'cta.interest'),
+};
+---
+<Base lang={lang} title={ar ? 'البحث عن جهاز | AlyTech Scientific' : 'Search Instruments | AlyTech Scientific'} description={ar ? 'ابحث في أجهزة ومعدات AlyTech Scientific.' : 'Search the AlyTech Scientific instrument and equipment range.'} noindex>
+  <section class="min-h-[70vh] bg-card pt-[72px]">
+    <div class="wrap max-w-3xl py-12 md:py-16">
+      <h1 class="display text-[clamp(2rem,4.4vw,3.2rem)]">{ar ? 'ابحث عن جهاز' : 'Find an instrument'}</h1>
+      <form class="relative mt-8" role="search" data-search-form>
+        <label for="q" class="sr-only">{t(lang, 'nav.search')}</label>
+        <Icon name="search" size={22} class="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-mute" />
+        <input id="q" name="q" type="search" autocomplete="off" class="field h-14 ps-12 text-[17px]" placeholder={ar ? 'اسم الجهاز، الطراز، المعيار أو التطبيق' : 'Instrument, model, standard or application'} data-search-input />
+      </form>
+      <p class="mt-4 text-[14px] text-mute" aria-live="polite" data-search-status></p>
+      <ul class="mt-4 divide-y divide-line border-y border-line empty:border-0" data-search-results></ul>
+      <div class="mt-8 hidden rounded-[var(--radius-md)] border border-line bg-surface p-6" data-search-empty>
+        <p class="display text-xl"><span data-none-label></span> “<span data-none-q></span>”</p>
+        <p class="mt-2 text-mute">{i18n.noneSub}</p>
+        <button type="button" class="btn btn-primary mt-5" data-lead="interest" data-search-lead>{i18n.ask} <Icon name="arrow" size={18} flip /></button>
+      </div>
+    </div>
+  </section>
+</Base>
+<script is:inline type="application/json" id="search-i18n" set:html={JSON.stringify(i18n)} />
+
+<script>
+  import { track } from '../scripts/lead';
+  type Entry = { u: string; en: { t: string; s: string }; ar: { t: string; s: string }; k: string };
+  const I = JSON.parse(document.getElementById('search-i18n')!.textContent!);
+  const input = document.querySelector<HTMLInputElement>('[data-search-input]')!;
+  const list = document.querySelector<HTMLUListElement>('[data-search-results]')!;
+  const status = document.querySelector<HTMLElement>('[data-search-status]')!;
+  const empty = document.querySelector<HTMLElement>('[data-search-empty]')!;
+  const lead = document.querySelector<HTMLElement>('[data-search-lead]')!;
+  const prefix = I.lang === 'ar' ? '/ar' : '';
+  const norm = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
+  let index: (Entry & { hay: string; title: string })[] = [];
+  let logTimer: number | undefined;
+  let lastLogged = '';
+
+  const ready = fetch('/search-index.json').then((r) => r.json()).then((d: Entry[]) => {
+    index = d.map((e) => ({ ...e, title: norm(`${e.en.t} ${e.ar.t}`), hay: norm(`${e.en.t} ${e.ar.t} ${e.en.s} ${e.ar.s} ${e.k}`) }));
+  });
+
+  function run(q: string) {
+    const terms = norm(q).split(/\s+/).filter((w) => w.length > 1);
+    const hits = !terms.length ? [] : index
+      .map((e) => ({ e, score: terms.reduce((s, w) => s + (e.title.includes(w) ? 3 : e.hay.includes(w) ? 1 : -10), 0) }))
+      .filter((h) => h.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 30);
+    list.replaceChildren(...hits.map(({ e }) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = prefix + e.u;
+      a.className = 'flex items-center justify-between gap-4 py-4 transition-colors hover:text-brand-700';
+      const v = I.lang === 'ar' ? e.ar : e.en;
+      a.innerHTML = '<span><span class="block font-semibold"></span><span class="block text-[14px] text-mute"></span></span><span aria-hidden="true">→</span>';
+      a.querySelector('.font-semibold')!.textContent = v.t;
+      a.querySelector('.text-mute')!.textContent = v.s;
+      li.append(a);
+      return li;
+    }));
+    status.textContent = terms.length ? `${hits.length} ${I.count}` : '';
+    empty.classList.toggle('hidden', !terms.length || hits.length > 0);
+    document.querySelector('[data-none-label]')!.textContent = I.none;
+    document.querySelector('[data-none-q]')!.textContent = q;
+    lead.dataset.product = q;
+    // Every real query is logged — unmatched ones are demand signals for the sales team.
+    clearTimeout(logTimer);
+    if (q.trim().length >= 3 && q.trim() !== lastLogged) {
+      logTimer = window.setTimeout(() => { lastLogged = q.trim(); track('search', { q: q.trim(), results: hits.length }); }, 1200);
+    }
+    const url = new URL(location.href);
+    q ? url.searchParams.set('q', q) : url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+  }
+
+  input.addEventListener('input', () => ready.then(() => run(input.value)));
+  document.querySelector('[data-search-form]')!.addEventListener('submit', (e) => { e.preventDefault(); ready.then(() => run(input.value)); });
+  const initial = new URLSearchParams(location.search).get('q');
+  if (initial) { input.value = initial; ready.then(() => run(initial)); }
+  input.focus();
+</script>

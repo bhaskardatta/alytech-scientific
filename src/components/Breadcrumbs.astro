@@ -1,0 +1,15 @@
+---
+import Icon from './Icon.astro';
+interface Props { items: { label: string; href?: string }[]; tone?: 'light' | 'dark' }
+const { items, tone = 'light' } = Astro.props;
+---
+<nav aria-label="Breadcrumb" class:list={['text-[13.5px]', tone === 'dark' ? 'text-white/60' : 'text-mute']}>
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+    {items.map((it, i) => (
+      <li class="flex items-center gap-2">
+        {i > 0 && <Icon name="chevron" size={14} flip class="opacity-60" />}
+        {it.href ? <a href={it.href} class:list={['transition-colors', tone === 'dark' ? 'hover:text-white' : 'hover:text-ink']}>{it.label}</a> : <span aria-current="page" class:list={[tone === 'dark' ? 'text-white' : 'text-ink']}>{it.label}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>

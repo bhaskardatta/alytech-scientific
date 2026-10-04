@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LeadModal from '../components/LeadModal.astro';
+import Consent from '../components/Consent.astro';
+import Nudge from '../components/Nudge.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { t, dir, localize, unlocalize, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** JSON-LD objects for this page (Organization is added automatically). */
+  schema?: object[];
+  image?: string;
+  /** Marks product pages for engagement tracking + nudges. */
+  product?: string;
+  noindex?: boolean;
+}
+const { lang, title, description, schema = [], image = '/og/default.png', product, noindex } = Astro.props;
+const path = Astro.url.pathname;
+const base = unlocalize(path);
+const canonical = new URL(path, site.url).href;
+const alt = (l: Lang) => new URL(localize(l, base), site.url).href;
+
+const fonts = [
+  'family=Archivo:wdth,wght@62..125,400..700',
+  'family=IBM+Plex+Sans:wght@400;500;600',
+  'family=JetBrains+Mono:wght@400;500',
+  ...(lang === 'ar' ? ['family=IBM+Plex+Sans+Arabic:wght@400;500;600', 'family=Noto+Kufi+Arabic:wght@500..700'] : []),
+].join('&');
+
+const org = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${site.url}/#org`,
+  name: site.name,
+  legalName: site.legalName,
+  url: site.url,
+  logo: `${site.url}/brand/logo-192.png`,
+  email: site.email,
+  foundingDate: site.founded,
+  parentOrganization: { '@type': 'Organization', name: site.parent, url: 'https://www.alytech.fr' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    postOfficeBoxNumber: '8909',
+    addressLocality: site.address.city,
+    addressCountry: site.address.countryCode,
+  },
+  areaServed: 'Middle East',
+  sameAs: Object.values(site.social),
+};
+---
+<!doctype html>
+<html lang={lang} dir={dir(lang)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={alt('en')} />
+    <link rel="alternate" hreflang="ar" href={alt('ar')} />
+    <link rel="alternate" hreflang="x-default" href={alt('en')} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, site.url).href} />
+    <meta property="og:locale" content={lang === 'ar' ? 'ar_AE' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#08060f" />
+    <link rel="icon" type="image/png" href="/brand/logo-96.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={`https://fonts.googleapis.com/css2?${fonts}&display=swap`} />
+    <script type="application/ld+json" set:html={JSON.stringify(org)} />
+    {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body data-product={product}>
+    <Header lang={lang} path={path} />
+    <main id="main" tabindex="-1" class="outline-none">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    <button type="button" data-lead="whatsapp" data-product={product} class="wa-fab fixed bottom-5 end-5 z-40 inline-flex h-14 items-center gap-2 rounded-full bg-ink ps-4 pe-5 text-white shadow-[var(--shadow-pop)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-night-800" aria-label={t(lang, 'cta.whatsapp')}>
+      <span class="flex h-8 w-8 items-center justify-center rounded-full bg-whatsapp text-white"><Icon name="whatsapp" size={18} /></span>
+      <span class="hidden text-[15px] font-semibold sm:inline">WhatsApp</span>
+    </button>
+
+    {product && <Nudge lang={lang} product={product} />}
+    <LeadModal lang={lang} />
+    <Consent lang={lang} />
+  </body>
+</html>

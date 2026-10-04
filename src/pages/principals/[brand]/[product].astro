@@ -1,0 +1,9 @@
+---
+import Product from '../../../views/Product.astro';
+import { brands } from '../../../data/brands';
+import { productsOf } from '../../../data/catalog';
+export const getStaticPaths = () =>
+  brands.filter((b) => b.slug !== 'gasmix').flatMap((brand) => productsOf(brand.slug).map((product) => ({ params: { brand: brand.slug, product: product.slug }, props: { brand, product } })));
+const { brand, product } = Astro.props;
+---
+<Product lang="en" brand={brand} product={product} />

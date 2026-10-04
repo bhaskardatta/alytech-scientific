@@ -1,0 +1,7 @@
+---
+import Industry from '../../../views/Industry.astro';
+import { industries } from '../../../data/industries';
+export const getStaticPaths = () => industries.map((industry) => ({ params: { slug: industry.slug }, props: { industry } }));
+const { industry } = Astro.props;
+---
+<Industry lang="ar" industry={industry} />

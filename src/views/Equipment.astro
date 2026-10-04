@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ServiceStrip from '../components/ServiceStrip.astro';
+import Icon from '../components/Icon.astro';
+import { families, categoryPath } from '../data/equipment';
+import { breadcrumbLd } from '../data/schema';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.equipment') }];
+---
+<Base
+  lang={lang}
+  title={ar ? 'معدات المختبرات والاختبار | غرف بيئية، آلات اختبار، الخرسانة والتربة | AlyTech' : 'Lab & Test Equipment | Environmental Chambers, UTMs, Concrete & Soil Testing | AlyTech'}
+  description={ar ? 'غرف الحرارة والرطوبة وآلات الاختبار الشاملة ومعدات اختبار الخرسانة والتربة والأسفلت والطلاءات والتغليف — توريد حسب المواصفات مع التركيب والدعم في الشرق الأوسط.' : 'Temperature and humidity chambers, universal testing machines, concrete, soil, asphalt, coatings and packaging testers — specified, supplied, installed and supported across the Middle East.'}
+  schema={[breadcrumbLd(crumbs, L('/equipment/'))]}
+>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap py-12 md:py-16">
+      <Breadcrumbs items={crumbs} />
+      <h1 class="display mt-10 max-w-3xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'معدات المختبرات والاختبار، بالمواصفات التي تحتاجها.' : 'Lab and test equipment, sourced to your specification.'}</h1>
+      <p class="mt-5 max-w-2xl text-[17px] text-mute">{ar ? 'أخبرنا بالمعيار والسعة والميزانية. يحدد مهندسونا الجهاز المناسب ونورّده من مصنّعين اختبرناهم، ثم نفحصه ونركّبه وندعمه محلياً.' : 'Tell us the standard, the capacity and the budget. Our engineers specify the right unit, source it from manufacturers we have vetted, then inspect, install and support it locally.'}</p>
+      <nav class="mt-10 flex flex-wrap gap-2" aria-label={ar ? 'العائلات' : 'Families'}>
+        {families.map((f) => <a href={`#${f.slug}`} class="rounded-full border border-line-strong px-3.5 py-1.5 text-[14px] font-medium transition-colors hover:border-brand-500 hover:text-brand-700">{(ar && f.ar?.name) || f.name}</a>)}
+      </nav>
+    </div>
+  </section>
+
+  <div class="py-6 md:py-10">
+    {families.map((f) => (
+      <section id={f.slug} class="wrap grid gap-8 border-b border-line py-10 last:border-0 lg:grid-cols-[1fr_2fr] lg:gap-14" aria-labelledby={`${f.slug}-h`}>
+        <div>
+          <h2 id={`${f.slug}-h`} class="display text-[clamp(1.4rem,2.4vw,1.9rem)]">{(ar && f.ar?.name) || f.name}</h2>
+          <p class="mt-3 text-[15px] text-mute" lang={ar && !f.ar?.intro ? 'en' : undefined}>{(ar && f.ar?.intro) || f.intro}</p>
+        </div>
+        <ul class="grid gap-2 sm:grid-cols-2">
+          {f.categories.map((c) => (
+            <li>
+              <a href={L(categoryPath(c))} class="group flex h-full items-start justify-between gap-4 rounded-sm border border-transparent p-4 transition-[background-color,border-color] duration-200 hover:border-line hover:bg-card">
+                <span>
+                  <span class="block font-semibold">{(ar && c.ar?.name) || c.name}</span>
+                  <span class="mt-1 line-clamp-2 block text-[14px] text-mute" lang={ar && !c.ar?.summary ? 'en' : undefined}>{(ar && c.ar?.summary) || c.summary}</span>
+                </span>
+                <Icon name="arrow" size={18} flip class="mt-1 shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+
+  <section class="border-t border-line bg-card py-12">
+    <div class="wrap flex flex-wrap items-center justify-between gap-6">
+      <p class="display max-w-xl text-[clamp(1.3rem,2.2vw,1.8rem)]">{ar ? 'لا تجد ما تبحث عنه؟ نورّد معدات خارج هذه القائمة أيضاً.' : 'Not listed? We source equipment beyond this list too.'}</p>
+      <button type="button" class="btn btn-primary" data-lead="interest" data-product={ar ? 'معدات غير مدرجة' : 'Equipment not listed'}>{t(lang, 'cta.interest')} <Icon name="arrow" size={18} flip /></button>
+    </div>
+  </section>
+  <ServiceStrip lang={lang} />
+</Base>

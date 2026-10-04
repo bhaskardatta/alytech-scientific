@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { brands } from '../data/brands';
+import { breadcrumbLd } from '../data/schema';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.about') }];
+
+// Sourced from the 2018 AlyTech Middle East site and the client brief.
+const timeline = [
+  { y: '1999', en: 'AlyTech is founded in the Paris region. Its team of chemists and electronic and software engineers specialises in gas systems, chromatography and elemental analysis.', ar: 'تأسست AlyTech في منطقة باريس، ويتخصص فريقها من الكيميائيين ومهندسي الإلكترونيات والبرمجيات في أنظمة الغاز والكروماتوغرافيا والتحليل العنصري.' },
+  { y: '2007', en: 'The first automated gas preparation systems are sold under the GasMix™ brand.', ar: 'بيع أولى أنظمة تحضير الغاز الآلية تحت علامة GasMix™.' },
+  { y: '2015', en: 'AlyTech opens its Middle East subsidiary, wholly owned by AlyTech France.', ar: 'افتتاح فرع AlyTech في الشرق الأوسط، المملوك بالكامل لشركة AlyTech فرنسا.' },
+  { y: ar ? 'اليوم' : 'Today', en: 'As AlyTech Scientific Equipment Trading LLC in Mussafah, Abu Dhabi, we represent nine specialist manufacturers and support customers across the Middle East.', ar: 'بصفتها AlyTech Scientific Equipment Trading LLC في مصفح بأبوظبي، نمثّل تسعة مصنّعين متخصصين وندعم العملاء في جميع أنحاء الشرق الأوسط.' },
+];
+---
+<Base
+  lang={lang}
+  title={ar ? 'من نحن | AlyTech Scientific — شركة تابعة لـ AlyTech فرنسا في أبوظبي' : 'About AlyTech Scientific | AlyTech France Subsidiary in Abu Dhabi'}
+  description={ar ? 'AlyTech Scientific Equipment Trading LLC، شركة تابعة لـ AlyTech فرنسا المصنعة لأجهزة GasMix، مقرها مصفح بأبوظبي، وتورّد وتدعم الأجهزة المخبرية في الشرق الأوسط منذ 2015.' : 'AlyTech Scientific Equipment Trading LLC is the Abu Dhabi subsidiary of AlyTech France, maker of GasMix — supplying and supporting laboratory instruments across the Middle East since 2015.'}
+  schema={[breadcrumbLd(crumbs, L('/about/'))]}
+>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap py-12 md:py-16">
+      <Breadcrumbs items={crumbs} />
+      <h1 class="display mt-10 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'شركة أجهزة فرنسية في جذورها، محلية في خدمتها.' : 'French instrument makers by origin. Local by service.'}</h1>
+      <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute">{ar ? 'نحن الذراع الإقليمية لشركة AlyTech فرنسا، مصممة ومصنّعة أجهزة GasMix™. نجمع بين خبرة المصنّع وفريق محلي يركّب ويدرّب ويصون في جميع أنحاء الشرق الأوسط.' : 'We are the regional arm of AlyTech France, designer and maker of GasMix™ instruments. We pair a manufacturer’s depth with a local team that installs, trains and maintains across the Middle East.'}</p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24" aria-labelledby="story-h">
+    <div class="wrap grid gap-12 lg:grid-cols-[1fr_1.6fr]">
+      <h2 id="story-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'قصتنا' : 'How we got here'}</h2>
+      <ol class="relative border-s border-line-strong">
+        {timeline.map((e) => (
+          <li class="relative ps-8 pb-10 last:pb-0">
+            <span class="absolute -start-[5px] top-2 h-[9px] w-[9px] rounded-full bg-brand-600 ring-4 ring-surface"></span>
+            <p class="label text-brand-600">{e.y}</p>
+            <p class="mt-2 max-w-[60ch] text-[17px] leading-relaxed text-ink-soft">{e[lang]}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-card py-16 md:py-20">
+    <div class="wrap grid gap-10 md:grid-cols-3">
+      <div>
+        <p class="label text-mute">{ar ? 'الاسم القانوني' : 'Legal name'}</p>
+        <p class="mt-2 font-semibold">{site.legalName}</p>
+        <p class="mt-1 text-mute">{ar ? 'شركة تابعة لـ AlyTech فرنسا' : 'A subsidiary of AlyTech France'}</p>
+      </div>
+      <div>
+        <p class="label text-mute">{ar ? 'الشهادات' : 'Certification'}</p>
+        <p class="mt-2 flex items-center gap-2 font-semibold"><Icon name="shield" size={18} class="text-brand-600" />ISO 9001</p>
+      </div>
+      <div>
+        <p class="label text-mute">{ar ? 'المكتب' : 'Office'}</p>
+        <p class="mt-2 font-semibold">{site.address.street}, {site.address.poBox}</p>
+        <p class="text-mute">{site.address.city}, {ar ? 'الإمارات العربية المتحدة' : site.address.country}</p>
+      </div>
+    </div>
+    <div class="wrap mt-12">
+      <p class="label text-mute">{t(lang, 'nav.principals')}</p>
+      <ul class="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+        {brands.map((b) => <li><a href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)} class="display text-lg text-ink-soft transition-colors hover:text-brand-600">{b.name}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,962 @@
+{
+  "brand": "Thermtest",
+  "brandSlug": "thermtest",
+  "brandUrl": "https://thermtest.com",
+  "headquarters": "Hanwell, New Brunswick, Canada",
+  "brandSummary": "Thermtest designs and builds instruments for measuring the thermophysical properties of materials, with a focus on thermal conductivity. Its range includes transient plane source and hot wire platforms, heat flow meters, a guarded heat flow meter and portable soil and rock probes, supported by an in-house testing laboratory and regional offices in Europe, Latin America and Asia.",
+  "logoUrl": "https://thermtest.com/wp-content/themes/Thermtest_New_Child_Theme/img/Thermtest-dark.png",
+  "products": [
+    {
+      "name": "MP-1 Advanced Thermal Conductivity Measurement Platform",
+      "model": "MP-1",
+      "slug": "mp-1",
+      "category": "Thermal Properties Analyzer (Multi-Method)",
+      "priority": "flagship",
+      "summary": "The MP-1 is Thermtest's top-tier measurement platform for absolute thermal conductivity, diffusivity, specific heat and effusivity of solids, liquids, pastes and powders. It combines transient plane source, hot wire, modified plane source, hot strip and line source methods in one controller with automated scheduling and contact-resistance analysis.",
+      "description": "The MP-1 is a single instrument that covers most transient techniques used to characterise thermal transport. The transient plane source (TPS) sensor, a nickel double spiral between insulating layers, measures solids, pastes and powders and returns conductivity, diffusivity, volumetric specific heat and effusivity in one test, while also quantifying the contact resistance between sensor and sample. The transient hot wire (THW) cell handles liquids and phase-change materials, and can be pressurised to test fluids beyond their boiling point. Modified TPS, transient hot strip and transient line source sensors extend the range to single-sided testing, rectangular solids, soils and polymers. Because the TPS and THW methods are absolute, results are calculated from raw data without calibration standards or contact agents. The MP-1 adds a four-channel switch, optional temperature platforms, scheduling of method and temperature sequences, and separate analysis software that exposes raw, calculated and residual data. Optional testing modules cover bulk, anisotropic, slab, thin-film, one-dimensional, contact-resistance and specific-heat measurements. Typical users are university and corporate research laboratories characterising insulation, composites, metals, thin films, heat-transfer fluids and battery materials.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range (TPS)",
+          "value": "0.005 to 2000 W/m·K"
+        },
+        {
+          "label": "Thermal conductivity range (THW, liquids)",
+          "value": "0.01 to 2 W/m·K"
+        },
+        {
+          "label": "Thermal diffusivity (TPS)",
+          "value": "0.01 to 1200 mm²/s"
+        },
+        {
+          "label": "Thermal effusivity (TPS)",
+          "value": "5 to 60 000 W√s/m²K"
+        },
+        {
+          "label": "Accuracy / repeatability (TPS)",
+          "value": "3 % / 1 %"
+        },
+        {
+          "label": "Accuracy / repeatability (THW)",
+          "value": "2 % / 1 %"
+        },
+        {
+          "label": "TPS test time",
+          "value": "0.25 to 2560 s"
+        },
+        {
+          "label": "Smallest TPS sample",
+          "value": "5 mm diameter or square; no upper size limit"
+        },
+        {
+          "label": "THW pressure",
+          "value": "Up to 35 bar (cell-dependent)"
+        },
+        {
+          "label": "Methods",
+          "value": "TPS, THW, MTPS, THS and TLS"
+        }
+      ],
+      "standards": [
+        "ISO 22007-2:2022",
+        "ISO 22007-7:2023",
+        "GB/T 32064-2015",
+        "ASTM E3088-25",
+        "ASTM D7896-19",
+        "ASTM D5334-22a",
+        "ASTM D5930-17",
+        "IEEE 442-2017"
+      ],
+      "applications": [
+        "Solids, pastes and powders by TPS",
+        "Liquids and phase-change materials by THW",
+        "Thin films and coatings",
+        "Anisotropic and composite materials",
+        "Thermal contact resistance",
+        "Cylindrical and pouch battery cells"
+      ],
+      "industries": [
+        "research-academia",
+        "materials-manufacturing",
+        "power-energy",
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "transient plane source thermal conductivity meter",
+        "MP-1 Thermtest",
+        "thermal conductivity analyzer solids liquids powders",
+        "ISO 22007-2 instrument",
+        "thermal effusivity measurement",
+        "thermal diffusivity and specific heat instrument",
+        "hot wire thermal conductivity of liquids"
+      ],
+      "whyMiddleEast": "A multi-method platform lets university and research-centre laboratories characterise insulation, composites, construction materials and heat-transfer fluids on a single instrument.",
+      "sourceUrl": "https://thermtest.com/mp-1",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/MP-1-TPS-THW.jpg",
+        "https://thermtest.com/wp-content/uploads/MP-1-Front-View-with-Sensors.jpg"
+      ],
+      "datasheetUrl": "https://thermtest.com/wp-content/uploads/MP-model-comparison.pdf"
+    },
+    {
+      "name": "MP-V Versatile Thermal Conductivity Measurement Platform",
+      "model": "MP-V",
+      "slug": "mp-v",
+      "category": "Thermal Properties Analyzer (Multi-Method)",
+      "priority": "flagship",
+      "summary": "The MP-V is a mid-range measurement platform that pairs transient plane source for solids, pastes and powders with transient hot wire for liquids, with modified plane source and line source sensors as options. It gives absolute thermal conductivity, diffusivity, specific heat and effusivity without calibration or contact agents.",
+      "description": "The MP-V sits between the full-featured MP-1 and the economical MP-2, and keeps the two primary methods that most laboratories need. The transient plane source (TPS) sensor, a nickel double spiral encapsulated in Kapton, tests solids, pastes and powders and calculates conductivity, diffusivity, volumetric specific heat and effusivity along with the contact resistance at the sensor. The transient hot wire (THW) sensor tests liquids and phase-change materials in about one second to limit convection, and the cell can be back-pressurised to measure above boiling point. A modified TPS sensor allows single-sided testing when only one sample piece exists, and a transient line source needle covers soil, pastes and polymers. All methods are absolute: results come from raw data, so no calibration standards or contact agents are required. iTransient automation handles testing and analysis, with raw data always accessible. Testing modules include bulk, anisotropic, slab, thin-film, specific heat and, for MTPS, one-dimensional configurations. The MP-V suits teaching and research laboratories, quality departments and development teams that need accurate transient measurements across material types without the cost of the top platform.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range (TPS)",
+          "value": "0.01 to 500 W/m·K"
+        },
+        {
+          "label": "Thermal conductivity range (THW, liquids)",
+          "value": "0.01 to 2 W/m·K"
+        },
+        {
+          "label": "Thermal diffusivity (TPS)",
+          "value": "0.01 to 300 mm²/s"
+        },
+        {
+          "label": "Thermal effusivity (TPS)",
+          "value": "20 to 40 000 W√s/m²K"
+        },
+        {
+          "label": "Accuracy / repeatability (TPS)",
+          "value": "5 % / 2 %"
+        },
+        {
+          "label": "Accuracy / repeatability (THW)",
+          "value": "2 % / 1 %"
+        },
+        {
+          "label": "TPS test time",
+          "value": "2 to 160 s"
+        },
+        {
+          "label": "Smallest TPS sample",
+          "value": "10 mm diameter or square"
+        },
+        {
+          "label": "Temperature range (TPS / THW)",
+          "value": "0 to 300 °C or −75 to 300 °C / −50 to 200 °C (external temperature control required)"
+        },
+        {
+          "label": "Optional sensors",
+          "value": "MTPS (ISO 22007-7) and TLS (soil, pastes, polymers)"
+        }
+      ],
+      "standards": [
+        "ISO 22007-2:2022",
+        "ISO 22007-7:2023",
+        "GB/T 32064-2015",
+        "ASTM E3088-25",
+        "ASTM D7896-19",
+        "ASTM D5334-22a",
+        "ASTM D5930-17",
+        "IEEE 442-2017"
+      ],
+      "applications": [
+        "Thermal conductivity of solids, pastes and powders",
+        "Liquids and phase-change materials",
+        "Anisotropic and thin-film materials",
+        "Soil, paste and polymer testing with TLS",
+        "Single-sided testing with MTPS"
+      ],
+      "industries": [
+        "research-academia",
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "MP-V Thermtest",
+        "versatile thermal conductivity meter",
+        "TPS and hot wire thermal conductivity instrument",
+        "absolute thermal conductivity measurement",
+        "thermal conductivity of liquids and solids",
+        "transient plane source ISO 22007-2",
+        "thermal effusivity meter"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://thermtest.com/mp-v",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/MP-V-Front-View.png"
+      ],
+      "datasheetUrl": "https://thermtest.com/wp-content/uploads/MP-model-comparison.pdf"
+    },
+    {
+      "name": "MP-2 Economical Thermal Conductivity Measurement Platform",
+      "model": "MP-2",
+      "slug": "mp-2",
+      "category": "Thermal Conductivity Meter (Multi-Sensor)",
+      "priority": "core",
+      "summary": "The MP-2 is an economical, battery-capable thermal conductivity meter that accepts interchangeable sensors for solids, liquids, soils, concrete, rock, polymers and textiles. The controller recognises the connected sensor, loads its test parameters and stores results for export to a computer.",
+      "description": "The MP-2 is built around primary, transient measurement methods but in a compact controller aimed at laboratories with limited budgets. Sensors plug into the controller, which recognises each one automatically and loads the matching test parameters, so changing from one material type to another needs no manual set-up. The sensor set covers a modified transient plane source (MTPS) probe for solids, pastes and powders using a single piece of sample, a transient hot wire cell (THW-L3) for liquids following ASTM D7896-19, transient line source needles of 50, 100 and 150 mm for concrete, rock, soils and polymers, and a TPS-EFF sensor for the effusivity of fabrics and other solids. Measurements run from the on-board software, can be scheduled for automatic repeat testing, and results can be reviewed, saved, deleted and exported to Excel through the supplied Windows utility. Power can come from a battery or a USB cable, which makes the unit practical for bench and field use. The MP-2 is a suitable first instrument for universities, construction-materials laboratories and quality departments that want standard-based thermal conductivity data across several material types.",
+      "keySpecs": [
+        {
+          "label": "MTPS conductivity range",
+          "value": "0.029 to 20 W/m·K; test time 10, 20 or 40 s"
+        },
+        {
+          "label": "THW-L3 (liquids)",
+          "value": "0.01 to 1 W/m·K; 15 mL sample; 1 s test"
+        },
+        {
+          "label": "TLS 50 mm (concrete, rock, polymers)",
+          "value": "0.3 to 5 W/m·K"
+        },
+        {
+          "label": "TLS 100 mm (soils, polymers)",
+          "value": "0.1 to 5 W/m·K; resistivity 0.2 to 10 mK/W"
+        },
+        {
+          "label": "TLS 150 mm (soils, polymers)",
+          "value": "0.1 to 3 W/m·K; resistivity 0.3 to 10 mK/W"
+        },
+        {
+          "label": "TPS-EFF (fabrics, solids)",
+          "value": "Effusivity 35 to 1700 W√s/m²K"
+        },
+        {
+          "label": "Accuracy / repeatability (MTPS, THW, TLS)",
+          "value": "5 % / 2 %"
+        },
+        {
+          "label": "Temperature range",
+          "value": "0 to 80 °C (MTPS, THW); −40 to 100 °C (TLS); −10 to 50 °C (TPS-EFF)"
+        },
+        {
+          "label": "Power",
+          "value": "Battery or USB cable"
+        },
+        {
+          "label": "Data handling",
+          "value": "On-board software; Windows utility; export to Excel"
+        }
+      ],
+      "standards": [
+        "ASTM D7896-19",
+        "ASTM D5334-22a",
+        "IEEE 442-2017",
+        "ASTM D7984"
+      ],
+      "applications": [
+        "Concrete and rock thermal conductivity with the 50 mm TLS needle",
+        "Soil and polymer testing with 100 mm and 150 mm needles",
+        "Liquid thermal conductivity per ASTM D7896",
+        "Solids, pastes and powders with MTPS",
+        "Warmth and coolness of fabrics with TPS-EFF"
+      ],
+      "industries": [
+        "research-academia",
+        "construction-infrastructure",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "low cost thermal conductivity meter",
+        "MP-2 Thermtest",
+        "portable thermal conductivity meter concrete soil",
+        "thermal conductivity meter for liquids and solids",
+        "modified transient plane source meter",
+        "thermal conductivity probe multi-sensor"
+      ],
+      "whyMiddleEast": "A low-cost, multi-sensor meter gives university and materials-testing laboratories a way to cover concrete, rock, soil and liquids with one controller.",
+      "sourceUrl": "https://thermtest.com/mp-2",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/Thermtest-MP2-measurement-platform-product-image.jpg",
+        "https://thermtest.com/wp-content/uploads/MP-2_with_all_Sensors-600px.jpg"
+      ],
+      "datasheetUrl": "https://thermtest.com/wp-content/uploads/MP-model-comparison.pdf"
+    },
+    {
+      "name": "THW-L1 Transient Hot Wire Liquid Thermal Conductivity Meter",
+      "model": "THW-L1",
+      "slug": "thw-l1",
+      "category": "Liquid Thermal Conductivity Meter",
+      "priority": "core",
+      "summary": "The THW-L1 is a laboratory transient hot wire instrument for the thermal conductivity, diffusivity and specific heat of liquids and phase-change materials. A one-second test limits convection, the cell can be pressurised to 35 bar, and an integrated temperature platform covers −160 to 300 °C depending on model.",
+      "description": "The THW-L1 measures liquids by sending a pulse of current through a thin hot wire immersed in the sample and recording the temperature rise at 100 points per second. Because the measurement lasts one second, convection has little time to disturb the result, so low-viscosity fluids and highly viscous ones, from 0.001 to 10 million cP, can be tested on the same instrument. The method follows ASTM D7896-19 and returns thermal conductivity, thermal diffusivity and calculated specific heat from a single 20 mL sample. The sample cell can be back-filled with pressure to test liquids beyond their boiling points. The family has three variants: the THW-L1 for 10 to 200 °C and up to 20 bar without external cooling, the THW-L1S for −40 to 200 °C, and the THW-L1E reaching −160 to 300 °C with pressure up to 35 bar; the latter two need an external cooling apparatus. The wire clamp allows quick replacement, and Windows software controls isothermal temperature steps, checks data quality and exports reports to Excel. Accessories include paste, powder and observation cells and a vertical cell mount. Typical users test coolants, heat-transfer fluids, nanofluids and phase-change materials.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range",
+          "value": "0.01 to 2 W/m·K"
+        },
+        {
+          "label": "Viscosity range",
+          "value": "0.001 to 10 000 000 cP"
+        },
+        {
+          "label": "Sample volume",
+          "value": "20 mL"
+        },
+        {
+          "label": "Test time",
+          "value": "1 s"
+        },
+        {
+          "label": "Accuracy / repeatability",
+          "value": "2 % / 1 % (verified with ASTM Type II water)"
+        },
+        {
+          "label": "Temperature range",
+          "value": "THW-L1: 10 to 200 °C; THW-L1S: −40 to 200 °C; THW-L1E: −160, −40 or 0 to 300 °C"
+        },
+        {
+          "label": "Pressure",
+          "value": "Up to 20 bar (L1, L1S); up to 35 bar (L1E)"
+        },
+        {
+          "label": "Data rate",
+          "value": "100 points per second"
+        },
+        {
+          "label": "External cooling",
+          "value": "Not required for THW-L1; required for THW-L1S and THW-L1E"
+        }
+      ],
+      "standards": [
+        "ASTM D7896-19"
+      ],
+      "applications": [
+        "Coolants and heat-transfer fluids",
+        "Nanofluids and suspensions",
+        "Oils and organic liquids",
+        "Phase-change materials and pastes",
+        "Liquids above their boiling point under back pressure",
+        "Powders with dedicated cells"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "research-academia",
+        "power-energy",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "thermal conductivity of liquids instrument",
+        "transient hot wire thermal conductivity meter",
+        "ASTM D7896 thermal conductivity liquids",
+        "heat transfer fluid thermal conductivity test",
+        "nanofluid thermal conductivity measurement",
+        "THW-L1",
+        "phase change material thermal conductivity"
+      ],
+      "whyMiddleEast": "Characterising coolants, heat-transfer fluids and thermal-storage materials is relevant to the region's refining, petrochemical and district-cooling industries.",
+      "sourceUrl": "https://thermtest.com/thw-l1",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/THW-L1-Liquid-thermal-conductivity-equipment.jpg",
+        "https://thermtest.com/wp-content/uploads/THW-L1-Front.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "HFM-100 Heat Flow Meter",
+      "model": "HFM-100",
+      "slug": "hfm-100",
+      "category": "Heat Flow Meter",
+      "priority": "flagship",
+      "summary": "The HFM-100 is a steady-state heat flow meter for the thermal resistance and thermal conductivity of insulation products, construction materials, packaging and assemblies up to 300 × 300 × 100 mm. Peltier plates, flux sensors and optical thickness encoders deliver 1 to 2 % accuracy in a 30 to 40 minute test.",
+      "description": "A heat flow meter places a flat specimen between two temperature-controlled plates and measures the heat flux crossing it once steady state is reached. In the HFM-100 a heat flux sensor with surface thermocouples is built into each plate, and thermoelectric Peltier elements heat and cool the plates with a resolution below 0.01 °C. Four optical encoders, one at each corner of the upper plate, measure specimen thickness to 0.05 mm, and stepper motors close the plates automatically on rigid samples or stop at a user-defined thickness for compressible materials such as batting. Thermal resistance and thermal conductivity are reported from the full thickness, which is why the method suits heterogeneous insulation products and assemblies. The instrument is factory calibrated and shipped with a NIST standard reference material, fibrous glass board SRM 1450e. It can be operated from the front panel or through Windows software that allows unlimited temperature steps, and a quality-control mode shortens test time. A high thermal conductivity kit extends the range to 2.5 W/m·K and a specific heat module is optional. It is intended for building-product manufacturers, insulation producers, certification laboratories and universities.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range",
+          "value": "0.002 to 0.5 W/m·K (up to 2.5 W/m·K with optional high-conductivity kit)"
+        },
+        {
+          "label": "Maximum sample size",
+          "value": "300 × 300 mm, up to 100 mm thick"
+        },
+        {
+          "label": "Accuracy / repeatability",
+          "value": "1 to 2 % / 0.5 to 1 % (verified with NIST SRM 1453 and 1450e)"
+        },
+        {
+          "label": "Test time",
+          "value": "30 to 40 minutes"
+        },
+        {
+          "label": "Plate temperature range",
+          "value": "−20 to 75 °C (chilled circulator required)"
+        },
+        {
+          "label": "Heat flux sensors",
+          "value": "Two, with surface thermocouples; Peltier heating and cooling"
+        },
+        {
+          "label": "Thickness measurement",
+          "value": "Four optical encoders, 0.05 mm resolution"
+        },
+        {
+          "label": "Calibration",
+          "value": "Factory calibrated; supplied with NIST SRM 1450e"
+        },
+        {
+          "label": "Optional",
+          "value": "Specific heat module; high thermal conductivity kit"
+        }
+      ],
+      "standards": [
+        "ASTM C518",
+        "ASTM C1784",
+        "ISO 8301",
+        "JIS A1412",
+        "EN 12667",
+        "EN 12664"
+      ],
+      "applications": [
+        "Thermal resistance and conductivity of insulation boards, batts and foams",
+        "Construction materials and building assemblies",
+        "Packaging materials",
+        "Compressible materials at controlled thickness",
+        "Temperature-dependent insulation performance",
+        "Material approval and quality control"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "heat flow meter ASTM C518",
+        "thermal conductivity of insulation test equipment",
+        "HFM-100 Thermtest",
+        "ISO 8301 heat flow meter",
+        "EN 12667 thermal resistance tester",
+        "insulation thermal conductivity lab instrument",
+        "building material thermal resistance measurement"
+      ],
+      "whyMiddleEast": "Insulation performance directly affects cooling load in Gulf buildings, so conductivity data supports material approval and energy-code compliance.",
+      "sourceUrl": "https://thermtest.com/heat-flow-meter",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/heat-flow-meter-series.jpg",
+        "https://thermtest.com/wp-content/uploads/heat-flow-meter-htm-100-front-view2.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "HFM-100 HT High-Temperature Heat Flow Meter",
+      "model": "HFM-100 HT",
+      "slug": "hfm-100-ht",
+      "category": "Heat Flow Meter",
+      "priority": "core",
+      "summary": "The HFM-100 HT is the extended-temperature version of the HFM-100 heat flow meter, with plates controlled from −30 to 110 °C. It tests insulation and construction materials up to 300 × 300 × 100 mm for thermal resistance and conductivity to ASTM C518, ISO 8301 and EN 12667.",
+      "description": "The HFM-100 HT keeps the measurement principle and sample envelope of the HFM-100 but widens the plate temperature range to −30 to 110 °C, so insulation can be characterised closer to the temperatures it sees in service. A specimen up to 300 × 300 mm and 100 mm thick is clamped between two Peltier-controlled plates, each carrying a heat flux sensor with surface thermocouples. Once the heat flux is steady, thermal resistance and conductivity are calculated for the full thickness, which suits heterogeneous insulation and assemblies. Four optical encoders measure thickness to 0.05 mm and the plates can close automatically on rigid samples or stop at a set thickness for compressible ones. Accuracy is 1 to 2 % with repeatability of 0.5 to 1 %, verified against NIST reference boards, and a test takes 30 to 40 minutes. A chilled circulator is required for the full temperature range. Software provides unlimited automated temperature steps, and optional kits add specific heat measurement and conductivity up to 2.5 W/m·K. The HT model is chosen by insulation producers, certification bodies and research groups that need conductivity as a function of temperature, including above ambient conditions.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range",
+          "value": "0.002 to 0.5 W/m·K (up to 2.5 W/m·K with optional kit)"
+        },
+        {
+          "label": "Plate temperature range",
+          "value": "−30 to 110 °C (chilled circulator required)"
+        },
+        {
+          "label": "Maximum sample size",
+          "value": "300 × 300 mm, up to 100 mm thick"
+        },
+        {
+          "label": "Accuracy / repeatability",
+          "value": "1 to 2 % / 0.5 to 1 %"
+        },
+        {
+          "label": "Test time",
+          "value": "30 to 40 minutes"
+        },
+        {
+          "label": "Thickness measurement",
+          "value": "Four optical encoders, 0.05 mm resolution"
+        },
+        {
+          "label": "Calibration",
+          "value": "Factory calibrated"
+        },
+        {
+          "label": "Optional",
+          "value": "Specific heat module; high thermal conductivity kit"
+        }
+      ],
+      "standards": [
+        "ASTM C518",
+        "ASTM C1784",
+        "ISO 8301",
+        "JIS A1412",
+        "EN 12667",
+        "EN 12664"
+      ],
+      "applications": [
+        "Insulation conductivity versus temperature",
+        "Construction materials above ambient temperature",
+        "Heterogeneous insulation assemblies",
+        "Compressible materials at controlled thickness",
+        "Quality control and certification testing"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "high temperature heat flow meter",
+        "HFM-100 HT",
+        "heat flow meter 110 C",
+        "insulation thermal conductivity versus temperature",
+        "ASTM C518 high temperature heat flow meter",
+        "thermal resistance tester up to 110 C"
+      ],
+      "whyMiddleEast": "Insulation used on hot roofs and in hot-climate construction can be characterised at temperatures above ambient.",
+      "sourceUrl": "https://thermtest.com/heat-flow-meter",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/heat-flow-meter-series.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "HFM-50 Heat Flow Meter",
+      "model": "HFM-50",
+      "slug": "hfm-50",
+      "category": "Heat Flow Meter",
+      "priority": "core",
+      "summary": "The HFM-50 is the mid-size model in Thermtest's HFM series, accepting specimens up to 200 × 200 × 50 mm. It measures thermal resistance and conductivity of insulation and construction materials from −20 to 70 °C with 1 to 2 % accuracy to ASTM C518, ISO 8301 and EN 12667.",
+      "description": "The HFM-50 is designed for laboratories whose samples are smaller than the 300 × 300 mm boards handled by the HFM-100, or whose bench space is limited, without giving up the measurement performance of the series. A specimen up to 200 × 200 mm and 50 mm thick is placed between two Peltier-controlled plates, each with a heat flux sensor and surface thermocouples, and the instrument measures heat flux until steady state is reached. Four optical encoders report thickness to 0.05 mm, and the plates close automatically on rigid specimens or stop at a chosen height for compressible ones. Thermal resistance and thermal conductivity are calculated for the full thickness, so heterogeneous insulation and layered assemblies can be tested. Accuracy is 1 to 2 % and repeatability 0.5 to 1 %, verified with NIST reference materials, in a 30 to 40 minute test. The plates run from −20 to 70 °C with a chilled circulator. The same software, front-panel control and optional accessories as the HFM-100 apply, including a specific heat module and a high thermal conductivity kit that extends the range to 2.5 W/m·K. Typical users are manufacturers of insulation products, building-materials testing laboratories and university departments.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range",
+          "value": "0.002 to 0.5 W/m·K (up to 2.5 W/m·K with optional kit)"
+        },
+        {
+          "label": "Maximum sample size",
+          "value": "200 × 200 mm, up to 50 mm thick"
+        },
+        {
+          "label": "Accuracy / repeatability",
+          "value": "1 to 2 % / 0.5 to 1 %"
+        },
+        {
+          "label": "Test time",
+          "value": "30 to 40 minutes"
+        },
+        {
+          "label": "Plate temperature range",
+          "value": "−20 to 70 °C (chilled circulator required)"
+        },
+        {
+          "label": "Heat flux sensors",
+          "value": "Two, with surface thermocouples; Peltier heating and cooling"
+        },
+        {
+          "label": "Calibration",
+          "value": "Factory calibrated"
+        },
+        {
+          "label": "Optional",
+          "value": "Specific heat module; high thermal conductivity kit"
+        }
+      ],
+      "standards": [
+        "ASTM C518",
+        "ASTM C1784",
+        "ISO 8301",
+        "JIS A1412",
+        "EN 12667",
+        "EN 12664"
+      ],
+      "applications": [
+        "Insulation boards, foams and batts",
+        "Smaller construction material specimens",
+        "Packaging materials",
+        "Textiles and solids",
+        "Routine quality control of insulation products"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "HFM-50 heat flow meter",
+        "200 mm heat flow meter",
+        "small sample insulation thermal conductivity tester",
+        "ASTM C518 heat flow meter",
+        "thermal resistance tester for insulation boards"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://thermtest.com/heat-flow-meter",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/heat-flow-meter-series.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "HFM-25 Portable Heat Flow Meter",
+      "model": "HFM-25",
+      "slug": "hfm-25",
+      "category": "Heat Flow Meter",
+      "priority": "core",
+      "summary": "The HFM-25 is a compact heat flow meter for thermal resistance and conductivity of small insulation and construction material samples, as small as 50 × 50 × 2 mm. Manual plate loading with standard weights keeps it affordable, and a 20 minute test gives 3 % accuracy to ASTM C518 and EN 12667.",
+      "description": "The HFM-25 was designed for steady-state testing of small insulation samples where a full-size heat flow meter would be excessive. A specimen is placed between two heating and cooling plates, each with an integrated heat flux sensor, and the contact pressure is set manually with standard weights. A digital gauge reports thickness, and shims allow compressible samples to be tested at a controlled thickness. The instrument detects ambient temperature automatically and offers temperature differences of 5, 10, 15 or 20 °C between the plates; heat flux is monitored until it stabilises, then thermal resistance is measured and thermal conductivity calculated. Samples as small as 50 × 50 × 2 mm up to 25.4 mm thick can be tested, and the open clamping arrangement accepts larger boards up to 300 × 300 mm so several locations can be checked for homogeneity. Typical results include aerogel blanket within 3 % of the manufacturer's value and a NIST SRM 1450d board within 1 % of its certificate. The HFM-25 follows ASTM C518, ISO 8301, JIS A1412 and EN 12667 and suits product development, incoming inspection and teaching laboratories.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range",
+          "value": "0.01 to 0.3 W/m·K"
+        },
+        {
+          "label": "Sample size",
+          "value": "As small as 50 × 50 × 2 mm; up to 300 × 300 mm and 25 mm thick"
+        },
+        {
+          "label": "Accuracy / repeatability",
+          "value": "3 % / 1 %"
+        },
+        {
+          "label": "Test time",
+          "value": "20 minutes"
+        },
+        {
+          "label": "Plate temperature range",
+          "value": "10 to 75 °C"
+        },
+        {
+          "label": "Temperature differences",
+          "value": "5, 10, 15 or 20 °C selectable"
+        },
+        {
+          "label": "Plate contact",
+          "value": "Manual, with standard weights; digital thickness gauge"
+        },
+        {
+          "label": "Calibration",
+          "value": "Factory calibrated"
+        }
+      ],
+      "standards": [
+        "ASTM C518",
+        "ISO 8301",
+        "JIS A1412",
+        "EN 12667"
+      ],
+      "applications": [
+        "Small samples of insulation and construction materials",
+        "Aerogel blankets and thin insulation",
+        "Homogeneity checks at multiple board locations",
+        "Incoming inspection and product development",
+        "Teaching laboratories"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "portable heat flow meter",
+        "small sample thermal conductivity insulation",
+        "HFM-25 Thermtest",
+        "ASTM C518 small heat flow meter",
+        "low cost thermal resistance meter",
+        "aerogel thermal conductivity measurement"
+      ],
+      "whyMiddleEast": "A low-cost instrument for checking insulation samples supports incoming inspection and product development for the region's building-materials sector.",
+      "sourceUrl": "https://thermtest.com/hfm-25",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/HFM-25-portable-heat-flow-meter.jpg",
+        "https://thermtest.com/wp-content/uploads/HFM-25-Front-View.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "GHFM-01 Guarded Heat Flow Meter",
+      "model": "GHFM-01",
+      "slug": "ghfm-01",
+      "category": "Guarded Heat Flow Meter",
+      "priority": "core",
+      "summary": "The GHFM-01 is a guarded heat flow meter that follows ASTM E1530 to measure the thermal resistance and conductivity of metals, polymers, composites and pastes from −20 to 310 °C. Motor-controlled clamping sets thickness, force or pressure automatically, with conductivity up to 100 W/m·K.",
+      "description": "The GHFM-01 measures thermal resistance through the full thickness of a sample, which is the most dependable way to obtain true conductivity of heterogeneous materials such as composites, filled polymers and layered assemblies. A 50 mm disc is held between a heated upper plate and a heat-sink lower plate, with a guard oven reducing lateral heat loss. The lower heat flux stack is calibrated as a transducer and can be exchanged without tools. Six thermocouples with 0.01 °C resolution confirm steady state. Instead of the pneumatic movement of conventional guarded stacks, a stepper motor with a force sensor and optical encoder controls clamping, so thickness, force or pressure up to 379 kPa can be programmed and thickness is read to 0.0254 mm. This is useful for compressible materials such as rubber and gaskets, and a layering approach allows thin films to be measured. Software schedules unlimited temperature steps from −20 to 310 °C, and a chilled circulator is included. Conductivity range is 0.1 to 100 W/m·K with 3 % accuracy and 1 to 2 % repeatability. Test cells for pastes, polymer melts and powders extend the application range.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range",
+          "value": "0.1 to 100 W/m·K (above 60 W/m·K, sample at least 12.5 mm thick)"
+        },
+        {
+          "label": "Sample size",
+          "value": "50 to 50.8 mm diameter; up to 25 mm thick (thin films down to 0.1 mm with optional software)"
+        },
+        {
+          "label": "Temperature range",
+          "value": "−20 to 310 °C (chilled circulator included)"
+        },
+        {
+          "label": "Accuracy / repeatability",
+          "value": "3 % / 1 to 2 %"
+        },
+        {
+          "label": "Test time",
+          "value": "40 to 60 minutes"
+        },
+        {
+          "label": "Applied pressure",
+          "value": "Automated, up to 379 kPa (55 psi)"
+        },
+        {
+          "label": "Temperature sensors",
+          "value": "Six thermocouples"
+        },
+        {
+          "label": "Thickness measurement",
+          "value": "Digital optical encoder, 0.0254 mm accuracy"
+        },
+        {
+          "label": "Guarding",
+          "value": "Guard oven to limit lateral heat loss"
+        }
+      ],
+      "standards": [
+        "ASTM E1530-19"
+      ],
+      "applications": [
+        "Metals, polymers and composites",
+        "Anisotropic and layered carbon-fibre composites",
+        "Pastes and polymer melts with special cells",
+        "Compressible materials such as rubber and gaskets",
+        "Thin films by layered measurement"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "guarded heat flow meter ASTM E1530",
+        "thermal conductivity of composites",
+        "GHFM-01",
+        "thermal resistance of polymers and metals",
+        "guarded comparative longitudinal heat flow",
+        "thermal conductivity of gasket and rubber materials",
+        "thermal conductivity of paste and polymer melt"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://thermtest.com/ghfm-01",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/Thermtest-GHFM-01.jpg",
+        "https://thermtest.com/wp-content/uploads/Thermtest-GHFM-01-sideview.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "TPS-3 Transient Plane Source Thermal Conductivity Meter",
+      "model": "TPS-3",
+      "slug": "tps-3",
+      "category": "Thermal Conductivity Meter (Transient Plane Source)",
+      "priority": "niche",
+      "summary": "The TPS-3 is a budget transient plane source instrument for the thermal conductivity, diffusivity and specific heat of solids, pastes and powders. It uses a 20 mm double-spiral sensor with the Keithley 2400/2401 source meter, needs no calibration or contact agent, and covers 0.03 to 70 W/m·K.",
+      "description": "The TPS-3 brings the transient plane source method to laboratories with limited budgets. The measurement uses a 20 mm nickel double-spiral sensor sandwiched between two pieces of the same sample; a current passes through the sensor, heating it, and the heat diffuses into the specimen at a rate set by the material's thermal transport properties while the temperature rise is recorded over time. From that curve the software calculates thermal conductivity, thermal diffusivity and volumetric specific heat, and because the method is absolute no calibration standards or contact agents are required. The package consists of the standard TPS sensor and software working with a Keithley 2400/2401 source meter, which can be supplied with the instrument or provided by the user. Conductivity range is 0.03 to 70 W/m·K, test times are 10 to 160 seconds, the smallest sample is 40 mm in diameter by 5 mm thick, and operation covers 10 to 80 °C. Published checks include NIST EPS 1453 at 3.6 % deviation from its reference value, Pyrex glass at 1.7 % and stainless steel 316 at 13.81 W/m·K. It suits teaching, polymer and metals screening and general materials laboratories.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range",
+          "value": "0.03 to 70 W/m·K"
+        },
+        {
+          "label": "Additional properties",
+          "value": "Thermal diffusivity and specific heat"
+        },
+        {
+          "label": "Sensor",
+          "value": "20 mm diameter TPS double-spiral (model 46171)"
+        },
+        {
+          "label": "Smallest sample",
+          "value": "40 mm diameter × 5 mm thick; no upper size limit"
+        },
+        {
+          "label": "Test time",
+          "value": "10 to 160 s"
+        },
+        {
+          "label": "Accuracy / repeatability",
+          "value": "5 % / 2 %"
+        },
+        {
+          "label": "Temperature range",
+          "value": "10 to 80 °C"
+        },
+        {
+          "label": "Source meter",
+          "value": "Keithley 2400/2401 (supplied as a package or customer-owned)"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Polymers and metals screening",
+        "Solids, pastes and powders",
+        "Insulation samples at room temperature",
+        "Glass and ceramics",
+        "Teaching laboratories"
+      ],
+      "industries": [
+        "research-academia",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "TPS-3 Thermtest",
+        "low cost transient plane source",
+        "thermal conductivity meter for solids and powders",
+        "budget thermal conductivity instrument",
+        "transient plane source Keithley",
+        "thermal diffusivity and specific heat meter"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://thermtest.com/tps-3",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/tps-3-transient-plane-source.jpg",
+        "https://thermtest.com/wp-content/uploads/TPS3-transient-plane-source.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "TLS-100 Soil and Rock Thermal Conductivity Meter",
+      "model": "TLS-100",
+      "slug": "tls-100",
+      "category": "Thermal Conductivity / Resistivity Meter (Portable)",
+      "priority": "flagship",
+      "summary": "The TLS-100 is a portable transient line source meter for the thermal conductivity and thermal resistivity of soil, rock, concrete and polymers. Needle probes of 50, 100 or 150 mm are auto-recognised, a test takes three minutes, and the method follows ASTM D5334-22a and IEEE 442-2017.",
+      "description": "The TLS-100 measures thermal conductivity and thermal resistivity with a needle probe pushed fully into the sample. The needle contains a thin heating wire and a temperature sensor sealed in a steel tube. A constant current heats the wire, the temperature rise is logged for 180 seconds, and conductivity is calculated from the slope of temperature against the logarithm of time. The result is shown on the meter after a single button press, and saved readings can be transferred to a computer over USB. Three needles are available: the standard 100 mm probe for soils and soft materials, the 50 mm probe for hard samples such as rock, concrete and polymers, which is inserted into a 4 mm hole drilled with a supplied masonry bit and used with contact grease, and the 150 mm probe for soils under IEEE 442-2017. Meter and probes are auto-recognised and the right test parameters load automatically. The instrument is used for soil dry-out curves, backfill selection for buried power cables and pipelines, geotechnical and geothermal studies, concrete mix development and polymer research. Conductivity ranges from 0.1 to 5 W/m·K with 5 % accuracy and 2 % repeatability.",
+      "keySpecs": [
+        {
+          "label": "Thermal conductivity range",
+          "value": "0.1 to 5 W/m·K (100 mm probe); 0.3 to 5 W/m·K (50 mm probe); 0.1 to 3 W/m·K (150 mm probe)"
+        },
+        {
+          "label": "Thermal resistivity range",
+          "value": "0.2 to 10 mK/W (100 mm); 0.2 to 3.3 mK/W (50 mm); 0.3 to 10 mK/W (150 mm)"
+        },
+        {
+          "label": "Test time",
+          "value": "3 minutes (180 s)"
+        },
+        {
+          "label": "Accuracy / repeatability",
+          "value": "5 % / 2 %"
+        },
+        {
+          "label": "Temperature range",
+          "value": "−40 to 100 °C"
+        },
+        {
+          "label": "Smallest sample",
+          "value": "100 mm long × 50 mm diameter (100 mm probe); 50 × 50 mm (50 mm probe); 150 mm long (150 mm probe)"
+        },
+        {
+          "label": "Probes",
+          "value": "Standard 100 mm included; 50 mm and 150 mm available; auto-recognised"
+        },
+        {
+          "label": "Data output",
+          "value": "On-screen result; USB export to computer"
+        }
+      ],
+      "standards": [
+        "ASTM D5334-22a",
+        "IEEE 442-2017"
+      ],
+      "applications": [
+        "Soil thermal resistivity and dry-out curves",
+        "Backfill for buried high-voltage power cables",
+        "Rock and concrete thermal conductivity",
+        "Polymers and pastes",
+        "Geotechnical and geothermal studies",
+        "Cement and mortar development"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "power-energy",
+        "research-academia",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "soil thermal resistivity meter",
+        "TLS-100 Thermtest",
+        "ASTM D5334 thermal conductivity soil",
+        "thermal conductivity of concrete test",
+        "IEEE 442 soil thermal resistivity",
+        "portable thermal conductivity meter for rock",
+        "thermal needle probe soil",
+        "cable backfill thermal resistivity"
+      ],
+      "whyMiddleEast": "Thermal resistivity of native soil and backfill drives the sizing of buried power cables and pipelines, which are central to Gulf infrastructure and energy projects.",
+      "sourceUrl": "https://thermtest.com/tls-100",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/TLS100_with_all_Sensors.jpg",
+        "https://thermtest.com/wp-content/uploads/Thermtest-TLS-100-open-case.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "MP-1 TPS Battery Package",
+      "model": "MP-1 TPS Battery Package",
+      "slug": "mp-1-tps-battery-package",
+      "category": "Thermal Properties Test Package (Batteries)",
+      "priority": "niche",
+      "summary": "The TPS Battery Package configures the MP-1 to measure the directional thermal conductivity, thermal diffusivity and specific heat of cylindrical, prismatic and pouch battery cells. It combines specific heat, one-dimensional and anisotropic testing modules with cell-specific Cp cells, TPS sensors and insulation blocks.",
+      "description": "Battery thermal management depends on knowing how heat moves along and across a cell, and this package adapts the MP-1 method to measure it. Three testing modules are included. The Specific Heat module uses a Cp cell shaped for the cell format: a reference run with the empty cell is followed by a run with the battery inserted, and results are reported as heat capacity in J/K, specific heat in kJ/kg·K and volumetric specific heat in MJ/m³K. The one-dimensional module measures conductivity and diffusivity along the height of the cell with a single-sided sensor, using an insulation block on cylindrical cells to guard against lateral heat loss. The anisotropic module measures axial and radial conductivity. For cylindrical cells the package covers diameters of 10 to 60 mm, such as 21700 cells, and for prismatic and pouch cells it handles dimensions up to 250 × 250 mm, with sensor configurations that can be single-sided, two-sided or integrated inside a pouch. The standard temperature range is −75 to 90 °C and can be extended to 300 °C. Custom Cp cells and sensors can be built for other cell sizes.",
+      "keySpecs": [
+        {
+          "label": "Cell formats",
+          "value": "Cylindrical (10 to 60 mm diameter) and prismatic or pouch (up to 250 × 250 mm)"
+        },
+        {
+          "label": "Included modules",
+          "value": "Specific Heat, 1-Dimensional and Anisotropic"
+        },
+        {
+          "label": "Specific heat outputs",
+          "value": "Heat capacity (J/K), specific heat (kJ/kg·K), volumetric specific heat (MJ/m³K)"
+        },
+        {
+          "label": "Directional conductivity",
+          "value": "Axial, radial and through-height thermal conductivity and diffusivity"
+        },
+        {
+          "label": "Temperature range",
+          "value": "−75 to 90 °C; expandable to 300 °C"
+        },
+        {
+          "label": "Hardware included",
+          "value": "Cell-specific Cp cell, TPS sensor, battery insulation block (cylindrical)"
+        },
+        {
+          "label": "Host instrument",
+          "value": "MP-1 with TPS"
+        }
+      ],
+      "standards": [
+        "ISO 22007-2:2022"
+      ],
+      "applications": [
+        "Cylindrical cell thermal characterisation (e.g. 21700)",
+        "Prismatic and pouch cell thermal properties",
+        "Battery pack thermal management modelling",
+        "Direction-dependent heat transport in cells"
+      ],
+      "industries": [
+        "power-energy",
+        "research-academia",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "battery thermal conductivity measurement",
+        "specific heat of lithium ion cell",
+        "21700 cell thermal properties test",
+        "pouch cell anisotropic thermal conductivity",
+        "battery thermal management characterization",
+        "MP-1 battery package"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://thermtest.com/mp-1",
+      "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/Cyclinder-Batteries_004342.jpg",
+        "https://thermtest.com/wp-content/uploads/Pouch-Anisotropic-Module-004461.jpg"
+      ],
+      "datasheetUrl": null
+    }
+  ]
+}

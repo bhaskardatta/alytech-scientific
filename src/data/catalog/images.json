@@ -1,0 +1,527 @@
+{
+  "ducom/abel-flash-point-tester": {
+    "h": 708,
+    "src": "/images/products/ducom/abel-flash-point-tester.webp",
+    "w": 618
+  },
+  "ducom/abrasion-tester-abt-3": {
+    "h": 573,
+    "src": "/images/products/ducom/abrasion-tester-abt-3.webp",
+    "w": 451
+  },
+  "ducom/bocle-aviation-fuel-lubricity-tester": {
+    "h": 1200,
+    "src": "/images/products/ducom/bocle-aviation-fuel-lubricity-tester.webp",
+    "w": 1092
+  },
+  "ducom/cleveland-flash-point-tester": {
+    "h": 718,
+    "src": "/images/products/ducom/cleveland-flash-point-tester.webp",
+    "w": 581
+  },
+  "ducom/cloud-and-pour-point-tester": {
+    "h": 711,
+    "src": "/images/products/ducom/cloud-and-pour-point-tester.webp",
+    "w": 694
+  },
+  "ducom/four-ball-tester-fbt-3": {
+    "h": 811,
+    "src": "/images/products/ducom/four-ball-tester-fbt-3.webp",
+    "w": 1009
+  },
+  "ducom/four-ball-tester-tr-30": {
+    "h": 1200,
+    "src": "/images/products/ducom/four-ball-tester-tr-30.webp",
+    "w": 854
+  },
+  "ducom/hfrr-fuel-lubricity-tester": {
+    "h": 675,
+    "src": "/images/products/ducom/hfrr-fuel-lubricity-tester.webp",
+    "w": 1200
+  },
+  "ducom/krl-shear-stability-tester": {
+    "h": 781,
+    "src": "/images/products/ducom/krl-shear-stability-tester.webp",
+    "w": 1200
+  },
+  "ducom/noack-volatility-tester": {
+    "h": 357,
+    "src": "/images/products/ducom/noack-volatility-tester.webp",
+    "w": 592
+  },
+  "ducom/pensky-martens-flash-point-tester": {
+    "h": 720,
+    "src": "/images/products/ducom/pensky-martens-flash-point-tester.webp",
+    "w": 556
+  },
+  "ducom/pod-4-pin-on-disk-tribometer": {
+    "h": 745,
+    "src": "/images/products/ducom/pod-4-pin-on-disk-tribometer.webp",
+    "w": 807
+  },
+  "ducom/slurry-jet-erosion-tester": {
+    "h": 1200,
+    "src": "/images/products/ducom/slurry-jet-erosion-tester.webp",
+    "w": 665
+  },
+  "ducom/unitest-universal-tester": {
+    "h": 675,
+    "src": "/images/products/ducom/unitest-universal-tester.webp",
+    "w": 1200
+  },
+  "f-dgs/calypso-nitrogen-generator": {
+    "h": 1038,
+    "src": "/images/products/f-dgs/calypso-nitrogen-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/celeno-nitrogen-generator": {
+    "h": 1019,
+    "src": "/images/products/f-dgs/celeno-nitrogen-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/cosmos-mb-h2-hydrogen-generator": {
+    "h": 1200,
+    "src": "/images/products/f-dgs/cosmos-mb-h2-hydrogen-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/cosmos-mf-h2-hydrogen-generator": {
+    "h": 1200,
+    "src": "/images/products/f-dgs/cosmos-mf-h2-hydrogen-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/cosmos-n2-zn2-nitrogen-generator": {
+    "h": 1200,
+    "src": "/images/products/f-dgs/cosmos-n2-zn2-nitrogen-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/cosmos-rack-mf-h2-hydrogen-generator": {
+    "h": 414,
+    "src": "/images/products/f-dgs/cosmos-rack-mf-h2-hydrogen-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/cosmos-rack-n2-zn2-nitrogen-generator": {
+    "h": 469,
+    "src": "/images/products/f-dgs/cosmos-rack-n2-zn2-nitrogen-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/cosmos-za-total-zero-air-generator": {
+    "h": 565,
+    "src": "/images/products/f-dgs/cosmos-za-total-zero-air-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/cosmos-za-zero-air-generator": {
+    "h": 565,
+    "src": "/images/products/f-dgs/cosmos-za-zero-air-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/cryogen-40-liquid-nitrogen-generator": {
+    "h": 1200,
+    "src": "/images/products/f-dgs/cryogen-40-liquid-nitrogen-generator.webp",
+    "w": 804
+  },
+  "f-dgs/deimos-uza-ultra-zero-air-generator": {
+    "h": 1019,
+    "src": "/images/products/f-dgs/deimos-uza-ultra-zero-air-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/neso-nitrogen-generator": {
+    "h": 1019,
+    "src": "/images/products/f-dgs/neso-nitrogen-generator.webp",
+    "w": 1000
+  },
+  "f-dgs/prospero-nitrogen-air-generator": {
+    "h": 1019,
+    "src": "/images/products/f-dgs/prospero-nitrogen-air-generator.webp",
+    "w": 1000
+  },
+  "gasmix/aiolos-iii": {
+    "h": 1200,
+    "src": "/images/products/gasmix/aiolos-iii.webp",
+    "w": 880
+  },
+  "gasmix/alysoft": {
+    "h": 532,
+    "src": "/images/products/gasmix/alysoft.webp",
+    "w": 1007
+  },
+  "gasmix/aura-ii": {
+    "h": 1200,
+    "src": "/images/products/gasmix/aura-ii.webp",
+    "w": 858
+  },
+  "gasmix/cleac": {
+    "h": 250,
+    "src": "/images/products/gasmix/cleac.webp",
+    "w": 300
+  },
+  "gasmix/fred": {
+    "h": 1180,
+    "src": "/images/products/gasmix/fred.webp",
+    "w": 1200
+  },
+  "gasmix/grack": {
+    "h": 288,
+    "src": "/images/products/gasmix/grack.webp",
+    "w": 500
+  },
+  "gasmix/hurricane": {
+    "h": 800,
+    "src": "/images/products/gasmix/hurricane.webp",
+    "w": 507
+  },
+  "gasmix/multiplex": {
+    "h": 250,
+    "src": "/images/products/gasmix/multiplex.webp",
+    "w": 300
+  },
+  "gasmix/nephos": {
+    "h": 601,
+    "src": "/images/products/gasmix/nephos.webp",
+    "w": 669
+  },
+  "gasmix/nomad": {
+    "h": 1200,
+    "src": "/images/products/gasmix/nomad.webp",
+    "w": 1174
+  },
+  "gasmix/prem": {
+    "h": 1088,
+    "src": "/images/products/gasmix/prem.webp",
+    "w": 1064
+  },
+  "gasmix/zephyr-ii": {
+    "h": 874,
+    "src": "/images/products/gasmix/zephyr-ii.webp",
+    "w": 1020
+  },
+  "instrotek/503-elite-hydroprobe": {
+    "h": 1200,
+    "src": "/images/products/instrotek/503-elite-hydroprobe.webp",
+    "w": 1200
+  },
+  "instrotek/autorice-max-specific-gravity-controller": {
+    "h": 1200,
+    "src": "/images/products/instrotek/autorice-max-specific-gravity-controller.webp",
+    "w": 1200
+  },
+  "instrotek/autoxtract-asphalt-extraction-system": {
+    "h": 1200,
+    "src": "/images/products/instrotek/autoxtract-asphalt-extraction-system.webp",
+    "w": 1200
+  },
+  "instrotek/coredrypro-asphalt-core-drying": {
+    "h": 1200,
+    "src": "/images/products/instrotek/coredrypro-asphalt-core-drying.webp",
+    "w": 1200
+  },
+  "instrotek/corelok-specific-gravity-system": {
+    "h": 1200,
+    "src": "/images/products/instrotek/corelok-specific-gravity-system.webp",
+    "w": 1200
+  },
+  "instrotek/hwt-pro-hamburg-verification-device": {
+    "h": 1200,
+    "src": "/images/products/instrotek/hwt-pro-hamburg-verification-device.webp",
+    "w": 1200
+  },
+  "instrotek/mc-3-elite-nuclear-density-gauge": {
+    "h": 1200,
+    "src": "/images/products/instrotek/mc-3-elite-nuclear-density-gauge.webp",
+    "w": 1200
+  },
+  "instrotek/mist-2-moisture-induced-stress-tester": {
+    "h": 1200,
+    "src": "/images/products/instrotek/mist-2-moisture-induced-stress-tester.webp",
+    "w": 1200
+  },
+  "instrotek/smartloader-universal-load-frame": {
+    "h": 1200,
+    "src": "/images/products/instrotek/smartloader-universal-load-frame.webp",
+    "w": 1200
+  },
+  "instrotek/smartracker-hamburg-wheel-tracker": {
+    "h": 1200,
+    "src": "/images/products/instrotek/smartracker-hamburg-wheel-tracker.webp",
+    "w": 1200
+  },
+  "instrotek/thinpave-5500-overlay-density-gauge": {
+    "h": 1200,
+    "src": "/images/products/instrotek/thinpave-5500-overlay-density-gauge.webp",
+    "w": 1200
+  },
+  "instrotek/xplorer-2-nuclear-density-gauge": {
+    "h": 1200,
+    "src": "/images/products/instrotek/xplorer-2-nuclear-density-gauge.webp",
+    "w": 1200
+  },
+  "lamy-rheology/b-one-plus": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/b-one-plus.webp",
+    "w": 540
+  },
+  "lamy-rheology/dsr-500": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/dsr-500.webp",
+    "w": 540
+  },
+  "lamy-rheology/eva-ms-din-plus": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/eva-ms-din-plus.webp",
+    "w": 540
+  },
+  "lamy-rheology/first-plus": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/first-plus.webp",
+    "w": 540
+  },
+  "lamy-rheology/first-pro-plus": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/first-pro-plus.webp",
+    "w": 540
+  },
+  "lamy-rheology/first-prodig": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/first-prodig.webp",
+    "w": 540
+  },
+  "lamy-rheology/first-prodig-cp-1000": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/first-prodig-cp-1000.webp",
+    "w": 540
+  },
+  "lamy-rheology/gt-300-plus": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/gt-300-plus.webp",
+    "w": 540
+  },
+  "lamy-rheology/lv-spring": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/lv-spring.webp",
+    "w": 540
+  },
+  "lamy-rheology/portable-b-one": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/portable-b-one.webp",
+    "w": 540
+  },
+  "lamy-rheology/rm-100-cp-1000-plus": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/rm-100-cp-1000-plus.webp",
+    "w": 540
+  },
+  "lamy-rheology/rm-100-l": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/rm-100-l.webp",
+    "w": 540
+  },
+  "lamy-rheology/rm-100-plus": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/rm-100-plus.webp",
+    "w": 540
+  },
+  "lamy-rheology/rm-200-plus": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/rm-200-plus.webp",
+    "w": 540
+  },
+  "lamy-rheology/tx-700": {
+    "h": 540,
+    "src": "/images/products/lamy-rheology/tx-700.webp",
+    "w": 540
+  },
+  "proto/axrd-benchtop": {
+    "h": 350,
+    "src": "/images/products/proto/axrd-benchtop.webp",
+    "w": 408
+  },
+  "proto/axrd-lpd": {
+    "h": 601,
+    "src": "/images/products/proto/axrd-lpd.webp",
+    "w": 452
+  },
+  "proto/axrd-lpd-ht": {
+    "h": 700,
+    "src": "/images/products/proto/axrd-lpd-ht.webp",
+    "w": 506
+  },
+  "proto/axrd-theta-theta": {
+    "h": 550,
+    "src": "/images/products/proto/axrd-theta-theta.webp",
+    "w": 330
+  },
+  "proto/electropolisher-8818-v3": {
+    "h": 289,
+    "src": "/images/products/proto/electropolisher-8818-v3.webp",
+    "w": 545
+  },
+  "proto/ixrd": {
+    "h": 434,
+    "src": "/images/products/proto/ixrd.webp",
+    "w": 565
+  },
+  "proto/ixrd-mini": {
+    "h": 1001,
+    "src": "/images/products/proto/ixrd-mini.webp",
+    "w": 871
+  },
+  "proto/laue-cos-benchtop": {
+    "h": 1086,
+    "src": "/images/products/proto/laue-cos-benchtop.webp",
+    "w": 972
+  },
+  "proto/lxrd": {
+    "h": 443,
+    "src": "/images/products/proto/lxrd.webp",
+    "w": 249
+  },
+  "proto/mscan-xrf": {
+    "h": 402,
+    "src": "/images/products/proto/mscan-xrf.webp",
+    "w": 500
+  },
+  "proto/mxrd": {
+    "h": 389,
+    "src": "/images/products/proto/mxrd.webp",
+    "w": 360
+  },
+  "proto/nspec-xrf": {
+    "h": 870,
+    "src": "/images/products/proto/nspec-xrf.webp",
+    "w": 932
+  },
+  "proto/roboxrd": {
+    "h": 650,
+    "src": "/images/products/proto/roboxrd.webp",
+    "w": 500
+  },
+  "proto/sc-1-max": {
+    "h": 477,
+    "src": "/images/products/proto/sc-1-max.webp",
+    "w": 435
+  },
+  "proto/xrdwin-2": {
+    "h": 222,
+    "src": "/images/products/proto/xrdwin-2.webp",
+    "w": 288
+  },
+  "thermtest/ghfm-01": {
+    "h": 458,
+    "src": "/images/products/thermtest/ghfm-01.webp",
+    "w": 700
+  },
+  "thermtest/hfm-100": {
+    "h": 458,
+    "src": "/images/products/thermtest/hfm-100.webp",
+    "w": 700
+  },
+  "thermtest/hfm-100-ht": {
+    "h": 458,
+    "src": "/images/products/thermtest/hfm-100-ht.webp",
+    "w": 700
+  },
+  "thermtest/hfm-25": {
+    "h": 680,
+    "src": "/images/products/thermtest/hfm-25.webp",
+    "w": 1000
+  },
+  "thermtest/hfm-50": {
+    "h": 458,
+    "src": "/images/products/thermtest/hfm-50.webp",
+    "w": 700
+  },
+  "thermtest/mp-1": {
+    "h": 628,
+    "src": "/images/products/thermtest/mp-1.webp",
+    "w": 1200
+  },
+  "thermtest/mp-1-tps-battery-package": {
+    "h": 300,
+    "src": "/images/products/thermtest/mp-1-tps-battery-package.webp",
+    "w": 300
+  },
+  "thermtest/mp-2": {
+    "h": 680,
+    "src": "/images/products/thermtest/mp-2.webp",
+    "w": 1000
+  },
+  "thermtest/mp-v": {
+    "h": 517,
+    "src": "/images/products/thermtest/mp-v.webp",
+    "w": 655
+  },
+  "thermtest/thw-l1": {
+    "h": 458,
+    "src": "/images/products/thermtest/thw-l1.webp",
+    "w": 700
+  },
+  "thermtest/tls-100": {
+    "h": 458,
+    "src": "/images/products/thermtest/tls-100.webp",
+    "w": 600
+  },
+  "thermtest/tps-3": {
+    "h": 458,
+    "src": "/images/products/thermtest/tps-3.webp",
+    "w": 600
+  },
+  "vinci/autoflood-700": {
+    "h": 740,
+    "src": "/images/products/vinci/autoflood-700.webp",
+    "w": 1200
+  },
+  "vinci/capri": {
+    "h": 1080,
+    "src": "/images/products/vinci/capri.webp",
+    "w": 1095
+  },
+  "vinci/cfs-series": {
+    "h": 675,
+    "src": "/images/products/vinci/cfs-series.webp",
+    "w": 1200
+  },
+  "vinci/coreval-700": {
+    "h": 1080,
+    "src": "/images/products/vinci/coreval-700.webp",
+    "w": 893
+  },
+  "vinci/fds-350": {
+    "h": 648,
+    "src": "/images/products/vinci/fds-350.webp",
+    "w": 1200
+  },
+  "vinci/flass": {
+    "h": 988,
+    "src": "/images/products/vinci/flass.webp",
+    "w": 1200
+  },
+  "vinci/hep-p": {
+    "h": 480,
+    "src": "/images/products/vinci/hep-p.webp",
+    "w": 739
+  },
+  "vinci/mat-700": {
+    "h": 675,
+    "src": "/images/products/vinci/mat-700.webp",
+    "w": 1200
+  },
+  "vinci/poroperm": {
+    "h": 480,
+    "src": "/images/products/vinci/poroperm.webp",
+    "w": 646
+  },
+  "vinci/ptt-700": {
+    "h": 768,
+    "src": "/images/products/vinci/ptt-700.webp",
+    "w": 693
+  },
+  "vinci/rc4500": {
+    "h": 748,
+    "src": "/images/products/vinci/rc4500.webp",
+    "w": 1200
+  },
+  "vinci/rps-700": {
+    "h": 779,
+    "src": "/images/products/vinci/rps-700.webp",
+    "w": 1200
+  }
+}

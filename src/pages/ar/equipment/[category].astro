@@ -1,0 +1,7 @@
+---
+import Category from '../../../views/Category.astro';
+import { categories } from '../../../data/equipment';
+export const getStaticPaths = () => categories.map(({ family, category }) => ({ params: { category: category.slug }, props: { family, category } }));
+const { family, category } = Astro.props;
+---
+<Category lang="ar" family={family} category={category} />

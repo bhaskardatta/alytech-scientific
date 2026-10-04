@@ -1,0 +1,118 @@
+---
+import Admin from '../../layouts/Admin.astro';
+import { isAdmin } from '../../lib/auth';
+import { dbReady, select, update } from '../../lib/db';
+import { fmt, ago, safeQ, waHref, modeLabel } from '../../lib/admin';
+export const prerender = false;
+
+if (!(await isAdmin(Astro.cookies))) return Astro.redirect('/admin/login/');
+
+if (Astro.request.method === 'POST') {
+  const f = await Astro.request.formData();
+  const id = String(f.get('id') ?? '');
+  if (/^[0-9a-f-]{36}$/i.test(id)) await update('leads', `id=eq.${id}`, { handled: f.get('handled') === '1' });
+  return Astro.redirect(Astro.url.pathname + Astro.url.search);
+}
+
+const params = Astro.url.searchParams;
+const status = ['submitted', 'partial', 'all'].includes(params.get('status') ?? '') ? params.get('status')! : 'submitted';
+const q = safeQ(params.get('q') ?? '');
+const page = Math.max(1, Number(params.get('page')) || 1);
+const per = 50;
+
+let leads: any[] = [];
+let week = { submitted: 0, partial: 0 };
+let error = '';
+if (dbReady()) {
+  try {
+    const filters = [
+      'select=*',
+      'order=created_at.desc',
+      `limit=${per}`,
+      `offset=${(page - 1) * per}`,
+      status !== 'all' && `status=eq.${status}`,
+      q && `or=(name.ilike.*${q}*,email.ilike.*${q}*,company.ilike.*${q}*,product.ilike.*${q}*,phone.ilike.*${q}*,ip_org.ilike.*${q}*)`,
+    ].filter(Boolean).join('&');
+    const since = new Date(Date.now() - 7 * 864e5).toISOString();
+    const [rows, recent] = await Promise.all([select('leads', filters), select('leads', `select=status&created_at=gte.${since}`)]);
+    leads = rows;
+    for (const r of recent) week[r.status as 'submitted' | 'partial']++;
+  } catch (e) {
+    error = String(e);
+  }
+}
+const tab = (s: string) => `?status=${s}${q ? `&q=${encodeURIComponent(q)}` : ''}`;
+---
+<Admin title="Leads">
+  {!dbReady() && <p class="mb-6 rounded-sm bg-danger/5 p-4 text-danger">Database not connected. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.</p>}
+  {error && <p class="mb-6 rounded-sm bg-danger/5 p-4 text-danger">{error}</p>}
+
+  <div class="grid gap-3 sm:grid-cols-3">
+    <div class="card p-5"><p class="label text-mute">Submitted · 7 days</p><p class="display mt-2 text-3xl">{week.submitted}</p></div>
+    <div class="card p-5"><p class="label text-mute">Started, not sent · 7 days</p><p class="display mt-2 text-3xl">{week.partial}</p></div>
+    <div class="card p-5"><p class="label text-mute">Tip</p><p class="mt-2 text-mute">“Started, not sent” leads typed a name or contact but left. Follow up on them too.</p></div>
+  </div>
+
+  <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
+    <nav class="flex gap-1 rounded-sm border border-line bg-card p-1" aria-label="Lead status">
+      {[['submitted', 'Submitted'], ['partial', 'Started, not sent'], ['all', 'All']].map(([s, l]) => (
+        <a href={tab(s)} class:list={['rounded-xs px-3 py-1.5 font-medium', status === s ? 'bg-ink text-white' : 'hover:bg-surface']} aria-current={status === s ? 'page' : undefined}>{l}</a>
+      ))}
+    </nav>
+    <form class="flex gap-2" role="search">
+      <input type="hidden" name="status" value={status} />
+      <label for="q" class="sr-only">Search leads</label>
+      <input id="q" name="q" value={q} placeholder="Name, email, company, product, network…" class="field w-72 min-h-10 py-2" />
+      <button class="btn btn-ghost btn-sm">Search</button>
+    </form>
+  </div>
+
+  <div class="mt-4 overflow-x-auto rounded-[var(--radius-md)] border border-line bg-card">
+    <table class="w-full min-w-[1100px] text-start">
+      <thead class="border-b border-line text-mute">
+        <tr>{['Received', 'Who', 'Contact', 'Interested in', 'Where from', 'Done'].map((h) => <th scope="col" class="label px-4 py-3 text-start font-medium">{h}</th>)}</tr>
+      </thead>
+      <tbody class="divide-y divide-line">
+        {leads.length === 0 && <tr><td colspan="6" class="px-4 py-12 text-center text-mute">No leads here yet.</td></tr>}
+        {leads.map((l) => (
+          <tr class:list={['align-top transition-colors hover:bg-brand-50/40', l.handled && 'opacity-55']}>
+            <td class="px-4 py-3 whitespace-nowrap">
+              <a href={`/admin/lead/${l.id}/`} class="font-medium hover:text-brand-600">{ago(l.created_at)}</a>
+              <p class="text-[12px] text-mute">{fmt(l.created_at)}</p>
+              {l.status === 'partial' && <span class="label mt-1 inline-block rounded-xs bg-amber-100 px-1.5 py-0.5 text-[10px] text-amber-900">Not sent</span>}
+            </td>
+            <td class="px-4 py-3">
+              <a href={`/admin/lead/${l.id}/`} class="font-semibold hover:text-brand-600">{l.name ?? '—'}</a>
+              <p class="text-mute">{l.company}</p>
+            </td>
+            <td class="px-4 py-3">
+              {l.phone && <a href={waHref(l.phone, l.name)} target="_blank" rel="noopener noreferrer" class="block font-mono text-[13px] text-success hover:underline" dir="ltr">{l.phone} ↗</a>}
+              {l.email && <a href={`mailto:${l.email}`} class="block hover:text-brand-600">{l.email}</a>}
+            </td>
+            <td class="px-4 py-3">
+              <span class="label rounded-xs bg-brand-50 px-1.5 py-0.5 text-[10px] text-brand-700">{modeLabel[l.mode] ?? l.mode ?? '—'}</span>
+              <p class="mt-1">{l.product}</p>
+              {l.message && <p class="mt-1 line-clamp-2 max-w-xs text-mute">{l.message}</p>}
+            </td>
+            <td class="px-4 py-3">
+              <p>{l.country ?? [l.geo_city, l.geo_country].filter(Boolean).join(', ')}</p>
+              {l.ip_org && <p class="text-[12px] text-mute">{l.ip_org}</p>}
+              <p class="text-[12px] text-mute">{l.lang === 'ar' ? 'Arabic site' : ''} {l.path}</p>
+            </td>
+            <td class="px-4 py-3">
+              <form method="post">
+                <input type="hidden" name="id" value={l.id} />
+                <input type="hidden" name="handled" value={l.handled ? '0' : '1'} />
+                <button class:list={['btn btn-sm', l.handled ? 'btn-ghost' : 'btn-primary']} aria-label={l.handled ? 'Mark as not handled' : 'Mark as handled'}>{l.handled ? 'Undo' : 'Handled'}</button>
+              </form>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <div class="mt-4 flex justify-between">
+    {page > 1 ? <a class="btn btn-ghost btn-sm" href={`${tab(status)}&page=${page - 1}`}>← Newer</a> : <span></span>}
+    {leads.length === per && <a class="btn btn-ghost btn-sm" href={`${tab(status)}&page=${page + 1}`}>Older →</a>}
+  </div>
+</Admin>

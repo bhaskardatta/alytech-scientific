@@ -1,0 +1,7 @@
+---
+import Brand from '../../../../views/Brand.astro';
+import { brands } from '../../../../data/brands';
+export const getStaticPaths = () => brands.filter((b) => b.slug !== 'gasmix').map((brand) => ({ params: { brand: brand.slug }, props: { brand } }));
+const { brand } = Astro.props;
+---
+<Brand lang="ar" brand={brand} />

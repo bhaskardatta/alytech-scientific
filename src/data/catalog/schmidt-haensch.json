@@ -1,0 +1,887 @@
+{
+  "brand": "Schmidt + Haensch",
+  "brandSlug": "schmidt-haensch",
+  "brandUrl": "https://schmidt-haensch.com",
+  "headquarters": "Berlin, Germany",
+  "brandSummary": "Schmidt + Haensch is a family-owned Berlin company, established in 1864, that builds optical measuring instruments: polarimeters, refractometers, density meters, photometers and in-line process analyzers. Its quartz-wedge Saccharomat sugar polarimeter and its pharmaceutical VariFamily instruments are used in sugar, food, pharmaceutical and chemical laboratories, and its quality system is certified to ISO 9001.",
+  "logoUrl": null,
+  "products": [
+    {
+      "name": "Saccharomat V Quartz-Wedge Sugar Polarimeter",
+      "model": "Saccharomat V",
+      "slug": "saccharomat-v",
+      "category": "Polarimeter",
+      "priority": "flagship",
+      "summary": "Saccharomat V is a saccharimeter that measures sucrose on the International Sugar Scale using a quartz-wedge compensation system. Because quartz and sucrose rotate light almost identically across wavelengths, the instrument stays stable without recalibration and can read dark sugar solutions, which makes it a reference tool at cane and beet reception laboratories.",
+      "description": "Saccharomat V determines the optical rotation of sucrose solutions by sliding a quartz wedge into the light path until it exactly cancels the rotation caused by the sample. A linear encoder reads the wedge position, so the result is taken directly from a position without gears or belts. Quartz has an optical rotatory dispersion very close to that of sucrose, so small shifts in the light source wavelength affect sample and wedge alike and cancel out; the instrument therefore keeps its calibration over its service life. The measuring range runs from -35 to +105 degrees Z with 0.01 degree Z resolution, sensitivity reaches optical density 5, and a measurement completes in at most four seconds over the full range. Fixed wavelengths of 587 nm and 882 nm are available, with the near-infrared line suited to dark solutions after filtration. Tubes of 50, 100 and 200 mm can be fitted, including versions with an integrated temperature sensor, and sample temperature is read from 0 to 99 degrees Celsius. Operation is by 7-inch touchscreen, with Ethernet, USB and RS232 interfaces. Typical users are sugar mills, refineries and the food and pharmaceutical receiving laboratories that test sucrose.",
+      "keySpecs": [
+        {
+          "label": "Measurement scale",
+          "value": "°Z International Sugar Scale"
+        },
+        {
+          "label": "Measuring range",
+          "value": "-35 °Z to +105 °Z"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.01 °Z"
+        },
+        {
+          "label": "Sensitivity",
+          "value": "Up to OD 5"
+        },
+        {
+          "label": "Wavelength",
+          "value": "1 or 2 fixed wavelengths: 587 nm and 882 nm"
+        },
+        {
+          "label": "Response time",
+          "value": "≤ 4 s over the entire measuring range"
+        },
+        {
+          "label": "Measuring tubes",
+          "value": "50, 100 or 200 mm; glass, stainless steel or acid-proof stainless steel"
+        },
+        {
+          "label": "Sample temperature measurement",
+          "value": "NTC sensor, 0 to 99 °C"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch TFT touchscreen, 800 x 480 pixels"
+        },
+        {
+          "label": "Interfaces",
+          "value": "RS232, USB A and B, Ethernet; optional WLAN/LAN"
+        }
+      ],
+      "standards": [
+        "International Pharmacopoeia",
+        "OIML",
+        "ASTM",
+        "ICUMSA",
+        "Australian Standard K157"
+      ],
+      "applications": [
+        "Sucrose determination in cane and beet products",
+        "Raw sugar payment and reception testing",
+        "Sugar purity analysis",
+        "Reception control of sucrose in food and pharma",
+        "Reference polarimeter for quality control"
+      ],
+      "industries": [
+        "food-beverage",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "sugar polarimeter",
+        "saccharimeter quartz wedge",
+        "ICUMSA polarimeter raw sugar",
+        "polarimeter for sugar cane payment",
+        "international sugar scale polarimeter"
+      ],
+      "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
+      "sourceUrl": "https://schmidt-haensch.com/product/saccharomat-v-sugar-polarimeter/",
+      "imageUrls": [],
+      "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/04/SH_Saccharomat-V_ENG_18112019.pdf"
+    },
+    {
+      "name": "Purity Analyzer",
+      "model": "Purity Analyzer",
+      "slug": "purity-analyzer",
+      "category": "Sugar analysis system",
+      "priority": "core",
+      "summary": "The Purity Analyzer couples an ATR refractometer with a polarimeter, either the quartz-wedge Saccharomat V or the circular Polartronic V, under one controller. It shows temperature-corrected Pol and Brix and calculates sugar purity directly, so mills and refineries need no separate computer for the calculation.",
+      "description": "Sugar purity is the proportion of sucrose in the total dissolved solids, and it is calculated from two measurements: polarization from a polarimeter and dry substance, expressed as Brix, from a refractometer. The Purity Analyzer joins both instruments through a single controller that applies temperature correction and displays Pol, Brix and the calculated purity together, following ICUMSA procedures. The refractometer is taken from the ATR series, and the polarimeter can be a Saccharomat V with quartz-wedge compensation or a Polartronic V circular polarimeter with a near-infrared option at 882 nm for dark solutions. Each instrument can still be used on its own. Optional sample preparation units support throughput: Autofilt filters turbid and strongly coloured samples so that near-infrared polarimetry works without chemical clarification, and Autodosage prepares dilutions gravimetrically or volumetrically. Results go to a laboratory information system or database over Ethernet and USB. The system is installed in the payment laboratories of cane and beet sugar receptions, where purity affects what a grower is paid, and in factory laboratories that follow juices and syrups through processing.",
+      "keySpecs": [
+        {
+          "label": "Measured values",
+          "value": "°Z, °Pol and % Brix to ICUMSA methods, with calculated % purity"
+        },
+        {
+          "label": "Polarimeter options",
+          "value": "Saccharomat V (quartz wedge) or Polartronic V (circular)"
+        },
+        {
+          "label": "Refractometer",
+          "value": "ATR series sugar refractometer"
+        },
+        {
+          "label": "NIR polarimetry",
+          "value": "882 nm wavelength option for dark solutions"
+        },
+        {
+          "label": "Sample preparation options",
+          "value": "Autofilt filtration and Autodosage dilution"
+        },
+        {
+          "label": "Data interfaces",
+          "value": "Ethernet/LAN and USB"
+        }
+      ],
+      "standards": [
+        "ICUMSA"
+      ],
+      "applications": [
+        "Cane and beet payment laboratories",
+        "Sugar purity calculation",
+        "Juice, syrup and raw sugar testing",
+        "NIR polarimetry of dark solutions",
+        "Factory process control laboratories"
+      ],
+      "industries": [
+        "food-beverage"
+      ],
+      "searchKeywords": [
+        "sugar purity analyzer",
+        "polarimeter refractometer combination",
+        "Pol and Brix purity measurement",
+        "sugar mill laboratory equipment",
+        "ICUMSA purity determination"
+      ],
+      "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
+      "sourceUrl": "https://schmidt-haensch.com/product/purity-analyzer/",
+      "imageUrls": [],
+      "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/08/SH-Purity-Analyser_eng_160912.pdf"
+    },
+    {
+      "name": "Polartronic V Circle Polarimeter",
+      "model": "Polartronic V",
+      "slug": "polartronic-v",
+      "category": "Polarimeter",
+      "priority": "flagship",
+      "summary": "Polartronic V is a fully automatic circle polarimeter with a measuring range of plus or minus 360 degrees, 0.001 degree resolution and up to two selectable wavelengths. It measures optical rotation, specific rotation, sugar degrees and concentration, and suits pharmaceutical, chemical, food and research laboratories.",
+      "description": "Polartronic V measures how far a solution rotates plane-polarized light and converts the angle into optical rotation, specific rotation, degrees on the International Sugar Scale or concentration, with up to 1,000 user-defined scales. The measuring range is plus or minus 360 degrees, equal to plus or minus 259 degrees Z, with 0.001 degree resolution and a response time of four seconds or less over the whole range. One or two fixed wavelengths can be chosen from 405, 435, 546, 578, 589, 633 and 882 nm, which covers pharmacopoeial sodium D-line work as well as near-infrared measurement of dark sugar solutions. Sensitivity reaches optical density 5. Tubes between 10 and 200 mm are available in glass and stainless steel, including tubes with an integrated temperature sensor, and sample temperature is read between 0 and 99 degrees Celsius. A 7-inch touchscreen, barcode reader support and RS232, USB and Ethernet interfaces provide operation and data transfer, and the instrument is prepared for the Aquisys 3 software with internal 21 CFR Part 11 functions. Applications include pharmaceuticals, essential oils, chemicals, biopolymers, dairy, starch and kinetic studies of optically active compounds.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "±360° / ±259 °Z"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.001° / 0.01 °Z"
+        },
+        {
+          "label": "Precision",
+          "value": "±0.005° / ±0.015 °Z (standard conditions)"
+        },
+        {
+          "label": "Reproducibility",
+          "value": "±0.001° / ±0.01 °Z"
+        },
+        {
+          "label": "Sensitivity",
+          "value": "Up to OD 5"
+        },
+        {
+          "label": "Wavelength",
+          "value": "1 or 2 of 405, 435, 546, 578, 589, 633, 882 nm"
+        },
+        {
+          "label": "Response time",
+          "value": "≤ 4 s over the entire measuring range"
+        },
+        {
+          "label": "Measuring tubes",
+          "value": "10 to 200 mm"
+        },
+        {
+          "label": "Sample temperature measurement",
+          "value": "NTC sensor, 0 to 99 °C"
+        },
+        {
+          "label": "Weight and dimensions",
+          "value": "18.3 kg; 730 x 370 x 160 mm"
+        }
+      ],
+      "standards": [
+        "International Pharmacopoeia",
+        "OIML",
+        "ASTM",
+        "ICUMSA",
+        "Australian Standard K157"
+      ],
+      "applications": [
+        "Optical rotation of pharmaceutical substances",
+        "Essential oils and flavours",
+        "Sugar purity and concentration",
+        "Chemical and polymer analysis",
+        "Research on kinetics and optical isomers"
+      ],
+      "industries": [
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "circle polarimeter",
+        "automatic polarimeter for pharmaceutical testing",
+        "polarimeter 589 nm 882 nm",
+        "optical rotation measurement instrument",
+        "specific rotation polarimeter USP"
+      ],
+      "whyMiddleEast": "Pharmaceutical plants and QC laboratories in the GCC apply pharmacopoeial optical rotation tests, which this instrument is built to meet.",
+      "sourceUrl": "https://schmidt-haensch.com/product/polartronic-v-allrounder-polarimeter/",
+      "imageUrls": [],
+      "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/04/SH_Polartronic-V_ENG_23052019.pdf"
+    },
+    {
+      "name": "VariPol Pharmaceutical Polarimeter",
+      "model": "VariPol B / VariPol C",
+      "slug": "varipol",
+      "category": "Polarimeter",
+      "priority": "flagship",
+      "summary": "VariPol is a modular polarimeter designed for pharmaceutical laboratories, with an integrated Peltier system that changes sample temperature by 10 degrees Celsius in about 30 seconds. Two accuracy grades are offered, and the Aquisys 3 software supports 21 CFR Part 11 compliance.",
+      "description": "VariPol is the polarimeter in S+H's VariFamily of connected laboratory instruments and is aimed at pharmaceutical quality control, where optical rotation is measured under defined concentration, temperature and wavelength so that results can be compared with pharmacopoeial requirements. The sample chamber has no dead space, which allows quick rinsing without carry-over, and a built-in Peltier system adjusts temperature by 10 degrees Celsius in about 30 seconds; after stabilization the measurement itself takes about six seconds. Wavelength modules can be exchanged to change the operating wavelength. Two models cover different needs: VariPol C has accuracy and reproducibility of plus or minus 0.01 degrees with 0.005 degree resolution and temperature control from 18 to 25 degrees Celsius, while VariPol B reaches accuracy of plus or minus 0.003 degrees, reproducibility of plus or minus 0.001 degrees, 0.001 degree resolution and control from 10 to 40 degrees Celsius. The measuring range is plus or minus 89.9 degrees. RS232, USB, Ethernet and WLAN connect the instrument to networks and laboratory systems, and the Aquisys 3 software provides audit trail, user administration and encrypted data storage.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "±89.9°"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.01° (VariPol C); ±0.003° (VariPol B)"
+        },
+        {
+          "label": "Reproducibility",
+          "value": "±0.01° (VariPol C); ±0.001° (VariPol B)"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.005° (VariPol C); 0.001° (VariPol B)"
+        },
+        {
+          "label": "Sensitivity",
+          "value": "Up to OD 3"
+        },
+        {
+          "label": "Sample temperature control",
+          "value": "18 to 25 °C (VariPol C); 10 to 40 °C (VariPol B); Peltier"
+        },
+        {
+          "label": "Wavelengths",
+          "value": "589 nm; 589 + 365 nm; 589 + 405 nm"
+        },
+        {
+          "label": "Maximum response time",
+          "value": "13 s"
+        },
+        {
+          "label": "Interfaces",
+          "value": "RS232, USB A (2x), Ethernet, WLAN"
+        }
+      ],
+      "standards": [
+        "International Pharmacopoeia",
+        "OIML",
+        "21 CFR Part 11"
+      ],
+      "applications": [
+        "Pharmaceutical optical rotation testing",
+        "Enantiomeric purity control",
+        "Amino acid chirality testing",
+        "Essential oil and fragrance purity",
+        "Raw material identity checks"
+      ],
+      "industries": [
+        "pharmaceutical-biotech",
+        "research-academia",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "pharmaceutical polarimeter 21 CFR Part 11",
+        "polarimeter with Peltier temperature control",
+        "USP optical rotation polarimeter",
+        "modular polarimeter for pharma QC",
+        "VariPol polarimeter"
+      ],
+      "whyMiddleEast": "Pharmaceutical plants and QC laboratories in the GCC apply pharmacopoeial optical rotation tests, which this instrument is built to meet.",
+      "sourceUrl": "https://schmidt-haensch.com/product/varipol-series/",
+      "imageUrls": [],
+      "datasheetUrl": null
+    },
+    {
+      "name": "UniPol V Digital Polarimeter",
+      "model": "UniPol V",
+      "slug": "unipol-v",
+      "category": "Polarimeter",
+      "priority": "core",
+      "summary": "UniPol V is a fully automatic basic circle polarimeter positioned as an entry-level instrument for food and routine laboratories. It covers plus or minus 360 degrees at 0.001 degree resolution, offers seven user-definable scales, and uses a 589 nm or 882 nm LED source with a 7-inch touchscreen.",
+      "description": "UniPol V gives routine laboratories a polarimeter with the same circle-measurement principle as larger S+H models at a lower specification and price. It reports optical rotation, specific rotation, degrees on the International Sugar Scale and concentration in g/mL, g/100 mL or g/L, with seven freely definable scales. The measuring range is plus or minus 360 degrees (plus or minus 259 degrees Z), resolution is 0.001 degrees, precision is plus or minus 0.005 degrees under standard conditions, and the response time is six seconds over the whole range. Sensitivity reaches optical density 2. The light source is an LED with interference filter at 589 nm or 882 nm, with other wavelengths on request. Tubes from 10 to 200 mm in glass or stainless steel can be used, and sample temperature is read by an NTC sensor between 10 and 40 degrees Celsius; temperature regulation needs an external water bath. Operation is through a 7-inch touchscreen, with optional keyboard, mouse and barcode reader, and interfaces include Ethernet, RS232 and USB, with WLAN, Modbus, Canbus and Profibus as options. Typical uses are sugar, starch, dairy and food additives, plus pharmacy goods-in checks.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "±360° / ±259 °Z"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.001° / 0.01 °Z"
+        },
+        {
+          "label": "Precision",
+          "value": "±0.005° / ±0.02 °Z (standard conditions)"
+        },
+        {
+          "label": "Sensitivity",
+          "value": "Up to OD 2"
+        },
+        {
+          "label": "Wavelength",
+          "value": "589 nm and 882 nm (others on request)"
+        },
+        {
+          "label": "Response time",
+          "value": "6 s over the entire measuring range"
+        },
+        {
+          "label": "Measuring tubes",
+          "value": "10 to 200 mm; glass, stainless steel or acid-proof stainless steel"
+        },
+        {
+          "label": "Temperature measurement",
+          "value": "NTC sensor, 10 to 40 °C"
+        },
+        {
+          "label": "Light source",
+          "value": "LED with interference filter"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch touchscreen, 800 x 480 pixels"
+        }
+      ],
+      "standards": [
+        "International Pharmacopoeia",
+        "OIML",
+        "ASTM",
+        "ICUMSA",
+        "Australian Standard K157"
+      ],
+      "applications": [
+        "Sugar cane and beet processing products",
+        "Starch, milk and dairy products",
+        "Food additives and sweeteners",
+        "Pharmacy goods-in control",
+        "Routine concentration determination"
+      ],
+      "industries": [
+        "food-beverage",
+        "pharmaceutical-biotech",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "entry level polarimeter",
+        "digital polarimeter for food industry",
+        "basic circle polarimeter",
+        "low cost automatic polarimeter",
+        "polarimeter sugar starch dairy"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://schmidt-haensch.com/product/unipol-v-digital-polarimeter/",
+      "imageUrls": [],
+      "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2024/08/UniPol-V-v1.0.pdf"
+    },
+    {
+      "name": "VariRef² Laboratory Refractometer",
+      "model": "VariRef² 301 / 401 / 501 / 601",
+      "slug": "variref",
+      "category": "Refractometer",
+      "priority": "flagship",
+      "summary": "VariRef² is a modular laboratory refractometer series with four models covering refractive indices from 1.27 to 1.72, Peltier temperature control and a 7-inch touchscreen. It is 21 CFR Part 11 conform and ready for LIMS and ELN connection, which suits pharmaceutical, chemical and beverage laboratories.",
+      "description": "VariRef² measures refractive index and the Brix values derived from it, using critical-angle measurement and a 589 nm LED light source. The series has four models. VariRef² 301 covers 1.3200 to 1.5800 RI at 0.0001 RI resolution, and 401 covers 1.30000 to 1.66000 RI at 0.00001 RI resolution. The 501 and 601 extend the range to 1.27000 to 1.71000 RI and 1.27000 to 1.72000 RI. An integrated Peltier system controls sample temperature from 5 to 80 degrees Celsius on the 301 and 401, and from 5 to 100 degrees Celsius on the 501 and 601. Brix results are temperature-compensated to ICUMSA and other scales. The sample compartment is made of sapphire, FFKM and 1.4404 stainless steel, with Hastelloy on request, which allows work with aggressive solvents. Operation is through a 7-inch touchscreen or remotely from a browser, using the Aquisys 3 software. Ethernet, RS232, USB and WLAN interfaces connect the instrument to laboratory networks. The series is built for pharmaceutical, chemical, food and beverage laboratories that need documented purity checks and concentration measurements.",
+      "keySpecs": [
+        {
+          "label": "Measuring range, VariRef² 301",
+          "value": "1.3200 - 1.5800 RI / 0 - 100 Brix"
+        },
+        {
+          "label": "Measuring range, VariRef² 401",
+          "value": "1.30000 - 1.66000 RI / 0 - 100 Brix"
+        },
+        {
+          "label": "Measuring range, VariRef² 501",
+          "value": "1.27000 - 1.71000 RI"
+        },
+        {
+          "label": "Measuring range, VariRef² 601",
+          "value": "1.27000 - 1.72000 RI"
+        },
+        {
+          "label": "Resolution, VariRef² 301",
+          "value": "0.0001 RI / 0.05 Brix"
+        },
+        {
+          "label": "Resolution, VariRef² 401",
+          "value": "0.00001 RI / 0.01 Brix"
+        },
+        {
+          "label": "Temperature control range",
+          "value": "5 to 80 °C (301, 401); 5 to 100 °C (501, 601)"
+        },
+        {
+          "label": "Sample compartment materials",
+          "value": "Sapphire, FFKM, 1.4404 stainless steel (Hastelloy on request)"
+        },
+        {
+          "label": "Interfaces",
+          "value": "Ethernet, RS232, USB, WLAN adapter"
+        }
+      ],
+      "standards": [
+        "21 CFR Part 11"
+      ],
+      "applications": [
+        "Refractive index of pharmaceutical raw materials",
+        "Brix of beverages and syrups",
+        "Purity checks of solvents and essential oils",
+        "Concentration of chemical solutions",
+        "Peptide synthesis monitoring"
+      ],
+      "industries": [
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "laboratory refractometer with Peltier control",
+        "digital refractometer 21 CFR Part 11",
+        "benchtop refractometer for pharma",
+        "refractive index measurement lab",
+        "Brix refractometer laboratory touchscreen"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://schmidt-haensch.com/product/variref-refractometer/",
+      "imageUrls": [],
+      "datasheetUrl": null
+    },
+    {
+      "name": "ATR P Sugar Refractometer",
+      "model": "ATR P",
+      "slug": "atr-p",
+      "category": "Refractometer",
+      "priority": "core",
+      "summary": "ATR P is a robust critical-angle refractometer for the sugar industry, with a waterproof stainless steel measuring head and a VariControl touchscreen unit. It measures 0 to 100 percent Brix at 0.01 percent resolution and is the suggested instrument for several AOAC and ICUMSA sugar methods.",
+      "description": "ATR P determines refractive index from the critical angle of total reflection at a sapphire prism and converts it to Brix or any user-defined scale. Its range is 1.33200 to 1.54000 RI, equal to 0 to 100 percent Brix, with 0.00001 RI resolution and 0.01 percent Brix resolution, and precision of plus or minus 0.00002 RI or plus or minus 0.02 percent Brix. Automatic temperature compensation works between 5 and 50 degrees Celsius, so samples that are not at 20 degrees Celsius still give a comparable Brix value. A 589 nm LED with interference filter serves as the light source. The measuring head is stainless steel and waterproof, which allows it to be used in wet production areas and cleaned thoroughly. It is operated through the VariControl unit, which has a 7-inch touchscreen and supports up to 1,000 freely defined scales. S+H names it as the recommended instrument for several AOAC and ICUMSA sugar analysis methods. In sugar laboratories it determines dry substance of juices, syrups and molasses, and it forms the refractometer half of the Purity Analyzer with a polarimeter.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "1.33200 - 1.54000 RI / 0 - 100 % Brix"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.00001 RI / 0.01 % Brix"
+        },
+        {
+          "label": "Precision",
+          "value": "±0.00002 RI / ±0.02 % Brix"
+        },
+        {
+          "label": "Automatic temperature compensation",
+          "value": "+5 °C to +50 °C"
+        },
+        {
+          "label": "Prism",
+          "value": "Sapphire"
+        },
+        {
+          "label": "Light source",
+          "value": "LED, 589 nm interference filter"
+        },
+        {
+          "label": "Control unit",
+          "value": "VariControl with 7-inch touchscreen"
+        }
+      ],
+      "standards": [
+        "AOAC",
+        "ICUMSA"
+      ],
+      "applications": [
+        "Brix of cane and beet juices",
+        "Syrup and molasses dry substance",
+        "Mixing ratio and mass percent",
+        "Sugar mill laboratories",
+        "Refractometer module of the Purity Analyzer"
+      ],
+      "industries": [
+        "food-beverage"
+      ],
+      "searchKeywords": [
+        "sugar refractometer",
+        "Brix refractometer for sugar mill",
+        "ICUMSA refractometer",
+        "critical angle refractometer sapphire prism",
+        "refractometer for molasses and syrup"
+      ],
+      "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
+      "sourceUrl": "https://schmidt-haensch.com/product/atr-p/",
+      "imageUrls": [],
+      "datasheetUrl": null
+    },
+    {
+      "name": "ATR BR Compact Refractometer",
+      "model": "ATR BR",
+      "slug": "atr-br",
+      "category": "Refractometer",
+      "priority": "core",
+      "summary": "ATR BR is a stand-alone critical-angle refractometer for liquids from thin to highly viscous, regardless of colour or turbidity. It covers 1.32000 to 1.54000 RI at 0.00001 RI resolution, which makes it a flexible general-purpose benchtop unit for food, chemical and quality-control laboratories.",
+      "description": "ATR BR measures refractive index by detecting the critical angle of total reflection at the boundary between its prism and the sample. Because the measurement depends on that boundary and not on light passing through the liquid, results do not depend on opacity or colour, and viscous or turbid samples can be measured as easily as clear ones. The instrument covers 1.32000 to 1.54000 RI, also shown as 100 percent Brix, with 0.00001 RI resolution and 0.01 percent Brix resolution. Precision is plus or minus 0.00002 RI between 1.32 and 1.44 RI and plus or minus 0.00003 RI between 1.44 and 1.54 RI. The unit is a compact stand-alone design that works without an external control unit. Typical uses include checking Brix of beverages, syrups and concentrates, identifying liquids by refractive index, and monitoring solution concentration in chemical and cosmetic production. It uses the same critical-angle sensing principle as the ATR P sugar refractometer.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "1.32000 - 1.54000 RI / 100 % Brix"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.00001 RI / 0.01 % Brix"
+        },
+        {
+          "label": "Precision",
+          "value": "±0.00002 RI (1.32 - 1.44 RI); ±0.00003 RI (1.44 - 1.54 RI)"
+        },
+        {
+          "label": "Measuring principle",
+          "value": "Critical angle of total reflection"
+        },
+        {
+          "label": "Sample types",
+          "value": "Low to high viscosity; independent of opacity and colour"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Brix of beverages and concentrates",
+        "Refractive index of liquids",
+        "Viscous and turbid samples",
+        "Concentration control in chemical production",
+        "General laboratory quality control"
+      ],
+      "industries": [
+        "food-beverage",
+        "materials-manufacturing",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "compact refractometer for viscous samples",
+        "benchtop digital refractometer Brix",
+        "refractometer for turbid liquids",
+        "critical angle refractometer",
+        "refractive index meter stand-alone"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://schmidt-haensch.com/product/atr-br/",
+      "imageUrls": [],
+      "datasheetUrl": null
+    },
+    {
+      "name": "ATR-L Dispersion Refractometer",
+      "model": "ATR-L",
+      "slug": "atr-l",
+      "category": "Refractometer",
+      "priority": "niche",
+      "summary": "ATR-L is a spectral refractometer that measures refractive index at seven LED wavelengths in about 20 seconds and calculates dispersion and Abbe number automatically. Its datasheet cites the ASTM method for refractive index and dispersion of hydrocarbon liquids, alongside optical materials and lens testing.",
+      "description": "A single refractive index value describes a liquid only at one wavelength, whereas dispersion, the change of index with wavelength, helps characterize hydrocarbons, polymers and optical materials. ATR-L measures at seven fixed LED wavelengths between 400 and 700 nm, using a CCD line detector with 2,048 elements to find the critical angle, and finishes all seven readings in about 20 seconds after the temperature has stabilized. The index range is 1.33200 to 1.70000 RI with 0.00001 RI resolution and precision of plus or minus 0.00004 RI. A solid-state Peltier system holds the sample between 10 and 80 degrees Celsius with 0.01 degree stability, and the sample compartment uses stainless steel, Delrin, Teflon, Viton and FFKM, with a YAG prism. The Abbe number is calculated automatically from the dispersion data. Its datasheet lists conformity with European and international pharmacopoeias and with ASTM, ISO and DIN methods, including the ASTM method for refractive index and dispersion of hydrocarbon liquids. Other uses are testing plastic and glass lenses, intraocular lens quality control, fibre-optic components and polymer compounds. The measuring head and control unit together weigh 8 kg.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "1.33200 - 1.70000 RI"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.00001 RI / 0.01 Brix"
+        },
+        {
+          "label": "Precision and reproducibility",
+          "value": "±0.00004 RI / ±0.03 Brix"
+        },
+        {
+          "label": "Wavelengths",
+          "value": "7 LEDs: 400, 450, 490, 545, 590, 660, 700 nm"
+        },
+        {
+          "label": "Measuring time",
+          "value": "20 s for all 7 wavelengths after temperature stabilization"
+        },
+        {
+          "label": "Operational temperature",
+          "value": "+10 °C to +80 °C, stability 0.01 °C"
+        },
+        {
+          "label": "Detector",
+          "value": "CCD linear array, 2048 elements"
+        },
+        {
+          "label": "Prism",
+          "value": "YAG"
+        },
+        {
+          "label": "Weight",
+          "value": "8 kg (complete unit)"
+        }
+      ],
+      "standards": [
+        "ASTM D1218",
+        "European and international Pharmacopoeia"
+      ],
+      "applications": [
+        "Refractive index and dispersion of hydrocarbon liquids",
+        "Abbe number of lenses and optical materials",
+        "Intraocular lens quality control",
+        "Polymer compound characterization",
+        "Product fingerprinting and purity"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "pharmaceutical-biotech",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "ASTM D1218 refractometer",
+        "refractive index dispersion hydrocarbon liquids",
+        "multi wavelength refractometer",
+        "Abbe number measurement instrument",
+        "dispersion refractometer"
+      ],
+      "whyMiddleEast": "Refinery and petrochemical laboratories in the Gulf test hydrocarbon liquids against ASTM refractive-index methods such as D1218.",
+      "sourceUrl": "https://schmidt-haensch.com/product/atr-l-multi-wavelength-refractometer/",
+      "imageUrls": [],
+      "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/04/SH_Dispersion-Refractometer_ATR-L_191127.pdf"
+    },
+    {
+      "name": "VariDens Density Meter",
+      "model": "VariDens B / VariDens C",
+      "slug": "varidens",
+      "category": "Density meter",
+      "priority": "core",
+      "summary": "VariDens is a laboratory density meter with Peltier temperature control from 10 to 95 degrees Celsius, bubble detection and two accuracy grades down to 0.00005 g/cm3. Its datasheet lists the petroleum industry among its applications, together with beverages, pharmaceuticals, chemicals and cosmetics.",
+      "description": "VariDens measures liquid density over a range of 0 to 3 g/cm3, using a glass measuring cell that is temperature-controlled by a Peltier element between 10 and 95 degrees Celsius and tolerates pressure up to 10 bar. Two versions are offered: VariDens C has accuracy of plus or minus 0.0001 g/cm3 and reproducibility of 0.0001 g/cm3 with a measuring time under ten seconds, and VariDens B has accuracy of plus or minus 0.00005 g/cm3 and reproducibility of 0.00001 g/cm3 with a measuring time under 30 seconds after temperature stabilization. Bubble detection combines visual and electronic checks, an integrated air pump dries the cell, and the temperature compensation is built in. The minimum sample volume is 1.5 ml, wetted parts are borosilicate glass and PTFE, and the cell stabilizes from 25 to 20 degrees Celsius within 0.01 degrees in about 18 minutes. A 7-inch touchscreen is optional, and the instrument connects over Ethernet, RS232, USB or WLAN. VariDens is part of the VariFamily and is 21 CFR Part 11 conform through the Aquisys 3 software. Its datasheet lists beverage, chemical, cosmetic, food, medical, petroleum, pharmaceutical and sugar uses.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "0 - 3 g/cm³"
+        },
+        {
+          "label": "Temperature range",
+          "value": "10 - 95 °C (regulated Peltier element)"
+        },
+        {
+          "label": "Pressure range",
+          "value": "0 to 10 bar"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.0001 g/cm³ (VariDens C); ±0.00005 g/cm³ (VariDens B)"
+        },
+        {
+          "label": "Reproducibility",
+          "value": "0.0001 g/cm³ (VariDens C); 0.00001 g/cm³ (VariDens B)"
+        },
+        {
+          "label": "Minimum sample volume",
+          "value": "1.5 ml"
+        },
+        {
+          "label": "Wetted parts",
+          "value": "Borosilicate glass, PTFE"
+        },
+        {
+          "label": "Measuring time per sample",
+          "value": "< 10 s (C); < 30 s (B), after temperature stabilization"
+        },
+        {
+          "label": "Interfaces",
+          "value": "Ethernet 10/100/1000, RS232, USB; optional WLAN"
+        },
+        {
+          "label": "Dimensions",
+          "value": "430 x 300 x 235 mm with display; 430 x 300 x 150 mm without"
+        }
+      ],
+      "standards": [
+        "International Pharmacopoeia",
+        "ASTM",
+        "AOAC",
+        "DIN",
+        "21 CFR Part 11",
+        "ICUMSA"
+      ],
+      "applications": [
+        "Density of petroleum products",
+        "Beverage gravity and concentration",
+        "Pharmaceutical solution density",
+        "Chemical and cosmetic raw materials",
+        "Sugar solution concentration"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "food-beverage",
+        "pharmaceutical-biotech",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "laboratory density meter",
+        "digital density meter petroleum",
+        "oscillating U-tube density meter",
+        "density meter 21 CFR Part 11",
+        "density meter Peltier temperature control"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://schmidt-haensch.com/product/varidens-density-meter/",
+      "imageUrls": [],
+      "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2023/01/SH_VariDens_data-sheet_ENG_0123.pdf"
+    },
+    {
+      "name": "iPR C2 Compact In-Line Process Refractometer",
+      "model": "iPR C2",
+      "slug": "ipr-c2",
+      "category": "Process refractometer",
+      "priority": "core",
+      "summary": "iPR C2 is a compact in-line refractometer that measures Brix or refractive index directly in the process line, with two 4-20 mA outputs, relay switches and a sapphire prism. It handles pressures up to 30 bar and temperatures from -10 to +65 degrees Celsius, and lists cutting oils and organic solvents among its uses.",
+      "description": "In-line refractometers give a continuous concentration reading from the pipe, so operators can react to dilution or contamination while production continues. The iPR C2 is a compact probe, 150 mm long and 65 mm in diameter, weighing about one kilogram, fitted with a sapphire prism and a temperature sensor placed inside the prism for accurate compensation. It measures refractive index from 1.3200 to 1.4209, equal to 0 to 50 Brix, with 0.0001 RI resolution and accuracy of plus or minus 0.0002 RI, or plus or minus 0.15 Brix at 25 degrees Celsius. Automatic temperature compensation works from 10 to 50 degrees Celsius, and the process side tolerates -10 to +65 degrees Celsius and up to 30 bar. Stainless steel or Hastelloy process-contact parts are available. Two isolated 4-20 mA outputs, two digital switch outputs rated to 1 A and a serial output on RS232, RS485 or USB connect it to control systems, and the probe runs on 24 V DC. Mounting accessories include VariVent, APV and TriClamp fittings. The datasheet lists beverage dilution, urea production, organic solvents, cutting oils, cooling lubricants, detergents, latex and wastewater control.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "1.3200 - 1.4209 RI / 0 - 50 Brix"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.0001 RI / 0.05 Brix"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.0002 RI / ±0.15 Brix at 25 °C"
+        },
+        {
+          "label": "Process temperature",
+          "value": "-10 °C to +65 °C"
+        },
+        {
+          "label": "Process pressure",
+          "value": "Maximum 30 bar"
+        },
+        {
+          "label": "Outputs",
+          "value": "2 x isolated 4-20 mA; 2 x digital switch (up to 1 A); serial RS232, RS485 or USB"
+        },
+        {
+          "label": "Prism",
+          "value": "Sapphire"
+        },
+        {
+          "label": "Process contact material",
+          "value": "Stainless steel or Hastelloy"
+        },
+        {
+          "label": "Power supply",
+          "value": "24 V DC"
+        },
+        {
+          "label": "Dimensions",
+          "value": "150 mm x ø 65 mm, approx. 1,000 g"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "In-line Brix and concentration control",
+        "Beverage and soft drink dilution",
+        "Organic solvents and cutting oils",
+        "Cooling lubricant and detergent concentration",
+        "Urea production and wastewater control"
+      ],
+      "industries": [
+        "food-beverage",
+        "materials-manufacturing",
+        "petrochemical-refining",
+        "environmental-monitoring"
+      ],
+      "searchKeywords": [
+        "in-line refractometer",
+        "process refractometer 4-20 mA",
+        "inline Brix sensor",
+        "cutting oil concentration refractometer",
+        "compact process refractometer sapphire prism"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://schmidt-haensch.com/product/ipr-c2-compact-inline-process-refractometer/",
+      "imageUrls": [],
+      "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/10/SH_iPR-C2_eng_1021.pdf"
+    },
+    {
+      "name": "Coloromat 100 Colorimeter",
+      "model": "Coloromat 100 V2",
+      "slug": "coloromat-100",
+      "category": "Colorimeter",
+      "priority": "niche",
+      "summary": "Coloromat 100 is a single-beam LED photometer for liquid colour, reading from 0 to 16,000 ICUMSA units. It handles sugar colour, beer and wort EBC colour, wine and soft drink colour index, and uses polarimeter flow-through tubes up to 100 mm, with up to 250 stored methods.",
+      "description": "Colour is a payment and quality parameter in sugar, brewing and beverage production, and it is reported in standardized units such as ICUMSA, EBC and APHA. Coloromat 100 measures transmission, extinction and colour units from 340 to 900 nm using an LED light source and narrow-band filters, with a typical bandwidth of 4 to 7 nm. It reads 0 to 16,000 ICUMSA units, with accuracy of plus or minus 0.020 extinction at 420 nm, extinction resolution of 0.001 and ICUMSA resolution of 1 unit. The sample compartment is open top and bottom, so spills cannot reach the electronics, and polarimeter tubes up to 100 mm can be used as cuvettes in single or flow-through mode. The optical design is not affected by stray light. A touchscreen provides method selection and alphanumeric input, and up to 250 methods can be programmed. A continuous mode with adjustable sampling rate tracks colour changes in a product stream over time. Data are output through RS232C and USB. Typical uses are liquid sugar colour, beer and wort EBC colour, wine and soft drink colour index, coffee extracts and enzymatic NAD(P)H methods.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "0 - 16,000 ICUMSA units (IU)"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.020 extinction at 420 nm; ±0.010 at 720 nm"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.001 extinction; 1 IU"
+        },
+        {
+          "label": "Wavelength range",
+          "value": "340 - 900 nm (optional wavelengths)"
+        },
+        {
+          "label": "Light source",
+          "value": "LED"
+        },
+        {
+          "label": "Cuvettes",
+          "value": "Polarimeter tubes up to 100 mm, single or flow-through"
+        },
+        {
+          "label": "Stored methods",
+          "value": "Up to 250 programmable methods"
+        },
+        {
+          "label": "Data output",
+          "value": "RS232C and USB"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "10 - 40 °C"
+        }
+      ],
+      "standards": [
+        "ICUMSA",
+        "EBC colour",
+        "APHA colour"
+      ],
+      "applications": [
+        "ICUMSA colour of liquid and crystal sugar",
+        "EBC colour of beer and wort",
+        "Colour index of wine and soft drinks",
+        "Coffee and extract colour",
+        "Enzymatic NAD(P)H methods"
+      ],
+      "industries": [
+        "food-beverage"
+      ],
+      "searchKeywords": [
+        "ICUMSA colour measurement",
+        "sugar colour photometer",
+        "EBC colour beer colorimeter",
+        "liquid colour photometer LED",
+        "colorimeter for sugar solutions"
+      ],
+      "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
+      "sourceUrl": "https://schmidt-haensch.com/product/coloromat-100-digital-single-beam-photometer-for-the-determination-of-liquid-colour/",
+      "imageUrls": [],
+      "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2023/03/SH_Coloromat100-V2_data-sheet_ENG_0323.pdf"
+    }
+  ]
+}

@@ -1,0 +1,1030 @@
+{
+  "brand": "GasMix",
+  "brandSlug": "gasmix",
+  "brandUrl": "https://gasmix.com",
+  "headquarters": "Juvisy-sur-Orge, France",
+  "brandSummary": "GasMix is the gas mixing and dilution line from AlyTech France, designed and assembled in Juvisy-sur-Orge. The range covers dynamic gas diluters from two to sixteen channels, a liquid-to-gas vapour generator, an LPG vaporizer and one control software, AlySoft, used to produce traceable calibration gases on site instead of buying a cylinder for every concentration.",
+  "logoUrl": "https://gasmix.com/wp-content/uploads/2026/02/GasMix-logo-01.png",
+  "products": [
+    {
+      "name": "Aiolos III Gas Mixer and Gas Diluter",
+      "model": "Aiolos III",
+      "slug": "aiolos-iii",
+      "category": "Gas Mixer / Gas Diluter",
+      "priority": "flagship",
+      "summary": "Aiolos III is a modular laboratory gas mixer and diluter that blends two to six gas streams through mass flow controllers to produce calibration standards on demand, from percent levels down to ppb. It runs under AlySoft on a Windows PC, reports the uncertainty of every mixture, and accepts cascade dilution, an injection valve, FReD or a multiplexer.",
+      "description": "A dynamic gas diluter meters a concentrated reference gas and a diluent through mass flow controllers and combines them in a calculated ratio, so one parent cylinder can yield any concentration the application needs. Aiolos III applies that principle across two to six channels, which lets a single instrument serve several analyzers and several target mixtures. Every MFC is characterised at the factory with a 400-point calibration for each gas matrix ordered, and the software corrects automatically for the gas in use through K-factors. AlySoft, running on a Windows PC over Ethernet, turns target concentrations into channel flows, executes programmed dilution, injection and flush sequences, synchronises with a GC, µGC or process analyzer, and issues a certificate listing the concentration and uncertainty of each point together with a full audit trail. The standard dilution factor is 10⁴, and the optional cascade second stage extends it to 10⁸, which is how ppb-level standards are made from a percent-level cylinder. Typical users are refinery and petrochemical laboratories calibrating GC, µGC, RGA/NGA and elemental analyzers, environmental stations validating ambient and emission analyzers, and research groups running linearity, LOD/LOQ and hysteresis studies. Channels and options can be added after purchase.",
+      "keySpecs": [
+        {
+          "label": "Gas channels",
+          "value": "2 to 6"
+        },
+        {
+          "label": "Concentration range",
+          "value": "From percent down to ppb"
+        },
+        {
+          "label": "Dilution factor",
+          "value": "10⁴ standard; up to 10⁸ with the Cascade option"
+        },
+        {
+          "label": "Flow accuracy",
+          "value": "±1 % of setpoint (MFCs operated between 10 % and 100 % of full scale)"
+        },
+        {
+          "label": "Repeatability",
+          "value": "< 0.1 % of setpoint (10 % to 100 % of full scale)"
+        },
+        {
+          "label": "MFC calibration",
+          "value": "400-point factory calibration per gas matrix, NIST-traceable"
+        },
+        {
+          "label": "Inlet / outlet pressure",
+          "value": "3 to 8 bar(g) inlet; atmospheric up to 7 bar(g) outlet"
+        },
+        {
+          "label": "Control",
+          "value": "AlySoft on Windows 10 or higher, Ethernet; 90–260 VAC, 50–60 Hz"
+        },
+        {
+          "label": "Dimensions (L × W × H)",
+          "value": "45 × 22 × 38 cm (up to 45 × 22 × 59 cm with options)"
+        },
+        {
+          "label": "Weight",
+          "value": "Approx. 14 kg, depending on configuration"
+        }
+      ],
+      "standards": [
+        "ISO 6145-7",
+        "ISO 14687-2 (hydrogen impurity calibration)",
+        "EN 14181 (QAL3 and periodic calibration support)"
+      ],
+      "applications": [
+        "Multi-point calibration of GC, µGC and RGA/NGA analyzers",
+        "Linearity checks and LOD/LOQ validation",
+        "Trace sulfur, NH₃ and VOC standards from cylinders",
+        "CEMS and ambient air analyzer calibration",
+        "Hydrogen fuel impurity standards",
+        "Automated calibration of several analyzers from one bench"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "gas diluter for GC calibration",
+        "multi-channel gas mixer",
+        "dynamic gas dilution system ISO 6145-7",
+        "calibration gas generator ppb",
+        "gas blending system laboratory",
+        "mass flow controller gas mixer",
+        "gas mixer for CEMS calibration",
+        "gas mixing system with audit trail"
+      ],
+      "whyMiddleEast": "Refinery, petrochemical and gas-processing laboratories across the Gulf depend on GC and process-analyzer calibration, which this platform automates from a single certified cylinder.",
+      "sourceUrl": "https://gasmix.com/products/aiolos-iii/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/01/AIOLOSIII-module-cadre-petit.webp",
+        "https://gasmix.com/wp-content/uploads/2025/10/AIOLOSIII-module-cadre-petit.png"
+      ],
+      "datasheetUrl": "https://26945728.fs1.hubspotusercontent-eu1.net/hubfs/26945728/Brochures/AIOLOS%20III_EN.pdf"
+    },
+    {
+      "name": "Zephyr II Compact 2-Channel Gas Diluter",
+      "model": "Zephyr II",
+      "slug": "zephyr-ii",
+      "category": "Gas Mixer / Gas Diluter",
+      "priority": "flagship",
+      "summary": "Zephyr II is a compact two-channel gas diluter that combines one span gas with one diluent to create calibration standards on the bench or in the field. A 7-inch touchscreen runs AlySoft inside the unit, so no PC is needed, and an optional battery supports about six hours without mains power.",
+      "description": "Zephyr II brings two-gas dynamic dilution to a bench-top unit that needs no external computer. One span gas and one diluent are metered through two calibrated mass flow controllers, and the embedded AlySoft software on a 7-inch colour touchscreen converts a target concentration into the two setpoints. A Smart Sequence builder generates a complete multi-point calibration series from a start value, an end value and a number of points, and the instrument can trigger an analyzer through a dry contact or TTL signal so a GC or µGC runs unattended. Uncertainty is calculated for every mixture from the MFC flows and the parent-cylinder certificate, and events are logged for traceability. The standard dilution ratio is 1:2 000, extendable to 1:10 000. Wetted parts are 316 stainless steel with an inert coating and Kalrez seals, which suits sulfur compounds, NOx, NH₃ and VOCs. An optional rechargeable battery gives roughly six hours of autonomy, so the same unit can calibrate analyzers in a shelter, a mobile laboratory or a control room. It is the simplest way to replace several premixed calibration cylinders with a single standard.",
+      "keySpecs": [
+        {
+          "label": "Gas channels",
+          "value": "2 (one span gas and one diluent)"
+        },
+        {
+          "label": "Dilution ratio",
+          "value": "1:2 000 standard; up to 1:10 000 maximum"
+        },
+        {
+          "label": "Flow accuracy",
+          "value": "±1 % of setpoint (MFCs operated between 10 % and 100 % of full scale)"
+        },
+        {
+          "label": "Repeatability",
+          "value": "< 0.1 % of setpoint; response time < 5 s"
+        },
+        {
+          "label": "MFC calibration",
+          "value": "400-point factory calibration, NIST-traceable"
+        },
+        {
+          "label": "Interface",
+          "value": "7″ colour touchscreen with embedded AlySoft; analyzer sync by dry contact or TTL"
+        },
+        {
+          "label": "Wetted materials",
+          "value": "316 stainless steel with inert coating; Kalrez seals; Swagelok 1/8″ connections"
+        },
+        {
+          "label": "Inlet / outlet pressure",
+          "value": "3 bar(g) nominal (max 8 bar(g)) inlet; up to 7 bar(g) outlet"
+        },
+        {
+          "label": "Power",
+          "value": "90–260 VAC, 50–60 Hz; optional NiCad battery for up to 6 h"
+        },
+        {
+          "label": "Dimensions / weight",
+          "value": "43 × 15 × 25 cm; 6.5 kg"
+        }
+      ],
+      "standards": [
+        "ISO 6145-7"
+      ],
+      "applications": [
+        "Linearity checks and calibration of GC (FID, TCD, PID, SCD, MS)",
+        "Calibration of refinery and process analyzers",
+        "Trace elemental analyzer calibration",
+        "µGC validation for biogas",
+        "Controlled atmospheres in reactors and glove boxes",
+        "On-site ambient air analyzer multi-point checks"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia",
+        "food-beverage"
+      ],
+      "searchKeywords": [
+        "portable gas diluter",
+        "2 channel gas mixer",
+        "gas diluter for GC calibration",
+        "calibration gas diluter touchscreen",
+        "battery powered gas diluter",
+        "replace calibration gas cylinders",
+        "ISO 6145-7 gas diluter",
+        "benchtop gas dilution system"
+      ],
+      "whyMiddleEast": "Compact, battery-optional and rated for 10–50 °C operation, it suits mobile analyzer calibration at remote oil and gas sites and in site laboratories.",
+      "sourceUrl": "https://gasmix.com/products/zephyr-ii/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/01/vue-01-sans-fond-1-scaled-1-e1772178939637.webp",
+        "https://gasmix.com/wp-content/uploads/2026/01/vue-01-sans-fond-1-scaled.png"
+      ],
+      "datasheetUrl": "https://gasmix.com/wp-content/uploads/2026/01/ZEPHYR-II_english.pdf"
+    },
+    {
+      "name": "Nomad Portable Gas Mixer and Diluter",
+      "model": "Nomad",
+      "slug": "nomad",
+      "category": "Gas Mixer / Gas Diluter",
+      "priority": "core",
+      "summary": "Nomad is a portable GasMix gas mixer and diluter in a rigid carry case, built for analyzer calibration and verification outside the laboratory. It offers three or four MFC channels, runs AlySoft on an integrated or external PC, and produces traceable ISO 6145-7 mixtures for audits, mobile labs and monitoring stations.",
+      "description": "Nomad packages GasMix dynamic dilution in a rigid case so that calibration gases can be produced at the analyzer instead of being shipped to it. Typical builds have three or four mass flow controller channels, for example two span gases, an interference gas and a diluent, which is enough to run span and zero calibration, linearity and repeatability checks, and purity or interference tests as one sequence. AlySoft runs on a built-in industrial PC (a touch screen is available as an option) or on an external computer connected over Ethernet. It stores the gas library, the multi-point MFC calibration tables and the analyzer-control parameters, calculates every channel flow from the target concentration, and keeps an audit trail. Each MFC carries a 400-point factory calibration per gas matrix with automatic K-factor correction, and the software reports uncertainty and issues a certificate for each sequence. Power comes from a 24 V DC adapter, and the unit operates between 10 and 50 °C. Typical users are auditors, CEMS and ambient-station operators, mobile laboratories, and teams building FTIR or Raman models that need controlled synthetic mixtures on site.",
+      "keySpecs": [
+        {
+          "label": "Gas channels",
+          "value": "2 to 4 (typical configurations: 3 or 4)"
+        },
+        {
+          "label": "Dilution ratio",
+          "value": "Up to 1:10 000"
+        },
+        {
+          "label": "Flow accuracy",
+          "value": "±1 % of setpoint (MFCs operated between 10 % and 100 % of full scale)"
+        },
+        {
+          "label": "Repeatability",
+          "value": "< 0.1 % of setpoint"
+        },
+        {
+          "label": "MFC calibration",
+          "value": "400-point factory calibration per gas matrix, NIST-traceable"
+        },
+        {
+          "label": "Inlet / outlet pressure",
+          "value": "3 bar(g) nominal (max 8 bar(g)) inlet; atmospheric up to 7 bar(g) outlet"
+        },
+        {
+          "label": "Control",
+          "value": "Built-in industrial PC or external PC, Windows, Ethernet"
+        },
+        {
+          "label": "Power",
+          "value": "24 V DC from supplied AC adapter"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "10–50 °C"
+        },
+        {
+          "label": "Weight",
+          "value": "Approx. 10 kg"
+        }
+      ],
+      "standards": [
+        "ISO 6145-7"
+      ],
+      "applications": [
+        "On-site calibration of GC, µGC and gas analyzers",
+        "Automated measuring system (AMS) checks for emissions and ambient air",
+        "Audit and QA verification at customer sites",
+        "FTIR and Raman model building and validation",
+        "Secondary standards for calibration laboratories"
+      ],
+      "industries": [
+        "environmental-monitoring",
+        "oil-gas",
+        "petrochemical-refining",
+        "research-academia",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "portable gas mixer",
+        "field gas calibration system",
+        "portable gas diluter for CEMS",
+        "mobile laboratory gas calibration",
+        "on-site analyzer calibration",
+        "gas dilution system in carry case",
+        "AMS calibration gas generator"
+      ],
+      "whyMiddleEast": "A field-portable diluter fits the emission and ambient-air monitoring work carried out at industrial sites and monitoring stations across the GCC.",
+      "sourceUrl": "https://gasmix.com/products/nomad/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/02/Nomad-avec-logiciel-correct-scaled-01.webp",
+        "https://gasmix.com/wp-content/uploads/2026/01/Nomad-avec-logiciel-correct-scaled-1.webp"
+      ],
+      "datasheetUrl": "https://26945728.fs1.hubspotusercontent-eu1.net/hubfs/26945728/Brochures/NOMAD_En.pdf"
+    },
+    {
+      "name": "Hurricane High-Channel Gas Mixer",
+      "model": "Hurricane",
+      "slug": "hurricane",
+      "category": "Gas Mixer / Gas Diluter",
+      "priority": "core",
+      "summary": "Hurricane is the highest-capacity instrument in the GasMix range, blending up to 16 gases at once, with custom builds to 20 channels. It is designed for synthetic atmospheres, interference testing, spectrometer model building and complex calibration benches, with the software computing every flow and logging an audit trail.",
+      "description": "Hurricane is built for mixtures that are too complex for a handful of channels. Standard configurations blend up to 16 gases simultaneously, and custom systems reach 20, which covers synthetic atmospheres, interference studies, chemometric model development for FTIR and Raman spectrometers, sensor test benches, and calibration of RGA/NGA and GC/µGC methods for complex hydrocarbon streams. With this many components, manual flow arithmetic is impractical, so the PC software calculates dilution and span flows for nested, multi-step recipes, applies multi-point MFC calibration curves per gas matrix, and stores sequences that can be recalled and run automatically. It supports analyzer synchronisation and remote start, logs every event in an audit trail, and can stop mixing when a user-defined alarm trips. Options include the FReD automated flow regulator, heated tubing, and an inert build for aggressive gases such as H₂S, ammonia and sulfur compounds. Each MFC is calibrated at 400 points per gas matrix, with ±1 % setpoint accuracy and repeatability better than 0.1 % when operated between 10 and 100 % of full scale. Channels can be added as requirements grow.",
+      "keySpecs": [
+        {
+          "label": "Gas channels",
+          "value": "7 to 16 as standard; custom builds up to 20"
+        },
+        {
+          "label": "Flow accuracy",
+          "value": "±1 % of setpoint (MFCs operated between 10 % and 100 % of full scale)"
+        },
+        {
+          "label": "Repeatability",
+          "value": "< 0.1 % of setpoint"
+        },
+        {
+          "label": "Response time",
+          "value": "< 5 s"
+        },
+        {
+          "label": "MFC calibration",
+          "value": "400-point factory calibration per gas matrix, NIST-traceable"
+        },
+        {
+          "label": "Inlet / outlet pressure",
+          "value": "3 bar(g) nominal (max 8 bar(g)) inlet; atmospheric by default, higher on request"
+        },
+        {
+          "label": "Wetted materials",
+          "value": "316 stainless steel with inert coating; Kalrez seals"
+        },
+        {
+          "label": "Control",
+          "value": "GasMix PC software, Windows, Ethernet"
+        },
+        {
+          "label": "Options",
+          "value": "FReD automated flow regulator, heated tubing, inert version"
+        },
+        {
+          "label": "Weight",
+          "value": "Approx. 25 kg"
+        }
+      ],
+      "standards": [
+        "ISO 6145-7"
+      ],
+      "applications": [
+        "Complex synthetic gas mixtures and interference testing",
+        "Chemometric model development for FTIR and Raman spectrometers",
+        "Gas sensor test benches (LOD/LOQ and linearity)",
+        "RGA/NGA and GC/µGC calibration for complex hydrocarbons",
+        "Engine bench tests and emission control development",
+        "Customised secondary standards"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "16 channel gas mixer",
+        "multi-component gas blending system",
+        "gas mixer for sensor testing",
+        "synthetic gas mixture generator",
+        "gas blender for FTIR calibration",
+        "RGA calibration gas mixer",
+        "complex gas mixture generation laboratory"
+      ],
+      "whyMiddleEast": "Complex multi-component mixtures are used for refinery gas analyzer (RGA) and natural gas analyzer calibration in refining and gas-processing laboratories.",
+      "sourceUrl": "https://gasmix.com/products/hurricane/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/02/Hurricane_800px-1.png",
+        "https://gasmix.com/wp-content/uploads/2026/01/Hurricane_800px.webp"
+      ],
+      "datasheetUrl": "https://26945728.fs1.hubspotusercontent-eu1.net/hubfs/26945728/Brochures/HURRICANE_EN.pdf"
+    },
+    {
+      "name": "GRack Rack-Mounted Gas Mixer (GMRack)",
+      "model": "GRack",
+      "slug": "grack",
+      "category": "Gas Mixer / Gas Diluter",
+      "priority": "core",
+      "summary": "GRack is a 19-inch rack-mounted GasMix gas mixer and diluter for continuous-duty QA/QC benches, analyzer shelters and automated calibration stations. It provides two to six channels under AlySoft, with PLC/DCS-ready digital I/O. The GMRack variant adds a touch screen to the same instrument.",
+      "description": "GRack is the industrial rack implementation of the GasMix architecture, designed for continuous operation and high-throughput laboratories. Calibrated mass flow modules, valves and safety functions are integrated into one 19-inch chassis that provides two to six channels, and a multiplexer can be added to select among more cylinders or to feed several analyzers or sampling lines. AlySoft on a Windows PC over Ethernet handles recipes, programmed sequences, analyzer synchronisation, uncertainty calculation, user management, audit trail and certificates, and OEM remote integration is supported. Digital I/O (dry contacts or TTL) and optional communication modules allow connection to a PLC or DCS for remote operation and status monitoring. The GMRack is simply the GRack with a touch screen added. Typical duties include CEMS calibration and QA/QC routines such as QAL2 and QAL3 linearity checks under EN 14181, hydrogen impurity checks for ISO 14687, and multi-point calibration of analyzer benches. For reactive gases such as H₂S, SO₂, NOx, NH₃ and VOCs, the wetted path can be specified in 316 stainless steel with inert passivation and Kalrez or Chemraz seals. Every MFC carries a 400-point factory calibration per gas matrix.",
+      "keySpecs": [
+        {
+          "label": "Format",
+          "value": "19-inch rack mount"
+        },
+        {
+          "label": "Gas channels",
+          "value": "2 to 6, plus multiplexer option for additional cylinders or outputs"
+        },
+        {
+          "label": "Dilution ratio",
+          "value": "Up to 1:10 000"
+        },
+        {
+          "label": "Flow accuracy",
+          "value": "±1 % of setpoint (MFCs operated between 10 % and 100 % of full scale)"
+        },
+        {
+          "label": "Repeatability",
+          "value": "< 0.1 % of setpoint"
+        },
+        {
+          "label": "MFC calibration",
+          "value": "400-point factory calibration per gas matrix, NIST-traceable"
+        },
+        {
+          "label": "Control",
+          "value": "AlySoft on Windows PC, Ethernet; GMRack variant adds a touch screen"
+        },
+        {
+          "label": "Integration",
+          "value": "Digital I/O (dry contact / TTL) and optional communication modules for PLC/DCS"
+        },
+        {
+          "label": "Wetted materials",
+          "value": "316 stainless steel with inert passivation; Kalrez or Chemraz seals"
+        },
+        {
+          "label": "Weight",
+          "value": "Approx. 9 kg"
+        }
+      ],
+      "standards": [
+        "ISO 6145-7",
+        "EN 14181 (QAL2/QAL3 routines)",
+        "ISO 14687 (hydrogen impurity checks)"
+      ],
+      "applications": [
+        "Production QA/QC calibration benches",
+        "CEMS calibration and QAL2/QAL3 linearity checks",
+        "Analyzer shelter automated calibration",
+        "Multi-point sequences and LOD/LOQ studies",
+        "Hydrogen impurity analysis for ISO 14687",
+        "Feeding several analyzers through a multiplexer"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "materials-manufacturing",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "rack mounted gas mixer",
+        "19 inch gas diluter",
+        "industrial gas blending rack",
+        "CEMS calibration gas mixer",
+        "analyzer shelter calibration system",
+        "gas mixer with PLC interface",
+        "GMRack gas mixer"
+      ],
+      "whyMiddleEast": "The rack format suits analyzer shelters at refineries and gas plants where emission and process analyzers are calibrated on an automated schedule.",
+      "sourceUrl": "https://gasmix.com/products/grack/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/08/GMRack-sans-ecran-small.png",
+        "https://gasmix.com/wp-content/uploads/2025/10/Gasmix-RACK-1-e1763245291411.png"
+      ],
+      "datasheetUrl": "https://26945728.fs1.hubspotusercontent-eu1.net/hubfs/26945728/Brochures/GMRack_EN.pdf"
+    },
+    {
+      "name": "Nephos (LiqMix Nephos) Liquid-to-Gas Standard Generator",
+      "model": "Nephos",
+      "slug": "nephos",
+      "category": "Liquid-to-Gas Standard Generator",
+      "priority": "core",
+      "summary": "Nephos produces gas-phase calibration standards directly from pure liquids or liquid mixtures, including VOCs, alcohols, siloxanes and water vapour that cannot be supplied in cylinders. A Coriolis meter doses the liquid by mass, a heated chamber vaporises it, and AlySoft documents every point. It is the current generation of the LiqMix range.",
+      "description": "Nephos generates gas-phase standards straight from liquids, which is the practical route for VOCs, alcohols, siloxanes, water vapour and other compounds that are unstable, too heavy or too reactive to be bottled. Liquid is metered by a Coriolis mass flow meter, so the dosed mass is measured directly and does not depend on density, viscosity or temperature; changing solvent does not require re-tuning the dosing. The metered liquid is vaporised in a heated, temperature-controlled chamber into a carrier-gas stream, can be combined with one to four mass-flow-controlled gas channels or a second liquid channel, and is delivered through a heated line, 2 m as standard, so nothing recondenses before the analyzer. The optional cascade stage extends the dilution factor from 10⁴ to 10⁸ to span percent to ppb. AlySoft calculates flows and uncertainties, synchronises with GC, µGC and spectrometers, and records an audit trail and certificates. Typical work includes BTEX and odorous VOC standards, siloxane standards for biogas, humidity generation for sensor tests, ammonia at trace level for µGC, and carbon-filter studies. Wetted paths are inert-treated for reactive and corrosive compounds.",
+      "keySpecs": [
+        {
+          "label": "Liquid channels",
+          "value": "1 or 2 (simultaneous mixing)"
+        },
+        {
+          "label": "Gas channels",
+          "value": "1 to 4"
+        },
+        {
+          "label": "Concentration range",
+          "value": "From percent down to ppb"
+        },
+        {
+          "label": "Dilution factor",
+          "value": "Up to 10⁴; up to 10⁸ with the cascade option"
+        },
+        {
+          "label": "Concentration accuracy",
+          "value": "< 2 % of setpoint (MFCs operated between 10 % and 100 % of full scale)"
+        },
+        {
+          "label": "Concentration repeatability",
+          "value": "< 0.2 % of setpoint"
+        },
+        {
+          "label": "Heated output line",
+          "value": "2 m as standard; other lengths available"
+        },
+        {
+          "label": "Wetted paths",
+          "value": "Sulfinert-treated; Swagelok 1/16″, 1/8″ and 1/4″ connections"
+        },
+        {
+          "label": "Control",
+          "value": "AlySoft on Windows 10 or higher, Ethernet; 90–260 VAC, 50–60 Hz"
+        },
+        {
+          "label": "Dimensions / weight",
+          "value": "50 × 47 × 58 cm; 25–40 kg depending on configuration"
+        }
+      ],
+      "standards": [
+        "ISO 6145-7 (gas channels)",
+        "EN 16723 (biogas siloxane standards)"
+      ],
+      "applications": [
+        "BTEX and VOC gas standards without cylinders",
+        "Odorous VOC standards at ppb level",
+        "Siloxane standards for biogas",
+        "Controlled humidity and water vapour generation",
+        "Ammonia and reactive-compound standards for µGC",
+        "Carbon filter and gas sensor testing"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia",
+        "oil-gas",
+        "food-beverage"
+      ],
+      "searchKeywords": [
+        "liquid to gas standard generator",
+        "VOC calibration gas generator",
+        "BTEX gas standard without cylinder",
+        "vapour generator for GC calibration",
+        "siloxane calibration standard biogas",
+        "humidity generator for sensor calibration",
+        "Coriolis liquid vaporizer calibration",
+        "LiqMix Nephos"
+      ],
+      "whyMiddleEast": "Petrochemical and environmental laboratories can make BTEX and other VOC standards in-house instead of sourcing special-order cylinders for reactive or heavy compounds.",
+      "sourceUrl": "https://gasmix.com/products/nephos/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2025/10/Nephos-seul.png",
+        "https://gasmix.com/wp-content/uploads/2026/01/Nephos-seul-1.webp"
+      ],
+      "datasheetUrl": "https://gasmix.com/wp-content/uploads/2026/07/NEPHOS_NEW.pdf"
+    },
+    {
+      "name": "AURA II LPG Vaporizer",
+      "model": "AURA II",
+      "slug": "aura-ii",
+      "category": "LPG Vaporizer",
+      "priority": "core",
+      "summary": "AURA II is a bench-top vaporizer that converts LPG and other liquefied gases into a stable, fully gaseous sample for GC, µGC and elemental analyzers. A regulated heating chamber and a heated transfer line prevent discrimination between light and heavy components, and pairing it with Aiolos III supports ASTM D6667 and D7551 calibration.",
+      "description": "Liquefied petroleum gas boils over a range, so if a cylinder or line is allowed to vaporise on its own, the light components leave first and the sample that reaches the analyzer no longer matches the liquid that was drawn. AURA II removes that error. The sample passes a 0.5 µm stainless steel filter at 2 to 50 bar, is vaporised in a heated chamber regulated between 40 and 160 °C, and is carried to the analyzer through internal lines and a 1 m insulated transfer line, all held at 120 °C, so heavy ends cannot recondense on the way. Outlet pressure is reduced to about 1 bar absolute (3 bar maximum) and output flow is regulated between 20 and 200 cc/min on methane. The entire flow path is inert-treated, which protects trace sulfur species from adsorption. Used alone it serves GC, µGC, GC-MS and total-sulfur analyzers; combined with a GasMix Aiolos mixer-diluter, a single certified sulfur standard can be diluted automatically to every calibration level for ASTM D6667 and D7551 workflows. Typical users are refineries, LPG terminals and petroleum testing laboratories.",
+      "keySpecs": [
+        {
+          "label": "Vaporizer temperature",
+          "value": "Regulated 40–160 °C (104–320 °F)"
+        },
+        {
+          "label": "Internal lines / output line",
+          "value": "Heated at 120 °C; 1 m insulated transfer line"
+        },
+        {
+          "label": "Inlet pressure",
+          "value": "2 bar min to 50 bar max (30 to 725 psi)"
+        },
+        {
+          "label": "Outlet pressure",
+          "value": "1 bar abs typical; 3 bar max"
+        },
+        {
+          "label": "Output flow",
+          "value": "20–200 cc/min (methane)"
+        },
+        {
+          "label": "Inlet filter",
+          "value": "Stainless steel, 0.5 µm"
+        },
+        {
+          "label": "Warm-up time",
+          "value": "Typically 15 minutes; heating power 100 W"
+        },
+        {
+          "label": "Power supply",
+          "value": "24 VDC via external adapter, 110–230 VAC, 50–60 Hz"
+        },
+        {
+          "label": "Connections",
+          "value": "1/8″ inlet; 1/8″ outlet line; 1/4″ vent"
+        },
+        {
+          "label": "Dimensions / weight",
+          "value": "22 × 27 × 31 cm; 8 kg"
+        }
+      ],
+      "standards": [
+        "ASTM D6667",
+        "ASTM D7551"
+      ],
+      "applications": [
+        "Total volatile sulfur in LPG per ASTM D6667 and D7551",
+        "Detailed hydrocarbon analysis of liquefied samples by GC",
+        "Sample introduction for elemental and total-sulfur analyzers",
+        "Automated multi-point LPG calibration with Aiolos III",
+        "Vaporization of other liquefied gases for method development"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "LPG vaporizer for GC",
+        "ASTM D6667 sulfur in LPG calibration",
+        "ASTM D7551 LPG sampling",
+        "LPG sample vaporization without discrimination",
+        "heated LPG vaporizer total sulfur analyzer",
+        "liquefied gas sampling for gas chromatography"
+      ],
+      "whyMiddleEast": "LPG is a major fuel and export product of the Gulf, and the sulfur methods this vaporizer supports are routine quality checks at refineries, terminals and testing laboratories.",
+      "sourceUrl": "https://gasmix.com/products/aura-ii/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/02/AURA_Front-scaled-new.jpg",
+        "https://gasmix.com/wp-content/uploads/2026/01/0e39956f-6d34-4798-b3e9-81e870ff9846-scaled-1.webp"
+      ],
+      "datasheetUrl": "https://26945728.fs1.hubspotusercontent-eu1.net/hubfs/26945728/Brochures/AURA_II_EN.pdf"
+    },
+    {
+      "name": "AlySoft Control and Metrology Software",
+      "model": "AlySoft",
+      "slug": "alysoft",
+      "category": "Control Software",
+      "priority": "core",
+      "summary": "AlySoft is the in-house software that drives every GasMix gas mixer and LiqMix liquid-to-gas system. It converts target concentrations into channel flows, calculates the uncertainty of each point, runs sequences with analyzer synchronisation, and records an audit trail and certificate. It is embedded in Zephyr II and runs on Windows for the other instruments.",
+      "description": "AlySoft is the single control layer behind the GasMix and LiqMix range, from the compact Zephyr II to the 16-channel Hurricane and the Nephos liquid-to-gas generator. The operator enters the concentration needed; the software calculates each channel flow using the stored multi-point MFC calibration curve for the selected gas matrix, applies K-factor correction, drives the mass flow controllers, and reports the uncertainty of the final concentration rather than just the setpoint. Programmable sequences cover dilution, injection and flushing, and a sequence builder creates multi-point calibration curves from a start value, an end value and a number of points. AlySoft synchronises with GC, µGC, FTIR and process analyzers so that a calibration runs unattended. Every action is written to an audit trail, role-based user access protects critical settings, and a certificate with concentrations and uncertainties is issued when a sequence finishes. Because the interface is common to all instruments, methods, gas libraries and operator training transfer between them. Zephyr II runs AlySoft embedded on its touchscreen; Aiolos III, Hurricane, GRack and Nephos run it on a Windows PC connected by Ethernet.",
+      "keySpecs": [
+        {
+          "label": "Instruments controlled",
+          "value": "Zephyr II, Aiolos III, Nomad, Hurricane, GRack and Nephos"
+        },
+        {
+          "label": "Platform",
+          "value": "Embedded on Zephyr II (7″ touchscreen); Windows 10 or higher PC over Ethernet on Aiolos III, Hurricane, GRack and Nephos"
+        },
+        {
+          "label": "Metrology",
+          "value": "Automatic flow and uncertainty calculation per concentration; K-factor correction; ISO 6145-7 methodology"
+        },
+        {
+          "label": "Documentation",
+          "value": "Audit trail, event logging and certificate issued after each sequence"
+        },
+        {
+          "label": "Access control",
+          "value": "Role-based user access"
+        },
+        {
+          "label": "Automation",
+          "value": "Programmable dilution, injection and flush sequences with a sequence builder"
+        },
+        {
+          "label": "Analyzer integration",
+          "value": "Synchronisation with GC, µGC, FTIR and process analyzers"
+        },
+        {
+          "label": "Safety",
+          "value": "User-defined alarms and safe states (dependent on connected hardware options)"
+        }
+      ],
+      "standards": [
+        "ISO 6145-7"
+      ],
+      "applications": [
+        "Automated multi-point calibration sequences",
+        "Uncertainty calculation and calibration certificates",
+        "QA/QC audit trails for regulated laboratories",
+        "Analyzer-synchronised unattended calibration",
+        "Cascade dilution control down to ppb"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "gas mixer control software",
+        "calibration gas dilution software audit trail",
+        "gas diluter software uncertainty calculation",
+        "ISO 6145-7 software",
+        "calibration certificate software gas analyzer",
+        "AlySoft"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://gasmix.com/products/alysoft/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/01/AlySoft.webp"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "FReD Flow Regulation Device",
+      "model": "FReD",
+      "slug": "fred",
+      "category": "Accessory",
+      "priority": "niche",
+      "summary": "FReD adds software-controlled constant-flow delivery to a GasMix or LiqMix bench. It holds the flow reaching the analyzer at a chosen value and vents the surplus automatically, so the mixture arrives at a stable rate whatever total flow the mixer produces. Available as an external module or an integrated option.",
+      "description": "Many analyzers need a fixed sample flow, while a dilution is easiest to generate at whatever total flow the mass flow controllers are sized for. FReD bridges the two. It is a flow regulation device that holds the output of a GasMix or LiqMix instrument at a constant flow chosen in the software and sends any excess gas to vent, so the analyzer always sees the same flow even when the concentration changes between calibration points. Being software-controlled, flow regulation can form part of an automated multi-point calibration rather than a manual adjustment at a needle valve. It is available as an external add-on module or as an integrated option on instruments such as Aiolos III, GRack and Hurricane, and can be combined with a Multiplex to run the same sequence across several analyzers. A simplified manual alternative, the FL-KIT02-18, is also offered for benches where software control is not needed.",
+      "keySpecs": [
+        {
+          "label": "Function",
+          "value": "Software-controlled constant output flow"
+        },
+        {
+          "label": "Excess gas",
+          "value": "Vented automatically"
+        },
+        {
+          "label": "Versions",
+          "value": "External add-on or integrated option"
+        },
+        {
+          "label": "Control",
+          "value": "Part of the AlySoft/MixSoft sequence"
+        },
+        {
+          "label": "Fits",
+          "value": "GasMix and LiqMix instruments, including Aiolos III, GRack and Hurricane"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Constant sample flow to GC and µGC inlets",
+        "Automated multi-point calibration with stable delivery",
+        "Multi-analyzer setups together with Multiplex"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "constant flow regulator for gas mixer",
+        "automatic flow regulation gas calibration bench",
+        "FReD gas mixer accessory",
+        "gas diluter output flow control"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://gasmix.com/accessories/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/01/FRED-int.webp",
+        "https://gasmix.com/wp-content/uploads/2026/01/FReD-Flow-Regulation-Device-300x250-1.webp"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "MULTIPLEX Stream Selection Module",
+      "model": "MULTIPLEX",
+      "slug": "multiplex",
+      "category": "Accessory",
+      "priority": "niche",
+      "summary": "MULTIPLEX adds software-controlled routing to a GasMix or LiqMix bench, with up to 16 inputs or outputs. Installed upstream it selects the supply gas for a channel; installed downstream it directs the finished mixture to one of several analyzers, so a single sequence can serve a whole bench.",
+      "description": "A multiplexer extends what a gas mixer can reach without adding mass flow controllers. MULTIPLEX uses Valco selection valves to give up to 16 ports, and it can be installed on either side of the diluter. Upstream, it chooses which supply gas or cylinder feeds a given channel, which is useful when many different parent standards are held on a bench. Downstream, it routes the finished mixture from one outlet to several analyzers or sampling lines, one at a time, so the same programmed sequence can calibrate a whole analyzer shelter. Routing is under software control, so valve switching is part of the calibration sequence and is logged with the rest of the run. It is offered with the GasMix and LiqMix platforms, notably Aiolos III and GRack, and is typically combined with FReD when each destination needs a stable flow.",
+      "keySpecs": [
+        {
+          "label": "Ports",
+          "value": "Up to 16 inputs or outputs"
+        },
+        {
+          "label": "Routing",
+          "value": "Upstream (supply selection) or downstream (output distribution)"
+        },
+        {
+          "label": "Valve type",
+          "value": "Valco selection valves"
+        },
+        {
+          "label": "Control",
+          "value": "Software-controlled within the calibration sequence"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Calibrating several analyzers from one mixer",
+        "Selecting among many parent standards",
+        "Automated multi-point distribution in analyzer shelters"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "gas multiplexer for gas mixer",
+        "Valco stream selection calibration gas",
+        "multi-analyzer calibration gas distribution",
+        "gas selection valve for gas diluter"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://gasmix.com/accessories/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/01/multiplex-300x250-1.webp"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "PReM Pressure Regulator Manifold",
+      "model": "PReM",
+      "slug": "prem",
+      "category": "Accessory",
+      "priority": "niche",
+      "summary": "PReM holds a fixed, manually set pressure between the outlet of a GasMix diluter and the point of delivery, venting the excess gas. It is used to give GC and µGC inlets a steady supply pressure, often alongside an overpressure limiter.",
+      "description": "Analyzers and columns are sensitive to the pressure at which a calibration gas arrives. PReM, the Pressure Regulator Manifold, maintains a fixed pressure between the diluter outlet and the delivery point, and any gas beyond what the analyzer draws is vented. The pressure is set by hand and then stays constant for the run, which makes the delivery independent of changes in total flow or concentration. A typical stable-delivery setup pairs PReM with the overpressure limiter so that the instrument receives steady pressure and the column is protected from accidental over-pressurisation. PReM is installed downstream of a GasMix or LiqMix instrument and complements FReD, which regulates flow rather than pressure. A simplified, compact alternative using a calibrated safety valve is available as FL-KIT 01-18 for installations where only protection is needed.",
+      "keySpecs": [
+        {
+          "label": "Function",
+          "value": "Maintains fixed delivery pressure to the instrument"
+        },
+        {
+          "label": "Pressure setting",
+          "value": "Manual, set once per application"
+        },
+        {
+          "label": "Excess gas",
+          "value": "Vented"
+        },
+        {
+          "label": "Position",
+          "value": "Between diluter outlet and delivery point"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Steady inlet pressure to GC and µGC",
+        "Stable delivery together with the overpressure limiter"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "pressure regulator manifold gas calibration",
+        "fixed pressure delivery gas diluter",
+        "PReM GasMix",
+        "pressure control for calibration gas to GC"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://gasmix.com/accessories/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/01/PREM-int.webp",
+        "https://gasmix.com/wp-content/uploads/2026/01/prem-300x250-1.webp"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Overpressure Limiter",
+      "model": "Overpressure Limiter",
+      "slug": "overpressure-limiter",
+      "category": "Accessory",
+      "priority": "niche",
+      "summary": "The overpressure limiter caps the outlet pressure of a GasMix or LiqMix instrument and prevents back pressure while gas loops, small reactors or sampling containers are being filled. The standard limit is 0.7 bar(g) and other limits are available. It is usually paired with PReM to protect GC and µGC columns.",
+      "description": "Filling a gas loop, a small reactor or a sampling container from a mixer can build back pressure that disturbs flow control or stresses downstream components. The overpressure limiter restricts the pressure that can develop at the instrument outlet, so the mixer keeps delivering predictably and the connected equipment stays inside safe limits. The standard limit is 0.7 bar(g), and other limits can be supplied for a specific application. It is commonly installed together with PReM to form a stable-delivery setup for GC and µGC: PReM holds the working pressure while the limiter provides a hard ceiling, which keeps a steady supply pressure at the analyzer and protects columns from accidental over-pressurisation. The limiter is an accessory for the GasMix and LiqMix platforms and is listed on the manufacturer's accessories page alongside FReD, Multiplex, PReM and the LPG vaporizer AURA II, so a complete bench can be assembled from one supplier.",
+      "keySpecs": [
+        {
+          "label": "Function",
+          "value": "Limits outlet pressure and avoids back pressure"
+        },
+        {
+          "label": "Standard limit",
+          "value": "0.7 bar(g)"
+        },
+        {
+          "label": "Other limits",
+          "value": "Available on request"
+        },
+        {
+          "label": "Typical pairing",
+          "value": "PReM for stable delivery pressure"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Filling gas loops and reactors safely",
+        "Protecting GC columns from over-pressurisation"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "overpressure limiter gas mixer",
+        "back pressure protection calibration gas",
+        "gas outlet pressure limiter GC"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://gasmix.com/accessories/",
+      "imageUrls": [],
+      "datasheetUrl": null
+    },
+    {
+      "name": "CleaC Cleaning Cylinders for LiqMix",
+      "model": "CleaC",
+      "slug": "cleac",
+      "category": "Accessory",
+      "priority": "niche",
+      "summary": "CleaC is an automated rinsing accessory for LiqMix and Nephos liquid-to-gas systems. Three 75 cc tanks flush the liquid lines between fluids, preventing carry-over from one compound to the next and stopping residue from clogging the lines, so trace-level standards stay clean.",
+      "description": "Liquid-to-gas generation has a problem that gas dilution does not: residue. When a LiqMix system switches from one compound to another, or sits idle with a heavy or reactive liquid in its lines, carry-over can contaminate the next standard and deposits can narrow the flow path. Systems such as Nephos meter liquid through a Coriolis flow meter and a control valve into a heated vaporisation chamber, so keeping that path clean matters for repeatable low-level standards. CleaC addresses this with automated rinsing from three tanks of 75 cc each. Automating the rinse removes a manual flush from the changeover and helps keep trace-level standards clean. It is intended for the LiqMix family, including Nephos, and is most useful where one instrument runs several different solvents, VOC mixes or siloxane standards.",
+      "keySpecs": [
+        {
+          "label": "Tank configuration",
+          "value": "3 × 75 cc"
+        },
+        {
+          "label": "Function",
+          "value": "Automated rinsing of liquid lines"
+        },
+        {
+          "label": "Purpose",
+          "value": "Prevents carry-over and clogging"
+        },
+        {
+          "label": "Used with",
+          "value": "LiqMix systems, including Nephos"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Changing between solvents or VOC mixes without cross-contamination",
+        "Keeping liquid lines clear after heavy or reactive compounds"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "LiqMix cleaning system",
+        "automated rinsing liquid vaporizer",
+        "carryover prevention liquid gas generator",
+        "Nephos accessories"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://gasmix.com/accessories/",
+      "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2026/01/Cleac-300x250-1.webp"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "FL-KIT02-18 Simplified FReD",
+      "model": "FL-KIT02-18",
+      "slug": "fl-kit02-18",
+      "category": "Accessory",
+      "priority": "niche",
+      "summary": "FL-KIT02-18 is a simplified, manual version of FReD. A needle valve sets the outlet flow by hand, giving a low-cost way to hold a constant delivery flow where automated, software-controlled regulation is not required and the flow is set once.",
+      "description": "Not every calibration bench needs software-controlled flow regulation. The FL-KIT02-18 offers the same basic function as FReD in a simpler form: the outlet flow of the GasMix instrument is set manually with a needle valve, and the surplus is passed to vent. The result is a cost-effective way to present a steady flow to a single analyzer where the flow is set once and rarely changed. Because the adjustment is manual, it does not take part in automated sequences the way FReD does, so FReD remains the better choice for unattended multi-point routines, for benches that serve several analyzers, or wherever the delivery flow has to change during a run. The kit is listed on the manufacturer's products page among the accessories for the GasMix and LiqMix range, next to the full FReD module and the simplified pressure safeguard FL-KIT 01-18.",
+      "keySpecs": [
+        {
+          "label": "Function",
+          "value": "Manual outlet flow regulation"
+        },
+        {
+          "label": "Regulating element",
+          "value": "Needle valve"
+        },
+        {
+          "label": "Relationship",
+          "value": "Simplified alternative to FReD"
+        },
+        {
+          "label": "Control",
+          "value": "Manual; not part of automated sequences"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Fixed-flow delivery to a single analyzer",
+        "Low-cost flow regulation on simple benches"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "manual flow regulator gas mixer",
+        "needle valve outlet flow gas diluter",
+        "FL-KIT gas mixer accessory"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://gasmix.com/accessories/",
+      "imageUrls": [],
+      "datasheetUrl": null
+    },
+    {
+      "name": "FL-KIT 01-18 Simplified PReM",
+      "model": "FL-KIT 01-18",
+      "slug": "fl-kit01-18",
+      "category": "Accessory",
+      "priority": "niche",
+      "summary": "FL-KIT 01-18 is a compact pressure safeguard built around a calibrated safety valve, offered as a simplified alternative to PReM. The valve setting can be customised on request, protecting columns, loops and reactors without the cost of a full regulator manifold.",
+      "description": "Where a full pressure regulator manifold is more than the application needs, the FL-KIT 01-18 provides basic pressure protection in a compact form. A calibrated safety valve at the outlet of the GasMix instrument opens if the pressure rises above its set value, protecting downstream equipment such as columns, loops and reactors. The valve is set to a value agreed with the customer, and custom settings are available on request. Compared with PReM it does not provide an adjustable working pressure; it acts as a safeguard rather than a regulator. It suits simple installations where protection, rather than a regulated working pressure, is what the bench needs. The kit is listed on the manufacturer's products page among the accessories for the GasMix and LiqMix range, alongside PReM, the overpressure limiter and the simplified flow kit FL-KIT02-18, so the level of pressure control can be matched to the complexity of the bench.",
+      "keySpecs": [
+        {
+          "label": "Function",
+          "value": "Compact pressure safeguard"
+        },
+        {
+          "label": "Protection element",
+          "value": "Calibrated safety valve"
+        },
+        {
+          "label": "Valve setting",
+          "value": "Custom set on request"
+        },
+        {
+          "label": "Relationship",
+          "value": "Simplified alternative to PReM"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Protecting columns, loops and reactors from over-pressure",
+        "Basic pressure protection on simple benches"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "safety valve for gas mixer outlet",
+        "pressure safeguard calibration gas bench",
+        "FL-KIT gas diluter accessory"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://gasmix.com/accessories/",
+      "imageUrls": [],
+      "datasheetUrl": null
+    }
+  ]
+}

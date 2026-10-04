@@ -1,0 +1,161 @@
+---
+import Icon from './Icon.astro';
+import { brands } from '../data/brands';
+import { t, localize, unlocalize, type Lang } from '../i18n';
+
+interface Props { lang: Lang; path: string }
+const { lang, path } = Astro.props;
+const L = (p: string) => localize(lang, p);
+const other: Lang = lang === 'en' ? 'ar' : 'en';
+const twin = localize(other, /^\/404\/?$/.test(unlocalize(path)) ? '/' : unlocalize(path));
+const principals = brands.filter((b) => b.slug !== 'gasmix');
+
+const nav = [
+  { href: '/industries/', label: t(lang, 'nav.industries') },
+  { href: '/services/', label: t(lang, 'nav.services') },
+  { href: '/about/', label: t(lang, 'nav.about') },
+  { href: '/contact/', label: t(lang, 'nav.contact') },
+];
+const current = (href: string) => unlocalize(path).startsWith(href);
+---
+<header id="site-header" class="group/header fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color] duration-300" data-tone="light">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-3 focus:z-10 focus:rounded-sm focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white">{t(lang, 'nav.skip')}</a>
+  <div class="header-bar border-b">
+    <div class="wrap flex h-[72px] items-center gap-6">
+      <a href={L('/')} class="flex shrink-0 items-center gap-3" aria-label="AlyTech Scientific — home">
+        <img src="/brand/logo-96.png" srcset="/brand/logo-192.png 2x" width="47" height="48" alt="" class="logo-dark h-12 w-auto" />
+        <img src="/brand/logo-light-96.png" srcset="/brand/logo-light-192.png 2x" width="47" height="48" alt="" class="logo-light hidden h-12 w-auto" />
+        <span class="label hidden border-s border-current/20 ps-3 text-[11px] leading-tight opacity-80 sm:block">Scientific<br />Equipment</span>
+      </a>
+
+      <nav class="ms-4 hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <div class="relative" data-menu>
+          <button type="button" class="nav-link inline-flex items-center gap-1.5" aria-expanded="false" aria-controls="mega-products" data-menu-button>
+            {t(lang, 'nav.products')}
+            <Icon name="chevron-down" size={16} class="transition-transform duration-200 [[aria-expanded=true]>&]:rotate-180" />
+          </button>
+          <div id="mega-products" class="mega invisible absolute start-0 top-full w-[min(920px,calc(100vw-80px))] translate-y-2 pt-3 opacity-0 transition duration-200" data-menu-panel>
+            <div class="card grid grid-cols-[1.1fr_1.4fr_1fr] gap-0 overflow-hidden text-ink shadow-[var(--shadow-pop)]">
+              <a href={L('/gasmix/')} class="group/g relative flex flex-col justify-between bg-night-900 p-6 text-white">
+                <span class="label text-brand-300">{lang === 'ar' ? 'منتج المجموعة' : 'Our group’s own'}</span>
+                <span>
+                  <span class="display block text-3xl">GasMix™</span>
+                  <span class="mt-2 block text-sm text-white/70">{lang === 'ar' ? 'أجهزة خلط وتخفيف الغازات المصممة في فرنسا.' : 'Gas mixers and diluters designed by AlyTech in France.'}</span>
+                  <span class="link-arrow mt-4 text-sm">{lang === 'ar' ? 'استكشف GasMix' : 'Explore GasMix'} <Icon name="arrow" size={16} flip /></span>
+                </span>
+              </a>
+              <div class="p-6">
+                <p class="label mb-3 text-mute">{t(lang, 'nav.principals')}</p>
+                <ul class="grid grid-cols-2 gap-x-4 gap-y-1">
+                  {principals.map((b) => (
+                    <li>
+                      <a href={L(`/principals/${b.slug}/`)} class="block rounded-xs px-2 py-2 transition-colors hover:bg-brand-50">
+                        <span class="block text-[15px] font-semibold">{b.name}</span>
+                        <span class="block text-[13px] leading-snug text-mute">{b.discipline[lang]}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a href={L('/equipment/')} class="flex flex-col justify-between border-s border-line bg-surface p-6 transition-colors hover:bg-brand-50">
+                <span class="label text-mute">{t(lang, 'nav.equipment')}</span>
+                <span>
+                  <span class="block text-sm text-ink-soft">{lang === 'ar' ? 'غرف الاختبار البيئي، آلات الاختبار الشامل، اختبار الخرسانة والتربة، التغليف، الطلاءات والمزيد.' : 'Environmental chambers, universal testing machines, concrete & soil, packaging, coatings and more.'}</span>
+                  <span class="link-arrow mt-4 text-sm">{lang === 'ar' ? 'تصفح الفئات' : 'Browse categories'} <Icon name="arrow" size={16} flip /></span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        {nav.map((n) => (
+          <a href={L(n.href)} class="nav-link" aria-current={current(n.href) ? 'page' : undefined}>{n.label}</a>
+        ))}
+      </nav>
+
+      <div class="ms-auto flex items-center gap-2">
+        <a href={L('/search/')} class="icon-btn" aria-label={t(lang, 'nav.search')}><Icon name="search" /></a>
+        <a href={twin} hreflang={other} lang={other} class="icon-btn hidden w-auto gap-2 px-3 text-sm font-medium sm:inline-flex"><Icon name="globe" size={18} />{t(lang, 'nav.switch')}</a>
+        <button type="button" class="btn btn-primary btn-sm hidden md:inline-flex" data-lead="quote">{t(lang, 'cta.quote')}</button>
+        <button type="button" class="icon-btn lg:hidden" aria-expanded="false" aria-controls="mobile-nav" data-mobile-toggle aria-label={t(lang, 'nav.menu')}><Icon name="menu" /></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="fixed inset-0 top-[72px] hidden overflow-y-auto bg-card text-ink lg:hidden" data-mobile-panel>
+    <nav class="wrap flex flex-col py-6" aria-label="Mobile">
+      <a href={L('/gasmix/')} class="mobile-link">GasMix™</a>
+      <p class="label mt-6 mb-2 text-mute">{t(lang, 'nav.principals')}</p>
+      {principals.map((b) => <a href={L(`/principals/${b.slug}/`)} class="mobile-link text-lg">{b.name}</a>)}
+      <a href={L('/equipment/')} class="mobile-link mt-6">{t(lang, 'nav.equipment')}</a>
+      {nav.map((n) => <a href={L(n.href)} class="mobile-link">{n.label}</a>)}
+      <a href={twin} hreflang={other} lang={other} class="mobile-link">{t(lang, 'nav.switch')}</a>
+      <button type="button" class="btn btn-primary mt-8" data-lead="quote">{t(lang, 'cta.quote')}</button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header-bar { border-color: transparent; }
+  /* Tone: light (solid on scroll) vs dark (transparent over the night stage) */
+  #site-header[data-tone="light"] { color: var(--color-ink); }
+  #site-header[data-tone="light"].is-scrolled .header-bar,
+  #site-header[data-tone="light"].is-open .header-bar {
+    background: rgb(255 255 255 / 0.86); backdrop-filter: blur(14px) saturate(1.4); border-color: var(--color-line);
+  }
+  #site-header[data-tone="dark"] { color: #fff; }
+  #site-header[data-tone="dark"] .logo-dark { display: none; }
+  #site-header[data-tone="dark"] .logo-light { display: block; }
+  #site-header[data-tone="dark"].is-scrolled .header-bar { background: rgb(8 6 15 / 0.55); backdrop-filter: blur(14px); border-color: rgb(255 255 255 / 0.08); }
+  #site-header[data-tone="dark"] .nav-link:hover, #site-header[data-tone="dark"] .nav-link[aria-expanded="true"], #site-header[data-tone="dark"] .icon-btn:hover { background: rgb(255 255 255 / 0.1); }
+  #site-header[data-tone="dark"] .nav-link[aria-current="page"] { color: var(--color-brand-300); }
+  #site-header[data-tone="dark"] :focus-visible { outline-color: var(--color-brand-300); }
+
+  [data-menu].is-open .mega { visibility: visible; opacity: 1; transform: none; }
+</style>
+
+<script>
+  const header = document.getElementById('site-header')!;
+  // Scrolled state
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  onScroll();
+  addEventListener('scroll', onScroll, { passive: true });
+
+  // Tone follows whichever section sits under the header band
+  const darkSections = document.querySelectorAll('[data-header="dark"]');
+  if (darkSections.length) {
+    const visible = new Set<Element>();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+      header.dataset.tone = visible.size && !header.classList.contains('is-open') ? 'dark' : 'light';
+    }, { rootMargin: '0px 0px -92% 0px' });
+    darkSections.forEach((s) => io.observe(s));
+  }
+
+  // Products mega menu: click/keyboard toggles, hover opens on fine pointers
+  document.querySelectorAll<HTMLElement>('[data-menu]').forEach((menu) => {
+    const btn = menu.querySelector<HTMLButtonElement>('[data-menu-button]')!;
+    let timer: number | undefined;
+    const set = (open: boolean) => { menu.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); };
+    btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+    if (matchMedia('(hover: hover)').matches) {
+      menu.addEventListener('mouseenter', () => { clearTimeout(timer); set(true); });
+      menu.addEventListener('mouseleave', () => { timer = window.setTimeout(() => set(false), 160); });
+    }
+    menu.addEventListener('keydown', (e) => { if (e.key === 'Escape') { set(false); btn.focus(); } });
+    menu.addEventListener('focusout', (e) => { if (!menu.contains(e.relatedTarget as Node)) set(false); });
+  });
+
+  // Mobile sheet
+  const toggle = document.querySelector<HTMLButtonElement>('[data-mobile-toggle]')!;
+  const panel = document.querySelector<HTMLElement>('[data-mobile-panel]')!;
+  const setMobile = (open: boolean) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    panel.classList.toggle('hidden', !open);
+    header.classList.toggle('is-open', open);
+    if (open) header.dataset.tone = 'light';
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  };
+  toggle.addEventListener('click', () => setMobile(toggle.getAttribute('aria-expanded') !== 'true'));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMobile(false); toggle.focus(); } });
+  panel.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a,[data-lead]')) setMobile(false); });
+</script>

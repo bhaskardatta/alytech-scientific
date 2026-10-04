@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import { industries } from '../data/industries';
+import { industryContent } from '../data/industryContent';
+import { brands } from '../data/brands';
+import { breadcrumbLd } from '../data/schema';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.industries') }];
+const name = (s: string) => brands.find((b) => b.slug === s)?.name;
+---
+<Base
+  lang={lang}
+  title={ar ? 'القطاعات التي نخدمها | أجهزة مخبرية للشرق الأوسط | AlyTech' : 'Industries We Serve | Laboratory Instruments for the Middle East | AlyTech'}
+  description={ar ? 'أجهزة مخبرية واختبار لقطاعات النفط والغاز والبتروكيماويات والبناء والمواد والأدوية والأغذية والبيئة والطاقة والبحث العلمي في الشرق الأوسط.' : 'Laboratory and testing instruments for oil & gas, petrochemical, construction, materials, pharmaceutical, food, environmental, power and research labs across the Middle East.'}
+  schema={[breadcrumbLd(crumbs, L('/industries/'))]}
+>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap py-12 md:py-16">
+      <Breadcrumbs items={crumbs} />
+      <h1 class="display mt-10 max-w-3xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'الأجهزة المناسبة لكل مختبر في المنطقة.' : 'The right instruments for every lab in the region.'}</h1>
+    </div>
+  </section>
+  <section class="py-12 md:py-16">
+    <ul class="wrap grid gap-3 md:grid-cols-2">
+      {industries.map((ind) => (
+        <li>
+          <a href={L(`/industries/${ind.slug}/`)} class="group card flex h-full flex-col gap-4 p-7 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
+            <span class="flex items-center justify-between gap-4">
+              <span class="display text-2xl">{ind.name[lang]}</span>
+              <Icon name="arrow" size={20} flip class="text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
+            </span>
+            <span class="text-[15.5px] text-mute">{industryContent[ind.slug].intro[lang]}</span>
+            <span class="label mt-auto text-ink-soft">{industryContent[ind.slug].brands.map(name).join(' · ')}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

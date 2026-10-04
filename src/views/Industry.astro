@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProductCard from '../components/ProductCard.astro';
+import ServiceStrip from '../components/ServiceStrip.astro';
+import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+import { brands } from '../data/brands';
+import { productsOf, brandPath } from '../data/catalog';
+import { industryContent } from '../data/industryContent';
+import type { Industry as Ind } from '../data/industries';
+import { breadcrumbLd, faqLd } from '../data/schema';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang; industry: Ind }
+const { lang, industry } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const c = industryContent[industry.slug];
+const featured = c.brands.map((s) => brands.find((b) => b.slug === s)!).filter(Boolean);
+const items = brands
+  .flatMap((b) => productsOf(b.slug).filter((p) => p.priority !== 'niche' && p.industries.includes(industry.slug)).map((p) => ({ b, p })))
+  .sort((x, y) => c.brands.indexOf(x.b.slug) - c.brands.indexOf(y.b.slug))
+  .slice(0, 8);
+const faqs = c.faqs.map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+const crumbs = [
+  { label: ar ? 'الرئيسية' : 'Home', href: L('/') },
+  { label: t(lang, 'nav.industries'), href: L('/industries/') },
+  { label: industry.name[lang] },
+];
+const url = L(`/industries/${industry.slug}/`);
+const title = ar ? `أجهزة ${industry.name.ar} في الإمارات والشرق الأوسط | AlyTech` : `${industry.name.en} Laboratory Instruments in the UAE & Middle East | AlyTech`;
+---
+<Base lang={lang} title={title} description={c.intro[lang].slice(0, 158)} schema={[faqLd(faqs), breadcrumbLd(crumbs, url)]}>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap py-12 md:py-16">
+      <Breadcrumbs items={crumbs} />
+      <p class="label mt-10 text-brand-600">{t(lang, 'nav.industries')}</p>
+      <h1 class="display mt-3 text-[clamp(2.2rem,5vw,4rem)]">{industry.name[lang]}</h1>
+      <p class="mt-5 max-w-3xl text-[18px] leading-relaxed text-ink-soft">{c.intro[lang]}</p>
+      <ul class="mt-8 flex flex-wrap gap-2">
+        {featured.map((b) => <li><a href={L(brandPath(b))} class="inline-flex items-center gap-2 rounded-full border border-line-strong px-3.5 py-1.5 text-[14px] font-medium transition-colors hover:border-brand-500 hover:text-brand-700">{b.name}<Icon name="arrow" size={14} flip /></a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  {items.length > 0 && (
+    <section class="py-14 md:py-20" aria-labelledby="ind-prod-h">
+      <div class="wrap">
+        <h2 id="ind-prod-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أجهزة مختارة لهذا القطاع' : 'Instruments for this sector'}</h2>
+        <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map(({ b, p }) => <ProductCard lang={lang} brand={b} product={p} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="faq-h">
+    <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+      <div>
+        <h2 id="faq-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أسئلة شائعة' : 'Questions we hear'}</h2>
+        <p class="mt-4 text-mute">{ar ? 'لم تجد إجابتك؟' : 'Not covered here?'}</p>
+        <button type="button" class="link-arrow mt-2" data-lead="whatsapp" data-product={industry.name.en}><Icon name="whatsapp" size={18} />{t(lang, 'cta.whatsapp')}</button>
+      </div>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <ServiceStrip lang={lang} />
+</Base>

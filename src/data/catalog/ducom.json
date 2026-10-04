@@ -1,0 +1,1088 @@
+{
+  "brand": "Ducom Instruments",
+  "brandSlug": "ducom",
+  "brandUrl": "https://www.ducom.com",
+  "headquarters": "Bangalore, India (regional offices in Bohemia, New York, USA; Groningen, Netherlands; Kuala Lumpur, Malaysia)",
+  "brandSummary": "Ducom Instruments designs and builds test instruments and software for tribology, mechanical testing and petroleum analysis, with a company history that began in 1978. Its four-ball testers, HFRR fuel lubricity rig, KRL shear rigs and automatic flash, pour and cloud point apparatus serve lubricant and fuel laboratories worldwide. Contract testing services, a lab-assistant software platform and distributors in more than 29 countries complete the offer.",
+  "logoUrl": "https://www.ducom.com/hubfs/DUCOM/Logos/Ducom%20Logos/Ducom%20-%20Logo%20-%20Full%20-%20Vector%20(90%20Gray%20and%20Light%20Blue-Inverted)%20-%20PNG.png",
+  "products": [
+    {
+      "name": "Four Ball Tester FBT-3",
+      "model": "FBT-3",
+      "slug": "four-ball-tester-fbt-3",
+      "category": "Lubricant Tribometer",
+      "priority": "flagship",
+      "summary": "Compact benchtop four-ball tester that measures extreme-pressure, anti-wear and friction behavior of oils, greases and additives. Automatic loading, a touchscreen with preset ASTM, DIN, IP and ISO programs, and a patented friction sensor keep results repeatable between operators. Optional KRL shear stability and 200 °C modules extend it into transmission-fluid and high-temperature work.",
+      "description": "The four-ball test presses one rotating steel ball against three stationary balls submerged in the lubricant under test. The scar diameter left on the lower balls ranks anti-wear performance, the load at which the balls weld together marks extreme-pressure capability, and the friction torque yields the coefficient of friction. The FBT-3 automates this procedure with computer-controlled loading, a built-in touchscreen and stored programs for the common ASTM, DIN, IP and ISO methods, plus a custom mode for research protocols. A patented friction measurement system and an AI-assisted wear scar prediction tool are offered to speed up evaluation. Add-on modules cover KRL tapered roller bearing shear stability testing aligned with CEC L-45 and a high-temperature ball pot reaching 200 °C. The MOOHA digital assistant can log data and keep an audit trail. Lubricant blenders, refinery quality laboratories, additive suppliers and university tribology groups use the FBT-3 to rank formulations, compare fresh and used oil, and qualify products against published specifications.",
+      "keySpecs": [
+        {
+          "label": "Speed",
+          "value": "300 to 3000 rpm"
+        },
+        {
+          "label": "Load range",
+          "value": "100 to 10,000 N"
+        },
+        {
+          "label": "Friction force",
+          "value": "0 to 200 N"
+        },
+        {
+          "label": "Friction torque",
+          "value": "0 to 16 Nm"
+        },
+        {
+          "label": "Temperature",
+          "value": "Up to 90 °C (200 °C optional)"
+        },
+        {
+          "label": "Shear rate with optional KRL attachment",
+          "value": "10^7 per second"
+        },
+        {
+          "label": "Loading",
+          "value": "Automatic"
+        },
+        {
+          "label": "Interface",
+          "value": "Built-in touchscreen with preset test standards"
+        }
+      ],
+      "standards": [
+        "ASTM D2266",
+        "ASTM D2596",
+        "ASTM D2783",
+        "ASTM D4172",
+        "ASTM D5183",
+        "DIN 51350-2",
+        "DIN 51350-3",
+        "DIN 51350-4",
+        "DIN 51350-5",
+        "IP 239",
+        "ISO 20623",
+        "CEC L-45-99 (with KRL module)"
+      ],
+      "applications": [
+        "Extreme-pressure and weld load testing of oils and greases",
+        "Wear scar ranking of anti-wear additives",
+        "Coefficient of friction screening of lubricants",
+        "Shear stability of polymer-containing oils with the KRL module",
+        "Fresh versus used oil comparison",
+        "Biodegradable and vegetable oil evaluation",
+        "Nanoadditive performance studies"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "four ball tester",
+        "four ball wear test ASTM D4172 equipment",
+        "extreme pressure lubricant tester ASTM D2783",
+        "grease weld load tester ASTM D2596",
+        "lubricant anti-wear testing machine",
+        "four ball tester supplier UAE"
+      ],
+      "whyMiddleEast": "Lubricant blending plants and refinery quality labs across the Gulf can run EP and wear qualification in-house against ASTM and IP methods.",
+      "sourceUrl": "https://www.ducom.com/four-ball-tester-fbt-3",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(FBT-3)/Website%20-%20Four%20Ball%20Tester%20(FBT-3)/Four-Ball-Tester-FBT-3-Screen-On.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(FBT-3)/Website%20-%20Four%20Ball%20Tester%20(FBT-3)/Image-Acquisition-System-FBT-3-Standalone.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(FBT-3)/FBT-3%20Images%20and%20Videos/FBT3%20wear%20scar%20prediction.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Four Ball Tester TR-30 Series",
+      "model": "TR-30",
+      "slug": "four-ball-tester-tr-30",
+      "category": "Lubricant Tribometer",
+      "priority": "core",
+      "summary": "Floor-standing four-ball machine with a 35-year production record, built stiff enough for extreme-pressure tests and sensitive enough for anti-wear work. It handles oils, greases, metalworking fluids and additives, with attachments for KRL shear stability, rolling contact fatigue and thrust washer tests to widen the method coverage.",
+      "description": "The TR-30 Series was introduced as a four-ball machine able to run both extreme-pressure and wear-preventive tests on a single frame, and the current generation refines its accuracy and control. Manual loading is the base configuration, with pneumatic loading as an option, and the instrument covers loads up to 10,000 N at speeds from 300 to 3000 rpm, with a high-speed option. Friction force and torque are recorded during the test, and an image acquisition system can be fitted to document wear scars. Optional attachments extend the platform beyond the standard four-ball methods: a KRL tapered roller bearing module for viscosity shear stability under CEC L-45, a modified four-ball rolling contact fatigue arrangement for IP 300, a thrust washer fixture for ASTM D3702 and a pot that heats the lubricant to 200 °C. Laboratories that already maintain a mechanical four-ball rig, as well as new buyers wanting an established design, use the TR-30 to certify lubricant quality, benchmark competitors and support additive development.",
+      "keySpecs": [
+        {
+          "label": "Speed",
+          "value": "300 to 3000 rpm (high-speed option available)"
+        },
+        {
+          "label": "Load range",
+          "value": "100 to 10,000 N"
+        },
+        {
+          "label": "Friction force",
+          "value": "0 to 200 N"
+        },
+        {
+          "label": "Friction torque",
+          "value": "0 to 16 Nm"
+        },
+        {
+          "label": "Temperature",
+          "value": "Up to 90 °C (200 °C optional)"
+        },
+        {
+          "label": "Loading options",
+          "value": "Manual or pneumatic"
+        },
+        {
+          "label": "Optional attachments",
+          "value": "KRL shear stability, rolling fatigue, thrust washer, image acquisition"
+        }
+      ],
+      "standards": [
+        "ASTM D2266",
+        "ASTM D2596",
+        "ASTM D2783",
+        "ASTM D3702 (thrust washer option)",
+        "ASTM D4172",
+        "ASTM D5183",
+        "DIN 51350-2",
+        "DIN 51350-3",
+        "DIN 51350-4",
+        "DIN 51350-5",
+        "DIN 51350-6 (KRL option)",
+        "IP 239",
+        "IP 300 (fatigue option)",
+        "ISO 20623",
+        "CEC L-45-A-99 (KRL option)"
+      ],
+      "applications": [
+        "Extreme-pressure testing of lubricating oils and greases",
+        "Wear preventive characterization",
+        "Quality control of produced oils and blends",
+        "Rolling contact fatigue screening",
+        "Thrust washer wear and friction testing",
+        "Benchmarking against competitor lubricants"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "TR-30 four ball tester",
+        "four ball extreme pressure tester",
+        "grease wear test machine",
+        "IP 300 rolling contact fatigue four ball",
+        "lubricant tester for refinery laboratory",
+        "four ball tester with KRL attachment"
+      ],
+      "whyMiddleEast": "Established design suited to refinery and lubricant plant QC laboratories that need a rugged EP and wear tester for routine certification.",
+      "sourceUrl": "https://www.ducom.com/four-ball-tester-tr-30-series",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(TR%2030%20Series)/TR%2030%20Series%20-%20Manual%20Loading%20-%20No%20Background.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(TR%2030%20Series)/Four%20Ball%20Tester%20-%20KRL%20shear%20stability%20attachment.jpg",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(TR%2030%20Series)/Four%20Ball%20Tester%20-%20Rolling%20Contact%20Fatigue%20(IP300)%20attachment.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "High Frequency Reciprocating Rig HFRR 4.2",
+      "model": "HFRR 4.2",
+      "slug": "hfrr-fuel-lubricity-tester",
+      "category": "Fuel Lubricity Tester",
+      "priority": "flagship",
+      "summary": "Fuel lubricity tester that rubs a small steel ball against a disk in a fluid bath and reports the wear scar, as required for diesel specifications. Preloaded ASTM, ISO, IP and CEC protocols and a salt-free automatic humidity controller reduce operator steps. It also handles gasoline, lubricants and fretting wear studies.",
+      "description": "Low-sulfur and renewable diesel loses much of the natural lubricity that protects injection pumps, so refineries and fuel terminals verify it with the high frequency reciprocating rig. In the HFRR a 6 mm ball oscillates against a stationary disk immersed in a small fuel sample at controlled temperature and humidity, and the resulting wear scar diameter and friction trace indicate how well the fuel protects metal surfaces. The HFRR 4.2 embeds the test protocols in its software, so ASTM D6079, ISO 12156-1, IP 450 and related methods run at the click of a button. An integrated humidity controller uses distilled water only, without salt solutions, and logs air temperature and humidity through the whole test to meet the laboratory air conditions of ISO 12156-1. A temperature range to 150 °C, extendable to 400 °C, together with adjustable stroke and frequency also supports lubricant screening and fretting wear experiments. Fuel quality laboratories, additive developers and university groups use it to qualify diesel, hydrotreated vegetable oil, gas-to-liquids fluids and biofuel blends.",
+      "keySpecs": [
+        {
+          "label": "Frequency",
+          "value": "10 to 200 Hz"
+        },
+        {
+          "label": "Stroke",
+          "value": "20 µm to 2.0 mm"
+        },
+        {
+          "label": "Load",
+          "value": "0 to 1.0 kg (dead weight)"
+        },
+        {
+          "label": "Maximum friction force",
+          "value": "10.0 N"
+        },
+        {
+          "label": "Temperature",
+          "value": "Ambient to 150 °C (ambient to 400 °C optional)"
+        },
+        {
+          "label": "Upper specimen (ball)",
+          "value": "6.0 mm diameter"
+        },
+        {
+          "label": "Lower specimen (disk)",
+          "value": "10.0 mm diameter x 3 mm thick"
+        },
+        {
+          "label": "Power",
+          "value": "100 to 240 VAC, 50/60 Hz"
+        }
+      ],
+      "standards": [
+        "ASTM D6079",
+        "ASTM D7688",
+        "ISO 12156-1",
+        "IP 450",
+        "CEC F-06-A-96",
+        "EN 590",
+        "JPI-5S-50-98",
+        "SH/T 0765",
+        "GOST R ISO 12156-1"
+      ],
+      "applications": [
+        "Diesel fuel lubricity certification",
+        "Biofuel and hydrotreated vegetable oil lubricity studies",
+        "Screening of lubricity additives for low-sulfur diesel",
+        "Gasoline and engine oil friction and wear testing",
+        "Fretting wear studies",
+        "Fuel pump coating evaluation"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "HFRR diesel lubricity tester",
+        "ASTM D6079 HFRR apparatus",
+        "ISO 12156-1 test equipment",
+        "high frequency reciprocating rig price",
+        "fuel lubricity testing equipment",
+        "diesel wear scar test"
+      ],
+      "whyMiddleEast": "Gulf refineries producing ultra-low sulfur diesel can verify lubricity in-house against ASTM D6079 and EN 590 export requirements.",
+      "sourceUrl": "https://www.ducom.com/high-frequency-reciprocating-rig-hfrr",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/HFRR/Videos%20and%20Images/HFRR%204.2.30.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "KRL Shear Stability Tester KRL-SST-1",
+      "model": "KRL-SST-1",
+      "slug": "krl-shear-stability-tester",
+      "category": "Lubricant Shear Stability Tester",
+      "priority": "core",
+      "summary": "Stand-alone, automatic KRL tapered roller bearing rig for measuring how much viscosity a gear, hydraulic or transmission oil loses under shear. Closed-loop loading and temperature control support runs of several hundred hours, so a four-ball tester does not need to be tied up with long CEC L-45 tests.",
+      "description": "Polymeric viscosity index improvers thin out as their molecules are cut by shear in service, and the KRL test reproduces this by running an oil through a tapered roller bearing under load and measuring the kinematic viscosity before and after. The KRL-SST-1 is a dedicated machine for this method, designed to follow CEC L-45-99 and DIN 51350-6. An automatic loading system holds force steadily through very long tests, while a purpose-built temperature controller with a fast-response sensor keeps oil temperature within narrow limits. Optional modules add manual loading or a frictional torque measurement channel, which can also capture shear-induced heating and thermal response beyond what the standards require. Instrument health and test data can be followed remotely through the MOOHA digital twin and mobile application. Laboratories that evaluate hydraulic and gear oils for mining and construction equipment, polymer suppliers screening new viscosity modifiers, and transmission fluid developers use it to rank candidates and build predictive models of oil ageing.",
+      "keySpecs": [
+        {
+          "label": "Applicable methods",
+          "value": "CEC L-45-99 and DIN 51350-6"
+        },
+        {
+          "label": "Load per CEC L-45-99 test condition",
+          "value": "5000 N"
+        },
+        {
+          "label": "Speed per CEC L-45-99 test condition",
+          "value": "1475 rpm"
+        },
+        {
+          "label": "Oil temperature per test condition",
+          "value": "60 °C"
+        },
+        {
+          "label": "Loading system",
+          "value": "Automatic, stable over long-duration tests"
+        },
+        {
+          "label": "Run length capability",
+          "value": "Several hundred hours per test"
+        },
+        {
+          "label": "Options",
+          "value": "Manual loading, frictional torque module, MOOHA digital assistant"
+        }
+      ],
+      "standards": [
+        "CEC L-45-99",
+        "DIN 51350-6"
+      ],
+      "applications": [
+        "Viscosity shear stability of transmission and gear oils",
+        "Screening of viscosity index improver polymers",
+        "Hydraulic and gear oil quality analysis for mining and construction equipment",
+        "Accelerated oil ageing studies",
+        "Electric vehicle transmission fluid evaluation"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "KRL shear stability tester",
+        "CEC L-45-99 test apparatus",
+        "viscosity index improver shear test",
+        "KRL tapered roller bearing rig",
+        "gear oil shear stability testing equipment",
+        "DIN 51350-6 tester"
+      ],
+      "whyMiddleEast": "Useful for regional lubricant blenders qualifying hydraulic and gear oils for mining and construction fleets.",
+      "sourceUrl": "https://www.ducom.com/krl-shear-stability-tester",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/KRL%20Shear%20Stability%20Tester/KRL%20Videos%20and%20Images/KRL%20Product%20Image.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Universal Tester UNITEST",
+      "model": "UNITEST",
+      "slug": "unitest-universal-tester",
+      "category": "Universal Mechanical and Tribology Test Platform",
+      "priority": "flagship",
+      "summary": "Modular test platform that combines mechanical testing, tribology, digital microscopy and 3D profilometry on one frame. Interchangeable load heads, motion drives and environment modules let a single laboratory run scratch, pin-on-disk, fretting, linear wear and micro-scale tests from ambient down to minus 120 °C and up to 1200 °C.",
+      "description": "The UNITEST is built around a rigid hybrid frame with a synchronized dual drive system, an embedded high-precision Y stage and position sensors on both axes, while its electronics are housed separately to protect signal quality. The user builds a configuration in four steps: choose a load head, a motion drive, an environment module and an imaging module. Load heads span the MicroForce, DecaForce, HectoForce and KiloForce series, with 1, 2, 3 or 6-axis force sensing based on strain gauge, capacitive or piezoelectric elements, plus a BioForce head for biotribology. Motion modules include linear micro, macro and high-performance drives and rotary drives, covering pin-on-disk, piston and cylinder liner and fretting wear tests. Environmental options reach from ambient down to minus 120 °C and up to 1200 °C, with lubrication, corrosion and humidity modules also offered. A plug-in digital microscope with brightfield and darkfield modes and a non-contact 3D profiler on the moving beam allow test data, images and surface maps to be reported together. Research institutes, coating developers, materials laboratories and universities select it where one platform must serve many test methods.",
+      "keySpecs": [
+        {
+          "label": "Force sensing",
+          "value": "1, 2, 3 and 6 axis load heads (strain gauge, capacitive or piezoelectric)"
+        },
+        {
+          "label": "Load head families",
+          "value": "MicroForce, DecaForce, HectoForce, KiloForce, BioForce"
+        },
+        {
+          "label": "Low-temperature option",
+          "value": "Ambient to -120 °C"
+        },
+        {
+          "label": "High-temperature option",
+          "value": "Ambient to 1200 °C"
+        },
+        {
+          "label": "Motion modules",
+          "value": "Linear micro, linear macro, linear high-performance, rotary"
+        },
+        {
+          "label": "Surface evaluation",
+          "value": "Digital microscopy (brightfield, darkfield) and non-contact 3D profilometry"
+        },
+        {
+          "label": "Platform load capacity (UNITEST Scratch configuration)",
+          "value": "Up to 2,000 N"
+        },
+        {
+          "label": "Stroke (UNITEST Scratch configuration)",
+          "value": "Up to 50 mm"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Scratch and adhesion testing of coatings",
+        "Pin-on-disk and linear reciprocating wear tests",
+        "Fretting and piston ring and cylinder liner studies",
+        "High-temperature and low-temperature friction testing",
+        "Tribocorrosion studies",
+        "Combined wear testing with microscopy and 3D profilometry"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "research-academia",
+        "oil-gas",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "universal tribometer",
+        "universal testing platform tribology",
+        "scratch tester coatings",
+        "multi-axis tribometer for research",
+        "high temperature tribometer 1200 C",
+        "tribology and microscopy test system"
+      ],
+      "whyMiddleEast": "Suited to university and national research centers in the region that need one flexible platform for wear, coating and materials programs.",
+      "sourceUrl": "https://www.ducom.com/universal-tester-unitest",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/UniTest/UniTest%20-%20Render%201.10.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/UniTest/Ducom%20Instruments%20-%20Low%20Load%20Stage.jpg",
+        "https://www.ducom.com/hubfs/DUCOM/Products/UniTest/Ducom%20Instruments%20-%20TriboCorrosion%20Cell.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Multi Capability Tribometer POD 4.0",
+      "model": "POD 4.0",
+      "slug": "pod-4-pin-on-disk-tribometer",
+      "category": "Tribometer",
+      "priority": "core",
+      "summary": "Tabletop tribometer that switches between rotary pin or ball-on-disk, linear reciprocating, block-on-ring and traction tests by swapping modules. A direct-drive rotary stage covers 0.1 to 5000 rpm, a dead-weight system covers 0.25 to 200 N, and humidity, temperature, lubrication and corrosion environments can be added.",
+      "description": "Friction and wear behavior depends on speed, load, temperature and atmosphere, so most tribology laboratories need a tester that can vary all of them. The POD 4.0 is a modular tribometer whose base unit performs rotary pin or ball-on-disk tests and whose motion modules convert it to angular oscillation, linear reciprocation or block-on-ring configurations. A rotary-to-linear change takes under two minutes. The direct-drive stage gives immediate response over a speed range of 0.1 to 5000 rpm in both directions, and a psi-cage friction sensor is designed to remove parasitic friction and thermal drift. Every unit includes a high-resolution wear sensor suited to thin coatings and soft materials. Dead-weight loading covers 0.25 to 200 N without part changes and can be upgraded to automatic loading for run-in, ramp and step profiles. Spiral track and constant sliding speed modes help keep conditions uniform. Environment modules provide humidity, low and high temperature, lubrication and tribocorrosion options. Typical users test brake materials, cutting tool and hardface coatings, polymers, lubricant additives and food and beverage lubrication.",
+      "keySpecs": [
+        {
+          "label": "Rotary speed",
+          "value": "0.1 to 5000 rpm, clockwise and counter-clockwise"
+        },
+        {
+          "label": "Dead-weight load range",
+          "value": "0.25 N to 200 N"
+        },
+        {
+          "label": "Test configurations",
+          "value": "Pin/ball-on-disk, linear reciprocating, angular oscillation, block-on-ring, traction"
+        },
+        {
+          "label": "Rotary to linear conversion time",
+          "value": "Under 2 minutes"
+        },
+        {
+          "label": "Friction sensor",
+          "value": "Psi-cage design"
+        },
+        {
+          "label": "Wear measurement",
+          "value": "High-resolution sensor included"
+        },
+        {
+          "label": "Loading upgrade",
+          "value": "Automatic loading with run-in, ramp and step loads"
+        },
+        {
+          "label": "Environment options",
+          "value": "Humidity, low and high temperature, lubrication, corrosion"
+        }
+      ],
+      "standards": [
+        "ASTM G99",
+        "ASTM G133",
+        "ASTM G77",
+        "ASTM G59",
+        "ASTM G102",
+        "DIN 50324",
+        "DIN ISO 7148-1",
+        "DIN ISO 7148-2"
+      ],
+      "applications": [
+        "Pin-on-disk wear testing of metals, ceramics and polymers",
+        "Stribeck curves for lubricants and additives",
+        "Brake pad friction at elevated temperature",
+        "Coating characterization (TiN, DLC and similar)",
+        "Wear of cutting tools and hardface coatings used in mining",
+        "Tribocorrosion testing"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "research-academia",
+        "oil-gas",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "pin on disk tribometer",
+        "ASTM G99 tribometer",
+        "ball on disk wear tester",
+        "reciprocating tribometer ASTM G133",
+        "tribometer with high temperature module",
+        "friction and wear tester university"
+      ],
+      "whyMiddleEast": "Common choice for university and industrial materials laboratories that need a single wear tester for coatings, polymers and lubricants.",
+      "sourceUrl": "https://www.ducom.com/multi-capability-tribometer-pin/ball-on-disk",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Pin%20on%20Disk%20(POD%204.0)/Videos%20and%20Images/POD%20rotary-1.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Pin%20on%20Disk%20(POD%204.0)/Videos%20and%20Images/Pin%20on%20Disk%20(POD-4.0)%20-%20High%20Temperature%20(4x3).png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Pin%20on%20Disk%20(POD%204.0)/Videos%20and%20Images/POD%204.0%20-%20TriboCorrosion%20Module%20-%20Rotary%20Drive.14%20(4x3).png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Pensky Martens Flash Point Tester FPM",
+      "model": "FPM",
+      "slug": "pensky-martens-flash-point-tester",
+      "category": "Petroleum Tester (Flash Point)",
+      "priority": "flagship",
+      "summary": "Automatic closed-cup flash point tester for fuels, lubricating oils, biodiesel and other petroleum liquids. It follows ASTM D93 Procedures A, B and C, and combines an 8.4-inch touchscreen, PT100 temperature sensors, automated self-diagnostics, fire detection and overheating protection in one benchtop unit.",
+      "description": "Flash point defines the lowest temperature at which a petroleum product gives off enough vapor to ignite, and it governs how fuels and oils are classified, stored and shipped. The Ducom FPM runs the Pensky-Martens closed-cup method automatically: it heats and stirs the sample, applies the ignition source at set temperature intervals and detects the flash electronically. According to the manufacturer, the ASTM D93 scope covers flash points from 35 to 360 °C, with Procedure A for distillate fuels and new lubricating oils, Procedure B for residual fuel oils, used oils and products that form a surface film, and Procedure C for biodiesel. The instrument measures from 0 to 420 °C with 0.01 °C resolution and uses PT100 probes for both sample and bath. Test data can be stored in Excel-compatible files. Safety is addressed with a gas valve that closes at the end of a test, probe diagnostics, a combined ionization and thermal fire detection system and an automatic extinguisher. Refinery quality laboratories, terminals, independent inspectors and lubricant plants use it for product release and transport classification.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "0 °C to +420 °C"
+        },
+        {
+          "label": "ASTM D93 flash point scope",
+          "value": "35 to 360 °C"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.01 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.1 °C"
+        },
+        {
+          "label": "Temperature sensors",
+          "value": "PT100 for sample and bath"
+        },
+        {
+          "label": "Display",
+          "value": "8.4-inch TFT touchscreen panel PC"
+        },
+        {
+          "label": "Dimensions and weight",
+          "value": "37 x 52 x 32 cm (W x D x H), 30 kg"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "220 V ±15% 50-60 Hz or 115 V ±15% 60 Hz"
+        }
+      ],
+      "standards": [
+        "ASTM D93 Procedure A",
+        "ASTM D93 Procedure B",
+        "ASTM D93 Procedure C",
+        "IP 34",
+        "ISO 2719",
+        "DIN EN 22719"
+      ],
+      "applications": [
+        "Flash point of diesel, kerosene, heating oil and turbine fuels",
+        "Flash point of new and used lubricating oils",
+        "Residual fuel oil classification",
+        "Biodiesel (B100) flash point",
+        "Transport and storage hazard classification"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "Pensky Martens flash point tester",
+        "ASTM D93 flash point apparatus",
+        "automatic closed cup flash point tester",
+        "flash point tester for diesel and lubricants",
+        "PMCC flash point price",
+        "flash point tester UAE"
+      ],
+      "whyMiddleEast": "Flash point is a routine release and shipping test for refineries, terminals and inspection laboratories handling Gulf fuel and lubricant exports.",
+      "sourceUrl": "https://www.ducom.com/pensky-martens-flash-point-tester",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Pensky%20Martens%20Flash%20Point/Pensky%20Martens%20Flash%20Point%20Tester-front%20view.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Pensky%20Martens%20Flash%20Point/Pensky-Martens%20Flash%20Point%20Tester-%20back.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Cleveland Flash Point Tester CFP",
+      "model": "CFP",
+      "slug": "cleveland-flash-point-tester",
+      "category": "Petroleum Tester (Flash and Fire Point)",
+      "priority": "core",
+      "summary": "Automatic Cleveland open-cup tester for flash and fire points of fuels, lubricating oils and bituminous materials above 79 °C. An ionization flame detector, electric ignitors, thermal cut-off and an 8-inch touchscreen provide repeatable results with safeguards against overheating and fire.",
+      "description": "The Cleveland open-cup method heats a sample in an open cup and passes a small flame across the surface at regular intervals to find the flash point, then continues heating to find the fire point where burning is sustained. It is the standard method for materials with flash points above about 79 °C, such as lubricating oils, asphalt-related products and many industrial fluids. The CFP automates the whole sequence: an electric heater with thermal cut-off ramps the temperature, a pair of electric ignitors plus a pilot flame provide the test flame, and an ionization detector together with an automatic flame sensor register the event. Measurements span 79 to 400 °C with a Class A PT100 probe, 0.06 °C resolution and ±0.1 °C accuracy. An 8-inch touchscreen runs the program, shows safety diagnostics and stores results in Excel-compatible files. Quality control teams at refineries, lubricant blenders, bitumen producers and testing laboratories use it to meet product specifications and to document flammability for storage and transport.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "+79 °C to 400 °C"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.06 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.1 °C"
+        },
+        {
+          "label": "Temperature sensor",
+          "value": "PT100, Class A"
+        },
+        {
+          "label": "Ignition",
+          "value": "Two electrical ignitors and a pilot flame"
+        },
+        {
+          "label": "Detection",
+          "value": "Ionization detector and automatic flame detection"
+        },
+        {
+          "label": "Display",
+          "value": "8-inch TFT touchscreen panel PC"
+        },
+        {
+          "label": "Dimensions and weight",
+          "value": "48 x 37 x 61 cm (W x D x H), 32 kg"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "220 V +15% 50-60 Hz or 115 V +15% 60 Hz"
+        }
+      ],
+      "standards": [
+        "ASTM D92",
+        "FTM 791-1103",
+        "IP 36",
+        "ISO 2592",
+        "JIS K2265-4"
+      ],
+      "applications": [
+        "Flash and fire point of lubricating oils",
+        "Flammability screening of bituminous materials",
+        "Quality control of petroleum products above 79 °C",
+        "Storage and transport safety documentation"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "construction-infrastructure",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "Cleveland open cup flash point tester",
+        "ASTM D92 flash and fire point apparatus",
+        "automatic COC flash point tester",
+        "bitumen flash point test equipment",
+        "fire point tester lubricating oil"
+      ],
+      "whyMiddleEast": "Relevant to bitumen producers and lubricant plants that need open-cup flash and fire point data for product certificates.",
+      "sourceUrl": "https://www.ducom.com/cleveland-flash-point-tester",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Cleveland%20Flash%20and%20Fire%20Point/Cleveland%20Flash%20and%20Fire%20point-Side.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Cleveland%20Flash%20and%20Fire%20Point/Cleveland%20Flash%20and%20Fire%20point-zoom.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Cloud and Pour Point Tester CPP",
+      "model": "CPP",
+      "slug": "cloud-and-pour-point-tester",
+      "category": "Petroleum Tester (Cold Flow)",
+      "priority": "core",
+      "summary": "Integrated automatic apparatus for cloud point and pour point of fuels, crude oils, biodiesel, additives and lubricating oils. Optical cloud detection and a tilting pour sensor operate from plus 80 down to minus 80 °C, with single or multi-head configurations of up to six test positions.",
+      "description": "Cloud point marks the temperature at which wax first becomes visible in a cooled fuel, and pour point is the lowest temperature at which it still flows. Both numbers decide whether diesel, crude and lubricating oil can be handled in cold conditions. The CPP combines the two tests in one cabinet. Cloud detection uses pulsed infrared light carried through a coaxial fiber optic system, while pour point is judged by a PT100 probe and a mechanical arm that positions the test jar. Integrated CFC-free compressors cool to minus 40 °C in single-stage form or minus 80 °C in double-stage form, with an energy save function. The temperature range is +80 to −80 °C with 0.06 °C resolution and ±0.1 °C accuracy, and a 12-inch touchscreen runs the sequences. Configurations from one to six heads let a laboratory run several samples in parallel. The apparatus supports the main ASTM, IP, ISO and DIN cloud and pour point methods, including crude oil pour point under ASTM D5853. Refinery laboratories, fuel terminals and lubricant producers use it for cold-flow certification.",
+      "keySpecs": [
+        {
+          "label": "Measuring range",
+          "value": "+80 °C to -80 °C"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.06 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.1 °C"
+        },
+        {
+          "label": "Cloud point detection",
+          "value": "Pulsed infrared emission through coaxial fiber optics"
+        },
+        {
+          "label": "Pour point detection",
+          "value": "PT100 probe with mechanical arm positioning the test jar"
+        },
+        {
+          "label": "Cooling",
+          "value": "Single stage to -40 °C or double stage to -80 °C"
+        },
+        {
+          "label": "Display",
+          "value": "12-inch TFT touchscreen panel PC"
+        },
+        {
+          "label": "Dimensions and weight",
+          "value": "66 x 60 x 80 cm (W x D x H), 60 kg, up to 6 heads"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "220 V +15% 50-60 Hz or 115 V +15% 60 Hz"
+        }
+      ],
+      "standards": [
+        "ASTM D2500",
+        "ASTM D5771",
+        "ASTM D5772",
+        "ASTM D5773",
+        "ASTM D97",
+        "ASTM D5853",
+        "ASTM D5950",
+        "IP 219",
+        "IP 444",
+        "IP 445",
+        "IP 446",
+        "IP 15",
+        "IP 441",
+        "ISO 3015",
+        "ISO 3016",
+        "DIN EN 23015"
+      ],
+      "applications": [
+        "Cloud point of diesel, biodiesel and fuel blends",
+        "Pour point of crude oil and lubricating oils",
+        "Cold-flow additive evaluation",
+        "Multi-sample parallel testing in busy QC laboratories"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "cloud and pour point tester",
+        "ASTM D97 pour point apparatus",
+        "ASTM D2500 cloud point tester",
+        "automatic pour point tester crude oil",
+        "cloud point pour point apparatus price",
+        "ASTM D5853 crude oil pour point"
+      ],
+      "whyMiddleEast": "Gulf refineries exporting diesel, base oils and crude to cold-climate markets need certified cloud and pour point results.",
+      "sourceUrl": "https://www.ducom.com/cloud-and-pour-point-tester",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Cloud%20and%20pour%20point%20apparatus/Cloud%20and%20pour%20point_Side%5D.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Cloud%20and%20pour%20point%20apparatus/Cloud%20and%20pour%20point_Screen.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Noack Volatility Tester",
+      "model": "Noack",
+      "slug": "noack-volatility-tester",
+      "category": "Petroleum Tester (Volatility)",
+      "priority": "core",
+      "summary": "Automatic apparatus that measures evaporation loss of lubricating oils, mainly engine oils, by heating a weighed sample for one hour under controlled vacuum. It avoids toxic Wood's metal, protects against over-temperature, keeps a calibration history for each probe and calculates the percentage loss automatically at the end of the run.",
+      "description": "Engine oils lose their lighter fractions at operating temperature, which raises viscosity and oil consumption, so engine oil specifications limit Noack evaporation loss. In the method, a sample is weighed into a crucible, held at test temperature for one hour while a controlled vacuum of minus 2 mbar draws vapor away, then cooled and weighed again; the weight difference is reported as a percentage. The manufacturer lists two methods: Method A, which controls the bath at 250 °C, and Method B, which controls the sample at 245.2 °C. A differential pressure controller and an electronic vacuum regulator hold conditions without manual adjustment, and the system calculates the result at the end of the run. It avoids Wood's metal baths, removing a toxic material from the laboratory, and includes over-temperature protection and automated probe calibration history. An 8-inch touchscreen operates the instrument and stores results. Base oil producers, lubricant blenders, additive companies and independent laboratories use the Noack volatility test to grade engine oils and to validate base stock changes.",
+      "keySpecs": [
+        {
+          "label": "Method A",
+          "value": "Bath controlled at 250 °C"
+        },
+        {
+          "label": "Method B",
+          "value": "Sample controlled at 245.2 °C"
+        },
+        {
+          "label": "Test duration",
+          "value": "1 hour"
+        },
+        {
+          "label": "Vacuum",
+          "value": "-2 mbar, electronically controlled"
+        },
+        {
+          "label": "Measuring range",
+          "value": "0 °C to +320 °C (testing range 225 to 275 °C)"
+        },
+        {
+          "label": "Resolution and accuracy",
+          "value": "0.01 °C and ±0.1 °C"
+        },
+        {
+          "label": "Display",
+          "value": "8-inch TFT touchscreen panel PC"
+        },
+        {
+          "label": "Dimensions and weight",
+          "value": "40 x 45 x 45 cm (W x D x H), 22 kg"
+        }
+      ],
+      "standards": [
+        "ASTM D5800",
+        "IP 42"
+      ],
+      "applications": [
+        "Evaporation loss of engine oils",
+        "Base oil grading and volatility comparison",
+        "Lubricant formulation quality control",
+        "Validation of base stock changes"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "oil-gas",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "Noack volatility tester",
+        "ASTM D5800 Noack apparatus",
+        "engine oil evaporation loss test",
+        "Noack test equipment without Wood's metal",
+        "lubricant volatility testing instrument"
+      ],
+      "whyMiddleEast": "Base oil producers and lubricant blenders in the Gulf grade engine oils against Noack limits in international specifications.",
+      "sourceUrl": "https://www.ducom.com/noack-volatility-tester",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Noack%20Volatility%20Tester/Noack%20Volatility%20Tester%20-%20Front.jpg",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Noack%20Volatility%20Tester/Noack%20Volatility%20Tester%20-%20Isometric.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Abrasion Tester ABT-3",
+      "model": "ABT-3",
+      "slug": "abrasion-tester-abt-3",
+      "category": "Abrasion Tester",
+      "priority": "core",
+      "summary": "Automatic desktop machine for three-body abrasion testing, covering dry sand and rubber wheel (ASTM G65) as well as wet slurry methods (ASTM G105 and B611). Computer-controlled loading from 100 to 300 N and continuous friction logging allow materials to be ranked for abrasion resistance.",
+      "description": "Abrasion by loose hard particles is a leading cause of wear in mining, earthmoving, cement, ceramics and drilling equipment, and standardized tests are used to select hardfacing, coatings and bulk materials. The ABT-3 performs the dry sand and rubber wheel test of ASTM G65 and the wet sand test of ASTM G105 on one compact machine, and also supports the high-stress abrasion method of ASTM B611 for hard materials. A software-controlled loading system applies 100 to 300 N, the wheel can run to 250 rpm, and counts up to 999,999 revolutions per test. Built-in instrumentation logs friction force continuously, so the user obtains frictional behavior in addition to mass or volume loss. The machine is operated through guided touchscreen software and can connect to the MOOHA digital assistant for audit trails and instrument health monitoring. Examples of use include hard-face coatings, tooling for sand-lime bricks, refractory ceramics and wear plates, making it a practical choice for materials laboratories, coating suppliers and university groups.",
+      "keySpecs": [
+        {
+          "label": "Load",
+          "value": "100 N to 300 N (automatic)"
+        },
+        {
+          "label": "Speed",
+          "value": "Up to 250 rpm"
+        },
+        {
+          "label": "Friction force",
+          "value": "Up to 300 N"
+        },
+        {
+          "label": "Duration",
+          "value": "Up to 999,999 revolutions"
+        },
+        {
+          "label": "Test modes",
+          "value": "Dry sand abrasion and wet slurry abrasion"
+        },
+        {
+          "label": "Interface",
+          "value": "Touchscreen with guided software"
+        }
+      ],
+      "standards": [
+        "ASTM G65",
+        "ASTM G105",
+        "ASTM B611"
+      ],
+      "applications": [
+        "Ranking of materials by dry and slurry abrasion resistance",
+        "Hardfacing and coating abrasion testing",
+        "Molding tools for sand-lime bricks",
+        "Refractory ceramics research",
+        "Wear plate and liner selection"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "oil-gas",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "ASTM G65 dry sand rubber wheel abrasion tester",
+        "abrasion resistance test machine",
+        "ASTM G105 wet sand abrasion",
+        "ASTM B611 abrasion tester",
+        "hardfacing abrasion testing equipment",
+        "three body abrasion tester"
+      ],
+      "whyMiddleEast": "Sand-laden operating conditions in regional mining, construction and drilling work make abrasion ranking of wear materials a practical need.",
+      "sourceUrl": "https://www.ducom.com/abrasion-tester",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Abrasion%20Tester/Video%20and%20Images/Abrasion%20Tester%20Product%20Image%20-%20Reduced.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Abrasion%20Tester/Video%20and%20Images/Image%20of%20dry%20abrasion%20test%20area.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Slurry Jet Erosion Tester",
+      "model": "Slurry Jet Erosion Tester",
+      "slug": "slurry-jet-erosion-tester",
+      "category": "Erosion Tester",
+      "priority": "niche",
+      "summary": "Solid particle erosion tester that fires a pressurized slurry jet at a specimen to characterize erosion resistance of metals, coatings and polymers. Jet velocity reaches 50 m/s, the impact angle is adjustable from 15 to 90 degrees, and corrosion-resistant construction suits long-term use.",
+      "description": "Pipelines, pumps and valves that carry slurries lose wall thickness through repeated particle impact, and the rate depends strongly on particle speed, concentration and impact angle. The Slurry Jet Erosion Tester recreates these conditions in the laboratory. A custom pressurization system accelerates sand or other erodent suspended in water to a controlled velocity of up to 50 m/s, and a dedicated dispenser meters particle flux between 100 and 2000 cc/min, feeding it just ahead of the 4 mm nozzle so the mixture is uniform on exit. The specimen holder offers fixed angles of 15, 30, 45, 60, 75 and 90 degrees with clear markings, and the 60 liter hopper allows long runs. Samples of 25 x 24 mm with a thickness of 4 to 8 mm are standard, with other sizes and holders available on request. All wetted parts are made of corrosion-resistant materials. Engineers in oil and gas pipelines, power generation and mining use the results to choose materials and coatings, while research groups use it to study erosion mechanisms.",
+      "keySpecs": [
+        {
+          "label": "Jet velocity",
+          "value": "Up to 50 m/s"
+        },
+        {
+          "label": "Erodent feed rate",
+          "value": "100 to 2000 cc/min (variable)"
+        },
+        {
+          "label": "Impingement angles",
+          "value": "15°, 30°, 45°, 60°, 75° and 90° (others on request)"
+        },
+        {
+          "label": "Nozzle diameter",
+          "value": "4 mm"
+        },
+        {
+          "label": "Sample size",
+          "value": "25 x 24 x 4 to 8 mm (other sizes on request)"
+        },
+        {
+          "label": "Hopper capacity",
+          "value": "60 liters"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Erosion resistance ranking of pipeline and pump materials",
+        "Coating and hardfacing evaluation under slurry impact",
+        "Effect of impact angle on wear",
+        "Power generation component material selection"
+      ],
+      "industries": [
+        "oil-gas",
+        "power-energy",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "slurry erosion tester",
+        "solid particle erosion test equipment",
+        "slurry jet erosion test",
+        "erosion resistance of pipeline materials",
+        "sand erosion testing laboratory equipment"
+      ],
+      "whyMiddleEast": "Sand-laden production fluids and slurry pipelines in oil and gas operations create demand for erosion screening of linings and coatings.",
+      "sourceUrl": "https://www.ducom.com/slurry-jet-erosion-tester",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Slurry%20Jet%20Erosion%20Tester/Ducom%20Slurry%20Jet%20Erosion%20Tester%20-%20Full%20View.png",
+        "https://www.ducom.com/hubfs/DUCOM/Products/Slurry%20Jet%20Erosion%20Tester/G4_Slurry_Jet_Erosion_Tester_During_Test%20-%20Wide.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Ball on Cylinder Lubricity Evaluator BOCLE 2.0",
+      "model": "BOCLE 2.0",
+      "slug": "bocle-aviation-fuel-lubricity-tester",
+      "category": "Fuel Lubricity Tester",
+      "priority": "core",
+      "summary": "Fully automated tester for the lubricity of aviation turbine fuel under ASTM D5001. It runs the fluid pre-treatment and the loaded test phase without operator intervention, includes its own conditioned air unit, logs data continuously for traceability, and allows ten tests per ring to reduce consumable cost.",
+      "description": "Aviation turbine fuel that has been severely hydrotreated can lose the trace polar compounds that lubricate fuel pumps and control units, so the ball-on-cylinder lubricity evaluator is used to check it. In the test a stationary steel ball is pressed against a rotating, partially submerged steel ring in the fuel, and the wear scar on the ball measures lubricity. BOCLE 2.0 is Ducom's automated version, designed to comply with ASTM D5001. After the user starts a test from the software, the controller handles pre-treatment of the fluid with the specified air flows, switches valves and flow rates, and applies the calibrated 1000 g dead-weight load on completion of pre-treatment. It holds the standard conditions of 240 rpm, 25 °C fluid temperature, 50 ml of fluid and conditioned air at 10% relative humidity, and logs data for traceability. A built-in conditioned air unit with dryer, valves and sensors needs only a compressed air line. Numbered spacers shift the contact position so one ring supports ten tests. Refinery and airport fuel laboratories and fuel additive developers use it.",
+      "keySpecs": [
+        {
+          "label": "Load",
+          "value": "1000 ± 1 g"
+        },
+        {
+          "label": "Rotational speed",
+          "value": "240 ± 1 rpm"
+        },
+        {
+          "label": "Fluid volume",
+          "value": "50 ± 1.0 ml"
+        },
+        {
+          "label": "Fluid temperature",
+          "value": "25 ± 1 °C"
+        },
+        {
+          "label": "Air flow over fluid",
+          "value": "3.8 l/min for 30 min with load applied"
+        },
+        {
+          "label": "Fluid pre-treatment",
+          "value": "0.5 L/min through and 3.3 L/min over fluid for 15 min, no load"
+        },
+        {
+          "label": "Conditioned air",
+          "value": "10 ± 0.2% RH at 25 °C"
+        },
+        {
+          "label": "Tests per ring",
+          "value": "10 using numbered spacers"
+        }
+      ],
+      "standards": [
+        "ASTM D5001"
+      ],
+      "applications": [
+        "Lubricity testing of aviation turbine fuel",
+        "Evaluation of lubricity additives in jet fuel",
+        "Quality control of hydrotreated jet fuel",
+        "Fuel laboratory automation"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "BOCLE tester",
+        "ASTM D5001 ball on cylinder lubricity evaluator",
+        "jet fuel lubricity test equipment",
+        "aviation turbine fuel lubricity tester",
+        "automatic BOCLE apparatus"
+      ],
+      "whyMiddleEast": "Refineries producing hydrotreated Jet A-1 in the Gulf can check lubricity in-house instead of sending samples out.",
+      "sourceUrl": "https://www.ducom.com/product-ball-on-cylinder-lubricity-evaluator-bocle",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/01_BOCLE_.16_cropped.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Abel Flash Point Tester AFP 1",
+      "model": "AFP 1",
+      "slug": "abel-flash-point-tester",
+      "category": "Petroleum Tester (Flash Point)",
+      "priority": "niche",
+      "summary": "Compact automatic closed-cup tester for products with flash points between minus 18 and 71 °C, such as solvents, kerosene and chemicals. A dual ignition system, an ionization detector and an automatic shutter deliver repeatable results under Abel, IP, EN and ISO methods, with an 8.4-inch touchscreen.",
+      "description": "Low flash point liquids such as solvents, kerosene and many chemicals are classified for transport and storage with the Abel closed-cup method, which is specified in IP and ISO standards. The Ducom AFP 1 automates the method. A brass test cup sits in an electrically heated block with thermal cut-off, and a controller steps the temperature while a shutter opens and closes to introduce the test flame in accordance with each method. A dual ignition system and an ionization detector, backed by an electrical flame detection device, identify the flash event. The apparatus measures from minus 50 to plus 100 °C with 0.06 °C resolution and ±0.1 °C accuracy using a Class A PT100 sensor. An 8.4-inch touchscreen shows the live test, and results are stored in Excel-compatible files. Its footprint of 31 x 47 x 52 cm and weight of 27 kg suit a bench in a small laboratory. Chemical plants, fuel terminals, paint and adhesive manufacturers, and inspection bodies use it for safety classification and quality control.",
+      "keySpecs": [
+        {
+          "label": "Flash point scope",
+          "value": "-18 °C to 71 °C"
+        },
+        {
+          "label": "Measuring range",
+          "value": "-50 °C to +100 °C"
+        },
+        {
+          "label": "Resolution",
+          "value": "0.06 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.1 °C"
+        },
+        {
+          "label": "Temperature sensor",
+          "value": "PT100, Class A"
+        },
+        {
+          "label": "Ignition and detection",
+          "value": "Dual ignition system with ionization detector"
+        },
+        {
+          "label": "Display",
+          "value": "8.4-inch TFT touchscreen panel PC"
+        },
+        {
+          "label": "Dimensions and weight",
+          "value": "31 x 47 x 52 cm (W x D x H), 27 kg"
+        }
+      ],
+      "standards": [
+        "IP 170",
+        "ISO 13736",
+        "IP 491",
+        "IP 492",
+        "ISO 1516",
+        "ISO 3679",
+        "EN 924"
+      ],
+      "applications": [
+        "Flash point of kerosene and solvents",
+        "Chemical and adhesive flammability classification",
+        "Flash/no-flash screening at a specified temperature",
+        "Hazard classification for transport and storage"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "oil-gas",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "Abel flash point tester",
+        "IP 170 Abel closed cup apparatus",
+        "ISO 13736 flash point tester",
+        "low flash point solvent tester",
+        "automatic Abel flash point apparatus"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.ducom.com/abel-flash-point-tester",
+      "imageUrls": [
+        "https://www.ducom.com/hubfs/DUCOM/Products/Petrotesters/Abel%20Flash%20Point%20Tester/Abel%20Flash%20Point_front.png"
+      ],
+      "datasheetUrl": null
+    }
+  ]
+}

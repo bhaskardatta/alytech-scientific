@@ -1,0 +1,1131 @@
+{
+  "brand": "Lamy Rheology",
+  "brandSlug": "lamy-rheology",
+  "brandUrl": "https://www.lamyrheology.com/en/",
+  "headquarters": "Champagne-au-Mont-d'Or (Lyon area), France",
+  "brandSummary": "Lamy Rheology is a family-owned French manufacturer, founded in 1955, that designs and builds viscometers, rheometers, gel timers, texture analyzers and temperature control units. Its current instruments share a springless measuring head with touchscreen operation and are used for quality control and research in food, chocolate, cosmetics, coatings, chemicals and building materials.",
+  "logoUrl": "https://www.lamyrheology.com/wp-content/themes/lamy2/img/logo.png",
+  "products": [
+    {
+      "name": "B-ONE PLUS Rotational Viscometer",
+      "model": "B-ONE PLUS",
+      "slug": "b-one-plus",
+      "category": "Rotational viscometer",
+      "priority": "core",
+      "summary": "The B-ONE PLUS is a springless rotational viscometer with a 7-inch touchscreen, intended for routine viscosity checks on food, coatings, cosmetics and chemical products. Speed can be set freely from 0.3 to 250 rpm, a low-torque version extends the range downward, and operator login with a locked-method mode keeps quality-control tests repeatable.",
+      "description": "The B-ONE PLUS measures dynamic viscosity by rotating a spindle in the sample and reading the torque needed to hold the chosen speed. Because the drive is springless, the instrument does not depend on a calibrated spring and can cover a wider torque window than classic dial-type designs. The standard model reads 0.05 to 13 mNm; the LR version reads from 0.005 mNm, which suits thin liquids such as inks, varnishes and light oils. Operators work from a 7-inch touchscreen that shows viscosity, speed, shear rate, shear stress, torque and time, and the instrument flags results that fall outside viscosity limits for the selected spindle and speed. A login code and a locked mode prevent unplanned changes to test conditions, which is useful in audited quality systems. Results are stored internally and exported through USB. The head accepts LV, RV, vane, Krebs, DIN, small-sample and ultra-low-viscosity spindles, and it connects to the EVA LR-BV PLUS, RT-1 PLUS and EVA MS-DIN PLUS temperature units. It is the entry point to the Lamy touchscreen viscometer range.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 250 rpm"
+        },
+        {
+          "label": "Torque range, standard version",
+          "value": "0.05 to 13 mNm"
+        },
+        {
+          "label": "Torque range, LR version",
+          "value": "0.005 to 0.8 mNm"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Spindle compatibility",
+          "value": "4 LV spindles, 6 RV spindles, or 1 Krebs KU 1-10 spindle"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch touchscreen"
+        },
+        {
+          "label": "Data transfer",
+          "value": "USB port"
+        },
+        {
+          "label": "Power supply",
+          "value": "90-240 VAC, 50/60 Hz"
+        },
+        {
+          "label": "Weight",
+          "value": "6.1 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Routine viscosity quality control",
+        "Chocolate and food products",
+        "Paints, inks and coatings",
+        "Cosmetic creams and lotions",
+        "Building material admixtures",
+        "Teaching laboratories"
+      ],
+      "industries": [
+        "food-beverage",
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "rotational viscometer with touchscreen",
+        "benchtop viscometer for QC lab",
+        "LV RV spindle viscometer",
+        "viscometer with Krebs spindle",
+        "low viscosity measurement viscometer"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/b-one-plus-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/b-one-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo3_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/B-ONE-UK-1.pdf"
+    },
+    {
+      "name": "PORTABLE B-ONE Viscometer",
+      "model": "PORTABLE B-ONE",
+      "slug": "portable-b-one",
+      "category": "Portable viscometer",
+      "priority": "niche",
+      "summary": "The PORTABLE B-ONE is a battery-powered springless viscometer for viscosity checks at the production line, in the warehouse or at a delivery point. The head weighs little, a carrying case holds the full kit, and the instrument runs for more than an hour on its internal battery with the same touchscreen interface as the bench models.",
+      "description": "Quality problems often show up on the shop floor rather than in the laboratory, and the PORTABLE B-ONE brings a controlled viscosity measurement to that location. It uses the same springless rotational principle as the benchtop B-ONE PLUS, with free speed selection between 0.3 and 250 rpm and a torque range of 0.05 to 13 mNm. A 7-inch touchscreen displays viscosity, speed, shear rate, shear stress, torque and time, and a charge indicator shows the remaining battery life, which exceeds one hour. Operators can sign in with a user code, and a locked mode protects test conditions so that results taken in different plants remain comparable. The instrument can display viscosity limits for each spindle and speed combination, and it calculates kinematic viscosity when the sample density is entered. The measuring head has a diameter of 90 mm and the complete unit weighs 2 kg, so it fits in the supplied carrying case. It works with RV, LV, BV, vane, DIN, small-sample, Krebs and ultra-low-viscosity spindles.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 250 rpm"
+        },
+        {
+          "label": "Torque range",
+          "value": "0.05 to 13 mNm"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch touchscreen"
+        },
+        {
+          "label": "Battery autonomy",
+          "value": "More than 1 hour"
+        },
+        {
+          "label": "Measuring head",
+          "value": "Diameter 90 mm; control box D60 x H260 x W120 mm"
+        },
+        {
+          "label": "Weight",
+          "value": "2 kg"
+        },
+        {
+          "label": "Power supply",
+          "value": "90-240 VAC, 50/60 Hz"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "In-plant viscosity checks",
+        "Incoming and outgoing goods inspection",
+        "Field and delivery-point verification",
+        "Coatings and chemical batches",
+        "Food and beverage production lines"
+      ],
+      "industries": [
+        "food-beverage",
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "portable viscometer battery",
+        "handheld viscosity meter for production floor",
+        "field viscometer with carrying case",
+        "on-site viscosity measurement"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/portable-b-one/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2024/04/RM_100_PORTABLE_UK-1-540x540.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/photo4_dark1-scaled.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/B-ONE-PORTABLE-UK-2.pdf"
+    },
+    {
+      "name": "FIRST PLUS Programmable Viscometer",
+      "model": "FIRST PLUS",
+      "slug": "first-plus",
+      "category": "Rotational viscometer",
+      "priority": "core",
+      "summary": "The FIRST PLUS is a springless touchscreen viscometer with programmable speed sequences, an included PT100 temperature probe and a choice of standard or high-sensitivity torque. It connects by RS232, USB or Ethernet and works with RheoTex software, which suits laboratories that need to log results into a LIMS.",
+      "description": "The FIRST PLUS sits above the B-ONE PLUS in the Lamy viscometer range by adding programming and stronger connectivity. Speeds from 0.3 to 250 rpm can be set freely, and methods can be stored for repeat use, so different operators run identical test conditions. Torque is available in a standard version from 0.05 to 13 mNm and a high-sensitivity LR version from 0.005 to 0.8 mNm. A PT100 sensor is supplied and reads sample temperature between -50 and +300 degrees Celsius. The 7-inch touchscreen shows viscosity, speed, shear rate, shear stress, torque, time and temperature, and a torque gauge indicates how close a test is to the working limits. Results are stored in the instrument and can be exported by USB, RS232 or Ethernet, or sent to a USB printer. RheoTex software handles curve plotting and LIMS integration. A four-digit operator code and a protected mode lock the measurement conditions. The head accepts DIN, RV/LV, BV, vane, ultra-low-viscosity, Krebs and small-sample measuring systems and pairs with the EVA MS-DIN PLUS, EVA LR-BV PLUS and RT-1 PLUS temperature units.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 250 rpm"
+        },
+        {
+          "label": "Torque range, standard version",
+          "value": "0.05 to 13 mNm"
+        },
+        {
+          "label": "Torque range, LR version",
+          "value": "0.005 to 0.8 mNm"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet; USB host port for PCL/5 printers"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch touchscreen"
+        },
+        {
+          "label": "Weight",
+          "value": "6.1 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Programmed viscosity test methods",
+        "LIMS-connected quality control",
+        "Food, chocolate and cosmetics",
+        "Coatings and building materials",
+        "Pharmaceutical product checks"
+      ],
+      "industries": [
+        "food-beverage",
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "programmable viscometer",
+        "viscometer with LIMS connection",
+        "viscometer with PT100 temperature probe",
+        "rotational viscometer Ethernet USB",
+        "QC viscometer with method storage"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/first-plus-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/first-plus-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo3_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/FIRST_UK-2.pdf"
+    },
+    {
+      "name": "FIRST PRO PLUS Multistep Viscometer",
+      "model": "FIRST PRO PLUS",
+      "slug": "first-pro-plus",
+      "category": "Rotational viscometer",
+      "priority": "core",
+      "summary": "The FIRST PRO PLUS is a springless touchscreen viscometer with multistep method programming, USB data recording and quality-control limits. It carries the same programming tools as the larger Lamy instruments, which helps laboratories improve the repeatability of their viscosity tests without moving to a full rheometer.",
+      "description": "Repeatability in viscosity testing depends mostly on whether every operator applies the same speeds, dwell times and temperature. The FIRST PRO PLUS addresses this by letting a supervisor build multistep methods on the instrument and lock them so that technicians only select and run the test. The speed range is 0.3 to 250 rpm, with torque from 0.05 to 13 mNm in the standard version and 0.005 to 0.8 mNm in the LR version for very thin samples. A PT100 probe measures sample temperature from -50 to +300 degrees Celsius, and the 7-inch touchscreen reports viscosity, speed, shear rate, shear stress, torque, time and temperature. Measurement data can be saved to a USB drive or sent through RS232 and Ethernet to a PC, where RheoTex software supports quality-control reporting and LIMS integration. Operators identify themselves with a four-digit code. The instrument accepts DIN, RV/LV, BV, vane, ultra-low-viscosity, Krebs and small-sample measuring systems, which covers most paint, adhesive, food and personal-care methods.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 250 rpm"
+        },
+        {
+          "label": "Torque range, standard version",
+          "value": "0.05 to 13 mNm"
+        },
+        {
+          "label": "Torque range, LR version",
+          "value": "0.005 to 0.8 mNm"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet; USB host port for printers"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch touchscreen"
+        },
+        {
+          "label": "Weight",
+          "value": "6.1 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Multistep viscosity methods",
+        "Batch release testing",
+        "Paints, inks and coatings",
+        "Food and chocolate",
+        "Teaching and method development"
+      ],
+      "industries": [
+        "food-beverage",
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "multistep viscometer",
+        "viscometer with programmable methods",
+        "repeatable viscosity testing QC",
+        "touchscreen rotational viscometer",
+        "viscometer LR low viscosity version"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/first-pro-plus-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2019/01/first-pro-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo3_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2019/01/FIRST-PRO-UK-2.pdf"
+    },
+    {
+      "name": "FIRST PRODIG Viscometer",
+      "model": "FIRST PRODIG",
+      "slug": "first-prodig",
+      "category": "Rotational viscometer",
+      "priority": "flagship",
+      "summary": "The FIRST PRODIG is the most complete instrument of the FIRST viscometer family. Its touchscreen draws the curve live, supports constant, multistep and ramp methods, and prints a report directly, so a technician can run and document a full viscosity profile without a computer.",
+      "description": "The FIRST PRODIG is built for laboratories that want rheology-style test sequences from a viscometer-class instrument. Methods are created on the 7-inch touchscreen as constant-speed, multistep or ramp programs and saved for later use. During a run, the measured curve is drawn on screen, and the results can be sent to a desktop printer or exported by USB, RS232 or Ethernet. Speed is adjustable between 0.3 and 250 rpm, and torque covers 0.05 to 13 mNm in the standard version or 0.005 to 0.8 mNm in the LR version. A PT100 probe reports sample temperature across a range of -50 to +300 degrees Celsius, and the display also shows shear rate, shear stress, torque and time. Compatible measuring systems include DIN, RV/LV, BV, vane, Krebs, ultra-low-viscosity and small-sample geometries, and the head can be paired with the EVA MS-DIN PLUS, EVA LR-BV PLUS or RT-1 PLUS temperature units. Accuracy is plus or minus 1 percent of full scale with 0.2 percent repeatability, figures shared across the touchscreen range.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 250 rpm"
+        },
+        {
+          "label": "Torque range, standard version",
+          "value": "0.05 to 13 mNm"
+        },
+        {
+          "label": "Torque range, LR version",
+          "value": "0.005 to 0.8 mNm"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Test methods",
+          "value": "Constant, multistep and ramp"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet"
+        },
+        {
+          "label": "Weight",
+          "value": "6.1 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Flow curve and ramp tests",
+        "Viscosity profiling with printed reports",
+        "Coatings and building materials",
+        "Cosmetic and personal-care formulations",
+        "Automotive and chocolate products"
+      ],
+      "industries": [
+        "food-beverage",
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "viscometer with ramp method",
+        "viscometer curve display printer",
+        "FIRST PRODIG viscometer",
+        "lab viscometer with report printing",
+        "touchscreen viscometer multistep ramp"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/first-prodig-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2021/01/first-prodig-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo3_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2021/01/FIRST-PRODIG-UK-2.pdf"
+    },
+    {
+      "name": "FIRST PRODIG CP-1000 Cone-Plate Viscometer",
+      "model": "FIRST PRODIG CP-1000",
+      "slug": "first-prodig-cp-1000",
+      "category": "Cone-plate viscometer",
+      "priority": "core",
+      "summary": "The FIRST PRODIG CP-1000 is a touchscreen viscometer with a cone-plate stand for measuring very small samples at ambient or controlled temperature. It can also take RV, Krebs and vane spindles for beaker work, giving one head two measuring modes.",
+      "description": "Cone-plate geometry measures viscosity on a thin film of sample squeezed between a rotating cone and a flat plate, so the shear rate is uniform across the gap and only a fraction of a millilitre is needed. The FIRST PRODIG CP-1000 combines that geometry with the programmable touchscreen electronics of the FIRST PRODIG. Speed can be set between 0.3 and 250 rpm, and torque spans 0.05 to 13 mNm. The head is mounted on a stand that also supports cone-plate and parallel-plate systems as well as MS RV/LV, Krebs and vane spindles, which allows the same instrument to be used for small-volume work on pastes, resins and cosmetics and for beaker measurements on larger samples. Viscosity, speed, shear rate, shear stress, torque, time and temperature appear on the 7-inch screen, and a PT100 sensor covers -50 to +300 degrees Celsius. Data leave the instrument by USB, RS232 or Ethernet. The unit measures D320 x H550 x W200 mm and weighs 14 kg. Accuracy is plus or minus 1 percent of full scale and repeatability is 0.2 percent.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 250 rpm"
+        },
+        {
+          "label": "Torque range",
+          "value": "0.05 to 13 mNm"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Compatible measuring systems",
+          "value": "MS CP, MS PP, MS RV/LV, MS KREBS, MS VANE"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet"
+        },
+        {
+          "label": "Dimensions",
+          "value": "D320 x H550 x W200 mm"
+        },
+        {
+          "label": "Weight",
+          "value": "14 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Small-volume viscosity testing",
+        "Cone-plate measurements on pastes and resins",
+        "Cosmetic and personal-care formulations",
+        "Inks and coatings",
+        "Teaching laboratories"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "food-beverage",
+        "pharmaceutical-biotech",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "cone plate viscometer",
+        "small sample viscosity measurement",
+        "cone and plate viscometer touchscreen",
+        "low volume viscometer for pastes"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/fisrt-prodig-cp-1000/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2021/01/first-prodig-cp-1000.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo3_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2021/01/FIRST-PRODIG-CP1000-UK-3.pdf"
+    },
+    {
+      "name": "RM 100 PLUS Viscometer",
+      "model": "RM 100 PLUS",
+      "slug": "rm-100-plus",
+      "category": "Rotational viscometer",
+      "priority": "flagship",
+      "summary": "The RM 100 PLUS is a springless viscometer with the widest speed and torque window in the Lamy range, reaching 1,500 rpm and 30 mNm. Multistep methods, quality-control limits and LIMS and MODBUS functions make it a laboratory workhorse for thick, thin and shear-sensitive products alike.",
+      "description": "Some products need both a gentle start and a high shear finish, and the RM 100 PLUS is designed for that spread. Rotation speed is free between 0.3 and 1,500 rpm, and torque runs from 0.05 to 30 mNm, so one head covers samples from light liquids to heavy pastes. Methods with several steps can be programmed and stored, and a viscosity-limit display tells the operator when a reading falls outside the acceptable window for the selected spindle and speed. The 7-inch touchscreen shows viscosity, speed, shear rate, shear stress, torque, time and temperature, and a PT100 probe reads from -50 to +300 degrees Celsius. Data transfer is by USB, RS232 or Ethernet, with LIMS and MODBUS functions for integration into plant systems and direct control of a connected temperature unit. The head is compatible with DIN, RV/LV, BV, vane, R, ultra-low-viscosity, Krebs and small-sample measuring systems, and with the EVA MS-DIN PLUS, EVA MS-R PLUS, EVA LR-BV PLUS and RT-1 PLUS temperature units. Accuracy is plus or minus 1 percent of full scale.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 1,500 rpm"
+        },
+        {
+          "label": "Torque range",
+          "value": "0.05 to 30 mNm"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet; USB host port for printers"
+        },
+        {
+          "label": "Integration",
+          "value": "LIMS and MODBUS functions"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch touchscreen"
+        },
+        {
+          "label": "Weight",
+          "value": "6.1 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Wide-range viscosity testing",
+        "Multistep shear methods",
+        "Chemicals, coatings and paint",
+        "Cosmetics and food products",
+        "Building materials"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "food-beverage",
+        "construction-infrastructure",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "viscometer 1500 rpm",
+        "high speed rotational viscometer",
+        "wide range viscometer for QC",
+        "viscometer with MODBUS LIMS",
+        "RM 100 PLUS viscometer"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/rm-100-plus-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/rm-100-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo3_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/RM-100-UK-2.pdf"
+    },
+    {
+      "name": "RM 100 CP-1000 PLUS Cone-Plate Viscometer",
+      "model": "RM 100 CP-1000 PLUS",
+      "slug": "rm-100-cp-1000-plus",
+      "category": "Cone-plate viscometer",
+      "priority": "core",
+      "summary": "The RM 100 CP-1000 PLUS pairs the 1,500 rpm RM 100 head with a cone-plate stand and fluid circulation for temperature control. A quick coupling and manual gap lift speed up sample changes, and beaker spindles remain available for conventional tests.",
+      "description": "Cone-plate viscometry is the usual choice when only a small sample is available or when a defined, uniform shear rate is required, for example with coatings, inks, resins and cosmetic emulsions. The RM 100 CP-1000 PLUS gives that geometry the full speed and torque range of the RM 100 PLUS head: free speeds from 0.3 to 1,500 rpm and torque from 0.05 to 30 mNm. The cone is attached with a quick coupling, and a manual lift sets the gap, which shortens the time between samples. A fluid circulation system holds the plate at the chosen temperature, and an integrated PT100 probe covers -50 to +300 degrees Celsius. Methods with several steps can be programmed on the 7-inch touchscreen, and quality-control limits, LIMS and MODBUS functions are included. Measuring systems include cone-plate, RV/LV, vane and Krebs types, so the instrument can switch to beaker measurements when needed. Data leave through USB, RS232 or Ethernet, and the instrument works with RheoTex software. The unit measures D320 x H550 x W200 mm and weighs 14 kg. Accuracy is plus or minus 1 percent of full scale.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 1,500 rpm"
+        },
+        {
+          "label": "Torque range",
+          "value": "0.05 to 30 mNm"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Compatible measuring systems",
+          "value": "MS CP, MS RV/LV, MS VANES, MS KREBS"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet; USB host port for printers"
+        },
+        {
+          "label": "Dimensions",
+          "value": "D320 x H550 x W200 mm"
+        },
+        {
+          "label": "Weight",
+          "value": "14 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Cone-plate viscosity of coatings and inks",
+        "Small-sample testing",
+        "Temperature-controlled measurements",
+        "Cosmetic emulsions",
+        "Resins and adhesives"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "food-beverage",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "cone plate viscometer high shear",
+        "temperature controlled cone plate viscometer",
+        "ICI cone and plate viscometer",
+        "small volume viscometer for coatings"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/rm-100-cp-1000-plus-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2021/01/rm-100-cp-1000-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo3_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2021/01/RM-100-CP1000-UK-2.pdf"
+    },
+    {
+      "name": "RM 200 PLUS Rheometer",
+      "model": "RM 200 PLUS",
+      "slug": "rm-200-plus",
+      "category": "Rotational rheometer",
+      "priority": "flagship",
+      "summary": "The RM 200 PLUS is a springless rheometer that produces flow curves, yield point and thixotropy results directly on its touchscreen, with regression fitting built in. No external software is needed for routine rheological characterization of pastes, gels, coatings and food products.",
+      "description": "Single-point viscosity rarely describes a structured fluid, which is why many quality teams move to flow-curve measurements. The RM 200 PLUS runs programmed speed sequences between 0.3 and 1,500 rpm, records torque from 0.05 to 30 mNm and builds the flow curve on the 7-inch touchscreen. From the curve it can derive yield point and thixotropic behaviour and apply regression models to calculate viscosity, all without a computer. Large internal storage keeps methods and results, and a PT100 probe reports sample temperature between -50 and +300 degrees Celsius. The display shows viscosity, speed, shear rate, shear stress, torque, time and temperature. Results leave the instrument through USB, RS232 or Ethernet, or print directly to a USB printer. It accepts DIN, RV/LV, BV, vane, R, Krebs, ultra-low-viscosity and small-sample measuring systems and combines with the EVA MS-DIN PLUS, EVA MS-R PLUS, EVA LR-BV PLUS and RT-1 PLUS temperature units. Typical uses include food, chocolate, building materials, chemicals, cosmetics, pharmaceutical preparations, automotive products and paints. Accuracy is plus or minus 1 percent of full scale with repeatability of 0.2 percent.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 1,500 rpm"
+        },
+        {
+          "label": "Torque range",
+          "value": "0.05 to 30 mNm"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet; USB host port for printers"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch touchscreen with on-screen flow curves"
+        },
+        {
+          "label": "Weight",
+          "value": "6.1 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Flow curves and yield point",
+        "Thixotropy testing",
+        "Pastes, gels and creams",
+        "Chocolate and food products",
+        "Paints, coatings and building materials"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "food-beverage",
+        "pharmaceutical-biotech",
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "rheometer for yield point measurement",
+        "thixotropy test rheometer",
+        "flow curve rheometer without software",
+        "benchtop rotational rheometer",
+        "yield stress measurement lab"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/rm-200-plus-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/rm-200-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/photo5_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/RM-200-UK-2.pdf"
+    },
+    {
+      "name": "DSR 500 Rheometer",
+      "model": "DSR 500",
+      "slug": "dsr-500",
+      "category": "Rotational rheometer",
+      "priority": "flagship",
+      "summary": "The DSR 500 is an imposed-shear-rate rheometer with a 7-inch touchscreen that plots curves live and prints reports directly. It runs constant, multistep and ramp methods up to 1,500 rpm and lists petroleum products among its applications, alongside food, paints and building materials.",
+      "description": "The DSR 500 controls the shear rate applied to the sample and reads the resulting torque, which gives viscosity and yield point from a single programmed test. Speeds are free between 0.3 and 1,500 rpm and torque spans 0.05 to 30 mNm, a combination that covers light fluids through heavy gels. The touchscreen draws the curve as the test progresses, applies regression analysis directly on the instrument and can send a finished report to a desktop printer. Constant, multistep and ramp methods can be stored, and a time-to-stop function ends a test at a defined point. A PT100 probe measures sample temperature from -50 to +300 degrees Celsius, and a connected temperature unit can be controlled from the same screen. Compatible measuring systems include DIN, RV/LV, BV, vane, Krebs, R, HT, ultra-low-viscosity and small-sample geometries, together with the EVA MS-DIN PLUS, EVA MS-R PLUS, EVA LR-BV PLUS and RT-1 PLUS units. Data transfer is by USB, RS232 or Ethernet, and LIMS and quality-control limit functions are included. Lamy lists petroleum products, pharmaceuticals, chemicals, coatings, chocolate and automotive materials among its applications.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 1,500 rpm"
+        },
+        {
+          "label": "Torque range",
+          "value": "0.05 to 30 mNm"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Test methods",
+          "value": "Constant, multistep and ramp"
+        },
+        {
+          "label": "Compatible measuring systems",
+          "value": "MS DIN, RV/LV, BV, VANE, KREBS, R, HT, ULV, SV"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet; USB host port for printers"
+        },
+        {
+          "label": "Weight",
+          "value": "6.1 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Imposed shear rate rheology",
+        "Viscosity and yield point",
+        "Petroleum product testing",
+        "Pharmaceutical and chemical products",
+        "Paints, coatings and building materials"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "rheometer for petroleum products",
+        "imposed shear rate rheometer",
+        "viscosity and yield point rheometer",
+        "lab rheometer touchscreen printer",
+        "DSR 500 rheometer"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/dsr-500-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2019/01/dsr-500-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/photo5_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2019/01/DSR-500-UK-2.pdf"
+    },
+    {
+      "name": "RM 100 L In-Line Process Viscometer",
+      "model": "RM 100 L",
+      "slug": "rm-100-l",
+      "category": "Industrial viscometer",
+      "priority": "core",
+      "summary": "The RM 100 L is a springless viscometer for continuous in-line measurement in production. A magnetic coupling seals the measuring cell, a 4-20 mA output feeds process control, and a 15 m cable separates the measuring head from the control box. Petroleum products and chemicals are among its stated applications.",
+      "description": "Laboratory checks tell a plant what a batch was; an in-line viscometer tells it what the batch is doing. The RM 100 L fits into a pipe or vessel and measures viscosity continuously so that operators can correct dosing, dilution or temperature straight away. A magnetic coupling transmits rotation through the housing wall, which keeps the measuring cell sealed. Speed is free between 5 and 600 rpm, and torque covers 0.5 to 13 mNm. The control box has a 7-inch touchscreen with viscosity, speed, shear rate, shear stress, torque, time and temperature, and a 4-20 mA output sends the reading to a PLC or DCS. A 15 m cable links the measuring head to the control box, with an optional extension. Multistep methods, quality-control limits and LIMS and MODBUS functions are available, and an external temperature probe can be added. The measuring head has a diameter of 100 mm, the box weighs 4 kg, and each unit ships with a calibration certificate and verification report. Lamy lists petroleum products, chemicals, coatings, food and cosmetics among its applications.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 5 and 600 rpm"
+        },
+        {
+          "label": "Torque range",
+          "value": "0.5 to 13 mNm"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Process output",
+          "value": "4-20 mA"
+        },
+        {
+          "label": "Cable between head and box",
+          "value": "15 m supplied; extension available"
+        },
+        {
+          "label": "Measuring head",
+          "value": "Diameter 100 mm; box D140 x H260 x W120 mm"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232 and USB; USB host port for printers"
+        },
+        {
+          "label": "Weight",
+          "value": "4 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Continuous in-line viscosity control",
+        "Petroleum product blending",
+        "Chemical and coating production",
+        "Food and cosmetic batch processing",
+        "Process automation feedback"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "food-beverage",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "in-line viscometer",
+        "online viscosity measurement process",
+        "process viscometer 4-20 mA",
+        "continuous viscosity monitoring production line",
+        "industrial viscometer magnetic coupling"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/rm-100-l-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2024/04/RM-100L-P26-UK-1.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/photo4_dark1-scaled.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/RM-100-L-UK-2.pdf"
+    },
+    {
+      "name": "TX-700 Texture Analyzer",
+      "model": "TX-700",
+      "slug": "tx-700",
+      "category": "Texture analyzer",
+      "priority": "core",
+      "summary": "The TX-700 is a compression and traction texture analyzer with a 7-inch touchscreen, six interchangeable load cells from 10 N to 500 N and a built-in PT100 probe. It runs TPA, penetration, relaxation and compression tests on foods, gels, creams and packaging, with curves displayed directly.",
+      "description": "Texture analysis quantifies what people feel when they bite, spread or squeeze a product, by pressing or pulling a probe into the sample and recording force against distance and time. The TX-700 offers interchangeable force sensors rated 10, 20, 50, 100, 250 and 500 N, with 0.001 N resolution up to 100 N and 0.01 N above that, so one frame can test soft gels and firm solids. Test speed is selectable from 0.1 to 10 mm per second. Operating modes include compression, relaxation, traction, TPA cycle, penetrometry and relative compression. The 7-inch touchscreen draws force curves live, and test programs can be saved and recalled. A PT100 sensor records temperature from -50 to +300 degrees Celsius, and a height-adjustable tray with a 160 mm turntable accommodates different sample sizes. A wide choice of probes and cells is available, and RheoTex software can be added for analysis. Data transfer is by USB or RS232, with LIMS support. Accuracy is plus or minus 0.5 percent of full scale. The instrument measures D610 x W340 x H710 mm and weighs 25 kg.",
+      "keySpecs": [
+        {
+          "label": "Force sensors",
+          "value": "10, 20, 50, 100, 250 and 500 N interchangeable load cells"
+        },
+        {
+          "label": "Force resolution",
+          "value": "0.001 N up to 100 N; 0.01 N for 250 and 500 N"
+        },
+        {
+          "label": "Test speed",
+          "value": "0.1 to 10 mm/s, ±0.2 %"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±0.5 % of full scale"
+        },
+        {
+          "label": "Operating modes",
+          "value": "Compression, relaxation, traction, TPA cycle, penetrometry, relative compression"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Turntable",
+          "value": "Diameter 160 mm, adjustable height"
+        },
+        {
+          "label": "Dimensions",
+          "value": "D610 x W340 x H710 mm"
+        },
+        {
+          "label": "Weight",
+          "value": "25 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Texture profile analysis of food",
+        "Gel and cream firmness",
+        "Cosmetic and pharmaceutical semi-solids",
+        "Packaging and adhesive strength tests",
+        "Chocolate and confectionery"
+      ],
+      "industries": [
+        "food-beverage",
+        "pharmaceutical-biotech",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "texture analyzer",
+        "TPA texture profile analysis instrument",
+        "texture analyser for food QC",
+        "compression and tensile tester for gels",
+        "penetrometer texture analyzer touchscreen"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/tx-700-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2024/04/TX700-AVEC-SOUFFLET-P42-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/photo6_dark1-scaled.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/TX-700-UK-1.pdf"
+    },
+    {
+      "name": "GT-300 PLUS Gel Timer",
+      "model": "GT-300 PLUS",
+      "slug": "gt-300-plus",
+      "category": "Gel timer",
+      "priority": "niche",
+      "summary": "The GT-300 PLUS is a gel timer that measures the curing time of resins, adhesives and similar reactive products. It uses low-cost disposable hooks and cups, supports an optional temperature-controlled bath, and shares the 7-inch touchscreen and 1,500 rpm drive of the RM 100 family.",
+      "description": "Gel time is the interval between mixing a reactive system and the moment it stops flowing, and it is a standard control point for epoxies, polyesters, adhesives and similar thermosetting products. The GT-300 PLUS tracks the rise in torque as the sample cures and records the time at which the product reaches the gel point. Measurements use disposable aluminium cups and steel hooks, which removes cleaning time and keeps the cost per test low, and low-volume hooks are offered for small samples. The instrument is available with a temperature control unit so that curing takes place at a defined temperature. Speed is selectable between 0.3 and 1,500 rpm and torque reads 0.05 to 30 mNm, while a PT100 channel reports temperature, and an optional breakable thermocouple can follow the sample. Quality-control limits, LIMS and MODBUS functions, operator login and a protected mode are included. Data leave by USB, RS232 or Ethernet, and RheoTex software is supplied. The version without a temperature unit measures D320 x H650 x W200 mm and weighs 14 kg; the version with the unit weighs 22 kg.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.3 and 1,500 rpm"
+        },
+        {
+          "label": "Torque range",
+          "value": "0.05 to 30 mNm"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Consumables",
+          "value": "Disposable aluminium cups and steel hooks"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, USB and Ethernet; USB host port for printers"
+        },
+        {
+          "label": "Dimensions without temperature unit",
+          "value": "D320 x H650 x W200 mm; 14 kg"
+        },
+        {
+          "label": "Dimensions with temperature unit",
+          "value": "D610 x H700 x W340 mm; 22 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Resin and adhesive gel time",
+        "Curing time of coatings",
+        "Epoxy and polyester systems",
+        "Building material binders",
+        "Paint and ink reactivity"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "gel timer",
+        "gel time measurement instrument",
+        "resin curing time tester",
+        "epoxy gel time meter",
+        "disposable hook gel timer"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/gt-300-plus-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/gt-300-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo3_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/GT-300-UK-2.pdf"
+    },
+    {
+      "name": "LV SPRING Spring Viscometer",
+      "model": "LV SPRING (N800000)",
+      "slug": "lv-spring",
+      "category": "Spring viscometer",
+      "priority": "core",
+      "summary": "The LV SPRING is a spring-type rotational viscometer with a 7-inch touchscreen, an electronic bubble level and a PT100 probe. It uses LV spindles and shares the connectivity and software of the newer Lamy range, serving labs whose methods call for a spring-torque design.",
+      "description": "Many industry test methods and customer specifications were written around spring-torque viscometers with LV and RV spindle sets, and laboratories often keep that format to stay comparable with historical data. The LV SPRING keeps the spring measuring principle while adding modern electronics: a 7-inch touchscreen, free speed selection between 0.1 and 250 rpm, and a display of viscosity, speed, shear rate, torque, stress, time and temperature. An electronic bubble level helps the operator set the head level before a test. A PT100 sensor reads sample temperature between -50 and +300 degrees Celsius. Results transfer through RS232, Ethernet or USB, and a USB host port supports PCL/5 printers. Operator login with a four-digit code and a protected mode lock the test conditions. The kit includes four LV spindles, a GuardLeg, a rack stand, a user manual, a calibration and checking certificate and a carrying case. It accepts LV, RV, SV and ULA spring measuring systems and works with the EVA LR, EVA MS DIN and RT-1 PLUS temperature units through an adaptation kit. Accuracy is plus or minus 1 percent of full scale.",
+      "keySpecs": [
+        {
+          "label": "Rotation speed",
+          "value": "Any speed between 0.1 and 250 rpm"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Repeatability",
+          "value": "±0.2 %"
+        },
+        {
+          "label": "Temperature sensing (PT100)",
+          "value": "-50 °C to +300 °C"
+        },
+        {
+          "label": "Display",
+          "value": "7-inch touchscreen with electronic bubble level"
+        },
+        {
+          "label": "Compatible measuring systems",
+          "value": "MS LV Spring, MS RV Spring, MS SV Spring, MS ULA Spring"
+        },
+        {
+          "label": "Connectivity",
+          "value": "RS232, Ethernet and USB; USB host port for PCL/5 printers"
+        },
+        {
+          "label": "Supplied with",
+          "value": "4 LV spindles, GuardLeg LV, rack stand, calibration certificate, carrying case"
+        },
+        {
+          "label": "Weight",
+          "value": "6.1 kg"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Spring-torque viscosity methods",
+        "Comparison with historical LV/RV data",
+        "Food and chocolate",
+        "Coatings, paint and inks",
+        "Cosmetics and chemicals"
+      ],
+      "industries": [
+        "food-beverage",
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "spring viscometer LV",
+        "LV spindle viscometer touchscreen",
+        "spring type rotational viscometer",
+        "viscometer with bubble level",
+        "LV RV spring viscometer"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/lv-spring-2/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/lv-spring-uk.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo2_dark1-1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2025/07/LV-SPRING-UK-1.pdf"
+    },
+    {
+      "name": "EVA MS-DIN PLUS Temperature Control System",
+      "model": "EVA MS-DIN PLUS",
+      "slug": "eva-ms-din-plus",
+      "category": "Temperature control",
+      "priority": "core",
+      "summary": "The EVA MS-DIN PLUS is a temperature control unit for cylindrical measuring systems built to DIN 53019 and ISO 3219. Available in fluid, electric and Peltier versions, it holds the sample within 0.2 degrees Celsius so that viscosity results can be compared between runs and laboratories.",
+      "description": "Viscosity changes sharply with temperature, so any serious viscosity or rheology method controls the sample temperature as carefully as it controls shear. The EVA MS-DIN PLUS surrounds a coaxial cylinder measuring system, such as the DIN, SV, ULV, chocolate or R types, and holds the sample at a defined temperature. The design follows DIN 53019 and ISO 3219 for rotational viscometry with cylinder geometries. Three versions exist, using fluid circulation, electric heating or a Peltier element, with an overall working range from -20 to +150 degrees Celsius that depends on the model. Temperature accuracy is plus or minus 0.2 degrees Celsius, and the display shows both the set value and the actual temperature of the unit. The unit works with the B-ONE PLUS, FIRST PLUS, FIRST PRO PLUS, FIRST PRODIG, RM 100 PLUS, RM 200 PLUS, DSR 500, RV SPRING and LV SPRING instruments, and on the touchscreen models it can be controlled directly from the viscometer. A metal bracket and rod for mounting the viscometer or rheometer are included, and an optional rack kit is available. The unit measures L610 x W340 x H650 mm and weighs 15 kg.",
+      "keySpecs": [
+        {
+          "label": "Temperature range",
+          "value": "-20 °C to +150 °C, depending on version"
+        },
+        {
+          "label": "Temperature accuracy",
+          "value": "±0.2 °C"
+        },
+        {
+          "label": "Designs available",
+          "value": "Fluid, electric and Peltier"
+        },
+        {
+          "label": "Applicable standards",
+          "value": "DIN 53019, ISO 3219"
+        },
+        {
+          "label": "Compatible measuring systems",
+          "value": "MS DIN, MS SV, MS ULV, MS Chocolat, MS R"
+        },
+        {
+          "label": "Power supply",
+          "value": "90-240 VAC, 50/60 Hz"
+        },
+        {
+          "label": "Dimensions",
+          "value": "L610 x W340 x H650 mm"
+        },
+        {
+          "label": "Weight",
+          "value": "15 kg"
+        }
+      ],
+      "standards": [
+        "DIN 53019",
+        "ISO 3219"
+      ],
+      "applications": [
+        "Temperature-controlled viscosity testing",
+        "Cylinder-geometry rheometry to DIN 53019",
+        "Chocolate and food measurements",
+        "Coating and paint viscosity",
+        "Method transfer between laboratories"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "food-beverage",
+        "construction-infrastructure",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "viscometer temperature control unit",
+        "Peltier temperature control for viscometer",
+        "DIN 53019 temperature control",
+        "ISO 3219 viscosity temperature bath",
+        "heated cylinder system viscometer"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.lamyrheology.com/en/produits/eva-ms-din-plus-ms-din-ms-r/",
+      "imageUrls": [
+        "https://www.lamyrheology.com/wp-content/uploads/2018/02/eva_ms_din-1.png",
+        "https://www.lamyrheology.com/wp-content/uploads/2025/06/photo7_dark1.jpg"
+      ],
+      "datasheetUrl": "https://www.lamyrheology.com/wp-content/uploads/2018/02/EVA-MS-DIN-UK-3.pdf"
+    }
+  ]
+}

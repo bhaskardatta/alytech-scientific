@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProductImage from '../components/ProductImage.astro';
+import ServiceStrip from '../components/ServiceStrip.astro';
+import Icon from '../components/Icon.astro';
+import { brands, claim } from '../data/brands';
+import { productsOf, brandPath, shortName } from '../data/catalog';
+import { breadcrumbLd } from '../data/schema';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.principals') }];
+const title = ar ? 'شركاؤنا المصنّعون | موزع معتمد لأجهزة المختبرات في الشرق الأوسط | AlyTech' : 'Our Principals | Authorized Laboratory Instrument Distributor, Middle East | AlyTech';
+const description = ar
+  ? 'AlyTech Scientific موزع معتمد لتسعة مصنّعين: GasMix وThermtest وProto وDucom وInstroTek وF-DGS وSchmidt + Haensch وLamy Rheology وVinci Technologies.'
+  : 'AlyTech Scientific is the authorized Middle East distributor for GasMix, Thermtest, Proto XRD, Ducom, InstroTek, F-DGS, Schmidt + Haensch, Lamy Rheology and Vinci Technologies.';
+---
+<Base lang={lang} title={title} description={description} schema={[breadcrumbLd(crumbs, L('/principals/'))]}>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap py-12 md:py-16">
+      <Breadcrumbs items={crumbs} />
+      <h1 class="display mt-10 max-w-3xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'تسعة مصنّعين متخصصين. فريق دعم واحد.' : 'Nine specialist manufacturers. One support team.'}</h1>
+      <p class="mt-5 max-w-2xl text-[17px] text-mute">{ar ? 'نختار شركاءنا لعمق تخصصهم، ثم نتولى كل ما يحدث بعد الشراء: التركيب والتدريب والصيانة وقطع الغيار.' : 'We choose principals for the depth of their specialism, then take care of everything after the purchase order: installation, training, maintenance and spares.'}</p>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <ul class="wrap grid gap-3">
+      {brands.map((b) => {
+        const top = productsOf(b.slug).filter((p) => p.priority === 'flagship').concat(productsOf(b.slug)).slice(0, 3);
+        return (
+          <li>
+            <a href={L(brandPath(b))} class:list={['group grid items-center gap-6 rounded-[var(--radius-md)] border p-6 transition-[border-color,box-shadow] duration-200 md:grid-cols-[1fr_1.4fr_auto] md:p-8', b.slug === 'gasmix' ? 'on-dark border-transparent bg-night-900 text-white' : 'card hover:border-brand-200 hover:shadow-[var(--shadow-card)]']}>
+              <div>
+                <p class:list={['label', b.exclusive ? (b.slug === 'gasmix' ? 'text-brand-300' : 'text-brand-600') : 'text-mute']}>{claim(b)[lang]} · {b.country[lang]}</p>
+                <p class="display mt-3 text-[clamp(1.6rem,2.6vw,2.2rem)]">{b.name}</p>
+                <p class:list={['mt-1', b.slug === 'gasmix' ? 'text-white/70' : 'text-ink-soft']}>{b.discipline[lang]}</p>
+              </div>
+              <ul class="grid grid-cols-3 gap-3">
+                {[...new Map(top.map((p) => [p.slug, p])).values()].map((p) => (
+                  <li class="flex flex-col items-center gap-2 text-center">
+                    <span class:list={['flex aspect-square w-full items-center justify-center rounded-sm p-3', b.slug === 'gasmix' ? 'bg-white/[0.05]' : 'bg-surface']}>
+                      <ProductImage brand={b.slug} brandName={b.name} slug={p.slug} alt={`${b.name} ${p.name}`} class="max-h-full w-auto" sizes="120px" />
+                    </span>
+                    <span class:list={['line-clamp-1 text-[12.5px]', b.slug === 'gasmix' ? 'text-white/60' : 'text-mute']}>{shortName(p)}</span>
+                  </li>
+                ))}
+              </ul>
+              <span class="link-arrow justify-self-start md:justify-self-end">{productsOf(b.slug).length} {ar ? 'جهازاً' : 'instruments'} <Icon name="arrow" size={18} flip /></span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <ServiceStrip lang={lang} />
+</Base>

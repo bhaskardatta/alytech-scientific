@@ -1,0 +1,35 @@
+---
+import Admin from '../../layouts/Admin.astro';
+import { login, logout, isAdmin, authConfigured } from '../../lib/auth';
+export const prerender = false;
+
+let error = '';
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  if (form.get('logout')) {
+    logout(Astro.cookies);
+    return Astro.redirect('/admin/login/');
+  }
+  if (await login(String(form.get('password') ?? ''), Astro.cookies)) return Astro.redirect('/admin/');
+  await new Promise((r) => setTimeout(r, 800)); // slow down guessing
+  error = 'That password is not correct.';
+} else if (await isAdmin(Astro.cookies)) {
+  return Astro.redirect('/admin/');
+}
+---
+<Admin title="Sign in" nav={false}>
+  <div class="mx-auto mt-[12vh] max-w-sm">
+    <img src="/brand/logo-192.png" width="64" height="66" alt="AlyTech" />
+    <h1 class="display mt-6 text-2xl">Lead dashboard</h1>
+    {!authConfigured() ? (
+      <p class="mt-4 rounded-sm bg-danger/5 p-3 text-danger">Admin login isn’t configured. Set ADMIN_PASSWORD and a 32+ character ADMIN_SECRET in the environment.</p>
+    ) : (
+      <form method="post" class="mt-6 grid gap-3">
+        <label for="pw" class="text-sm font-medium">Password</label>
+        <input id="pw" name="password" type="password" class="field" autocomplete="current-password" required autofocus aria-invalid={error ? 'true' : undefined} aria-describedby={error ? 'pw-err' : undefined} />
+        {error && <p id="pw-err" class="text-sm text-danger">{error}</p>}
+        <button class="btn btn-primary mt-2">Sign in</button>
+      </form>
+    )}
+  </div>
+</Admin>

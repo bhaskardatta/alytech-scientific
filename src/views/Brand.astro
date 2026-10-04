@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProductCard from '../components/ProductCard.astro';
+import ServiceStrip from '../components/ServiceStrip.astro';
+import Icon from '../components/Icon.astro';
+import { claim, type Brand } from '../data/brands';
+import { productsOf, brandInfo, brandPath } from '../data/catalog';
+import { breadcrumbLd } from '../data/schema';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang; brand: Brand }
+const { lang, brand } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const info = brandInfo(brand.slug);
+const products = productsOf(brand.slug);
+const main = products.filter((p) => p.priority !== 'niche');
+const more = products.filter((p) => p.priority === 'niche');
+const crumbs = [
+  { label: ar ? 'الرئيسية' : 'Home', href: L('/') },
+  { label: t(lang, 'nav.principals'), href: L('/principals/') },
+  { label: brand.name },
+];
+const url = L(brandPath(brand));
+const title = ar
+  ? `${brand.name} — ${brand.discipline.ar} | موزع معتمد في الإمارات والشرق الأوسط | AlyTech`
+  : `${brand.name} ${brand.discipline.en} | Authorized Distributor UAE & Middle East | AlyTech`;
+const description = ar
+  ? `أجهزة ${brand.name} في الشرق الأوسط: ${brand.discipline.ar}. التوريد والتركيب والتدريب والصيانة من AlyTech Scientific في أبوظبي.`
+  : `${brand.name} instruments in the Middle East — ${brand.discipline.en.toLowerCase()}. Supplied, installed, trained and maintained by AlyTech Scientific, Abu Dhabi.`;
+---
+<Base lang={lang} title={title} description={description} schema={[breadcrumbLd(crumbs, url)]}>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap py-12 md:py-16">
+      <Breadcrumbs items={crumbs} />
+      <div class="mt-10 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+        <div>
+          <p class:list={['label', brand.exclusive ? 'text-brand-600' : 'text-mute']}>{claim(brand)[lang]} · {brand.country[lang]}</p>
+          <h1 class="display mt-4 text-[clamp(2.4rem,5.5vw,4.4rem)]">{brand.name}</h1>
+          <p class="mt-3 text-xl text-ink-soft">{brand.discipline[lang]}</p>
+          {info && <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute" lang={ar && !info.brandSummaryAr ? 'en' : undefined}>{ar && info.brandSummaryAr ? info.brandSummaryAr : info.brandSummary}</p>}
+        </div>
+        <div class="flex flex-wrap gap-3 lg:justify-end">
+          <button type="button" class="btn btn-primary" data-lead="quote" data-brand={brand.name} data-product={`${brand.name} instruments`}>{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
+          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-brand={brand.name} data-product={`${brand.name} instruments`}><Icon name="whatsapp" size={18} class="text-whatsapp" />WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20" aria-labelledby="range-h">
+    <div class="wrap">
+      <h2 id="range-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `أجهزة ${brand.name} التي نوردها` : `The ${brand.name} range we supply`}</h2>
+      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {main.map((p) => <ProductCard lang={lang} brand={brand} product={p} />)}
+      </div>
+      {more.length > 0 && (
+        <>
+          <h3 class="label mt-14 text-mute">{ar ? 'ملحقات وأجهزة متخصصة' : 'Accessories & specialist items'}</h3>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {more.map((p) => <ProductCard lang={lang} brand={brand} product={p} />)}
+          </div>
+        </>
+      )}
+      <p class="mt-10 text-[15px] text-mute">
+        {ar ? 'لا تجد الطراز الذي تحتاجه؟ ' : 'Looking for a model that isn’t listed? '}
+        <button type="button" class="link-arrow inline-flex" data-lead="interest" data-brand={brand.name} data-product={`${brand.name} — other model`}>{t(lang, 'cta.interest')} <Icon name="arrow" size={16} flip /></button>
+      </p>
+    </div>
+  </section>
+
+  <ServiceStrip lang={lang} />
+</Base>

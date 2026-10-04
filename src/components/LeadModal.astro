@@ -1,0 +1,117 @@
+---
+import Icon from './Icon.astro';
+import { t, localize, type Lang } from '../i18n';
+import { site } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const modes = ['whatsapp', 'datasheet', 'price', 'quote', 'specs', 'interest'] as const;
+const countries = lang === 'ar'
+  ? ['الإمارات العربية المتحدة', 'المملكة العربية السعودية', 'قطر', 'عُمان', 'الكويت', 'البحرين', 'العراق', 'الأردن', 'مصر', 'لبنان', 'دولة أخرى']
+  : ['United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Oman', 'Kuwait', 'Bahrain', 'Iraq', 'Jordan', 'Egypt', 'Lebanon', 'Other'];
+
+// Everything the client script needs, serialised once.
+const i18n = {
+  titles: Object.fromEntries(modes.map((m) => [m, t(lang, `lead.title.${m}`)])),
+  subWa: t(lang, 'lead.sub.whatsapp'),
+  subDefault: t(lang, 'lead.sub.default'),
+  submitWa: t(lang, 'lead.submit.whatsapp'),
+  submitDefault: t(lang, 'lead.submit.default'),
+  sending: t(lang, 'lead.sending'),
+  errName: t(lang, 'lead.err.name'),
+  errContact: t(lang, 'lead.err.contact'),
+  errSend: t(lang, 'lead.err.send'),
+  greeting: t(lang, 'wa.greeting'),
+  general: t(lang, 'wa.general'),
+  wa: site.whatsapp,
+  lang,
+};
+---
+<dialog id="lead-dialog" class="lead-dialog m-auto w-[min(560px,calc(100vw-24px))] max-h-[calc(100dvh-24px)] overflow-y-auto rounded-[var(--radius-lg)] bg-card p-0 text-ink shadow-[var(--shadow-pop)]" aria-labelledby="lead-title">
+  <form method="dialog" class="absolute end-3 top-3">
+    <button class="inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors hover:bg-surface hover:text-ink" aria-label={t(lang, 'lead.close')}><Icon name="x" /></button>
+  </form>
+
+  <div data-lead-form-wrap class="p-6 sm:p-8">
+    <p class="label flex items-center gap-2 text-brand-600" data-lead-eyebrow><Icon name="lock" size={14} /><span></span></p>
+    <h2 id="lead-title" class="display mt-3 pe-10 text-2xl sm:text-[28px]" data-lead-title></h2>
+    <p class="mt-2 text-[15px] text-mute" data-lead-sub></p>
+
+    <form class="mt-6 grid gap-4" novalidate data-lead-form>
+      <input type="hidden" name="mode" />
+      <input type="hidden" name="product" />
+      <input type="hidden" name="brand" />
+      <input type="hidden" name="category" />
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="sm:col-span-2">
+          <label for="lead-name" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.name')} <span class="text-mute">({t(lang, 'lead.required')})</span></label>
+          <input id="lead-name" name="name" class="field" autocomplete="name" required aria-describedby="lead-name-err" />
+          <p id="lead-name-err" class="mt-1 hidden text-sm text-danger" data-err="name"></p>
+        </div>
+        <div>
+          <label for="lead-phone" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.phone')}</label>
+          <input id="lead-phone" name="phone" type="tel" inputmode="tel" class="field" autocomplete="tel" dir="ltr" placeholder="+971" aria-describedby="lead-contact-hint" />
+        </div>
+        <div>
+          <label for="lead-email" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.email')}</label>
+          <input id="lead-email" name="email" type="email" inputmode="email" class="field" autocomplete="email" dir="ltr" aria-describedby="lead-contact-hint" />
+        </div>
+        <p id="lead-contact-hint" class="-mt-2 text-[13px] text-mute sm:col-span-2" data-err-host="contact">{t(lang, 'lead.contactHint')}</p>
+        <div>
+          <label for="lead-company" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.company')}</label>
+          <input id="lead-company" name="company" class="field" autocomplete="organization" />
+        </div>
+        <div>
+          <label for="lead-country" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.country')}</label>
+          <select id="lead-country" name="country" class="field" autocomplete="country-name">
+            {countries.map((c) => <option>{c}</option>)}
+          </select>
+        </div>
+        <div class="sm:col-span-2" data-message-row>
+          <label for="lead-message" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.message')}</label>
+          <textarea id="lead-message" name="message" rows="3" class="field resize-y"></textarea>
+        </div>
+      </div>
+      <label class="flex items-start gap-3 text-[14px] text-ink-soft">
+        <input type="checkbox" name="marketing" value="yes" class="mt-0.5 h-5 w-5 shrink-0 accent-brand-600" />
+        <span>{t(lang, 'lead.marketing')}</span>
+      </label>
+      <p class="hidden rounded-sm bg-danger/5 px-3 py-2 text-sm text-danger" role="alert" data-lead-error></p>
+      <button type="submit" class="btn btn-primary w-full" data-lead-submit><span></span><Icon name="arrow" size={18} flip /></button>
+      <p class="text-[12.5px] leading-relaxed text-mute">
+        {t(lang, 'lead.privacy')} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a>.
+      </p>
+    </form>
+  </div>
+
+  <div data-lead-done class="hidden p-8 text-center sm:p-10" role="status">
+    <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="check" size={28} /></span>
+    <h2 class="display mt-5 text-2xl">{t(lang, 'lead.done.title')}</h2>
+    <p class="mt-2 text-mute">{t(lang, 'lead.done.body')}</p>
+    <dl class="mt-6 hidden divide-y divide-line border-y border-line text-start" dir="ltr" lang="en" data-lead-specs></dl>
+    <form method="dialog" class="mt-6"><button class="btn btn-ghost">{t(lang, 'lead.close')}</button></form>
+  </div>
+</dialog>
+
+<script is:inline type="application/json" id="lead-i18n" set:html={JSON.stringify(i18n)} />
+
+<style>
+  .lead-dialog::backdrop { background: rgb(8 6 15 / 0.6); backdrop-filter: blur(4px); }
+  .lead-dialog[open] { animation: lead-in 0.28s var(--ease-out-expo); }
+  @keyframes lead-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
+</style>
+
+<script>
+  import { openLead } from '../scripts/lead';
+  document.addEventListener('click', (e) => {
+    const trigger = (e.target as HTMLElement).closest<HTMLElement>('[data-lead]');
+    if (!trigger) return;
+    e.preventDefault();
+    openLead({
+      mode: (trigger.dataset.lead as any) || 'quote',
+      product: trigger.dataset.product,
+      brand: trigger.dataset.brand,
+      category: trigger.dataset.category,
+    });
+  });
+</script>

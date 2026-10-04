@@ -1,0 +1,1129 @@
+{
+  "brand": "Proto Manufacturing (Proto XRD)",
+  "brandSlug": "proto",
+  "brandUrl": "https://www.protoxrd.com",
+  "headquarters": "Taylor, Michigan, USA",
+  "brandSummary": "Proto Manufacturing designs and builds x-ray diffraction and fluorescence instruments. It is best known for portable and laboratory residual stress analyzers, and also offers powder diffractometers, single-crystal Laue orientation systems, crystallography platforms and XRF spectrometers. The company produces its own x-ray tubes and detectors and states a lifetime support commitment for installed systems.",
+  "logoUrl": "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f03300d8041fa3c0db82fc6_Proto_Diffraction_Logo.png",
+  "products": [
+    {
+      "name": "iXRD Portable Residual Stress and Retained Austenite System",
+      "model": "iXRD",
+      "slug": "ixrd",
+      "category": "Portable Residual Stress Analyzer (XRD)",
+      "priority": "flagship",
+      "summary": "The iXRD is Proto's modular portable x-ray diffraction system for residual stress and retained austenite measurement in the laboratory, on the shop floor and in the field. A 300 W self-contained control unit, interchangeable goniometers and field stands let it reach parts from pipelines to small bores.",
+      "description": "The iXRD measures residual stress by the sin²ψ multiple-exposure method, the same technique used on laboratory instruments, in a form that can be carried to the part. A compact 300 W control unit integrates the high-voltage supply, x-ray tube cooling, motor control and electronics with a display for kV, mA and interlocks, and provides ports for an enclosure or barrier and beacon lights for shutter and x-ray status. The goniometer is the interchangeable element: the MG40 balances size and versatility and can measure inside a 120 mm bore, the MGR40 adds an integrated phi axis for automated triaxial measurements, the MG30 reaches tighter locations, and miniature MG15 versions measure hoop stress in a 60 mm bore or axial stress in a 125 mm bore. Mounts and stands include the Cobra Arm, C-frame, the FS2 and FS4 field stands, and specialty pipeline, floor and tripod stands. Configurations extend to a Combo enclosure, Modular Mapping with a 300 × 200 mm XY stage, and an overhead Gantry. Patented residual stress mapping, automated retained austenite measurement down to 2 % in steels, x-ray elastic constant determination and XRDWIN software are available. Typical uses are pipelines, welds, shot-peened parts, power-generation components and aerospace hardware.",
+      "keySpecs": [
+        {
+          "label": "Method",
+          "value": "sin²ψ multiple-exposure technique"
+        },
+        {
+          "label": "Control unit",
+          "value": "Self-contained, 300 W, with integrated high-voltage supply and tube cooling"
+        },
+        {
+          "label": "Goniometers",
+          "value": "MG40, MGR40 (integrated phi), MG30, MG15 and MG15 Axial"
+        },
+        {
+          "label": "Smallest bore access",
+          "value": "60 mm diameter (MG15, hoop stress); 90 mm (MG30); 120 mm (MG40)"
+        },
+        {
+          "label": "Field stands",
+          "value": "FS2 (100 mm automated z-axis); FS4 (automated 100 mm x, y and z)"
+        },
+        {
+          "label": "Beam apertures",
+          "value": "Round 0.5, 1.0, 2.0, 3.0, 4.0 mm; rectangular 0.5×3, 1×3, 0.5×5, 1×5, 2×5 mm"
+        },
+        {
+          "label": "Mapping",
+          "value": "Patented residual stress mapping; Modular Mapping stage 300 × 200 mm"
+        },
+        {
+          "label": "Retained austenite",
+          "value": "Automated measurement, steels down to 2 %"
+        },
+        {
+          "label": "Detectors",
+          "value": "2D solid-state silicon photon-counting detectors"
+        },
+        {
+          "label": "Software",
+          "value": "XRDWIN 2.0"
+        }
+      ],
+      "standards": [
+        "ASTM E915",
+        "ASTM E1426 (X-ray elastic constants)",
+        "ANSI N43.2 (radiation safety)"
+      ],
+      "applications": [
+        "Residual stress in pipelines and welds",
+        "Shot peening verification",
+        "Retained austenite in steels",
+        "Residual stress mapping of large parts",
+        "Measurement inside small bores",
+        "Power-generation and aerospace components"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "power-energy",
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "portable residual stress analyzer",
+        "XRD residual stress measurement field",
+        "iXRD Proto",
+        "residual stress in pipeline welds",
+        "retained austenite measurement ASTM",
+        "portable x-ray diffraction stress",
+        "residual stress mapping system",
+        "sin2psi residual stress instrument"
+      ],
+      "whyMiddleEast": "Field-portable stress measurement on pipelines, pressure equipment and welds supports integrity and fabrication-quality work at oil, gas and power facilities.",
+      "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/ixrd-portable",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f357f91a5baebdf54f6c0e3_ixrd_std_laptop.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f454aa1bc969a525f36fde6_ixrd_gantry.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "iXRD Mini Portable Residual Stress System",
+      "model": "iXRD Mini",
+      "slug": "ixrd-mini",
+      "category": "Portable Residual Stress Analyzer (XRD)",
+      "priority": "core",
+      "summary": "The iXRD Mini is Proto's lower-cost portable residual stress diffractometer, with dual photon-counting detectors, a built-in 50 mm mapping slide and user-replaceable x-ray tubes. It packs into one travel case and operates at 20 W, 20 kV and 1 mA.",
+      "description": "The iXRD Mini is the entry point to Proto's portable residual stress family, designed for affordable measurements without the footprint of a laboratory diffractometer. It uses two photon-counting x-ray detectors and a full-range goniometer for sin²ψ multiple-exposure measurements, collecting data from both positive and negative ψ tilts so shear stress is evaluated correctly. A 50 mm linear mapping slide is built in, which allows basic residual stress maps to be recorded on the spot. The x-ray tube is user-replaceable and made by Proto, with anodes of Ti, V, Cr, Mn, Fe, Co and Cu available to suit steels, aluminium, titanium and other alloys. The 2θ range is 123° to 171° for residual stress and 70° to 171° for retained austenite. The goniometer weighs 2.5 kg and the power unit 8 kg, and the whole system fits in one travel case. Enclosures, radiation shields and a pendant for manual goniometer movement are offered for radiation safety and positioning. It operates from 90 to 240 VAC and runs Proto's XRDWIN software. The iXRD Mini suits quality laboratories, universities and field teams that need standards-compliant stress data at modest cost.",
+      "keySpecs": [
+        {
+          "label": "System power",
+          "value": "20 W (20 kV / 1 mA)"
+        },
+        {
+          "label": "Detectors",
+          "value": "Dual photon-counting; detector width 20° 2θ"
+        },
+        {
+          "label": "2θ range",
+          "value": "Residual stress 123° to 171°; retained austenite 70° to 171°"
+        },
+        {
+          "label": "X-ray tubes",
+          "value": "Ti, V, Cr, Mn, Fe, Co, Cu; user-replaceable"
+        },
+        {
+          "label": "Beam apertures",
+          "value": "0.5, 1.0, 1.5 mm round; 0.5×3, 1×3, 2×5 mm rectangular"
+        },
+        {
+          "label": "Mapping",
+          "value": "Built-in 50 mm linear mapping slide"
+        },
+        {
+          "label": "Goniometer",
+          "value": "250 × 175 × 195 mm; 2.5 kg"
+        },
+        {
+          "label": "Power unit",
+          "value": "250 × 250 × 150 mm; 8 kg"
+        },
+        {
+          "label": "Power requirement",
+          "value": "90–240 VAC, 50/60 Hz, single phase"
+        },
+        {
+          "label": "Software",
+          "value": "XRDWIN"
+        }
+      ],
+      "standards": [
+        "ASTM E915",
+        "ASTM E2860",
+        "EN 15305",
+        "JSMS-SD-10-05",
+        "ANSI N43.2",
+        "CE"
+      ],
+      "applications": [
+        "Routine residual stress measurement",
+        "Residual stress mapping on a 50 mm line",
+        "Shot-peened and machined components",
+        "Quality-control and teaching laboratories",
+        "Measurements in the field from a travel case"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "power-energy",
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "affordable residual stress analyzer",
+        "iXRD Mini",
+        "portable XRD stress system travel case",
+        "low cost residual stress measurement",
+        "EN 15305 residual stress instrument",
+        "residual stress diffractometer for university"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/ixrd-mini",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/63f830de47f20331363cc2e9_iXRD_mini_clipped_v2_gradient.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/64f0e9cd09f254e46091cbd0_Proto-Mychailo-Photographer-031_edit_web%20REVISED.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "mXRD Ultra-Portable Residual Stress System",
+      "model": "mXRD",
+      "slug": "mxrd",
+      "category": "Portable Residual Stress Analyzer (XRD)",
+      "priority": "core",
+      "summary": "The mXRD is an ultra-portable residual stress diffractometer for field use on pipelines, pressure vessels and bridges. A 2.6 kg measuring head with dual photon-counting detectors and replaceable tubes meets ASTM E915, EN 15305 and JSMS-SD-10, and the system packs into a single travel case.",
+      "description": "The mXRD is built for residual stress work where access and transport are the constraints. The measuring head weighs 2.6 kg and measures 260 × 160 × 155 mm, while the power unit weighs 18 kg, and both fit a single travel case. Dual x-ray detectors and a full-range goniometer carry out sin²ψ multiple-exposure measurements, collecting data from positive and negative ψ tilts so shear stress is evaluated correctly and the method complies with ASTM E915, EN 15305 and JSMS-SD-10. The 40 W tube (20 kV, 2 mA) is user-replaceable and made by Proto, with anodes of Ti, V, Cr, Mn, Fe, Co and Cu for different materials. The photon-counting detector array covers 29.8° of 2θ over a range of 146.8° to 165.2°, and beam apertures of 1.0 and 1.5 mm are provided. Proto positions the instrument for pipelines, pressure vessels and bridges. Options include magnetic attachment feet, a laboratory stand, a small enclosure, portable safety shields and XY mapping. The system is listed as compliant with ANSI N43.2, UL, CSA and CE, and runs from 90 to 240 VAC. It suits integrity inspection teams, fabricators and service companies that need on-site stress data.",
+      "keySpecs": [
+        {
+          "label": "Head dimensions / weight",
+          "value": "260 × 160 × 155 mm; 2.6 kg"
+        },
+        {
+          "label": "Power unit dimensions / weight",
+          "value": "625 × 500 × 300 mm; 18 kg"
+        },
+        {
+          "label": "X-ray tube power",
+          "value": "40 W (20 kV / 2 mA)"
+        },
+        {
+          "label": "X-ray tubes",
+          "value": "Ti, V, Cr, Mn, Fe, Co, Cu; user-replaceable"
+        },
+        {
+          "label": "Detectors",
+          "value": "Photon-counting array; detector width 29.8° 2θ"
+        },
+        {
+          "label": "2θ range",
+          "value": "146.8° to 165.2°"
+        },
+        {
+          "label": "Beam apertures",
+          "value": "1.0 mm and 1.5 mm"
+        },
+        {
+          "label": "Power requirement",
+          "value": "90–240 VAC, 50/60 Hz"
+        },
+        {
+          "label": "Options",
+          "value": "Magnetic feet, laboratory stand, enclosure, safety shields, XY mapping"
+        }
+      ],
+      "standards": [
+        "ASTM E915",
+        "ASTM E2860",
+        "EN 15305",
+        "JSMS-SD-10-05",
+        "ANSI N43.2",
+        "UL",
+        "CSA",
+        "CE"
+      ],
+      "applications": [
+        "Residual stress on pipelines",
+        "Pressure vessel inspection",
+        "Bridge and structural steel",
+        "Weld residual stress",
+        "Field measurement from a single travel case"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "power-energy",
+        "construction-infrastructure",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "portable residual stress measurement pipeline",
+        "mXRD Proto",
+        "ultra portable x-ray stress analyzer",
+        "residual stress pressure vessel field testing",
+        "EN 15305 portable instrument",
+        "residual stress bridge steel measurement"
+      ],
+      "whyMiddleEast": "Pipelines, pressure vessels and structural steel are core assets in Gulf oil, gas, petrochemical and infrastructure projects, and a travel-case system allows on-site stress checks.",
+      "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/mxrd-ultra-portable",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f357994f39a32177d8cb2ac_mxrd_travel_case.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f451d3059f98e0b2c50e574_mxrd_cover_on.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "LXRD Laboratory Residual Stress and Retained Austenite System",
+      "model": "LXRD",
+      "slug": "lxrd",
+      "category": "Laboratory Residual Stress Analyzer (XRD)",
+      "priority": "flagship",
+      "summary": "The LXRD is Proto's high-power laboratory and production residual stress system, built for round-the-clock operation. Enclosed versions from Standard to Gantry handle parts from 30 cm to several metres, with 1200 W goniometers, optional mapping and retained austenite measurement in as little as a minute.",
+      "description": "The LXRD is the laboratory counterpart of the iXRD, designed as an audit station for heavy-duty, continuous operation. It is supplied in a radiation-proof enclosure with an integrated chiller and several size options. The Standard cabinet passes through a single door and takes parts up to 30 cm, with a 400 mm automated z-axis and a 1200 W MG2000 goniometer. The Widebody extends capacity to 50 cm with a 500 mm z-axis. The Modular Mapping version offers over 2 m of measurement space and a removable mapping stage for oversized components, including titanium parts that are hard to measure at low power. The Gantry is a 3.5 m walk-in enclosure that moves the goniometer rather than the part, and the Dual-Axis adds a chi rotation stage and microarea apertures for research use. Stages include XY positioning, triaxial phi rotation and an X, Y, phi mapping table; apertures run from 0.2 to 4 mm round with several rectangular options, plus microbeam apertures. Automated retained austenite measurement is available down to 1 % in steels, along with XEC determination by four-point bend and pole figures. Measurements can take as little as a minute. Typical users are manufacturers, heat-treaters and testing laboratories.",
+      "keySpecs": [
+        {
+          "label": "Goniometer power",
+          "value": "MG2000, 1200 W (Standard and Widebody)"
+        },
+        {
+          "label": "Standard enclosure",
+          "value": "Parts up to 30 cm; 400 mm automated z-axis"
+        },
+        {
+          "label": "Widebody enclosure",
+          "value": "Parts up to 50 cm; 500 mm z-axis; 300 mm Y travel"
+        },
+        {
+          "label": "Modular Mapping",
+          "value": "Over 2 m of measurement space; removable mapping stage"
+        },
+        {
+          "label": "Gantry",
+          "value": "3.5 m walk-in enclosure; overhead XYZ slides; GR2000 goniometer with phi rotation"
+        },
+        {
+          "label": "Mapping stage",
+          "value": "Fully automated XY, 300 × 200 mm travel (Standard)"
+        },
+        {
+          "label": "Beam apertures",
+          "value": "Round 0.2 to 4.0 mm; rectangular 0.5×3 to 2×5 mm; microbeam apertures 40 to 150 microns"
+        },
+        {
+          "label": "Retained austenite",
+          "value": "Automated measurement, steels down to 1 %"
+        },
+        {
+          "label": "Cooling",
+          "value": "Integrated chiller / tube cooling"
+        },
+        {
+          "label": "Measurement time",
+          "value": "As little as one minute"
+        }
+      ],
+      "standards": [
+        "ASTM E915",
+        "ASTM E1426 (X-ray elastic constants)",
+        "ANSI N43.2 (radiation safety)"
+      ],
+      "applications": [
+        "Production audit of residual stress and retained austenite",
+        "Residual stress mapping of large components",
+        "Pole figures and texture on stress stages",
+        "Crankshafts, gears, coils and turbine parts",
+        "Titanium and other difficult materials at high power"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "power-energy",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "laboratory residual stress analyzer",
+        "LXRD Proto",
+        "retained austenite measurement system",
+        "XRD stress measurement large parts",
+        "residual stress mapping gantry",
+        "residual stress testing laboratory instrument",
+        "high power residual stress diffractometer"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/lxrd-laboratory",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f340c523a168cfefd9d85ee_lxrd_std.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f314d77c6b25c2f387d4c73_lxrd_widebody.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "roboXRD Robotic Residual Stress Measurement System",
+      "model": "roboXRD",
+      "slug": "roboxrd",
+      "category": "Robotic Residual Stress Analyzer (XRD)",
+      "priority": "niche",
+      "summary": "The roboXRD mounts Proto's iXRD measuring head on a six-axis robot with a 1210 mm reach, so residual stress can be measured on small and large parts at many angles. It is compatible with the LP200 profilometer for advanced stress mapping and positions to 10 microns.",
+      "description": "The roboXRD adapts Proto's iXRD platform to robotic positioning. A six-axis robot with a reach of 1210 mm and an arm span of 910 mm carries the goniometer to the measurement point, which makes it practical to measure both small and large parts at a variety of angles without manual repositioning. Phi rotation covers 0 to 340 degrees and positioning accuracy is quoted as 10 microns. The system is controlled by the XRDWIN RS software package and operates from 90 to 240 VAC, single phase. Residual stress is determined with the sin²ψ multiple-exposure technique used across Proto's residual stress systems. Compatibility with the LP200 profilometer lets advanced residual stress maps be built by combining surface geometry with stress data; Proto notes that the profilometer also supports stress-versus-depth profiles and Cartesian-coordinate maps that feed its stress mapping software. Flexible configuration options allow measurements to be collected at different angles so that the required data is always obtained. The roboXRD is aimed at manufacturers and research groups that need flexible, repeatable positioning across complex shapes and surfaces, and want the movement between measurement points handled automatically rather than by hand.",
+      "keySpecs": [
+        {
+          "label": "Robot",
+          "value": "Six-axis, 1210 mm arm length"
+        },
+        {
+          "label": "Arm span",
+          "value": "910 mm"
+        },
+        {
+          "label": "Phi rotation",
+          "value": "0 to 340 degrees"
+        },
+        {
+          "label": "Positioning accuracy",
+          "value": "10 microns"
+        },
+        {
+          "label": "Software",
+          "value": "XRDWIN RS"
+        },
+        {
+          "label": "Profilometer compatibility",
+          "value": "LP200 Profilometer for stress mapping"
+        },
+        {
+          "label": "Power requirement",
+          "value": "90–240 VAC, 50/60 Hz, single phase"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Residual stress at multiple angles on complex shapes",
+        "Automated measurement of many points on large components",
+        "Stress mapping with the LP200 profilometer"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "power-energy",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "robotic residual stress measurement",
+        "roboXRD",
+        "robot arm x-ray diffraction stress",
+        "automated residual stress mapping complex parts",
+        "six axis XRD residual stress"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/roboxrd-robotic-measurement-system",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f97037d598d077addd92e18_roboXRD_model.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f63815c7992b73b039b7db1_ixrd_robot_configuration_1.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "AXRD Benchtop Powder Diffractometer",
+      "model": "AXRD Benchtop",
+      "slug": "axrd-benchtop",
+      "category": "Powder X-ray Diffractometer (Benchtop)",
+      "priority": "flagship",
+      "summary": "The AXRD Benchtop is a 600 W powder diffractometer with decoupled motors, a selectable 143 or 191 mm goniometer radius and integrated water cooling with no external chiller. It supports phase ID, Rietveld, GID, reflectivity and non-ambient work up to 500 °C in a bench-sized footprint.",
+      "description": "The AXRD Benchtop is designed to deliver laboratory-class powder diffraction in a footprint that fits on a bench. Its decoupled motors mean the geometry is not fixed to theta-2theta or theta-theta: the instrument can run rocking curves, glancing-incidence diffraction and theta oscillation during Bragg-Brentano scans, and it is described as the only benchtop diffractometer with an optional parallel-beam optic and long Soller slit for proper GID. The goniometer radius can be set to 143 mm for higher flux and faster measurements or 191 mm for narrower peaks, with FWHM resolution better than 0.05° 2θ at 143 mm and 0.03° at 191 mm. The 600 W tube is cooled by an integrated tank, pump and heat exchanger, so no external chiller is needed. An inclined tube prevents powders from spilling, and anodes can be swapped without a technician. Six- or eight-position sample changers, spinners and zero-background holders are available, along with Anton Paar BTS heating stages to 150 °C or 500 °C that also support gas flow, humidity and operation from 10⁻¹ to 1 bar. Techniques include phase identification, Rietveld refinement, crystallinity, size and strain, pole figures, stress, reflectivity and GID.",
+      "keySpecs": [
+        {
+          "label": "X-ray power",
+          "value": "600 W, with integrated water cooling (no external chiller)"
+        },
+        {
+          "label": "Goniometer radius",
+          "value": "143 mm (higher flux) or 191 mm (higher resolution)"
+        },
+        {
+          "label": "Peak resolution (FWHM)",
+          "value": "< 0.03° (191 mm) or < 0.05° 2θ (143 mm)"
+        },
+        {
+          "label": "Motion",
+          "value": "Decoupled motors: theta-2theta, theta-theta, rocking curves, GID, theta oscillation"
+        },
+        {
+          "label": "Sample changers",
+          "value": "Six- or eight-position, with optional spinner"
+        },
+        {
+          "label": "Non-ambient stages",
+          "value": "Anton Paar BTS 150 (to 150 °C) and BTS 500 (to 500 °C)"
+        },
+        {
+          "label": "Atmosphere",
+          "value": "Gas flow, relative humidity, vacuum or pressure from 10⁻¹ to 1 bar"
+        },
+        {
+          "label": "Optics",
+          "value": "Flexible slit options; optional parallel-beam optic and long Soller slit"
+        },
+        {
+          "label": "Safety",
+          "value": "X-RAY ON and SHUTTER OPEN status lights"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Phase identification and Rietveld refinement",
+        "Crystallinity and size/strain analysis",
+        "Glancing-incidence diffraction and reflectivity",
+        "Temperature- and humidity-controlled diffraction",
+        "Pole figures and residual stress",
+        "Cement, mineral and raw-material analysis"
+      ],
+      "industries": [
+        "research-academia",
+        "materials-manufacturing",
+        "construction-infrastructure",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "benchtop XRD powder diffractometer",
+        "AXRD Benchtop",
+        "benchtop x-ray diffractometer with sample changer",
+        "XRD for phase identification Rietveld",
+        "benchtop XRD non ambient heating stage",
+        "GID benchtop diffractometer",
+        "XRD for cement and minerals"
+      ],
+      "whyMiddleEast": "Phase analysis of cement, minerals and raw materials suits university, geology and construction-materials laboratories.",
+      "sourceUrl": "https://www.protoxrd.com/products/powder-diffraction/axrd-benchtop",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/66294dad1e6ec5aee423b209_AXRD%20Benchtop.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f0c7ab7d023846b0aada8d1_portable_workstation.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "AXRD LPD Laboratory Powder Diffractometer",
+      "model": "AXRD LPD",
+      "slug": "axrd-lpd",
+      "category": "Powder X-ray Diffractometer (Laboratory)",
+      "priority": "core",
+      "summary": "The AXRD LPD is Proto's high-power multipurpose laboratory diffractometer, with tool-free pre-aligned exchange of optics, stages, chambers and detectors. Angular accuracy is better than ±0.01° over the full range, with sources up to 3000 W and a path to high-resolution diffraction.",
+      "description": "The AXRD LPD is a configurable platform for powder, thin-film, bulk and single-crystal diffraction. Optics, sample stages, environmental cells and detectors are exchanged through a tool-free, pre-aligned system, so the instrument can start in a standard configuration and be extended later, including upgrades to high-resolution diffraction. Angular accuracy is better than ±0.01° Δ2θ over the entire range. Sources reach 3000 W (60 kV, 50 mA) with Cu, Cr, Co, Mn, Mo, V or Ag tubes, and the optics list includes multilayer parallel or focusing optics, a parallel plate analyzer, Johansson Kα1 monochromator and a two-bounce Ge crystal. Accessories include an Eulerian cradle with phi rotation, XY mapping, bi-directional tilt and reflection/transmission stages, while chambers cover high-temperature, pressure, low-vacuum and high-vacuum work. Capabilities named by the manufacturer are phase identification, Rietveld refinement, texture and microstructure analysis, residual stress and retained austenite, GID and in-plane diffraction, reflectivity, rocking curves, reciprocal-space maps, PDF analysis, structure solution and SAXS/WAXS. It suits materials discovery, thin-film characterisation, microdiffraction and high-throughput sample handling in university and industrial research laboratories.",
+      "keySpecs": [
+        {
+          "label": "Angular accuracy",
+          "value": "Better than ±0.01° Δ2θ over the full range"
+        },
+        {
+          "label": "X-ray source",
+          "value": "Up to 3000 W (60 kV / 50 mA)"
+        },
+        {
+          "label": "Anode options",
+          "value": "Cu, Cr, Co, Mn, Mo, V, Ag"
+        },
+        {
+          "label": "Optics",
+          "value": "Multilayer (parallel or focusing), parallel plate analyzer, Johansson Kα1, 2-bounce Ge crystal"
+        },
+        {
+          "label": "Stages and accessories",
+          "value": "Eulerian cradle with phi, XY mapping, bi-directional tilt, height adjustment, reflection/transmission"
+        },
+        {
+          "label": "Chambers",
+          "value": "High-temperature, pressure, low-vacuum and high-vacuum options"
+        },
+        {
+          "label": "Configuration",
+          "value": "Tool-free, pre-aligned exchange of optics, stages, cells and detectors"
+        },
+        {
+          "label": "Upgrade path",
+          "value": "High-resolution diffraction"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Powder and bulk sample diffraction",
+        "Thin films and coatings",
+        "Microdiffraction and 2D diffraction",
+        "Texture and microstructure",
+        "SAXS/WAXS and PDF analysis",
+        "High-throughput sample handling"
+      ],
+      "industries": [
+        "research-academia",
+        "materials-manufacturing",
+        "pharmaceutical-biotech",
+        "power-energy"
+      ],
+      "searchKeywords": [
+        "multipurpose powder diffractometer",
+        "AXRD LPD",
+        "laboratory XRD system 3000 W",
+        "thin film XRD",
+        "XRD with exchangeable optics",
+        "microdiffraction system",
+        "research grade powder XRD"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/powder-diffraction/axrd-lpd",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/66294de04ead31b72175bb04_AXRD%20LPD.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/67880c66dc547a58b27e2e51_LPD%20accessories%20image.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "AXRD LPD-HT High-Throughput Powder Diffractometer",
+      "model": "AXRD LPD-HT",
+      "slug": "axrd-lpd-ht",
+      "category": "Powder X-ray Diffractometer (High-Throughput)",
+      "priority": "niche",
+      "summary": "The AXRD LPD-HT is a high-throughput powder diffractometer that uses a 96-well plate, a 2D Montel focusing optic and DECTRIS EIGER2 detectors for rapid screening of polymorphs, co-crystals and MOFs. A 21 CFR Part 11 compliant software version is offered for pharmaceutical use.",
+      "description": "The AXRD LPD-HT is built for rapid screening and in-situ characterisation of multifunctional molecular materials. Samples are set up in a 96-well plate for automated analysis, and a 2D Montel focusing optic gives the intensity and resolution needed to collect data quickly. Proto lists specialty chemicals, pharmaceutical co-crystals, polymorphs, coordination polymers and metal-organic frameworks as typical subjects, and the system supports materials discovery and drug development workflows where many small samples must be tested in a short time. Non-ambient experiments are supported with a range of temperature and pressure cells, and accessories include a capillary spinning stage, a pressurised capillary stage, Oxford cryostats, XY mapping and a laser-targeting system. Configurable components include high-brilliance microfocus tubes in the 50 to 70 W range, interchangeable pinhole collimators, and latest-generation DECTRIS EIGER2 2D detectors. For clients who create or store records regulated by the FDA, Proto offers a 21 CFR Part 11 compliant version of its powder XRD software. The company also names Solid4m Labs as a partner for high-throughput screening services. The LPD-HT suits pharmaceutical and materials research groups and contract screening laboratories.",
+      "keySpecs": [
+        {
+          "label": "Sample format",
+          "value": "96-well plate, automated analysis"
+        },
+        {
+          "label": "X-ray source",
+          "value": "High-power microfocus tubes, 50 to 70 W"
+        },
+        {
+          "label": "Optics",
+          "value": "2D Montel focusing optic; interchangeable pinhole collimators"
+        },
+        {
+          "label": "Detectors",
+          "value": "DECTRIS EIGER2 family 2D detectors"
+        },
+        {
+          "label": "Accessories",
+          "value": "Capillary spinning stage, pressurised capillary stage, Oxford cryostats, XY mapping, laser targeting"
+        },
+        {
+          "label": "Non-ambient",
+          "value": "Compatible temperature and pressure cells"
+        },
+        {
+          "label": "Software compliance",
+          "value": "21 CFR Part 11 compliant powder XRD software available"
+        }
+      ],
+      "standards": [
+        "21 CFR Part 11 (software option)"
+      ],
+      "applications": [
+        "Polymorph and co-crystal screening",
+        "Metal-organic framework and coordination polymer characterisation",
+        "Specialty chemicals screening",
+        "In-situ non-ambient screening",
+        "Pharmaceutical development under 21 CFR Part 11"
+      ],
+      "industries": [
+        "pharmaceutical-biotech",
+        "research-academia",
+        "materials-manufacturing"
+      ],
+      "searchKeywords": [
+        "high throughput XRD 96 well plate",
+        "polymorph screening diffractometer",
+        "21 CFR Part 11 XRD software",
+        "pharmaceutical powder XRD",
+        "MOF characterization XRD",
+        "AXRD LPD-HT",
+        "co-crystal screening instrument"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/powder-diffraction/axrd-lpd-ht",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/66294eac3152e4cf8c368070_AXRD%20LPD-HT.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/66328d1fe797f9f717ba4b77_Well%20plate.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "AXRD Theta-Theta Non-Ambient Powder Diffractometer",
+      "model": "AXRD Theta-Theta",
+      "slug": "axrd-theta-theta",
+      "category": "Powder X-ray Diffractometer (Non-Ambient)",
+      "priority": "core",
+      "summary": "The AXRD Theta-Theta is a compact floor-standing powder diffractometer with a vertical theta-theta geometry and a 1200 W source. It is built for large samples and non-ambient work, with temperature stages from −190 to 2000 °C and a 102 × 76 × 174 cm footprint.",
+      "description": "The AXRD Theta-Theta sits between the benchtop and full-size laboratory systems, giving non-ambient diffraction an affordable and compact home. Its vertical theta-theta geometry keeps the sample horizontal and stationary while the tube and detector move, which suits loose powders, large samples and the integration of heating, cooling and pressure stages. The goniometer radius is 190 to 220 mm depending on options, the x-ray system is rated at 1200 W, and detection uses a high-speed photon-counting detector. The footprint is 102 × 76 × 174 cm (W × D × H), and automated doors are available. Temperature stage options span −190 to 2000 °C, with chambers including the TTK 600 low-temperature chamber, BTS 150 and BTS 500 compact heating stages, the XRK 900 reactor chamber, the HTK 1200N oven chamber and the HTK 16N and HTK 2000N strip-heater chambers. A PS30 variable-pressure stage, a motorised XYZ stage, a sample exchanger and custom holders extend the system further. Proto describes it as a dedicated workstation for solid-state, high-temperature and material-gas reaction studies, and it suits university and industrial laboratories that need temperature-dependent phase behaviour.",
+      "keySpecs": [
+        {
+          "label": "Geometry",
+          "value": "Vertical theta-theta"
+        },
+        {
+          "label": "X-ray system",
+          "value": "1200 W"
+        },
+        {
+          "label": "Goniometer radius",
+          "value": "190 to 220 mm, depending on options"
+        },
+        {
+          "label": "Detector",
+          "value": "High-speed photon-counting detector"
+        },
+        {
+          "label": "Temperature stages",
+          "value": "−190 °C to 2000 °C"
+        },
+        {
+          "label": "Pressure",
+          "value": "Gas pressure stage option (PS30)"
+        },
+        {
+          "label": "Footprint (W × D × H)",
+          "value": "102 × 76 × 174 cm"
+        },
+        {
+          "label": "Options",
+          "value": "Sample exchanger, motorised xyz stage, automated doors"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "High-temperature and low-temperature phase studies",
+        "Solid-state and solid-gas reaction monitoring",
+        "Large or loose powder samples",
+        "Variable-pressure diffraction",
+        "Dedicated non-ambient laboratory workstation"
+      ],
+      "industries": [
+        "research-academia",
+        "materials-manufacturing",
+        "power-energy",
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "non ambient XRD",
+        "high temperature powder diffractometer",
+        "theta theta diffractometer",
+        "XRD temperature stage -190 to 2000",
+        "AXRD Theta-Theta",
+        "XRD for cement hydration high temperature",
+        "variable pressure powder diffraction"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/powder-diffraction/axrd-theta-theta",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/66294dc40a3944cb5d1d9b52_AXRD%20Theta-Theta.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/672506681d4c483e1ced501e_theta-theta-auto-doors.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "mScan XRF Compact Micro-XRF Spectrometer",
+      "model": "mScan XRF",
+      "slug": "mscan-xrf",
+      "category": "X-ray Fluorescence Spectrometer (Micro-XRF)",
+      "priority": "core",
+      "summary": "The mScan XRF is a compact micro-XRF spectrometer with a 15 micron spot, silicon drift detector and a spacious radiation-protected cabinet. It analyses Na to Am (C to Am with specialised detectors), with vacuum or helium options and mapping by point, line, rectangle or multi-point.",
+      "description": "The mScan XRF determines elemental composition and maps element distribution on samples of many sizes and materials. The element range runs from sodium to americium, and from carbon to americium when specialised detectors are fitted. A 15 micron spot size gives high spatial resolution, and a fast silicon drift detector provides the energy resolution and short collection times needed for mapping. Measurement areas can be a single point, a line, a rectangle or a set of points, so a rock section or a circuit board can be scanned and presented as multi-element maps. A stable vacuum pump with quick pump-down speeds sample loading, a helium flow-through option improves data for light elements, and a live-feed video microscope inside the enclosure confirms the analysed area. The XYZ sample stage moves at 100 mm/s and a joystick provides rapid targeting. The cabinet is radiation-protected and large enough for bigger samples. Proto positions the instrument for materials science, quality control and research, and software controls acquisition and mapping. It suits geology, electronics failure analysis, coatings and materials laboratories that need compositional detail on small features.",
+      "keySpecs": [
+        {
+          "label": "Element range",
+          "value": "Na to Am; C to Am with specialised detectors"
+        },
+        {
+          "label": "Spot size",
+          "value": "15 microns"
+        },
+        {
+          "label": "Detector",
+          "value": "Silicon drift detector (SDD)"
+        },
+        {
+          "label": "Atmosphere",
+          "value": "Vacuum pump with quick pump-down; helium flow-through option"
+        },
+        {
+          "label": "Mapping modes",
+          "value": "Single point, linear, rectangular and multi-point"
+        },
+        {
+          "label": "Sample stage",
+          "value": "XYZ positioning, 100 mm/s slide speed"
+        },
+        {
+          "label": "Targeting",
+          "value": "Live video microscope inside the enclosure; joystick control"
+        },
+        {
+          "label": "Cabinet",
+          "value": "Radiation-protected cabinet for larger samples"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Elemental mapping of rocks and minerals",
+        "Circuit board and electronics analysis",
+        "Materials science and quality control",
+        "Small-feature compositional analysis",
+        "Coating and inclusion studies"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "research-academia",
+        "construction-infrastructure"
+      ],
+      "searchKeywords": [
+        "micro XRF elemental mapping",
+        "mScan XRF Proto",
+        "benchtop XRF 15 micron spot",
+        "XRF for rock and mineral mapping",
+        "elemental analysis Na to Am",
+        "micro-XRF for circuit boards"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/xrf/mscan-xrf",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/66b4f5510f9c7e0a9e6c4fc0_mScan%20front%20right.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/66b5005108b6e1c0fa323877_mScan%20Rock%20Data.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "nSpec XRF Benchtop ED-XRF Spectrometer",
+      "model": "nSpec XRF",
+      "slug": "nspec-xrf",
+      "category": "X-ray Fluorescence Spectrometer (ED-XRF)",
+      "priority": "core",
+      "summary": "The nSpec XRF is a compact benchtop energy-dispersive XRF spectrometer for process control and routine quality checks on cements, metals, paints and coatings. It covers Na to Am (C to Am with specialised detectors), with a vacuum chamber, helium option and an automated door for robotic loading.",
+      "description": "The nSpec XRF is a benchtop ED-XRF spectrometer intended for routine investigation and quality control rather than imaging. Element coverage spans sodium to americium, and carbon to americium with specialised detectors. A vacuum chamber improves detection limits for light elements, and a helium gas chamber option is available where vacuum is unsuitable for the sample. The radiation-protected cabinet accepts samples up to 50 × 50 × 50 mm, and an automated door allows the instrument to be integrated into a robotic sample-handling system so that it can serve as a station in an automated line. Software and controls are designed for straightforward operation, and safety features are built into the cabinet. Proto names process control in cements, metals, paints and coatings as the main fields of use, which fits cement plants, metal processing, coating production and general analytical laboratories where fast compositional checks are needed. For small-spot analysis and elemental mapping, the same manufacturer's mScan XRF is the corresponding model, while the nSpec XRF is the simpler option for bulk composition of prepared samples.",
+      "keySpecs": [
+        {
+          "label": "Technique",
+          "value": "Energy-dispersive XRF (ED-XRF), benchtop"
+        },
+        {
+          "label": "Element range",
+          "value": "Na to Am; C to Am with specialised detectors"
+        },
+        {
+          "label": "Maximum sample size",
+          "value": "50 × 50 × 50 mm"
+        },
+        {
+          "label": "Atmosphere",
+          "value": "Vacuum chamber; helium gas chamber option"
+        },
+        {
+          "label": "Automation",
+          "value": "Automated door for robotic handling integration"
+        },
+        {
+          "label": "Cabinet",
+          "value": "Radiation-protected, with built-in safety features"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Process control in cement production",
+        "Metals composition checks",
+        "Paints and coatings analysis",
+        "Routine quality control",
+        "Integration into automated sample handling"
+      ],
+      "industries": [
+        "construction-infrastructure",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "benchtop XRF for cement",
+        "nSpec XRF Proto",
+        "ED-XRF spectrometer for quality control",
+        "XRF process control cement metals coatings",
+        "helium XRF light element analysis",
+        "XRF with robotic sample loading"
+      ],
+      "whyMiddleEast": "Cement is one of the named process-control uses, and cement and building-materials production is a major industry across the Gulf.",
+      "sourceUrl": "https://www.protoxrd.com/products/xrf/nspec-xrf",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/690a22470b91249eb67ee9e1_XRF%20Benchtop%20Front%20Right%20Cut.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/690a2924877e8a39dcf700a6_XRF%20Benchtop%20Front%20Top%20Cut_nobg.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Laue-COS Benchtop Single-Crystal Orientation System",
+      "model": "Laue-COS Benchtop",
+      "slug": "laue-cos-benchtop",
+      "category": "Single-Crystal Laue Orientation System",
+      "priority": "niche",
+      "summary": "The Laue-COS Benchtop is a compact Laue back-reflection system for orienting single crystals such as scintillators, optical crystals, piezoelectrics, minerals and substrates. It determines orientation to 0.1° using an in-house scintillation detector, and is available in horizontal and vertical versions.",
+      "description": "The Laue-COS Benchtop determines the orientation of single-crystal materials in seconds without the space demands of a conventional Laue instrument. It is intended for production and research laboratories that grow, cut or inspect scintillation crystals, non-linear optical crystals, piezoelectrics, minerals and wafers. Orientation accuracy is 0.1°. The instrument has no consumables, such as detector gases, and uses a Proto tungsten x-ray tube. Its back-reflection detector is a scintillation design made in house, sensitive across 4 to 30 keV, with 2080 × 2080 pixels at a 61 micron pixel size over a 127 × 127 mm area; binning shortens collection times. Two configurations are offered. The horizontal version carries an X,Y stage with 4 inch travel per axis and accepts a manual goniometer or a crystal-cutting goniometer, so a crystal can be reoriented and moved straight to the saw without being removed from its mount. The vertical version is aimed at thin plates and wafers, including diamond plates, and adds a laser focusing system that can reveal subtle wedge shapes. Motorised joystick-controlled stages are optional. XRDWIN Laue software handles simulation, indexing and reorientation, with Crystallography Open Database integration.",
+      "keySpecs": [
+        {
+          "label": "Orientation accuracy",
+          "value": "0.1°"
+        },
+        {
+          "label": "Detector",
+          "value": "In-house back-reflection scintillation detector, 4 to 30 keV"
+        },
+        {
+          "label": "Detector resolution",
+          "value": "2080 × 2080 pixels, 61 micron pixel size, 127 × 127 mm area"
+        },
+        {
+          "label": "X-ray tube",
+          "value": "Proto tungsten tube"
+        },
+        {
+          "label": "Configurations",
+          "value": "Horizontal (general orienting and cutting) and vertical (thin plates and wafers)"
+        },
+        {
+          "label": "Sample stage",
+          "value": "Manual X,Y with 4 inch travel per axis; motorised option"
+        },
+        {
+          "label": "Consumables",
+          "value": "None (no detector gases)"
+        },
+        {
+          "label": "Software",
+          "value": "XRDWIN 2.0 Laue with COD integration"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Orientation of scintillation and optical crystals",
+        "Crystal cutting and re-orientation",
+        "Quality control of diamond plates and wafers",
+        "Mineral and substrate orientation",
+        "Piezoelectric crystals"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "Laue single crystal orientation",
+        "benchtop Laue diffractometer",
+        "crystal orientation for cutting",
+        "Laue-COS Benchtop",
+        "orienting scintillator crystals",
+        "wafer orientation x-ray"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/laue-single-crystal/laue-cos-benchtop",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/6407f46123ecab580fc50fde_Laue-COS-Benchtop-2020Dec-Front-Right-Cut_doorclosed.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/6407ffa955b6529c26099301_Laue-COS-Benchtop-Horizontal-2022Feb-Front-Right-Door-Open-Cut.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "SC-1 MAX Single-Crystal X-ray Diffractometer",
+      "model": "SC-1 MAX",
+      "slug": "sc-1-max",
+      "category": "Single-Crystal X-ray Diffractometer",
+      "priority": "niche",
+      "summary": "The SC-1 MAX is Proto's advanced single-crystal diffractometer for demanding experiments such as protein crystallography. It combines a liquid gallium or indium MetalJet source, a kappa goniometer, a photon-counting EIGER2 detector and cryo cooling from 80 to 500 K, with magnetic mounts for quick crystal changes.",
+      "description": "The SC-1 MAX targets experiments where data resolution and source brightness decide the outcome, including protein crystallography. Its x-ray source is the MetalJet D2+, which uses a liquid gallium or indium anode and delivers the highest x-ray flux in a laboratory system through very high brightness and an 80 micron beam, with performance the manufacturer compares to synchrotrons. The goniometer is a proprietary kappa design with a high-precision, high-accuracy bearing, and crystals are mounted on magnetic goniometer heads and bases for quick changeover. Detection uses direct capture of x-ray photons with zero noise and very wide dynamic range, with a DECTRIS EIGER2 detector shown on the product page and CdTe sensors available for higher quantum efficiency at harder wavelengths. Advanced multilayer optics provide beam intensity, and cryo coolers cover 80 to 500 kelvin. Novel data collection algorithms aim to maximise completeness and redundancy in the shortest possible time. The SC-1 MAX is aimed at structural biology and chemical crystallography groups in universities, institutes and pharmaceutical research that want in-house access to high-quality diffraction data. Related models in the same family are the SC-1 and SC-1 HP.",
+      "keySpecs": [
+        {
+          "label": "X-ray source",
+          "value": "MetalJet D2+, liquid Ga or In anode, 80 micron beam"
+        },
+        {
+          "label": "Goniometer",
+          "value": "Proprietary kappa goniometer, high-precision bearing"
+        },
+        {
+          "label": "Detector",
+          "value": "Photon-counting DECTRIS EIGER2 R 4M (CdTe sensors available)"
+        },
+        {
+          "label": "Optics",
+          "value": "Advanced multilayer x-ray optics"
+        },
+        {
+          "label": "Cryo cooling",
+          "value": "80 to 500 K"
+        },
+        {
+          "label": "Crystal mounting",
+          "value": "Magnetic goniometer heads and bases"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Protein crystallography",
+        "Small-molecule single-crystal structure determination",
+        "Advanced experiments needing very high brightness",
+        "In-house alternative to synchrotron screening"
+      ],
+      "industries": [
+        "research-academia",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "single crystal x-ray diffractometer",
+        "protein crystallography home source",
+        "MetalJet diffractometer",
+        "SC-1 MAX",
+        "gallium MetalJet x-ray source",
+        "EIGER2 single crystal diffractometer"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/x-ray-crystallography/sc-1-max",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/68f2ca1f473d411245d1e912_ce295ed25bb81f5879b0fabad1c860bc_SC-1%20MAX%20Front%20Right%20Doors%20Open.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/69d931f70c3ab822400cb9f3_SC-1%20MAX%20interior.png"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "Electropolisher Model 8818-V3",
+      "model": "8818-V3",
+      "slug": "electropolisher-8818-v3",
+      "category": "Sample Preparation (Electropolishing)",
+      "priority": "niche",
+      "summary": "The Proto Electropolisher 8818-V3 is a compact 8 kg unit for etching and polishing metal surfaces without introducing cold-work stress. It removes thin layers so residual stress and retained austenite can be re-measured at each depth, in the laboratory or on large parts in the field.",
+      "description": "Residual stress changes with depth, and mechanical grinding would alter the very stress state being measured. The 8818-V3 removes material electrolytically, so layers can be taken off without cold-working the surface and stress or retained austenite can then be re-measured at each depth. It also serves for general metallurgical preparation. The unit weighs 8 kg, measures 35 × 30 × 15 cm and offers dual-mode etching and polishing. Output is 0 to 65 VDC at up to 10 A from a 90 to 265 VAC input, with a timer that handles seconds, minutes and hours up to 300 hours, and the pump and electrodes switch off automatically at the end of a polish, signalled by a buzzer. A stainless steel self-priming gear pump with a brushless motor circulates electrolyte, flow is electronically adjustable, and a stainless tank with chill pockets holds the solution. Protection includes fused input and automatic overpower output protection. Replaceable spot tips of 6, 9, 12 and 15 mm, alligator and magnetic ground clips, a manual and an operation video are supplied. Optional accessories include a stand, travel case, custom electrodes and masking kit; Proto's non-toxic Electrolyte A is separate.",
+      "keySpecs": [
+        {
+          "label": "Weight",
+          "value": "8 kg (18 lb)"
+        },
+        {
+          "label": "Dimensions (L × W × H)",
+          "value": "35 × 30 × 15 cm (14 × 12 × 6 in)"
+        },
+        {
+          "label": "Input power",
+          "value": "90–265 VAC, 50/60 Hz"
+        },
+        {
+          "label": "Output power",
+          "value": "0–65 VDC, 0–10 A"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "0 °C to 40 °C"
+        },
+        {
+          "label": "Timer",
+          "value": "Up to 300 hours, with seconds, minutes and hours ranges"
+        },
+        {
+          "label": "Spot tips",
+          "value": "6, 9, 12 and 15 mm diameters, replaceable"
+        },
+        {
+          "label": "Operating modes",
+          "value": "Etching and polishing; adjustable electronic flow control"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Residual stress versus depth profiling",
+        "Retained austenite versus depth",
+        "Field electropolishing of large parts",
+        "General metallurgical specimen preparation"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "oil-gas",
+        "power-energy",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "portable electropolisher for residual stress",
+        "electrolytic polisher XRD depth profile",
+        "Proto electropolisher 8818",
+        "electropolishing for retained austenite",
+        "portable electropolishing unit field"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/sample-preparation-accessories",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/63e522258ab1e42a7d327621_dd987229e6ff2e9c74950e6572300667_electropolisher_2.png",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f1f31e10fa4a044b0f48759_electropolisher_3.jpg"
+      ],
+      "datasheetUrl": null
+    },
+    {
+      "name": "XRDWIN 2.0 Residual Stress, Laue and Powder Diffraction Software",
+      "model": "XRDWIN 2.0",
+      "slug": "xrdwin-2",
+      "category": "XRD Software",
+      "priority": "core",
+      "summary": "XRDWIN 2.0 is Proto's data collection and analysis software for its residual stress, Laue orientation and powder diffraction instruments. The stress package covers sin²ψ regression, triaxial analysis, patented stress mapping, XEC determination and retained austenite, with add-in modules for pole figures and more.",
+      "description": "XRDWIN 2.0 runs every Proto XRD instrument and comes in dedicated packages for residual stress, Laue orientation and powder diffraction. The residual stress package performs linear and elliptical regression of d versus sin²ψ data with error analysis, supports psi and omega geometries, and offers peak-fitting routines including parabolic, Gaussian, Pearson VII, Cauchy, centroid and mid-chord, with the Dolle-Hauk method for ψ+ and ψ−. Triaxial routines, manual or automated, give the stress tensor, principal stress, maximum shear and equivalent stress. Residual stress mapping uses square, rectangular and circular grids or hand-picked points with patented multi-level 3D display, map algebra and before-and-after comparison, and can combine stress, peak width, retained austenite and hardness in one map. Utilities cover principal stress calculation, material removal and penetration depth corrections, x-ray elastic constant determination and remote access over a network. Add-in modules include pole figure, expert system, database management, inline inspection stress monitor, strain gage monitor and four-peak retained austenite measurement. The Laue version provides pattern simulation, automated indexing and a production mode for orienting components such as turbine blades, and the powder package, XRDWIN PD with PDAnalysis, covers phase identification, Rietveld refinement and a 21 CFR Part 11 compliant option.",
+      "keySpecs": [
+        {
+          "label": "Packages",
+          "value": "Residual stress, Laue orientation, powder diffraction (XRDWIN PD)"
+        },
+        {
+          "label": "Stress analysis",
+          "value": "Linear and elliptical d vs sin²ψ regression; Dolle-Hauk; triaxial stress tensor"
+        },
+        {
+          "label": "Peak fitting",
+          "value": "Parabolic, Gaussian, Pearson VII, Cauchy, centroid, centered centroid, mid-chord"
+        },
+        {
+          "label": "Mapping",
+          "value": "Square, rectangular and circular grids; patented multi-level 3D display; map algebra"
+        },
+        {
+          "label": "Utilities",
+          "value": "XEC determination, material removal correction, penetration depth correction, remote network access"
+        },
+        {
+          "label": "Add-in modules",
+          "value": "Pole figure, expert system, database management, inline stress monitor, strain gage monitor, four-peak retained austenite"
+        },
+        {
+          "label": "Export formats",
+          "value": "ASCII, MS Word, MS Excel and clipboard"
+        },
+        {
+          "label": "Pharmaceutical option",
+          "value": "21 CFR Part 11 compliant version of the powder XRD software"
+        }
+      ],
+      "standards": [
+        "21 CFR Part 11 (powder XRD software option)",
+        "ASTM E1426 (XEC determination)"
+      ],
+      "applications": [
+        "Residual stress calculation and reporting",
+        "Residual stress mapping and map comparison",
+        "Retained austenite analysis",
+        "Laue pattern indexing and orientation",
+        "Powder phase identification and Rietveld refinement"
+      ],
+      "industries": [
+        "materials-manufacturing",
+        "research-academia",
+        "oil-gas",
+        "power-energy",
+        "pharmaceutical-biotech"
+      ],
+      "searchKeywords": [
+        "residual stress software XRD",
+        "XRDWIN",
+        "residual stress mapping software",
+        "Laue indexing software",
+        "powder XRD software Rietveld",
+        "21 CFR Part 11 XRD software",
+        "sin2psi analysis software"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.protoxrd.com/products/xrd-software",
+      "imageUrls": [
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f1086ecef7fd074334fa4ce_Residual_Stress_software.jpg",
+        "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f108b89aa895a9c1dda496d_residual_Stress_mapping_1.jpg"
+      ],
+      "datasheetUrl": null
+    }
+  ]
+}

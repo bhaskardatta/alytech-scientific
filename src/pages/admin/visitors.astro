@@ -1,0 +1,83 @@
+---
+import Admin from '../../layouts/Admin.astro';
+import { isAdmin } from '../../lib/auth';
+import { dbReady, select } from '../../lib/db';
+import { ago } from '../../lib/admin';
+export const prerender = false;
+
+if (!(await isAdmin(Astro.cookies))) return Astro.redirect('/admin/login/');
+
+// ISPs and mobile carriers say nothing about the visitor's employer — hide them by default.
+const ISP = /etisalat|emirates telecom|e&|du |emirates integrated|stc|saudi telecom|mobily|zain|ooredoo|omantel|batelco|vodafone|orange|google|amazon|microsoft|cloudflare|akamai|digitalocean|ovh|hetzner|tata|airtel|jio|bsnl|reliance|starlink|apple|facebook|meta/i;
+
+let orgs: any[] = [], products: any[] = [], searches: any[] = [], days: any[] = [];
+if (dbReady()) {
+  [orgs, products, searches, days] = await Promise.all([
+    select('v_org_activity', 'select=*&order=pageviews.desc&limit=200'),
+    select('v_top_products', 'select=*&order=views.desc&limit=30'),
+    select('v_top_searches', 'select=*&order=searches.desc&limit=40'),
+    select('v_daily', 'select=*&order=day.asc'),
+  ]);
+}
+const showAll = Astro.url.searchParams.get('isp') === '1';
+const companies = orgs.filter((o) => showAll || !ISP.test(o.ip_org));
+const totalViews = days.reduce((s, d) => s + d.pageviews, 0);
+const totalVisitors = days.reduce((s, d) => s + d.visitors, 0);
+const maxDay = Math.max(1, ...days.map((d) => d.pageviews));
+---
+<Admin title="Visitors & demand">
+  {!dbReady() && <p class="mb-6 rounded-sm bg-danger/5 p-4 text-danger">Database not connected.</p>}
+  <div class="grid gap-3 sm:grid-cols-3">
+    <div class="card p-5"><p class="label text-mute">Page views · 30 days</p><p class="display mt-2 text-3xl">{totalViews}</p></div>
+    <div class="card p-5"><p class="label text-mute">Visitor-days · 30 days</p><p class="display mt-2 text-3xl">{totalVisitors}</p></div>
+    <div class="card p-5">
+      <p class="label text-mute">Daily page views</p>
+      <svg viewBox={`0 0 ${Math.max(1, days.length) * 10} 64`} preserveAspectRatio="none" class="mt-3 h-16 w-full text-brand-500" role="img" aria-label="Daily page views, last 30 days">
+        {days.map((d, i) => { const h = Math.max(2, (d.pageviews / maxDay) * 64); return <rect x={i * 10 + 1} y={64 - h} width="8" height={h} rx="1" fill="currentColor"><title>{`${d.day}: ${d.pageviews}`}</title></rect>; })}
+      </svg>
+    </div>
+  </div>
+
+  <div class="mt-8 grid gap-6 xl:grid-cols-[1.5fr_1fr]">
+    <section class="card overflow-hidden">
+      <div class="flex items-center justify-between border-b border-line p-5">
+        <div>
+          <h2 class="display text-lg">Organisations on the site</h2>
+          <p class="text-mute">Identified from their network. Companies with their own network show by name; most home and mobile users show as their ISP.</p>
+        </div>
+        <a href={showAll ? '?' : '?isp=1'} class="btn btn-ghost btn-sm shrink-0">{showAll ? 'Hide ISPs' : 'Show ISPs'}</a>
+      </div>
+      <table class="w-full text-start">
+        <thead class="text-mute"><tr>{['Organisation', 'Visitors', 'Views', 'Looked at', 'Last seen'].map((h) => <th scope="col" class="label px-5 py-3 text-start font-medium">{h}</th>)}</tr></thead>
+        <tbody class="divide-y divide-line">
+          {companies.length === 0 && <tr><td colspan="5" class="px-5 py-10 text-center text-mute">Nothing yet. Requires IPINFO_TOKEN and visitors who accepted cookies.</td></tr>}
+          {companies.map((o) => (
+            <tr class="align-top">
+              <td class="px-5 py-3 font-medium">{o.ip_org.replace(/^AS\d+\s*/, '')}<span class="block text-[12px] text-mute">{o.country}</span></td>
+              <td class="px-5 py-3 font-mono">{o.visitors}</td>
+              <td class="px-5 py-3 font-mono">{o.pageviews}</td>
+              <td class="px-5 py-3 text-mute">{(o.products ?? []).slice(0, 4).join(' · ')}</td>
+              <td class="px-5 py-3 whitespace-nowrap text-mute">{ago(o.last_seen)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <div class="grid content-start gap-6">
+      <section class="card p-5">
+        <h2 class="display text-lg">Most-viewed instruments</h2>
+        <ol class="mt-3 divide-y divide-line">
+          {products.map((p) => <li class="flex justify-between gap-4 py-2"><span>{p.product}</span><span class="font-mono text-mute">{p.views}</span></li>)}
+        </ol>
+      </section>
+      <section class="card p-5">
+        <h2 class="display text-lg">What people searched for</h2>
+        <p class="text-mute">Includes searches with no match — direct evidence of demand you could source.</p>
+        <ol class="mt-3 divide-y divide-line">
+          {searches.map((s) => <li class="flex justify-between gap-4 py-2"><span>{s.q}</span><span class="font-mono text-mute">{s.searches}</span></li>)}
+        </ol>
+      </section>
+    </div>
+  </div>
+</Admin>

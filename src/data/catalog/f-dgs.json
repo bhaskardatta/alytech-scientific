@@ -1,0 +1,1070 @@
+{
+  "brand": "F-DGS",
+  "brandSlug": "f-dgs",
+  "brandUrl": "https://www.f-dgs.com",
+  "headquarters": "Lieusaint, France",
+  "brandSummary": "F-DGSi is a French manufacturer of gas and liquid generators for laboratories and industry, making hydrogen, nitrogen, zero air and liquid nitrogen on site so users no longer depend on cylinders. Its COSMOS, CALYPSO, NESO and CRYOGEN ranges are matched to GC, GC-MS, LC-MS, ICP and cryogenic applications. Subsidiaries operate in India and the United States, and the products carry a Made in France label.",
+  "logoUrl": "https://www.f-dgs.com/wp-content/uploads/2022/06/Logo-Fdgs.png",
+  "products": [
+    {
+      "name": "COSMOS MF.H2 Hydrogen Generator",
+      "model": "COSMOS MF.H2",
+      "slug": "cosmos-mf-h2-hydrogen-generator",
+      "category": "Hydrogen Generator",
+      "priority": "flagship",
+      "summary": "High-purity PEM hydrogen generator for GC carrier gas and detector fuel gas, delivering up to 1500 cc/min at better than 99.99999% purity and up to 11 bar. A cold dual regeneration dryer removes desiccant changes, and a touchscreen, leak checks and under 50 ml internal volume support safe bench use.",
+      "description": "The COSMOS MF.H2 produces hydrogen from deionized water in a 100% titanium proton exchange membrane (PEM) cell, replacing cylinders for gas chromatographs that use hydrogen as carrier gas or as FID, FPD, NPD and TCD fuel. A cold dual dynamic regeneration dryer removes moisture and oxygen without desiccant cartridges and keeps purity stable around the clock. Eleven models cover 110 to 1500 cc/min, delivery pressure reaches 11 bar for fast and high-speed GC methods, and an optional cold palladium catalyst reduces oxygen below 0.01 ppm and moisture below 1 ppm. The unit checks for internal leaks at every start, monitors operating parameters continuously and holds less than 50 ml of hydrogen, so it can be used where cylinders are restricted. A touchscreen shows outlet pressure, flow, water quality and level and diagnostics, while USB links to a PC for remote monitoring. Units can be cascaded for higher flow. According to the manufacturer, switching from helium to hydrogen carrier gas saves 25 to 35% of run time with no loss of resolution. Laboratories in petrochemical, environmental, food and pharmaceutical testing use it for GC, GC-MS, hydrogenation and ICP-MS support.",
+      "keySpecs": [
+        {
+          "label": "Hydrogen flow rate",
+          "value": "110, 170, 260, 300, 400, 500, 600, 1000, 1200, 1350 or 1500 cc/min by model"
+        },
+        {
+          "label": "Hydrogen purity",
+          "value": "> 99.99999%"
+        },
+        {
+          "label": "Delivery pressure",
+          "value": "1 to 11 bar (14 to 160 psi)"
+        },
+        {
+          "label": "Electrolytic cell",
+          "value": "100% titanium multilayer PEM"
+        },
+        {
+          "label": "Dryer",
+          "value": "Cold dual regeneration (PSA) dryer"
+        },
+        {
+          "label": "Optional palladium catalyst",
+          "value": "O2 < 0.01 ppm, moisture < 1 ppm"
+        },
+        {
+          "label": "Water quality",
+          "value": "Deionized, ASTM II, maximum supply pressure 6 bar"
+        },
+        {
+          "label": "Dimensions",
+          "value": "27 x 44 x 38 cm (W x H x D)"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "5 to 35 °C"
+        },
+        {
+          "label": "Communication",
+          "value": "USB PC control standard, RS232/RS485 optional"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "GC carrier gas (helium replacement)",
+        "GC detector fuel gas for FID, FPD, NPD and TCD",
+        "Fast GC and GC-MS",
+        "ICP-MS and total hydrocarbon analyzers",
+        "Hydrogenation and fuel cell laboratories"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "hydrogen generator for GC",
+        "hydrogen carrier gas generator",
+        "PEM hydrogen generator laboratory",
+        "replace helium with hydrogen GC",
+        "GC FID hydrogen generator",
+        "hydrogen generator supplier UAE"
+      ],
+      "whyMiddleEast": "On-site gas generation removes cylinder deliveries and lead times, which matters for laboratories at remote industrial and field sites.",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/hydrogen/cosmos-mf-h2/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/04/cosmos-mf-h2-hydrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/COSMOS-MF-H2-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "COSMOS MB.H2 Hydrogen Generator",
+      "model": "COSMOS MB.H2",
+      "slug": "cosmos-mb-h2-hydrogen-generator",
+      "category": "Hydrogen Generator",
+      "priority": "core",
+      "summary": "Standard-purity PEM hydrogen generator for GC detector gas, with models from 110 to 600 cc/min at better than 99.9996% purity. A maintenance-free static membrane dryer, titanium cell, touchscreen and internal leak checks make it a compact, stackable replacement for hydrogen cylinders.",
+      "description": "The COSMOS MB.H2 is the standard-purity member of the COSMOS hydrogen range, aimed at gas chromatograph detectors that burn hydrogen, such as FID, FPD, NPD and TCD. It electrolyzes deionized water in a 100% titanium multilayer PEM cell and dries the gas with a static membrane dryer that needs no maintenance, giving purity above 99.9996% with oxygen under 1 ppm. Seven models deliver 110, 170, 260, 300, 400, 500 or 600 cc/min, with outlet pressure up to 11 bar. The generator tests itself for internal leaks at each start and constantly watches its operating parameters, and its internal gas volume is under 50 ml, which allows use where cylinders are risky or prohibited. A touchscreen shows pressure, flow, water quality and level with alarms and diagnostics, LEDs report status, and USB supports remote monitoring from a PC. The compact, stackable casing is 27 x 44 x 38 cm. Several units can run in cascade for up to 6 L/min, with automatic flow compensation if one stops, which gives continuous supply for critical applications. Laboratories use the MB.H2 where detector fuel gas, rather than carrier gas, is the main need.",
+      "keySpecs": [
+        {
+          "label": "Hydrogen flow rate",
+          "value": "110, 170, 260, 300, 400, 500 or 600 cc/min by model"
+        },
+        {
+          "label": "Hydrogen purity",
+          "value": "> 99.9996% (O2 < 1 ppm)"
+        },
+        {
+          "label": "Delivery pressure",
+          "value": "Up to 11 bar (160 psi)"
+        },
+        {
+          "label": "Electrolytic cell",
+          "value": "100% titanium multilayer PEM"
+        },
+        {
+          "label": "Dryer",
+          "value": "Static membrane dryer, maintenance free"
+        },
+        {
+          "label": "Dew point",
+          "value": "< -20 °C or < -30 °C depending on model"
+        },
+        {
+          "label": "Dimensions",
+          "value": "27 x 44 x 38 cm (W x H x D)"
+        },
+        {
+          "label": "Weight",
+          "value": "18 to 19 kg"
+        },
+        {
+          "label": "Cascade capability",
+          "value": "Up to 6 L/min with automatic flow compensation"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "GC detector fuel gas for FID, FPD, NPD and TCD",
+        "Total hydrocarbon analyzers",
+        "Fuel cell and hydrogenation laboratories",
+        "ICP-MS support"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "hydrogen generator for GC FID",
+        "laboratory hydrogen generator",
+        "hydrogen gas generator 600 cc/min",
+        "PEM hydrogen generator for gas chromatograph",
+        "hydrogen cylinder replacement laboratory"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/hydrogen/cosmos-mb-h2/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/04/cosmos-mb-h2-hydrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/COSMOS-MB-H2-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "COSMOS RACK MF.H2 Hydrogen Generator",
+      "model": "COSMOS RACK MF.H2",
+      "slug": "cosmos-rack-mf-h2-hydrogen-generator",
+      "category": "Hydrogen Generator (19-inch Rack)",
+      "priority": "core",
+      "summary": "High-purity PEM hydrogen generator in a 3U, 19-inch rack format, delivering 100 to 1350 cc/min at better than 99.99999% purity. A cold dual regeneration dryer allows round-the-clock operation, and up to 32 units can be controlled in parallel for larger GC fleets.",
+      "description": "The COSMOS RACK MF.H2 packages the MF hydrogen technology in a standard 19-inch 3U rack, 50 cm deep, so several generators and other COSMOS RACK modules can be stacked in a cabinet for multi-instrument laboratories. Hydrogen comes from deionized water through a 100% titanium PEM cell, and the cold dual dynamic regeneration dryer is maintenance free and supports continuous operation. Nine models cover 100 to 1350 cc/min, purity is above 99.99999% with oxygen under 0.1 ppm and a dew point below minus 75 °C, and outlet pressure can be set up to 11 bar. An optional cold palladium catalyst takes oxygen below 0.01 ppm and moisture below 1 ppm. An internal 300 ml water tank refills automatically through a built-in pump, with optional external tanks of 5 or 10 liters. The unit checks for leaks at start-up, shows pressure, flow, water quality and alarms on the display, and connects by USB, with RS232 or RS485 optional. Optional software can run up to 32 units in parallel. Listed applications include GC carrier and detector gas, hydrogenation, fuel cells, ICP-MS and synthetic diamond (CVD). The specification table on the product page is headed RACK.MB.H2 although it describes the MF series.",
+      "keySpecs": [
+        {
+          "label": "Hydrogen flow rate",
+          "value": "100, 160, 250, 300, 500, 600, 1000, 1200 or 1350 cc/min by model"
+        },
+        {
+          "label": "Hydrogen purity",
+          "value": "> 99.99999% (O2 < 0.1 ppm, dew point < -75 °C)"
+        },
+        {
+          "label": "Delivery pressure",
+          "value": "0.1 to 11 bar (1 to 160 psi)"
+        },
+        {
+          "label": "Format",
+          "value": "Standard 19-inch rack, 3U, 50 cm deep"
+        },
+        {
+          "label": "Weight",
+          "value": "20 kg (44 lb)"
+        },
+        {
+          "label": "Optional palladium catalyst",
+          "value": "O2 < 0.01 ppm, moisture < 1 ppm"
+        },
+        {
+          "label": "Internal water tank",
+          "value": "300 ml with automatic refill"
+        },
+        {
+          "label": "Parallel control (optional software)",
+          "value": "Up to 32 units"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "5 to 35 °C"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Rack-mounted hydrogen supply for multiple GC systems",
+        "GC carrier and detector gas",
+        "Fuel cell and hydrogenation work",
+        "ICP-MS support",
+        "Synthetic diamond (CVD) processes"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "rack mount hydrogen generator",
+        "19 inch hydrogen generator GC",
+        "hydrogen generator for multiple GC",
+        "PEM hydrogen generator rack",
+        "COSMOS RACK hydrogen"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/hydrogen/cosmos-rack-mf-h2/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/06/cosmos-rack-mf-h2-hydrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/COSMOS-RACK-H2-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "COSMOS ZA Zero Air Generator",
+      "model": "COSMOS ZA",
+      "slug": "cosmos-za-zero-air-generator",
+      "category": "Zero Air Generator",
+      "priority": "core",
+      "summary": "Zero air generator that turns compressed air from an oil-free compressor into hydrocarbon-free air for GC detectors, with total hydrocarbons and CO below 0.05 ppm. Six models deliver 1 to 30 L/min at up to 6.5 bar in a compact, stackable housing that replaces zero air cylinders.",
+      "description": "Flame ionization and similar GC detectors need air with almost no hydrocarbons, because any methane or other organic background raises noise and degrades the baseline. The COSMOS ZA strips hydrocarbons from the incoming compressed air, bringing total hydrocarbons, including methane, and carbon monoxide below 0.05 ppm so the detector baseline stays stable and sensitivity improves. It needs an external clean, dry air supply, such as the COSMOS air compressor that stacks with it, with inlet dew point below minus 20 °C, hydrocarbons below 100 ppm, 4.5 to 10 bar and an inlet temperature of no more than 40 °C. Models deliver 1.0, 1.5, 3, 6, 15 or 30 L/min at a maximum outlet pressure of 6.5 bar. Warm-up takes 40 to 50 minutes. LEDs show ready, warm-up, stand-by and alarm states, and USB or RS232 provide remote monitoring and diagnostics. The housing measures 30 x 15 x 54 cm and is designed to stack with other COSMOS modules. According to the manufacturer the investment can pay back in under a year compared with buying cylinders. Typical uses are GC-FID, GC-FPD, GC-NPD, total hydrocarbon analyzers and gas sensing.",
+      "keySpecs": [
+        {
+          "label": "Zero air flow rate",
+          "value": "1.0, 1.5, 3, 6, 15 or 30 L/min by model"
+        },
+        {
+          "label": "Hydrocarbons and CO in outlet",
+          "value": "< 0.05 ppm"
+        },
+        {
+          "label": "Maximum outlet pressure",
+          "value": "6.5 bar (94 psi)"
+        },
+        {
+          "label": "Start-up time",
+          "value": "40 to 50 minutes"
+        },
+        {
+          "label": "Inlet air pressure",
+          "value": "4.5 to 10 bar (65 to 145 psi)"
+        },
+        {
+          "label": "Inlet air dew point",
+          "value": "< -20 °C"
+        },
+        {
+          "label": "Inlet hydrocarbons",
+          "value": "Maximum 100 ppm"
+        },
+        {
+          "label": "Dimensions",
+          "value": "30 x 15 x 54 cm (W x H x D)"
+        },
+        {
+          "label": "Compressor",
+          "value": "External clean, dry supply required (COSMOS air compressor compatible)"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "GC-FID, GC-FPD and GC-NPD detector air",
+        "Total hydrocarbon analyzers",
+        "Gas sensing",
+        "Replacing zero air cylinders"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "zero air generator for GC",
+        "hydrocarbon free air generator",
+        "GC FID zero air generator",
+        "laboratory air generator THC analyzer",
+        "zero air cylinder replacement"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/air/cosmos-za/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/05/cosmos-za-zero-air-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/COSMOS-ZA-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "COSMOS ZA.TOTAL Zero Air Total Generator",
+      "model": "COSMOS ZA.TOTAL",
+      "slug": "cosmos-za-total-zero-air-generator",
+      "category": "Zero Air Generator",
+      "priority": "core",
+      "summary": "Zero air generator that removes hydrocarbons, CO, CO2, NOx and moisture from compressed air using a palladium catalyst, dual molecular sieve PSA, Purafil and charcoal stages. Six models deliver 1 to 30 L/min with a dew point below minus 75 °C for demanding GC and gas-sensing work.",
+      "description": "Where a detector or analyzer is sensitive to more than hydrocarbons, the COSMOS ZA.TOTAL purifies compressed air in several stages. A heated catalytic oven filled with palladium converts hydrocarbons, including methane, and carbon monoxide; a dual molecular sieve pressure swing adsorption system removes humidity and CO2; Purafil removes nitrogen oxide; and an active charcoal filter takes out remaining components. Hydrocarbons and CO fall below 0.05 ppm, NOx and SO2 below 0.05 ppm, and the outlet dew point is below minus 75 °C. The page quotes CO2 as under 5 ppm in its feature list but under 0.05 ppm in the specification table, so the precise figure should be confirmed with the manufacturer. The unit needs a clean, dry external air supply, which the COSMOS air compressor provides, and delivers 1.0 to 30 L/min at up to 6.5 bar depending on model. The stackable housing is 30 x 15 x 54 cm, LEDs show status, and USB or RS232 allow remote diagnostics. Typical uses include GC-FID, GC-FPD and GC-NPD detector air, total hydrocarbon analyzers and gas sensing in laboratories that previously used cylinders.",
+      "keySpecs": [
+        {
+          "label": "Zero air flow rate",
+          "value": "1.0, 1.5, 3, 6, 15 or 30 L/min by model"
+        },
+        {
+          "label": "Hydrocarbons and CO in outlet",
+          "value": "< 0.05 ppm"
+        },
+        {
+          "label": "NOx and SO2 in outlet",
+          "value": "< 0.05 ppm"
+        },
+        {
+          "label": "Outlet dew point",
+          "value": "< -75 °C"
+        },
+        {
+          "label": "Maximum outlet pressure",
+          "value": "6.5 bar (94 psi)"
+        },
+        {
+          "label": "Purification stages",
+          "value": "Palladium catalytic oven, dual molecular sieve PSA, Purafil, active charcoal"
+        },
+        {
+          "label": "Start-up time",
+          "value": "40 to 50 minutes"
+        },
+        {
+          "label": "Dimensions",
+          "value": "30 x 15 x 54 cm (W x H x D)"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Ultra-clean air for GC detectors",
+        "Total hydrocarbon analyzers",
+        "Gas sensing and calibration",
+        "Applications sensitive to CO2 or NOx in air"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "zero air total generator",
+        "CO2 free hydrocarbon free air generator",
+        "zero air generator NOx removal",
+        "GC air generator palladium catalyst",
+        "laboratory zero air system"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/air/cosmos-za-total/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/05/cosmos-za-total-zero-air-total-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/COSMOS-ZA-TOTAL-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "DEIMOS UZA Ultra Zero Air Generator",
+      "model": "DEIMOS UZA",
+      "slug": "deimos-uza-ultra-zero-air-generator",
+      "category": "Zero Air Generator",
+      "priority": "core",
+      "summary": "Floor-standing ultra zero air generator with an integrated oil-free compressor, using PSA drying and a heated catalyst to bring total hydrocarbons and CO below 0.05 ppm. Seven models deliver 1 to 50 L/min, so one unit can supply several GC detectors or analyzers without outside compressed air.",
+      "description": "The DEIMOS UZA is built for laboratories that want an ultra-clean air supply without relying on a house compressed air line. It combines pressure swing adsorption to remove water vapor with a heated catalyst that oxidizes hydrocarbons, so total hydrocarbons and CO in the outlet are under 0.05 ppm. An integral oil-free compressor feeds the system and uses Energy Saving Technology to switch off when no air is drawn, which lowers energy use and extends compressor life. Seven models are offered, from 1 to 50 L/min, with a maximum outlet pressure of 6 bar and a particle filter rating of 0.01 micron. The outlet dew point is minus 50 or minus 65 °C depending on model. A color touchscreen shows inlet and outlet pressure, air flow and status, an audible alarm and maintenance log help service planning, and USB provides remote diagnostics. The cabinet is soundproofed, rolls on wheels and measures 47.5 x 66.2 cm (W x H) with a depth of 65 or 79 cm depending on model. Operating temperature is 5 to 25 °C, which should be considered for hot sites. It serves GC-FID, GC-FPD and GC-NPD detectors and CO2 analyzers.",
+      "keySpecs": [
+        {
+          "label": "Air flow rate",
+          "value": "1, 3, 6, 10, 20, 35 or 50 L/min by model"
+        },
+        {
+          "label": "Total hydrocarbons in outlet",
+          "value": "< 0.05 ppm"
+        },
+        {
+          "label": "CO in outlet",
+          "value": "< 0.05 ppm"
+        },
+        {
+          "label": "Maximum outlet pressure",
+          "value": "6 bar (87 psi)"
+        },
+        {
+          "label": "Outlet dew point",
+          "value": "-50 °C or -65 °C depending on model"
+        },
+        {
+          "label": "Particle filtration",
+          "value": "0.01 micron"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "5 to 25 °C"
+        },
+        {
+          "label": "Compressor",
+          "value": "Integral oil-free compressor with Energy Saving Technology"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "220-240 V or 110-120 V, 1 phase, 50-60 Hz"
+        },
+        {
+          "label": "Weight",
+          "value": "58 to 121 kg by model"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Detector air for GC-FID, GC-FPD and GC-NPD",
+        "CO2 analyzer zero gas",
+        "Multi-instrument GC laboratories without compressed air",
+        "Total hydrocarbon baselines"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "ultra zero air generator",
+        "zero air generator with compressor",
+        "UZA zero air GC",
+        "oil free zero air generator laboratory",
+        "hydrocarbon free air generator 50 L/min"
+      ],
+      "whyMiddleEast": "The 5 to 25 °C operating limit means installation in an air-conditioned laboratory, a point to confirm for hot sites.",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/air/deimos-uza/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/05/deimos-uza-ultra-zero-air-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/05/DEIMOS-UZA-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "COSMOS N2/ZN2 Nitrogen Generator",
+      "model": "COSMOS N2 / ZN2",
+      "slug": "cosmos-n2-zn2-nitrogen-generator",
+      "category": "Nitrogen Generator",
+      "priority": "flagship",
+      "summary": "PSA nitrogen generator for GC carrier gas, make-up gas, headspace pressurization, purge and trap and tube conditioning, with purity up to 99.9995%. The ZN2 versions add a catalyst module for hydrocarbons below 0.05 ppm, and the stackable bench unit pairs with COSMOS hydrogen, zero air and compressor modules.",
+      "description": "The COSMOS N2 / ZN2 supplies nitrogen to gas chromatography and thermal analysis instruments without cylinders. Pressure swing adsorption over a carbon molecular sieve removes oxygen and moisture from compressed air, and the fully regenerative design carries a low contamination risk and is phthalate free. The N2 versions deliver 0.4, 0.8 or 1.0 L/min at under 5 ppm oxygen (above 99.9995% purity) and 0.8, 1.6 or 1.8 L/min at 100 ppm, while the ZN2 versions add a catalyst module that holds hydrocarbons below 0.05 ppm, measured as methane. Outlet pressure is 5.5 bar, outlet dew point is below minus 60 °C, particles are filtered to 0.01 micron and the unit reaches rated purity in about one hour from start-up. It needs inlet air at 6 to 8 bar to ISO 8573-1:2010 class 1.4.1, which the COSMOS air compressor can provide when stacked beneath it. LEDs report status, USB or RS232 allow remote diagnostics, and noise is below 25 dB. The unit measures 27 x 47 x 38 cm. Applications listed include GC-ECD, GC-MS, GC-AED, DSC, TGA, TOC and sample preparation, serving petrochemical, environmental and pharmaceutical laboratories.",
+      "keySpecs": [
+        {
+          "label": "Nitrogen flow at < 5 ppm O2 (> 99.9995%)",
+          "value": "0.4, 0.8 or 1.0 L/min by model"
+        },
+        {
+          "label": "Nitrogen flow at 100 ppm O2 (> 99.99%)",
+          "value": "0.8, 1.6 or 1.8 L/min by model"
+        },
+        {
+          "label": "Catalyst module (ZN2)",
+          "value": "Hydrocarbons < 0.05 ppm (CH4)"
+        },
+        {
+          "label": "Outlet pressure",
+          "value": "5.5 bar (80 psi)"
+        },
+        {
+          "label": "Nitrogen dew point",
+          "value": "< -60 °C"
+        },
+        {
+          "label": "Inlet air",
+          "value": "6 to 8 bar, ISO 8573-1:2010 class 1.4.1"
+        },
+        {
+          "label": "Start-up time to purity",
+          "value": "1 hour"
+        },
+        {
+          "label": "Dimensions",
+          "value": "27 x 47 x 38 cm (W x H x D)"
+        },
+        {
+          "label": "Noise",
+          "value": "< 25 dB"
+        }
+      ],
+      "standards": [
+        "ISO 8573-1:2010 (inlet air quality)"
+      ],
+      "applications": [
+        "GC carrier gas and make-up gas",
+        "Headspace vial pressurization",
+        "Purge and trap and thermal desorption tube conditioning",
+        "DSC, TGA and TOC instruments",
+        "Sample preparation"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "nitrogen generator for GC",
+        "laboratory nitrogen generator PSA",
+        "nitrogen generator for GC-MS carrier gas",
+        "nitrogen generator for headspace",
+        "high purity nitrogen generator 99.9995",
+        "nitrogen generator supplier UAE"
+      ],
+      "whyMiddleEast": "On-site gas generation removes cylinder deliveries and lead times, which matters for laboratories at remote industrial and field sites.",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/nitrogen/cosmos-n2-zn2/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/03/cosmos-n2-nitrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/COSMOS-N2-DOC-EN-FDGSI-1.pdf"
+    },
+    {
+      "name": "COSMOS RACK N2/ZN2 Nitrogen Generator",
+      "model": "COSMOS RACK N2 / ZN2",
+      "slug": "cosmos-rack-n2-zn2-nitrogen-generator",
+      "category": "Nitrogen Generator (19-inch Rack)",
+      "priority": "core",
+      "summary": "Rack-mounted PSA nitrogen generator, 4U and 19 inches wide, supplying 0.6 or 1.0 L/min at above 99.9995% purity for GC carrier and detector gas, headspace, purge and trap and mud logging. RACK.ZN2 versions add a catalyst for methane below 0.05 ppm.",
+      "description": "The COSMOS RACK N2 / ZN2 is the rack version of the COSMOS nitrogen generator, built into a standard 19-inch 4U housing, 50 cm deep and weighing 27 kg, so it can sit in the same cabinet as COSMOS RACK hydrogen, zero air and compressor modules to make a complete GC gas station. It uses pressure swing adsorption over a carbon molecular sieve, which takes oxygen and moisture out of compressed air, and gives nitrogen of at least 99.9995% purity at 0.6 or 1.0 L/min. The ZN2 versions include a catalyst module that keeps hydrocarbons, measured as methane, below 0.05 ppm. Outlet pressure is 5.5 bar and is set by a front regulator with gauge, outlet dew point is below minus 60 °C, and the unit reaches operating purity in about one hour. Inlet air must be 6 to 8 bar to ISO 8573-1:2010 class 1.2.1. Status LEDs and a USB link provide diagnostics, with Ethernet remote control as an option, and noise is below 25 dB. Applications named by the manufacturer include GC-MS, GC-ECD, GC-NPD, DSC, TGA, TOC, tube conditioning and mud logging, which makes it relevant to wellsite and geochemistry laboratories.",
+      "keySpecs": [
+        {
+          "label": "Nitrogen flow rate",
+          "value": "0.6 or 1.0 L/min by model"
+        },
+        {
+          "label": "Nitrogen purity",
+          "value": "> 99.9995% (5 ppm O2)"
+        },
+        {
+          "label": "Catalyst module (RACK.ZN2)",
+          "value": "CH4 < 0.05 ppm"
+        },
+        {
+          "label": "Outlet pressure",
+          "value": "5.5 bar (80 psi)"
+        },
+        {
+          "label": "Nitrogen dew point",
+          "value": "< -60 °C"
+        },
+        {
+          "label": "Inlet air",
+          "value": "6 to 8 bar, ISO 8573-1:2010 class 1.2.1"
+        },
+        {
+          "label": "Format",
+          "value": "Standard 19-inch rack, 4U, 50 cm deep"
+        },
+        {
+          "label": "Weight",
+          "value": "27 kg (59.5 lb)"
+        },
+        {
+          "label": "Start-up time to purity",
+          "value": "1 hour"
+        }
+      ],
+      "standards": [
+        "ISO 8573-1:2010 (inlet air quality)"
+      ],
+      "applications": [
+        "Rack-mounted nitrogen for GC carrier and detector gas",
+        "Mud logging and slurry logging",
+        "Headspace, purge and trap and tube conditioning",
+        "DSC, TGA and TOC instruments"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "rack mount nitrogen generator",
+        "nitrogen generator for mud logging",
+        "19 inch nitrogen generator GC",
+        "COSMOS RACK nitrogen",
+        "nitrogen generator for gas chromatograph rack"
+      ],
+      "whyMiddleEast": "Mud logging is named as an application, which fits wellsite and geochemical laboratories in oil and gas operations.",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/nitrogen/cosmos-rack-n2-zn2/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/06/cosmos-rack-n2-nitrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/COSMOS-RACK-N2-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "NESO Nitrogen Generator",
+      "model": "NESO",
+      "slug": "neso-nitrogen-generator",
+      "category": "Nitrogen Generator",
+      "priority": "core",
+      "summary": "Floor-standing PSA nitrogen generator delivering 1, 3 or 5 L/min at 99.9995% purity for GC, ICP, TOC, DSC and TGA instruments. It is offered with or without an integral oil-free compressor, with a color touchscreen, Energy Saving Technology and an optional oxygen sensor for online purity monitoring.",
+      "description": "The NESO is a higher-capacity nitrogen source for laboratories that run several instruments from one supply. It uses fully regenerative pressure swing adsorption to separate nitrogen from air and delivers 99.9995% nitrogen, with oxygen under 5 ppm, at 1, 3 or 5 L/min and up to 6 bar. Each size is available without a compressor, in which case it needs clean inlet air at up to 8 bar to ISO 8573-1:2010 class 1.4.1 and 12, 36 or 60 L/min of flow, or with an integral oil-free compressor that makes the generator independent of the building air line. In compressor versions Energy Saving Technology stops the compressor when nitrogen is not drawn, and a sound-insulated box reduces noise. A color touchscreen displays process status, inlet and outlet pressure and flow, an audible alarm and visual maintenance log support servicing, and USB allows remote diagnostics. An optional oxygen sensor monitors nitrogen purity online, and the unit reaches rated purity in under 60 minutes. Operating temperature is 5 to 25 °C and altitude is limited to 3000 meters. The cabinet is on wheels and weighs 54 to 118 kg depending on version. Typical uses are GC, ICP, TOC, DSC and TGA.",
+      "keySpecs": [
+        {
+          "label": "Nitrogen flow rate",
+          "value": "1, 3 or 5 L/min by model"
+        },
+        {
+          "label": "Nitrogen purity",
+          "value": "99.9995% (< 5 ppm O2)"
+        },
+        {
+          "label": "Maximum outlet pressure",
+          "value": "6 bar (87 psi)"
+        },
+        {
+          "label": "Particle filtration",
+          "value": "0.01 micron"
+        },
+        {
+          "label": "Inlet air (no-compressor versions)",
+          "value": "12, 36 or 60 L/min at 8 bar, ISO 8573-1:2010 class 1.4.1"
+        },
+        {
+          "label": "Start-up purity time",
+          "value": "< 60 minutes"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "5 to 25 °C"
+        },
+        {
+          "label": "Maximum altitude",
+          "value": "3000 m"
+        },
+        {
+          "label": "Weight",
+          "value": "54 to 118 kg by version"
+        }
+      ],
+      "standards": [
+        "ISO 8573-1:2010 (inlet air quality)"
+      ],
+      "applications": [
+        "Nitrogen supply for GC, ICP and TOC instruments",
+        "DSC and TGA thermal analysis",
+        "Central nitrogen for several analyzers",
+        "Online purity monitoring with optional oxygen sensor"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "NESO nitrogen generator",
+        "laboratory nitrogen generator 5 L/min",
+        "nitrogen generator with built-in compressor",
+        "nitrogen generator for ICP and TOC",
+        "nitrogen generator for DSC TGA"
+      ],
+      "whyMiddleEast": "The integral compressor option removes dependence on building compressed air, though the 5 to 25 °C operating limit calls for an air-conditioned room.",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/nitrogen/neso/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/03/neso-nitrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/NESO-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "CELENO Nitrogen Generator",
+      "model": "CELENO",
+      "slug": "celeno-nitrogen-generator",
+      "category": "Nitrogen Generator",
+      "priority": "niche",
+      "summary": "Nitrogen generator delivering 20 L/min with a dew point below minus 60 °C, designed for comprehensive two-dimensional GC (GCxGC) systems that use a cryogenic modulator. Offered with or without an integral oil-free compressor, it keeps nitrogen dry enough to avoid freezing in cryogenic lines.",
+      "description": "Comprehensive two-dimensional gas chromatography with a cryogenic modulator uses cooled nitrogen gas, and moisture in the supply can freeze and block cold lines. The CELENO supplies 20 L/min of nitrogen at 6 bar with a dew point below minus 60 °C so it can run cryogenic applications without icing. Purity is above 99.5% (under 0.5% oxygen), certified on oxygen content, and falls to a minimum of 97% at maximum flow. It uses fully regenerative pressure swing adsorption and is available without a compressor, needing 70 L/min of clean inlet air at up to 8 bar to ISO 8573-1:2010 class 1.4.1, or with an integral oil-free compressor using Energy Saving Technology. A color touchscreen reports process data, an audible alarm and maintenance history help servicing, and USB supports remote diagnostics. The unit reaches rated purity within 60 minutes, operates between 5 and 25 °C and measures 47.5 x 66.2 x 79 cm, weighing 91 kg without compressor and 118 kg with it. It is aimed at laboratories running GCxGC systems with a cryogenic modulator.",
+      "keySpecs": [
+        {
+          "label": "Nitrogen flow rate",
+          "value": "20 L/min"
+        },
+        {
+          "label": "Nitrogen purity",
+          "value": "> 99.5% (< 0.5% O2), minimum 97% at maximum flow"
+        },
+        {
+          "label": "Nitrogen dew point",
+          "value": "< -60 °C"
+        },
+        {
+          "label": "Maximum outlet pressure",
+          "value": "6 bar (87 psi)"
+        },
+        {
+          "label": "Inlet air (no-compressor version)",
+          "value": "70 L/min at 8 bar, ISO 8573-1:2010 class 1.4.1"
+        },
+        {
+          "label": "Start-up purity time",
+          "value": "< 60 minutes"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "5 to 25 °C"
+        },
+        {
+          "label": "Dimensions",
+          "value": "47.5 x 66.2 x 79 cm (W x H x D)"
+        },
+        {
+          "label": "Weight",
+          "value": "91 kg without compressor, 118 kg with compressor"
+        }
+      ],
+      "standards": [
+        "ISO 8573-1:2010 (inlet air quality)"
+      ],
+      "applications": [
+        "Cryogenic modulator gas for GCxGC",
+        "Dry nitrogen for cooling applications",
+        "Replacing liquid nitrogen supply for GCxGC"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "oil-gas",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "GCxGC nitrogen generator",
+        "nitrogen generator for cryogenic modulator",
+        "comprehensive 2D GC nitrogen supply",
+        "nitrogen generator low dew point",
+        "CELENO nitrogen"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/nitrogen/celeno/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/03/celeno-nitrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/CELENO-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "PROSPERO Combined Nitrogen/Air Generator",
+      "model": "PROSPERO",
+      "slug": "prospero-nitrogen-air-generator",
+      "category": "Combined Nitrogen/Air Generator",
+      "priority": "core",
+      "summary": "Dual-output generator supplying nitrogen above 99.9995% for GC carrier and make-up gas and hydrocarbon-purified air for FID detectors from one cabinet. Models provide up to 3 L/min nitrogen and 5 L/min air, with or without an integral oil-free compressor, to serve a GC without separate generators.",
+      "description": "A gas chromatograph with a flame ionization detector usually needs both nitrogen and clean air, and the PROSPERO provides both from a single compact floor-standing unit. Nitrogen is separated from air by pressure swing adsorption and delivered at above 99.9995% purity (under 5 ppm oxygen), suitable for carrier and make-up gas. The air outlet is purified with an activated alumina column to a hydrocarbon content below 0.1 ppm and a dew point under minus 60 °C, which suits FID, FPD and NPD detector air. Models offer 1 or 3 L/min nitrogen alongside 1.5, 3 or 5 L/min air at up to 6 bar. The generator is offered without a compressor, requiring 16 or 42 L/min of clean air at up to 8 bar to ISO 8573-1:2010 class 1.4.1, or with an integral oil-free compressor that uses Energy Saving Technology to cut energy use. A color touchscreen shows process data, an audible alarm and maintenance log assist service, USB allows remote diagnostics, and an optional oxygen sensor monitors nitrogen purity online. Operating temperature is 5 to 25 °C. Laboratories using GC-FID in petrochemical, environmental and food testing choose it to save bench space and cylinder handling.",
+      "keySpecs": [
+        {
+          "label": "Nitrogen flow rate",
+          "value": "1 or 3 L/min by model (page lists 1 L/min for the PROSPERO.5 as well)"
+        },
+        {
+          "label": "Pure air flow rate",
+          "value": "1.5, 3 or 5 L/min by model"
+        },
+        {
+          "label": "Nitrogen purity",
+          "value": "> 99.9995% (< 5 ppm O2)"
+        },
+        {
+          "label": "Pure air quality",
+          "value": "HCs < 0.1 ppm, dew point < -60 °C"
+        },
+        {
+          "label": "Maximum outlet pressure",
+          "value": "6 bar (87 psi)"
+        },
+        {
+          "label": "Inlet air (no-compressor versions)",
+          "value": "16 or 42 L/min at 8 bar, ISO 8573-1:2010 class 1.4.1"
+        },
+        {
+          "label": "Start-up purity time",
+          "value": "< 60 minutes"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "5 to 25 °C"
+        },
+        {
+          "label": "Weight",
+          "value": "57 to 107 kg by version"
+        }
+      ],
+      "standards": [
+        "ISO 8573-1:2010 (inlet air quality)"
+      ],
+      "applications": [
+        "GC carrier and make-up gas plus FID detector air from one unit",
+        "GC-FPD, GC-NPD and GC-TCD support",
+        "Compact gas supply for a single GC"
+      ],
+      "industries": [
+        "oil-gas",
+        "petrochemical-refining",
+        "environmental-monitoring",
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "nitrogen and air generator for GC",
+        "combined nitrogen air generator",
+        "GC FID nitrogen air generator",
+        "PROSPERO gas generator",
+        "laboratory nitrogen and zero air generator"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/combined-nitrogen-air/prospero/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/05/prospero-nitrogen-air-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/05/PROSPERO-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "CALYPSO Nitrogen Generator",
+      "model": "CALYPSO",
+      "slug": "calypso-nitrogen-generator",
+      "category": "Nitrogen Generator (LC-MS)",
+      "priority": "flagship",
+      "summary": "PSA nitrogen generator range for LC-MS and sample evaporation, with five models from 15 to 70 L/min at up to 8 bar and purity of 99% to 99.99%. Available with or without an integrated oil-free compressor that switches off when idle, a color touchscreen and remote diagnostics.",
+      "description": "LC-MS instruments consume large volumes of nitrogen for nebulizing, drying and sheath gas, and the CALYPSO range is built to supply them from compressed air rather than liquid nitrogen or cylinders. Five models, CALYPSO.15, .25, .35, .64 and .70, deliver 15 to 70 L/min at a maximum pressure of 8 bar (116 psi). A smart triple filtration stage and fully regenerative PSA technology give analytical grade nitrogen from 99% up to 99.99% purity, with the rating certified on oxygen content and a minimum of 99% at maximum flow. Most sizes are offered without a compressor, needing clean inlet air at 9 bar to ISO 8573-1:2010 class 1.4.1, or with an integrated oil-free compressor that uses Energy Saving Technology to stop when gas is not drawn. A color touchscreen shows pressure, nitrogen flow and system status, remote PC monitoring uses USB, and the unit is phthalate and BHT free. The compressor box is soundproofed, the chassis is on wheels and operating conditions are 5 to 35 °C with altitude up to 3000 m. Pharmaceutical, biotech, food safety and research laboratories running LC-MS or evaporators use the range. Instrument-specific variants such as CALYPSO DP and 2G models are also available.",
+      "keySpecs": [
+        {
+          "label": "Maximum nitrogen flow rate",
+          "value": "15, 25, 35, 64 or 70 L/min by model"
+        },
+        {
+          "label": "Maximum nitrogen pressure",
+          "value": "8 bar (116 psi)"
+        },
+        {
+          "label": "Nitrogen purity",
+          "value": "99% to 99.99% (factory certified on O2, minimum 99% at maximum flow)"
+        },
+        {
+          "label": "Inlet air (no-compressor versions)",
+          "value": "53, 68, 109 or 145 L/min at 9 bar, ISO 8573-1:2010 class 1.4.1"
+        },
+        {
+          "label": "Operating temperature",
+          "value": "5 to 35 °C"
+        },
+        {
+          "label": "Maximum altitude",
+          "value": "3000 m"
+        },
+        {
+          "label": "Dimensions",
+          "value": "47.5 x 66.2 x 79 cm without compressor, 47.5 x 100 x 79 cm with compressor (W x H x D)"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "220-240 V or 110-120 V, 1 phase, 50-60 Hz"
+        },
+        {
+          "label": "Outlet connection",
+          "value": "1/4 in. GF"
+        }
+      ],
+      "standards": [
+        "ISO 8573-1:2010 (inlet air quality)"
+      ],
+      "applications": [
+        "Nebulizer, drying and sheath gas for LC-MS",
+        "Sample evaporation",
+        "Replacing nitrogen cylinders and liquid nitrogen for mass spectrometry laboratories"
+      ],
+      "industries": [
+        "pharmaceutical-biotech",
+        "food-beverage",
+        "environmental-monitoring",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "nitrogen generator for LC-MS",
+        "LCMS nitrogen generator",
+        "nitrogen generator mass spectrometer",
+        "CALYPSO nitrogen generator",
+        "nitrogen generator for sample evaporation",
+        "LC-MS gas generator supplier UAE"
+      ],
+      "whyMiddleEast": "",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/nitrogen/calypso/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/03/calypso-nitrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/CALYPSO-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "TORNADO Industrial Nitrogen Generator",
+      "model": "TORNADO",
+      "slug": "tornado-nitrogen-generator",
+      "category": "Nitrogen Generator (Industrial)",
+      "priority": "core",
+      "summary": "Modular PSA nitrogen generator range for industrial and laboratory use, producing from under 1 to over 200 Nm3/h at residual oxygen from 10 ppm to 5%. An HMI touchscreen with oxygen sensor and inlet dew point alarms, standby economy mode and a design temperature range up to 50 °C support continuous duty.",
+      "description": "The TORNADO range supplies nitrogen from an existing compressed air line to processes that consume more than a laboratory generator can deliver. Models from 1110 to 12130 produce between 0.9 and 27.2 Nm3/h at 99.999% purity and up to about 200 Nm3/h at 95%, with the exact flow set by the oxygen residual chosen between 10 ppm and 5%. Fully regenerative PSA keeps the gas phthalate free. An HMI touchscreen displays process variables, an oxygen sensor with alarm, and the inlet air dew point with alarm, and an IP address gives remote access. An automatic economy mode drops the unit into standby when no nitrogen is needed. Service is from the front only, and units can be banked in master and slave arrangements as demand grows. Design operating pressure is 6 to 12 barg, design operating temperature is 5 to 50 °C with 5 to 25 °C recommended, inlet particulates must be below 0.1 micron, inlet oil content 0.01 ppm and the recommended inlet dew point is minus 40 °C. Supply is 100 to 240 VAC at 72 W. Listed uses include oil and gas, ICP, LC-MS, NMR, food packaging, laser cutting and wine making.",
+      "keySpecs": [
+        {
+          "label": "Nitrogen flow at 99.999% (10 ppm O2)",
+          "value": "0.9 to 27.2 Nm3/h across models 1110 to 12130"
+        },
+        {
+          "label": "Nitrogen flow at 95% (5% O2)",
+          "value": "10.3 to 200.3 Nm3/h across models 1110 to 12130"
+        },
+        {
+          "label": "Residual oxygen range",
+          "value": "10 ppm to 5%"
+        },
+        {
+          "label": "Design operating pressure",
+          "value": "6 to 12 barg"
+        },
+        {
+          "label": "Design operating temperature",
+          "value": "5 to 50 °C (recommended 5 to 25 °C)"
+        },
+        {
+          "label": "Recommended inlet dew point",
+          "value": "-40 °C PDP"
+        },
+        {
+          "label": "Maximum inlet particulates",
+          "value": "0.1 micron"
+        },
+        {
+          "label": "Maximum inlet oil content",
+          "value": "0.01 ppm"
+        },
+        {
+          "label": "Power rating",
+          "value": "72 W, 100-240 VAC 50/60 Hz"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "Nitrogen for oil and gas applications",
+        "Laboratory nitrogen for ICP, LC-MS and NMR",
+        "Food packaging and wine making",
+        "Laser cutting and electronic soldering"
+      ],
+      "industries": [
+        "oil-gas",
+        "food-beverage",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "industrial nitrogen generator",
+        "PSA nitrogen generator Nm3/h",
+        "nitrogen generator for oil and gas",
+        "nitrogen generator for food packaging",
+        "TORNADO nitrogen generator",
+        "nitrogen generator supplier UAE"
+      ],
+      "whyMiddleEast": "The design temperature range extends to 50 °C, with correction factors given, which suits hot ambient conditions in the Gulf.",
+      "sourceUrl": "https://www.f-dgs.com/product/gas-generators/nitrogen/tornado/",
+      "imageUrls": [],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/TORNADO-DOC-EN-FDGSI.pdf"
+    },
+    {
+      "name": "CRYOGEN.40 Liquid Nitrogen Generator",
+      "model": "CRYOGEN.40",
+      "slug": "cryogen-40-liquid-nitrogen-generator",
+      "category": "Liquid Nitrogen Generator",
+      "priority": "niche",
+      "summary": "Water-cooled generator that makes liquid nitrogen on site from compressed air, producing up to 40 liters per day into a 210 liter dewar at over 99% purity. A cryo-refrigerator cold head and PSA nitrogen source run automatically, and the system is rated for ambient temperatures up to 52 °C with cooling water or a chiller.",
+      "description": "The CRYOGEN.40 liquefies nitrogen on the premises, removing the cost, delivery logistics and handling hazards of buying liquid nitrogen. Nitrogen gas from a PSA unit with an oil-free air compressor is cooled to 77 K (minus 196 °C) by a cold head driven by a helium compressor in a cryo-refrigerator design. Output is up to 40 liters per day, or 1.67 liters per hour, at a purity above 99% with oxygen under 1%, collected in a 210 liter dewar at 1.5 bar, with higher pressures to 4 bar available on request. A color HMI touchscreen shows dewar level and PSA production and runs the system automatically with remote diagnostics, while a built-in oxygen analyzer with alarm, a vacuum prevention system, a zero-loss evaporation mode and a pressure boost function are included. Liquid is drawn off through a 1.5 m vacuum-jacketed hose. The helium compressor is water cooled and needs a chiller or cooling water, which the manufacturer says allows operation up to 52 °C ambient. Power draw is 4.2 kW excluding the chiller. Typical users are research laboratories, cryopreservation and IVF units, dermatology clinics, metal treatment and animal husbandry.",
+      "keySpecs": [
+        {
+          "label": "Maximum production",
+          "value": "40 L/day (1.67 L/hour)"
+        },
+        {
+          "label": "Liquid nitrogen purity",
+          "value": "> 99% (< 1% O2)"
+        },
+        {
+          "label": "Dewar capacity",
+          "value": "210 L"
+        },
+        {
+          "label": "Liquid pressure",
+          "value": "1.5 bar (up to 4 bar on request)"
+        },
+        {
+          "label": "Temperature range",
+          "value": "7 to 35 °C (up to 52 °C ambient with cooling water or chiller)"
+        },
+        {
+          "label": "Enclosure",
+          "value": "165 x 196 x 80 cm on wheels, 506 kg"
+        },
+        {
+          "label": "Electrical supply",
+          "value": "460-480 VAC 60 Hz 3-phase, 380-415 VAC 50 Hz 3-phase, or 200 VAC 50/60 Hz 3-phase"
+        },
+        {
+          "label": "Power consumption",
+          "value": "4.2 kW excluding chiller"
+        },
+        {
+          "label": "Chiller cooling requirement",
+          "value": "5.0 kW"
+        }
+      ],
+      "standards": [],
+      "applications": [
+        "On-site liquid nitrogen for research laboratories",
+        "Cryopreservation and IVF",
+        "Dermatology and cryotherapy",
+        "Metal treatment",
+        "Animal husbandry"
+      ],
+      "industries": [
+        "research-academia",
+        "pharmaceutical-biotech",
+        "materials-manufacturing",
+        "food-beverage"
+      ],
+      "searchKeywords": [
+        "liquid nitrogen generator",
+        "on-site liquid nitrogen production",
+        "liquid nitrogen generator 40 L/day",
+        "cryogen generator laboratory",
+        "liquid nitrogen plant for hospital",
+        "liquid nitrogen generator supplier UAE"
+      ],
+      "whyMiddleEast": "The manufacturer states the system can operate up to 52 °C ambient with cooling water or a chiller, suited to Gulf climates, and it removes liquid nitrogen delivery dependence.",
+      "sourceUrl": "https://www.f-dgs.com/product/liquid-nitrogen/cryogen-40-n2-liquid-nitrogen-generator/",
+      "imageUrls": [
+        "https://www.f-dgs.com/wp-content/uploads/2022/05/cryogen-30-liquid-nitrogen-generator.png"
+      ],
+      "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2026/02/CRYOGEN-40-DOC-EN-FDGSI.pdf"
+    }
+  ]
+}

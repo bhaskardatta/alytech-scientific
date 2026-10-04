@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+// ponytail: English is the governing text; the Arabic page shows it with an Arabic notice until a reviewed translation exists.
+---
+<Base lang={lang} title={ar ? 'سياسة الخصوصية | AlyTech Scientific' : 'Privacy Policy | AlyTech Scientific'} description={ar ? 'كيف تجمع AlyTech Scientific البيانات الشخصية وتستخدمها وتحميها.' : 'How AlyTech Scientific collects, uses and protects personal data.'}>
+  <section class="bg-card pt-[72px]">
+    <article class="wrap max-w-3xl py-12 md:py-16" lang="en" dir="ltr">
+      {ar && <p class="mb-8 rounded-sm bg-brand-50 p-4 text-brand-800" lang="ar" dir="rtl">النسخة الإنجليزية أدناه هي النص المعتمد لسياسة الخصوصية. ستتوفر الترجمة العربية قريباً.</p>}
+      <h1 class="display text-[clamp(2rem,4vw,3rem)]">Privacy policy</h1>
+      <p class="mt-3 text-mute">Last updated: October 2026</p>
+      <div class="prose-alytech mt-10 grid gap-8 text-[16px] leading-relaxed text-ink-soft">
+        <section>
+          <h2>Who we are</h2>
+          <p>{site.legalName} (“AlyTech”, “we”), {site.address.street}, {site.address.poBox}, {site.address.city}, United Arab Emirates, operates alytechme.com and is responsible for the personal data described here. Contact: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+        </section>
+        <section>
+          <h2>What we collect</h2>
+          <ul>
+            <li><b>Details you type into our forms</b> — name, company, email, mobile/WhatsApp number, country, your message and the product you asked about. We save these as you type, so an engineer can follow up even if you don’t press send.</li>
+            <li><b>Technical data</b> — your IP address, approximate location derived from it, the network or organisation it belongs to, browser type, the page you came from, and the pages and products you view on this site.</li>
+            <li><b>Searches</b> you run on this site.</li>
+            <li><b>WhatsApp conversations</b> you start with us, handled in WhatsApp under Meta’s terms.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Cookies and similar storage</h2>
+          <p>Essential storage remembers your cookie choice and the details you already gave us so you don’t retype them. If you click “Accept”, we also store a random visitor identifier that links your page views across visits, so we understand which instruments you’re researching and can follow up on your request in context. If you choose “Essential only”, page views are not recorded.</p>
+        </section>
+        <section>
+          <h2>Why we use it</h2>
+          <ul>
+            <li>To answer your enquiry, send datasheets, quotations and specifications, and follow up on requests — including requests you started but didn’t submit.</li>
+            <li>To understand demand for our instruments and improve this site.</li>
+            <li>To send product news and offers <b>only if you ticked the box</b> asking for them. You can unsubscribe at any time.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Who we share it with</h2>
+          <p>Our own staff, and service providers that host or process data for us: Vercel (website hosting), Supabase (database), Resend (email notifications) and IPinfo (identifying the network an IP address belongs to). Where relevant to your request, we may share your enquiry with the manufacturer of the instrument you asked about. We do not sell personal data.</p>
+        </section>
+        <section>
+          <h2>How long we keep it</h2>
+          <p>Enquiry records are kept for as long as needed to serve you and for up to five years after our last contact, unless the law requires longer. Page-view records are kept for up to 24 months.</p>
+        </section>
+        <section>
+          <h2>Your rights</h2>
+          <p>Under the UAE Personal Data Protection Law and other laws that may apply to you, you can ask to access, correct or delete your data, object to or restrict its use, withdraw consent, and opt out of marketing. Email <a href={`mailto:${site.email}`}>{site.email}</a> and we will respond within 30 days.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+</Base>
+
+<style>
+  .prose-alytech :global(h2) { font-family: var(--font-display); font-size: 1.35rem; color: var(--color-ink); margin-bottom: 0.6rem; }
+  .prose-alytech :global(ul) { list-style: disc; padding-inline-start: 1.25rem; display: grid; gap: 0.5rem; }
+  .prose-alytech :global(a) { color: var(--color-brand-600); text-decoration: underline; text-underline-offset: 2px; }
+</style>

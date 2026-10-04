@@ -1,0 +1,29 @@
+---
+import { t, localize, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<div id="consent" class="fixed inset-x-3 bottom-3 z-[60] hidden sm:inset-x-auto sm:end-6 sm:bottom-6 sm:max-w-md" role="region" aria-label="Cookie consent">
+  <div class="card flex flex-col gap-4 p-5 shadow-[var(--shadow-pop)]">
+    <p class="text-sm text-ink-soft">
+      {t(lang, 'consent.text')} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a>
+    </p>
+    <div class="flex gap-2">
+      <button type="button" class="btn btn-primary btn-sm flex-1" data-consent="all">{t(lang, 'consent.accept')}</button>
+      <button type="button" class="btn btn-ghost btn-sm flex-1" data-consent="essential">{t(lang, 'consent.decline')}</button>
+    </div>
+  </div>
+</div>
+<script>
+  const el = document.getElementById('consent')!;
+  let choice: string | null = null;
+  try { choice = localStorage.getItem('aly-consent'); } catch {}
+  if (!choice) el.classList.remove('hidden');
+  el.addEventListener('click', (e) => {
+    const v = (e.target as HTMLElement).closest<HTMLElement>('[data-consent]')?.dataset.consent;
+    if (!v) return;
+    try { localStorage.setItem('aly-consent', v); } catch {}
+    el.classList.add('hidden');
+    dispatchEvent(new CustomEvent('aly-consent', { detail: v }));
+  });
+</script>
