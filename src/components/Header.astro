@@ -28,7 +28,7 @@ const current = (href: string) => unlocalize(path).startsWith(href);
         <span class="label hidden border-s border-current/20 ps-3 text-[11px] leading-tight opacity-80 sm:block">Scientific<br />Equipment</span>
       </a>
 
-      <nav class="ms-4 hidden items-center gap-1 lg:flex" aria-label="Primary">
+      <nav class="ms-4 hidden items-center gap-1 xl:flex" aria-label="Primary">
         <div class="relative" data-menu>
           <button type="button" class="nav-link inline-flex items-center gap-1.5" aria-expanded="false" aria-controls="mega-products" data-menu-button>
             {t(lang, 'nav.products')}
@@ -76,12 +76,12 @@ const current = (href: string) => unlocalize(path).startsWith(href);
         <a href={L('/search/')} class="icon-btn" aria-label={t(lang, 'nav.search')}><Icon name="search" /></a>
         <a href={twin} hreflang={other} lang={other} class="icon-btn hidden w-auto gap-2 px-3 text-sm font-medium sm:inline-flex"><Icon name="globe" size={18} />{t(lang, 'nav.switch')}</a>
         <button type="button" class="btn btn-primary btn-sm hidden md:inline-flex" data-lead="quote">{t(lang, 'cta.quote')}</button>
-        <button type="button" class="icon-btn lg:hidden" aria-expanded="false" aria-controls="mobile-nav" data-mobile-toggle aria-label={t(lang, 'nav.menu')}><Icon name="menu" /></button>
+        <button type="button" class="icon-btn xl:hidden" aria-expanded="false" aria-controls="mobile-nav" data-mobile-toggle aria-label={t(lang, 'nav.menu')}><Icon name="menu" /></button>
       </div>
     </div>
   </div>
 
-  <div id="mobile-nav" class="fixed inset-0 top-[72px] hidden overflow-y-auto bg-card text-ink lg:hidden" data-mobile-panel>
+  <div id="mobile-nav" class="fixed inset-0 top-[72px] hidden overflow-y-auto bg-card text-ink xl:hidden" data-mobile-panel>
     <nav class="wrap flex flex-col py-6" aria-label="Mobile">
       <a href={L('/gasmix/')} class="mobile-link">GasMix™</a>
       <p class="label mt-6 mb-2 text-mute">{t(lang, 'nav.principals')}</p>
