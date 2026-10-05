@@ -13,17 +13,17 @@ const items = [
 ] as const;
 ---
 <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="svc-strip-h">
-  <div class="wrap grid gap-10 lg:grid-cols-[1fr_2fr] lg:items-center">
+  <div class="wrap grid gap-10 xl:grid-cols-[1fr_2fr] xl:items-center">
     <div>
       <p class="label text-brand-600">{t(lang, 'footer.iso')}</p>
       <h2 id="svc-strip-h" class="display mt-3 text-[clamp(1.5rem,2.6vw,2.1rem)]">{ar ? 'كل جهاز نبيعه، ندعمه محلياً.' : 'Every instrument we sell, we support locally.'}</h2>
       <a href={localize(lang, '/services/')} class="link-arrow mt-5">{t(lang, 'nav.services')} <Icon name="arrow" size={16} flip /></a>
     </div>
-    <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line sm:grid-cols-3 lg:grid-cols-5">
+    <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line sm:grid-cols-3 xl:grid-cols-5">
       {items.map((i) => (
         <li class="flex flex-col gap-4 bg-card p-5">
           <Icon name={i.icon} size={22} class="text-brand-600" />
-          <span class="text-[14.5px] font-medium leading-snug">{i[lang]}</span>
+          <span class="text-[14.5px] font-medium leading-snug [overflow-wrap:anywhere] [hyphens:auto]">{i[lang]}</span>
         </li>
       ))}
     </ul>

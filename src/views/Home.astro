@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro';
 import Ribbon from '../components/Ribbon.astro';
 import { brands, claim } from '../data/brands';
 import { industries } from '../data/industries';
-import { families } from '../data/equipment';
+import { families, renderOf } from '../data/equipment';
 import { t, localize, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
@@ -107,6 +107,7 @@ const description = ar
         {families.map((f) => (
           <li class="bg-surface">
             <a href={L(`/equipment/#${f.slug}`)} class="group flex h-full flex-col gap-3 p-6 transition-colors duration-200 hover:bg-card">
+              {(() => { const r = f.categories.map((c) => renderOf(c.slug)).find(Boolean); return r && <img src={r.sm} width={r.w} height={r.h} alt="" loading="lazy" decoding="async" class="mb-2 aspect-[4/3] w-full rounded-xs object-cover transition-transform duration-500 group-hover:scale-[1.02]" />; })()}
               <span class="flex items-center justify-between gap-3">
                 <span class="display text-lg">{(ar && f.ar?.name) || f.name}</span>
                 <Icon name="arrow" size={18} flip class="text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />

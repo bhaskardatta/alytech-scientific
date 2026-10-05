@@ -18,7 +18,7 @@ const img = imageOf(brand, slug);
   />
 ) : (
   <div class:list={['placeholder flex items-center justify-center text-center', cls]} role="img" aria-label={alt}>
-    <span class="label max-w-[16ch] text-mute">{brandName} image pending</span>
+    <span class="label max-w-[16ch] text-mute [overflow-wrap:anywhere]">{brandName} image pending</span>
   </div>
 )}
 <style>

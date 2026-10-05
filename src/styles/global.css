@@ -68,6 +68,8 @@
     text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+    hyphens: auto;
     font-family: var(--font-display);
     line-height: 1.08;
     letter-spacing: -0.02em;
@@ -146,6 +148,10 @@
     color: var(--color-brand-600); transition: gap 0.2s ease, color 0.2s ease;
   }
   .link-arrow:hover { gap: 12px; color: var(--color-brand-700); }
+  /* Grow the touch target to 44px without changing the layout */
+  @media (pointer: coarse) {
+    .link-arrow, .tap { padding-block: 10px; margin-block: -10px; }
+  }
   .on-dark .link-arrow { color: var(--color-brand-300); }
 
   .card {

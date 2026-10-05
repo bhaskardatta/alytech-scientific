@@ -70,7 +70,7 @@ const timeline = [
     <div class="wrap mt-12">
       <p class="label text-mute">{t(lang, 'nav.principals')}</p>
       <ul class="mt-4 flex flex-wrap gap-x-8 gap-y-3">
-        {brands.map((b) => <li><a href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)} class="display text-lg text-ink-soft transition-colors hover:text-brand-600">{b.name}</a></li>)}
+        {brands.map((b) => <li><a href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)} class="tap display inline-block text-lg text-ink-soft transition-colors hover:text-brand-600">{b.name}</a></li>)}
       </ul>
     </div>
   </section>

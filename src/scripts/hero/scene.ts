@@ -21,7 +21,7 @@ const lerp = THREE.MathUtils.lerp;
 export interface Callout { id: string; anchor: THREE.Object3D }
 export interface HeroScene {
   setProgress(p: number): void;
-  setLayout(layout: { offsetX: number; offsetY: number; mobile: boolean }): void;
+  setLayout(layout: { offsetX: number; offsetY: number; mobile: boolean; compact?: boolean }): void;
   resize(): void;
   callouts: Callout[];
   project(o: THREE.Object3D): { x: number; y: number; visible: boolean };
@@ -327,7 +327,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: { mobile: boole
 
   let progress = 0;
   let goal = 0;
-  let layout = { offsetX: 0, offsetY: 0, mobile: opts.mobile };
+  let layout: { offsetX: number; offsetY: number; mobile: boolean; compact?: boolean } = { offsetX: 0, offsetY: 0, mobile: opts.mobile };
   let explode = 0;
   let raf = 0;
   let running = false;
@@ -359,7 +359,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: { mobile: boole
     const p = progress;
     const time = opts.reducedMotion ? 0 : clock.getElapsedTime();
     const [az, el, dist] = camAt(p);
-    const mobileDist = layout.mobile ? 1.62 : 1;
+    const mobileDist = layout.compact ? 1.95 : layout.mobile ? 1.62 : 1;
     const azR = THREE.MathUtils.degToRad(az + (opts.reducedMotion ? 0 : Math.sin(time * 0.25) * 2.2));
     camPos.set(Math.sin(azR) * dist * mobileDist, el * dist + 0.35, Math.cos(azR) * dist * mobileDist);
     camera.position.copy(camPos);

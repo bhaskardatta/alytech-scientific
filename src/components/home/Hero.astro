@@ -10,6 +10,7 @@ const ar = lang === 'ar';
 const copy = {
   eyebrow: ar ? 'AlyTech Scientific · أبوظبي · منذ 2015' : 'AlyTech Scientific · Abu Dhabi · since 2015',
   h1: ar ? 'أجهزة دقيقة لأكثر مختبرات الشرق الأوسط تطلباً.' : 'Precision instruments for the Middle East’s most demanding labs.',
+  subShort: ar ? 'تسعة مصنّعين متخصصين، يركّبها ويدعمها مهندسونا في جميع أنحاء المنطقة.' : 'Nine specialist manufacturers, installed and supported by our own engineers across the region.',
   sub: ar
     ? 'معايرة الغازات، الخواص الحرارية، حيود الأشعة السينية، الاحتكاك والتآكل، الريولوجيا، تحليل المكامن واختبار المواد — من تسعة مصنّعين عالميين، يركّبها ويدعمها مهندسونا في جميع أنحاء المنطقة.'
     : 'Gas calibration, thermal properties, X-ray diffraction, tribology, rheology, reservoir and materials testing — from nine specialist manufacturers, installed and supported by our own engineers across the region.',
@@ -54,12 +55,13 @@ const copy = {
       <p class="schematic label absolute bottom-24 end-6 opacity-0 text-white/50 md:bottom-10" data-schematic>{copy.schematic}</p>
     </div>
 
-    <div class="wrap relative z-10 flex h-full flex-col justify-end pb-24 md:justify-center md:pb-0">
+    <div class="hero-copy wrap relative z-10 flex h-full flex-col justify-end md:justify-center">
       <div class="step step-0 max-w-[600px]" data-step="0">
-        <p class="label text-brand-300">{copy.eyebrow}</p>
-        <h1 class="display mt-5 text-[clamp(2.1rem,5.4vw,4.4rem)] text-white">{copy.h1}</h1>
-        <p class="mt-6 max-w-[520px] text-[17px] leading-relaxed text-white/75">{copy.sub}</p>
-        <div class="mt-9 flex flex-wrap gap-3">
+        <p class="hero-eyebrow label text-brand-300">{copy.eyebrow}</p>
+        <h1 class="hero-h1 display text-white">{copy.h1}</h1>
+        <p class="hero-p sub-long max-w-[520px] text-white/75">{copy.sub}</p>
+        <p class="hero-p sub-short max-w-[520px] text-white/75">{copy.subShort}</p>
+        <div class="hero-ctas flex flex-wrap gap-3">
           <a href={L('/gasmix/')} class="btn btn-primary">{t(lang, 'cta.explore')} <Icon name="arrow" size={18} flip /></a>
           <button type="button" class="btn btn-wa" data-lead="whatsapp"><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'cta.whatsapp')}</button>
         </div>
@@ -68,18 +70,18 @@ const copy = {
       {[[copy.s1k, copy.s1h, copy.s1p], [copy.s2k, copy.s2h, copy.s2p], [copy.s3k, copy.s3h, copy.s3p]].map(([k, h, p], i) => (
         <div class={`step step-n absolute max-w-[480px] opacity-0`} data-step={i + 1}>
           <p class="label text-brand-300">{k}</p>
-          <h2 class="display mt-4 text-[clamp(1.75rem,3.6vw,3rem)] text-white">{h}</h2>
-          <p class="mt-5 text-[17px] leading-relaxed text-white/75">{p}</p>
+          <h2 class="hero-h2 display text-white">{h}</h2>
+          <p class="hero-p text-white/75">{p}</p>
           {i === 0 && <a href={L('/gasmix/aiolos-iii/')} class="link-arrow pointer-events-auto mt-6">{ar ? 'مواصفات Aiolos III' : 'Aiolos III specifications'} <Icon name="arrow" size={16} flip /></a>}
           {i === 2 && <a href={L('/principals/')} class="link-arrow pointer-events-auto mt-6">{ar ? 'تعرّف على شركائنا' : 'Meet our principals'} <Icon name="arrow" size={16} flip /></a>}
         </div>
       ))}
     </div>
 
-    <div class="absolute inset-x-0 bottom-0 z-10" aria-hidden="true">
+    <div class="hero-hint absolute inset-x-0 bottom-0 z-10" aria-hidden="true">
       <div class="wrap flex items-center justify-between pb-6 text-white/55">
         <p class="label flex items-center gap-2" data-hint><Icon name="arrow-down" size={14} />{copy.hint}</p>
-        <div class="h-px w-32 bg-white/15"><div class="h-px origin-left bg-brand-300 rtl:origin-right" data-hero-bar></div></div>
+        <div class="hidden h-px w-32 bg-white/15 md:block"><div class="h-px origin-left bg-brand-300 rtl:origin-right" data-hero-bar></div></div>
       </div>
     </div>
   </div>
@@ -89,17 +91,44 @@ const copy = {
   .hero { height: 420svh; }
   .hero-bg {
     background:
-      radial-gradient(60% 55% at 68% 52%, rgb(96 0 205 / 0.28), transparent 70%),
+      radial-gradient(60% 55% at var(--glow-x, 68%) 52%, rgb(96 0 205 / 0.28), transparent 70%),
       radial-gradient(40% 40% at 20% 90%, rgb(74 34 153 / 0.25), transparent 70%),
       linear-gradient(180deg, #0b0816 0%, #08060f 100%);
   }
   :global([dir="rtl"]) .hero-bg {
     background:
-      radial-gradient(60% 55% at 32% 52%, rgb(96 0 205 / 0.28), transparent 70%),
+      radial-gradient(60% 55% at var(--glow-x, 32%) 52%, rgb(96 0 205 / 0.28), transparent 70%),
       radial-gradient(40% 40% at 80% 90%, rgb(74 34 153 / 0.25), transparent 70%),
       linear-gradient(180deg, #0b0816 0%, #08060f 100%);
   }
   .step { will-change: opacity, transform; }
+
+  /* Type scales with BOTH width and height so short screens (landscape phones, fold covers) never clip */
+  .hero-copy { padding-block: 88px 76px; }
+  .hero-h1 { margin-top: 1.1rem; font-size: clamp(1.55rem, min(5.4vw, 7.4svh), 4.4rem); }
+  .hero-h2 { margin-top: 0.9rem; font-size: clamp(1.4rem, min(3.6vw, 5.6svh), 3rem); }
+  .hero-p { margin-top: clamp(0.75rem, 2.4svh, 1.5rem); font-size: clamp(15px, 2.1svh, 17px); line-height: 1.6; }
+  .hero-ctas { margin-top: clamp(1rem, 3.6svh, 2.25rem); }
+  .sub-short { display: none; }
+  @media (min-width: 1600px) { .step-0 { max-width: 680px; } }
+  @media (max-width: 767px) {
+    .hero-h1 { font-size: clamp(1.45rem, min(8.4vw, 4.9svh), 2.5rem); }
+    .hero-h2 { font-size: clamp(1.3rem, min(7vw, 4.2svh), 2.1rem); }
+  }
+  /* Short or very narrow viewports: shorter subheading, no eyebrow */
+  @media (max-height: 760px) and (max-width: 767px), (max-height: 560px), (max-width: 340px) {
+    .sub-long { display: none; }
+    .sub-short { display: block; }
+  }
+  @media (max-height: 520px), (max-width: 300px) { .hero-eyebrow { display: none; } .hero-h1 { margin-top: 0; } }
+  @media (max-height: 520px) and (min-width: 768px) { .hero-copy { padding-block: 72px 40px; } .step-n, .step-0 { max-width: 52%; } }
+  @media (max-width: 767px) { .hero-ctas :global(.btn) { min-height: 44px; padding-inline: 16px; font-size: 14px; } }
+  @media (max-width: 767px) and (max-height: 700px) { .hero-eyebrow { display: none; } .hero-h1 { margin-top: 0; } }
+  @media (max-height: 520px) {
+    .hero-hint { display: none; }
+    .hero-ctas { flex-wrap: nowrap; }
+    .hero-ctas :global(.btn) { min-height: 44px; padding-inline: 14px; font-size: 14px; }
+  }
   .step-n { inset-inline-start: 16px; bottom: 96px; }
   @media (min-width: 640px) { .step-n { inset-inline-start: 24px; } }
   @media (min-width: 768px) { .step-n { bottom: auto; top: 50%; translate: 0 -50%; } }
@@ -174,7 +203,12 @@ const copy = {
   paint();
 
   function layout() {
-    scene?.setLayout({ offsetX: mq.matches ? 0.14 : rtl ? -0.2 : 0.2, offsetY: mq.matches ? 0.25 : 0, mobile: mq.matches });
+    const short = innerHeight / innerWidth < 1.95; // e.g. iPhone SE: push the instrument higher and smaller
+    // Desktop: anchor the instrument to the 1320px content column, not the screen edge (ultrawide-safe)
+    const desk = Math.min(0.2, (Math.min(innerWidth, 1320) * 0.22) / innerWidth) * (rtl ? -1 : 1);
+    const offsetX = mq.matches ? 0.14 : desk;
+    section.style.setProperty('--glow-x', `${50 + offsetX * 100}%`);
+    scene?.setLayout({ offsetX, offsetY: mq.matches ? (short ? 0.27 : 0.25) : 0, mobile: mq.matches, compact: mq.matches && short });
   }
 
   async function boot() {
@@ -185,6 +219,7 @@ const copy = {
     scene = createHeroScene(canvas, { mobile: mq.matches, reducedMotion: reduced });
     layout();
     mq.addEventListener('change', layout);
+    addEventListener('resize', layout);
     new ResizeObserver(() => scene!.resize()).observe(canvas);
 
     scene.onFrame(() => {

@@ -4,6 +4,7 @@
  * returned by /api/lead/ after the visitor submits an inquiry (see specsFor).
  */
 import data from './equipment.json';
+import renders from './equipment-images.json';
 
 export interface Category {
   name: string; slug: string; summary: string; description: string;
@@ -21,3 +22,6 @@ export const categoryPath = (c: Pick<Category, 'slug'>) => `/equipment/${c.slug}
 /** Server-side only: the gated spec ranges for a category, by slug or display name. */
 export const specsFor = (key: string) =>
   categories.find(({ category: c }) => c.slug === key || c.name === key)?.category.typicalSpecRanges ?? null;
+
+/** Our own neutral renders (generated, untraceable to any vendor). */
+export const renderOf = (slug: string) => (renders as Record<string, { src: string; sm: string; w: number; h: number }>)[slug];

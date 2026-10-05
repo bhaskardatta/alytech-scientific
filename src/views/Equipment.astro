@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ServiceStrip from '../components/ServiceStrip.astro';
 import Icon from '../components/Icon.astro';
-import { families, categoryPath } from '../data/equipment';
+import { families, categoryPath, renderOf } from '../data/equipment';
 import { breadcrumbLd } from '../data/schema';
 import { t, localize, type Lang } from '../i18n';
 
@@ -40,12 +40,13 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
         <ul class="grid gap-2 sm:grid-cols-2">
           {f.categories.map((c) => (
             <li>
-              <a href={L(categoryPath(c))} class="group flex h-full items-start justify-between gap-4 rounded-sm border border-transparent p-4 transition-[background-color,border-color] duration-200 hover:border-line hover:bg-card">
-                <span>
+              <a href={L(categoryPath(c))} class="group flex h-full items-start gap-4 rounded-sm border border-transparent p-3 transition-[background-color,border-color] duration-200 hover:border-line hover:bg-card">
+                {renderOf(c.slug) && <img src={renderOf(c.slug).sm} width="112" height="84" alt="" loading="lazy" decoding="async" class="h-[84px] w-28 shrink-0 rounded-xs object-cover" />}
+                <span class="flex-1 py-1">
                   <span class="block font-semibold">{(ar && c.ar?.name) || c.name}</span>
                   <span class="mt-1 line-clamp-2 block text-[14px] text-mute" lang={ar && !c.ar?.summary ? 'en' : undefined}>{(ar && c.ar?.summary) || c.summary}</span>
                 </span>
-                <Icon name="arrow" size={18} flip class="mt-1 shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
+                <Icon name="arrow" size={18} flip class="mt-2 shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
               </a>
             </li>
           ))}

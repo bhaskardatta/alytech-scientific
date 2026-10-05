@@ -1,0 +1,272 @@
+{
+  "asphalt-extractor-centrifuge": {
+    "h": 896,
+    "sm": "/images/equipment/asphalt-extractor-centrifuge-sm.webp",
+    "src": "/images/equipment/asphalt-extractor-centrifuge.webp",
+    "w": 1200
+  },
+  "asphalt-wheel-tracking-tester": {
+    "h": 896,
+    "sm": "/images/equipment/asphalt-wheel-tracking-tester-sm.webp",
+    "src": "/images/equipment/asphalt-wheel-tracking-tester.webp",
+    "w": 1200
+  },
+  "bet-surface-area-analyzer": {
+    "h": 896,
+    "sm": "/images/equipment/bet-surface-area-analyzer-sm.webp",
+    "src": "/images/equipment/bet-surface-area-analyzer.webp",
+    "w": 1200
+  },
+  "bitumen-ductility-tester": {
+    "h": 896,
+    "sm": "/images/equipment/bitumen-ductility-tester-sm.webp",
+    "src": "/images/equipment/bitumen-ductility-tester.webp",
+    "w": 1200
+  },
+  "bitumen-penetrometer": {
+    "h": 896,
+    "sm": "/images/equipment/bitumen-penetrometer-sm.webp",
+    "src": "/images/equipment/bitumen-penetrometer.webp",
+    "w": 1200
+  },
+  "box-compression-tester": {
+    "h": 896,
+    "sm": "/images/equipment/box-compression-tester-sm.webp",
+    "src": "/images/equipment/box-compression-tester.webp",
+    "w": 1200
+  },
+  "cbr-test-apparatus": {
+    "h": 896,
+    "sm": "/images/equipment/cbr-test-apparatus-sm.webp",
+    "src": "/images/equipment/cbr-test-apparatus.webp",
+    "w": 1200
+  },
+  "chemisorption-analyzer": {
+    "h": 896,
+    "sm": "/images/equipment/chemisorption-analyzer-sm.webp",
+    "src": "/images/equipment/chemisorption-analyzer.webp",
+    "w": 1200
+  },
+  "coating-thickness-gauge": {
+    "h": 896,
+    "sm": "/images/equipment/coating-thickness-gauge-sm.webp",
+    "src": "/images/equipment/coating-thickness-gauge.webp",
+    "w": 1200
+  },
+  "concrete-compression-testing-machine": {
+    "h": 896,
+    "sm": "/images/equipment/concrete-compression-testing-machine-sm.webp",
+    "src": "/images/equipment/concrete-compression-testing-machine.webp",
+    "w": 1200
+  },
+  "consolidation-apparatus": {
+    "h": 896,
+    "sm": "/images/equipment/consolidation-apparatus-sm.webp",
+    "src": "/images/equipment/consolidation-apparatus.webp",
+    "w": 1200
+  },
+  "direct-shear-apparatus": {
+    "h": 896,
+    "sm": "/images/equipment/direct-shear-apparatus-sm.webp",
+    "src": "/images/equipment/direct-shear-apparatus.webp",
+    "w": 1200
+  },
+  "drilling-fluid-test-equipment": {
+    "h": 896,
+    "sm": "/images/equipment/drilling-fluid-test-equipment-sm.webp",
+    "src": "/images/equipment/drilling-fluid-test-equipment.webp",
+    "w": 1200
+  },
+  "flash-point-tester": {
+    "h": 896,
+    "sm": "/images/equipment/flash-point-tester-sm.webp",
+    "src": "/images/equipment/flash-point-tester.webp",
+    "w": 1200
+  },
+  "gas-pycnometer": {
+    "h": 896,
+    "sm": "/images/equipment/gas-pycnometer-sm.webp",
+    "src": "/images/equipment/gas-pycnometer.webp",
+    "w": 1200
+  },
+  "gloss-meter": {
+    "h": 896,
+    "sm": "/images/equipment/gloss-meter-sm.webp",
+    "src": "/images/equipment/gloss-meter.webp",
+    "w": 1200
+  },
+  "hardness-tester": {
+    "h": 896,
+    "sm": "/images/equipment/hardness-tester-sm.webp",
+    "src": "/images/equipment/hardness-tester.webp",
+    "w": 1200
+  },
+  "high-pressure-gas-sorption-analyzer": {
+    "h": 896,
+    "sm": "/images/equipment/high-pressure-gas-sorption-analyzer-sm.webp",
+    "src": "/images/equipment/high-pressure-gas-sorption-analyzer.webp",
+    "w": 1200
+  },
+  "impact-testing-machine": {
+    "h": 896,
+    "sm": "/images/equipment/impact-testing-machine-sm.webp",
+    "src": "/images/equipment/impact-testing-machine.webp",
+    "w": 1200
+  },
+  "kinematic-viscosity-bath": {
+    "h": 896,
+    "sm": "/images/equipment/kinematic-viscosity-bath-sm.webp",
+    "src": "/images/equipment/kinematic-viscosity-bath.webp",
+    "w": 1200
+  },
+  "laboratory-drying-oven": {
+    "h": 896,
+    "sm": "/images/equipment/laboratory-drying-oven-sm.webp",
+    "src": "/images/equipment/laboratory-drying-oven.webp",
+    "w": 1200
+  },
+  "los-angeles-abrasion-machine": {
+    "h": 896,
+    "sm": "/images/equipment/los-angeles-abrasion-machine-sm.webp",
+    "src": "/images/equipment/los-angeles-abrasion-machine.webp",
+    "w": 1200
+  },
+  "marshall-stability-tester": {
+    "h": 896,
+    "sm": "/images/equipment/marshall-stability-tester-sm.webp",
+    "src": "/images/equipment/marshall-stability-tester.webp",
+    "w": 1200
+  },
+  "melt-flow-index-tester": {
+    "h": 896,
+    "sm": "/images/equipment/melt-flow-index-tester-sm.webp",
+    "src": "/images/equipment/melt-flow-index-tester.webp",
+    "w": 1200
+  },
+  "muffle-furnace": {
+    "h": 896,
+    "sm": "/images/equipment/muffle-furnace-sm.webp",
+    "src": "/images/equipment/muffle-furnace.webp",
+    "w": 1200
+  },
+  "oxygen-transmission-rate-tester": {
+    "h": 896,
+    "sm": "/images/equipment/oxygen-transmission-rate-tester-sm.webp",
+    "src": "/images/equipment/oxygen-transmission-rate-tester.webp",
+    "w": 1200
+  },
+  "package-leak-tester": {
+    "h": 896,
+    "sm": "/images/equipment/package-leak-tester-sm.webp",
+    "src": "/images/equipment/package-leak-tester.webp",
+    "w": 1200
+  },
+  "petroleum-distillation-apparatus": {
+    "h": 896,
+    "sm": "/images/equipment/petroleum-distillation-apparatus-sm.webp",
+    "src": "/images/equipment/petroleum-distillation-apparatus.webp",
+    "w": 1200
+  },
+  "pharmaceutical-stability-chamber": {
+    "h": 896,
+    "sm": "/images/equipment/pharmaceutical-stability-chamber-sm.webp",
+    "src": "/images/equipment/pharmaceutical-stability-chamber.webp",
+    "w": 1200
+  },
+  "pull-off-adhesion-tester": {
+    "h": 896,
+    "sm": "/images/equipment/pull-off-adhesion-tester-sm.webp",
+    "src": "/images/equipment/pull-off-adhesion-tester.webp",
+    "w": 1200
+  },
+  "rebar-locator-cover-meter": {
+    "h": 896,
+    "sm": "/images/equipment/rebar-locator-cover-meter-sm.webp",
+    "src": "/images/equipment/rebar-locator-cover-meter.webp",
+    "w": 1200
+  },
+  "rebound-hammer": {
+    "h": 896,
+    "sm": "/images/equipment/rebound-hammer-sm.webp",
+    "src": "/images/equipment/rebound-hammer.webp",
+    "w": 1200
+  },
+  "rotational-viscometer": {
+    "h": 896,
+    "sm": "/images/equipment/rotational-viscometer-sm.webp",
+    "src": "/images/equipment/rotational-viscometer.webp",
+    "w": 1200
+  },
+  "salt-spray-chamber": {
+    "h": 896,
+    "sm": "/images/equipment/salt-spray-chamber-sm.webp",
+    "src": "/images/equipment/salt-spray-chamber.webp",
+    "w": 1200
+  },
+  "sieve-shaker": {
+    "h": 896,
+    "sm": "/images/equipment/sieve-shaker-sm.webp",
+    "src": "/images/equipment/sieve-shaker.webp",
+    "w": 1200
+  },
+  "softening-point-apparatus": {
+    "h": 896,
+    "sm": "/images/equipment/softening-point-apparatus-sm.webp",
+    "src": "/images/equipment/softening-point-apparatus.webp",
+    "w": 1200
+  },
+  "soil-compaction-test-apparatus": {
+    "h": 896,
+    "sm": "/images/equipment/soil-compaction-test-apparatus-sm.webp",
+    "src": "/images/equipment/soil-compaction-test-apparatus.webp",
+    "w": 1200
+  },
+  "temperature-humidity-chamber": {
+    "h": 896,
+    "sm": "/images/equipment/temperature-humidity-chamber-sm.webp",
+    "src": "/images/equipment/temperature-humidity-chamber.webp",
+    "w": 1200
+  },
+  "thermal-shock-chamber": {
+    "h": 896,
+    "sm": "/images/equipment/thermal-shock-chamber-sm.webp",
+    "src": "/images/equipment/thermal-shock-chamber.webp",
+    "w": 1200
+  },
+  "triaxial-test-system": {
+    "h": 896,
+    "sm": "/images/equipment/triaxial-test-system-sm.webp",
+    "src": "/images/equipment/triaxial-test-system.webp",
+    "w": 1200
+  },
+  "ultrasonic-pulse-velocity-tester": {
+    "h": 896,
+    "sm": "/images/equipment/ultrasonic-pulse-velocity-tester-sm.webp",
+    "src": "/images/equipment/ultrasonic-pulse-velocity-tester.webp",
+    "w": 1200
+  },
+  "universal-testing-machine": {
+    "h": 896,
+    "sm": "/images/equipment/universal-testing-machine-sm.webp",
+    "src": "/images/equipment/universal-testing-machine.webp",
+    "w": 1200
+  },
+  "vicat-apparatus": {
+    "h": 896,
+    "sm": "/images/equipment/vicat-apparatus-sm.webp",
+    "src": "/images/equipment/vicat-apparatus.webp",
+    "w": 1200
+  },
+  "water-vapor-transmission-rate-tester": {
+    "h": 896,
+    "sm": "/images/equipment/water-vapor-transmission-rate-tester-sm.webp",
+    "src": "/images/equipment/water-vapor-transmission-rate-tester.webp",
+    "w": 1200
+  },
+  "weathering-test-chamber": {
+    "h": 896,
+    "sm": "/images/equipment/weathering-test-chamber-sm.webp",
+    "src": "/images/equipment/weathering-test-chamber.webp",
+    "w": 1200
+  }
+}
