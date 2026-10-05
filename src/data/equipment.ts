@@ -10,7 +10,7 @@ export interface Category {
   typicalSpecRanges: { label: string; value: string }[];
   variants: string[]; standards: string[]; applications: string[]; industries: string[];
   searchKeywords: string[]; faq: { q: string; a: string }[];
-  ar?: Partial<{ name: string; summary: string; description: string; variants: string[]; applications: string[]; specLabels: string[]; faq: { q: string; a: string }[] }>;
+  ar?: Partial<{ name: string; summary: string; description: string; variants: string[]; applications: string[]; specLabels: string[]; faq: { q: string; a: string }[]; searchKeywords: string[] }>;
 }
 export interface Family { name: string; slug: string; intro: string; categories: Category[]; ar?: { name?: string; intro?: string } }
 
