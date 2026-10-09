@@ -14,7 +14,9 @@ export interface AdminUser { id: string | null; email: string; name: string; rol
 
 const COOKIE = 'aly_admin';
 const TTL = 60 * 60 * 24 * 7; // 7 days
-export const ITERATIONS = 210_000; // OWASP 2023 figure for PBKDF2-SHA256
+// ponytail: 100k is the most Cloudflare Workers WebCrypto allows (the site moves there); OWASP 2023 suggests 600k for PBKDF2-SHA256.
+// Login lockout (guard.ts) is the main defence against guessing. verifyPassword rejects higher counts, which Workers could not compute.
+export const ITERATIONS = 100_000;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 const enc = new TextEncoder();
@@ -41,7 +43,7 @@ export async function hashPassword(password: string, iterations = ITERATIONS) {
 export async function verifyPassword(password: string, stored: string) {
   const [alg, iter, salt, hash] = stored.split('$');
   const iterations = Number(iter);
-  if (alg !== 'pbkdf2' || !salt || !hash || !(iterations >= 1000 && iterations <= 5_000_000)) return false;
+  if (alg !== 'pbkdf2' || !salt || !hash || !(iterations >= 1000 && iterations <= 100_000)) return false;
   return equalBytes(await derive(password, unhex(salt), iterations), unhex(hash));
 }
 
