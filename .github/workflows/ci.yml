@@ -1,0 +1,21 @@
+# Quality gate on every push: build, then check SEO tags, structured data, links, CSP and legal rules
+# (tools/qa.py) and the calculator formulas. Vercel deploys independently; a red check means look before trusting the deploy.
+name: CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: python3 tools/qa.py
+      - run: node src/scripts/tools/calc.test.mjs
