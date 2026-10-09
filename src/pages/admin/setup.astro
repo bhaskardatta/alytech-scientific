@@ -1,0 +1,72 @@
+---
+// Reached only with the one-time setup session (middleware): creates the first owner account, then signs that owner in.
+import Admin from '../../layouts/Admin.astro';
+import { passwordProblem, startSession, usersEmpty } from '../../lib/auth';
+import { createUser, cleanEmail, cleanName, emailProblem } from '../../lib/users';
+import { audit } from '../../lib/audit';
+import { dbReady } from '../../lib/db';
+import { go, dbNotice } from '../../lib/admin';
+import { originOk } from '../../lib/guard';
+export const prerender = false;
+
+let errors: Record<string, string> = {};
+let name = '', email = '';
+if (Astro.request.method === 'POST') {
+  if (!originOk(Astro.request)) return new Response('Forbidden', { status: 403 });
+  const f = await Astro.request.formData();
+  name = cleanName(f.get('name'));
+  email = cleanEmail(f.get('email'));
+  const pw = String(f.get('password') ?? '');
+  if (!name) errors.name = 'Enter your name.';
+  if (emailProblem(email)) errors.email = emailProblem(email);
+  if (passwordProblem(pw)) errors.password = passwordProblem(pw);
+  else if (pw !== String(f.get('confirm') ?? '')) errors.confirm = 'The two passwords don’t match.';
+  if (!Object.keys(errors).length) {
+    if (!dbReady() || !(await usersEmpty())) {
+      errors.form = dbReady() ? 'An account already exists. Sign in instead.' : dbNotice();
+    } else {
+      try {
+        const u = await createUser({ email, name, role: 'owner', password: pw, mustChange: false });
+        const user = { id: u.id, email, name, role: 'owner' as const, mustChange: false, kind: 'user' as const };
+        await startSession(Astro.cookies, u.id, u.password_hash);
+        await audit(user, 'user.create', email, { role: 'owner', first: true });
+        return go(Astro, '/admin/');
+      } catch (e) {
+        console.error('first owner creation failed', e);
+        errors.form = dbNotice(e);
+      }
+    }
+  }
+}
+---
+<Admin title="Create the first owner" nav={false} narrow notice={dbReady() ? '' : dbNotice()}>
+  <div class="mx-auto mt-[6vh] max-w-sm">
+    <img src="/brand/logo-192.png" width="64" height="66" alt="AlyTech" />
+    <h1 class="display mt-6 text-2xl">Create the first owner</h1>
+    <p class="mt-2 text-mute">This account will manage everything: users, settings and enquiries. After this, the shared admin password no longer signs anyone in.</p>
+    <form method="post" class="mt-6 grid gap-4" novalidate>
+      {errors.form && <p class="rounded-sm bg-danger/5 p-3 text-danger" role="alert">{errors.form}</p>}
+      <div>
+        <label for="name" class="a-label">Your name</label>
+        <input id="name" name="name" class="field" autocomplete="name" value={name} required aria-invalid={errors.name ? 'true' : undefined} aria-describedby={errors.name ? 'name-err' : undefined} />
+        {errors.name && <p id="name-err" class="mt-1 text-sm text-danger">{errors.name}</p>}
+      </div>
+      <div>
+        <label for="email" class="a-label">Email (used to sign in)</label>
+        <input id="email" name="email" type="email" class="field" autocomplete="username" value={email} required aria-invalid={errors.email ? 'true' : undefined} aria-describedby={errors.email ? 'email-err' : undefined} />
+        {errors.email && <p id="email-err" class="mt-1 text-sm text-danger">{errors.email}</p>}
+      </div>
+      <div>
+        <label for="password" class="a-label">Password</label>
+        <input id="password" name="password" type="password" class="field" autocomplete="new-password" minlength="10" required aria-invalid={errors.password ? 'true' : undefined} aria-describedby="pw-help" />
+        <p id="pw-help" class:list={['a-help', errors.password && 'text-danger']}>{errors.password || 'At least 10 characters. A few random words works well.'}</p>
+      </div>
+      <div>
+        <label for="confirm" class="a-label">Repeat the password</label>
+        <input id="confirm" name="confirm" type="password" class="field" autocomplete="new-password" required aria-invalid={errors.confirm ? 'true' : undefined} aria-describedby={errors.confirm ? 'confirm-err' : undefined} />
+        {errors.confirm && <p id="confirm-err" class="mt-1 text-sm text-danger">{errors.confirm}</p>}
+      </div>
+      <button class="btn btn-primary" disabled={!dbReady()}>Create owner account</button>
+    </form>
+  </div>
+</Admin>

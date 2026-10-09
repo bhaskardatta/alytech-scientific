@@ -1,0 +1,155 @@
+---
+import Admin from '../../../layouts/Admin.astro';
+import { dbReady, update } from '../../../lib/db';
+import { dbNotice, fmt, isUuid } from '../../../lib/admin';
+import { tempPassword } from '../../../lib/auth';
+import { ROLES, roleHelp, isRole, listUsers, createUser, setPassword, cleanEmail, cleanName, emailProblem } from '../../../lib/users';
+import { audit } from '../../../lib/audit';
+import { originOk } from '../../../lib/guard';
+export const prerender = false;
+
+const me = Astro.locals.user!; // owner only: enforced in src/middleware.ts
+let users: any[] = [], error: unknown;
+const errors: Record<string, string> = {};
+let message = '';
+let secretShown: { what: string; name: string; email: string; password: string } | null = null;
+let posted: FormData | null = null;
+
+const reload = async () => { if (dbReady()) { try { users = await listUsers(); } catch (e) { error = e; } } };
+await reload();
+const activeOwners = () => users.filter((u) => u.active && u.role === 'owner');
+
+if (Astro.request.method === 'POST') {
+  if (!originOk(Astro.request)) return new Response('Forbidden', { status: 403 });
+  const f = (posted = await Astro.request.formData());
+  const intent = String(f.get('intent') ?? '');
+  const target = users.find((u) => u.id === String(f.get('id') ?? ''));
+  try {
+    if (intent === 'add') {
+      const name = cleanName(f.get('name')), email = cleanEmail(f.get('email')), role = String(f.get('role'));
+      if (!name) errors.name = 'Enter their name.';
+      if (emailProblem(email)) errors.email = emailProblem(email);
+      else if (users.some((u) => u.email === email)) errors.email = 'There is already an account with this email.';
+      if (!isRole(role)) errors.role = 'Choose a role.';
+      if (!Object.keys(errors).length) {
+        const password = tempPassword();
+        await createUser({ email, name, role: role as any, password, mustChange: true });
+        await audit(me, 'user.create', email, { role });
+        secretShown = { what: 'created', name, email, password };
+        posted = null;
+      }
+    } else if (target && isUuid(target.id)) {
+      if (intent === 'role') {
+        const role = String(f.get('role'));
+        if (!isRole(role)) message = 'Choose a role.';
+        else if (target.role === 'owner' && role !== 'owner' && activeOwners().length === 1 && target.active) message = 'There must always be one active owner. Make someone else an owner first.';
+        else if (role !== target.role) {
+          await update('admin_users', `id=eq.${target.id}`, { role });
+          await audit(me, 'user.role', target.email, { from: target.role, to: role });
+          message = `${target.name} is now ${role === 'owner' ? 'an owner' : `a ${role}`}.`;
+        }
+      } else if (intent === 'active') {
+        const on = f.get('on') === '1';
+        if (!on && target.id === me.id) message = 'You can’t deactivate your own account.';
+        else if (!on && target.role === 'owner' && activeOwners().length === 1) message = 'There must always be one active owner.';
+        else {
+          await update('admin_users', `id=eq.${target.id}`, { active: on });
+          await audit(me, on ? 'user.reactivate' : 'user.deactivate', target.email);
+          message = `${target.name} ${on ? 'can sign in again' : 'can no longer sign in'}.`;
+        }
+      } else if (intent === 'reset') {
+        if (target.id === me.id) message = 'To change your own password use the Account page.';
+        else {
+          const password = tempPassword();
+          await setPassword(target.id, password, true);
+          await audit(me, 'user.password.reset', target.email);
+          secretShown = { what: 'reset', name: target.name, email: target.email, password };
+        }
+      }
+    }
+    await reload();
+  } catch (e) {
+    console.error('user admin failed', e);
+    error = e;
+    if (/23505/.test(String(e))) { errors.email = 'There is already an account with this email.'; error = undefined; }
+  }
+}
+const val = (k: string) => (posted ? String(posted.get(k) ?? '') : '');
+---
+<Admin title="Users" notice={dbNotice(error)}>
+  <h1 class="display text-2xl sm:text-3xl">Users</h1>
+  <p class="mt-2 max-w-2xl text-mute">Everyone signs in with their own email and password. Deactivating someone ends their sessions immediately.</p>
+
+  {message && <p class="mt-4 rounded-sm bg-brand-50 p-3 text-brand-700" role="status">{message}</p>}
+  {secretShown && (
+    <section class="card mt-4 border-brand-500 p-5" aria-labelledby="temp-h" role="alert">
+      <h2 id="temp-h" class="display text-lg">{secretShown.what === 'created' ? 'Account created' : 'Password reset'}: one-time password</h2>
+      <p class="mt-2">Give this to <b>{secretShown.name}</b> (<span dir="ltr">{secretShown.email}</span>). It is shown <b>once</b>; they must choose their own at first sign-in.</p>
+      <p class="mt-3 flex flex-wrap items-center gap-3">
+        <code class="rounded-sm bg-surface px-3 py-2 font-mono text-lg tracking-wide select-all" dir="ltr">{secretShown.password}</code>
+        <button type="button" class="btn btn-ghost btn-sm" data-copy={secretShown.password}>Copy</button>
+      </p>
+    </section>
+  )}
+
+  <section class="card mt-6 overflow-hidden" aria-labelledby="list-h">
+    <h2 id="list-h" class="display border-b border-line p-5 text-lg">Accounts</h2>
+    <table class="a-table a-stack">
+      <thead class="border-b border-line text-mute"><tr>{['Person', 'Role', 'Status', 'Last sign-in', 'Actions'].map((h) => <th scope="col" class="label px-4 py-3 font-medium">{h}</th>)}</tr></thead>
+      <tbody class="divide-y divide-line">
+        {users.map((u) => (
+          <tr class:list={['align-top', !u.active && 'row-dim']}>
+            <td data-label="Person" class="px-4 py-3"><span class="font-semibold">{u.name}</span>{u.id === me.id && <span class="chip ms-2">You</span>}<span class="block text-mute" dir="ltr">{u.email}</span></td>
+            <td data-label="Role" class="px-4 py-3">
+              <form method="post" class="flex items-center gap-2">
+                <input type="hidden" name="intent" value="role" /><input type="hidden" name="id" value={u.id} />
+                <label class="sr-only" for={`role-${u.id}`}>Role for {u.name}</label>
+                <select id={`role-${u.id}`} name="role" class="field field-sm w-auto">{ROLES.map((r) => <option value={r} selected={u.role === r}>{r}</option>)}</select>
+                <button class="btn btn-ghost btn-sm">Save</button>
+              </form>
+            </td>
+            <td data-label="Status" class="px-4 py-3">{u.active ? <span class="chip chip-won">Active</span> : <span class="chip chip-lost">Deactivated</span>}{u.must_change_password && <span class="chip chip-quoted ms-1">Temporary password</span>}</td>
+            <td data-label="Last sign-in" class="px-4 py-3 whitespace-nowrap text-mute">{u.last_login_at ? fmt(u.last_login_at) : 'Never'}</td>
+            <td data-label="Actions" class="px-4 py-3">
+              <div class="flex flex-wrap gap-2">
+                <form method="post"><input type="hidden" name="intent" value="active" /><input type="hidden" name="id" value={u.id} /><input type="hidden" name="on" value={u.active ? '0' : '1'} /><button class="btn btn-ghost btn-sm">{u.active ? 'Deactivate' : 'Reactivate'}</button></form>
+                {u.id !== me.id && <form method="post"><input type="hidden" name="intent" value="reset" /><input type="hidden" name="id" value={u.id} /><button class="btn btn-ghost btn-sm">Reset password</button></form>}
+              </div>
+            </td>
+          </tr>
+        ))}
+        {users.length === 0 && <tr><td colspan="5" class="px-4 py-10 text-center text-mute">No accounts yet.</td></tr>}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card mt-6 p-5 sm:p-6" aria-labelledby="add-h">
+    <h2 id="add-h" class="display text-lg">Add someone</h2>
+    <form method="post" class="mt-4 grid gap-4 sm:grid-cols-2" novalidate>
+      <input type="hidden" name="intent" value="add" />
+      <div>
+        <label for="name" class="a-label">Name</label>
+        <input id="name" name="name" class="field" value={val('name')} autocomplete="off" required aria-invalid={errors.name ? 'true' : undefined} aria-describedby={errors.name ? 'name-err' : undefined} />
+        {errors.name && <p id="name-err" class="mt-1 text-sm text-danger">{errors.name}</p>}
+      </div>
+      <div>
+        <label for="email" class="a-label">Email</label>
+        <input id="email" name="email" type="email" class="field" dir="ltr" value={val('email')} autocomplete="off" required aria-invalid={errors.email ? 'true' : undefined} aria-describedby={errors.email ? 'email-err' : undefined} />
+        {errors.email && <p id="email-err" class="mt-1 text-sm text-danger">{errors.email}</p>}
+      </div>
+      <fieldset class="sm:col-span-2">
+        <legend class="a-label">Role</legend>
+        <div class="grid gap-2">
+          {ROLES.map((r) => (
+            <label class="flex min-h-11 items-start gap-3 rounded-sm border border-line p-3">
+              <input type="radio" name="role" value={r} checked={(val('role') || 'sales') === r} class="mt-1 h-5 w-5 accent-brand-600" />
+              <span><b class="capitalize">{r}</b><span class="block text-mute">{roleHelp[r]}</span></span>
+            </label>
+          ))}
+        </div>
+        {errors.role && <p class="mt-1 text-sm text-danger">{errors.role}</p>}
+      </fieldset>
+      <div class="sm:col-span-2"><button class="btn btn-primary">Create account</button><p class="a-help">A one-time password is generated and shown here once.</p></div>
+    </form>
+  </section>
+</Admin>

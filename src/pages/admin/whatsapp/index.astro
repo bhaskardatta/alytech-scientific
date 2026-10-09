@@ -1,0 +1,147 @@
+---
+import Admin from '../../../layouts/Admin.astro';
+import Pager from '../../../components/admin/Pager.astro';
+import PeriodPicker from '../../../components/admin/PeriodPicker.astro';
+import { can } from '../../../lib/auth';
+import { dbReady, page, select, insert } from '../../../lib/db';
+import { fmt, dbNotice, go, replayUrl, campaignOf, orgName, countryName, safeQ, isUuid } from '../../../lib/admin';
+import { cleanAttribution } from '../../../lib/visitor';
+import { parsePeriod } from '../../../lib/period';
+import { audit } from '../../../lib/audit';
+import { originOk } from '../../../lib/guard';
+export const prerender = false;
+
+const user = Astro.locals.user!;
+const canWrite = can(user, 'write');
+const period = parsePeriod(Astro.url.searchParams);
+const sp = Astro.url.searchParams;
+const q = safeQ(sp.get('q') ?? '');
+const campaign = sp.get('campaign') === '1';
+const state = ['converted', 'open'].includes(sp.get('state') ?? '') ? sp.get('state')! : '';
+const pageNo = Math.max(1, Number(sp.get('page')) || 1);
+const per = 50;
+const errors: Record<string, string> = {};
+let openId = '';
+
+// ---- convert a click into an enquiry ----
+if (Astro.request.method === 'POST') {
+  if (!originOk(Astro.request)) return new Response('Forbidden', { status: 403 });
+  const f = await Astro.request.formData();
+  const eventId = String(f.get('event_id') ?? '');
+  const name = String(f.get('name') ?? '').trim().slice(0, 120);
+  const phone = String(f.get('phone') ?? '').trim().slice(0, 40);
+  const company = String(f.get('company') ?? '').trim().slice(0, 160) || null;
+  const message = String(f.get('message') ?? '').trim().slice(0, 4000) || null;
+  if (!/^\d{1,12}$/.test(eventId)) return go(Astro, '/admin/whatsapp/');
+  openId = eventId;
+  if (!name) errors.name = 'Enter their name.';
+  if (phone.replace(/\D/g, '').length < 7 || !/^[+\d][\d\s().-]*$/.test(phone)) errors.phone = 'Enter their number as it shows in WhatsApp, digits only, with the country code.';
+  if (!Object.keys(errors).length && dbReady()) {
+    try {
+      const [ev] = await select('events', `select=*&id=eq.${eventId}&type=eq.whatsapp`);
+      if (!ev) return go(Astro, '/admin/whatsapp/');
+      const ref = ev.data?.ref ?? null;
+      const [existing] = ref ? await select('leads', `select=id&wa_ref=eq.${encodeURIComponent(ref)}&limit=1`) : [];
+      if (existing) return go(Astro, `/admin/lead/${existing.id}/`);
+      const lead = await insert('leads', {
+        lead_key: crypto.randomUUID(), status: 'submitted', mode: 'whatsapp', name, phone, company, message,
+        product: ev.product ?? ev.data?.product ?? null, brand: ev.data?.brand ?? null, category: ev.data?.category ?? null,
+        lang: ev.lang, path: ev.path, attribution: cleanAttribution(ev.data?.attribution), landing_page: ev.data?.landing ?? null, ph_session: ev.data?.ph ?? null,
+        visitor_id: ev.visitor_id, session_id: ev.session_id, geo_country: ev.geo_country, geo_city: ev.geo_city, ip_org: ev.ip_org,
+        wa_ref: ref, assigned_to: user.id,
+      }, true);
+      await insert('lead_notes', { lead_id: lead.id, author_id: user.id, kind: 'system', body: `Created from the WhatsApp chat started ${fmt(ev.ts)}${ref ? ` (Ref ${ref})` : ''}.` });
+      await audit(user, 'lead.create.whatsapp', lead.id, { ref });
+      return go(Astro, `/admin/lead/${lead.id}/?saved=created`);
+    } catch (e) {
+      console.error('whatsapp convert failed', e);
+      errors.form = dbNotice(e);
+    }
+  }
+}
+
+let chats: any[] = [], total = 0, converted = new Map<string, string>(), error: unknown;
+if (dbReady()) {
+  try {
+    const where = [`type=eq.whatsapp`, `ts=gte.${period.from.toISOString()}`, `ts=lt.${period.to.toISOString()}`];
+    if (q) where.push(`or=(data->>ref.ilike.*${encodeURIComponent(q)}*,product.ilike.*${encodeURIComponent(q)}*,path.ilike.*${encodeURIComponent(q)}*)`);
+    if (campaign) where.push('data->attribution=not.is.null');
+    if (state) {
+      // refs already turned into enquiries (few hundred at most): filter chats in/out of that list
+      const refs = (await select('leads', 'select=wa_ref&wa_ref=not.is.null&limit=1000')).map((r) => r.wa_ref).filter((r: string) => /^[A-Za-z0-9]{3,12}$/.test(r));
+      where.push(refs.length ? `data->>ref=${state === 'converted' ? 'in' : 'not.in'}.(${refs.join(',')})` : state === 'converted' ? 'id=eq.0' : 'id=gt.0');
+    }
+    const res = await page('events', `select=id,ts,path,product,ip_org,geo_country,lang,data&${where.join('&')}&order=ts.desc,id.desc&limit=${per}&offset=${(pageNo - 1) * per}`);
+    chats = res.rows; total = res.total;
+    const refs = chats.map((c) => c.data?.ref).filter((r) => typeof r === 'string' && /^[A-Za-z0-9]{3,12}$/.test(r));
+    if (refs.length) converted = new Map((await select('leads', `select=id,wa_ref&wa_ref=in.(${refs.join(',')})`)).map((l) => [l.wa_ref, l.id]));
+  } catch (e) {
+    error = e;
+  }
+}
+const hidden = [...sp.entries()].filter(([k]) => ['p', 'from', 'to'].includes(k));
+---
+<Admin title="WhatsApp chats" notice={dbNotice(error)}>
+  <h1 class="display text-2xl sm:text-3xl">WhatsApp chats</h1>
+  <p class="mt-2 max-w-2xl text-mute">Each click on a WhatsApp button opens a chat with “(Ref XXXXX)” in the message. Search the ref from the chat to see what the person was looking at, then create an enquiry so it joins the pipeline.</p>
+  <div class="mt-4"><PeriodPicker period={period} /></div>
+
+  <form method="get" class="card mt-4 flex flex-wrap items-end gap-3 p-4" role="search" aria-label="Filter chats">
+    {hidden.map(([k, v]) => <input type="hidden" name={k} value={v} />)}
+    <div class="min-w-[220px] flex-1">
+      <label for="q" class="a-label">Search ref, product or page</label>
+      <input id="q" name="q" value={q} placeholder="e.g. A1B2C" class="field field-sm font-mono" autocapitalize="characters" />
+    </div>
+    <div>
+      <label for="state" class="a-label">Status</label>
+      <select id="state" name="state" class="field field-sm"><option value="">All chats</option><option value="open" selected={state === 'open'}>Not yet an enquiry</option><option value="converted" selected={state === 'converted'}>Already an enquiry</option></select>
+    </div>
+    <label class="flex min-h-11 items-center gap-2"><input type="checkbox" name="campaign" value="1" checked={campaign} class="h-5 w-5 accent-brand-600" /> From a campaign</label>
+    <button class="btn btn-primary btn-sm">Apply</button>
+    <a href={`/admin/whatsapp/?${period.query}`} class="btn btn-ghost btn-sm">Clear</a>
+  </form>
+
+  <p class="mt-4 text-mute" aria-live="polite">{total} chat{total === 1 ? '' : 's'} in this period{q || campaign || state ? ' matching the filters' : ''}.</p>
+
+  <div class="card mt-2 overflow-hidden">
+    <table class="a-table a-stack">
+      <thead class="border-b border-line text-mute"><tr>{['When', 'Ref', 'Interested in', 'Page', 'Organisation', 'Campaign', 'Enquiry'].map((h) => <th scope="col" class="label px-4 py-3 font-medium">{h}</th>)}</tr></thead>
+      <tbody class="divide-y divide-line">
+        {chats.length === 0 && <tr><td colspan="7" class="px-4 py-12 text-center text-mute">No WhatsApp chats match.</td></tr>}
+        {chats.map((c) => {
+          const ref = c.data?.ref;
+          const lead = ref ? converted.get(ref) : undefined;
+          return (
+            <tr class="align-top">
+              <td data-label="When" class="px-4 py-3 whitespace-nowrap text-mute">{fmt(c.ts)}</td>
+              <td data-label="Ref" class="px-4 py-3 font-mono font-semibold">{ref ?? '—'}</td>
+              <td data-label="Interested in" class="px-4 py-3">{c.product ?? c.data?.category ?? c.data?.brand ?? 'General'}</td>
+              <td data-label="Page" class="px-4 py-3 text-mute break-all">{c.path}</td>
+              <td data-label="Organisation" class="px-4 py-3">{c.ip_org ? orgName(c.ip_org) : '—'}<span class="block text-[12px] text-mute">{c.geo_country ? countryName(c.geo_country) : ''}</span></td>
+              <td data-label="Campaign" class="px-4 py-3 text-mute">{campaignOf(c.data?.attribution) || '—'}</td>
+              <td data-label="Enquiry" class="px-4 py-3">
+                {lead ? <a class="chip chip-won hit" href={`/admin/lead/${lead}/`}>In the pipeline →</a> : canWrite ? (
+                  <details open={openId === String(c.id)}>
+                    <summary class="btn btn-ghost btn-sm">Create enquiry</summary>
+                    <form method="post" class="mt-3 grid min-w-[240px] gap-3" novalidate>
+                      <input type="hidden" name="event_id" value={c.id} />
+                      <p class="text-[13px] text-mute">Type what you see in the WhatsApp chat. The product and campaign are filled in for you.</p>
+                      <div><label for={`n-${c.id}`} class="a-label">Their name</label><input id={`n-${c.id}`} name="name" class="field field-sm" required aria-invalid={openId === String(c.id) && errors.name ? 'true' : undefined} />{openId === String(c.id) && errors.name && <p class="mt-1 text-sm text-danger">{errors.name}</p>}</div>
+                      <div><label for={`p-${c.id}`} class="a-label">Their WhatsApp number</label><input id={`p-${c.id}`} name="phone" class="field field-sm" inputmode="tel" dir="ltr" placeholder="+971 50 123 4567" required aria-invalid={openId === String(c.id) && errors.phone ? 'true' : undefined} />{openId === String(c.id) && errors.phone && <p class="mt-1 text-sm text-danger">{errors.phone}</p>}</div>
+                      <div><label for={`c-${c.id}`} class="a-label">Company (optional)</label><input id={`c-${c.id}`} name="company" class="field field-sm" /></div>
+                      <div><label for={`m-${c.id}`} class="a-label">What they asked (optional)</label><textarea id={`m-${c.id}`} name="message" rows="2" class="field"></textarea></div>
+                      {openId === String(c.id) && errors.form && <p class="text-sm text-danger">{errors.form}</p>}
+                      <button class="btn btn-primary btn-sm justify-self-start">Create enquiry</button>
+                    </form>
+                  </details>
+                ) : <span class="text-mute">Not yet</span>}
+                {replayUrl(c.data?.ph) && <a class="link-arrow mt-2 text-sm" href={replayUrl(c.data?.ph)!} target="_blank" rel="noopener noreferrer">Watch replay</a>}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+  <Pager page={pageNo} per={per} total={total} />
+</Admin>

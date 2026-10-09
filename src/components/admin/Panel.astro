@@ -1,0 +1,9 @@
+---
+interface Props { title: string; sub?: string; id?: string; class?: string }
+const { title, sub, id, class: cls } = Astro.props;
+---
+<section class:list={['card min-w-0 p-5', cls]} aria-labelledby={id ? `${id}-h` : undefined} id={id}>
+  <h2 id={id ? `${id}-h` : undefined} class="display text-lg">{title}</h2>
+  {sub && <p class="mt-1 text-mute">{sub}</p>}
+  <slot />
+</section>

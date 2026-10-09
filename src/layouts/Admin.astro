@@ -1,14 +1,30 @@
 ---
 import '../styles/global.css';
+import '../styles/admin.css';
 import { Font } from 'astro:assets';
-interface Props { title: string; nav?: boolean; notice?: string }
-const { title, nav = true, notice } = Astro.props;
+import Icon from '../components/Icon.astro';
+import { can } from '../lib/auth';
+interface Props { title: string; nav?: boolean; notice?: string; narrow?: boolean }
+const { title, nav = true, notice, narrow = false } = Astro.props;
 Astro.response.headers.set('cache-control', 'no-store');
 const here = Astro.url.pathname;
+const user = Astro.locals.user;
+const owner = can(user, 'owner');
 const links = [
-  { href: '/admin/', label: 'Leads' },
-  { href: '/admin/visitors/', label: 'Visitors & demand' },
+  { href: '/admin/', label: 'Dashboard', also: '' },
+  { href: '/admin/leads/', label: 'Enquiries', also: '/admin/lead/' },
+  { href: '/admin/whatsapp/', label: 'WhatsApp', also: '' },
+  { href: '/admin/visitors/', label: 'Visitors & demand', also: '' },
+  { href: '/admin/analytics/', label: 'Analytics', also: '' },
+  ...(owner ? [
+    { href: '/admin/settings/', label: 'Settings', also: '' },
+    { href: '/admin/users/', label: 'Users', also: '' },
+    { href: '/admin/activity/', label: 'Activity', also: '' },
+  ] : []),
+  { href: '/admin/account/', label: 'Account', also: '' },
 ];
+const active = (l: (typeof links)[number]) => here === l.href || (l.also !== '' && here.startsWith(l.also));
+const roleLabel = { owner: 'Owner', sales: 'Sales', viewer: 'Viewer' }[user?.role ?? 'viewer'];
 ---
 <!doctype html>
 <html lang="en">
@@ -23,23 +39,37 @@ const links = [
     <Font cssVariable="--font-jetbrains" />
   </head>
   <body class="min-h-screen bg-surface text-[14px]">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-3 focus:z-10 focus:rounded-sm focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
     {nav && (
       <header class="border-b border-line bg-card">
-        <div class="mx-auto flex h-14 max-w-[1400px] items-center gap-6 px-4 sm:px-6">
-          <a href="/admin/" class="flex items-center gap-2"><img src="/brand/logo-96.png" width="28" height="28" alt="" /><span class="label text-mute">Admin</span></a>
-          <nav class="flex gap-1">
-            {links.map((l) => <a href={l.href} class:list={['rounded-xs px-3 py-1.5 font-medium transition-colors hover:bg-surface', here === l.href && 'bg-brand-50 text-brand-700']}>{l.label}</a>)}
+        <div class="mx-auto flex min-h-14 max-w-[1400px] items-center gap-3 px-4 sm:px-6 xl:gap-6">
+          <a href="/admin/" class="flex shrink-0 items-center gap-2"><img src="/brand/logo-96.png" width="28" height="28" alt="" /><span class="label text-mute">Admin</span></a>
+          <nav class="hidden gap-1 xl:flex" aria-label="Admin">
+            {links.map((l) => <a href={l.href} class:list={['rounded-xs px-3 py-2 font-medium transition-colors hover:bg-surface', active(l) && 'bg-brand-50 text-brand-700']} aria-current={active(l) ? 'page' : undefined}>{l.label}</a>)}
           </nav>
           <div class="ms-auto flex items-center gap-2">
-            <a href="/admin/export.csv" class="btn btn-ghost btn-sm">Export CSV</a>
-            <form method="post" action="/admin/login/"><input type="hidden" name="logout" value="1" /><button class="btn btn-ghost btn-sm">Log out</button></form>
+            {user && (
+              <p class="hidden text-end leading-tight sm:block">
+                <span class="block font-medium">{user.name}</span>
+                <span class="label text-mute">{roleLabel}</span>
+              </p>
+            )}
+            <form method="post" action="/admin/login/"><input type="hidden" name="logout" value="1" /><button class="btn btn-ghost btn-sm">Sign out</button></form>
+            <button type="button" class="icon-btn xl:hidden" aria-expanded="false" aria-controls="admin-menu" aria-label="Menu" data-admin-menu><Icon name="menu" /></button>
           </div>
         </div>
+        <nav id="admin-menu" class="hidden border-t border-line xl:hidden" aria-label="Admin menu">
+          <div class="mx-auto grid max-w-[1400px] px-4 py-2 sm:grid-cols-2 sm:px-6">
+            {links.map((l) => <a href={l.href} class:list={['flex min-h-12 items-center rounded-xs px-3 font-medium', active(l) && 'bg-brand-50 text-brand-700']} aria-current={active(l) ? 'page' : undefined}>{l.label}</a>)}
+            {user && <p class="px-3 py-3 text-mute sm:hidden">Signed in as {user.name} ({roleLabel})</p>}
+          </div>
+        </nav>
       </header>
     )}
-    <main class="mx-auto max-w-[1400px] px-4 py-8 sm:px-6">
+    <main id="main" tabindex="-1" class:list={['mx-auto px-4 py-6 outline-none sm:px-6 sm:py-8', narrow ? 'max-w-3xl' : 'max-w-[1400px]']}>
       {notice && <p class="mb-6 rounded-sm bg-danger/5 p-4 text-danger" role="alert">{notice}</p>}
       <slot />
     </main>
+    <script>import '../scripts/admin';</script>
   </body>
 </html>

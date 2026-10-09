@@ -7,9 +7,11 @@ import LeadModal from '../components/LeadModal.astro';
 import Consent from '../components/Consent.astro';
 import Nudge from '../components/Nudge.astro';
 import Icon from '../components/Icon.astro';
+import Announcement from '../components/Announcement.astro';
 import { site } from '../data/site';
 import { t, dir, localize, unlocalize, type Lang } from '../i18n';
 import { fit, TITLE_MAX, DESC_MAX } from '../lib/seo';
+import { getSiteSettings, announcementLive } from '../lib/settings';
 
 interface Props {
   lang: Lang;
@@ -31,6 +33,9 @@ const { lang, title: rawTitle, description: rawDesc, schema = [], image, product
 const title = rawTitle.length > TITLE_MAX ? fit(rawTitle, TITLE_MAX).replace(/\.$/, '') : rawTitle;
 const description = rawDesc.length > DESC_MAX ? fit(rawDesc, DESC_MAX - 5) : rawDesc;
 if (title !== rawTitle || description !== rawDesc) console.warn(`[seo] meta over budget on ${Astro.url.pathname}: shorten it in the view`);
+// Owner-editable values (src/lib/settings.ts), read while the site builds; falls back to src/data/site.ts if the database is unreachable.
+const cfg = await getSiteSettings();
+const bar = announcementLive(cfg.announcement);
 const path = Astro.url.pathname;
 const base = unlocalize(path);
 const canonical = new URL(path, site.url).href;
@@ -54,7 +59,7 @@ const org = {
   legalName: site.legalName,
   url: site.url,
   logo: { '@type': 'ImageObject', url: `${site.url}/brand/logo-192.png`, width: 187, height: 192 },
-  email: site.email,
+  email: cfg.contactEmail,
   foundingDate: site.founded,
   parentOrganization: { '@type': 'Organization', name: site.parent, url: 'https://www.alytech.fr', sameAs: [site.parentLinkedin] },
   address: postal,
@@ -65,12 +70,12 @@ const org = {
     geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
     hasMap: site.mapUrl,
   },
-  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: site.email, areaServed: markets, availableLanguage: ['en', 'ar'] }],
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: cfg.contactEmail, areaServed: markets, availableLanguage: ['en', 'ar'] }],
   areaServed: 'Middle East',
 };
 ---
 <!doctype html>
-<html lang={lang} dir={dir(lang)}>
+<html lang={lang} dir={dir(lang)} data-announce={bar ? '' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -107,6 +112,7 @@ const org = {
     {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body data-product={product}>
+    {bar && <Announcement lang={lang} a={cfg.announcement} />}
     <Header lang={lang} path={path} />
     <main id="main" tabindex="-1" class="outline-none">
       <slot />

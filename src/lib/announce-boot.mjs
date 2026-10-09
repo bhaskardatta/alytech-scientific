@@ -1,0 +1,3 @@
+// Runs before the first paint (components/Announcement.astro inlines it): no flash of a bar this visitor already closed or that has ended.
+// A plain .mjs so astro.config.mjs can import the very same string and put its hash in the CSP (Astro doesn't hash is:inline scripts itself).
+export const announceBoot = `(function(){var b=document.getElementById('announce');if(!b)return;var c=false;try{c=sessionStorage.getItem('aly-announce')===b.getAttribute('data-id')}catch(e){}var e=b.getAttribute('data-ends');if(c||(e&&Date.now()>=Date.parse(e))){document.documentElement.removeAttribute('data-announce');b.remove()}})()`;

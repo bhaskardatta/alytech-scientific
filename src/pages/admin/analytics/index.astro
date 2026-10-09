@@ -1,0 +1,45 @@
+---
+import Admin from '../../../layouts/Admin.astro';
+import { secret } from '../../../lib/env';
+export const prerender = false;
+
+const project = secret('POSTHOG_PROJECT_ID');
+const posthog = project ? `https://eu.posthog.com/project/${encodeURIComponent(project)}` : 'https://eu.posthog.com/';
+// Only an EU PostHog link can be framed: it is the one host the site's CSP allows (frame-src in astro.config.mjs).
+let shared: string | null = null;
+try {
+  const u = new URL(secret('POSTHOG_SHARED_DASHBOARD_URL') ?? '');
+  if (u.protocol === 'https:' && u.hostname === 'eu.posthog.com') shared = u.href;
+} catch { /* not set or not a URL */ }
+const ext = { target: '_blank', rel: 'noopener noreferrer' };
+const tools = [
+  { name: 'PostHog', href: posthog, text: 'Behaviour in depth: funnels, session replays, heatmaps, page speed. Only includes visitors who accepted cookies.', cta: 'Open PostHog' },
+  { name: 'Google Search Console', href: 'https://search.google.com/search-console', text: 'What people searched on Google before they found the site, and which pages rank.', cta: 'Open Search Console' },
+  { name: 'Bing Webmaster Tools', href: 'https://www.bing.com/webmasters', text: 'The same for Bing, which also feeds other search engines.', cta: 'Open Bing Webmaster Tools' },
+];
+---
+<Admin title="Analytics">
+  <h1 class="display text-2xl sm:text-3xl">Analytics</h1>
+  <p class="mt-2 max-w-2xl text-mute">The numbers on the Dashboard come from the site itself. These tools go further; they open in a new tab and need their own sign-in.</p>
+
+  <div class="mt-6 grid gap-4 md:grid-cols-3">
+    {tools.map((t) => (
+      <section class="card flex flex-col justify-between gap-4 p-5">
+        <div>
+          <h2 class="display text-lg">{t.name}</h2>
+          <p class="mt-2 text-mute">{t.text}</p>
+        </div>
+        <a href={t.href} {...ext} class="btn btn-ghost btn-sm justify-self-start">{t.cta} ↗</a>
+      </section>
+    ))}
+  </div>
+
+  {shared ? (
+    <section class="card mt-6 overflow-hidden" aria-labelledby="ph-h">
+      <h2 id="ph-h" class="display border-b border-line p-5 text-lg">PostHog dashboard</h2>
+      <iframe src={shared} title="PostHog shared dashboard" class="block h-[80vh] min-h-[480px] w-full border-0" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+    </section>
+  ) : (
+    <p class="mt-6 text-mute">To show a PostHog dashboard here: in PostHog open the dashboard, choose Share, enable “Share dashboard publicly”, and set the link as POSTHOG_SHARED_DASHBOARD_URL in the hosting environment variables.</p>
+  )}
+</Admin>

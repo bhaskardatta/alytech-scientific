@@ -81,6 +81,8 @@ const strings = {
   'ind.equip.all': { en: 'All lab & test equipment', ar: 'كل معدات المختبرات والاختبار' },
   'prod.region': { en: 'In the region:', ar: 'في المنطقة:' },
   'consent.label': { en: 'Cookie consent', ar: 'الموافقة على ملفات تعريف الارتباط' },
+  'announce.label': { en: 'Announcement', ar: 'إعلان' },
+  'announce.close': { en: 'Dismiss announcement', ar: 'إغلاق الإعلان' },
   'footer.cookies': { en: 'Cookie settings', ar: 'إعدادات ملفات تعريف الارتباط' },
 } as const;
 

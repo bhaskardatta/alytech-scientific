@@ -1,119 +1,113 @@
 ---
 import Admin from '../../layouts/Admin.astro';
-import { isAdmin } from '../../lib/auth';
-import { dbReady, select, update, count } from '../../lib/db';
-import { fmt, ago, safeQ, waHref, modeLabel, dbNotice, go } from '../../lib/admin';
+import Kpi from '../../components/admin/Kpi.astro';
+import Panel from '../../components/admin/Panel.astro';
+import BarList from '../../components/admin/BarList.astro';
+import Trend from '../../components/admin/Trend.astro';
+import Funnel from '../../components/admin/Funnel.astro';
+import PeriodPicker from '../../components/admin/PeriodPicker.astro';
+import OrgTable from '../../components/admin/OrgTable.astro';
+import SearchPanel from '../../components/admin/SearchPanel.astro';
+import { dbReady } from '../../lib/db';
+import { dbNotice, num, countryName } from '../../lib/admin';
+import { parsePeriod } from '../../lib/period';
+import { overview, delta, deltaPoints, conversion, isIsp, type Overview, type Kpis } from '../../lib/stats';
 export const prerender = false;
 
-if (!(await isAdmin(Astro.cookies))) return go(Astro, '/admin/login/');
-
-if (Astro.request.method === 'POST') {
-  const f = await Astro.request.formData();
-  const id = String(f.get('id') ?? '');
-  if (dbReady() && /^[0-9a-f-]{36}$/i.test(id)) {
-    try { await update('leads', `id=eq.${id}`, { handled: f.get('handled') === '1' }); } catch (e) { console.error('admin handled toggle failed', e); }
-  }
-  return go(Astro, Astro.url.pathname + Astro.url.search);
-}
-
-const params = Astro.url.searchParams;
-const status = ['submitted', 'partial', 'all'].includes(params.get('status') ?? '') ? params.get('status')! : 'submitted';
-const q = safeQ(params.get('q') ?? '');
-const page = Math.max(1, Number(params.get('page')) || 1);
-const per = 50;
-
-let leads: any[] = [];
-let week = { submitted: 0, partial: 0 };
-let error: unknown;
+const period = parsePeriod(Astro.url.searchParams);
+const showAll = Astro.url.searchParams.get('isp') === '1';
+const zero: Kpis = { pageviews: 0, visitors: 0, enquiries: 0, partials: 0, whatsapp: 0, converted: 0, won_count: 0, won_value: 0 };
+let cur: Overview | undefined, prev: Kpis = zero, error: unknown;
 if (dbReady()) {
-  try {
-    const filters = [
-      'select=*',
-      'order=created_at.desc',
-      `limit=${per}`,
-      `offset=${(page - 1) * per}`,
-      status !== 'all' && `status=eq.${status}`,
-      q && `or=(${['name', 'email', 'company', 'product', 'phone', 'ip_org'].map((c) => `${c}.ilike.*${encodeURIComponent(q)}*`).join(',')})`, // encoded so '&' or '#' can't add query params
-    ].filter(Boolean).join('&');
-    const since = new Date(Date.now() - 7 * 864e5).toISOString();
-    [leads, week.submitted, week.partial] = await Promise.all([
-      select('leads', filters),
-      count('leads', `status=eq.submitted&created_at=gte.${since}`),
-      count('leads', `status=eq.partial&created_at=gte.${since}`),
-    ]);
-  } catch (e) {
-    error = e;
-  }
+  try { ({ cur, prev } = await overview(period)); } catch (e) { error = e; }
 }
-const tab = (s: string) => `?status=${s}${q ? `&q=${encodeURIComponent(q)}` : ''}`;
+const k = cur?.kpis ?? zero;
+const rate = conversion(k), prevRate = conversion(prev);
+const pct = (x: number) => `${(Math.round(x * 1000) / 10).toLocaleString('en-GB')}%`;
+
+const channelName: Record<string, string> = {
+  direct: 'Direct (typed or bookmarked)', search: 'Search engines', social: 'Social media', referral: 'Other websites', campaign: 'Campaigns (tagged links)',
+};
+const channels = Object.keys(channelName).map((c) => ({ label: channelName[c], n: cur?.channels.find((x) => x.k === c)?.n ?? 0 }));
+const deviceName: Record<string, string> = { mobile: 'Phones', tablet: 'Tablets', desktop: 'Computers', unknown: 'Not recorded' };
+const orgs = (cur?.orgs ?? []).filter((o) => showAll || !isIsp(o.ip_org));
+const isp = (on: boolean) => `?${period.query}${on ? '&isp=1' : ''}`;
 ---
-<Admin title="Leads" notice={dbNotice(error)}>
-  <div class="grid gap-3 sm:grid-cols-3">
-    <div class="card p-5"><p class="label text-mute">Submitted · 7 days</p><p class="display mt-2 text-3xl">{week.submitted}</p></div>
-    <div class="card p-5"><p class="label text-mute">Started, not sent · 7 days</p><p class="display mt-2 text-3xl">{week.partial}</p></div>
-    <div class="card p-5"><p class="label text-mute">Tip</p><p class="mt-2 text-mute">“Started, not sent” leads typed a name or contact but left. Follow up on them too.</p></div>
+<Admin title="Dashboard" notice={dbNotice(error)}>
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <h1 class="display text-2xl sm:text-3xl">Dashboard</h1>
+  </div>
+  <div class="mt-4"><PeriodPicker period={period} /></div>
+
+  <section class="mt-6" aria-label="Key numbers">
+    <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <Kpi label="Page views" value={num(k.pageviews)} d={delta(k.pageviews, prev.pageviews)} prevLabel={period.prevLabel} hint="Every visit, including people who haven’t accepted cookies (counted anonymously)." />
+      <Kpi label="Identified visitors" value={num(k.visitors)} d={delta(k.visitors, prev.visitors)} prevLabel={period.prevLabel} hint="Only visitors who accepted cookies. Not a total of everyone." />
+      <Kpi label="Enquiries sent" value={num(k.enquiries)} d={delta(k.enquiries, prev.enquiries)} prevLabel={period.prevLabel} hint="Website forms submitted, spam excluded." />
+      <Kpi label="Started, not sent" value={num(k.partials)} d={delta(k.partials, prev.partials)} prevLabel={period.prevLabel} neutral hint="Forms left half-filled: worth a follow-up." />
+      <Kpi label="WhatsApp chats started" value={num(k.whatsapp)} d={delta(k.whatsapp, prev.whatsapp)} prevLabel={period.prevLabel} hint="Clicks on a WhatsApp button." />
+      <Kpi label="Conversion rate" value={pct(rate)} d={deltaPoints(rate, prevRate)} prevLabel={period.prevLabel} hint="Of identified visitors, the share who sent an enquiry or started a WhatsApp chat." />
+      <Kpi label="Deals won" value={num(k.won_count)} d={delta(k.won_count, prev.won_count)} prevLabel={period.prevLabel} hint="Enquiries moved to Won in this period." />
+      <Kpi label="Won value (AED)" value={num(Math.round(k.won_value))} d={delta(k.won_value, prev.won_value)} prevLabel={period.prevLabel} hint="Total of the deal values entered on won enquiries." />
+    </div>
+  </section>
+
+  <Panel title="Daily trend" sub="Each chart has its own scale. Hover or use the arrow keys to read a day." class="mt-6">
+    <Trend days={cur?.daily ?? []} />
+  </Panel>
+
+  <div class="mt-6 grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+    <Panel title="Where visitors come from" sub="Page views by how the visitor arrived. Navigation inside the site isn’t counted.">
+      <BarList items={channels} total={channels.reduce((s, c) => s + c.n, 0)} />
+      {(cur?.referrers.length ?? 0) > 0 && (
+        <div class="mt-6 border-t border-line pt-4">
+          <h3 class="label text-mute">Top sites sending visitors</h3>
+          <BarList items={cur!.referrers.slice(0, 5).map((r) => ({ label: r.k, n: r.n }))} />
+        </div>
+      )}
+      {(cur?.campaigns.length ?? 0) > 0 && (
+        <div class="mt-6 border-t border-line pt-4">
+          <h3 class="label text-mute">Campaigns</h3>
+          <BarList items={cur!.campaigns.slice(0, 5).map((r) => ({ label: r.k, n: r.n }))} />
+        </div>
+      )}
+    </Panel>
+    <Panel title="From page view to enquiry" sub="How many of the visitors who looked at a product went on to ask.">
+      <Funnel viewed={cur?.funnel.viewed ?? 0} opened={cur?.funnel.opened ?? 0} submitted={cur?.funnel.submitted ?? 0} />
+    </Panel>
   </div>
 
-  <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
-    <nav class="flex gap-1 rounded-sm border border-line bg-card p-1" aria-label="Lead status">
-      {[['submitted', 'Submitted'], ['partial', 'Started, not sent'], ['all', 'All']].map(([s, l]) => (
-        <a href={tab(s)} class:list={['rounded-xs px-3 py-1.5 font-medium', status === s ? 'bg-ink text-white' : 'hover:bg-surface']} aria-current={status === s ? 'page' : undefined}>{l}</a>
-      ))}
-    </nav>
-    <form class="flex gap-2" role="search">
-      <input type="hidden" name="status" value={status} />
-      <label for="q" class="sr-only">Search leads</label>
-      <input id="q" name="q" value={q} placeholder="Name, email, company, product, network…" class="field w-72 min-h-10 py-2" />
-      <button class="btn btn-ghost btn-sm">Search</button>
-    </form>
+  <div class="mt-6 grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
+    <Panel title="Countries" sub="By page views, from the visitor’s connection.">
+      <BarList items={(cur?.countries ?? []).map((c) => ({ label: countryName(c.k), n: c.n }))} total={k.pageviews} />
+    </Panel>
+    <Panel title="Devices">
+      <BarList items={(cur?.devices ?? []).map((c) => ({ label: deviceName[c.k] ?? c.k, n: c.n }))} total={k.pageviews} />
+    </Panel>
+    <Panel title="Top pages">
+      <BarList items={(cur?.pages ?? []).map((c) => ({ label: c.k, n: c.n }))} />
+    </Panel>
   </div>
 
-  <div class="mt-4 overflow-x-auto rounded-[var(--radius-md)] border border-line bg-card">
-    <table class="w-full min-w-[1100px] text-start">
-      <thead class="border-b border-line text-mute">
-        <tr>{['Received', 'Who', 'Contact', 'Interested in', 'Where from', 'Done'].map((h) => <th scope="col" class="label px-4 py-3 text-start font-medium">{h}</th>)}</tr>
-      </thead>
-      <tbody class="divide-y divide-line">
-        {leads.length === 0 && <tr><td colspan="6" class="px-4 py-12 text-center text-mute">No leads here yet.</td></tr>}
-        {leads.map((l) => (
-          <tr class:list={['align-top transition-colors hover:bg-brand-50/40', l.handled && 'opacity-55']}>
-            <td class="px-4 py-3 whitespace-nowrap">
-              <a href={`/admin/lead/${l.id}/`} class="font-medium hover:text-brand-600">{ago(l.created_at)}</a>
-              <p class="text-[12px] text-mute">{fmt(l.created_at)}</p>
-              {l.status === 'partial' && <span class="label mt-1 inline-block rounded-xs bg-amber-100 px-1.5 py-0.5 text-[10px] text-amber-900">Not sent</span>}
-            </td>
-            <td class="px-4 py-3">
-              <a href={`/admin/lead/${l.id}/`} class="font-semibold hover:text-brand-600">{l.name ?? '—'}</a>
-              <p class="text-mute">{l.company}</p>
-            </td>
-            <td class="px-4 py-3">
-              {l.phone && <a href={waHref(l.phone, l.name)} target="_blank" rel="noopener noreferrer" class="block font-mono text-[13px] text-success hover:underline" dir="ltr">{l.phone} ↗</a>}
-              {l.email && <a href={`mailto:${l.email}`} class="block hover:text-brand-600">{l.email}</a>}
-            </td>
-            <td class="px-4 py-3">
-              <span class="label rounded-xs bg-brand-50 px-1.5 py-0.5 text-[10px] text-brand-700">{modeLabel[l.mode] ?? l.mode ?? '—'}</span>
-              <p class="mt-1">{l.product}</p>
-              {l.message && <p class="mt-1 line-clamp-2 max-w-xs text-mute">{l.message}</p>}
-            </td>
-            <td class="px-4 py-3">
-              <p>{l.country ?? [l.geo_city, l.geo_country].filter(Boolean).join(', ')}</p>
-              {l.ip_org && <p class="text-[12px] text-mute">{l.ip_org}</p>}
-              <p class="text-[12px] text-mute">{l.lang === 'ar' ? 'Arabic site' : ''} {l.path}</p>
-            </td>
-            <td class="px-4 py-3">
-              <form method="post">
-                <input type="hidden" name="id" value={l.id} />
-                <input type="hidden" name="handled" value={l.handled ? '0' : '1'} />
-                <button class:list={['btn btn-sm', l.handled ? 'btn-ghost' : 'btn-primary']} aria-label={l.handled ? 'Mark as not handled' : 'Mark as handled'}>{l.handled ? 'Undo' : 'Handled'}</button>
-              </form>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+  <div class="mt-6 grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+    <Panel title="Most-viewed products">
+      <BarList items={(cur?.products_viewed ?? []).map((c) => ({ label: c.k, n: c.n }))} />
+    </Panel>
+    <Panel title="Most-asked-about products" sub="Enquiries sent, by product.">
+      <BarList items={(cur?.products_enquired ?? []).map((c) => ({ label: c.k, n: c.n }))} />
+    </Panel>
   </div>
-  <div class="mt-4 flex justify-between">
-    {page > 1 ? <a class="btn btn-ghost btn-sm" href={`${tab(status)}&page=${page - 1}`}>← Newer</a> : <span></span>}
-    {leads.length === per && <a class="btn btn-ghost btn-sm" href={`${tab(status)}&page=${page + 1}`}>Older →</a>}
+
+  <div class="mt-6 grid grid-cols-1 items-start gap-6 xl:grid-cols-2">
+    <Panel title="Site searches" sub="Searches with no result show demand you could source.">
+      <SearchPanel searches={cur?.searches ?? { total: 0, with_results: 0, no_results: 0, top: [] }} limit={8} />
+    </Panel>
+    <Panel title="Companies on the site" sub="Identified from their network; home and mobile users show as their ISP.">
+      <div class="mt-3 flex flex-wrap gap-2">
+        <a href={isp(!showAll)} class="btn btn-ghost btn-sm">{showAll ? 'Hide ISPs' : 'Show ISPs'}</a>
+        <a href={`/admin/visitors/?${period.query}`} class="btn btn-ghost btn-sm">All organisations →</a>
+      </div>
+      <OrgTable orgs={orgs} limit={8} />
+    </Panel>
   </div>
 </Admin>

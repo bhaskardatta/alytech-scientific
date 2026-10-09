@@ -1,0 +1,6 @@
+---
+import { stageLabel } from '../../lib/admin';
+interface Props { stage: string }
+const { stage } = Astro.props;
+---
+<span class:list={['chip', stage !== 'new' && `chip-${stage}`]}>{stageLabel[stage] ?? stage}</span>

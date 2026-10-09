@@ -1,10 +1,11 @@
 ---
 import Icon from './Icon.astro';
 import { t, localize, type Lang } from '../i18n';
-import { site, whatsappReady } from '../data/site';
+import { getSiteSettings } from '../lib/settings';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
+const cfg = await getSiteSettings();
 const modes = ['whatsapp', 'datasheet', 'price', 'quote', 'specs', 'interest'] as const;
 const countries = lang === 'ar'
   ? ['الإمارات العربية المتحدة', 'المملكة العربية السعودية', 'قطر', 'عُمان', 'الكويت', 'البحرين', 'العراق', 'الأردن', 'مصر', 'لبنان', 'دولة أخرى']
@@ -18,11 +19,11 @@ const i18n = {
   sending: t(lang, 'lead.sending'),
   errName: t(lang, 'lead.err.name'),
   errContact: t(lang, 'lead.err.contact'),
-  errSend: `${t(lang, 'lead.err.unavailable')} \u2066${site.email}\u2069`, // isolates keep the address intact inside Arabic text
+  errSend: `${t(lang, 'lead.err.unavailable')} \u2066${cfg.contactEmail}\u2069`, // isolates keep the address intact inside Arabic text
   greeting: t(lang, 'wa.greeting'),
   general: t(lang, 'wa.general'),
-  wa: site.whatsapp,
-  waReady: whatsappReady,
+  wa: cfg.whatsapp,
+  waReady: cfg.whatsapp !== '971000000000', // the old placeholder: until a real number is set, WhatsApp buttons fall back to the request form
   lang,
 };
 ---

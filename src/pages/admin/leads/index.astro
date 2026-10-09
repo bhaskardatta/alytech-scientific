@@ -1,0 +1,164 @@
+---
+import Admin from '../../../layouts/Admin.astro';
+import StageChip from '../../../components/admin/StageChip.astro';
+import Pager from '../../../components/admin/Pager.astro';
+import { can } from '../../../lib/auth';
+import { dbReady, page, count } from '../../../lib/db';
+import { fmt, fmtDay, ago, waHref, modeLabel, dbNotice, STAGES, stageLabel, aed, campaignOf } from '../../../lib/admin';
+import { parseLeadFilters, leadQuery, activeFilters, MODES, SORTS } from '../../../lib/leads';
+import { assignableUsers } from '../../../lib/users';
+import { dubaiDay } from '../../../lib/period';
+export const prerender = false;
+
+const user = Astro.locals.user!;
+const f = parseLeadFilters(Astro.url.searchParams);
+const pageNo = Math.max(1, Number(Astro.url.searchParams.get('page')) || 1);
+const per = 50;
+const COLS = 'id,created_at,status,mode,name,company,email,phone,country,geo_country,geo_city,product,brand,message,ip_org,lang,path,stage,value_aed,assigned_to,follow_up,spam,tags,attribution,wa_ref';
+
+let leads: any[] = [], total = 0, staff: any[] = [], error: unknown;
+const stageCounts: Record<string, number> = {};
+let dueCount = 0;
+if (dbReady()) {
+  try {
+    const where = leadQuery(f, user.id);
+    const base = leadQuery(f, user.id, true); // everything except the stage, so each tile shows how many there would be
+    const today = dubaiDay(new Date());
+    const [list, users, counts, due] = await Promise.all([
+      page('leads', `select=${COLS}&order=${SORTS[f.sort].order}&limit=${per}&offset=${(pageNo - 1) * per}${where ? `&${where}` : ''}`),
+      assignableUsers(),
+      Promise.all(STAGES.map((s) => count('leads', `${base ? `${base}&` : ''}stage=eq.${s}`))),
+      count('leads', `${base ? `${base}&` : ''}follow_up=lte.${today}&stage=not.in.(won,lost)`),
+    ]);
+    ({ rows: leads, total } = list);
+    staff = users;
+    STAGES.forEach((s, i) => (stageCounts[s] = counts[i]));
+    dueCount = due;
+  } catch (e) {
+    error = e;
+  }
+}
+const who = new Map(staff.map((u) => [u.id, u.name]));
+const allCount = STAGES.reduce((s, k) => s + (stageCounts[k] ?? 0), 0);
+
+// Links keep every filter and change one thing.
+const link = (changes: Record<string, string | null>) => {
+  const u = new URL(Astro.url);
+  u.searchParams.delete('page');
+  for (const [k, v] of Object.entries(changes)) v === null ? u.searchParams.delete(k) : u.searchParams.set(k, v);
+  return `${u.pathname}${u.search}`;
+};
+const exportHref = `/admin/export.csv${Astro.url.search}`;
+const nFilters = activeFilters(f);
+const canWrite = can(user, 'write');
+const overdue = (d: string) => d < dubaiDay(new Date());
+---
+<Admin title="Enquiries" notice={dbNotice(error)}>
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <h1 class="display text-2xl sm:text-3xl">Enquiries</h1>
+    <a href={exportHref} class="btn btn-ghost btn-sm" download>Export CSV{nFilters || f.stage || f.q ? ' (current filters)' : ''}</a>
+  </div>
+
+  <nav class="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-7" aria-label="Pipeline stages">
+    <a href={link({ stage: null, due: null })} class:list={['card p-3 transition-colors hover:border-ink', !f.stage && !f.due && 'border-ink bg-card ring-1 ring-ink']} aria-current={!f.stage && !f.due ? 'page' : undefined}>
+      <span class="label text-mute">All</span><span class="display mt-1 block text-2xl">{allCount}</span>
+    </a>
+    {STAGES.map((s) => (
+      <a href={link({ stage: s, due: null })} class:list={['card p-3 transition-colors hover:border-ink', f.stage === s && 'border-ink ring-1 ring-ink']} aria-current={f.stage === s ? 'page' : undefined}>
+        <span class="label text-mute">{stageLabel[s]}</span><span class="display mt-1 block text-2xl">{stageCounts[s] ?? 0}</span>
+      </a>
+    ))}
+    <a href={link({ due: '1', stage: null })} class:list={['card p-3 transition-colors hover:border-ink', f.due && 'border-ink ring-1 ring-ink']} aria-current={f.due ? 'page' : undefined}>
+      <span class="label text-mute">Follow-up due</span><span class="display mt-1 block text-2xl">{dueCount}</span>
+    </a>
+  </nav>
+
+  <form method="get" class="card mt-4 p-4" role="search" aria-label="Filter enquiries">
+    {f.stage && <input type="hidden" name="stage" value={f.stage} />}
+    {f.due && <input type="hidden" name="due" value="1" />}
+    <div class="flex flex-wrap gap-3">
+      <div class="min-w-[220px] flex-1">
+        <label for="q" class="a-label">Search</label>
+        <input id="q" name="q" value={f.q} placeholder="Name, email, company, product, WhatsApp ref…" class="field field-sm" />
+      </div>
+      <div>
+        <label for="sort" class="a-label">Sort</label>
+        <select id="sort" name="sort" class="field field-sm">{Object.entries(SORTS).map(([k, s]) => <option value={k} selected={f.sort === k}>{s.label}</option>)}</select>
+      </div>
+      <div class="flex items-end gap-2">
+        <button class="btn btn-primary btn-sm">Apply</button>
+        <a href="/admin/leads/" class="btn btn-ghost btn-sm">Clear</a>
+      </div>
+    </div>
+    <details class="mt-3" open={nFilters > 0}>
+      <summary class="sum-btn">More filters{nFilters ? ` (${nFilters} on)` : ''}</summary>
+      <div class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div><label for="status" class="a-label">Sent or not</label>
+          <select id="status" name="status" class="field field-sm">{[['submitted', 'Sent enquiries'], ['partial', 'Started, not sent'], ['all', 'Both']].map(([v, l]) => <option value={v} selected={f.status === v}>{l}</option>)}</select></div>
+        <div><label for="assignee" class="a-label">Assigned to</label>
+          <select id="assignee" name="assignee" class="field field-sm">
+            <option value="">Anyone</option><option value="me" selected={f.assignee === 'me'}>Me</option><option value="none" selected={f.assignee === 'none'}>Nobody yet</option>
+            {staff.map((u) => <option value={u.id} selected={f.assignee === u.id}>{u.name}</option>)}
+          </select></div>
+        <div><label for="mode" class="a-label">Request type</label>
+          <select id="mode" name="mode" class="field field-sm"><option value="">Any</option>{MODES.map((m) => <option value={m} selected={f.mode === m}>{modeLabel[m]}</option>)}</select></div>
+        <div><label for="product" class="a-label">Product or brand</label><input id="product" name="product" value={f.product} class="field field-sm" /></div>
+        <div><label for="country" class="a-label">Country</label><input id="country" name="country" value={f.country} placeholder="Name or code, e.g. AE" class="field field-sm" /></div>
+        <div><label for="from" class="a-label">Received from</label><input id="from" name="from" type="date" value={f.from} class="field field-sm" /></div>
+        <div><label for="to" class="a-label">Received until</label><input id="to" name="to" type="date" value={f.to} class="field field-sm" /></div>
+        <div><label for="spam" class="a-label">Spam</label>
+          <select id="spam" name="spam" class="field field-sm">{[['hide', 'Hide spam'], ['only', 'Only spam'], ['all', 'Include spam']].map(([v, l]) => <option value={v} selected={f.spam === v}>{l}</option>)}</select></div>
+        <label class="flex min-h-11 items-center gap-2 self-end"><input type="checkbox" name="campaign" value="1" checked={f.campaign} class="h-5 w-5 accent-brand-600" /> Came from a campaign</label>
+      </div>
+    </details>
+  </form>
+
+  <div class="card mt-4 overflow-hidden">
+    <table class="a-table a-stack">
+      <thead class="border-b border-line text-mute">
+        <tr>{['Received', 'Who', 'Contact', 'Interested in', 'Pipeline', 'Where from'].map((h) => <th scope="col" class="label px-4 py-3 font-medium">{h}</th>)}</tr>
+      </thead>
+      <tbody class="divide-y divide-line">
+        {leads.length === 0 && <tr><td colspan="6" class="px-4 py-12 text-center text-mute">{error || !dbReady() ? 'No data to show.' : 'No enquiries match these filters.'}</td></tr>}
+        {leads.map((l) => (
+          <tr class:list={['align-top transition-colors hover:bg-brand-50/40', (l.spam || l.stage === 'lost') && 'row-dim']}>
+            <td data-label="Received" class="px-4 py-3 whitespace-nowrap">
+              <a href={`/admin/lead/${l.id}/`} class="inline-flex min-h-11 items-center font-medium hover:text-brand-600 md:min-h-0">{ago(l.created_at)}</a>
+              <p class="text-[12px] text-mute">{fmt(l.created_at)}</p>
+              {l.status === 'partial' && <span class="chip chip-quoted mt-1">Not sent</span>}
+              {l.spam && <span class="chip chip-spam mt-1">Spam</span>}
+            </td>
+            <td data-label="Who" class="px-4 py-3">
+              <a href={`/admin/lead/${l.id}/`} class="inline-flex min-h-11 items-center font-semibold hover:text-brand-600 md:min-h-0">{l.name ?? '—'}</a>
+              <p class="text-mute">{l.company}</p>
+            </td>
+            <td data-label="Contact" class="px-4 py-3">
+              {l.phone && <a href={waHref(l.phone, l.name)} target="_blank" rel="noopener noreferrer" class="flex min-h-11 items-center md:min-h-0 font-mono text-[13px] text-success hover:underline" dir="ltr">{l.phone} ↗</a>}
+              {l.email && <a href={`mailto:${l.email}`} class="flex min-h-11 items-center md:min-h-0 break-all hover:text-brand-600">{l.email}</a>}
+            </td>
+            <td data-label="Interested in" class="px-4 py-3">
+              <span class="chip">{modeLabel[l.mode] ?? l.mode ?? '—'}</span>
+              <p class="mt-1">{l.product}</p>
+              {l.message && <p class="mt-1 line-clamp-2 max-w-xs text-mute">{l.message}</p>}
+            </td>
+            <td data-label="Pipeline" class="px-4 py-3">
+              <StageChip stage={l.stage} />
+              {l.value_aed != null && <p class="mt-1 font-mono text-[13px]">{aed(Number(l.value_aed))}</p>}
+              <p class="mt-1 text-[12px] text-mute">{l.assigned_to ? (who.get(l.assigned_to) ?? 'Former user') : 'Unassigned'}</p>
+              {l.follow_up && <p class:list={['text-[12px]', overdue(l.follow_up) && l.stage !== 'won' && l.stage !== 'lost' ? 'font-semibold text-danger' : 'text-mute']}>{overdue(l.follow_up) && l.stage !== 'won' && l.stage !== 'lost' ? 'Overdue: ' : 'Follow up '}{fmtDay(l.follow_up)}</p>}
+              {(l.tags ?? []).length > 0 && <p class="mt-1 flex flex-wrap gap-1">{l.tags.map((t: string) => <span class="chip chip-tag">{t}</span>)}</p>}
+            </td>
+            <td data-label="Where from" class="px-4 py-3">
+              <p>{l.country ?? [l.geo_city, l.geo_country].filter(Boolean).join(', ')}</p>
+              {l.ip_org && <p class="text-[12px] text-mute">{l.ip_org}</p>}
+              {campaignOf(l.attribution) && <p class="text-[12px] text-mute">Campaign: {campaignOf(l.attribution)}</p>}
+              <p class="text-[12px] text-mute">{l.lang === 'ar' ? 'Arabic site' : ''} {l.path}</p>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <Pager page={pageNo} per={per} total={total} />
+  {!canWrite && <p class="mt-4 text-mute">Your role is read-only: you can look at enquiries but not change them.</p>}
+</Admin>

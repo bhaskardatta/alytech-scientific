@@ -1,0 +1,25 @@
+---
+// Ranked horizontal bars for nominal categories: one colour (they are not an ordered scale), value written at the end of each row
+// (so the numbers are readable without the bars), thin 6px bars with rounded data ends. `total` adds each row's share.
+import { num } from '../../lib/admin';
+interface Item { label: string; n: number; href?: string; note?: string }
+interface Props { items: Item[]; total?: number; empty?: string }
+const { items, total, empty = 'Nothing in this period.' } = Astro.props;
+const max = Math.max(1, ...items.map((i) => i.n));
+---
+{items.length === 0 ? <p class="mt-4 text-mute">{empty}</p> : (
+  <ol class="mt-4 grid gap-3">
+    {items.map((i) => (
+      <li>
+        <div class="flex items-baseline justify-between gap-3">
+          {i.href ? <a href={i.href} class="min-w-0 truncate hover:text-brand-600 hover:underline" title={i.label}>{i.label}</a> : <span class="min-w-0 truncate" title={i.label}>{i.label}</span>}
+          <span class="shrink-0 font-mono text-[13px]">{num(i.n)}{total ? <span class="text-mute"> · {Math.round((i.n / total) * 100)}%</span> : null}</span>
+        </div>
+        {i.note && <p class="text-[12px] text-mute">{i.note}</p>}
+        <svg class="mt-1 block w-full" height="6" aria-hidden="true">
+          <rect width={`${i.n ? Math.max(1.5, (i.n / max) * 100) : 0}%`} height="6" rx="3" fill="#6000cd" />
+        </svg>
+      </li>
+    ))}
+  </ol>
+)}

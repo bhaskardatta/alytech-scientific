@@ -7,7 +7,10 @@ const HOSTS = /^(www\.)?alytechme\.com$|\.vercel\.app$|^(localhost|127\.0\.0\.1)
 export function originOk(req: Request) {
   const src = req.headers.get('origin') || req.headers.get('referer');
   if (!src) return true;
-  try { return HOSTS.test(new URL(src).hostname); } catch { return false; }
+  try {
+    const from = new URL(src).hostname;
+    return HOSTS.test(from) || from === new URL(req.url).hostname; // same host as the request itself: still right after a move to another host or domain
+  } catch { return false; }
 }
 
 // ponytail: in-memory sliding window per serverless instance (resets on cold start, not shared across instances).
@@ -32,22 +35,30 @@ export function limited(key: string, max: number, windowMs = 10 * MIN) {
 }
 
 // ---------- Admin login lockout ----------
-const FAILS = 5, LOCK = 15 * MIN;
+// Keyed per IP + email: 5 wrong passwords for one account from one address lock that pair for 15 minutes, and 25 from one address
+// (guessing across many emails) lock the address. A locked pair is refused before the password is looked at.
+const FAILS = 5, IP_FAILS = 25, LOCK = 15 * MIN;
+const since = () => `ts=gte.${new Date(Date.now() - LOCK).toISOString()}`;
 
 /** Shared across instances through the events table when the DB is up; the memory window covers the rest. */
-export async function loginLocked(ip: string | null) {
-  if (recent(`login:${ip}`, LOCK).length >= FAILS) return true;
+export async function loginLocked(ip: string | null, email: string) {
+  email = email.trim().toLowerCase().slice(0, 200);
+  if (recent(`login:${ip}|${email}`, LOCK).length >= FAILS || recent(`login-ip:${ip}`, LOCK).length >= IP_FAILS) return true;
   if (!ip || !dbReady()) return false;
   try {
-    return (await count('events', `type=eq.admin_login_fail&data->>ip=eq.${encodeURIComponent(ip)}&ts=gte.${new Date(Date.now() - LOCK).toISOString()}`)) >= FAILS;
+    const base = `type=eq.admin_login_fail&data->>ip=eq.${encodeURIComponent(ip)}&${since()}`;
+    const [pair, all] = await Promise.all([count('events', `${base}&data->>email=eq.${encodeURIComponent(email)}`), count('events', base)]);
+    return pair >= FAILS || all >= IP_FAILS;
   } catch (e) {
     console.error('login lockout check failed', e);
     return false;
   }
 }
 
-export async function loginFailed(ip: string | null) {
-  recent(`login:${ip}`, LOCK).push(Date.now());
+export async function loginFailed(ip: string | null, email: string) {
+  email = email.trim().toLowerCase().slice(0, 200);
+  recent(`login:${ip}|${email}`, LOCK).push(Date.now());
+  recent(`login-ip:${ip}`, LOCK).push(Date.now());
   if (!ip || !dbReady()) return;
-  try { await insert('events', { type: 'admin_login_fail', data: { ip } }); } catch (e) { console.error('login fail log failed', e); }
+  try { await insert('events', { type: 'admin_login_fail', data: { ip, email } }); } catch (e) { console.error('login fail log failed', e); }
 }

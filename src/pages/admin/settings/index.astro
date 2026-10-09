@@ -1,0 +1,167 @@
+---
+import Admin from '../../../layouts/Admin.astro';
+import { dbReady } from '../../../lib/db';
+import { dbNotice, fmt, go } from '../../../lib/admin';
+import { fromRows, readRows, saveRows, triggerDeploy, parseWhatsApp, parseEmails, parseLink, isEmail, announcementLive, DEFAULTS, type Publish, type SettingRow } from '../../../lib/settings';
+import { validDay, dubaiDay } from '../../../lib/period';
+import { secret } from '../../../lib/env';
+import { audit } from '../../../lib/audit';
+import { originOk } from '../../../lib/guard';
+export const prerender = false;
+
+const user = Astro.locals.user!; // owner only: enforced in src/middleware.ts
+const errors: Record<string, string> = {};
+let rows: SettingRow[] = [], error: unknown, posted: FormData | null = null;
+
+const load = async () => { if (dbReady()) { try { rows = await readRows(); } catch (e) { error = e; } } };
+await load();
+const cur = fromRows(rows);
+
+if (Astro.request.method === 'POST') {
+  if (!originOk(Astro.request)) return new Response('Forbidden', { status: 403 });
+  const f = (posted = await Astro.request.formData());
+  const s = (k: string) => String(f.get(k) ?? '').trim();
+
+  const whatsapp = parseWhatsApp(s('whatsapp'));
+  if (!whatsapp) errors.whatsapp = 'Enter the number in international format with the country code, e.g. +971 50 123 4567. Digits only (spaces and + are fine).';
+  const contact = s('contact_email').toLowerCase();
+  if (!isEmail(contact)) errors.contact_email = 'Enter a valid email address.';
+  const alerts = parseEmails(s('alert_emails'));
+  if (alerts.bad.length) errors.alert_emails = `These don’t look like email addresses: ${alerts.bad.join(', ')}`;
+  else if (alerts.tooMany) errors.alert_emails = 'Up to 10 addresses.';
+  const hours = { en: s('hours_en').slice(0, 160), ar: s('hours_ar').slice(0, 160) };
+  const enabled = f.get('ann_enabled') === 'on';
+  const ann = { enabled, en: s('ann_en'), ar: s('ann_ar'), link: s('ann_link'), ends: s('ann_ends') };
+  if (ann.en.length > 80) errors.ann_en = 'Keep it to 80 characters so it fits on a phone.';
+  if (ann.ar.length > 80) errors.ann_ar = 'Keep it to 80 characters so it fits on a phone.';
+  if (enabled && !ann.en) errors.ann_en = 'Write the English text, or switch the bar off.';
+  if (enabled && !ann.ar) errors.ann_ar = 'Write the Arabic text, or switch the bar off.';
+  const link = parseLink(ann.link);
+  if (link === null) errors.ann_link = 'Use a page on this site (starting with /) or a full https:// address.';
+  else ann.link = link;
+  if (ann.ends && !validDay(ann.ends)) errors.ann_ends = 'Choose a valid date.';
+  else if (enabled && ann.ends && ann.ends < dubaiDay(new Date())) errors.ann_ends = 'That date has already passed, so the bar would never show.';
+
+  if (!Object.keys(errors).length) {
+    const next = [
+      { key: 'whatsapp', value: whatsapp }, { key: 'contact_email', value: contact }, { key: 'alert_emails', value: alerts.list },
+      { key: 'office_hours', value: hours }, { key: 'announcement', value: ann },
+    ];
+    const changed = next.filter((n) => JSON.stringify(n.value) !== JSON.stringify(({ whatsapp: cur.whatsapp, contact_email: cur.contactEmail, alert_emails: cur.alertEmails, office_hours: cur.hours, announcement: cur.announcement } as Record<string, unknown>)[n.key])).map((n) => n.key);
+    try {
+      if (changed.length || !rows.length) {
+        await saveRows(next, user.id);
+        await audit(user, 'settings.update', null, { changed });
+      }
+      if (s('intent') === 'publish') {
+        const p: Publish = await triggerDeploy(user.email);
+        await saveRows([{ key: 'publish', value: p }], user.id);
+        await audit(user, 'settings.publish', null, { state: p.state });
+      }
+      return go(Astro, `/admin/settings/?saved=${s('intent') === 'publish' ? 'publish' : '1'}`);
+    } catch (e) {
+      console.error('settings save failed', e);
+      error = e;
+    }
+  }
+}
+
+const publish: Publish | undefined = rows.find((r) => r.key === 'publish')?.value;
+const lastChange = rows.filter((r) => r.key !== 'publish').map((r) => r.updated_at).sort().pop();
+const pending = Boolean(lastChange && (!publish || publish.state !== 'requested' || lastChange > publish.at));
+const hookReady = Boolean(secret('DEPLOY_HOOK_URL'));
+const saved = Astro.url.searchParams.get('saved');
+const v = (k: string, d: string) => (posted ? String(posted.get(k) ?? '') : d);
+const live = announcementLive(cur.announcement);
+const e = errors;
+---
+<Admin title="Settings" notice={dbNotice(error)} narrow>
+  <h1 class="display text-2xl sm:text-3xl">Site settings</h1>
+  <p class="mt-2 text-mute">The few things that appear on the website and are yours to change. The website is rebuilt to show them (about 1–2 minutes), so changes only go live when you publish.</p>
+
+  {saved && !Object.keys(e).length && (
+    <p class="mt-4 rounded-sm bg-brand-50 p-3 text-brand-700" role="status">{saved === 'publish' ? (publish?.message ?? 'Saved.') : 'Saved. Press “Save & publish” when you want it on the website.'}</p>
+  )}
+  {Object.keys(e).length > 0 && <p class="mt-4 rounded-sm bg-danger/5 p-3 text-danger" role="alert">Nothing was saved. Please fix the {Object.keys(e).length} highlighted field{Object.keys(e).length === 1 ? '' : 's'}.</p>}
+
+  <section class="card mt-4 p-4 sm:p-5" aria-labelledby="pub-h">
+    <h2 id="pub-h" class="label text-mute">Publish status</h2>
+    {publish ? (
+      <p class="mt-2">
+        <span class:list={['chip', publish.state === 'requested' ? 'chip-won' : publish.state === 'failed' ? 'chip-spam' : 'chip-quoted']}>{publish.state === 'requested' ? 'Rebuild requested' : publish.state === 'failed' ? 'Rebuild failed' : 'Not configured'}</span>
+        <span class="ms-2">{fmt(publish.at)} by {publish.by}</span>
+      </p>
+    ) : <p class="mt-2 text-mute">Never published from here.</p>}
+    {publish && <p class="mt-1 text-mute">{publish.message}</p>}
+    {pending && <p class="mt-2 font-semibold text-amber-900"><span class="chip chip-quoted">Unpublished changes</span> <span class="ms-1 font-normal">Saved values reach the website after the next publish.</span></p>}
+    {!hookReady && <p class="mt-2 text-mute">DEPLOY_HOOK_URL isn’t set, so “Save & publish” can only save. Create a deploy hook in your hosting dashboard and add it to the environment variables.</p>}
+  </section>
+
+  <form method="post" class="mt-6 grid gap-6" novalidate>
+    <section class="card grid gap-5 p-5 sm:p-6" aria-labelledby="contact-h">
+      <h2 id="contact-h" class="display text-lg">Contact</h2>
+      <div>
+        <label for="whatsapp" class="a-label">WhatsApp number</label>
+        <input id="whatsapp" name="whatsapp" class="field" inputmode="tel" dir="ltr" value={v('whatsapp', `+${cur.whatsapp}`)} aria-invalid={e.whatsapp ? 'true' : undefined} aria-describedby="wa-help" required />
+        <p id="wa-help" class:list={['a-help', e.whatsapp && 'text-danger']}>{e.whatsapp || 'Every WhatsApp button on the website opens a chat with this number. It is never shown as text on the site.'}</p>
+      </div>
+      <div>
+        <label for="contact_email" class="a-label">Contact email shown on the website</label>
+        <input id="contact_email" name="contact_email" type="email" class="field" dir="ltr" value={v('contact_email', cur.contactEmail)} aria-invalid={e.contact_email ? 'true' : undefined} aria-describedby={e.contact_email ? 'ce-err' : undefined} required />
+        {e.contact_email && <p id="ce-err" class="mt-1 text-sm text-danger">{e.contact_email}</p>}
+      </div>
+      <div>
+        <label for="alert_emails" class="a-label">Who gets an email for each new enquiry</label>
+        <textarea id="alert_emails" name="alert_emails" rows="3" class="field" dir="ltr" aria-invalid={e.alert_emails ? 'true' : undefined} aria-describedby="ae-help">{v('alert_emails', cur.alertEmails.join('\n'))}</textarea>
+        <p id="ae-help" class:list={['a-help', e.alert_emails && 'text-danger']}>{e.alert_emails || `One address per line. Leave empty to use the default from the server settings${secret('LEAD_ALERT_TO') ? '' : ' (none is set, so no alerts are sent)'}.`}</p>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="hours_en" class="a-label">Office hours (English)</label>
+          <input id="hours_en" name="hours_en" class="field" maxlength="160" value={v('hours_en', cur.hours.en)} placeholder="Sunday–Thursday, 8:00–17:00 (GST)" />
+        </div>
+        <div>
+          <label for="hours_ar" class="a-label">Office hours (Arabic)</label>
+          <input id="hours_ar" name="hours_ar" class="field" maxlength="160" dir="rtl" lang="ar" value={v('hours_ar', cur.hours.ar)} placeholder="الأحد – الخميس، 8:00 – 17:00 (بتوقيت الخليج)" />
+        </div>
+        <p class="a-help sm:col-span-2">Shown on the Contact page. Leave both empty to hide it.</p>
+      </div>
+    </section>
+
+    <section class="card grid gap-5 p-5 sm:p-6" aria-labelledby="ann-h">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 id="ann-h" class="display text-lg">Announcement bar</h2>
+        {cur.announcement.enabled && <span class:list={['chip', live ? 'chip-won' : 'chip-quoted']}>{live ? 'Saved as on' : 'Saved as on, but ended or incomplete'}</span>}
+      </div>
+      <p class="-mt-2 text-mute">A thin strip above the header on every page, in both languages. For example an exhibition: “Meet us at ADIPEC, stand 1234.”</p>
+      <label class="flex min-h-11 items-center gap-3"><input type="checkbox" name="ann_enabled" checked={posted ? posted.get('ann_enabled') === 'on' : cur.announcement.enabled} class="h-5 w-5 accent-brand-600" /> <span class="font-medium">Show the announcement bar</span></label>
+      <div>
+        <label for="ann_en" class="a-label">English text</label>
+        <input id="ann_en" name="ann_en" class="field" maxlength="80" value={v('ann_en', cur.announcement.en)} aria-invalid={e.ann_en ? 'true' : undefined} aria-describedby={e.ann_en ? 'ae1-err' : undefined} />
+        {e.ann_en && <p id="ae1-err" class="mt-1 text-sm text-danger">{e.ann_en}</p>}
+      </div>
+      <div>
+        <label for="ann_ar" class="a-label">Arabic text</label>
+        <input id="ann_ar" name="ann_ar" class="field" maxlength="80" dir="rtl" lang="ar" value={v('ann_ar', cur.announcement.ar)} aria-invalid={e.ann_ar ? 'true' : undefined} aria-describedby={e.ann_ar ? 'aa-err' : undefined} />
+        {e.ann_ar && <p id="aa-err" class="mt-1 text-sm text-danger">{e.ann_ar}</p>}
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="ann_link" class="a-label">Link (optional)</label>
+          <input id="ann_link" name="ann_link" class="field" dir="ltr" value={v('ann_link', cur.announcement.link)} placeholder="/contact/ or https://…" aria-invalid={e.ann_link ? 'true' : undefined} aria-describedby="al-help" />
+          <p id="al-help" class:list={['a-help', e.ann_link && 'text-danger']}>{e.ann_link || 'Makes the whole text a link.'}</p>
+        </div>
+        <div>
+          <label for="ann_ends" class="a-label">Last day to show it (optional)</label>
+          <input id="ann_ends" name="ann_ends" type="date" class="field" value={v('ann_ends', cur.announcement.ends)} aria-invalid={e.ann_ends ? 'true' : undefined} aria-describedby="ad-help" />
+          <p id="ad-help" class:list={['a-help', e.ann_ends && 'text-danger']}>{e.ann_ends || 'It disappears after this day (Dubai time) without anyone having to switch it off.'}</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex flex-wrap gap-3">
+      <button name="intent" value="publish" class="btn btn-primary">Save &amp; publish</button>
+      <button name="intent" value="save" class="btn btn-ghost">Save without publishing</button>
+    </div>
+  </form>
+</Admin>

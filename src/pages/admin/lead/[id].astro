@@ -1,98 +1,293 @@
 ---
 import Admin from '../../../layouts/Admin.astro';
-import { isAdmin } from '../../../lib/auth';
-import { dbReady, select, update } from '../../../lib/db';
-import { fmt, waHref, modeLabel, dbNotice, go, replayUrl, campaignOf } from '../../../lib/admin';
+import StageChip from '../../../components/admin/StageChip.astro';
+import { can } from '../../../lib/auth';
+import { dbReady, select, update, insert, remove } from '../../../lib/db';
+import { fmt, fmtDay, waHref, modeLabel, dbNotice, go, replayUrl, campaignOf, isUuid, STAGES, isStage, stageLabel, aed } from '../../../lib/admin';
+import { listUsers } from '../../../lib/users';
+import { audit } from '../../../lib/audit';
+import { originOk } from '../../../lib/guard';
+import { validDay, dubaiDay } from '../../../lib/period';
 export const prerender = false;
 
-if (!(await isAdmin(Astro.cookies))) return go(Astro, '/admin/login/');
+const user = Astro.locals.user!;
 const { id } = Astro.params;
-if (!id || !/^[0-9a-f-]{36}$/i.test(id)) return go(Astro, '/admin/');
+if (!isUuid(id)) return go(Astro, '/admin/leads/');
+const canWrite = can(user, 'write');
+const isOwner = can(user, 'owner');
+const here = Astro.url.pathname;
+const flash = ({ pipeline: 'Saved.', note: 'Note added.', spam: 'Updated.', created: 'Enquiry created from the WhatsApp chat. Add the details below.' } as Record<string, string>)[Astro.url.searchParams.get('saved') ?? ''];
+const confirmDelete = isOwner && Astro.url.searchParams.get('delete') === '1';
 
-if (Astro.request.method === 'POST') {
-  const f = await Astro.request.formData();
-  if (dbReady()) {
-    try { await update('leads', `id=eq.${id}`, { notes: String(f.get('notes') ?? '').slice(0, 5000), handled: f.get('handled') === 'on' }); } catch (e) { console.error('admin lead save failed', e); }
-  }
-  return go(Astro, Astro.url.pathname);
-}
-
-let lead: any, journey: any[] = [], others: any[] = [];
+let lead: any, journey: any[] = [], others: any[] = [], notes: any[] = [], users: any[] = [];
 let error: unknown;
+const errors: Record<string, string> = {};
+let posted: FormData | null = null;
+
 if (dbReady()) {
   try {
     [lead] = await select('leads', `select=*&id=eq.${id}`);
-    if (!lead) return go(Astro, '/admin/');
-    const vid = lead.visitor_id ? encodeURIComponent(lead.visitor_id) : null;
-    if (vid) {
-      [journey, others] = await Promise.all([
-        select('events', `select=ts,type,path,title,product,data,ip_org,geo_city,geo_country,referrer&visitor_id=eq.${vid}&order=ts.asc&limit=300`),
-        select('leads', `select=id,created_at,status,mode,product&visitor_id=eq.${vid}&id=neq.${id}&order=created_at.desc`),
-      ]);
-    }
+    if (!lead) return go(Astro, '/admin/leads/');
+    users = await listUsers();
   } catch (e) {
     error = e;
   }
 }
+const staff = users.filter((u) => u.active && u.role !== 'viewer');
+const nameOf = new Map(users.map((u) => [u.id, u.name]));
+
+if (Astro.request.method === 'POST' && lead) {
+  if (!originOk(Astro.request)) return new Response('Forbidden', { status: 403 });
+  const f = await Astro.request.formData();
+  posted = f;
+  const intent = String(f.get('intent') ?? '');
+  const now = new Date().toISOString();
+  try {
+    if (intent === 'pipeline') {
+      const stage = String(f.get('stage') ?? '');
+      const rawValue = String(f.get('value_aed') ?? '').replace(/[,\s]/g, '');
+      const followUp = String(f.get('follow_up') ?? '');
+      const assignee = String(f.get('assigned_to') ?? '');
+      const tags = [...new Set(String(f.get('tags') ?? '').split(',').map((t) => t.trim().toLowerCase().replace(/\s+/g, ' ')).filter(Boolean))];
+      if (!isStage(stage)) errors.stage = 'Choose a stage.';
+      if (rawValue && !/^\d{1,11}(\.\d{1,2})?$/.test(rawValue)) errors.value_aed = 'Enter the amount in AED as a number, e.g. 12500.';
+      if (followUp && !validDay(followUp)) errors.follow_up = 'Choose a valid date.';
+      if (assignee && !staff.some((u) => u.id === assignee)) errors.assigned_to = 'Choose someone from the list.';
+      if (tags.length > 8 || tags.some((t) => !/^[a-z0-9][a-z0-9 _.\-]{0,23}$/.test(t))) errors.tags = 'Up to 8 tags, letters and numbers, 24 characters each.';
+      if (!Object.keys(errors).length) {
+        const patch: Record<string, unknown> = {
+          stage, value_aed: rawValue ? Number(rawValue) : null, follow_up: followUp || null, assigned_to: assignee || null, tags,
+          lost_reason: stage === 'lost' ? String(f.get('lost_reason') ?? '').trim().slice(0, 200) || null : null,
+          handled: stage !== 'new', updated_at: now,
+        };
+        if (stage === 'won' && lead.stage !== 'won') patch.won_at = now;
+        if (stage !== 'won' && lead.stage === 'won') patch.won_at = null;
+        await update('leads', `id=eq.${id}`, patch);
+        const changes: string[] = [];
+        if (stage !== lead.stage) { changes.push(`Stage: ${stageLabel[lead.stage]} → ${stageLabel[stage]}`); await audit(user, 'lead.stage', id, { from: lead.stage, to: stage }); }
+        if ((assignee || null) !== (lead.assigned_to ?? null)) { changes.push(assignee ? `Assigned to ${nameOf.get(assignee) ?? 'someone'}` : 'Unassigned'); await audit(user, 'lead.assign', id, { to: assignee || null }); }
+        if (changes.length) await insert('lead_notes', { lead_id: id, author_id: user.id, kind: 'system', body: changes.join('. ') });
+        return go(Astro, `${here}?saved=pipeline`);
+      }
+    } else if (intent === 'note') {
+      const body = String(f.get('body') ?? '').trim().slice(0, 4000);
+      if (!body) errors.body = 'Write something first.';
+      else {
+        await insert('lead_notes', { lead_id: id, author_id: user.id, kind: 'note', body });
+        await update('leads', `id=eq.${id}`, { updated_at: now });
+        return go(Astro, `${here}?saved=note`);
+      }
+    } else if (intent === 'spam') {
+      await update('leads', `id=eq.${id}`, { spam: !lead.spam });
+      await audit(user, lead.spam ? 'lead.unspam' : 'lead.spam', id);
+      return go(Astro, `${here}?saved=spam`);
+    } else if (intent === 'delete') {
+      if (!isOwner) return new Response('Only an owner can delete a lead.', { status: 403 });
+      if (f.get('confirm') !== 'yes') return go(Astro, `${here}?delete=1`);
+      // Erasure request: the enquiry and its notes go (notes cascade). Optionally the visitor's browsing history and WhatsApp click too.
+      if (f.get('history') === 'yes') {
+        if (lead.visitor_id) await remove('events', `visitor_id=eq.${encodeURIComponent(lead.visitor_id)}`);
+        if (lead.wa_ref) await remove('events', `type=eq.whatsapp&data->>ref=eq.${encodeURIComponent(lead.wa_ref)}`);
+      }
+      await remove('leads', `id=eq.${id}`);
+      await audit(user, 'lead.delete', id, { mode: lead.mode, product: lead.product, stage: lead.stage, history: f.get('history') === 'yes' }); // no name/email: it is an erasure
+      return go(Astro, '/admin/leads/?deleted=1');
+    }
+  } catch (e) {
+    console.error('lead action failed', e);
+    error = e;
+  }
+}
+
+if (lead && dbReady()) {
+  try {
+    const vid = lead.visitor_id ? encodeURIComponent(lead.visitor_id) : null;
+    [notes, journey, others] = await Promise.all([
+      select('lead_notes', `select=id,author_id,kind,body,created_at&lead_id=eq.${id}&order=created_at.desc`),
+      vid ? select('events', `select=ts,type,path,title,product,data,ip_org,geo_city,geo_country,referrer&visitor_id=eq.${vid}&order=ts.asc&limit=300`) : [],
+      vid ? select('leads', `select=id,created_at,status,mode,product&visitor_id=eq.${vid}&id=neq.${id}&order=created_at.desc`) : [],
+    ]);
+  } catch (e) {
+    error ??= e;
+  }
+}
+const val = (k: string, fallback: unknown = '') => (posted ? String(posted.get(k) ?? '') : String(fallback ?? ''));
 const views = journey.filter((e) => e.type === 'pageview');
 const products = [...new Set(views.map((e) => e.product).filter(Boolean))];
+// Who and what, shown at the top; the technical trail goes in a collapsed card further down so the pipeline form stays near the top on a phone.
 const fields: [string, any][] = !lead ? [] : [
   ['Request', modeLabel[lead.mode] ?? lead.mode], ['Product', lead.product], ['Company', lead.company], ['Country (stated)', lead.country],
-  ['Email', lead.email], ['Phone / WhatsApp', lead.phone], ['Network', lead.ip_org], ['Location (IP)', [lead.geo_city, lead.geo_country].filter(Boolean).join(', ')],
+  ['Email', lead.email], ['Phone / WhatsApp', lead.phone], ['WhatsApp ref', lead.wa_ref],
+];
+const trail: [string, any][] = !lead ? [] : [
+  ['Network', lead.ip_org], ['Location (IP)', [lead.geo_city, lead.geo_country].filter(Boolean).join(', ')],
   ['Language', lead.lang === 'ar' ? 'Arabic' : 'English'], ['Came from', lead.referrer],
   ['Landing page', lead.landing_page], ['Campaign', campaignOf(lead.attribution)], ['Campaign tags', Object.entries(lead.attribution ?? {}).map(([k, v]) => `${k}: ${v}`).join(' · ')], ['Device', lead.user_agent],
 ];
+const overdue = lead?.follow_up && lead.follow_up < dubaiDay(new Date()) && lead.stage !== 'won' && lead.stage !== 'lost';
 ---
-<Admin title={lead?.name ?? 'Lead'} notice={dbNotice(error)}>
-  <a href="/admin/" class="link-arrow text-sm">← All leads</a>
+<Admin title={lead?.name ?? 'Enquiry'} notice={dbNotice(error)}>
+  <a href="/admin/leads/" class="link-arrow hit text-sm">← All enquiries</a>
+  {flash && <p class="mt-3 rounded-sm bg-brand-50 p-3 text-brand-700" role="status">{flash}</p>}
+  {lead && confirmDelete && (
+    <section class="card mt-4 border-danger p-5 sm:p-6" aria-labelledby="del-h">
+      <h2 id="del-h" class="display text-xl text-danger">Delete this enquiry permanently?</h2>
+      <p class="mt-2">This removes {lead.name ?? 'this enquiry'} and all of its notes from the database. It can’t be undone. Use it for erasure requests; for junk, “Mark as spam” keeps a record instead.</p>
+      <form method="post" class="mt-4 grid gap-4">
+        <input type="hidden" name="intent" value="delete" />
+        <input type="hidden" name="confirm" value="yes" />
+        <label class="flex min-h-11 items-start gap-3"><input type="checkbox" name="history" value="yes" checked class="mt-1 h-5 w-5 accent-brand-600" /> <span>Also delete this visitor’s browsing history (page views, searches) and WhatsApp click from our analytics</span></label>
+        <div class="flex flex-wrap gap-3">
+          <button class="btn btn-danger">Yes, delete permanently</button>
+          <a href={here} class="btn btn-ghost">Cancel</a>
+        </div>
+      </form>
+    </section>
+  )}
   {lead && (
     <div class="mt-4 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-      <section class="card p-6">
-        <div class="flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <p class="label text-mute">{fmt(lead.created_at)} {lead.status === 'partial' && '· not sent'}</p>
-            <h1 class="display mt-2 text-3xl">{lead.name ?? 'Unnamed'}</h1>
+      <div class="grid content-start gap-6">
+        <section class="card p-5 sm:p-6">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p class="label text-mute">{fmt(lead.created_at)} {lead.status === 'partial' && '· started, not sent'}</p>
+              <h1 class="display mt-2 text-2xl sm:text-3xl">{lead.name ?? 'Unnamed'}</h1>
+              <p class="mt-2 flex flex-wrap items-center gap-2"><StageChip stage={lead.stage} />{lead.spam && <span class="chip chip-spam">Spam</span>}{lead.value_aed != null && <span class="font-mono text-[13px]">{aed(Number(lead.value_aed))}</span>}</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {lead.phone && <a class="btn btn-primary btn-sm" href={waHref(lead.phone, lead.name)} target="_blank" rel="noopener noreferrer">WhatsApp them</a>}
+              {replayUrl(lead.ph_session) && <a class="btn btn-ghost btn-sm" href={replayUrl(lead.ph_session)!} target="_blank" rel="noopener noreferrer">Watch session</a>}
+              {lead.email && <a class="btn btn-ghost btn-sm" href={`mailto:${lead.email}?subject=${encodeURIComponent(`Your enquiry: ${lead.product ?? 'AlyTech Scientific'}`)}`}>Email</a>}
+            </div>
           </div>
-          <div class="flex gap-2">
-            {lead.phone && <a class="btn btn-primary btn-sm" href={waHref(lead.phone, lead.name)} target="_blank" rel="noopener noreferrer">WhatsApp them</a>}
-            {replayUrl(lead.ph_session) && <a class="btn btn-ghost btn-sm" href={replayUrl(lead.ph_session)!} target="_blank" rel="noopener noreferrer">Watch session</a>}
-            {lead.email && <a class="btn btn-ghost btn-sm" href={`mailto:${lead.email}?subject=${encodeURIComponent(`Your enquiry: ${lead.product ?? 'AlyTech Scientific'}`)}`}>Email</a>}
-          </div>
-        </div>
-        <dl class="mt-6 divide-y divide-line border-y border-line">
-          {fields.filter(([, v]) => v).map(([k, v]) => (
-            <div class="grid gap-1 py-3 sm:grid-cols-[180px_1fr]"><dt class="text-mute">{k}</dt><dd class="break-words">{v}</dd></div>
-          ))}
-        </dl>
-        {lead.message && <div class="mt-6"><p class="label text-mute">Message</p><p class="mt-2 whitespace-pre-wrap">{lead.message}</p></div>}
-        <form method="post" class="mt-8 grid gap-3">
-          <label for="notes" class="label text-mute">Follow-up notes</label>
-          <textarea id="notes" name="notes" rows="4" class="field">{lead.notes}</textarea>
-          <label class="flex items-center gap-2"><input type="checkbox" name="handled" checked={lead.handled} class="h-4 w-4 accent-brand-600" /> Handled</label>
-          <button class="btn btn-primary btn-sm justify-self-start">Save</button>
-        </form>
-      </section>
+          <dl class="mt-5 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+            {fields.filter(([, v]) => v).map(([k, v]) => (
+              <div class="min-w-0"><dt class="label text-mute">{k}</dt><dd class="break-words" dir={k === 'Email' || k.startsWith('Phone') ? 'ltr' : undefined}>{v}</dd></div>
+            ))}
+          </dl>
+          {lead.message && <div class="mt-6"><p class="label text-mute">Message</p><p class="mt-2 whitespace-pre-wrap">{lead.message}</p></div>}
+        </section>
+
+        <section class="card p-5 sm:p-6" aria-labelledby="pipe-h">
+          <h2 id="pipe-h" class="display text-lg">Pipeline</h2>
+          {canWrite ? (
+            <form method="post" class="mt-4 grid gap-4 sm:grid-cols-2" novalidate>
+              <input type="hidden" name="intent" value="pipeline" />
+              <div>
+                <label for="stage" class="a-label">Stage</label>
+                <select id="stage" name="stage" class="field" aria-invalid={errors.stage ? 'true' : undefined}>{STAGES.map((s) => <option value={s} selected={val('stage', lead.stage) === s}>{stageLabel[s]}</option>)}</select>
+                {errors.stage && <p class="mt-1 text-sm text-danger">{errors.stage}</p>}
+              </div>
+              <div>
+                <label for="value_aed" class="a-label">Deal value (AED)</label>
+                <input id="value_aed" name="value_aed" inputmode="decimal" class="field" value={val('value_aed', lead.value_aed ?? '')} placeholder="e.g. 45000" aria-invalid={errors.value_aed ? 'true' : undefined} aria-describedby={errors.value_aed ? 'value-err' : undefined} />
+                {errors.value_aed && <p id="value-err" class="mt-1 text-sm text-danger">{errors.value_aed}</p>}
+              </div>
+              <div>
+                <label for="assigned_to" class="a-label">Assigned to</label>
+                <select id="assigned_to" name="assigned_to" class="field">
+                  <option value="">Nobody yet</option>
+                  {staff.map((u) => <option value={u.id} selected={val('assigned_to', lead.assigned_to ?? '') === u.id}>{u.name}</option>)}
+                </select>
+                {errors.assigned_to && <p class="mt-1 text-sm text-danger">{errors.assigned_to}</p>}
+              </div>
+              <div>
+                <label for="follow_up" class="a-label">Follow up on</label>
+                <input id="follow_up" name="follow_up" type="date" class="field" value={val('follow_up', lead.follow_up ?? '')} aria-invalid={errors.follow_up ? 'true' : undefined} />
+                {errors.follow_up && <p class="mt-1 text-sm text-danger">{errors.follow_up}</p>}
+                {overdue && !posted && <p class="mt-1 text-sm font-semibold text-danger">This follow-up is overdue.</p>}
+              </div>
+              <div class="sm:col-span-2">
+                <label for="lost_reason" class="a-label">Why was it lost?</label>
+                <input id="lost_reason" name="lost_reason" class="field" maxlength="200" value={val('lost_reason', lead.lost_reason ?? '')} placeholder="Only kept when the stage is Lost" />
+              </div>
+              <div class="sm:col-span-2">
+                <label for="tags" class="a-label">Tags</label>
+                <input id="tags" name="tags" class="field" value={val('tags', (lead.tags ?? []).join(', '))} placeholder="e.g. oil-gas, priority" aria-describedby="tags-help" aria-invalid={errors.tags ? 'true' : undefined} />
+                <p id="tags-help" class:list={['a-help', errors.tags && 'text-danger']}>{errors.tags || 'Separate with commas.'}</p>
+              </div>
+              <div class="flex flex-wrap items-center gap-3 sm:col-span-2">
+                <button class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          ) : (
+            <dl class="mt-4 grid gap-2 sm:grid-cols-2">
+              <div><dt class="text-mute">Stage</dt><dd><StageChip stage={lead.stage} /></dd></div>
+              <div><dt class="text-mute">Deal value</dt><dd>{lead.value_aed != null ? aed(Number(lead.value_aed)) : '—'}</dd></div>
+              <div><dt class="text-mute">Assigned to</dt><dd>{lead.assigned_to ? (nameOf.get(lead.assigned_to) ?? 'Former user') : 'Nobody yet'}</dd></div>
+              <div><dt class="text-mute">Follow up</dt><dd>{lead.follow_up ? fmtDay(lead.follow_up) : '—'}</dd></div>
+            </dl>
+          )}
+        </section>
+
+        <section class="card p-5 sm:p-6" aria-labelledby="notes-h">
+          <h2 id="notes-h" class="display text-lg">Notes</h2>
+          {canWrite && (
+            <form method="post" class="mt-4 grid gap-3">
+              <input type="hidden" name="intent" value="note" />
+              <label for="body" class="a-label">Add a note</label>
+              <textarea id="body" name="body" rows="3" class="field" maxlength="4000" aria-invalid={errors.body ? 'true' : undefined}>{posted?.get('intent') === 'note' ? val('body') : ''}</textarea>
+              {errors.body && <p class="text-sm text-danger">{errors.body}</p>}
+              <button class="btn btn-primary btn-sm justify-self-start">Add note</button>
+            </form>
+          )}
+          <ol class="mt-5 grid gap-4">
+            {notes.map((n) => (
+              <li class:list={['border-s-2 ps-4', n.kind === 'system' ? 'border-line text-mute' : 'border-brand-500']}>
+                <p class="text-[12px] text-mute">{n.kind === 'system' ? 'Update' : (n.author_id ? (nameOf.get(n.author_id) ?? 'Former user') : 'Break-glass')} · {fmt(n.created_at)}</p>
+                <p class="mt-1 whitespace-pre-wrap">{n.body}</p>
+              </li>
+            ))}
+            {lead.notes && (
+              <li class="border-s-2 border-line ps-4"><p class="text-[12px] text-mute">Earlier note (before the notes timeline)</p><p class="mt-1 whitespace-pre-wrap">{lead.notes}</p></li>
+            )}
+            {notes.length === 0 && !lead.notes && <li class="text-mute">No notes yet.</li>}
+          </ol>
+        </section>
+
+        <details class="card p-5 sm:p-6">
+          <summary class="sum-btn -my-2">Where they came from and their device</summary>
+          <dl class="mt-3 divide-y divide-line border-y border-line">
+            {trail.filter(([, v]) => v).map(([k, v]) => (
+              <div class="grid gap-1 py-3 sm:grid-cols-[150px_1fr]"><dt class="text-mute">{k}</dt><dd class="break-words">{v}</dd></div>
+            ))}
+            {trail.every(([, v]) => !v) && <p class="py-3 text-mute">Nothing recorded.</p>}
+          </dl>
+        </details>
+
+        {canWrite && (
+          <section class="card p-5 sm:p-6" aria-labelledby="danger-h">
+            <h2 id="danger-h" class="display text-lg">Junk or removal</h2>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <form method="post"><input type="hidden" name="intent" value="spam" /><button class="btn btn-ghost btn-sm">{lead.spam ? 'Not spam after all' : 'Mark as spam'}</button></form>
+              {isOwner && <a href={`${here}?delete=1`} class="btn btn-ghost btn-sm text-danger">Delete permanently…</a>}
+            </div>
+            <p class="mt-3 text-[13px] text-mute">Spam is hidden from lists and left out of every count. Permanent deletion (owners only) is for privacy and erasure requests.</p>
+          </section>
+        )}
+      </div>
 
       <section class="grid content-start gap-6">
-        <div class="card p-6">
+        <div class="card p-5 sm:p-6">
           <p class="label text-mute">What they looked at</p>
           {products.length ? <ul class="mt-3 flex flex-wrap gap-2">{products.map((p) => <li class="rounded-xs bg-brand-50 px-2 py-1 text-brand-700">{p}</li>)}</ul> : <p class="mt-3 text-mute">No product pages recorded (visitor may have declined cookies).</p>}
           <p class="mt-4 text-mute">{views.length} page views · {new Set(journey.map((e) => e.ts.slice(0, 10))).size} visit day(s)</p>
         </div>
         {others.length > 0 && (
-          <div class="card p-6">
+          <div class="card p-5 sm:p-6">
             <p class="label text-mute">Other requests from this visitor</p>
-            <ul class="mt-3 grid gap-2">{others.map((o) => <li><a href={`/admin/lead/${o.id}/`} class="hover:text-brand-600">{fmt(o.created_at)} · {modeLabel[o.mode] ?? o.mode} · {o.product}</a></li>)}</ul>
+            <ul class="mt-3 grid gap-2">{others.map((o) => <li><a href={`/admin/lead/${o.id}/`} class="hit hover:text-brand-600">{fmt(o.created_at)} · {modeLabel[o.mode] ?? o.mode} · {o.product}</a></li>)}</ul>
           </div>
         )}
-        <div class="card p-6">
+        <div class="card p-5 sm:p-6">
           <p class="label text-mute">Journey</p>
+          {journey.length === 0 && <p class="mt-3 text-mute">No browsing history for this enquiry.</p>}
           <ol class="mt-3 max-h-[480px] overflow-y-auto">
             {journey.map((e) => (
               <li class="grid grid-cols-[110px_1fr] gap-3 border-b border-line py-2 last:border-0">
                 <span class="font-mono text-[12px] text-mute">{fmt(e.ts).split(', ')[1] ?? fmt(e.ts)}</span>
                 <span>
-                  {e.type === 'search' ? <>Searched <b>“{e.data?.q}”</b></> : e.type === 'lead_open' ? <>Opened <b>{modeLabel[e.data?.mode] ?? 'form'}</b> {e.data?.product}</> : <>{e.title?.split(' | ')[0] ?? e.path}</>}
+                  {e.type === 'search' ? <>Searched <b>“{e.data?.q}”</b></> : e.type === 'lead_open' ? <>Opened <b>{modeLabel[e.data?.mode] ?? 'form'}</b> {e.data?.product}</> : e.type === 'whatsapp' ? <>Started a <b>WhatsApp chat</b> {e.product}</> : <>{e.title?.split(' | ')[0] ?? e.path}</>}
                   {e.referrer && !e.referrer.includes('alytechme') && <span class="block text-[12px] text-mute">from {e.referrer}</span>}
                 </span>
               </li>

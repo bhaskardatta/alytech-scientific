@@ -1,0 +1,25 @@
+---
+// Organisations identified from the visitor's network (ISP networks hidden unless asked for). Visitors who haven't accepted cookies are never here.
+import { ago, countryName, num, orgName } from '../../lib/admin';
+import type { Overview } from '../../lib/stats';
+interface Props { orgs: Overview['orgs']; limit?: number }
+const { orgs, limit } = Astro.props;
+const rows = limit ? orgs.slice(0, limit) : orgs;
+---
+<div class="mt-4 overflow-x-auto">
+  <table class="a-table a-stack">
+    <thead class="text-mute"><tr>{['Organisation', 'Visitors', 'Views', 'Looked at', 'Last seen'].map((h) => <th scope="col" class="label px-3 py-2 font-medium">{h}</th>)}</tr></thead>
+    <tbody class="divide-y divide-line">
+      {rows.length === 0 && <tr><td colspan="5" class="px-3 py-8 text-center text-mute">Nothing yet. This needs IPINFO_TOKEN and visitors who accepted cookies.</td></tr>}
+      {rows.map((o) => (
+        <tr class="align-top">
+          <td data-label="Organisation" class="px-3 py-3 font-medium">{orgName(o.ip_org)}<span class="block text-[12px] font-normal text-mute">{countryName(o.country)}</span></td>
+          <td data-label="Visitors" class="px-3 py-3 font-mono">{num(o.visitors)}</td>
+          <td data-label="Views" class="px-3 py-3 font-mono">{num(o.pageviews)}</td>
+          <td data-label="Looked at" class="px-3 py-3 text-mute">{(o.products ?? []).slice(0, 3).join(' · ') || '—'}</td>
+          <td data-label="Last seen" class="px-3 py-3 whitespace-nowrap text-mute">{ago(o.last_seen)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

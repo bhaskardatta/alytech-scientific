@@ -3,12 +3,15 @@ import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
+import { getSiteSettings } from '../lib/settings';
 import { breadcrumbLd } from '../data/schema';
 import { t, localize, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const ar = lang === 'ar';
+const cfg = await getSiteSettings();
+const hours = ar ? cfg.hours.ar : cfg.hours.en;
 const L = (x: string) => localize(lang, x);
 const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.contact') }];
 ---
@@ -40,11 +43,11 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
             <span class="mt-1 block text-mute">{ar ? 'أرسل متطلباتك وسنرد بعرض.' : 'Send your requirement; we reply with a proposal.'}</span>
           </span>
         </button>
-        <a href={`mailto:${site.email}`} class="group card flex min-h-[220px] flex-col justify-between p-7 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
+        <a href={`mailto:${cfg.contactEmail}`} class="group card flex min-h-[220px] flex-col justify-between p-7 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
           <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="mail" size={22} /></span>
           <span>
             <span class="display block text-xl">{ar ? 'البريد الإلكتروني' : 'Email'}</span>
-            <span class="mt-1 block text-mute" dir="ltr">{site.email}</span>
+            <span class="mt-1 block text-mute" dir="ltr">{cfg.contactEmail}</span>
           </span>
         </a>
       </div>
@@ -56,6 +59,7 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
       <div>
         <p class="label text-brand-600">{t(lang, 'footer.office')}</p>
         <address class="display mt-4 text-2xl not-italic leading-snug">{site.address.street}<br />{site.address.poBox}<br />{site.address.city}, {ar ? 'الإمارات العربية المتحدة' : site.address.country}</address>
+        {hours && <p class="mt-4 text-mute"><span class="label">{ar ? 'ساعات العمل' : 'Office hours'}</span><br />{hours}</p>}
         <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost mt-6"><Icon name="pin" size={18} />{ar ? 'الاتجاهات في خرائط Google' : 'Directions in Google Maps'}</a>
       </div>
       <p class="text-mute md:max-w-md md:justify-self-end">{ar ? 'نخدم العملاء في الإمارات والسعودية وقطر وعُمان والكويت والبحرين وبقية الشرق الأوسط.' : 'We serve customers in the UAE, Saudi Arabia, Qatar, Oman, Kuwait, Bahrain and across the wider Middle East.'}</p>

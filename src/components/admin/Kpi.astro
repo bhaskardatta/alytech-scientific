@@ -1,0 +1,20 @@
+---
+// One headline number with its change against the previous equal period. The change is always written out (arrow + sign + words for screen
+// readers), never colour alone. `neutral`: more is not clearly better or worse (e.g. abandoned forms), so no green/red.
+import type { Delta } from '../../lib/stats';
+interface Props { label: string; value: string; d: Delta; prevLabel: string; hint?: string; neutral?: boolean }
+const { label, value, d, prevLabel, hint, neutral = false } = Astro.props;
+const arrow = { up: '▲', down: '▼', flat: '–' }[d.dir];
+const tone = neutral || d.dir === 'flat' ? 'text-ink-soft' : d.dir === 'up' ? 'text-success' : 'text-danger';
+---
+<div class="card p-4 sm:p-5">
+  <p class="label text-mute">{label}</p>
+  <p class="display mt-2 text-[28px] leading-none sm:text-[32px]">{value}</p>
+  <p class:list={['mt-3 flex flex-wrap items-baseline gap-x-1.5 text-[13px] font-semibold', tone]}>
+    <span aria-hidden="true">{arrow}</span>
+    <span>{d.text}</span>
+    <span class="sr-only">({d.label})</span>
+    <span class="font-normal text-mute">vs {prevLabel}</span>
+  </p>
+  {hint && <p class="mt-1 text-[12px] leading-snug text-mute">{hint}</p>}
+</div>

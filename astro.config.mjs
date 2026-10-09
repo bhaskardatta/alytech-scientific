@@ -1,6 +1,8 @@
-import { defineConfig, fontProviders } from 'astro/config';
+import { defineConfig, envField, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { createHash } from 'node:crypto';
+import { announceBoot } from './src/lib/announce-boot.mjs';
 import vercel from '@astrojs/vercel';
 
 // Self-hosted at build time (no runtime request to Google), with metric-matched fallbacks to avoid layout shift.
@@ -27,8 +29,22 @@ export default defineConfig({
         "object-src 'none'",
         "base-uri 'self'",
         "form-action 'self'",
+        // The admin Analytics page can embed a shared PostHog dashboard (POSTHOG_SHARED_DASHBOARD_URL). Nothing else on the site frames anything.
+        'frame-src https://eu.posthog.com',
       ],
+      // The announcement bar's tiny pre-paint script is inline (Astro hashes its own bundled scripts, not is:inline ones), so its hash is added here.
+      scriptDirective: { hashes: [`sha256-${createHash('sha256').update(announceBoot).digest('base64')}`] },
     },
+  },
+  // Server secrets are read through one helper (src/lib/env.ts -> getSecret), never import.meta.env, so the host can change (Vercel -> Cloudflare Workers).
+  // PUBLIC_POSTHOG_KEY is the one client-side value and is baked in at build time with import.meta.env.
+  env: {
+    schema: Object.fromEntries(
+      [
+        'SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY', 'ADMIN_SECRET', 'ADMIN_PASSWORD', 'ADMIN_BREAKGLASS', 'IPINFO_TOKEN',
+        'RESEND_API_KEY', 'LEAD_ALERT_TO', 'LEAD_ALERT_FROM', 'POSTHOG_PROJECT_ID', 'POSTHOG_SHARED_DASHBOARD_URL', 'CRON_SECRET', 'DEPLOY_HOOK_URL',
+      ].map((k) => [k, envField.string({ context: 'server', access: 'secret', optional: true })]),
+    ),
   },
   markdown: { syntaxHighlight: false }, // no markdown here; Shiki's inline styles would also clash with the CSP
   fonts: [

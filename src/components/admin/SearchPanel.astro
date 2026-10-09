@@ -1,0 +1,16 @@
+---
+// What people typed into the site search. "No results" terms are direct evidence of demand for something not on the site.
+import { num } from '../../lib/admin';
+import type { Overview } from '../../lib/stats';
+import BarList from './BarList.astro';
+interface Props { searches: Overview['searches']; limit?: number }
+const { searches, limit = 10 } = Astro.props;
+const items = searches.top.slice(0, limit).map((s) => ({ label: s.q, n: s.n, note: s.results === 0 ? 'No results: the site had nothing to show' : undefined }));
+const figures = [['searches', searches.total], ['with results', searches.with_results], ['no results', searches.no_results]] as const;
+---
+<dl class="mt-4 grid grid-cols-3 gap-3 text-center">
+  {figures.map(([label, n]) => (
+    <div class="flex flex-col-reverse rounded-sm bg-surface p-3"><dt class="text-[12px] text-mute">{label}</dt><dd class="display text-2xl">{num(n)}</dd></div>
+  ))}
+</dl>
+<BarList items={items} empty="Nobody used the site search in this period." />

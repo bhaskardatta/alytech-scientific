@@ -1,0 +1,61 @@
+---
+import Admin from '../../../layouts/Admin.astro';
+import Pager from '../../../components/admin/Pager.astro';
+import { dbReady, page } from '../../../lib/db';
+import { dbNotice, fmt, safeQ } from '../../../lib/admin';
+export const prerender = false; // owner only: enforced in src/middleware.ts
+
+const sp = Astro.url.searchParams;
+const groups: Record<string, string> = { '': 'Everything', login: 'Sign-ins', lead: 'Enquiry changes', leads: 'Exports', user: 'User management', settings: 'Settings' };
+const group = sp.get('type') && sp.get('type')! in groups ? sp.get('type')! : '';
+const who = safeQ(sp.get('who') ?? '');
+const pageNo = Math.max(1, Number(sp.get('page')) || 1);
+const per = 100;
+
+let rows: any[] = [], total = 0, error: unknown;
+if (dbReady()) {
+  try {
+    const where = [group && `action=like.${group}${group === 'login' ? '*' : '.*'}`, who && `actor=ilike.*${encodeURIComponent(who)}*`].filter(Boolean).join('&');
+    ({ rows, total } = await page('admin_audit', `select=*&order=ts.desc,id.desc&limit=${per}&offset=${(pageNo - 1) * per}${where ? `&${where}` : ''}`));
+  } catch (e) {
+    error = e;
+  }
+}
+const label: Record<string, string> = {
+  login: 'Signed in', 'login.breakglass': 'Signed in (break-glass)', 'login.setup': 'First-time setup sign-in', 'login.locked': 'Sign-in blocked (too many tries)',
+  'lead.stage': 'Changed stage', 'lead.assign': 'Assigned', 'lead.spam': 'Marked as spam', 'lead.unspam': 'Unmarked spam', 'lead.delete': 'Deleted enquiry', 'lead.create.whatsapp': 'Created enquiry from WhatsApp', 'leads.export': 'Exported CSV',
+  'user.create': 'Created account', 'user.role': 'Changed role', 'user.deactivate': 'Deactivated account', 'user.reactivate': 'Reactivated account', 'user.password.reset': 'Reset password', 'user.password.change': 'Changed own password',
+  'settings.update': 'Changed settings', 'settings.publish': 'Published site',
+};
+const detail = (d: any) => (d ? Object.entries(d).map(([k, v]) => `${k}: ${typeof v === 'object' ? JSON.stringify(v) : v}`).join(' · ') : '');
+---
+<Admin title="Activity" notice={dbNotice(error)}>
+  <h1 class="display text-2xl sm:text-3xl">Activity</h1>
+  <p class="mt-2 text-mute">Sign-ins, stage changes, deletions, exports, settings and user changes. Kept for 24 months.</p>
+
+  <form method="get" class="card mt-4 flex flex-wrap items-end gap-3 p-4" role="search">
+    <div><label for="type" class="a-label">Show</label><select id="type" name="type" class="field field-sm">{Object.entries(groups).map(([k, l]) => <option value={k} selected={group === k}>{l}</option>)}</select></div>
+    <div class="min-w-[200px] flex-1"><label for="who" class="a-label">Person</label><input id="who" name="who" value={who} placeholder="Email" class="field field-sm" dir="ltr" /></div>
+    <button class="btn btn-primary btn-sm">Apply</button>
+    <a href="/admin/activity/" class="btn btn-ghost btn-sm">Clear</a>
+  </form>
+
+  <div class="card mt-4 overflow-hidden">
+    <table class="a-table a-stack">
+      <thead class="border-b border-line text-mute"><tr>{['When', 'Who', 'What', 'About', 'Details'].map((h) => <th scope="col" class="label px-4 py-3 font-medium">{h}</th>)}</tr></thead>
+      <tbody class="divide-y divide-line">
+        {rows.length === 0 && <tr><td colspan="5" class="px-4 py-12 text-center text-mute">Nothing recorded yet.</td></tr>}
+        {rows.map((r) => (
+          <tr class="align-top">
+            <td data-label="When" class="px-4 py-3 whitespace-nowrap text-mute">{fmt(r.ts)}</td>
+            <td data-label="Who" class="px-4 py-3" dir="ltr">{r.actor ?? '—'}</td>
+            <td data-label="What" class="px-4 py-3 font-medium">{label[r.action] ?? r.action}</td>
+            <td data-label="About" class="px-4 py-3 break-all">{r.target?.match(/^[0-9a-f-]{36}$/i) ? <a class="text-brand-600 hover:underline" href={`/admin/lead/${r.target}/`}>Open enquiry</a> : (r.target ?? '—')}</td>
+            <td data-label="Details" class="px-4 py-3 text-mute break-words">{detail(r.details)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <Pager page={pageNo} per={per} total={total} />
+</Admin>

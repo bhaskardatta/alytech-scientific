@@ -1,0 +1,96 @@
+---
+// Daily trend as three stacked small charts that share one x-axis and one crosshair. Each measure has its own y-scale (page views are
+// hundreds, enquiries are single digits), and they are separate charts rather than two axes on one plot, so no scale can mislead.
+// Server-rendered SVG; src/scripts/admin.ts adds the crosshair + tooltip. A table view carries every value for keyboard and screen-reader users.
+import { num } from '../../lib/admin';
+interface Day { day: string; pageviews: number; enquiries: number; whatsapp: number }
+interface Props { days: Day[] }
+const { days } = Astro.props;
+
+const SERIES = [
+  { key: 'pageviews', name: 'Page views', color: '#6000cd' },
+  { key: 'enquiries', name: 'Enquiries', color: '#eb6834' },
+  { key: 'whatsapp', name: 'WhatsApp chats', color: '#1baf7a' },
+] as const;
+
+const W = 720, H = 132, L = 44, R = 18, T = 10, B = 24;
+const plotW = W - L - R, plotH = H - T - B, baseY = T + plotH;
+const n = days.length;
+const step = n > 1 ? plotW / (n - 1) : 0;
+const x0 = n > 1 ? L : L + plotW / 2;
+const xAt = (i: number) => x0 + i * step;
+
+/** 0 and 2–3 round tick values up to the first one that covers the data (whole numbers only: these are counts). */
+function ticksFor(max: number) {
+  const raw = Math.max(max, 1) / 3;
+  const pow = 10 ** Math.floor(Math.log10(raw));
+  const stepV = Math.max(1, [1, 2, 2.5, 5, 10].map((m) => m * pow).find((s) => s >= raw)!);
+  const out = [0];
+  while (out[out.length - 1] < max) out.push(out[out.length - 1] + stepV);
+  return out;
+}
+
+const dateFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: 'numeric', month: 'short' });
+const longFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+const at = (d: string) => new Date(`${d}T12:00:00Z`);
+const labels = days.map((d) => longFmt.format(at(d.day)));
+const xTicks = n <= 7 ? days.map((_, i) => i) : [...new Set([0, 1, 2, 3, 4].map((k) => Math.round((k * (n - 1)) / 4)))];
+
+const panels = SERIES.map((s) => {
+  const values = days.map((d) => d[s.key]);
+  const total = values.reduce((a, b) => a + b, 0);
+  const ticks = ticksFor(Math.max(0, ...values));
+  const top = ticks[ticks.length - 1];
+  const y = (v: number) => baseY - (v / top) * plotH;
+  const pts = values.map((v, i) => `${xAt(i).toFixed(1)},${y(v).toFixed(1)}`);
+  const area = n ? `M${xAt(0).toFixed(1)},${baseY} L${pts.join(' L')} L${xAt(n - 1).toFixed(1)},${baseY} Z` : '';
+  return { ...s, values, total, ticks, top, y, pts, area, last: values[n - 1] ?? 0 };
+});
+const data = { labels, series: panels.map((p) => ({ name: p.name, color: p.color, values: p.values })), x0, step, w: W };
+---
+{n === 0 ? <p class="mt-4 text-mute">No data in this period.</p> : (
+  <div class="relative mt-4" data-trend tabindex="0" role="group" aria-label="Daily trend of page views, enquiries and WhatsApp chats. Use the left and right arrow keys to read each day.">
+    <script is:inline type="application/json" set:html={JSON.stringify(data)} />
+    <div class="grid gap-4">
+      {panels.map((p) => (
+        <figure>
+          <figcaption class="flex flex-wrap items-baseline gap-x-3">
+            <span class="inline-flex items-center gap-2 font-medium">
+              <svg width="16" height="4" aria-hidden="true"><rect width="16" height="3" rx="1.5" fill={p.color} /></svg>{p.name}
+            </span>
+            <span class="font-mono text-[13px] text-mute">{num(p.total)} in this period</span>
+          </figcaption>
+          <svg viewBox={`0 0 ${W} ${H}`} class="mt-1 block h-auto w-full touch-pan-y" role="img" aria-label={`${p.name} per day. ${num(p.total)} in total, ${num(p.last)} on ${dateFmt.format(at(days[n - 1].day))}.`} data-panel data-base-y={baseY} data-plot-h={plotH} data-max={p.top}>
+            {p.ticks.map((t) => (
+              <g>
+                <line x1={L} x2={W - R} y1={p.y(t)} y2={p.y(t)} stroke="#e3e1ea" stroke-width="1" />
+                <text x={L - 8} y={p.y(t) + 4} text-anchor="end" class="fill-mute font-mono text-[11px]">{num(t)}</text>
+              </g>
+            ))}
+            <path d={p.area} fill={p.color} fill-opacity="0.1" />
+            <polyline points={p.pts.join(' ')} fill="none" stroke={p.color} stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+            <circle cx={xAt(n - 1)} cy={p.y(p.last)} r="4" fill={p.color} stroke="#ffffff" stroke-width="2" />
+            {xTicks.map((i, k) => (
+              <text x={xAt(i)} y={H - 6} text-anchor={k === 0 && n > 1 ? 'start' : k === xTicks.length - 1 && n > 1 ? 'end' : 'middle'} class="fill-mute font-mono text-[11px]">{dateFmt.format(at(days[i].day))}</text>
+            ))}
+            <line data-cross="line" x1="0" x2="0" y1={T} y2={baseY} stroke="#0f172a" stroke-width="1" visibility="hidden" />
+            <circle data-cross="dot" cx="0" cy="0" r="4.5" fill={p.color} stroke="#ffffff" stroke-width="2" visibility="hidden" />
+            <rect class="hit" x={L} y="0" width={plotW} height={H} fill="transparent" />
+          </svg>
+        </figure>
+      ))}
+    </div>
+    <div class="tt left-0 top-0" role="status" hidden></div>
+    <details class="mt-4">
+      <summary class="sum-btn">View as table</summary>
+      <div class="mt-2 max-h-80 overflow-auto rounded-sm border border-line">
+        <table class="a-table">
+          <thead class="sticky top-0 bg-card text-mute"><tr><th scope="col" class="label px-4 py-2">Day</th>{SERIES.map((s) => <th scope="col" class="label px-4 py-2 text-end">{s.name}</th>)}</tr></thead>
+          <tbody class="divide-y divide-line">
+            {days.map((d, i) => <tr><th scope="row" class="px-4 py-2 font-normal">{labels[i]}</th>{panels.map((p) => <td class="px-4 py-2 text-end font-mono">{num(p.values[i])}</td>)}</tr>)}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+)}

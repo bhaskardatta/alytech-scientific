@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { dbReady, insert } from '../../lib/db';
-import { requestInfo, ipOrg, isBot, clean } from '../../lib/visitor';
+import { requestInfo, ipOrg, isBot, clean, cleanUtm, deviceOf, hostOf } from '../../lib/visitor';
 import { originOk, limited } from '../../lib/guard';
 
 export const prerender = false;
@@ -19,22 +19,41 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   if (b.type === 'hero') console.log('[hero]', b.status, b.what || '', b.reason || '', JSON.stringify({ lite: b.lite, reduced: b.reduced, dpr: b.dpr, vw: b.vw, vh: b.vh }), meta.user_agent);
   if (limited(`track:${meta.ip}`, 120)) return new Response(null, { status: 429 }); // before the IPinfo lookup below
 
-  const { type, visitorId, sessionId, path, title, product, referrer, lang, ...rest } = b;
+  const { type, visitorId, sessionId, path, title, product, referrer, lang, anon, dup, attribution, ...rest } = b;
   delete rest.ts;
-  const row = {
-    type,
-    visitor_id: clean(visitorId, 64),
-    session_id: clean(sessionId, 64),
-    path: clean(path, 300),
-    title: clean(title, 300),
-    product: clean(product, 200),
-    referrer: clean(referrer, 500),
-    lang: lang === 'ar' ? 'ar' : 'en',
-    ip_org: await ipOrg(meta.ip),
-    geo_country: meta.geo_country,
-    geo_city: meta.geo_city,
-    data: !Object.keys(rest).length ? null : JSON.stringify(rest).length <= 2000 ? rest : { truncated: true },
-  };
+  const device = deviceOf(meta.user_agent);
+  const extra = { ...rest, ...(attribution && { attribution }) };
+  // dup: sent when a visitor clicks Accept, repeating the page view already counted anonymously (reports skip it, journeys keep it)
+  const pageviewData = { ...cleanUtm(attribution), ...(dup === true && { dup: true }) };
+
+  let row;
+  if (anon === true) {
+    // Anonymous counting for visitors who have not accepted cookies. Page views only, and only what the privacy policy lists:
+    // path, product page, referrer host, country, device class, language, campaign tags. No ids, no IP lookup, no city, no title, no IP stored.
+    if (type !== 'pageview') return new Response(null, { status: 204 });
+    row = {
+      type, anon: true,
+      path: clean(path, 300), product: clean(product, 200), referrer: hostOf(referrer),
+      lang: lang === 'ar' ? 'ar' : 'en', geo_country: meta.geo_country, device,
+      data: cleanUtm(attribution),
+    };
+  } else {
+    row = {
+      type,
+      visitor_id: clean(visitorId, 64),
+      session_id: clean(sessionId, 64),
+      path: clean(path, 300),
+      title: clean(title, 300),
+      product: clean(product, 200),
+      referrer: clean(referrer, 500),
+      lang: lang === 'ar' ? 'ar' : 'en',
+      ip_org: await ipOrg(meta.ip),
+      geo_country: meta.geo_country,
+      geo_city: meta.geo_city,
+      ...(type === 'pageview' && { device }),
+      data: type === 'pageview' ? (Object.keys(pageviewData).length ? pageviewData : null) : !Object.keys(extra).length ? null : JSON.stringify(extra).length <= 2000 ? extra : { truncated: true },
+    };
+  }
 
   if (!dbReady()) { console.log('[track]', row.type, row.path, row.data ?? ''); return new Response(null, { status: 204 }); }
   try { await insert('events', row); } catch (e) { console.error('track insert failed', e); }

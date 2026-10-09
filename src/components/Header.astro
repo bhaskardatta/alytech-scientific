@@ -86,7 +86,7 @@ const current = (href: string) => unlocalize(path).startsWith(href);
     </div>
   </div>
 
-  <div id="mobile-nav" class="fixed inset-0 top-[72px] hidden overflow-y-auto bg-card text-ink xl:hidden" data-mobile-panel>
+  <div id="mobile-nav" class="fixed inset-0 top-[calc(72px+var(--bar-h,0px))] hidden overflow-y-auto bg-card text-ink xl:hidden" data-mobile-panel>
     <nav class="wrap flex flex-col py-6" aria-label="Mobile">
       <a href={L('/gasmix/')} class="mobile-link">GasMix™</a>
       <p class="label mt-6 mb-2 text-mute">{t(lang, 'nav.principals')}</p>
@@ -102,6 +102,8 @@ const current = (href: string) => unlocalize(path).startsWith(href);
 </header>
 
 <style>
+  /* below the announcement bar when there is one (--bar-h is set in global.css) */
+  #site-header { top: var(--bar-h, 0px); }
   .header-bar { border-color: transparent; }
   /* Tone: light (solid on scroll) vs dark (transparent over the night stage) */
   #site-header[data-tone="light"] { color: var(--color-ink); }

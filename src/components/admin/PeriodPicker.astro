@@ -1,0 +1,22 @@
+---
+// One row above everything it scopes: presets as links (work without JS), a custom range tucked behind a button. Times are Dubai time.
+import { PRESETS, dubaiDay, type Period } from '../../lib/period';
+interface Props { period: Period }
+const { period } = Astro.props;
+const today = dubaiDay(new Date());
+---
+<div class="flex flex-wrap items-center gap-x-4 gap-y-3">
+  <nav class="seg" aria-label="Reporting period">
+    {PRESETS.map((p) => <a href={`?p=${p.key}`} class:list={['seg-item']} aria-current={period.key === p.key ? 'page' : undefined}>{p.short}</a>)}
+  </nav>
+  <details class="relative" open={period.key === 'custom'}>
+    <summary class:list={['btn btn-sm', period.key === 'custom' ? 'btn-primary' : 'btn-ghost']}>Custom range</summary>
+    <form method="get" class="card mt-2 flex flex-wrap items-end gap-3 p-4 sm:absolute sm:z-10 sm:w-max sm:shadow-[var(--shadow-pop)]">
+      <input type="hidden" name="p" value="custom" />
+      <div><label class="a-label" for="pp-from">From</label><input id="pp-from" type="date" name="from" value={period.fromDay} max={today} required class="field field-sm" /></div>
+      <div><label class="a-label" for="pp-to">To</label><input id="pp-to" type="date" name="to" value={period.toDay} max={today} required class="field field-sm" /></div>
+      <button class="btn btn-primary btn-sm">Apply</button>
+    </form>
+  </details>
+  <p class="text-mute"><span class="font-medium text-ink">{period.label}</span> · Dubai time · changes compared with the {period.prevLabel}</p>
+</div>

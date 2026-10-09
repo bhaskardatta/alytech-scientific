@@ -2,6 +2,7 @@
  * Lead capture + first-party visitor tracking.
  * Sends to our own /api endpoints (admin panel reads the same DB). Nothing here identifies a person
  * until they type their details; the anonymous visitor id only links their page history to that lead.
+ * Visitors who haven't accepted cookies are only counted anonymously (page views, no ids, nothing stored in the browser).
  */
 import { capture, phSession } from './analytics';
 
@@ -75,7 +76,7 @@ const q = <T extends Element>(s: string) => dialog!.querySelector<T>(s)!;
 const fieldsOf = () => Object.fromEntries(new FormData(form!)) as Record<string, string>;
 const subject = () => ctx.product || ctx.category || ctx.brand || '';
 export function openLead(next: Ctx) {
-  // ponytail: until the real number replaces the placeholder (site.whatsapp), WhatsApp buttons fall back to the request form.
+  // ponytail: until the real number replaces the placeholder (Settings), WhatsApp buttons fall back to the request form.
   if (next.mode === 'whatsapp' && I.waReady) return openWhatsApp(next);
   if (!dialog || !form) return;
   ctx = next;
@@ -173,10 +174,21 @@ if (dialog && form) {
 }
 
 // ---------- Page view + engagement ----------
-const pageview = () => track('pageview', { title: document.title, referrer: document.referrer, product: document.body.dataset.product });
-pageview();
+// The utm tags of THIS page's URL (not the saved first touch), so a campaign visit is counted once, on the page it lands on.
+const utmNow = (() => {
+  const params = new URLSearchParams(location.search);
+  return Object.fromEntries(['utm_source', 'utm_medium', 'utm_campaign'].flatMap((k) => (params.get(k) ? [[k, params.get(k)!.slice(0, 200)]] : [])));
+})();
+const pageview = (extra: Record<string, unknown> = {}) =>
+  track('pageview', { title: document.title, referrer: document.referrer, product: document.body.dataset.product, attribution: utmNow, ...extra });
+
+if (consented()) pageview();
+// No consent yet: count the view anonymously (no ids, no storage). The server keeps only path, referrer host, country, device class, language
+// and campaign tags, and never looks the IP up. This is what makes the traffic totals complete; see the privacy policy.
+else send('/api/track/', { type: 'pageview', anon: true, referrer: document.referrer, product: document.body.dataset.product, attribution: utmNow }, true);
+
 addEventListener('aly-consent', (e) => {
   if ((e as CustomEvent).detail !== 'all') return;
   store.set('aly-vid', visitorId); // promote the session id so history survives the visit
-  pageview();
+  pageview({ dup: true }); // this page was just counted anonymously: keep the identified copy for the visitor's journey, but out of the totals
 });

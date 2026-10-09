@@ -2,11 +2,13 @@
 import Icon from './Icon.astro';
 import { site } from '../data/site';
 import { brands } from '../data/brands';
+import { getSiteSettings } from '../lib/settings';
 import { t, localize, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const L = (p: string) => localize(lang, p);
+const cfg = await getSiteSettings();
 const ext = { target: '_blank', rel: 'noopener noreferrer' };
 ---
 <footer class="on-dark relative overflow-hidden bg-night-950 text-white/80">
@@ -49,7 +51,7 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
       </address>
       <ul class="mt-4 space-y-3 text-[15px]">
         <li><button type="button" class="hit inline-flex items-center gap-2 hover:text-white" data-lead="whatsapp"><Icon name="whatsapp" size={18} />WhatsApp</button></li>
-        <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={`mailto:${site.email}`}><Icon name="mail" size={18} />{site.email}</a></li>
+        <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={`mailto:${cfg.contactEmail}`}><Icon name="mail" size={18} />{cfg.contactEmail}</a></li>
         <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={site.mapUrl} {...ext}><Icon name="pin" size={18} />{lang === 'ar' ? 'افتح في الخرائط' : 'Open in Maps'}</a></li>
       </ul>
       <div class="mt-6 flex gap-4 text-sm">

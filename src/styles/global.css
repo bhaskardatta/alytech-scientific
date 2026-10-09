@@ -66,6 +66,13 @@
   --font-sans: var(--font-plex-ar), var(--font-plex), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* ---------- Announcement bar (components/Announcement.astro) ----------
+   The bar is fixed above the header; --bar-h pushes the fixed header and the page down by exactly its height (0 when there is no bar). */
+html[data-announce] { --bar-h: 64px; scroll-padding-top: calc(88px + var(--bar-h)); }
+@media (min-width: 768px) { html[data-announce] { --bar-h: 44px; } }
+html[data-announce] body { padding-top: var(--bar-h); }
+.announce { height: var(--bar-h, 0); }
+
 /* ---------- Base ---------- */
 @layer base {
   html {

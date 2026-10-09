@@ -1,4 +1,7 @@
-/** Company facts — single source of truth. Phone numbers are deliberately absent: the client is WhatsApp-only. */
+/**
+ * Company facts — single source of truth. Phone numbers are deliberately absent: the client is WhatsApp-only.
+ * `whatsapp` and `email` are only the DEFAULTS: owners change them in /admin/settings/ and the pages read them through src/lib/settings.ts.
+ */
 export const site = {
   legalName: 'ALYTECH SCIENTIFIC EQUIPMENT TRADING LLC',
   name: 'AlyTech Scientific',
@@ -21,6 +24,3 @@ export const site = {
   // ponytail: AlyTech Scientific has no LinkedIn page of its own yet; this is the parent's (AlyTech France). Add the subsidiary's pages here when they exist.
   parentLinkedin: 'https://www.linkedin.com/company/alytech/',
 } as const;
-
-/** False while `site.whatsapp` is still the placeholder: the lead form then captures the lead and confirms, instead of opening a dead wa.me link. */
-export const whatsappReady = String(site.whatsapp) !== '971000000000';

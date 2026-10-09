@@ -248,5 +248,11 @@
       "source": "/ingest/:path(.*)",
       "destination": "https://eu.i.posthog.com/:path"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/daily/",
+      "schedule": "0 4 * * *"
+    }
   ]
 }

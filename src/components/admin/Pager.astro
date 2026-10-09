@@ -1,0 +1,14 @@
+---
+// Newer / older links that keep every other query parameter.
+interface Props { page: number; per: number; total: number }
+const { page, per, total } = Astro.props;
+const last = Math.max(1, Math.ceil(total / per));
+const href = (p: number) => { const u = new URL(Astro.url); u.searchParams.set('page', String(p)); return `${u.pathname}${u.search}`; };
+---
+{last > 1 && (
+  <nav class="mt-4 flex items-center justify-between gap-3" aria-label="Pages">
+    {page > 1 ? <a class="btn btn-ghost btn-sm" href={href(page - 1)} rel="prev">← Newer</a> : <span></span>}
+    <p class="text-mute">Page {page} of {last} · {total} in total</p>
+    {page < last ? <a class="btn btn-ghost btn-sm" href={href(page + 1)} rel="next">Older →</a> : <span></span>}
+  </nav>
+)}

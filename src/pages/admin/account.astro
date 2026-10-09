@@ -1,0 +1,73 @@
+---
+import Admin from '../../layouts/Admin.astro';
+import { passwordProblem, startSession, verifyPassword } from '../../lib/auth';
+import { setPassword } from '../../lib/users';
+import { select } from '../../lib/db';
+import { audit } from '../../lib/audit';
+import { dbNotice } from '../../lib/admin';
+import { originOk } from '../../lib/guard';
+export const prerender = false;
+
+const user = Astro.locals.user!;
+const must = Astro.url.searchParams.get('must') === '1' || user.mustChange;
+const real = user.kind === 'user'; // break-glass has no stored password to change
+let errors: Record<string, string> = {};
+let done = false;
+let error: unknown;
+
+if (Astro.request.method === 'POST' && real) {
+  if (!originOk(Astro.request)) return new Response('Forbidden', { status: 403 });
+  const f = await Astro.request.formData();
+  const current = String(f.get('current') ?? ''), next = String(f.get('password') ?? '');
+  try {
+    const [row] = await select('admin_users', `select=password_hash&id=eq.${user.id}`);
+    if (!row || !(await verifyPassword(current, row.password_hash))) errors.current = 'That isn’t your current password.';
+    else if (passwordProblem(next)) errors.password = passwordProblem(next);
+    else if (next === current) errors.password = 'Choose a password you haven’t used for this account just now.';
+    else if (next !== String(f.get('confirm') ?? '')) errors.confirm = 'The two passwords don’t match.';
+    else {
+      const hash = await setPassword(user.id!, next, false);
+      await startSession(Astro.cookies, user.id!, hash); // the old cookie stops working with the old password
+      await audit(user, 'user.password.change', user.email);
+      done = true;
+    }
+  } catch (e) {
+    error = e;
+  }
+}
+---
+<Admin title="Account" notice={dbNotice(error)} narrow>
+  <h1 class="display text-2xl sm:text-3xl">Your account</h1>
+  <dl class="mt-4 grid gap-1 text-[15px]">
+    <div class="flex gap-3"><dt class="w-20 text-mute">Name</dt><dd>{user.name}</dd></div>
+    <div class="flex gap-3"><dt class="w-20 text-mute">Email</dt><dd dir="ltr">{user.email}</dd></div>
+    <div class="flex gap-3"><dt class="w-20 text-mute">Role</dt><dd class="capitalize">{user.role}</dd></div>
+  </dl>
+
+  {must && !done && <p class="mt-6 rounded-sm bg-amber-100 p-4 text-amber-950" role="alert">You’re using a temporary password. Choose your own to continue.</p>}
+  {done && <p class="mt-6 rounded-sm bg-brand-50 p-4 text-brand-700" role="status">Password changed. Other devices where you were signed in have been signed out.</p>}
+
+  <section class="card mt-6 p-5 sm:p-6" aria-labelledby="pw-h">
+    <h2 id="pw-h" class="display text-lg">Change password</h2>
+    {!real ? <p class="mt-3 text-mute">This sign-in uses the shared admin password from the hosting settings, so there is no personal password to change.</p> : (
+      <form method="post" class="mt-4 grid gap-4" novalidate>
+        <div>
+          <label for="current" class="a-label">Current password</label>
+          <input id="current" name="current" type="password" class="field" autocomplete="current-password" required aria-invalid={errors.current ? 'true' : undefined} aria-describedby={errors.current ? 'current-err' : undefined} />
+          {errors.current && <p id="current-err" class="mt-1 text-sm text-danger">{errors.current}</p>}
+        </div>
+        <div>
+          <label for="password" class="a-label">New password</label>
+          <input id="password" name="password" type="password" class="field" autocomplete="new-password" minlength="10" required aria-invalid={errors.password ? 'true' : undefined} aria-describedby="pw-help" />
+          <p id="pw-help" class:list={['a-help', errors.password && 'text-danger']}>{errors.password || 'At least 10 characters.'}</p>
+        </div>
+        <div>
+          <label for="confirm" class="a-label">Repeat the new password</label>
+          <input id="confirm" name="confirm" type="password" class="field" autocomplete="new-password" required aria-invalid={errors.confirm ? 'true' : undefined} aria-describedby={errors.confirm ? 'confirm-err' : undefined} />
+          {errors.confirm && <p id="confirm-err" class="mt-1 text-sm text-danger">{errors.confirm}</p>}
+        </div>
+        <button class="btn btn-primary justify-self-start">Change password</button>
+      </form>
+    )}
+  </section>
+</Admin>

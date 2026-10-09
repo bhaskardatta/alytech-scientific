@@ -1,0 +1,28 @@
+---
+// Three ordered steps, so the bars use one hue getting darker (ordinal ramp, validated), not three category colours.
+// Each step is a subset of the one before (same visitors), so the drop-off is meaningful.
+import { num } from '../../lib/admin';
+interface Props { viewed: number; opened: number; submitted: number }
+const { viewed, opened, submitted } = Astro.props;
+const steps = [
+  { label: 'Looked at a product page', n: viewed, fill: '#9c80f2', of: '' },
+  { label: 'Opened an enquiry form', n: opened, fill: '#6d3ce0', of: viewed },
+  { label: 'Sent the enquiry', n: submitted, fill: '#4a2299', of: opened },
+];
+---
+{viewed === 0 ? <p class="mt-4 text-mute">No identified visitors viewed a product page in this period.</p> : (
+  <ol class="mt-4 grid gap-4">
+    {steps.map((s) => (
+      <li>
+        <div class="flex items-baseline justify-between gap-3">
+          <span>{s.label}</span>
+          <span class="font-mono text-[13px]">{num(s.n)}{s.of !== '' && <span class="text-mute"> · {s.of ? Math.round((s.n / Number(s.of)) * 100) : 0}% of the step above</span>}</span>
+        </div>
+        <svg class="mt-1 block w-full" height="10" aria-hidden="true">
+          <rect width={`${Math.max(1.5, (s.n / viewed) * 100)}%`} height="10" rx="4" fill={s.fill} />
+        </svg>
+      </li>
+    ))}
+  </ol>
+)}
+<p class="mt-4 text-[12px] leading-snug text-mute">Counts visitors who accepted cookies. Each step only includes people from the step above.</p>

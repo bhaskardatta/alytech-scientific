@@ -1,0 +1,34 @@
+---
+// Owner-controlled strip above the header (Settings -> Announcement bar). Rendered only when switched on and not past its end date.
+// RTL-safe (logical properties only), dismissible for the browser session, and it also hides itself at the end date if a cached page outlives it.
+import Icon from './Icon.astro';
+import { t, localize, type Lang } from '../i18n';
+import { announcementEnd, type Announcement } from '../lib/settings';
+import { announceBoot } from '../lib/announce-boot.mjs';
+
+interface Props { lang: Lang; a: Announcement }
+const { lang, a } = Astro.props;
+const text = lang === 'ar' ? a.ar : a.en;
+const href = a.link.startsWith('/') ? localize(lang, a.link) : a.link;
+const external = a.link.startsWith('https://');
+// Dismissal is remembered per message, so a new announcement shows again.
+const id = [...(a.en + a.ar + a.link)].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) | 0, 7).toString(36);
+---
+<div id="announce" class="announce on-dark fixed inset-x-0 top-0 z-[55] bg-night-900 text-white" role="region" aria-label={t(lang, 'announce.label')} data-id={id} data-ends={announcementEnd(a)}>
+  <div class="wrap flex h-full items-center gap-2">
+    <p class="min-w-0 flex-1 text-[13px] leading-snug line-clamp-2 md:line-clamp-1 md:text-sm">
+      {a.link ? <a href={href} class="underline underline-offset-2 hover:text-brand-300" {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{text}</a> : text}
+    </p>
+    <button type="button" class="icon-btn shrink-0 text-white hover:bg-white/10" data-announce-close aria-label={t(lang, 'announce.close')}><Icon name="x" size={18} /></button>
+  </div>
+</div>
+<script is:inline set:html={announceBoot}></script>
+<script>
+  const bar = document.getElementById('announce');
+  bar?.querySelector('[data-announce-close]')?.addEventListener('click', () => {
+    try { sessionStorage.setItem('aly-announce', bar.dataset.id!); } catch {}
+    document.documentElement.removeAttribute('data-announce');
+    bar.remove();
+    document.querySelector<HTMLElement>('#main')?.focus({ preventScroll: true }); // the button the keyboard user was on just disappeared
+  });
+</script>

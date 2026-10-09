@@ -1,46 +1,69 @@
 ---
 import Admin from '../../layouts/Admin.astro';
-import { login, logout, isAdmin, authConfigured } from '../../lib/auth';
-import { loginLocked, loginFailed } from '../../lib/guard';
+import { signIn, logout, authConfigured, usersEmpty } from '../../lib/auth';
+import { loginLocked, loginFailed, originOk, limited } from '../../lib/guard';
 import { requestInfo } from '../../lib/visitor';
+import { audit } from '../../lib/audit';
 import { go } from '../../lib/admin';
 export const prerender = false;
 
+const setup = await usersEmpty(); // no account yet: the one-time ADMIN_PASSWORD setup login
 let error = '';
+let email = '';
+
+const after = (u: NonNullable<typeof Astro.locals.user>) => (u.kind === 'bootstrap' ? '/admin/setup/' : u.mustChange ? '/admin/account/?must=1' : '/admin/');
+
 if (Astro.request.method === 'POST') {
+  if (!originOk(Astro.request)) return new Response('Forbidden', { status: 403 });
   const form = await Astro.request.formData();
   if (form.get('logout')) {
     logout(Astro.cookies);
     return go(Astro, '/admin/login/');
   }
+  email = String(form.get('email') ?? '').trim().toLowerCase().slice(0, 200);
+  const key = setup ? 'setup' : email;
   const { ip } = requestInfo(Astro.request, Astro.clientAddress);
-  if (await loginLocked(ip)) {
+  if (await loginLocked(ip, key)) {
     // Checked before the password, so a locked-out guesser learns nothing, not even from a correct attempt.
     Astro.response.status = 429;
     error = 'Too many failed attempts. Try again in 15 minutes.';
-  } else if (await login(String(form.get('password') ?? ''), Astro.cookies)) {
-    return go(Astro, '/admin/');
+    if (!limited(`lockaudit:${ip}|${key}`, 1, 15 * 60_000)) await audit(null, 'login.locked', key); // once per lockout, not once per guess
   } else {
-    await loginFailed(ip);
+    const user = await signIn(email, String(form.get('password') ?? ''), Astro.cookies);
+    if (user) {
+      await audit(user, user.kind === 'user' ? 'login' : user.kind === 'breakglass' ? 'login.breakglass' : 'login.setup');
+      return go(Astro, after(user));
+    }
+    await loginFailed(ip, key);
     await new Promise((r) => setTimeout(r, 800)); // slow down guessing
-    error = 'That password is not correct.';
+    error = setup ? 'That password is not correct.' : 'That email or password is not correct.';
   }
-} else if (await isAdmin(Astro.cookies)) {
-  return go(Astro, '/admin/');
+} else if (Astro.locals.user) {
+  return go(Astro, after(Astro.locals.user));
 }
 ---
-<Admin title="Sign in" nav={false}>
-  <div class="mx-auto mt-[12vh] max-w-sm">
+<Admin title="Sign in" nav={false} narrow>
+  <div class="mx-auto mt-[8vh] max-w-sm">
     <img src="/brand/logo-192.png" width="64" height="66" alt="AlyTech" />
-    <h1 class="display mt-6 text-2xl">Lead dashboard</h1>
+    <h1 class="display mt-6 text-2xl">{setup ? 'First-time setup' : 'Sign in'}</h1>
     {!authConfigured() ? (
-      <p class="mt-4 rounded-sm bg-danger/5 p-3 text-danger">Admin login isn’t configured. Set ADMIN_PASSWORD and a 32+ character ADMIN_SECRET in the environment.</p>
+      <p class="mt-4 rounded-sm bg-danger/5 p-3 text-danger" role="alert">Admin login isn’t configured. Set a 32+ character ADMIN_SECRET (and ADMIN_PASSWORD for the first-time setup) in the environment.</p>
     ) : (
-      <form method="post" class="mt-6 grid gap-3">
-        <label for="pw" class="text-sm font-medium">Password</label>
-        <input id="pw" name="password" type="password" class="field" autocomplete="current-password" required autofocus aria-invalid={error ? 'true' : undefined} aria-describedby={error ? 'pw-err' : undefined} />
-        {error && <p id="pw-err" class="text-sm text-danger">{error}</p>}
-        <button class="btn btn-primary mt-2">Sign in</button>
+      <form method="post" class="mt-6 grid gap-4">
+        {setup ? (
+          <p class="text-mute">No accounts exist yet. Enter the admin password from your hosting settings (ADMIN_PASSWORD); you will then create the first owner account.</p>
+        ) : (
+          <div>
+            <label for="email" class="a-label">Email</label>
+            <input id="email" name="email" type="text" inputmode="email" autocapitalize="none" spellcheck="false" class="field" autocomplete="username" value={email} required autofocus={!error} />
+          </div>
+        )}
+        <div>
+          <label for="pw" class="a-label">Password</label>
+          <input id="pw" name="password" type="password" class="field" autocomplete="current-password" required autofocus={setup || Boolean(error)} aria-invalid={error ? 'true' : undefined} aria-describedby={error ? 'pw-err' : undefined} />
+        </div>
+        {error && <p id="pw-err" class="text-sm text-danger" role="alert">{error}</p>}
+        <button class="btn btn-primary">Sign in</button>
       </form>
     )}
   </div>
