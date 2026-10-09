@@ -330,8 +330,16 @@ const copy = {
       // Canvas textures draw text, so the faces must be loaded first (hashed, lazy unicode-range files) — but never wait long.
       const css = getComputedStyle(document.documentElement);
       const fonts = { display: css.getPropertyValue('--font-archivo').trim() || 'sans-serif', mono: css.getPropertyValue('--font-jetbrains').trim() || 'monospace' };
+      // A font that fails to download (flaky mobile network, blocked file) only means the labels use a system face.
+      // It must never cost the visitor the 3D, so a rejected load is reported and ignored.
+      const faces = (f: string) => {
+        try { return document.fonts.load(f).catch((e) => report('issue', 'font', e)); } catch (e) { report('issue', 'font', e); return Promise.resolve(); }
+      };
+      // Wait for our own font files only: the stacks also name metric fallbacks such as local("Arial") and local("Courier New"),
+      // which Android doesn't have, and asking the browser to load those rejects with a NetworkError.
+      const own = (stack: string) => stack.split(',')[0].trim();
       await Promise.race([
-        Promise.all([document.fonts.load(`600 64px ${fonts.display}`), document.fonts.load(`500 20px ${fonts.mono}`)]),
+        Promise.all([faces(`600 64px ${own(fonts.display)}`), faces(`500 20px ${own(fonts.mono)}`)]),
         new Promise((r) => setTimeout(r, 2500)),
       ]);
       scene = await createHeroScene(canvas, { mobile: lite, reducedMotion: reduced, fonts, onFail: showFallback, onIssue: (what, e) => report('issue', what, e) });
