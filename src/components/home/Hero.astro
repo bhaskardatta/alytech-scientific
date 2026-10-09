@@ -32,10 +32,11 @@ const copy = {
   hint: ar ? 'مرّر لرؤية ما بداخله' : 'Scroll to look inside',
   view3d: ar ? 'اعرض النموذج ثلاثي الأبعاد' : 'Explore the 3D model',
   schematic: ar ? 'عرض تخطيطي' : 'Schematic view',
+  // [full label, short label for phones]
   callouts: {
-    mfc: ar ? 'وحدة تحكم بالتدفق الكتلي لكل قناة' : 'Mass flow controller per channel',
-    mixer: ar ? 'حجرة الخلط والمخرج' : 'Mixing chamber & outlet',
-    board: ar ? 'إلكترونيات التحكم · إيثرنت إلى AlySoft' : 'Control electronics · Ethernet to AlySoft',
+    mfc: ar ? ['وحدة تحكم بالتدفق الكتلي لكل قناة', 'وحدة MFC لكل قناة'] : ['Mass flow controller per channel', 'MFC per channel'],
+    mixer: ar ? ['حجرة الخلط والمخرج', 'حجرة الخلط'] : ['Mixing chamber & outlet', 'Mixing chamber'],
+    board: ar ? ['إلكترونيات التحكم · إيثرنت إلى AlySoft', 'إلكترونيات التحكم'] : ['Control electronics · Ethernet to AlySoft', 'Control electronics'],
   },
 };
 ---
@@ -51,7 +52,7 @@ const copy = {
         <div class="callout absolute left-0 top-0 opacity-0" data-callout={id}>
           <span class="callout-dot"></span>
           <span class="callout-line"></span>
-          <span class="callout-label label">{label}</span>
+          <span class="callout-label label"><span class="callout-long">{label[0]}</span><span class="callout-short">{label[1]}</span></span>
         </div>
       ))}
       <p class="schematic label absolute bottom-24 end-6 opacity-0 text-white/50 md:bottom-10" data-schematic>{copy.schematic}</p>
@@ -170,7 +171,14 @@ const copy = {
   /* Parts explode toward screen-left in both languages, so labels always sit to their left */
   .callout { flex-direction: row-reverse; translate: -100% -50%; direction: ltr; }
   :global([dir="rtl"]) .callout-label { direction: rtl; }
-  @media (max-width: 767px) { .callout-line { width: 22px; } .callout-label { font-size: 10px; padding: 4px 7px; } }
+  .callout-short { display: none; }
+  .callout.flip { flex-direction: row; translate: 0 -50%; }
+  @media (max-width: 767px) {
+    .callout-line { width: 22px; }
+    .callout-label { font-size: 10px; padding: 4px 7px; }
+    .callout-long { display: none; }
+    .callout-short { display: inline; }
+  }
 </style>
 
 <script>
@@ -253,6 +261,25 @@ const copy = {
   mq.addEventListener('change', layout);
   addEventListener('resize', layout);
 
+  // Small screens: keep every label on screen and off the others. A label that would leave the screen moves to the other
+  // side of its dot; overlapping labels are pushed down. CSSOM only (no style attributes), so the CSP is unaffected.
+  function fitCallouts() {
+    const items = [...calloutEls.values()].map((el) => {
+      const label = el.querySelector<HTMLElement>('.callout-label')!;
+      el.classList.remove('flip');
+      label.style.translate = '';
+      if (label.getBoundingClientRect().left < 8) el.classList.add('flip');
+      return { label, r: label.getBoundingClientRect() };
+    }).sort((a, b) => a.r.top - b.r.top);
+    let floor = -Infinity;
+    for (const { label, r } of items) {
+      const overlaps = r.top < floor;
+      const dy = overlaps ? floor - r.top : 0;
+      if (dy) label.style.translate = `0 ${dy}px`;
+      floor = r.bottom + dy + 4;
+    }
+  }
+
   // Static image: no WebGL, reduced motion, or a runtime failure. The <img> is lazy, so it only downloads once shown.
   function showFallback() {
     io?.disconnect();
@@ -291,6 +318,7 @@ const copy = {
           el.style.transform = `translate(${s.x}px, ${s.y}px)`; // transform, not left/top: moving them must not count as layout shift
           el.style.opacity = String(Math.max(0, e * 1.6 - 0.6));
         }
+        if (e > 0.3 && innerWidth < 1024) fitCallouts();
       });
 
       paint();
