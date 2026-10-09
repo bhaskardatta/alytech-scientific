@@ -7,16 +7,15 @@
  */
 import type { AstroCookies } from 'astro';
 import { secret } from './env';
-import { dbReady, select, update, count } from './db';
+import { dbReady, select, update, count, rpc } from './db';
 
 export type Role = 'owner' | 'sales' | 'viewer';
 export interface AdminUser { id: string | null; email: string; name: string; role: Role; mustChange: boolean; kind: 'user' | 'breakglass' | 'bootstrap' }
 
 const COOKIE = 'aly_admin';
 const TTL = 60 * 60 * 24 * 7; // 7 days
-// ponytail: 100k is the most Cloudflare Workers WebCrypto allows (the site moves there); OWASP 2023 suggests 600k for PBKDF2-SHA256.
-// Login lockout (guard.ts) is the main defence against guessing. verifyPassword rejects higher counts, which Workers could not compute.
-export const ITERATIONS = 100_000;
+// Legacy PBKDF2 hashes (before bcrypt-in-Postgres): Workers WebCrypto caps iterations at 100k, so higher counts are rejected.
+const ITERATIONS = 100_000;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 const enc = new TextEncoder();
@@ -35,15 +34,24 @@ function equalBytes(a: Uint8Array, b: Uint8Array) {
   return diff === 0;
 }
 
-export async function hashPassword(password: string, iterations = ITERATIONS) {
-  const salt = crypto.getRandomValues(new Uint8Array(16));
-  return `pbkdf2$${iterations}$${hex(salt)}$${hex(await derive(password, salt, iterations))}`;
+/**
+ * New hashes are bcrypt (cost 10), computed by Postgres (pgcrypto) through admin_hash_password(): the slow part runs in the database, not in
+ * the request, so Cloudflare Workers' 10 ms CPU limit on the free plan never trips on a sign-in. Older "pbkdf2$" hashes still verify locally
+ * and are upgraded to bcrypt on the next successful sign-in.
+ */
+export async function hashPassword(password: string) {
+  return rpc<string>('admin_hash_password', { p: password });
 }
 
 export async function verifyPassword(password: string, stored: string) {
-  const [alg, iter, salt, hash] = stored.split('$');
+  if (stored?.startsWith('$2')) return (await rpc<boolean>('admin_check_password', { p: password, h: stored })) === true;
+  return verifyPbkdf2(password, stored);
+}
+
+async function verifyPbkdf2(password: string, stored: string) {
+  const [alg, iter, salt, hash] = (stored ?? '').split('$');
   const iterations = Number(iter);
-  if (alg !== 'pbkdf2' || !salt || !hash || !(iterations >= 1000 && iterations <= 100_000)) return false;
+  if (alg !== 'pbkdf2' || !salt || !hash || !(iterations >= 1000 && iterations <= ITERATIONS)) return false;
   return equalBytes(await derive(password, unhex(salt), iterations), unhex(hash));
 }
 
@@ -53,7 +61,7 @@ const spendTime = async (password: string) => { await verifyPassword(password, a
 
 /** Why a new password is unacceptable, or '' when it is fine. */
 export const passwordProblem = (pw: string) =>
-  pw.length < 10 ? 'Use at least 10 characters.' : pw.length > 200 ? 'That password is too long.' : '';
+  pw.length < 10 ? 'Use at least 10 characters.' : new TextEncoder().encode(pw).length > 72 ? 'Use at most 72 characters.' : ''; // bcrypt reads 72 bytes
 
 /** One-time password for new accounts and resets: 14 characters without look-alikes (0/O, 1/l/I). */
 export function tempPassword() {
@@ -143,6 +151,11 @@ export async function signIn(email: string, password: string, cookies: AstroCook
   try { [u] = await select('admin_users', `select=id,email,name,role,active,must_change_password,password_hash&email=eq.${encodeURIComponent(email)}`); } catch (e) { console.error('login lookup failed', e); }
   if (!u) { await spendTime(password); return null; }
   if (!(await verifyPassword(password, u.password_hash)) || !u.active) return null;
+  if (u.password_hash.startsWith('pbkdf2$')) {
+    // One-time upgrade to the database-side bcrypt hash (see hashPassword). A failure here just leaves the old hash in place.
+    try { const h = await hashPassword(password); await update('admin_users', `id=eq.${u.id}`, { password_hash: h }); u.password_hash = h; }
+    catch (e) { console.error('password hash upgrade failed', e); }
+  }
   await startSession(cookies, u.id, u.password_hash);
   update('admin_users', `id=eq.${u.id}`, { last_login_at: new Date().toISOString() }).catch((e) => console.error('last_login update failed', e));
   return { id: u.id, email: u.email, name: u.name, role: u.role, mustChange: u.must_change_password, kind: 'user' };

@@ -84,14 +84,14 @@ Open that address and check:
 - [ ] `/aiolos.html` jumps to `/gasmix/aiolos-iii/` (old links keep working).
 - [ ] Click **Accept** on the cookie banner, then WhatsApp on a product: the chat opens with the product name.
 - [ ] `/admin/login/` shows the sign-in page. (The `ADMIN_HOST` secret is not set yet, so the panel is still at `/admin/` here.) Sign in or run the first-time setup.
-- [ ] In the admin: Enquiries, WhatsApp, Visitors open without an error page. If **sign-in** fails with *"Error 1102 / Worker exceeded resource limits"*, see "Plan limits" below.
+- [ ] In the admin: Enquiries, WhatsApp, Visitors open without an error page.
 - [ ] Daily job (needs `CRON_SECRET`). Replace the two placeholders and run:
   `curl -H "Authorization: Bearer YOUR_CRON_SECRET" "https://alytech-scientific.NAME.workers.dev/api/cron/daily/?dry=1"` → it prints `"ok": true` (dry run: nothing is deleted or emailed). In the Cloudflare dashboard → Workers & Pages → `alytech-scientific` → Settings → Triggers you will see the schedule `0 4 * * *` (04:00 UTC = 08:00 Dubai).
 - [ ] The page is hidden from Google: `curl -sI https://alytech-scientific.NAME.workers.dev/ | grep -i x-robots` → `noindex, nofollow`.
 
 If something is wrong, `npx wrangler tail` shows the live error log.
 
-**Plan limits to know (free plan).** Static pages and images are free and unlimited. The Worker itself runs for the home page, `/api/*`, `/ingest/*` and the admin; the free plan allows 100,000 such runs per day and about 10 ms of processing per run. A normal visit is far below that. Signing in to the admin checks a password with 100,000 rounds of hashing, which can use close to 10 ms: if sign-in fails with error 1102, switch the account to **Workers Paid** (US$5/month, dashboard → Workers & Pages → Plans); nothing else changes.
+**Plan limits to know (free plan).** Static pages and images are free and unlimited. The Worker itself runs for the home page, `/api/*`, `/ingest/*` and the admin; the free plan allows 100,000 such runs per day and about 10 ms of processing per run. A normal visit is far below that. Admin passwords are hashed by the database (bcrypt in Supabase), not by the Worker, so signing in stays well inside the free plan's processing limit.
 
 ## 4. Move the domain's DNS to Cloudflare (keep the email working)
 

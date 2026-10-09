@@ -326,6 +326,24 @@ create or replace function admin_overview(p_from timestamptz, p_to timestamptz) 
   )
 $$;
 
+-- Admin passwords: bcrypt (cost 10) computed in the database, so the web server never does the slow hashing itself
+-- (Cloudflare Workers' free plan allows 10 ms of CPU per request). Server-only, like everything else here.
+create schema if not exists extensions;
+create extension if not exists pgcrypto with schema extensions;
+create or replace function admin_hash_password(p text) returns text language sql volatile set search_path = '' as $$
+  select extensions.crypt(p, extensions.gen_salt('bf', 10))
+$$;
+create or replace function admin_check_password(p text, h text) returns boolean language sql stable set search_path = '' as $$
+  select coalesce(extensions.crypt(p, h) = h, false)
+$$;
+revoke all on function admin_hash_password(text), admin_check_password(text, text) from public, anon, authenticated;
+do $$ begin
+  if exists (select 1 from pg_roles where rolname = 'service_role') then
+    grant usage on schema extensions to service_role;  -- the functions run as the caller and call extensions.crypt()
+    grant execute on function admin_hash_password(text), admin_check_password(text, text) to service_role;
+  end if;
+end $$;
+
 -- Data retention, matching the privacy policy: enquiry records up to 5 years after last contact,
 -- page-view (event) records up to 24 months. Failed-admin-login events (they hold an IP) are only needed for the lockout, so 30 days.
 -- leads.updated_at moves on every save from the site form, so it is the "last contact" clock. The admin activity log keeps 24 months.
