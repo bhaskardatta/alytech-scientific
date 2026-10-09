@@ -5,7 +5,7 @@ import { secret } from './env';
 const orgCache = new Map<string, string | null>(); // ponytail: per-instance cache; fine at this traffic level
 
 export function requestInfo(req: Request, clientAddress?: string) {
-  const geo = geoOf(req.headers);
+  const geo = geoOf(req.headers, (req as Request & { cf?: { country?: string; city?: string } }).cf); // cf: Cloudflare only
   return {
     ip: clientIp(req.headers, clientAddress),
     geo_country: geo.country,

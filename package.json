@@ -6,9 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build:cf": "DEPLOY_TARGET=cloudflare CLOUDFLARE_INCLUDE_PROCESS_ENV=true astro build",
+    "dev:cf": "npm run build:cf && wrangler dev",
+    "deploy:cf": "npm run build:cf && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "14.3.3",
     "@astrojs/sitemap": "^3.7.4",
     "@astrojs/vercel": "^11.0.11",
     "@tailwindcss/vite": "^4.3.3",
@@ -17,7 +21,14 @@
     "tailwindcss": "^4.3.3",
     "three": "^0.186.1"
   },
+  "overrides": {
+    "sharp": "0.35.5",
+    "miniflare": {
+      "undici": "7.29.1"
+    }
+  },
   "devDependencies": {
-    "@types/three": "^0.186.0"
+    "@types/three": "^0.186.0",
+    "wrangler": "4.139.0"
   }
 }

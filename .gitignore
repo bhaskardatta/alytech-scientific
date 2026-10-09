@@ -6,3 +6,6 @@ dist
 .env*
 !.env.example
 .dev-db
+.dev.vars
+.dev.vars.*
+.wrangler

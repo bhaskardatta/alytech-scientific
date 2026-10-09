@@ -1,0 +1,56 @@
+// Cloudflare Workers deployment (static pages as Workers Static Assets + the on-demand routes in one Worker). Used only by the Cloudflare build:
+//   npm run build:cf      builds dist/client (assets) and dist/server (Worker)
+//   npm run dev:cf        builds, then runs it locally with wrangler (secrets from a git-ignored .dev.vars file)
+//   npm run deploy:cf     build:cf, then wrangler deploy
+// The Vercel build ignores this file. Step-by-step setup: docs/cloudflare-go-live.md
+//
+// SECRETS are never written here. Set each one with `npx wrangler secret put NAME` (locally: .dev.vars):
+//   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY   database (Supabase dashboard -> Project Settings -> API)
+//   ADMIN_SECRET, ADMIN_PASSWORD              admin sign-in (32+ random characters / the one-time setup password)
+//   CRON_SECRET                               protects /api/cron/daily/; the scheduled trigger below sends it to itself
+//   RESEND_API_KEY, LEAD_ALERT_TO, LEAD_ALERT_FROM   lead alert and reminder emails (optional)
+//   IPINFO_TOKEN                              company lookup from visitor IP (optional)
+//   POSTHOG_PROJECT_ID                        "Watch session" links and the Analytics link in admin (optional)
+//   DEPLOY_HOOK_URL                           Settings -> "Save & publish" rebuild hook (optional)
+//   ADMIN_HOST                                e.g. admin.alytechme.com: serves the admin panel on its own host without the /admin prefix
+//                                             (leave it unset to keep the panel at /admin/ on the main host)
+//   also supported: ADMIN_BREAKGLASS, POSTHOG_SHARED_DASHBOARD_URL (see .env.example)
+// PUBLIC_POSTHOG_KEY is not a Worker secret: it is read at BUILD time (npm run build:cf), see .env.example.
+// The build also reads SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY (site settings are baked into the pages). npm run build:cf sets
+// CLOUDFLARE_INCLUDE_PROCESS_ENV=true so the build sees them from the build environment (Workers Builds "Build variables and secrets"),
+// not only from .dev.vars.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "alytech-scientific",
+  // Entry that wraps Astro's handler: PostHog /ingest proxy, admin host, apex redirect, scheduled job (src/worker.ts).
+  "main": "./src/worker.ts",
+  // Keep this a couple of weeks old; raise it deliberately after testing, never to "today".
+  "compatibility_date": "2026-09-23",
+  // Needed only for node:net (isIP in src/lib/platform.ts); the rest of the code is plain Web APIs.
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "observability": { "logs": { "enabled": true } },
+  "assets": {
+    "binding": "ASSETS",
+    // Astro builds /about/ as about/index.html (trailingSlash: 'always'); /about gets a redirect to /about/.
+    "html_handling": "force-trailing-slash",
+    // Everything else is served straight from the asset store (free, no Worker run). The Worker runs first only for:
+    //   /            the admin host and the apex host land here (the home page is also a file, so it would otherwise bypass the Worker)
+    //   /robots.txt  the admin host needs a "disallow everything" robots.txt instead of the public one
+    //   /admin*      admin panel (redirects to the admin host when ADMIN_HOST is set)
+    //   /api/*       lead + tracking endpoints, daily job
+    //   /ingest/*    PostHog proxy
+    // On the admin host the other paths (/leads/, /login/ ...) are not files, so they reach the Worker as asset misses.
+    "run_worker_first": ["/", "/robots.txt", "/admin", "/admin/*", "/api/*", "/ingest/*"]
+  },
+  // Daily job, 04:00 UTC = 08:00 Dubai. Same code as vercel.json's cron: src/worker.ts calls /api/cron/daily/ with CRON_SECRET.
+  "triggers": { "crons": ["0 4 * * *"] },
+
+  // Custom domains: attach them in the dashboard once the alytechme.com zone is on Cloudflare (Workers & Pages -> alytech-scientific
+  // -> Settings -> Domains & Routes -> Add -> Custom domain), or uncomment this block (the deploy fails until the zone is active):
+  // "routes": [
+  //   { "pattern": "www.alytechme.com", "custom_domain": true },
+  //   { "pattern": "alytechme.com", "custom_domain": true },
+  //   { "pattern": "admin.alytechme.com", "custom_domain": true }
+  // ]
+}

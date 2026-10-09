@@ -86,10 +86,11 @@ export async function startSession(cookies: AstroCookies, sub: string, passwordH
   const exp = Math.floor(Date.now() / 1000) + TTL;
   const fp = passwordHash ? await fingerprint(passwordHash) : '0';
   const body = `${sub}.${exp}.${fp}`;
-  cookies.set(COOKIE, `${body}.${await sign(body)}`, { path: '/admin/', httpOnly: true, secure: import.meta.env.PROD, sameSite: 'strict', maxAge: TTL });
+  // path '/': on the admin host (ADMIN_HOST, src/worker.ts) the browser's URLs have no /admin prefix. The cookie only ever authenticates /admin/* routes.
+  cookies.set(COOKIE, `${body}.${await sign(body)}`, { path: '/', httpOnly: true, secure: import.meta.env.PROD, sameSite: 'strict', maxAge: TTL });
 }
 
-export const logout = (cookies: AstroCookies) => cookies.delete(COOKIE, { path: '/admin/' });
+export const logout = (cookies: AstroCookies) => cookies.delete(COOKIE, { path: '/' });
 
 /** True while there is no admin account at all (also when the database isn't reachable yet), i.e. the one-time setup is allowed. */
 export async function usersEmpty() {

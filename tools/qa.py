@@ -56,6 +56,11 @@ for p in pages:
     for v in vendors:
         if re.search(r'(?<![a-z0-9])' + re.escape(v.lower()) + r'(?![a-z0-9])', low): issues['Tier-2 vendor name leaked'].append((rel, v))
 
+# On the Cloudflare admin host (admin.alytechme.com) "/x/" means the admin route /admin/x/, but a public file at /x/ would be served first.
+for name in os.listdir('src/pages/admin'):
+    route = os.path.splitext(name)[0]
+    if route != 'index' and os.path.exists(f'{root}/{route}/index.html'): issues['public page shadows an admin-host route'].append(f'/{route}/')
+
 for t, n in titles.items():
     if t and n > 1: issues['duplicate title'].append((t, n))
 

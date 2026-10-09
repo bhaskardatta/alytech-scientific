@@ -1,7 +1,8 @@
 /** Abuse guards for /api/* and /admin/login: origin check, per-IP rate limit, admin login lockout. */
 import { dbReady, count, insert } from './db';
 
-const HOSTS = /^(www\.)?alytechme\.com$|\.vercel\.app$|^(localhost|127\.0\.0\.1)$/;
+// www + apex + the admin host, Vercel previews, and this Worker's workers.dev URLs (alytech-scientific.<account>.workers.dev and its version previews).
+const HOSTS = /^((www|admin)\.)?alytechme\.com$|\.vercel\.app$|(^|[.-])alytech-scientific\.[a-z0-9-]+\.workers\.dev$|^(localhost|127\.0\.0\.1)$/;
 
 /** Browsers always send Origin (or Referer) on POST; both absent means a non-browser client, which is allowed. */
 export function originOk(req: Request) {
@@ -14,7 +15,7 @@ export function originOk(req: Request) {
 }
 
 // ponytail: in-memory sliding window per serverless instance (resets on cold start, not shared across instances).
-// Upgrade to Vercel WAF rate limiting or Upstash if abused.
+// Upgrade to Vercel WAF / Cloudflare rate limiting rules (or Upstash) if abused.
 const hits = new Map<string, number[]>();
 const MIN = 60_000;
 

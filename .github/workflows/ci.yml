@@ -1,5 +1,6 @@
 # Quality gate on every push: build, then check SEO tags, structured data, links, CSP and legal rules
-# (tools/qa.py) and the calculator formulas. Vercel deploys independently; a red check means look before trusting the deploy.
+# (tools/qa.py) and the calculator formulas, then the same for the Cloudflare Workers build. Vercel and Cloudflare deploy independently;
+# a red check means look before trusting the deploy.
 name: CI
 on:
   push:
@@ -19,3 +20,6 @@ jobs:
       - run: npm run build
       - run: python3 tools/qa.py
       - run: node src/scripts/tools/calc.test.mjs
+      - run: node cloudflare/assets-rules.test.mjs
+      - run: npm run build:cf
+      - run: python3 tools/qa.py

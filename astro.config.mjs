@@ -3,7 +3,14 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { createHash } from 'node:crypto';
 import { announceBoot } from './src/lib/announce-boot.mjs';
-import vercel from '@astrojs/vercel';
+
+// One codebase, two hosts. `DEPLOY_TARGET=cloudflare` (npm run build:cf) builds for Cloudflare Workers; anything else is the Vercel build, unchanged.
+// Imported lazily so a Vercel build never loads the Cloudflare tooling and vice versa.
+const cf = process.env.DEPLOY_TARGET === 'cloudflare';
+const adapter = cf
+  // ponytail: no astro:assets images on this site (only the Font component), so no Images binding / sharp: images are served as they are.
+  ? (await import('@astrojs/cloudflare')).default({ imageService: 'passthrough' })
+  : (await import('@astrojs/vercel')).default();
 
 // Self-hosted at build time (no runtime request to Google), with metric-matched fallbacks to avoid layout shift.
 // Text faces keep latin-ext as lazy unicode-range files (only fetched if a page uses e.g. superscripts); Base.astro
@@ -15,7 +22,9 @@ export default defineConfig({
   site: 'https://www.alytechme.com',
   trailingSlash: 'always',
   // Static by default; /api/* and /admin/* opt out with `prerender = false`.
-  adapter: vercel(),
+  adapter,
+  // The Cloudflare adapter would otherwise provision a Workers KV namespace for sessions. This site has no sessions (admin uses its own signed cookie).
+  ...(cf && { session: false }),
   // Hash-based CSP: Astro adds a <meta> CSP per page with script-src/style-src hashes for every inline script and style it
   // emits (no 'unsafe-inline'). frame-ancestors can't be set from <meta>, so vercel.json sends it as a header.
   security: {
@@ -61,6 +70,8 @@ export default defineConfig({
     face('Noto Kufi Arabic', '--font-kufi', { weights: [700], subsets: ['arabic', 'latin'] }),
   ],
   integrations: [
+    // Cloudflare only: writes dist/client/_headers + _redirects from vercel.json (the single source for headers and legacy redirects).
+    ...(cf ? [(await import('./cloudflare/assets-rules.mjs')).default()] : []),
     sitemap({
       i18n: { defaultLocale: 'en', locales: { en: 'en', ar: 'ar' } },
       // /search/ is noindex; /admin/ and /thank-you/ are not for crawlers.
@@ -68,5 +79,6 @@ export default defineConfig({
       lastmod: new Date(),
     }),
   ],
-  vite: { plugins: [tailwindcss()] },
+  // __CLOUDFLARE__ (src/env.d.ts) tells src/lib/platform.ts which host's IP/geo headers to trust.
+  vite: { plugins: [tailwindcss()], define: { __CLOUDFLARE__: JSON.stringify(cf) } },
 });
