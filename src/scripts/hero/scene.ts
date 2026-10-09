@@ -23,7 +23,7 @@ const yieldMain = (): Promise<void> => ((globalThis as any).scheduler?.yield?.()
 export interface Callout { id: string; anchor: THREE.Object3D }
 export interface HeroLayout { offsetX: number; offsetY: number; mobile: boolean; compact?: boolean; /** camera distance multiplier that fits the model in the free band above the copy */ fit?: number }
 export interface HeroOptions {
-  /** phone-width screens: fewer segments, smaller env map, 1.5 DPR cap. Desktop geometry is untouched. */
+  /** phones and tablets (touch): fewer segments, smaller env map, 1.5 DPR cap. Desktop geometry is untouched. */
   mobile: boolean;
   reducedMotion: boolean;
   /** resolved font stacks for canvas textures (Astro's fonts are hashed, so plain family names no longer resolve) */
