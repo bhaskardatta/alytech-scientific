@@ -5,7 +5,7 @@ import { originOk, limited } from '../../lib/guard';
 
 export const prerender = false;
 
-const TYPES = new Set(['pageview', 'lead_open', 'search', 'nudge', 'whatsapp']); // whatsapp: a click straight to the chat (ref, page, campaign)
+const TYPES = new Set(['pageview', 'lead_open', 'search', 'nudge', 'whatsapp', 'hero']); // whatsapp: a click straight to the chat; hero: 3D health report
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   if (!originOk(request)) return new Response(null, { status: 403 });
@@ -15,6 +15,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   try { b = JSON.parse(raw); } catch { return new Response(null, { status: 400 }); }
   const meta = requestInfo(request, clientAddress);
   if (!TYPES.has(b.type) || isBot(meta.user_agent)) return new Response(null, { status: 204 });
+  // 3D health reports always reach the function logs (with the browser), so device-specific failures can be diagnosed.
+  if (b.type === 'hero') console.log('[hero]', b.status, b.what || '', b.reason || '', JSON.stringify({ lite: b.lite, reduced: b.reduced, dpr: b.dpr, vw: b.vw, vh: b.vh }), meta.user_agent);
   if (limited(`track:${meta.ip}`, 120)) return new Response(null, { status: 429 }); // before the IPinfo lookup below
 
   const { type, visitorId, sessionId, path, title, product, referrer, lang, ...rest } = b;

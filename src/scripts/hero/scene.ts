@@ -29,7 +29,10 @@ export interface HeroOptions {
   /** resolved font stacks for canvas textures (Astro's fonts are hashed, so plain family names no longer resolve) */
   fonts: { display: string; mono: string };
   /** called once if WebGL or the render loop fails after boot; the page swaps in the static image */
+  /** Unrecoverable failure: the page swaps to the static image. */
   onFail?: (e: unknown) => void;
+  /** Recoverable problems (lost context, a bad frame, internals that didn't build) — reported, never fatal. */
+  onIssue?: (what: string, e?: unknown) => void;
 }
 export interface HeroScene {
   setProgress(p: number): void;
@@ -435,10 +438,12 @@ export async function createHeroScene(canvas: HTMLCanvasElement, opts: HeroOptio
     rig.rotation.y = opts.reducedMotion ? 0 : Math.sin(time * 0.2) * 0.04 * (1 - range(p, 0.1, 0.2));
 
     renderer.render(scene, camera);
-    for (const cb of frameCbs) cb();
+    // Page-side work (labels) must never take the 3D down with it.
+    for (const cb of frameCbs) { try { cb(); } catch (e) { opts.onIssue?.('callouts', e); } }
   }
 
-  // Any runtime failure (GL error, lost context, bad driver) hands the page back to the static image.
+  // Phones and tablets hit transient GPU problems (a lost context while the app switches, one bad frame while memory is
+  // tight). Those must not cost the visitor the 3D: only an error that persists for ~2 s of frames falls back to the image.
   const fail = (e: unknown) => {
     if (failed) return;
     failed = true;
@@ -446,7 +451,15 @@ export async function createHeroScene(canvas: HTMLCanvasElement, opts: HeroOptio
     cancelAnimationFrame(raf);
     opts.onFail?.(e);
   };
-  const safeUpdate = () => { if (failed) return; try { update(); } catch (e) { fail(e); } };
+  let lost = false;
+  let badFrames = 0;
+  const safeUpdate = () => {
+    if (failed || lost) return;
+    try { update(); badFrames = 0; } catch (e) {
+      if (badFrames++ === 0) opts.onIssue?.('frame', e);
+      if (badFrames > 120) fail(e);
+    }
+  };
 
   const loop = () => {
     // Ease toward the scroll position so wheel steps feel continuous
@@ -467,13 +480,22 @@ export async function createHeroScene(canvas: HTMLCanvasElement, opts: HeroOptio
     if (!running) safeUpdate();
   }
 
-  canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); fail(new Error('webglcontextlost')); });
+  // A lost context is recoverable: three.js restores it; the env map (a render target) must be regenerated.
+  canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); lost = true; opts.onIssue?.('contextlost'); });
+  canvas.addEventListener('webglcontextrestored', () => {
+    lost = false;
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04, 0.1, 100, { size: lite ? 128 : 256 }).texture;
+    safeUpdate();
+  });
 
   // Compile the visible materials without blocking (parallel shader compile), then build the internals in slices.
-  await renderer.compileAsync(scene, camera);
+  // Never wait on a driver that doesn't report completion: after 4 s the first render compiles whatever is left.
+  const compiled = (p: Promise<unknown>) => Promise.race([p, new Promise((r) => setTimeout(r, 4000))]);
+  await compiled(renderer.compileAsync(scene, camera)).catch((e) => opts.onIssue?.('compile', e));
   setTimeout(() => {
     if (failed) return;
-    model.buildInternals((obj) => renderer.compileAsync(obj, camera, scene)).catch(fail);
+    // Without the internals the shell still renders and rotates with the scroll, so this is reported, not fatal.
+    model.buildInternals((obj) => compiled(renderer.compileAsync(obj, camera, scene))).catch((e) => opts.onIssue?.('internals', e));
   }, 0);
 
   const v = new THREE.Vector3();

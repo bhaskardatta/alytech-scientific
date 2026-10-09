@@ -44,6 +44,7 @@ const copy = {
     <div class="hero-bg absolute inset-0" aria-hidden="true"></div>
     <img src="/images/gasmix/aiolos-iii.webp" srcset="/images/gasmix/aiolos-iii-sm.webp 480w, /images/gasmix/aiolos-iii.webp 1299w" sizes="(max-width: 767px) 40vw, 380px" alt={ar ? 'جهاز GasMix Aiolos III لخلط الغازات وتخفيفها' : 'GasMix Aiolos III gas mixer and diluter'} width="1299" height="1772" loading="lazy" decoding="async" class="hero-fallback absolute hidden" data-hero-fallback />
     <canvas class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-700" data-hero-canvas aria-hidden="true"></canvas>
+    <p class="hero-debug hidden" data-hero-debug></p>
 
     {/* overflow-clip: the labels start off-screen; in RTL that leaked scrollable overflow into .hero-sticky, and its removal on boot registered as a 0.23 layout shift */}
     <div class="pointer-events-none absolute inset-0 overflow-clip" aria-hidden="true" data-callouts>
@@ -168,6 +169,11 @@ const copy = {
   /* Parts explode toward screen-left in both languages, so labels always sit to their left */
   .callout { flex-direction: row-reverse; translate: -100% -50%; direction: ltr; }
   :global([dir="rtl"]) .callout-label { direction: rtl; }
+  .hero-debug {
+    position: absolute; inset-inline: 12px; top: 84px; z-index: 30; margin: 0; padding: 8px 10px;
+    font: 500 12px/1.4 var(--font-mono, monospace); color: #fff; background: rgb(16 12 29 / 0.88);
+    border: 1px solid rgb(255 255 255 / 0.25); border-radius: var(--radius-xs); overflow-wrap: anywhere;
+  }
   .callout-short { display: none; }
   .callout.flip { flex-direction: row; translate: 0 -50%; }
   @media (max-width: 767px) {
@@ -280,7 +286,30 @@ const copy = {
   }
 
   // Static image: no WebGL, reduced motion, or a runtime failure. The <img> is lazy, so it only downloads once shown.
-  function showFallback() {
+  // ---------- 3D health report ----------
+  // Every device reports once whether the 3D started and, if not, why (anonymous: status, reason and render flags only).
+  // Add ?debug3d to the URL to see the same report on screen.
+  const debugEl = section.querySelector<HTMLElement>('[data-hero-debug]')!;
+  const debug = /[?&]debug3d\b/.test(location.search);
+  const sent = new Set<string>();
+  const notes: string[] = [];
+  function report(status: string, what = '', e?: unknown) {
+    const reason = e instanceof Error ? `${e.name}: ${e.message}` : e ? String(e) : '';
+    document.documentElement.dataset.hero = status;
+    if (debug) {
+      notes.push(`${status}${what ? ` · ${what}` : ''}${reason ? ` — ${reason}` : ''}`);
+      debugEl.textContent = `3D: ${notes.join(' | ')} · lite=${lite} reducedMotion=${reduced} dpr=${devicePixelRatio} ${innerWidth}×${innerHeight}`;
+      debugEl.classList.remove('hidden');
+    }
+    const key = status + what;
+    if (sent.has(key)) return;
+    sent.add(key);
+    const body = JSON.stringify({ type: 'hero', path: location.pathname, status, what, reason: reason.slice(0, 300), lite, reduced, dpr: devicePixelRatio, vw: innerWidth, vh: innerHeight, ts: Date.now() });
+    try { navigator.sendBeacon?.('/api/track/', new Blob([body], { type: 'application/json' })); } catch {}
+  }
+
+  function showFallback(e?: unknown) {
+    report('fallback', 'fatal', e);
     io?.disconnect();
     scene?.dispose();
     scene = undefined;
@@ -292,10 +321,12 @@ const copy = {
 
   async function boot() {
     const probe = document.createElement('canvas').getContext('webgl2');
-    if (!probe) return showFallback();
+    if (!probe) return showFallback('no WebGL2');
     probe.getExtension('WEBGL_lose_context')?.loseContext();
     try {
-      const { createHeroScene } = await import('../../scripts/hero/scene');
+      // One retry: a dropped connection (or a bot check on a busy network) must not cost the visitor the 3D.
+      const load = () => import('../../scripts/hero/scene');
+      const { createHeroScene } = await load().catch(() => new Promise((r) => setTimeout(r, 1500)).then(load));
       // Canvas textures draw text, so the faces must be loaded first (hashed, lazy unicode-range files) — but never wait long.
       const css = getComputedStyle(document.documentElement);
       const fonts = { display: css.getPropertyValue('--font-archivo').trim() || 'sans-serif', mono: css.getPropertyValue('--font-jetbrains').trim() || 'monospace' };
@@ -303,7 +334,7 @@ const copy = {
         Promise.all([document.fonts.load(`600 64px ${fonts.display}`), document.fonts.load(`500 20px ${fonts.mono}`)]),
         new Promise((r) => setTimeout(r, 2500)),
       ]);
-      scene = await createHeroScene(canvas, { mobile: lite, reducedMotion: reduced, fonts, onFail: showFallback });
+      scene = await createHeroScene(canvas, { mobile: lite, reducedMotion: reduced, fonts, onFail: showFallback, onIssue: (what, e) => report('issue', what, e) });
       layout();
       new ResizeObserver(() => scene?.resize()).observe(canvas);
 
@@ -322,11 +353,12 @@ const copy = {
 
       paint();
       canvas.classList.remove('opacity-0');
+      report('ok');
       // Only render while the hero is on screen
       io = new IntersectionObserver(([en]) => (en.isIntersecting ? scene?.start() : scene?.stop()));
       io.observe(section);
-    } catch {
-      showFallback();
+    } catch (e) {
+      showFallback(e);
     }
   }
 
