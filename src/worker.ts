@@ -5,7 +5,7 @@
  *   - apex host      alytechme.com -> www.alytechme.com (the zone-level Redirect Rule is the real fix; this covers requests that reach the Worker)
  *   - admin host     ADMIN_HOST (admin.alytechme.com) serves the admin panel without the /admin prefix; /admin* elsewhere redirects there
  *   - headers        the security headers of vercel.json on every Worker-generated response; noindex on *.workers.dev
- *   - scheduled      the daily job (vercel.json crons), by calling /api/cron/daily/ in-process
+ *   - scheduled      the daily job, by calling /api/cron/daily/ in-process (the only scheduler: Vercel has no cron, so it never runs twice)
  * Static files never reach this code unless wrangler.jsonc run_worker_first lists them; their headers come from dist/client/_headers.
  */
 import { handle } from '@astrojs/cloudflare/handler';
@@ -117,7 +117,7 @@ export default {
     return finish(await handle(request, env, ctx), host);
   },
 
-  /** Cron trigger (wrangler.jsonc triggers.crons): the same daily job as on Vercel, run through the normal route so there is one implementation. */
+  /** Cron trigger (wrangler.jsonc triggers.crons): the daily job, run through the normal route so there is one implementation. */
   async scheduled(controller: { cron: string }, env: Env, ctx: Ctx) {
     if (!env.CRON_SECRET) throw new Error('cron: CRON_SECRET is not set, the daily job did not run');
     const res = await handle(new Request(`https://${WWW}/api/cron/daily/`, { headers: { authorization: `Bearer ${env.CRON_SECRET}` } }), env, ctx);

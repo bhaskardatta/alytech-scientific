@@ -13,7 +13,7 @@ export const prerender = false;
 const json = (body: object, status = 200) => new Response(JSON.stringify(body, null, 2), { status, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } });
 
 /**
- * Daily job (vercel.json crons: 04:00 UTC = 08:00 Dubai). Requires `Authorization: Bearer $CRON_SECRET` (Vercel adds it itself).
+ * Daily job, 04:00 UTC = 08:00 Dubai, triggered by the Cloudflare cron (wrangler.jsonc). Requires `Authorization: Bearer $CRON_SECRET`.
  *   keep-alive query -> purge_old_data() -> follow-up emails per person -> Monday digest to owners.
  * Each part runs on its own: a failure in one is reported, never stops the others. Emails are skipped silently when Resend isn't configured.
  * ?dry=1 reports what would happen without purging or sending. ?digest=1 sends the weekly digest on any weekday (testing).

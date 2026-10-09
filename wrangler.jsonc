@@ -43,7 +43,7 @@
     // On the admin host the other paths (/leads/, /login/ ...) are not files, so they reach the Worker as asset misses.
     "run_worker_first": ["/", "/robots.txt", "/admin", "/admin/*", "/api/*", "/ingest/*"]
   },
-  // Daily job, 04:00 UTC = 08:00 Dubai. Same code as vercel.json's cron: src/worker.ts calls /api/cron/daily/ with CRON_SECRET.
+  // Daily job, 04:00 UTC = 08:00 Dubai (the only scheduler; Vercel has no cron): src/worker.ts calls /api/cron/daily/ with CRON_SECRET.
   "triggers": { "crons": ["0 4 * * *"] },
 
   // Custom domains: attach them in the dashboard once the alytechme.com zone is on Cloudflare (Workers & Pages -> alytech-scientific
