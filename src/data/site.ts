@@ -18,10 +18,9 @@ export const site = {
   geo: { lat: 24.3515556, lng: 54.4871667 },
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=24.3515556,54.4871667',
   certifications: ['ISO 9001'],
-  social: {
-    linkedin: 'https://www.linkedin.com/company/alytech/',
-    youtube: 'https://www.youtube.com/@AlyTech-e7u',
-  },
+  // ponytail: AlyTech Scientific has no LinkedIn page of its own yet; this is the parent's (AlyTech France). Add the subsidiary's pages here when they exist.
+  parentLinkedin: 'https://www.linkedin.com/company/alytech/',
 } as const;
 
-export const waLink = (text: string) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
+/** False while `site.whatsapp` is still the placeholder: the lead form then captures the lead and confirms, instead of opening a dead wa.me link. */
+export const whatsappReady = String(site.whatsapp) !== '971000000000';

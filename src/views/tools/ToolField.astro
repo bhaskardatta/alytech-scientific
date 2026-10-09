@@ -1,0 +1,36 @@
+---
+/** One labelled numeric input, optionally with a unit menu. Error text is filled in by the page script. */
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  value?: string;
+  hint?: string;
+  /** Unit menu next to the input. */
+  units?: { name: string; label: string; options: [value: string, text: string][]; selected?: string };
+  /** Fixed unit shown after the input (no menu). */
+  suffix?: string;
+  class?: string;
+  dataFor?: string;
+}
+const { id, name, label, value = '', hint, units, suffix, class: cls = '', dataFor } = Astro.props;
+const sub = (x: string) => x.replace(/_(\w+)/g, '<sub>$1</sub>');
+const describedBy = [hint && `${id}-hint`, `${id}-err`].filter(Boolean).join(' ');
+---
+<div class={cls} data-for={dataFor}>
+  <label for={id} class="mb-1.5 block text-sm font-medium" set:html={sub(label)} />
+  <div class="flex items-stretch gap-2" dir="ltr">
+    <input id={id} name={name} type="text" inputmode="decimal" autocomplete="off" autocapitalize="off" spellcheck="false" class="field min-w-0 flex-1" value={value} aria-describedby={describedBy} />
+    {units && (
+      <>
+        <label for={`${id}-unit`} class="sr-only">{units.label}</label>
+        <select id={`${id}-unit`} name={units.name} class="field w-[7.5rem] shrink-0 px-3">
+          {units.options.map(([v, text]) => <option value={v} selected={v === (units.selected ?? units.options[0][0])}>{text}</option>)}
+        </select>
+      </>
+    )}
+    {suffix && <span class="flex min-w-[4.5rem] items-center font-mono text-[14px] text-mute">{suffix}</span>}
+  </div>
+  {hint && <p id={`${id}-hint`} class="mt-1.5 text-[13px] text-mute">{hint}</p>}
+  <p id={`${id}-err`} data-err={name} class="mt-1.5 text-sm font-medium text-danger" hidden></p>
+</div>

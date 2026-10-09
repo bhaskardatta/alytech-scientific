@@ -1,0 +1,285 @@
+---
+import ToolShell from './ToolShell.astro';
+import ToolField from './ToolField.astro';
+import GasMixCta from './GasMixCta.astro';
+import Ribbon from '../../components/Ribbon.astro';
+import Icon from '../../components/Icon.astro';
+import { fmt, molarVolume, ppmToMgm3, mgm3ToPpm, GASES } from '../../scripts/tools/calc';
+import { errMsgs } from '../../scripts/tools/messages';
+import type { Lang } from '../../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+
+// ---- Worked numbers, from the same code the converter runs ----
+const T25 = 298.15, T0 = 273.15, P = 101.325;
+const vm25 = molarVolume(T25, P);   // 24.465 L/mol
+const vm0 = molarVolume(T0, P);     // 22.414 L/mol
+const mCO = GASES.find((g) => g.id === 'co')!.m;
+const mSO2 = GASES.find((g) => g.id === 'so2')!.m;
+const mNO2 = GASES.find((g) => g.id === 'no2')!.m;
+const aMg = ppmToMgm3(50, mCO, vm25);       // 57.24
+const bPpm = mgm3ToPpm(100, mSO2, vm25);    // 38.19
+const co1 = ppmToMgm3(1, mCO, vm25), no2_1 = ppmToMgm3(1, mNO2, vm25);
+const pctDiff = Math.round((vm25 / vm0 - 1) * 100);
+const sub = (x: string) => x.replace(/_(\w+)/g, '<sub>$1</sub>');
+
+// ---- Strings (EN / AR) ----
+const T = {
+  en: {
+    title: 'ppm to mg/m³ Converter for Gases | AlyTech',
+    description: 'Free ppm to mg/m³ converter for gases, both ways, at your temperature and pressure. Presets for CO, NO₂, SO₂, H₂S, NH₃ and more, with worked examples.',
+    h1: 'ppm to mg/m³ converter',
+    intro: 'Convert a gas concentration between ppm by volume and mg/m³ at the temperature and pressure that apply to your method. Pick a gas or enter its molar mass; the result shows the molar volume used so you can check the working.',
+    dirLegend: 'Direction',
+    dirs: { toMass: 'ppm → mg/m³', toPpm: 'mg/m³ → ppm' },
+    value: 'Concentration to convert', unit: 'Unit', outUnit: 'Show result in',
+    gas: 'Gas', custom: 'Other gas (enter molar mass)', mm: 'Molar mass (M)', mmHint: 'Grams per mole. Presets are filled in for you.',
+    cond: 'Reference conditions', conds: ['25 °C, 101.325 kPa', '20 °C, 101.325 kPa', '0 °C, 101.325 kPa', 'Custom'],
+    temp: 'Temperature (T)', press: 'Pressure (P)',
+    result: 'Result',
+    noJs: 'This converter needs JavaScript. The formulas, worked examples and reference table below work without it.',
+    hint: 'Enter your values to see the result.',
+    units: { ppm: 'ppm', ppb: 'ppb', mg: 'mg/m³', ug: 'µg/m³', c: '°C', k: 'K' },
+    r: { result: 'Result', vm: 'Molar volume', factor: 'Conversion factor' },
+    methodKicker: 'Method',
+    formulasH: 'The formulas',
+    formulasIntro: 'Gas concentrations in ppm are ratios of volume (or moles), while mg/m³ is a mass per volume of air. Converting between them needs the molar mass of the gas and the volume one mole occupies at your temperature and pressure.',
+    f: [
+      ['Molar volume (L/mol)', 'V_m = 22.414 × (T / 273.15) × (101.325 / P)'],
+      ['ppm to mg/m³', 'mg/m³ = ppm × M / V_m'],
+      ['mg/m³ to ppm', 'ppm = mg/m³ × V_m / M'],
+    ] as [string, string][],
+    vars: [['M', 'molar mass of the gas, g/mol'], ['T', 'absolute temperature, K (°C + 273.15)'], ['P', 'absolute pressure, kPa'], ['V_m', 'molar volume of an ideal gas, L/mol']],
+    unitsLine: '1 ppm = 1,000 ppb  ·  1 mg/m³ = 1,000 µg/m³',
+    exH: 'Worked examples',
+    given: 'Given', calc: 'Calculation', answer: 'Answer',
+    exA: '50 ppm carbon monoxide to mg/m³',
+    exB: '100 mg/m³ sulfur dioxide to ppm',
+    refH: 'Quick reference: 1 ppm in mg/m³',
+    refIntro: 'Molar masses are rounded to two decimals. Values are for an ideal gas at 101.325 kPa.',
+    refCols: ['Gas', 'M (g/mol)', '1 ppm at 25 °C (mg/m³)', '1 ppm at 0 °C (mg/m³)', '1 mg/m³ at 25 °C (ppm)'],
+    assumeH: 'Assumptions and limits',
+    assume: [
+      'Ideal-gas behaviour. That is accurate at near-atmospheric pressure and becomes less so at high pressure.',
+      'ppm means parts per million by volume (µmol/mol), not by mass. It applies to one gas or vapour at a time, and you need its molar mass.',
+      'Quote the reference temperature and pressure with every result. The same reading is about 9 % larger in mg/m³ at 0 °C than at 25 °C.',
+      'No humidity correction: concentrations are taken as they are, wet or dry, as you enter them.',
+      'No oxygen-reference correction. Stack-emission limits are often stated at a reference oxygen content, which this converter does not apply.',
+      'Particulate matter is already a mass concentration, so there is nothing to convert.',
+    ],
+    faqs: [
+      { q: 'What is the formula to convert ppm to mg/m³?', a: `mg/m³ = ppm × M / V_m, where M is the molar mass in g/mol and V_m is the molar volume in L/mol at your temperature and pressure. At 25 °C and 101.325 kPa, V_m is about ${fmt(vm25)} L/mol, so 50 ppm of carbon monoxide (M = ${fmt(mCO)}) is ${fmt(aMg)} mg/m³.` },
+      { q: 'Which temperature and pressure should I use?', a: `Use the reference conditions written in your standard, permit or analyser manual. Methods and regulations differ; 0 °C, 20 °C and 25 °C at 101.325 kPa are all common. The molar volume is about ${fmt(vm0)} L/mol at 0 °C and ${fmt(vm25)} L/mol at 25 °C, a difference of about ${pctDiff} %, so always state the conditions next to the result.` },
+      { q: 'Why does 1 ppm of one gas give a different mg/m³ from another?', a: `Because mg/m³ is a mass, and each gas has a different mass per mole. At 25 °C and 101.325 kPa, 1 ppm of carbon monoxide is ${fmt(co1)} mg/m³ while 1 ppm of nitrogen dioxide is ${fmt(no2_1)} mg/m³.` },
+      { q: 'Can I use this for mixtures, particulates or high-pressure gas?', a: 'It converts one gas or vapour at a time, so convert each component with its own molar mass. Particulate matter is reported directly in mg/m³ and needs no conversion. At high pressure real gases depart from ideal behaviour, and a compressibility correction is needed.' },
+    ],
+    ctaHead: 'Calibration gas for the gases you measure.',
+    ctaBody: 'GasMix diluters blend a certified standard with zero air through mass flow controllers to reach concentrations from percent down to ppb, on site. They suit air-quality and stack-emission analysers; AlyTech Scientific supplies, installs and supports them across the Middle East.',
+    ctaGhost: 'Environmental monitoring', ctaLink: 'All GasMix mixers and diluters',
+    more: [{ href: '/tools/gas-dilution-calculator/', title: 'Gas dilution calculator', text: 'Output concentration, flows for a target and calibration curves.' }, { href: '/standards/', title: 'Test standards', text: 'Find instruments by ASTM, ISO, EN or AASHTO method number.' }],
+  },
+  ar: {
+    title: 'محوّل ppm إلى mg/m³ للغازات | AlyTech',
+    description: 'محوّل مجاني من ppm إلى mg/m³ والعكس للغازات عند أي درجة حرارة وضغط، مع قيم جاهزة لـ CO وNO₂ وSO₂ وH₂S وNH₃ وغيرها، والمعادلة وأمثلة محلولة.',
+    h1: 'محوّل ppm إلى mg/m³',
+    intro: 'حوّل تركيز الغاز بين ppm بالحجم وmg/m³ عند درجة الحرارة والضغط اللذين تعتمدهما طريقتك. اختر غازاً أو أدخل كتلته المولية، وتعرض النتيجة الحجم المولي المستخدم لتتحقق من الحساب.',
+    dirLegend: 'الاتجاه',
+    dirs: { toMass: 'ppm → mg/m³', toPpm: 'mg/m³ → ppm' },
+    value: 'التركيز المراد تحويله', unit: 'الوحدة', outUnit: 'اعرض النتيجة بوحدة',
+    gas: 'الغاز', custom: 'غاز آخر (أدخل الكتلة المولية)', mm: 'الكتلة المولية (M)', mmHint: 'بالغرام لكل مول. تُملأ القيم تلقائياً للغازات الجاهزة.',
+    cond: 'الظروف المرجعية', conds: ['25 °C، 101.325 kPa', '20 °C، 101.325 kPa', '0 °C، 101.325 kPa', 'مخصصة'],
+    temp: 'درجة الحرارة (T)', press: 'الضغط (P)',
+    result: 'النتيجة',
+    noJs: 'يحتاج هذا المحوّل إلى JavaScript. أما المعادلات والأمثلة المحلولة وجدول المرجع أدناه فتعمل بدونها.',
+    hint: 'أدخل قيمك لعرض النتيجة.',
+    units: { ppm: 'ppm', ppb: 'ppb', mg: 'mg/m³', ug: 'µg/m³', c: '°C', k: 'K' },
+    r: { result: 'النتيجة', vm: 'الحجم المولي', factor: 'معامل التحويل' },
+    methodKicker: 'الطريقة',
+    formulasH: 'المعادلات',
+    formulasIntro: 'تركيز الغاز بوحدة ppm نسبة حجمية (أو مولية)، أما mg/m³ فكتلة لكل حجم من الهواء. ويتطلب التحويل بينهما معرفة الكتلة المولية للغاز والحجم الذي يشغله مول واحد عند درجة الحرارة والضغط المعتمدين.',
+    f: [
+      ['الحجم المولي (L/mol)', 'V_m = 22.414 × (T / 273.15) × (101.325 / P)'],
+      ['من ppm إلى mg/m³', 'mg/m³ = ppm × M / V_m'],
+      ['من mg/m³ إلى ppm', 'ppm = mg/m³ × V_m / M'],
+    ] as [string, string][],
+    vars: [['M', 'الكتلة المولية للغاز، g/mol'], ['T', 'درجة الحرارة المطلقة، K (‎°C + 273.15)'], ['P', 'الضغط المطلق، kPa'], ['V_m', 'الحجم المولي لغاز مثالي، L/mol']],
+    unitsLine: '1 ppm = 1,000 ppb  ·  1 mg/m³ = 1,000 µg/m³',
+    exH: 'أمثلة محلولة',
+    given: 'المعطيات', calc: 'الحساب', answer: 'الناتج',
+    exA: 'تحويل 50 ppm من أول أكسيد الكربون إلى mg/m³',
+    exB: 'تحويل 100 mg/m³ من ثاني أكسيد الكبريت إلى ppm',
+    refH: 'مرجع سريع: 1 ppm بوحدة mg/m³',
+    refIntro: 'الكتل المولية مقرّبة إلى منزلتين عشريتين. القيم لغاز مثالي عند ضغط 101.325 kPa.',
+    refCols: ['الغاز', 'M (g/mol)', '1 ppm عند 25 °C (mg/m³)', '1 ppm عند 0 °C (mg/m³)', '1 mg/m³ عند 25 °C (ppm)'],
+    assumeH: 'الافتراضات والحدود',
+    assume: [
+      'سلوك غاز مثالي. وهو دقيق عند ضغط قريب من الضغط الجوي ويقل دقةً عند الضغوط العالية.',
+      'تعني ppm أجزاءً في المليون بالحجم (µmol/mol) وليس بالكتلة. وهي تخص غازاً أو بخاراً واحداً في كل مرة، وتحتاج إلى كتلته المولية.',
+      'اذكر درجة الحرارة والضغط المرجعيين مع كل نتيجة. فالقراءة نفسها أكبر بنحو 9 % بوحدة mg/m³ عند 0 °C منها عند 25 °C.',
+      'لا يوجد تصحيح للرطوبة: تُؤخذ التراكيز كما تدخلها، رطبة أو جافة.',
+      'لا يوجد تصحيح لمحتوى الأكسجين المرجعي. وكثيراً ما تُحدَّد حدود انبعاثات المداخن عند محتوى أكسجين مرجعي، وهو ما لا يطبّقه هذا المحوّل.',
+      'الجسيمات العالقة تُقاس أصلاً بوحدة الكتلة لكل حجم، فلا حاجة إلى تحويلها.',
+    ],
+    faqs: [
+      { q: 'ما معادلة التحويل من ppm إلى mg/m³؟', a: `mg/m³ = ppm × M / V_m، حيث M الكتلة المولية بوحدة g/mol وV_m الحجم المولي بوحدة L/mol عند درجة حرارتك وضغطك. عند 25 °C و101.325 kPa يكون V_m مساوياً نحو ${fmt(vm25)} L/mol، فتكون 50 ppm من أول أكسيد الكربون (M = ${fmt(mCO)}) مساوية ${fmt(aMg)} mg/m³.` },
+      { q: 'ما درجة الحرارة والضغط اللذان أستخدمهما؟', a: `استخدم الظروف المرجعية المكتوبة في معيارك أو ترخيصك أو دليل المحلل. وتختلف الطرق واللوائح؛ فالظروف 0 °C و20 °C و25 °C عند 101.325 kPa كلها شائعة. الحجم المولي نحو ${fmt(vm0)} L/mol عند 0 °C و${fmt(vm25)} L/mol عند 25 °C، أي بفارق نحو ${pctDiff} %، لذا اذكر الظروف دائماً بجانب النتيجة.` },
+      { q: 'لماذا يعطي 1 ppm من غاز قيمة mg/m³ مختلفة عن غاز آخر؟', a: `لأن mg/m³ كتلة، ولكل غاز كتلة مختلفة لكل مول. عند 25 °C و101.325 kPa يساوي 1 ppm من أول أكسيد الكربون ${fmt(co1)} mg/m³، بينما يساوي 1 ppm من ثاني أكسيد النيتروجين ${fmt(no2_1)} mg/m³.` },
+      { q: 'هل يصلح هذا للمخاليط أو الجسيمات أو الغازات عالية الضغط؟', a: 'يحوّل غازاً أو بخاراً واحداً في كل مرة، لذا حوّل كل مكوّن بكتلته المولية الخاصة. أما الجسيمات العالقة فتُقاس مباشرة بوحدة mg/m³ ولا تحتاج إلى تحويل. وعند الضغط العالي تنحرف الغازات الحقيقية عن السلوك المثالي ويلزم تصحيح الانضغاطية.' },
+    ],
+    ctaHead: 'غاز معايرة للغازات التي تقيسها.',
+    ctaBody: 'تمزج مخففات GasMix معياراً معتمداً مع هواء صفري عبر وحدات تحكم بالتدفق الكتلي للوصول إلى تراكيز من النسب المئوية حتى ppb في الموقع. وهي مناسبة لمحللات جودة الهواء وانبعاثات المداخن، وتورّدها AlyTech Scientific وتركّبها وتدعمها في أنحاء الشرق الأوسط.',
+    ctaGhost: 'الرصد البيئي', ctaLink: 'كل أجهزة خلط وتخفيف GasMix',
+    more: [{ href: '/tools/gas-dilution-calculator/', title: 'حاسبة تخفيف الغازات', text: 'التركيز الناتج والتدفقات لتركيز مستهدف ومنحنيات المعايرة.' }, { href: '/standards/', title: 'المعايير الاختبارية', text: 'ابحث عن الأجهزة برقم طريقة ASTM أو ISO أو EN أو AASHTO.' }],
+  },
+};
+const s = T[lang];
+const M = { err: errMsgs(lang), hint: s.hint, units: s.units, r: s.r };
+const gasName = (g: (typeof GASES)[number]) => `${ar ? g.ar : g.en} (${g.f})`;
+---
+<ToolShell lang={lang} path="/tools/ppm-to-mg-m3/" title={s.title} description={s.description} h1={s.h1} intro={s.intro} faqs={s.faqs} more={s.more}>
+  <!-- Converter -->
+  <div slot="calc" data-tool="ppm" class="grid gap-5 lg:grid-cols-[1.15fr_1fr] lg:gap-6">
+    <form class="card p-5 sm:p-8" novalidate>
+      <fieldset>
+        <legend class="label text-mute">{s.dirLegend}</legend>
+        <div class="mt-3 grid gap-2 sm:grid-cols-2">
+          {(['toMass', 'toPpm'] as const).map((d, i) => (
+            <label class="relative block">
+              <input type="radio" name="dir" value={d} checked={i === 0} class="peer sr-only" />
+              <Icon name="check" size={16} class="pointer-events-none absolute start-3 top-1/2 hidden -translate-y-1/2 text-white peer-checked:block" />
+              <span dir="ltr" class="flex min-h-[48px] cursor-pointer items-center justify-center rounded-sm border border-line-strong px-4 py-2 text-center font-mono text-[15px] font-medium transition-colors duration-200 hover:border-ink peer-checked:border-brand-600 peer-checked:bg-brand-600 peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand-500">{s.dirs[d]}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div class="mt-7 grid gap-5 sm:grid-cols-2">
+        <ToolField class="sm:col-span-2" id="ppm-value" name="value" label={s.value} value="50" units={{ name: 'inUnit', label: s.unit, options: [['ppm', 'ppm'], ['ppb', 'ppb']], selected: 'ppm' }} />
+
+        <div>
+          <label for="ppm-gas" class="mb-1.5 block text-sm font-medium">{s.gas}</label>
+          <select id="ppm-gas" name="gas" class="field">
+            {GASES.map((g) => <option value={g.id} selected={g.id === 'co'}>{gasName(g)}</option>)}
+            <option value="custom">{s.custom}</option>
+          </select>
+        </div>
+        <ToolField id="ppm-mm" name="mm" label={s.mm} hint={s.mmHint} value="28.01" suffix="g/mol" />
+
+        <div class="sm:col-span-2">
+          <label for="ppm-cond" class="mb-1.5 block text-sm font-medium">{s.cond}</label>
+          <select id="ppm-cond" name="cond" class="field sm:max-w-sm">
+            {['25', '20', '0'].map((id, i) => <option value={id}>{s.conds[i]}</option>)}
+            <option value="custom">{s.conds[3]}</option>
+          </select>
+        </div>
+        <ToolField id="ppm-temp" name="temp" label={s.temp} value="25" units={{ name: 'tempUnit', label: s.unit, options: [['c', '°C'], ['k', 'K']], selected: 'c' }} />
+        <ToolField id="ppm-press" name="press" label={s.press} value="101.325" units={{ name: 'pressUnit', label: s.unit, options: [['kpa', 'kPa'], ['mbar', 'mbar'], ['atm', 'atm']], selected: 'kpa' }} />
+
+        <div class="sm:col-span-2">
+          <label for="ppm-out" class="mb-1.5 block text-sm font-medium">{s.outUnit}</label>
+          <select id="ppm-out" name="outUnit" class="field sm:max-w-xs"><option value="mg">mg/m³</option><option value="ug">µg/m³</option></select>
+        </div>
+      </div>
+    </form>
+
+    <div class="on-dark relative overflow-hidden rounded-[var(--radius-lg)] bg-night-900 p-6 text-white sm:p-8">
+      <Ribbon class="pointer-events-none absolute inset-0 h-full w-full text-brand-600 opacity-25" lines={22} />
+      <div class="relative">
+        <p class="label flex items-center gap-2 text-brand-300"><Icon name="gauge" size={14} />{s.result}</p>
+        <div data-readout role="status" aria-live="polite" aria-atomic="true" class="mt-6">
+          <p class="text-[15px] leading-relaxed text-white/70">{s.noJs}</p>
+        </div>
+      </div>
+    </div>
+    <script type="application/json" set:html={JSON.stringify(M)} />
+  </div>
+
+  <!-- Method -->
+  <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="ppm-formulas-h">
+    <div class="wrap grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+      <div>
+        <p class="label text-brand-600">{s.methodKicker}</p>
+        <h2 id="ppm-formulas-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{s.formulasH}</h2>
+        <p class="mt-5 max-w-[60ch] text-[16.5px] leading-[1.75] text-ink-soft">{s.formulasIntro}</p>
+        <dl class="mt-8 grid grid-cols-[auto_1fr] gap-x-5 gap-y-2 text-[15px]">
+          {s.vars.map(([k, v]) => (<><dt dir="ltr" class="font-mono text-ink" set:html={sub(k)} /><dd class="text-ink-soft" set:html={sub(v)} /></>))}
+        </dl>
+        <p dir="ltr" class="mt-6 font-mono text-[13px] text-mute text-start">{s.unitsLine}</p>
+      </div>
+      <div class="card divide-y divide-line self-start">
+        {s.f.map(([name, expr]) => (
+          <div class="p-5 sm:p-6">
+            <p class="label text-mute">{name}</p>
+            <p dir="ltr" class="mt-2 overflow-x-auto font-mono text-[clamp(15px,2.2vw,18px)] text-ink text-start" set:html={sub(expr)} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Worked examples -->
+  <section class="py-14 md:py-20" aria-labelledby="ppm-ex-h">
+    <div class="wrap">
+      <h2 id="ppm-ex-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{s.exH}</h2>
+      <div class="mt-8 grid gap-4 lg:grid-cols-2">
+        <article class="card p-6">
+          <h3 class="display text-lg">{s.exA}</h3>
+          <p class="label mt-5 text-mute">{s.given}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start">50 ppm CO, M = {fmt(mCO)} g/mol<br />T = 25 °C = 298.15 K, P = 101.325 kPa</p>
+          <p class="label mt-5 text-mute">{s.calc}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start" set:html={sub(`V_m = 22.414 × (298.15 / 273.15) × (101.325 / 101.325) = ${fmt(vm25, 6)} L/mol<br />mg/m³ = 50 × ${fmt(mCO)} / ${fmt(vm25, 6)} = ${fmt(aMg)}`)} />
+          <p class="label mt-5 text-brand-600">{s.answer}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[18px] font-medium text-ink text-start">{fmt(aMg)} mg/m³</p>
+        </article>
+        <article class="card p-6">
+          <h3 class="display text-lg">{s.exB}</h3>
+          <p class="label mt-5 text-mute">{s.given}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start">100 mg/m³ SO₂, M = {fmt(mSO2)} g/mol<br />T = 25 °C = 298.15 K, P = 101.325 kPa</p>
+          <p class="label mt-5 text-mute">{s.calc}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start" set:html={sub(`V_m = ${fmt(vm25, 6)} L/mol<br />ppm = 100 × ${fmt(vm25, 6)} / ${fmt(mSO2)} = ${fmt(bPpm)}`)} />
+          <p class="label mt-5 text-brand-600">{s.answer}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[18px] font-medium text-ink text-start">{fmt(bPpm)} ppm</p>
+        </article>
+      </div>
+
+      <h2 class="display mt-16 text-[clamp(1.4rem,2.6vw,2rem)]">{s.refH}</h2>
+      <p class="mt-3 max-w-[64ch] text-[15.5px] text-mute">{s.refIntro}</p>
+      <div class="card mt-6 overflow-x-auto" dir="ltr" tabindex="0" role="region" aria-label={s.refH}>
+        <table dir="ltr" class="w-full min-w-[640px] border-collapse text-end font-mono text-[14px] text-ink">
+          <caption class="sr-only">{s.refH}</caption>
+          <thead>
+            <tr>{s.refCols.map((c) => <th scope="col" class="border-b border-line-strong px-4 py-3 text-end text-[12.5px] font-medium text-mute first:text-start">{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {GASES.map((g) => (
+              <tr class="border-b border-line last:border-0">
+                <th scope="row" class="px-4 py-3 text-start font-medium">{g.f}<span class="ms-2 font-sans text-[13px] font-normal text-mute">{ar ? g.ar : g.en}</span></th>
+                <td class="px-4 py-3">{fmt(g.m)}</td>
+                <td class="px-4 py-3">{fmt(ppmToMgm3(1, g.m, vm25))}</td>
+                <td class="px-4 py-3">{fmt(ppmToMgm3(1, g.m, vm0))}</td>
+                <td class="px-4 py-3">{fmt(mgm3ToPpm(1, g.m, vm25))}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="ppm-assume-h">
+    <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+      <h2 id="ppm-assume-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{s.assumeH}</h2>
+      <ul class="grid gap-4 text-[16px] leading-relaxed text-ink-soft">
+        {s.assume.map((a) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span><span>{a}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <GasMixCta slot="cta" lang={lang} id="ppm-cta-h" head={s.ctaHead} body={s.ctaBody} slugs={['aiolos-iii', 'nomad']} subject="GasMix gas mixers and diluters" ghost={{ href: '/industries/environmental-monitoring/', label: s.ctaGhost }} link={{ href: '/gasmix/', label: s.ctaLink }} />
+</ToolShell>
+
+<script>
+  import '../../scripts/tools/ppm';
+</script>

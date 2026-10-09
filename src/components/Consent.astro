@@ -3,7 +3,7 @@ import { t, localize, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 ---
-<div id="consent" class="fixed inset-x-3 bottom-3 z-[60] hidden sm:inset-x-auto sm:end-6 sm:bottom-6 sm:max-w-md" role="region" aria-label="Cookie consent">
+<div id="consent" class="fixed inset-x-3 bottom-3 z-[60] hidden sm:inset-x-auto sm:end-6 sm:bottom-6 sm:max-w-md" role="region" aria-label={t(lang, 'consent.label')} tabindex="-1">
   <div class="card flex flex-col gap-3 p-4 shadow-[var(--shadow-pop)] sm:gap-4 sm:p-5">
     <p class="text-[13px] leading-snug text-ink-soft sm:text-sm">
       {t(lang, 'consent.text')} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a>
@@ -17,13 +17,29 @@ const { lang } = Astro.props;
 <script>
   const el = document.getElementById('consent')!;
   let choice: string | null = null;
+  let opener: HTMLElement | null = null;
   try { choice = localStorage.getItem('aly-consent'); } catch {}
   if (!choice) el.classList.remove('hidden');
+  const close = () => { el.classList.add('hidden'); opener?.focus(); opener = null; };
   el.addEventListener('click', (e) => {
     const v = (e.target as HTMLElement).closest<HTMLElement>('[data-consent]')?.dataset.consent;
     if (!v) return;
-    try { localStorage.setItem('aly-consent', v); } catch {}
-    el.classList.add('hidden');
+    choice = v;
+    try {
+      localStorage.setItem('aly-consent', v);
+      if (v !== 'all') localStorage.removeItem('aly-vid'); // withdrawing consent also drops the persistent visitor id
+    } catch {}
+    close();
     dispatchEvent(new CustomEvent('aly-consent', { detail: v }));
   });
+  // Footer "Cookie settings": visitors can change their choice at any time.
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-consent-open]');
+    if (!btn) return;
+    opener = btn;
+    el.classList.remove('hidden');
+    el.querySelector<HTMLElement>('[data-consent]')?.focus();
+  });
+  // Esc dismisses a reopened banner without changing the saved choice (the first-visit prompt stays until answered).
+  el.addEventListener('keydown', (e) => { if (e.key === 'Escape' && choice) close(); });
 </script>

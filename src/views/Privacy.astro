@@ -1,57 +1,134 @@
 ---
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site';
-import { type Lang } from '../i18n';
+import { breadcrumbLd } from '../data/schema';
+import { localize, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const ar = lang === 'ar';
-// ponytail: English is the governing text; the Arabic page shows it with an Arabic notice until a reviewed translation exists.
+
+// One structure per language so both versions always carry the same sections; strings may hold <b> and the mail link.
+const mail = `<a href="mailto:${site.email}" dir="ltr">${site.email}</a>`;
+const legal = `<bdi dir="ltr">${site.legalName}</bdi>`;
+const addr = site.address;
+type Section = { h: string; p?: string[]; ul?: string[] };
+const copy: Record<Lang, { title: string; updated: string; sections: Section[] }> = {
+  en: {
+    title: 'Privacy policy',
+    updated: 'Last updated: October 2026',
+    sections: [
+      {
+        h: 'Who we are',
+        p: [`${legal} (“AlyTech”, “we”), ${addr.street}, ${addr.poBox}, ${addr.city}, United Arab Emirates, operates alytechme.com and is responsible for the personal data described here. Contact: ${mail}.`],
+      },
+      {
+        h: 'What we collect',
+        ul: [
+          '<b>Details you type into our forms</b> — name, company, email, mobile/WhatsApp number, country, your message and the product you asked about. We save these as you type, so an engineer can follow up even if you don’t press send.',
+          '<b>Technical data</b> — your IP address, approximate location derived from it, the network or organisation it belongs to, browser type, the page you came from, and the pages and products you view on this site.',
+          '<b>Campaign information</b> — if you arrive from a campaign link, the campaign parameters in that link (for example utm_source or gclid) and the landing page are kept for that browser tab only. They are saved with a request only if you submit one.',
+          '<b>Searches</b> you run on this site.',
+          '<b>WhatsApp conversations</b> you start with us, handled in WhatsApp under Meta’s terms.',
+        ],
+      },
+      {
+        h: 'Cookies and similar storage',
+        p: [
+          'Essential storage remembers your cookie choice and the details you already gave us so you don’t retype them. If you click “Accept”, we also store a random visitor identifier that links your page views across visits, so we understand which instruments you’re researching and can follow up on your request in context. If you choose “Essential only”, page views are not recorded.',
+          'The fonts on this site are served from our own domain, so loading a page does not send a request to a third-party font provider.',
+          'You can change your cookie choice at any time with the “Cookie settings” link in the footer of every page.',
+        ],
+      },
+      {
+        h: 'Why we use it',
+        ul: [
+          'To answer your enquiry, send datasheets, quotations and specifications, and follow up on requests — including requests you started but didn’t submit.',
+          'To understand demand for our instruments and improve this site.',
+          'To protect our forms from abuse: we use IP addresses to rate-limit requests.',
+          'To send product news and offers <b>only if you ticked the box</b> asking for them. You can unsubscribe at any time.',
+        ],
+      },
+      {
+        h: 'Who we share it with',
+        p: ['Our own staff, and service providers that host or process data for us: Vercel (website hosting), Supabase (database), Resend (email notifications) and IPinfo (identifying the network an IP address belongs to). Where relevant to your request, we may share your enquiry with the manufacturer of the instrument you asked about. We do not sell personal data.'],
+      },
+      {
+        h: 'How long we keep it',
+        p: ['Enquiry records are kept for as long as needed to serve you and for up to five years after our last contact, unless the law requires longer. Page-view records are kept for up to 24 months.'],
+      },
+      {
+        h: 'Your rights',
+        p: [`Under the UAE Personal Data Protection Law and other laws that may apply to you, you can ask to access, correct or delete your data, object to or restrict its use, withdraw consent, and opt out of marketing. Email ${mail} and we will respond within 30 days.`],
+      },
+    ],
+  },
+  ar: {
+    title: 'سياسة الخصوصية',
+    updated: 'آخر تحديث: أكتوبر 2026',
+    sections: [
+      {
+        h: 'من نحن',
+        p: [`تتولى ${legal} («AlyTech» أو «نحن»)، ومقرها ${addr.street.replace('Mussafah', 'مصفح')}، ${addr.poBox.replace('PO Box', 'ص.ب')}، أبوظبي، الإمارات العربية المتحدة، تشغيل موقع alytechme.com، وهي المسؤولة عن البيانات الشخصية الموضحة في هذه السياسة. للتواصل: ${mail}.`],
+      },
+      {
+        h: 'ما الذي نجمعه',
+        ul: [
+          '<b>البيانات التي تكتبها في نماذجنا</b> — الاسم والشركة والبريد الإلكتروني ورقم الجوال/واتساب والدولة ورسالتك والمنتج الذي استفسرت عنه. نحفظ هذه البيانات أثناء كتابتك لها، ليتمكن مهندس من متابعتك حتى لو لم تضغط «إرسال».',
+          '<b>البيانات التقنية</b> — عنوان IP الخاص بك، والموقع التقريبي المستدل عليه منه، والشبكة أو الجهة التي ينتمي إليها، ونوع المتصفح، والصفحة التي جئت منها، والصفحات والمنتجات التي تطّلع عليها في هذا الموقع.',
+          '<b>معلومات الحملات</b> — إذا وصلت إلينا عبر رابط حملة، يُحتفظ ببارامترات الحملة الواردة في ذلك الرابط (مثل utm_source أو gclid) وبصفحة الوصول لعلامة التبويب هذه في المتصفح فقط، ولا تُحفظ مع أي طلب إلا إذا أرسلت طلباً.',
+          '<b>عمليات البحث</b> التي تجريها في هذا الموقع.',
+          '<b>محادثات واتساب</b> التي تبدؤها معنا، وتُعالج في واتساب وفق شروط شركة Meta.',
+        ],
+      },
+      {
+        h: 'ملفات تعريف الارتباط والتخزين المماثل',
+        p: [
+          'يتذكّر التخزين الأساسي اختيارك بشأن ملفات تعريف الارتباط والبيانات التي أدخلتها سابقاً حتى لا تضطر إلى إعادة كتابتها. وإذا ضغطت «موافق»، نخزّن كذلك معرّف زائر عشوائياً يربط بين مشاهداتك للصفحات عبر الزيارات المتعددة، لنفهم الأجهزة التي تبحث عنها ونتابع طلبك في سياقه. وإذا اخترت «الضرورية فقط» فلا تُسجَّل مشاهدات الصفحات.',
+          'تُقدَّم الخطوط في هذا الموقع من نطاقنا الخاص، فلا يرسل تحميل الصفحة أي طلب إلى مزوّد خطوط خارجي.',
+          'يمكنك تغيير اختيارك بشأن ملفات تعريف الارتباط في أي وقت عبر رابط «إعدادات ملفات تعريف الارتباط» في أسفل كل صفحة.',
+        ],
+      },
+      {
+        h: 'لماذا نستخدمها',
+        ul: [
+          'للرد على استفسارك، وإرسال النشرات الفنية وعروض الأسعار والمواصفات، ومتابعة الطلبات — بما فيها الطلبات التي بدأتها ولم ترسلها.',
+          'لفهم الطلب على أجهزتنا وتحسين هذا الموقع.',
+          'لحماية نماذجنا من إساءة الاستخدام: نستخدم عناوين IP لتقييد معدل الطلبات.',
+          'لإرسال أخبار المنتجات والعروض، <b>فقط إذا حدّدت المربع</b> الذي يطلبها. ويمكنك إلغاء الاشتراك في أي وقت.',
+        ],
+      },
+      {
+        h: 'مع من نشاركها',
+        p: ['موظفونا، ومزوّدو الخدمات الذين يستضيفون البيانات أو يعالجونها نيابةً عنا: Vercel (استضافة الموقع) وSupabase (قاعدة البيانات) وResend (إشعارات البريد الإلكتروني) وIPinfo (تحديد الشبكة التي ينتمي إليها عنوان IP). وحين يكون ذلك ذا صلة بطلبك، قد نشارك استفسارك مع الشركة المصنّعة للجهاز الذي استفسرت عنه. ولا نبيع البيانات الشخصية.'],
+      },
+      {
+        h: 'مدة الاحتفاظ بها',
+        p: ['نحتفظ بسجلات الاستفسارات للمدة اللازمة لخدمتك وحتى خمس سنوات بعد آخر تواصل بيننا، ما لم يشترط القانون مدة أطول. ونحتفظ بسجلات مشاهدة الصفحات حتى 24 شهراً.'],
+      },
+      {
+        h: 'حقوقك',
+        p: [`بموجب قانون حماية البيانات الشخصية في دولة الإمارات العربية المتحدة وأي قوانين أخرى قد تسري عليك، يحق لك طلب الاطلاع على بياناتك أو تصحيحها أو حذفها، والاعتراض على استخدامها أو تقييده، وسحب موافقتك، وإلغاء الاشتراك في الرسائل التسويقية. راسلنا على ${mail} وسنرد خلال 30 يوماً.`],
+      },
+    ],
+  },
+};
+const c = copy[lang];
+const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: localize(lang, '/') }, { label: ar ? 'سياسة الخصوصية' : 'Privacy policy' }];
 ---
-<Base lang={lang} title={ar ? 'سياسة الخصوصية | AlyTech Scientific' : 'Privacy Policy | AlyTech Scientific'} description={ar ? 'كيف تجمع AlyTech Scientific البيانات الشخصية وتستخدمها وتحميها.' : 'How AlyTech Scientific collects, uses and protects personal data.'}>
+<Base lang={lang} title={ar ? 'سياسة الخصوصية | AlyTech Scientific' : 'Privacy Policy | AlyTech Scientific'} description={ar ? 'كيف تجمع AlyTech Scientific البيانات الشخصية التي تشاركها عبر هذا الموقع وتستخدمها وتحميها، والخيارات المتاحة لك بشأنها.' : 'How AlyTech Scientific collects, uses and protects the personal data you share through this website, and the choices you have over it.'} schema={[breadcrumbLd(crumbs, localize(lang, '/privacy/'))]}>
   <section class="bg-card pt-[72px]">
-    <article class="wrap max-w-3xl py-12 md:py-16" lang="en" dir="ltr">
-      {ar && <p class="mb-8 rounded-sm bg-brand-50 p-4 text-brand-800" lang="ar" dir="rtl">النسخة الإنجليزية أدناه هي النص المعتمد لسياسة الخصوصية. ستتوفر الترجمة العربية قريباً.</p>}
-      <h1 class="display text-[clamp(2rem,4vw,3rem)]">Privacy policy</h1>
-      <p class="mt-3 text-mute">Last updated: October 2026</p>
+    <article class="wrap max-w-3xl py-12 md:py-16">
+      <h1 class="display text-[clamp(2rem,4vw,3rem)]">{c.title}</h1>
+      <p class="mt-3 text-mute">{c.updated}</p>
       <div class="prose-alytech mt-10 grid gap-8 text-[16px] leading-relaxed text-ink-soft">
-        <section>
-          <h2>Who we are</h2>
-          <p>{site.legalName} (“AlyTech”, “we”), {site.address.street}, {site.address.poBox}, {site.address.city}, United Arab Emirates, operates alytechme.com and is responsible for the personal data described here. Contact: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
-        </section>
-        <section>
-          <h2>What we collect</h2>
-          <ul>
-            <li><b>Details you type into our forms</b> — name, company, email, mobile/WhatsApp number, country, your message and the product you asked about. We save these as you type, so an engineer can follow up even if you don’t press send.</li>
-            <li><b>Technical data</b> — your IP address, approximate location derived from it, the network or organisation it belongs to, browser type, the page you came from, and the pages and products you view on this site.</li>
-            <li><b>Searches</b> you run on this site.</li>
-            <li><b>WhatsApp conversations</b> you start with us, handled in WhatsApp under Meta’s terms.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Cookies and similar storage</h2>
-          <p>Essential storage remembers your cookie choice and the details you already gave us so you don’t retype them. If you click “Accept”, we also store a random visitor identifier that links your page views across visits, so we understand which instruments you’re researching and can follow up on your request in context. If you choose “Essential only”, page views are not recorded.</p>
-        </section>
-        <section>
-          <h2>Why we use it</h2>
-          <ul>
-            <li>To answer your enquiry, send datasheets, quotations and specifications, and follow up on requests — including requests you started but didn’t submit.</li>
-            <li>To understand demand for our instruments and improve this site.</li>
-            <li>To send product news and offers <b>only if you ticked the box</b> asking for them. You can unsubscribe at any time.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Who we share it with</h2>
-          <p>Our own staff, and service providers that host or process data for us: Vercel (website hosting), Supabase (database), Resend (email notifications) and IPinfo (identifying the network an IP address belongs to). Where relevant to your request, we may share your enquiry with the manufacturer of the instrument you asked about. We do not sell personal data.</p>
-        </section>
-        <section>
-          <h2>How long we keep it</h2>
-          <p>Enquiry records are kept for as long as needed to serve you and for up to five years after our last contact, unless the law requires longer. Page-view records are kept for up to 24 months.</p>
-        </section>
-        <section>
-          <h2>Your rights</h2>
-          <p>Under the UAE Personal Data Protection Law and other laws that may apply to you, you can ask to access, correct or delete your data, object to or restrict its use, withdraw consent, and opt out of marketing. Email <a href={`mailto:${site.email}`}>{site.email}</a> and we will respond within 30 days.</p>
-        </section>
+        {c.sections.map((s) => (
+          <section>
+            <h2>{s.h}</h2>
+            {s.p?.map((t) => <p set:html={t} />)}
+            {s.ul && <ul>{s.ul.map((t) => <li set:html={t} />)}</ul>}
+          </section>
+        ))}
       </div>
     </article>
   </section>
@@ -59,6 +136,7 @@ const ar = lang === 'ar';
 
 <style>
   .prose-alytech :global(h2) { font-family: var(--font-display); font-size: 1.35rem; color: var(--color-ink); margin-bottom: 0.6rem; }
+  .prose-alytech :global(p + p) { margin-top: 0.75rem; }
   .prose-alytech :global(ul) { list-style: disc; padding-inline-start: 1.25rem; display: grid; gap: 0.5rem; }
   .prose-alytech :global(a) { color: var(--color-brand-600); text-decoration: underline; text-underline-offset: 2px; }
 </style>

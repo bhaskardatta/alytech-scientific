@@ -1,17 +1,19 @@
 ---
 import Admin from '../../layouts/Admin.astro';
 import { isAdmin } from '../../lib/auth';
-import { dbReady, select, update } from '../../lib/db';
-import { fmt, ago, safeQ, waHref, modeLabel } from '../../lib/admin';
+import { dbReady, select, update, count } from '../../lib/db';
+import { fmt, ago, safeQ, waHref, modeLabel, dbNotice, go } from '../../lib/admin';
 export const prerender = false;
 
-if (!(await isAdmin(Astro.cookies))) return Astro.redirect('/admin/login/');
+if (!(await isAdmin(Astro.cookies))) return go(Astro, '/admin/login/');
 
 if (Astro.request.method === 'POST') {
   const f = await Astro.request.formData();
   const id = String(f.get('id') ?? '');
-  if (/^[0-9a-f-]{36}$/i.test(id)) await update('leads', `id=eq.${id}`, { handled: f.get('handled') === '1' });
-  return Astro.redirect(Astro.url.pathname + Astro.url.search);
+  if (dbReady() && /^[0-9a-f-]{36}$/i.test(id)) {
+    try { await update('leads', `id=eq.${id}`, { handled: f.get('handled') === '1' }); } catch (e) { console.error('admin handled toggle failed', e); }
+  }
+  return go(Astro, Astro.url.pathname + Astro.url.search);
 }
 
 const params = Astro.url.searchParams;
@@ -22,7 +24,7 @@ const per = 50;
 
 let leads: any[] = [];
 let week = { submitted: 0, partial: 0 };
-let error = '';
+let error: unknown;
 if (dbReady()) {
   try {
     const filters = [
@@ -31,22 +33,21 @@ if (dbReady()) {
       `limit=${per}`,
       `offset=${(page - 1) * per}`,
       status !== 'all' && `status=eq.${status}`,
-      q && `or=(name.ilike.*${q}*,email.ilike.*${q}*,company.ilike.*${q}*,product.ilike.*${q}*,phone.ilike.*${q}*,ip_org.ilike.*${q}*)`,
+      q && `or=(${['name', 'email', 'company', 'product', 'phone', 'ip_org'].map((c) => `${c}.ilike.*${encodeURIComponent(q)}*`).join(',')})`, // encoded so '&' or '#' can't add query params
     ].filter(Boolean).join('&');
     const since = new Date(Date.now() - 7 * 864e5).toISOString();
-    const [rows, recent] = await Promise.all([select('leads', filters), select('leads', `select=status&created_at=gte.${since}`)]);
-    leads = rows;
-    for (const r of recent) week[r.status as 'submitted' | 'partial']++;
+    [leads, week.submitted, week.partial] = await Promise.all([
+      select('leads', filters),
+      count('leads', `status=eq.submitted&created_at=gte.${since}`),
+      count('leads', `status=eq.partial&created_at=gte.${since}`),
+    ]);
   } catch (e) {
-    error = String(e);
+    error = e;
   }
 }
 const tab = (s: string) => `?status=${s}${q ? `&q=${encodeURIComponent(q)}` : ''}`;
 ---
-<Admin title="Leads">
-  {!dbReady() && <p class="mb-6 rounded-sm bg-danger/5 p-4 text-danger">Database not connected. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.</p>}
-  {error && <p class="mb-6 rounded-sm bg-danger/5 p-4 text-danger">{error}</p>}
-
+<Admin title="Leads" notice={dbNotice(error)}>
   <div class="grid gap-3 sm:grid-cols-3">
     <div class="card p-5"><p class="label text-mute">Submitted · 7 days</p><p class="display mt-2 text-3xl">{week.submitted}</p></div>
     <div class="card p-5"><p class="label text-mute">Started, not sent · 7 days</p><p class="display mt-2 text-3xl">{week.partial}</p></div>

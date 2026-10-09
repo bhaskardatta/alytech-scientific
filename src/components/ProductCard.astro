@@ -16,7 +16,7 @@ const href = localize(lang, productPath(brand, p));
   </div>
   <div class="flex flex-1 flex-col gap-2 p-5">
     <p class:list={['label', dark ? 'text-brand-300' : 'text-mute']}>{pick(lang, { en: p.category, ar: p.ar?.category })}</p>
-    <p class="display text-lg">{shortName(p)}</p>
+    <p class="display text-lg">{shortName(p, lang)}</p>
     <p class:list={['line-clamp-3 text-[14.5px]', dark ? 'text-white/65' : 'text-mute']} lang={lang === 'ar' && !p.ar?.summary ? 'en' : undefined}>{pick(lang, { en: p.summary, ar: p.ar?.summary })}</p>
     <span class:list={['link-arrow mt-auto pt-3 text-sm']}>{lang === 'ar' ? 'التفاصيل' : 'Details'} <Icon name="arrow" size={16} flip /></span>
   </div>

@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import { standards, standardsByOrg, standardPath, orgs } from '../data/standards';
+import { shortName } from '../data/catalog';
+import { breadcrumbLd } from '../data/schema';
+import { site } from '../data/site';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const groups = standardsByOrg();
+const n = standards.length;
+
+const T = ar
+  ? {
+      title: 'معدات اختبار ASTM وISO وEN وAASHTO في الإمارات | AlyTech',
+      description: `${n} طريقة اختبار من ASTM وISO وEN وAASHTO وDIN وIP، لكل منها عنوانها الرسمي والأجهزة التي تورّدها AlyTech Scientific في الإمارات والشرق الأوسط.`,
+      kicker: 'المعايير الاختبارية',
+      h1: 'المعايير الاختبارية والأجهزة المناسبة لكل طريقة',
+      intro: 'ابحث برقم الطريقة التي يعتمدها مختبرك. تعرض كل صفحة العنوان الرسمي للمعيار وملخصاً مبسّطاً لما يقيسه والأجهزة التي تورّدها AlyTech Scientific وتركّبها وتدعمها في الإمارات وأنحاء الشرق الأوسط.',
+      note: 'الملخصات وصف مبسّط من AlyTech وليست نص المعايير. اعتمد على الإصدار الحالي الصادر عن ASTM وISO وCEN وسائر الجهات الناشرة.',
+      filter: 'صفّ المعايير', ph: 'مثل D5334 أو نقطة الوميض أو الكرات الأربع', jump: 'الانتقال إلى جهة النشر',
+      instr: (c: number) => (c === 1 ? 'جهاز واحد' : c === 2 ? 'جهازان' : `${c} أجهزة`),
+      count: (c: number) => `عرض ${c} من ${n}`, none: 'لا يوجد معيار مطابق. اطلب منا الطريقة التي تحتاجها.',
+      askH: 'لم تجد طريقتك؟', askP: 'نورّد أكثر مما هو مدرج هنا. أخبرنا بالمعيار الذي يعتمده مختبرك وسيرد عليك مهندس.',
+      itemList: 'المعايير الاختبارية',
+    }
+  : {
+      title: 'ASTM, ISO, EN & AASHTO Test Equipment UAE | AlyTech',
+      description: `${n} ASTM, ISO, EN, AASHTO, DIN and IP test methods, with official titles and the instruments AlyTech Scientific supplies in the UAE and Middle East.`,
+      kicker: 'Test standards',
+      h1: 'Test standards and the equipment for each method',
+      intro: 'Search by the method number your lab follows. Each page gives the official title of the standard, a plain-language summary of what it measures, and the instruments AlyTech Scientific supplies, installs and supports in the UAE and across the Middle East.',
+      note: 'Summaries are our own descriptions, not the text of the standards. Work from the current edition issued by ASTM, ISO, CEN and the other publishers.',
+      filter: 'Filter the standards', ph: 'e.g. D5334, flash point, four-ball', jump: 'Jump to publisher',
+      instr: (c: number) => (c === 1 ? '1 instrument' : `${c} instruments`),
+      count: (c: number) => `Showing ${c} of ${n}`, none: 'No standard matches. Tell us the method you need.',
+      askH: 'Method not listed?', askP: 'We source far more than is listed here. Tell us the standard your lab follows and an engineer will come back to you.',
+      itemList: 'Test standards',
+    };
+const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: T.kicker }];
+const url = L('/standards/');
+const abs = (p: string) => new URL(p, site.url).href;
+const webPage = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: T.h1, description: T.description, url: abs(url), inLanguage: lang, isPartOf: { '@type': 'WebSite', name: site.name, url: site.url } };
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: T.itemList,
+  numberOfItems: n,
+  itemListElement: groups.flatMap((g) => g.items).map((s, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(L(standardPath(s))), name: s.designation })),
+};
+const i18n = { count: T.count(-1).replace('-1', '{n}'), none: T.none };
+---
+<Base lang={lang} title={T.title} description={T.description} schema={[webPage, itemList, breadcrumbLd(crumbs, url)]}>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap py-12 md:py-16">
+      <Breadcrumbs items={crumbs} />
+      <p class="label mt-10 text-brand-600">{T.kicker}</p>
+      <h1 class="display mt-3 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">{T.h1}</h1>
+      <p class="mt-5 max-w-3xl text-[18px] leading-relaxed text-ink-soft">{T.intro}</p>
+      <p class="mt-3 max-w-3xl text-[14px] text-mute">{T.note}</p>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,26rem)_1fr] lg:items-end" data-std-filter>
+        <div>
+          <label for="std-q" class="mb-1.5 block text-sm font-medium">{T.filter}</label>
+          <div class="relative">
+            <Icon name="search" size={20} class="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-mute" />
+            <input id="std-q" type="search" autocomplete="off" spellcheck="false" class="field ps-12" placeholder={T.ph} data-std-input />
+          </div>
+          <p class="mt-2 text-[13px] text-mute" aria-live="polite" data-std-status></p>
+        </div>
+        <nav aria-label={T.jump}>
+          <ul class="flex flex-wrap gap-2">
+            {groups.map((g) => (
+              <li><a href={`#org-${g.org.replace('/', '-')}`} class="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line-strong px-4 text-[14px] font-medium transition-colors hover:border-brand-500 hover:text-brand-700">{g.org}<span class="font-mono text-[12px] text-mute">{g.items.length}</span></a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <div data-std-list>
+    {groups.map((g) => (
+      <section class="border-b border-line py-12 md:py-16" id={`org-${g.org.replace('/', '-')}`} aria-labelledby={`h-${g.org.replace('/', '-')}`} data-std-group>
+        <div class="wrap">
+          <h2 id={`h-${g.org.replace('/', '-')}`} class="display text-[clamp(1.5rem,2.8vw,2.1rem)]">{orgs[g.org].name[lang]}</h2>
+          <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {g.items.map((s) => (
+              <li data-std-item data-hay={[s.designation, s.title, s.summary[lang], ...s.products.map((p) => `${p.brand.name} ${shortName(p.product)} ${p.product.category}`)].join(' ').toLowerCase()}>
+                <a href={L(standardPath(s))} class="group card flex h-full flex-col gap-3 p-5 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
+                  <span class="label text-brand-600 text-start" dir="ltr">{s.designation}</span>
+                  <span class="line-clamp-3 text-[15px] leading-snug text-ink text-start" lang="en" dir="ltr">{s.title}</span>
+                  <span class="mt-auto flex items-center justify-between gap-3 pt-2 text-[13.5px] text-mute">
+                    <span>{T.instr(s.products.length)}</span>
+                    <Icon name="arrow" size={16} flip class="shrink-0 transition-colors group-hover:text-brand-600" />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))}
+  </div>
+  <p class="wrap hidden py-12 text-center text-mute" data-std-none>{T.none}</p>
+
+  <section class="bg-card py-14 md:py-20" aria-labelledby="std-ask-h">
+    <div class="wrap flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <h2 id="std-ask-h" class="display text-[clamp(1.4rem,2.6vw,2rem)]">{T.askH}</h2>
+        <p class="mt-3 text-[16px] text-mute">{T.askP}</p>
+      </div>
+      <button type="button" class="btn btn-primary" data-lead="interest" data-product={ar ? 'استفسار عن معيار اختباري' : 'Test standard enquiry'}>{t(lang, 'cta.interest')} <Icon name="arrow" size={18} flip /></button>
+    </div>
+  </section>
+</Base>
+
+<script is:inline type="application/json" id="std-i18n" set:html={JSON.stringify(i18n)} />
+<script>
+  import '../scripts/tools/standards-filter';
+</script>

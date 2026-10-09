@@ -5,27 +5,56 @@ import ProductImage from '../components/ProductImage.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Icon from '../components/Icon.astro';
 import Ribbon from '../components/Ribbon.astro';
-import { claim, type Brand } from '../data/brands';
-import { productsOf, brandPath, productPath, imageOf, shortName, type Product } from '../data/catalog';
+import { claim, claimFull, type Brand } from '../data/brands';
+import { productsOf, brandPath, productPath, imageOf, shortName, type Product, type Spec } from '../data/catalog';
 import { industries } from '../data/industries';
 import { breadcrumbLd, productLd } from '../data/schema';
+import { standardSlug } from '../data/standards';
 import { t, localize, pick, type Lang } from '../i18n';
+import { titleOf, descOf, plain } from '../lib/seo';
 
 interface Props { lang: Lang; brand: Brand; product: Product }
 const { lang, brand, product: p } = Astro.props;
 const ar = lang === 'ar';
 const L = (x: string) => localize(lang, x);
 const gas = brand.slug === 'gasmix';
-const name = shortName(p);
+// Arabic overrides that the Product type doesn't declare yet: spec table, standards and the regional note.
+const arx = (ar ? p.ar ?? {} : {}) as { keySpecs?: Spec[]; standards?: string[]; whyMiddleEast?: string };
+const name = shortName(p, lang);
+const fullName = (ar && p.ar?.name) || p.name;
 const category = pick(lang, { en: p.category, ar: p.ar?.category });
 const summary = pick(lang, { en: p.summary, ar: p.ar?.summary });
 const description = pick(lang, { en: p.description, ar: p.ar?.description });
 const applications = pick(lang, { en: p.applications, ar: p.ar?.applications });
 const contentLang = ar && !p.ar?.description ? 'en' : undefined; // untranslated copy keeps correct pronunciation
+const specs = ar && arx.keySpecs?.length === p.keySpecs.length ? arx.keySpecs : p.keySpecs;
+const specsAr = specs !== p.keySpecs;
+const standards = ar && arx.standards?.length === p.standards.length ? arx.standards : p.standards;
+const regional = ar ? arx.whyMiddleEast : p.whyMiddleEast;
+
+// Right-to-left text scrambles numbers with units ("150 °C" shows as "C° 150"). Isolate each Latin/number run left-to-right.
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const BODY = `[A-Za-z0-9_.,:/%°µ²³⁴⁵⁶⁷⁸⁹⁻⁰¹×·'"()+−–~≈′″\u0370-\u03FF\u00C0-\u00FF-]`;
+const LTR_RUN = new RegExp(`(?:[<>≤≥±~+−–-]\\s?)?[A-Za-z0-9]${BODY}*(?: [A-Za-z0-9°%±+<>≤≥−–~µ]${BODY}*)*`, 'g');
+const fmt = (s: string, mono = false) => {
+  if (!ar) return esc(s);
+  let out = '', last = 0;
+  for (const m of s.matchAll(LTR_RUN)) {
+    let core = m[0], tail = '';
+    for (;;) {
+      const open = (core.match(/\(/g) ?? []).length, close = (core.match(/\)/g) ?? []).length;
+      const c = core.slice(-1);
+      if (/[.,:;(]/.test(c) || (c === ')' && close > open)) { tail = c + tail; core = core.slice(0, -1); } else break;
+    }
+    out += esc(s.slice(last, m.index)) + `<bdi dir="ltr" class="${mono ? 'font-mono ' : ''}${core.length <= 18 ? 'whitespace-nowrap' : ''}">${esc(core)}</bdi>` + esc(tail);
+    last = m.index! + m[0].length;
+  }
+  return out + esc(s.slice(last));
+};
 const inds = industries.filter((i) => p.industries.includes(i.slug));
 const related = productsOf(brand.slug).filter((x) => x.slug !== p.slug && x.priority !== 'niche').slice(0, 4);
 const img = imageOf(brand.slug, p.slug);
-const subject = `${brand.name} ${name}`;
+const subject = `${brand.name} ${shortName(p)}`; // lead records keep the English product name
 
 const crumbs = [
   { label: ar ? 'الرئيسية' : 'Home', href: L('/') },
@@ -34,8 +63,13 @@ const crumbs = [
   { label: name },
 ];
 const url = L(productPath(brand, p));
-const title = `${name} ${p.category} | ${brand.name} ${ar ? 'في الإمارات والشرق الأوسط' : 'in the UAE & Middle East'} | AlyTech`;
-const metaDesc = `${p.summary.slice(0, 120).replace(/\s\S*$/, '')}… ${ar ? 'التوريد والتركيب والدعم من AlyTech.' : 'Supplied, installed and supported by AlyTech.'}`;
+// "Thermtest MP-1 Thermal Properties Analyzer | AlyTech UAE" — brand + model + category first, localized category on /ar/.
+const cat = plain(category);
+const headline = subject.toLowerCase().includes(cat.toLowerCase()) ? subject : `${subject} ${cat}`;
+const title = titleOf(headline, ar ? ['AlyTech الإمارات', 'AlyTech', ''] : ['AlyTech UAE', 'AlyTech', '']);
+const metaDesc = descOf(summary, ar
+  ? ['التوريد والتركيب والدعم من AlyTech في الإمارات.', 'التوريد والدعم من AlyTech في الإمارات.', 'من AlyTech في الإمارات.']
+  : ['Supplied, installed and supported by AlyTech in the UAE.', 'Supplied and supported by AlyTech in the UAE.', 'Supplied by AlyTech UAE.']);
 
 const assurances = ar
   ? ['التركيب والتشغيل بواسطة مهندسي AlyTech', 'تدريب المشغلين عند التسليم', 'الضمان وعقود الصيانة في المنطقة']
@@ -46,9 +80,10 @@ const assurances = ar
   title={title}
   description={metaDesc}
   product={subject}
+  productLabel={`${brand.name} ${name}`}
   image={img?.src}
   schema={[
-    productLd({ name: `${brand.name} ${p.name}`, model: p.model, description: p.summary, category: p.category, brand: brand.name, brandUrl: brand.url, image: img?.src, url, specs: p.keySpecs }),
+    productLd({ name: `${brand.name} ${p.name}`, model: p.model, description: summary, category, brand: brand.name, brandUrl: brand.url, image: img?.src, url, specs: p.keySpecs }),
     breadcrumbLd(crumbs, url),
   ]}
 >
@@ -60,8 +95,8 @@ const assurances = ar
         <Breadcrumbs items={crumbs} tone={gas ? 'dark' : 'light'} />
         <p class:list={['label mt-8', gas ? 'text-brand-300' : 'text-brand-600']}>{brand.name} · {category}</p>
         <h1 class="display mt-3 text-[clamp(2.2rem,5vw,4rem)]">{name}</h1>
-        {p.name !== name && <p class:list={['mt-2 text-lg', gas ? 'text-white/70' : 'text-ink-soft']}>{pick(lang, { en: p.name, ar: p.ar?.name })}</p>}
-        <p class:list={['mt-5 max-w-xl text-[17px] leading-relaxed', gas ? 'text-white/75' : 'text-mute']} lang={contentLang}>{summary}</p>
+        {fullName !== name && <p class:list={['mt-2 text-lg', gas ? 'text-white/70' : 'text-ink-soft']} set:html={fmt(fullName)} />}
+        <p class:list={['mt-5 max-w-xl text-[17px] leading-relaxed', gas ? 'text-white/75' : 'text-mute']} lang={contentLang} set:html={fmt(summary)} />
 
         <div class="mt-8 flex flex-wrap gap-3">
           <button type="button" class="btn btn-primary" data-lead="price" data-product={subject} data-brand={brand.name}>{t(lang, 'cta.price')} <Icon name="arrow" size={18} flip /></button>
@@ -76,15 +111,15 @@ const assurances = ar
             </li>
           ))}
         </ul>
-        <p class:list={['label mt-8', brand.exclusive ? (gas ? 'text-brand-300' : 'text-brand-600') : gas ? 'text-white/50' : 'text-mute']}>{claim(brand)[lang]} · {brand.country[lang]}</p>
+        <p class:list={['label mt-8', brand.exclusive ? (gas ? 'text-brand-300' : 'text-brand-600') : gas ? 'text-white/50' : 'text-mute']}>{brand.exclusive ? claim(brand)[lang] : claimFull[lang]} · {brand.country[lang]}</p>
       </div>
 
       <div class="order-1 lg:order-2">
         <div class:list={['stage relative flex aspect-square items-center justify-center overflow-hidden rounded-[var(--radius-lg)] p-8 sm:p-12', gas ? 'bg-white/[0.035] ring-1 ring-white/10' : 'bg-surface ring-1 ring-line']}>
           <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
-          {p.model && <span class:list={['label absolute start-5 top-5', gas ? 'text-white/45' : 'text-mute']}>{p.model}</span>}
+          {p.model && <span class:list={['label absolute start-5 top-5', gas ? 'text-white/60' : 'text-mute']}>{p.model}</span>}
           <ProductImage brand={brand.slug} brandName={brand.name} slug={p.slug} alt={`${brand.name} ${p.name}`} class="relative max-h-full w-auto drop-shadow-[0_30px_40px_rgb(15_23_42/0.18)]" eager />
-          <span class:list={['absolute bottom-4 end-5 text-[11px]', gas ? 'text-white/40' : 'text-mute/80']}>{ar ? 'الصورة' : 'Image'}: {brand.name}</span>
+          <span class:list={['absolute bottom-4 end-5 text-[11px]', gas ? 'text-white/60' : 'text-mute']}>{ar ? 'الصورة' : 'Image'}: {brand.name}</span>
         </div>
       </div>
     </div>
@@ -96,11 +131,11 @@ const assurances = ar
       <div>
         <p class="label text-brand-600">{ar ? 'المواصفات' : 'Specifications'}</p>
         <h2 id="specs-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `المواصفات الرئيسية لـ ${name}` : `${name} key specifications`}</h2>
-        <dl class="mt-8 divide-y divide-line border-y border-line" lang={ar ? 'en' : undefined} dir={ar ? 'ltr' : undefined}>
-          {p.keySpecs.map((s) => (
+        <dl class="mt-8 divide-y divide-line border-y border-line" lang={ar && !specsAr ? 'en' : undefined} dir={ar && !specsAr ? 'ltr' : undefined}>
+          {specs.map((s) => (
             <div class="grid gap-1 py-4 sm:grid-cols-[minmax(180px,0.8fr)_1.2fr] sm:gap-6">
-              <dt class="text-[15px] text-mute">{s.label}</dt>
-              <dd class="font-mono text-[14.5px] text-ink">{s.value}</dd>
+              <dt class="text-[15px] text-mute" set:html={fmt(s.label)} />
+              <dd class:list={[!specsAr && 'font-mono', 'text-[14.5px] text-ink']} set:html={fmt(s.value, true)} />
             </div>
           ))}
         </dl>
@@ -130,23 +165,29 @@ const assurances = ar
       <div>
         <p class="label text-brand-600">{ar ? 'نظرة عامة' : 'Overview'}</p>
         <h2 id="ov-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `ما الذي يقيسه ${name}` : `What ${name} does`}</h2>
-        <p class="mt-6 max-w-[68ch] text-[17px] leading-[1.75] text-ink-soft" lang={contentLang}>{description}</p>
-        {p.whyMiddleEast && !ar && <p class="mt-6 max-w-[68ch] border-s-2 border-brand-500 ps-5 text-[16px] text-ink-soft"><span class="font-semibold text-ink">In the region:</span> {p.whyMiddleEast}</p>}
+        <p class="mt-6 max-w-[68ch] text-[17px] leading-[1.75] text-ink-soft" lang={contentLang} set:html={fmt(description)} />
+        {regional && <p class="mt-6 max-w-[68ch] border-s-2 border-brand-500 ps-5 text-[16px] text-ink-soft"><span class="font-semibold text-ink">{t(lang, 'prod.region')}</span> <Fragment set:html={fmt(regional)} /></p>}
       </div>
       <div class="grid content-start gap-10">
         {applications.length > 0 && (
           <div>
             <h3 class="label text-mute">{ar ? 'التطبيقات' : 'Applications'}</h3>
             <ul class="mt-4 grid gap-2.5 text-[15px]" lang={ar && !p.ar?.applications ? 'en' : undefined}>
-              {applications.map((a) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span>{a}</li>)}
+              {applications.map((a) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span><span set:html={fmt(a)} /></li>)}
             </ul>
           </div>
         )}
-        {p.standards.length > 0 && (
+        {standards.length > 0 && (
           <div>
             <h3 class="label text-mute">{ar ? 'المعايير' : 'Standards'}</h3>
             <ul class="mt-4 flex flex-wrap gap-2" dir="ltr">
-              {p.standards.map((s) => <li class="rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px]">{s}</li>)}
+              {standards.map((s, i) => {
+                // Index-aligned with p.standards (Arabic overrides only swap descriptors), so the English string finds the page.
+                const slug = standardSlug(p.standards[i]);
+                return slug
+                  ? <li><a href={L(`/standards/${slug}/`)} class="block rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px] transition-colors hover:border-brand-600 hover:text-brand-700">{s}</a></li>
+                  : <li class="rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px]">{s}</li>;
+              })}
             </ul>
           </div>
         )}

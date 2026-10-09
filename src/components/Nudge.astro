@@ -1,14 +1,14 @@
 ---
 import Icon from './Icon.astro';
 import { t, type Lang } from '../i18n';
-interface Props { lang: Lang; product: string }
-const { lang, product } = Astro.props;
+interface Props { lang: Lang; product: string; label: string }
+const { lang, product, label } = Astro.props;
 const ar = lang === 'ar';
 ---
 <aside id="nudge" hidden class="nudge fixed bottom-5 start-5 z-40 w-[min(380px,calc(100vw-110px))]" aria-label={ar ? 'عرض سعر' : 'Pricing'}>
   <div class="card relative p-5 shadow-[var(--shadow-pop)]">
-    <button type="button" class="absolute end-2 top-2 inline-flex h-9 w-9 items-center justify-center rounded-sm text-mute transition-colors hover:bg-surface hover:text-ink" aria-label={t(lang, 'lead.close')} data-nudge-close><Icon name="x" size={18} /></button>
-    <p class="label text-brand-600">{product}</p>
+    <button type="button" class="absolute end-1 top-1 inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors hover:bg-surface hover:text-ink" aria-label={t(lang, 'lead.close')} data-nudge-close><Icon name="x" size={18} /></button>
+    <p class="label text-brand-600">{label}</p>
     <p class="display mt-2 pe-8 text-lg leading-snug">{ar ? 'هل تحتاج السعر ومدة التوريد؟' : 'Need pricing and lead time?'}</p>
     <p class="mt-1 text-[14px] text-mute">{ar ? 'يرسلها مهندس تطبيقات اليوم مع التهيئة المناسبة.' : 'An application engineer can send them today, configured for your method.'}</p>
     <div class="mt-4 flex gap-2">

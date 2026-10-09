@@ -1,11 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import { t, type Lang } from '../i18n';
+import { breadcrumbLd } from '../data/schema';
+import { t, localize, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.search') }];
 const i18n = {
   lang,
   none: ar ? 'لم نجد نتيجة مطابقة لـ' : 'No exact match for',
@@ -14,7 +17,7 @@ const i18n = {
   ask: t(lang, 'cta.interest'),
 };
 ---
-<Base lang={lang} title={ar ? 'البحث عن جهاز | AlyTech Scientific' : 'Search Instruments | AlyTech Scientific'} description={ar ? 'ابحث في أجهزة ومعدات AlyTech Scientific.' : 'Search the AlyTech Scientific instrument and equipment range.'} noindex>
+<Base lang={lang} title={ar ? 'البحث عن جهاز | AlyTech Scientific' : 'Search Instruments | AlyTech Scientific'} description={ar ? 'ابحث في مجموعة أجهزة ومعدات AlyTech Scientific المخبرية والاختبار حسب اسم الجهاز أو الطراز أو المعيار أو التطبيق في الشرق الأوسط.' : 'Search the AlyTech Scientific range of laboratory instruments and testing equipment by name, model, standard or application.'} schema={[breadcrumbLd(crumbs, L('/search/'))]} noindex>
   <section class="min-h-[70vh] bg-card pt-[72px]">
     <div class="wrap max-w-3xl py-12 md:py-16">
       <h1 class="display text-[clamp(2rem,4.4vw,3.2rem)]">{ar ? 'ابحث عن جهاز' : 'Find an instrument'}</h1>

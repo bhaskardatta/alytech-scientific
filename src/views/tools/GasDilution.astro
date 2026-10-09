@@ -1,0 +1,281 @@
+---
+import ToolShell from './ToolShell.astro';
+import ToolField from './ToolField.astro';
+import GasMixCta from './GasMixCta.astro';
+import Ribbon from '../../components/Ribbon.astro';
+import Icon from '../../components/Icon.astro';
+import { dilute, flowsForTarget, curve, fmt, toPpm } from '../../scripts/tools/calc';
+import { errMsgs } from '../../scripts/tools/messages';
+import type { Lang } from '../../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ar = lang === 'ar';
+
+// ---- Strings (EN / AR) ----
+const T = {
+  en: {
+    title: 'Gas Dilution Calculator (ppm, %, ppb) | AlyTech',
+    description: 'Free gas dilution calculator: find the output concentration, or the source and diluent flows for a target mixture in %, ppm or ppb. With worked examples.',
+    h1: 'Gas dilution calculator',
+    intro: 'Work out the concentration a mixer or diluter delivers from a source gas and a zero-gas stream, or the flows needed to reach a target. The calculation runs in your browser; the formulas, assumptions and worked examples below are plain text.',
+    modeLegend: 'What do you want to calculate?',
+    modes: { forward: 'Output concentration', inverse: 'Flows for a target', curve: 'Calibration curve' },
+    cs: 'Source concentration (C_s)', csHint: 'Concentration of the gas in the cylinder.',
+    flowUnit: 'Flow unit', flowUnitHint: 'Applies to every flow below.',
+    qs: 'Source gas flow (Q_s)', qd: 'Diluent (zero gas) flow (Q_d)', qt: 'Total flow (Q_t)',
+    ct: 'Target concentration (C_t)', ctHint: 'Must be lower than the source.',
+    cmin: 'Lowest target', cmax: 'Highest target', n: 'Number of points', nHint: '2 to 10 evenly spaced targets.',
+    unit: 'Unit',
+    result: 'Result',
+    noJs: 'This calculator needs JavaScript. The formulas and worked examples below work without it.',
+    hint: 'Enter your values to see the result.',
+    r: { out: 'Output concentration', ratio: 'Dilution ratio', total: 'Total flow', qs: 'Source gas flow', qd: 'Diluent (zero gas) flow', curve: 'Calibration curve points', target: 'Target', qsShort: 'Source', qdShort: 'Diluent', ratioShort: 'Ratio' },
+    methodKicker: 'Method',
+    formulasH: 'The formulas',
+    formulasIntro: 'A diluter mixes a source gas of known concentration with a diluent that contains none of the target component. When the two streams are metered in the same flow units, the output is a flow-weighted average of the two.',
+    f: [
+      ['Output concentration', 'C_out = C_s × Q_s / (Q_s + Q_d)'],
+      ['Dilution ratio', 'R = (Q_s + Q_d) / Q_s = C_s / C_out'],
+      ['Source flow for a target', 'Q_s = Q_t × C_t / C_s'],
+      ['Diluent flow', 'Q_d = Q_t − Q_s'],
+    ] as [string, string][],
+    vars: [['C_s', 'source gas concentration'], ['Q_s', 'source gas flow'], ['Q_d', 'diluent (zero gas) flow'], ['Q_t', 'total flow, Q_s + Q_d'], ['C_t', 'target concentration'], ['C_out', 'concentration delivered']],
+    unitsLine: '1 % = 10,000 ppm  ·  1 ppm = 1,000 ppb  ·  1 L/min = 1,000 mL/min (sccm)',
+    exH: 'Worked examples',
+    given: 'Given', calc: 'Calculation', answer: 'Answer',
+    exA: 'Concentration from a known mix',
+    exB: 'Flows for a target concentration',
+    exC: 'A five-point calibration curve',
+    exCgiven: 'Source 100 ppm, targets 10 to 50 ppm in five steps, total flow 1,000 mL/min.',
+    exCcols: ['Target (ppm)', 'Source Q_s (mL/min)', 'Diluent Q_d (mL/min)', 'Ratio'],
+    assumeH: 'Assumptions and limits',
+    assume: [
+      'Ideal mixing and ideal-gas behaviour. Concentrations are mole (volume) fractions, so ppm here means ppmv (µmol/mol).',
+      'Both streams are metered in the same units and at the same reference conditions, for example sccm at 0 °C or 20 °C and 1 atm.',
+      'Each mass flow controller is calibrated for the gas it meters, or a gas conversion factor has been applied. A controller set up for nitrogen does not read a hydrocarbon or a CO₂ mixture correctly.',
+      'The diluent contains none of the target component (zero gas). A background level in the diluent shifts the result.',
+      'One stage of dilution. Ratios beyond what your smallest and largest controllable flows allow need two stages in cascade; the overall ratio is the product of the stage ratios.',
+      'Controller accuracy is normally specified over part of its range (for example 10 to 100 % of full scale). Keep both flows inside that range.',
+    ],
+    faqs: [
+      { q: 'How do I calculate the dilution ratio of a gas mixture?', a: 'Divide the total flow by the source gas flow: R = (Q_s + Q_d) / Q_s. It equals the source concentration divided by the delivered concentration. A 10 mL/min source flow in 1,000 mL/min of total flow gives 100 : 1, so a 1,000 ppm source becomes 10 ppm.' },
+      { q: 'How do I convert between %, ppm and ppb?', a: 'One percent is 10,000 ppm and one ppm is 1,000 ppb, so 1 % equals 10,000,000 ppb. For gases these are normally volume (mole) fractions, written ppmv and ppbv.' },
+      { q: 'Do mass flow controllers need a correction for different gases?', a: 'Yes. A controller’s calibration depends on the gas. Use a controller calibrated for the actual gas, or apply the gas conversion factor from its manufacturer; otherwise the flow ratio, and so the concentration, will be wrong. The GasMix Aiolos III, for example, uses mass flow controllers with a factory calibration per gas matrix.' },
+      { q: 'How can I make ppb-level mixtures from a percent-level cylinder?', a: 'A single stage is limited by the smallest and largest flows your controllers can meter accurately, so ratios of several thousand to one and beyond are normally made in two stages. The output of the first stage becomes the source of the second, and the overall ratio is the product of the two. The GasMix Aiolos III offers a cascade option for dilution factors up to 10⁸.' },
+    ],
+    ctaHead: 'Make these mixtures on demand.',
+    ctaBody: 'GasMix mixers and diluters blend two to six gas streams through mass flow controllers to produce calibration standards from percent levels down to ppb, and report the uncertainty of every mixture. AlyTech Scientific supplies, installs and supports them across the Middle East.',
+    ctaView: 'View the Aiolos III', ctaAll: 'All GasMix mixers and diluters',
+    more: [{ href: '/tools/ppm-to-mg-m3/', title: 'ppm to mg/m³ converter', text: 'Convert gas concentrations at any temperature and pressure.' }, { href: '/standards/', title: 'Test standards', text: 'Find instruments by ASTM, ISO, EN or AASHTO method number.' }],
+  },
+  ar: {
+    title: 'حاسبة تخفيف الغازات (ppm و% و ppb) | AlyTech',
+    description: 'حاسبة مجانية لتخفيف الغازات: احسب التركيز الناتج أو تدفقات غاز المصدر وغاز التخفيف لمزيج مستهدف بوحدات % أو ppm أو ppb، مع المعادلات وأمثلة محلولة.',
+    h1: 'حاسبة تخفيف الغازات',
+    intro: 'احسب التركيز الذي يعطيه خالط أو مخفِّف الغازات من غاز مصدر وتيار غاز صفري، أو احسب التدفقات اللازمة للوصول إلى تركيز مستهدف. تجري الحسابات في متصفحك، أما المعادلات والافتراضات والأمثلة المحلولة أدناه فنص عادي.',
+    modeLegend: 'ما الذي تريد حسابه؟',
+    modes: { forward: 'التركيز الناتج', inverse: 'التدفقات لتركيز مستهدف', curve: 'منحنى معايرة' },
+    cs: 'تركيز المصدر (C_s)', csHint: 'تركيز الغاز في الأسطوانة.',
+    flowUnit: 'وحدة التدفق', flowUnitHint: 'تنطبق على كل التدفقات أدناه.',
+    qs: 'تدفق غاز المصدر (Q_s)', qd: 'تدفق غاز التخفيف (الغاز الصفري) (Q_d)', qt: 'التدفق الكلي (Q_t)',
+    ct: 'التركيز المستهدف (C_t)', ctHint: 'يجب أن يكون أقل من تركيز المصدر.',
+    cmin: 'أدنى هدف', cmax: 'أعلى هدف', n: 'عدد النقاط', nHint: 'من 2 إلى 10 نقاط موزعة بانتظام.',
+    unit: 'الوحدة',
+    result: 'النتيجة',
+    noJs: 'تحتاج هذه الحاسبة إلى JavaScript. أما المعادلات والأمثلة المحلولة أدناه فتعمل بدونها.',
+    hint: 'أدخل قيمك لعرض النتيجة.',
+    r: { out: 'التركيز الناتج', ratio: 'نسبة التخفيف', total: 'التدفق الكلي', qs: 'تدفق غاز المصدر', qd: 'تدفق غاز التخفيف (الغاز الصفري)', curve: 'نقاط منحنى المعايرة', target: 'الهدف', qsShort: 'المصدر', qdShort: 'التخفيف', ratioShort: 'النسبة' },
+    methodKicker: 'الطريقة',
+    formulasH: 'المعادلات',
+    formulasIntro: 'يمزج المخفِّف غاز مصدر معلوم التركيز مع غاز تخفيف لا يحتوي على المكوّن المستهدف. وإذا قِيس التياران بوحدة تدفق واحدة فإن الناتج متوسط مرجّح بالتدفق للتيارين.',
+    f: [
+      ['التركيز الناتج', 'C_out = C_s × Q_s / (Q_s + Q_d)'],
+      ['نسبة التخفيف', 'R = (Q_s + Q_d) / Q_s = C_s / C_out'],
+      ['تدفق المصدر لتركيز مستهدف', 'Q_s = Q_t × C_t / C_s'],
+      ['تدفق غاز التخفيف', 'Q_d = Q_t − Q_s'],
+    ] as [string, string][],
+    vars: [['C_s', 'تركيز غاز المصدر'], ['Q_s', 'تدفق غاز المصدر'], ['Q_d', 'تدفق غاز التخفيف (الغاز الصفري)'], ['Q_t', 'التدفق الكلي، Q_s + Q_d'], ['C_t', 'التركيز المستهدف'], ['C_out', 'التركيز الناتج']],
+    unitsLine: '1 % = 10,000 ppm  ·  1 ppm = 1,000 ppb  ·  1 L/min = 1,000 mL/min (sccm)',
+    exH: 'أمثلة محلولة',
+    given: 'المعطيات', calc: 'الحساب', answer: 'الناتج',
+    exA: 'التركيز من مزيج معلوم',
+    exB: 'التدفقات لتركيز مستهدف',
+    exC: 'منحنى معايرة من خمس نقاط',
+    exCgiven: 'مصدر بتركيز 100 ppm، وأهداف من 10 إلى 50 ppm في خمس خطوات، وتدفق كلي 1,000 mL/min.',
+    exCcols: ['الهدف (ppm)', 'المصدر Q_s (mL/min)', 'التخفيف Q_d (mL/min)', 'النسبة'],
+    assumeH: 'الافتراضات والحدود',
+    assume: [
+      'خلط مثالي وسلوك غاز مثالي. التراكيز نسب مولية (حجمية)، لذا فإن ppm هنا تعني ppmv (µmol/mol).',
+      'يُقاس التياران بوحدات واحدة وعند ظروف مرجعية واحدة، مثل sccm عند 0 °C أو 20 °C وضغط 1 atm.',
+      'كل وحدة تحكم بالتدفق الكتلي معايرة للغاز الذي تقيسه، أو طُبّق عليها معامل تحويل الغاز. فوحدة مضبوطة للنيتروجين لا تقرأ هيدروكربوناً أو مزيجاً يحتوي على CO₂ قراءة صحيحة.',
+      'غاز التخفيف لا يحتوي على المكوّن المستهدف (غاز صفري)، فوجود مستوى خلفي منه يغيّر النتيجة.',
+      'مرحلة تخفيف واحدة. النسب التي تتجاوز ما تسمح به أصغر وأكبر تدفقات يمكن التحكم بها تحتاج إلى مرحلتين متتاليتين، والنسبة الكلية حاصل ضرب نسبتي المرحلتين.',
+      'تُحدَّد دقة وحدة التحكم عادةً على جزء من مداها (مثلاً من 10 إلى 100 % من المقياس الكامل)، فأبقِ التدفقين ضمن هذا الجزء.',
+    ],
+    faqs: [
+      { q: 'كيف أحسب نسبة التخفيف لمزيج غازي؟', a: 'اقسم التدفق الكلي على تدفق غاز المصدر: R = (Q_s + Q_d) / Q_s. وهي تساوي تركيز المصدر مقسوماً على التركيز الناتج. فتدفق مصدر قدره 10 mL/min ضمن تدفق كلي قدره 1,000 mL/min يعطي نسبة 100 : 1، فيتحول مصدر بتركيز 1,000 ppm إلى 10 ppm.' },
+      { q: 'كيف أحوّل بين % وppm وppb؟', a: 'النسبة المئوية الواحدة تساوي 10,000 ppm، والـ ppm الواحد يساوي 1,000 ppb، فإن 1 % تساوي 10,000,000 ppb. وفي الغازات تكون هذه عادةً نسباً حجمية (مولية) تُكتب ppmv وppbv.' },
+      { q: 'هل تحتاج وحدات التحكم بالتدفق الكتلي إلى تصحيح عند اختلاف الغاز؟', a: 'نعم. تعتمد معايرة وحدة التحكم على الغاز. استخدم وحدة معايرة للغاز الفعلي أو طبّق معامل تحويل الغاز من الشركة المصنعة، وإلا كانت نسبة التدفقين، ومن ثم التركيز، خاطئة. ويستخدم GasMix Aiolos III مثلاً وحدات تحكم بالتدفق الكتلي بمعايرة مصنعية لكل مصفوفة غازية.' },
+      { q: 'كيف أحضّر مزائج بمستوى ppb من أسطوانة بتركيز نسبة مئوية؟', a: 'تتحدد المرحلة الواحدة بأصغر وأكبر تدفق تستطيع وحدات التحكم قياسه بدقة، لذلك تُحضَّر النسب التي تبلغ آلاف الأضعاف وما فوقها عادةً على مرحلتين: يصبح ناتج المرحلة الأولى مصدراً للثانية، والنسبة الكلية حاصل ضرب النسبتين. ويوفر GasMix Aiolos III خيار التخفيف المتتالي (Cascade) لعوامل تخفيف تصل إلى 10⁸.' },
+    ],
+    ctaHead: 'أنتج هذه المزائج عند الطلب.',
+    ctaBody: 'تمزج أجهزة GasMix من اثنين إلى ستة تيارات غازية عبر وحدات تحكم بالتدفق الكتلي لإنتاج معايير معايرة من النسب المئوية حتى ppb، وتُبلغ عن عدم اليقين لكل مزيج. وتورّدها AlyTech Scientific وتركّبها وتدعمها في أنحاء الشرق الأوسط.',
+    ctaView: 'عرض Aiolos III', ctaAll: 'كل أجهزة خلط وتخفيف GasMix',
+    more: [{ href: '/tools/ppm-to-mg-m3/', title: 'محوّل ppm إلى mg/m³', text: 'حوّل تراكيز الغازات عند أي درجة حرارة وضغط.' }, { href: '/standards/', title: 'المعايير الاختبارية', text: 'ابحث عن الأجهزة برقم طريقة ASTM أو ISO أو EN أو AASHTO.' }],
+  },
+};
+const s = T[lang];
+const M = { err: errMsgs(lang), hint: s.hint, units: { pct: '%', ppm: 'ppm', ppb: 'ppb' }, flow: { ml: 'mL/min', l: 'L/min' }, r: s.r };
+
+// ---- Worked examples, computed with the same code the calculator runs ----
+const A = dilute(1000, 10, 990);
+const B = flowsForTarget(toPpm(1, 'pct'), 50, 2000);
+const C = curve(100, 10, 50, 5, 1000);
+if (!B.ok || !C.ok) throw new Error('worked example out of range');
+const exA = [`C_out = ${fmt(1000)} × ${fmt(10)} / (${fmt(10)} + ${fmt(990)}) = ${fmt(A.cOutPpm)} ppm`, `R = (${fmt(10)} + ${fmt(990)}) / ${fmt(10)} = ${fmt(A.ratio)} : 1`];
+const exB = [`Q_s = ${fmt(2000)} × ${fmt(50)} / ${fmt(10000)} = ${fmt(B.qs)} mL/min`, `Q_d = ${fmt(2000)} − ${fmt(B.qs)} = ${fmt(B.qd)} mL/min`, `R = ${fmt(10000)} / ${fmt(50)} = ${fmt(B.ratio)} : 1`];
+
+/** C_out -> C<sub>out</sub>. Input is our own static strings, never user text. */
+const sub = (x: string) => x.replace(/_(\w+)/g, '<sub>$1</sub>');
+const concOpts: [string, string][] = [['pct', '%'], ['ppm', 'ppm'], ['ppb', 'ppb']];
+const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
+
+---
+<ToolShell lang={lang} path="/tools/gas-dilution-calculator/" title={s.title} description={s.description} h1={s.h1} intro={s.intro} faqs={s.faqs} more={s.more}>
+  <!-- Calculator -->
+  <div slot="calc" data-tool="dilution" class="grid gap-5 lg:grid-cols-[1.15fr_1fr] lg:gap-6">
+    <form class="card p-5 sm:p-8" novalidate>
+      <fieldset>
+        <legend class="label text-mute">{s.modeLegend}</legend>
+        <div class="mt-3 grid gap-2 sm:grid-cols-3">
+          {(['forward', 'inverse', 'curve'] as const).map((m, i) => (
+            <label class="relative block">
+              <input type="radio" name="mode" value={m} checked={i === 0} class="peer sr-only" />
+              <Icon name="check" size={16} class="pointer-events-none absolute start-3 top-1/2 hidden -translate-y-1/2 text-white peer-checked:block" />
+              <span class="flex min-h-[48px] cursor-pointer items-center justify-center rounded-sm border border-line-strong px-4 py-2 text-center text-[15px] font-semibold transition-colors duration-200 hover:border-ink peer-checked:border-brand-600 peer-checked:bg-brand-600 peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand-500">{s.modes[m]}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div class="mt-7 grid gap-5 sm:grid-cols-2">
+        <ToolField class="sm:col-span-2" id="dil-cs" name="cs" label={s.cs} hint={s.csHint} value="1000" units={{ name: 'csUnit', label: s.unit, options: concOpts, selected: 'ppm' }} />
+
+        <div class="sm:col-span-2">
+          <label for="dil-flow" class="mb-1.5 block text-sm font-medium">{s.flowUnit}</label>
+          <select id="dil-flow" name="flowUnit" class="field sm:max-w-xs" aria-describedby="dil-flow-hint">
+            {flowOpts.map(([v, text]) => <option value={v}>{text}</option>)}
+          </select>
+          <p id="dil-flow-hint" class="mt-1.5 text-[13px] text-mute">{s.flowUnitHint}</p>
+        </div>
+
+        <ToolField dataFor="forward" id="dil-qs" name="qs" label={s.qs} value="10" />
+        <ToolField dataFor="forward" id="dil-qd" name="qd" label={s.qd} value="990" />
+
+        <ToolField dataFor="inverse" class="sm:col-span-2" id="dil-ct" name="ct" label={s.ct} hint={s.ctHint} value="10" units={{ name: 'ctUnit', label: s.unit, options: concOpts, selected: 'ppm' }} />
+        <ToolField dataFor="curve" id="dil-cmin" name="cmin" label={s.cmin} value="100" units={{ name: 'cminUnit', label: s.unit, options: concOpts, selected: 'ppm' }} />
+        <ToolField dataFor="curve" id="dil-cmax" name="cmax" label={s.cmax} value="500" units={{ name: 'cmaxUnit', label: s.unit, options: concOpts, selected: 'ppm' }} />
+        <ToolField dataFor="curve" id="dil-n" name="n" label={s.n} hint={s.nHint} value="5" />
+        <ToolField dataFor="inverse curve" id="dil-qt" name="qt" label={s.qt} value="1000" />
+      </div>
+    </form>
+
+    <div class="on-dark relative overflow-hidden rounded-[var(--radius-lg)] bg-night-900 p-6 text-white sm:p-8">
+      <Ribbon class="pointer-events-none absolute inset-0 h-full w-full text-brand-600 opacity-25" lines={22} />
+      <div class="relative">
+        <p class="label flex items-center gap-2 text-brand-300"><Icon name="gauge" size={14} />{s.result}</p>
+        <div data-readout role="status" aria-live="polite" aria-atomic="true" class="mt-6">
+          <p class="text-[15px] leading-relaxed text-white/70">{s.noJs}</p>
+        </div>
+      </div>
+    </div>
+    <script type="application/json" set:html={JSON.stringify(M)} />
+  </div>
+
+  <!-- Method + worked examples + assumptions -->
+  <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="dil-formulas-h">
+    <div class="wrap grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+      <div>
+        <p class="label text-brand-600">{s.methodKicker}</p>
+        <h2 id="dil-formulas-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{s.formulasH}</h2>
+        <p class="mt-5 max-w-[60ch] text-[16.5px] leading-[1.75] text-ink-soft">{s.formulasIntro}</p>
+        <dl class="mt-8 grid grid-cols-[auto_1fr] gap-x-5 gap-y-2 text-[15px]">
+          {s.vars.map(([k, v]) => (<><dt dir="ltr" class="font-mono text-ink" set:html={sub(k)} /><dd class="text-ink-soft" set:html={sub(v)} /></>))}
+        </dl>
+        <p dir="ltr" class="mt-6 font-mono text-[13px] text-mute text-start">{s.unitsLine}</p>
+      </div>
+      <div class="card divide-y divide-line self-start">
+        {s.f.map(([name, expr]) => (
+          <div class="p-5 sm:p-6">
+            <p class="label text-mute">{name}</p>
+            <p dir="ltr" class="mt-2 overflow-x-auto font-mono text-[clamp(15px,2.2vw,18px)] text-ink text-start" set:html={sub(expr)} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20" aria-labelledby="dil-ex-h">
+    <div class="wrap">
+      <h2 id="dil-ex-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{s.exH}</h2>
+      <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        <article class="card min-w-0 p-6">
+          <h3 class="display text-lg">{s.exA}</h3>
+          <p class="label mt-5 text-mute">{s.given}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start" set:html={sub('C_s = 1,000 ppm<br />Q_s = 10 mL/min<br />Q_d = 990 mL/min')} />
+          <p class="label mt-5 text-mute">{s.calc}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start" set:html={sub(exA.join('<br />'))} />
+          <p class="label mt-5 text-brand-600">{s.answer}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[18px] font-medium text-ink text-start">{fmt(A.cOutPpm)} ppm</p>
+        </article>
+        <article class="card min-w-0 p-6">
+          <h3 class="display text-lg">{s.exB}</h3>
+          <p class="label mt-5 text-mute">{s.given}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start" set:html={sub('C_s = 1 % = 10,000 ppm<br />C_t = 50 ppm<br />Q_t = 2 L/min = 2,000 mL/min')} />
+          <p class="label mt-5 text-mute">{s.calc}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start" set:html={sub(exB.join('<br />'))} />
+          <p class="label mt-5 text-brand-600">{s.answer}</p>
+          <p dir="ltr" class="mt-1.5 font-mono text-[18px] font-medium text-ink text-start" set:html={sub(`Q_s ${fmt(B.qs)} · Q_d ${fmt(B.qd)} mL/min`)} />
+        </article>
+        <article class="card min-w-0 p-6">
+          <h3 class="display text-lg">{s.exC}</h3>
+          <p class="mt-5 text-[14.5px] leading-relaxed text-ink-soft">{s.exCgiven}</p>
+          <div class="mt-4 overflow-x-auto" dir="ltr" tabindex="0" role="region" aria-label={s.exC}>
+            <table dir="ltr" class="w-full border-collapse text-end font-mono text-[13px] text-ink">
+              <caption class="sr-only">{s.exC}</caption>
+              <thead>
+                <tr>{s.exCcols.map((c) => <th scope="col" class="border-b border-line-strong px-2 py-2 text-end text-[12px] font-medium text-mute first:text-start">{c}</th>)}</tr>
+              </thead>
+              <tbody>
+                {C.rows.map((r) => (
+                  <tr class="border-b border-line last:border-0">
+                    <th scope="row" class="px-2 py-2 text-start font-medium">{fmt(r.c)}</th>
+                    <td class="px-2 py-2">{fmt(r.qs)}</td>
+                    <td class="px-2 py-2">{fmt(r.qd)}</td>
+                    <td class="px-2 py-2 whitespace-nowrap">{fmt(r.ratio)} : 1</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="dil-assume-h">
+    <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+      <h2 id="dil-assume-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{s.assumeH}</h2>
+      <ul class="grid gap-4 text-[16px] leading-relaxed text-ink-soft">
+        {s.assume.map((a) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span><span>{a}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <GasMixCta slot="cta" lang={lang} id="dil-cta-h" head={s.ctaHead} body={s.ctaBody} slugs={['aiolos-iii', 'zephyr-ii']} subject="GasMix Aiolos III" ghost={{ href: '/gasmix/aiolos-iii/', label: s.ctaView }} link={{ href: '/gasmix/', label: s.ctaAll }} />
+</ToolShell>
+
+<script>
+  import '../../scripts/tools/dilution';
+</script>

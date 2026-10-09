@@ -22,20 +22,23 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
       <p class="label mb-4 text-brand-300">{t(lang, 'nav.products')}</p>
       <ul class="space-y-2 text-[15px]">
         {brands.map((b) => (
-          <li><a class="hover:text-white" href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)}>{b.name}</a></li>
+          <li><a class="hit hover:text-white" href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)}>{b.name}</a></li>
         ))}
-        <li><a class="hover:text-white" href={L('/equipment/')}>{t(lang, 'nav.equipment')}</a></li>
+        <li><a class="hit hover:text-white" href={L('/equipment/')}>{t(lang, 'nav.equipment')}</a></li>
+        <li><a class="hit hover:text-white" href={L('/standards/')}>{t(lang, 'nav.standards')}</a></li>
+        <li><a class="hit hover:text-white" href={L('/tools/')}>{t(lang, 'nav.tools')}</a></li>
       </ul>
     </div>
 
     <div>
       <p class="label mb-4 text-brand-300">{t(lang, 'footer.company')}</p>
       <ul class="space-y-2 text-[15px]">
-        <li><a class="hover:text-white" href={L('/services/')}>{t(lang, 'nav.services')}</a></li>
-        <li><a class="hover:text-white" href={L('/industries/')}>{t(lang, 'nav.industries')}</a></li>
-        <li><a class="hover:text-white" href={L('/about/')}>{t(lang, 'nav.about')}</a></li>
-        <li><a class="hover:text-white" href={L('/contact/')}>{t(lang, 'nav.contact')}</a></li>
-        <li><a class="hover:text-white" href={L('/privacy/')}>{t(lang, 'footer.privacy')}</a></li>
+        <li><a class="hit hover:text-white" href={L('/services/')}>{t(lang, 'nav.services')}</a></li>
+        <li><a class="hit hover:text-white" href={L('/industries/')}>{t(lang, 'nav.industries')}</a></li>
+        <li><a class="hit hover:text-white" href={L('/about/')}>{t(lang, 'nav.about')}</a></li>
+        <li><a class="hit hover:text-white" href={L('/contact/')}>{t(lang, 'nav.contact')}</a></li>
+        <li><a class="hit hover:text-white" href={L('/privacy/')}>{t(lang, 'footer.privacy')}</a></li>
+        <li><button type="button" class="hit cursor-pointer hover:text-white" data-consent-open>{t(lang, 'footer.cookies')}</button></li>
       </ul>
     </div>
 
@@ -45,13 +48,12 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
         {site.address.street}<br />{site.address.poBox}<br />{site.address.city}, {lang === 'ar' ? 'الإمارات العربية المتحدة' : site.address.country}
       </address>
       <ul class="mt-4 space-y-3 text-[15px]">
-        <li><button type="button" class="inline-flex items-center gap-2 hover:text-white" data-lead="whatsapp"><Icon name="whatsapp" size={18} />WhatsApp</button></li>
-        <li><a class="inline-flex items-center gap-2 hover:text-white" href={`mailto:${site.email}`}><Icon name="mail" size={18} />{site.email}</a></li>
-        <li><a class="inline-flex items-center gap-2 hover:text-white" href={site.mapUrl} {...ext}><Icon name="pin" size={18} />{lang === 'ar' ? 'افتح في الخرائط' : 'Open in Maps'}</a></li>
+        <li><button type="button" class="hit inline-flex items-center gap-2 hover:text-white" data-lead="whatsapp"><Icon name="whatsapp" size={18} />WhatsApp</button></li>
+        <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={`mailto:${site.email}`}><Icon name="mail" size={18} />{site.email}</a></li>
+        <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={site.mapUrl} {...ext}><Icon name="pin" size={18} />{lang === 'ar' ? 'افتح في الخرائط' : 'Open in Maps'}</a></li>
       </ul>
       <div class="mt-6 flex gap-4 text-sm">
-        <a class="hover:text-white" href={site.social.linkedin} {...ext}>LinkedIn</a>
-        <a class="hover:text-white" href={site.social.youtube} {...ext}>YouTube</a>
+        <a class="hit hover:text-white" href={site.parentLinkedin} {...ext}>{lang === 'ar' ? 'مجموعة AlyTech على LinkedIn' : 'AlyTech group on LinkedIn'}</a>
       </div>
     </div>
   </div>

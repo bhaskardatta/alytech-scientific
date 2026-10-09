@@ -1,0 +1,7 @@
+---
+import Standard from '../../../views/Standard.astro';
+import { standards } from '../../../data/standards';
+export const getStaticPaths = () => standards.map((standard) => ({ params: { slug: standard.slug }, props: { standard } }));
+const { standard } = Astro.props;
+---
+<Standard lang="ar" standard={standard} />

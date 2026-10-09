@@ -1,18 +1,21 @@
 import type { APIRoute } from 'astro';
 import { dbReady, insert } from '../../lib/db';
 import { requestInfo, ipOrg, isBot, clean } from '../../lib/visitor';
+import { originOk, limited } from '../../lib/guard';
 
 export const prerender = false;
 
 const TYPES = new Set(['pageview', 'lead_open', 'search', 'nudge']);
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
+  if (!originOk(request)) return new Response(null, { status: 403 });
   const raw = await request.text();
   if (raw.length > 4_000) return new Response(null, { status: 413 });
   let b: Record<string, any>;
   try { b = JSON.parse(raw); } catch { return new Response(null, { status: 400 }); }
   const meta = requestInfo(request, clientAddress);
   if (!TYPES.has(b.type) || isBot(meta.user_agent)) return new Response(null, { status: 204 });
+  if (limited(`track:${meta.ip}`, 120)) return new Response(null, { status: 429 }); // before the IPinfo lookup below
 
   const { type, visitorId, sessionId, path, title, product, referrer, lang, ...rest } = b;
   delete rest.ts;

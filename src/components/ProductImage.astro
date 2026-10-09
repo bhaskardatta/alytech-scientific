@@ -1,15 +1,20 @@
 ---
-import { imageOf } from '../data/catalog';
+import { brandInfo, imageOf } from '../data/catalog';
+import { t, type Lang } from '../i18n';
 interface Props { brand: string; brandName: string; slug: string; alt: string; class?: string; eager?: boolean; sizes?: string }
 const { brand, brandName, slug, alt, class: cls = '', eager = false, sizes = '(min-width: 1024px) 40vw, 90vw' } = Astro.props;
 const img = imageOf(brand, slug);
+// Callers don't pass a locale, so read it from the URL (English at the root, Arabic under /ar/).
+const lang: Lang = /^\/ar(\/|$)/.test(Astro.url.pathname) ? 'ar' : 'en';
+const arName = lang === 'ar' ? brandInfo(brand)?.products.find((p) => p.slug === slug)?.ar?.name : undefined;
+const label = arName ? `${brandName} ${arName}` : alt;
 ---
 {img ? (
   <img
     src={img.src}
     width={img.w}
     height={img.h}
-    alt={alt}
+    alt={label}
     sizes={sizes}
     loading={eager ? 'eager' : 'lazy'}
     fetchpriority={eager ? 'high' : 'auto'}
@@ -17,8 +22,8 @@ const img = imageOf(brand, slug);
     class:list={['object-contain', cls]}
   />
 ) : (
-  <div class:list={['placeholder flex items-center justify-center text-center', cls]} role="img" aria-label={alt}>
-    <span class="label max-w-[16ch] text-mute [overflow-wrap:anywhere]">{brandName} image pending</span>
+  <div class:list={['placeholder flex items-center justify-center text-center', cls]} role="img" aria-label={label}>
+    <span class="label max-w-[16ch] text-mute [overflow-wrap:anywhere]">{t(lang, 'img.onRequest')}</span>
   </div>
 )}
 <style>

@@ -43,5 +43,9 @@ export const productPath = (b: Pick<Brand, 'slug'>, p: Pick<Product, 'slug'>) =>
 export const imageOf = (brand: string, slug: string) =>
   (images as Record<string, { src: string; w: number; h: number }>)[`${brand}/${slug}`];
 
-/** Short display name: "Aiolos III Gas Mixer and Gas Diluter" -> "Aiolos III" when a model code exists. */
-export const shortName = (p: Product) => p.model && p.name.startsWith(p.model) ? p.model : p.name;
+/** Short display name: "Aiolos III Gas Mixer and Gas Diluter" -> "Aiolos III" when a model code exists.
+ *  Arabic names keep the English shape (model first), so the same rule applies to them. */
+export const shortName = (p: Product, lang: 'en' | 'ar' = 'en') => {
+  const name = (lang === 'ar' && p.ar?.name) || p.name;
+  return p.model && name.startsWith(p.model) ? p.model : name;
+};

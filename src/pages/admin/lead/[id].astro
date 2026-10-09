@@ -1,91 +1,104 @@
 ---
 import Admin from '../../../layouts/Admin.astro';
 import { isAdmin } from '../../../lib/auth';
-import { select, update } from '../../../lib/db';
-import { fmt, waHref, modeLabel } from '../../../lib/admin';
+import { dbReady, select, update } from '../../../lib/db';
+import { fmt, waHref, modeLabel, dbNotice, go } from '../../../lib/admin';
 export const prerender = false;
 
-if (!(await isAdmin(Astro.cookies))) return Astro.redirect('/admin/login/');
+if (!(await isAdmin(Astro.cookies))) return go(Astro, '/admin/login/');
 const { id } = Astro.params;
-if (!id || !/^[0-9a-f-]{36}$/i.test(id)) return Astro.redirect('/admin/');
+if (!id || !/^[0-9a-f-]{36}$/i.test(id)) return go(Astro, '/admin/');
 
 if (Astro.request.method === 'POST') {
   const f = await Astro.request.formData();
-  await update('leads', `id=eq.${id}`, { notes: String(f.get('notes') ?? '').slice(0, 5000), handled: f.get('handled') === 'on' });
-  return Astro.redirect(Astro.url.pathname);
+  if (dbReady()) {
+    try { await update('leads', `id=eq.${id}`, { notes: String(f.get('notes') ?? '').slice(0, 5000), handled: f.get('handled') === 'on' }); } catch (e) { console.error('admin lead save failed', e); }
+  }
+  return go(Astro, Astro.url.pathname);
 }
 
-const [lead] = await select('leads', `select=*&id=eq.${id}`);
-if (!lead) return Astro.redirect('/admin/');
-const vid = lead.visitor_id ? encodeURIComponent(lead.visitor_id) : null;
-const [journey, others] = vid
-  ? await Promise.all([
-      select('events', `select=ts,type,path,title,product,data,ip_org,geo_city,geo_country,referrer&visitor_id=eq.${vid}&order=ts.asc&limit=300`),
-      select('leads', `select=id,created_at,status,mode,product&visitor_id=eq.${vid}&id=neq.${id}&order=created_at.desc`),
-    ])
-  : [[], []];
+let lead: any, journey: any[] = [], others: any[] = [];
+let error: unknown;
+if (dbReady()) {
+  try {
+    [lead] = await select('leads', `select=*&id=eq.${id}`);
+    if (!lead) return go(Astro, '/admin/');
+    const vid = lead.visitor_id ? encodeURIComponent(lead.visitor_id) : null;
+    if (vid) {
+      [journey, others] = await Promise.all([
+        select('events', `select=ts,type,path,title,product,data,ip_org,geo_city,geo_country,referrer&visitor_id=eq.${vid}&order=ts.asc&limit=300`),
+        select('leads', `select=id,created_at,status,mode,product&visitor_id=eq.${vid}&id=neq.${id}&order=created_at.desc`),
+      ]);
+    }
+  } catch (e) {
+    error = e;
+  }
+}
 const views = journey.filter((e) => e.type === 'pageview');
 const products = [...new Set(views.map((e) => e.product).filter(Boolean))];
-const fields: [string, any][] = [
+const fields: [string, any][] = !lead ? [] : [
   ['Request', modeLabel[lead.mode] ?? lead.mode], ['Product', lead.product], ['Company', lead.company], ['Country (stated)', lead.country],
   ['Email', lead.email], ['Phone / WhatsApp', lead.phone], ['Network', lead.ip_org], ['Location (IP)', [lead.geo_city, lead.geo_country].filter(Boolean).join(', ')],
-  ['Language', lead.lang === 'ar' ? 'Arabic' : 'English'], ['Came from', lead.referrer], ['Device', lead.user_agent],
+  ['Language', lead.lang === 'ar' ? 'Arabic' : 'English'], ['Came from', lead.referrer],
+  ['Landing page', lead.landing_page], ['Campaign', Object.entries(lead.attribution ?? {}).map(([k, v]) => `${k}: ${v}`).join(' · ')], ['Device', lead.user_agent],
 ];
 ---
-<Admin title={lead.name ?? 'Lead'}>
+<Admin title={lead?.name ?? 'Lead'} notice={dbNotice(error)}>
   <a href="/admin/" class="link-arrow text-sm">← All leads</a>
-  <div class="mt-4 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-    <section class="card p-6">
-      <div class="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <p class="label text-mute">{fmt(lead.created_at)} {lead.status === 'partial' && '· not sent'}</p>
-          <h1 class="display mt-2 text-3xl">{lead.name ?? 'Unnamed'}</h1>
+  {lead && (
+    <div class="mt-4 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+      <section class="card p-6">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <p class="label text-mute">{fmt(lead.created_at)} {lead.status === 'partial' && '· not sent'}</p>
+            <h1 class="display mt-2 text-3xl">{lead.name ?? 'Unnamed'}</h1>
+          </div>
+          <div class="flex gap-2">
+            {lead.phone && <a class="btn btn-primary btn-sm" href={waHref(lead.phone, lead.name)} target="_blank" rel="noopener noreferrer">WhatsApp them</a>}
+            {lead.email && <a class="btn btn-ghost btn-sm" href={`mailto:${lead.email}?subject=${encodeURIComponent(`Your enquiry: ${lead.product ?? 'AlyTech Scientific'}`)}`}>Email</a>}
+          </div>
         </div>
-        <div class="flex gap-2">
-          {lead.phone && <a class="btn btn-primary btn-sm" href={waHref(lead.phone, lead.name)} target="_blank" rel="noopener noreferrer">WhatsApp them</a>}
-          {lead.email && <a class="btn btn-ghost btn-sm" href={`mailto:${lead.email}?subject=${encodeURIComponent(`Your enquiry: ${lead.product ?? 'AlyTech Scientific'}`)}`}>Email</a>}
-        </div>
-      </div>
-      <dl class="mt-6 divide-y divide-line border-y border-line">
-        {fields.filter(([, v]) => v).map(([k, v]) => (
-          <div class="grid gap-1 py-3 sm:grid-cols-[180px_1fr]"><dt class="text-mute">{k}</dt><dd class="break-words">{v}</dd></div>
-        ))}
-      </dl>
-      {lead.message && <div class="mt-6"><p class="label text-mute">Message</p><p class="mt-2 whitespace-pre-wrap">{lead.message}</p></div>}
-      <form method="post" class="mt-8 grid gap-3">
-        <label for="notes" class="label text-mute">Follow-up notes</label>
-        <textarea id="notes" name="notes" rows="4" class="field">{lead.notes}</textarea>
-        <label class="flex items-center gap-2"><input type="checkbox" name="handled" checked={lead.handled} class="h-4 w-4 accent-brand-600" /> Handled</label>
-        <button class="btn btn-primary btn-sm justify-self-start">Save</button>
-      </form>
-    </section>
-
-    <section class="grid content-start gap-6">
-      <div class="card p-6">
-        <p class="label text-mute">What they looked at</p>
-        {products.length ? <ul class="mt-3 flex flex-wrap gap-2">{products.map((p) => <li class="rounded-xs bg-brand-50 px-2 py-1 text-brand-700">{p}</li>)}</ul> : <p class="mt-3 text-mute">No product pages recorded (visitor may have declined cookies).</p>}
-        <p class="mt-4 text-mute">{views.length} page views · {new Set(journey.map((e) => e.ts.slice(0, 10))).size} visit day(s)</p>
-      </div>
-      {others.length > 0 && (
-        <div class="card p-6">
-          <p class="label text-mute">Other requests from this visitor</p>
-          <ul class="mt-3 grid gap-2">{others.map((o) => <li><a href={`/admin/lead/${o.id}/`} class="hover:text-brand-600">{fmt(o.created_at)} · {modeLabel[o.mode] ?? o.mode} · {o.product}</a></li>)}</ul>
-        </div>
-      )}
-      <div class="card p-6">
-        <p class="label text-mute">Journey</p>
-        <ol class="mt-3 max-h-[480px] overflow-y-auto">
-          {journey.map((e) => (
-            <li class="grid grid-cols-[110px_1fr] gap-3 border-b border-line py-2 last:border-0">
-              <span class="font-mono text-[12px] text-mute">{fmt(e.ts).split(', ')[1] ?? fmt(e.ts)}</span>
-              <span>
-                {e.type === 'search' ? <>Searched <b>“{e.data?.q}”</b></> : e.type === 'lead_open' ? <>Opened <b>{modeLabel[e.data?.mode] ?? 'form'}</b> {e.data?.product}</> : <>{e.title?.split(' | ')[0] ?? e.path}</>}
-                {e.referrer && !e.referrer.includes('alytechme') && <span class="block text-[12px] text-mute">from {e.referrer}</span>}
-              </span>
-            </li>
+        <dl class="mt-6 divide-y divide-line border-y border-line">
+          {fields.filter(([, v]) => v).map(([k, v]) => (
+            <div class="grid gap-1 py-3 sm:grid-cols-[180px_1fr]"><dt class="text-mute">{k}</dt><dd class="break-words">{v}</dd></div>
           ))}
-        </ol>
-      </div>
-    </section>
-  </div>
+        </dl>
+        {lead.message && <div class="mt-6"><p class="label text-mute">Message</p><p class="mt-2 whitespace-pre-wrap">{lead.message}</p></div>}
+        <form method="post" class="mt-8 grid gap-3">
+          <label for="notes" class="label text-mute">Follow-up notes</label>
+          <textarea id="notes" name="notes" rows="4" class="field">{lead.notes}</textarea>
+          <label class="flex items-center gap-2"><input type="checkbox" name="handled" checked={lead.handled} class="h-4 w-4 accent-brand-600" /> Handled</label>
+          <button class="btn btn-primary btn-sm justify-self-start">Save</button>
+        </form>
+      </section>
+
+      <section class="grid content-start gap-6">
+        <div class="card p-6">
+          <p class="label text-mute">What they looked at</p>
+          {products.length ? <ul class="mt-3 flex flex-wrap gap-2">{products.map((p) => <li class="rounded-xs bg-brand-50 px-2 py-1 text-brand-700">{p}</li>)}</ul> : <p class="mt-3 text-mute">No product pages recorded (visitor may have declined cookies).</p>}
+          <p class="mt-4 text-mute">{views.length} page views · {new Set(journey.map((e) => e.ts.slice(0, 10))).size} visit day(s)</p>
+        </div>
+        {others.length > 0 && (
+          <div class="card p-6">
+            <p class="label text-mute">Other requests from this visitor</p>
+            <ul class="mt-3 grid gap-2">{others.map((o) => <li><a href={`/admin/lead/${o.id}/`} class="hover:text-brand-600">{fmt(o.created_at)} · {modeLabel[o.mode] ?? o.mode} · {o.product}</a></li>)}</ul>
+          </div>
+        )}
+        <div class="card p-6">
+          <p class="label text-mute">Journey</p>
+          <ol class="mt-3 max-h-[480px] overflow-y-auto">
+            {journey.map((e) => (
+              <li class="grid grid-cols-[110px_1fr] gap-3 border-b border-line py-2 last:border-0">
+                <span class="font-mono text-[12px] text-mute">{fmt(e.ts).split(', ')[1] ?? fmt(e.ts)}</span>
+                <span>
+                  {e.type === 'search' ? <>Searched <b>“{e.data?.q}”</b></> : e.type === 'lead_open' ? <>Opened <b>{modeLabel[e.data?.mode] ?? 'form'}</b> {e.data?.product}</> : <>{e.title?.split(' | ')[0] ?? e.path}</>}
+                  {e.referrer && !e.referrer.includes('alytechme') && <span class="block text-[12px] text-mute">from {e.referrer}</span>}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    </div>
+  )}
 </Admin>

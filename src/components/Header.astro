@@ -64,6 +64,11 @@ const current = (href: string) => unlocalize(path).startsWith(href);
                   <span class="link-arrow mt-4 text-sm">{lang === 'ar' ? 'تصفح الفئات' : 'Browse categories'} <Icon name="arrow" size={16} flip /></span>
                 </span>
               </a>
+              <div class="col-span-3 flex flex-wrap items-center gap-x-6 border-t border-line px-6 py-2 text-sm">
+                <span class="label text-mute">{lang === 'ar' ? 'مراجع مجانية' : 'Free references'}</span>
+                <a href={L('/standards/')} class="link-arrow py-2">{t(lang, 'nav.standards')} <Icon name="arrow" size={16} flip /></a>
+                <a href={L('/tools/')} class="link-arrow py-2">{t(lang, 'nav.tools')} <Icon name="arrow" size={16} flip /></a>
+              </div>
             </div>
           </div>
         </div>
@@ -87,6 +92,8 @@ const current = (href: string) => unlocalize(path).startsWith(href);
       <p class="label mt-6 mb-2 text-mute">{t(lang, 'nav.principals')}</p>
       {principals.map((b) => <a href={L(`/principals/${b.slug}/`)} class="mobile-link text-lg">{b.name}</a>)}
       <a href={L('/equipment/')} class="mobile-link mt-6">{t(lang, 'nav.equipment')}</a>
+      <a href={L('/standards/')} class="mobile-link">{t(lang, 'nav.standards')}</a>
+      <a href={L('/tools/')} class="mobile-link">{t(lang, 'nav.tools')}</a>
       {nav.map((n) => <a href={L(n.href)} class="mobile-link">{n.label}</a>)}
       <a href={twin} hreflang={other} lang={other} class="mobile-link">{t(lang, 'nav.switch')}</a>
       <button type="button" class="btn btn-primary mt-8" data-lead="quote">{t(lang, 'cta.quote')}</button>

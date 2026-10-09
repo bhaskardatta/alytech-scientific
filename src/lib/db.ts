@@ -4,7 +4,7 @@ const key = import.meta.env.SUPABASE_SERVICE_ROLE_KEY as string | undefined;
 
 export const dbReady = () => Boolean(url && key);
 
-async function rest(path: string, init: RequestInit & { prefer?: string } = {}) {
+async function call(path: string, init: RequestInit & { prefer?: string } = {}) {
   if (!url || !key) throw new Error('Supabase env vars missing');
   const res = await fetch(`${url}/rest/v1/${path}`, {
     ...init,
@@ -16,7 +16,13 @@ async function rest(path: string, init: RequestInit & { prefer?: string } = {}) 
     },
   });
   if (!res.ok) throw new Error(`Supabase ${res.status}: ${await res.text()}`);
-  return res.status === 204 ? null : res.json();
+  return res;
+}
+
+async function rest(path: string, init: RequestInit & { prefer?: string } = {}) {
+  // return=minimal answers 201 (inserts) or 204 (updates) with an empty body, which res.json() would throw on.
+  const text = await (await call(path, init)).text();
+  return text ? JSON.parse(text) : null;
 }
 
 export const insert = (table: string, row: object) => rest(table, { method: 'POST', body: JSON.stringify(row), prefer: 'return=minimal' });
@@ -29,3 +35,7 @@ export const update = (table: string, filter: string, patch: object) =>
 
 /** `query` is a raw PostgREST query string, e.g. "select=*&order=created_at.desc&limit=50". */
 export const select = <T = any>(table: string, query: string) => rest(`${table}?${query}`) as Promise<T[]>;
+
+/** Exact row count for a PostgREST filter (e.g. "status=eq.submitted&ip=eq.1.2.3.4") without fetching rows or hitting the 1000-row cap. */
+export const count = async (table: string, filter: string) =>
+  Number((await call(`${table}?select=id&${filter}`, { method: 'HEAD', prefer: 'count=exact' })).headers.get('content-range')?.split('/')[1]) || 0;

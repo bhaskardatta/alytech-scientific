@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { t, localize, type Lang } from '../i18n';
-import { site } from '../data/site';
+import { site, whatsappReady } from '../data/site';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -20,10 +20,11 @@ const i18n = {
   sending: t(lang, 'lead.sending'),
   errName: t(lang, 'lead.err.name'),
   errContact: t(lang, 'lead.err.contact'),
-  errSend: t(lang, 'lead.err.send'),
+  errSend: `${t(lang, 'lead.err.unavailable')} \u2066${site.email}\u2069`, // isolates keep the address intact inside Arabic text
   greeting: t(lang, 'wa.greeting'),
   general: t(lang, 'wa.general'),
   wa: site.whatsapp,
+  waReady: whatsappReady,
   lang,
 };
 ---
@@ -42,6 +43,7 @@ const i18n = {
       <input type="hidden" name="product" />
       <input type="hidden" name="brand" />
       <input type="hidden" name="category" />
+      <div class="sr-only" aria-hidden="true"><input name="hp_url" tabindex="-1" autocomplete="off" /></div>
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="sm:col-span-2">
           <label for="lead-name" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.name')} <span class="text-mute">({t(lang, 'lead.required')})</span></label>

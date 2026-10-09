@@ -1,0 +1,177 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProductCard from '../components/ProductCard.astro';
+import ServiceStrip from '../components/ServiceStrip.astro';
+import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+import { standardBySlug, standardPath, orgs, equipLabel, type Standard } from '../data/standards';
+import { productPath, shortName } from '../data/catalog';
+import { categoryPath } from '../data/equipment';
+import { breadcrumbLd, faqLd } from '../data/schema';
+import { site } from '../data/site';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang; standard: Standard }
+const { lang, standard: s } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const d = s.designation;
+const label = equipLabel[s.equip][lang];
+const org = orgs[s.org].name[lang];
+const names = s.products.map(({ brand, product }) => `${brand.name} ${shortName(product, lang)}`);
+const rel = s.related.map((slug) => standardBySlug(slug)).filter((x): x is Standard => !!x);
+
+// ---- Product list for the FAQ: up to three names, then a count ----
+const listed = (n: number) => {
+  const head = names.slice(0, n).join(ar ? '، ' : ', ');
+  const rest = names.length - n;
+  if (rest <= 0) return head;
+  return ar ? `${head} وغيرها` : `${head} and ${rest} more`;
+};
+const plural = names.length > 1;
+
+// ---- Page text ----
+const titleCase = (x: string) => x.replace(/\b[a-z]/g, (c) => c.toUpperCase());
+const title = ar ? `${label} ${d} في الإمارات | AlyTech` : `${d} ${titleCase(label)} in the UAE | AlyTech`;
+
+/** First combination whose length lands in 120-155 characters (names get dropped before the closing lines). */
+const compose = () => {
+  const ends = ar
+    ? [' توريد وتركيب ودعم من AlyTech Scientific في أبوظبي. اطلب عرض سعر.', ' توريد وتركيب ودعم من AlyTech Scientific في أبوظبي.', ' من AlyTech Scientific في أبوظبي مع التركيب والتدريب والدعم. اطلب عرض سعر.', ' من AlyTech Scientific في أبوظبي. اطلب عرض سعر.']
+    : [' Supplied, installed and supported by AlyTech Scientific, Abu Dhabi. Request a quote.', ' Supplied, installed and supported by AlyTech Scientific, Abu Dhabi.', ' From AlyTech Scientific, Abu Dhabi, with installation, training and support. Request a quote.', ' From AlyTech Scientific, Abu Dhabi. Request a quote.'];
+  const first = (n: number) => {
+    if (n === 0) return ar ? `${label} ${d} للمختبرات في الإمارات والشرق الأوسط.` : `${d} ${label} for laboratories in the UAE and the Middle East.`;
+    const more = names.length > n ? (ar ? ' وغيرها' : ` and ${names.length - n} more`) : '';
+    return ar ? `${label} ${d}: ${names.slice(0, n).join('، ')}${more}.` : `${d} ${label}: ${names.slice(0, n).join(', ')}${more}.`;
+  };
+  for (const n of [2, 1, 0]) for (const e of ends) {
+    const text = first(Math.min(n, names.length)) + e;
+    if (text.length >= 120 && text.length <= 155) return text;
+  }
+  return (first(0) + ends[0]).slice(0, 155).replace(/\s\S*$/, '');
+};
+const description = compose();
+
+const faqs = ar
+  ? [
+      { q: `ما الجهاز المناسب لطريقة ${d}؟`, a: `لطريقة ${d} تورّد AlyTech Scientific ${listed(3)}. وتدرج الشركات المصنِّعة ${d} ${plural ? 'لهذه الأجهزة' : 'لهذا الجهاز'}؛ ويعتمد اختيار الطراز المناسب على عيناتك والإجراء والإصدار الذي يعتمده مختبرك والإنتاجية التي تحتاجها، لذلك يؤكد مهندس تطبيقات التهيئة قبل تقديم عرض السعر.` },
+      { q: 'هل تركّبون هذه الأجهزة وتدعمونها في الإمارات والشرق الأوسط؟', a: 'نعم. تقوم AlyTech Scientific، ومقرها في المصفح بأبوظبي، بتركيب الأجهزة وتشغيلها وتدريب المشغلين، وتدعمها بخدمة الضمان وعقود الصيانة السنوية وقطع الغيار والإصلاح في أنحاء الإمارات والشرق الأوسط.' },
+      { q: `كيف أحصل على عرض سعر لأجهزة ${d}؟`, a: 'اضغط زر «اطلب عرض سعر» في هذه الصفحة وأخبرنا باسمك ووسيلة تواصل وبالعينات التي تختبرها. يرسل لك مهندس تطبيقات الأسعار والنشرات الفنية، ويرد خلال يوم عمل واحد. ويمكنك أيضاً مراسلة مهندس عبر واتساب من الصفحة نفسها.' },
+    ]
+  : [
+      { q: `Which instrument do I need for ${d}?`, a: `For ${d}, AlyTech Scientific supplies ${listed(3)}. The manufacturers list ${d} for ${plural ? 'these instruments' : 'this instrument'}; the right model depends on your samples, the procedure and edition your lab follows, and the throughput you need, so an application engineer confirms the configuration before quoting.` },
+      { q: 'Do you install and support these instruments in the UAE and the Middle East?', a: 'Yes. AlyTech Scientific, based in Mussafah, Abu Dhabi, installs and commissions the instruments, trains operators, and supports them with warranty service, annual maintenance contracts, spare parts and repairs across the UAE and the wider Middle East.' },
+      { q: `How do I get a quotation for ${d} equipment?`, a: 'Use the Request a quote button on this page and tell us your name, a contact and the samples you test. An application engineer sends prices and datasheets and replies within one working day. You can also message an engineer on WhatsApp from the same page.' },
+    ];
+
+const crumbs = [
+  { label: ar ? 'الرئيسية' : 'Home', href: L('/') },
+  { label: ar ? 'المعايير الاختبارية' : 'Test standards', href: L('/standards/') },
+  { label: d },
+];
+const url = L(standardPath(s));
+const abs = (p: string) => new URL(p, site.url).href;
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: ar ? `${label} ${d}` : `${d} ${label}`,
+  itemListElement: s.products.map(({ brand, product }, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(L(productPath(brand, product))), name: `${brand.name} ${product.name}` })),
+};
+
+const T = ar
+  ? { kicker: 'معيار اختباري', official: 'العنوان الرسمي', publisher: 'الجهة الناشرة', note: 'الملخص أدناه وصف مبسّط من AlyTech وليس نص المعيار. اعتمد دائماً على الإصدار الحالي الصادر عن الجهة الناشرة.', what: 'ما الذي تقيسه الطريقة', inst: `الأجهزة التي نورّدها لطريقة ${d}`, instSub: 'مدرجة لدى الشركات المصنِّعة التي نمثلها لهذه الطريقة. يؤكد مهندس تطبيقات التهيئة النهائية حسب عيناتك.', also: 'انظر أيضاً', cats: 'فئات المعدات ذات الصلة', inds: 'القطاعات', relStd: 'معايير ذات صلة', faq: 'أسئلة شائعة', faqSub: 'لا تجد إجابتك؟', all: 'كل المعايير' }
+  : { kicker: 'Test standard', official: 'Official title', publisher: 'Published by', note: 'The summary below is AlyTech’s plain-language description, not the text of the standard. Always work from the current edition issued by the publisher.', what: 'What the method measures', inst: `Instruments we supply for ${d}`, instSub: 'Listed against this method by the manufacturers we represent. An application engineer confirms the final configuration for your samples.', also: 'See also', cats: 'Related equipment categories', inds: 'Industries', relStd: 'Related standards', faq: 'Buyer questions', faqSub: 'Not covered here?', all: 'All standards' };
+const hasAlso = s.categories.length > 0 || s.industries.length > 0 || rel.length > 0;
+---
+<Base lang={lang} title={title} description={description} product={d} schema={[itemList, faqLd(faqs), breadcrumbLd(crumbs, url)]}>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap grid gap-10 py-12 md:py-16 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+      <div>
+        <Breadcrumbs items={crumbs} />
+        <p class="label mt-10 text-brand-600">{T.kicker} · {org}</p>
+        <h1 class="display mt-3 text-[clamp(2.1rem,4.8vw,3.8rem)]">
+          {ar ? <>{label} <bdi dir="ltr">{d}</bdi></> : <>{d} {label}</>}
+        </h1>
+        <h2 class="label mt-8 text-mute">{T.what}</h2>
+        <p class="mt-3 max-w-[62ch] text-[17px] leading-[1.75] text-ink-soft">{s.summary[lang]}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <button type="button" class="btn btn-primary" data-lead="quote" data-product={d}>{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
+          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={d}><Icon name="whatsapp" size={18} class="text-whatsapp" />WhatsApp</button>
+        </div>
+      </div>
+
+      <aside class="self-start">
+        <div class="card p-6 sm:p-7">
+          <p class="label text-mute">{T.official}</p>
+          <p class="display mt-3 text-[clamp(1.15rem,2vw,1.4rem)] leading-snug text-start" lang="en" dir="ltr">{s.title}</p>
+          <dl class="mt-6 grid gap-1 border-t border-line pt-5 text-[14.5px]">
+            <dt class="label text-mute">{T.publisher}</dt>
+            <dd class="text-ink-soft">{org}</dd>
+          </dl>
+          <p class="mt-5 text-[13.5px] leading-relaxed text-mute">{T.note}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20" aria-labelledby="std-inst-h">
+    <div class="wrap">
+      <h2 id="std-inst-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{T.inst}</h2>
+      <p class="mt-3 max-w-[62ch] text-mute">{T.instSub}</p>
+      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {s.products.map(({ brand, product }) => <ProductCard lang={lang} brand={brand} product={product} />)}
+      </div>
+    </div>
+  </section>
+
+  {hasAlso && (
+    <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="std-also-h">
+      <div class="wrap">
+        <h2 id="std-also-h" class="display text-[clamp(1.4rem,2.6vw,2rem)]">{T.also}</h2>
+        <div class="mt-8 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {s.categories.length > 0 && (
+            <div>
+              <h3 class="label text-mute">{T.cats}</h3>
+              <ul class="mt-4 grid gap-2">
+                {s.categories.map(({ category: c }) => (
+                  <li><a href={L(categoryPath(c))} class="group inline-flex items-center gap-2 py-1 font-semibold transition-colors hover:text-brand-700">{(ar && c.ar?.name) || c.name}<Icon name="arrow" size={16} flip class="text-mute transition-colors group-hover:text-brand-600" /></a></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {s.industries.length > 0 && (
+            <div>
+              <h3 class="label text-mute">{T.inds}</h3>
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {s.industries.map((i) => <li><a href={L(`/industries/${i.slug}/`)} class="inline-flex rounded-full bg-brand-50 px-3 py-1.5 text-[13.5px] font-medium text-brand-700 transition-colors hover:bg-brand-100">{i.name[lang]}</a></li>)}
+              </ul>
+            </div>
+          )}
+          {rel.length > 0 && (
+            <div>
+              <h3 class="label text-mute">{T.relStd}</h3>
+              <ul class="mt-4 flex flex-wrap gap-2" dir="ltr">
+                {rel.map((r) => <li><a href={L(standardPath(r))} class="inline-flex rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px] transition-colors hover:border-brand-500 hover:text-brand-700">{r.designation}</a></li>)}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="border-t border-line py-14 md:py-20" aria-labelledby="std-faq-h">
+    <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+      <div>
+        <h2 id="std-faq-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{T.faq}</h2>
+        <p class="mt-4 text-mute">{T.faqSub}</p>
+        <button type="button" class="link-arrow mt-2" data-lead="whatsapp" data-product={d}><Icon name="whatsapp" size={18} />{t(lang, 'cta.whatsapp')}</button>
+        <p class="mt-6"><a href={L('/standards/')} class="link-arrow">{T.all} <Icon name="arrow" size={16} flip /></a></p>
+      </div>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <ServiceStrip lang={lang} />
+</Base>

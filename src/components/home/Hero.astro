@@ -41,10 +41,11 @@ const copy = {
 <section id="hero" data-header="dark" class="hero on-dark relative bg-night-950 text-white" aria-label={ar ? 'مقدمة' : 'Introduction'}>
   <div class="hero-sticky sticky top-0 h-[100svh] overflow-hidden">
     <div class="hero-bg absolute inset-0" aria-hidden="true"></div>
-    <img src="/images/gasmix/aiolos-iii.webp" alt="GasMix Aiolos III gas mixer and diluter" width="1299" height="1772" class="hero-fallback absolute hidden" data-hero-fallback />
+    <img src="/images/gasmix/aiolos-iii.webp" srcset="/images/gasmix/aiolos-iii-sm.webp 480w, /images/gasmix/aiolos-iii.webp 1299w" sizes="(max-width: 767px) 40vw, 380px" alt={ar ? 'جهاز GasMix Aiolos III لخلط الغازات وتخفيفها' : 'GasMix Aiolos III gas mixer and diluter'} width="1299" height="1772" loading="lazy" decoding="async" class="hero-fallback absolute hidden" data-hero-fallback />
     <canvas class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-700" data-hero-canvas aria-hidden="true"></canvas>
 
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true" data-callouts>
+    {/* overflow-clip: the labels start off-screen; in RTL that leaked scrollable overflow into .hero-sticky, and its removal on boot registered as a 0.23 layout shift */}
+    <div class="pointer-events-none absolute inset-0 overflow-clip" aria-hidden="true" data-callouts>
       {Object.entries(copy.callouts).map(([id, label]) => (
         <div class="callout absolute left-0 top-0 opacity-0" data-callout={id}>
           <span class="callout-dot"></span>
@@ -115,11 +116,13 @@ const copy = {
     .hero-h1 { font-size: clamp(1.45rem, min(8.4vw, 4.9svh), 2.5rem); }
     .hero-h2 { font-size: clamp(1.3rem, min(7vw, 4.2svh), 2.1rem); }
   }
-  /* Short or very narrow viewports: shorter subheading, no eyebrow */
-  @media (max-height: 760px) and (max-width: 767px), (max-height: 560px), (max-width: 340px) {
+  /* Phones and short viewports: shorter subheading, so the instrument keeps room above the copy */
+  @media (max-width: 767px), (max-height: 560px) {
     .sub-long { display: none; }
     .sub-short { display: block; }
   }
+  /* Very short phones (iPhone SE class): headline and buttons only, so the instrument still fits above them */
+  @media (max-width: 767px) and (max-height: 600px) { .sub-short { display: none; } }
   @media (max-height: 520px), (max-width: 300px) { .hero-eyebrow { display: none; } .hero-h1 { margin-top: 0; } }
   @media (max-height: 520px) and (min-width: 768px) { .hero-copy { padding-block: 72px 40px; } .step-n, .step-0 { max-width: 52%; } }
   @media (max-width: 767px) { .hero-ctas :global(.btn) { min-height: 44px; padding-inline: 16px; font-size: 14px; } }
@@ -135,8 +138,10 @@ const copy = {
   @media (min-width: 1024px) { .step-n { inset-inline-start: 40px; } }
   @media (min-width: 1320px) { .step-n { inset-inline-start: calc((100vw - 1320px) / 2 + 40px); } }
 
-  /* Mobile: copy sits on a scrim at the bottom, instrument above */
-  @media (max-width: 767px) {
+  /* Phones and portrait tablets: copy sits on a scrim at the bottom, instrument above (side by side doesn't fit under 1024px) */
+  @media (max-width: 767px), (max-width: 1023px) and (min-height: 600px) {
+    .hero-copy { justify-content: flex-end; }
+    .step-n { top: auto; bottom: 96px; translate: none; }
     .hero-sticky::after {
       content: ""; position: absolute; inset: auto 0 0 0; height: 62%; pointer-events: none;
       background: linear-gradient(to top, #08060f 55%, transparent);
@@ -146,6 +151,11 @@ const copy = {
   }
 
   .hero-fallback { inset-inline-end: 6%; top: 14%; height: 72%; width: auto; object-fit: contain; }
+  /* Phones: a fixed 200px box under the header; the script only scales it into the free band above the copy (--model-s).
+     Transform, not top/height, so adjusting it after fonts load can never register as layout shift. */
+  @media (max-width: 767px), (max-width: 1023px) and (min-height: 600px) {
+    .hero-fallback { top: 80px; height: 200px; inset-inline-end: 8%; transform-origin: 50% 0; transform: scale(var(--model-s, 1)); }
+  }
 
   .callout { display: flex; align-items: center; gap: 0; transition: opacity 0.25s ease; }
   .callout-dot { width: 9px; height: 9px; border-radius: 99px; background: #fff; box-shadow: 0 0 0 4px rgb(185 163 255 / 0.3); flex: none; }
@@ -163,6 +173,7 @@ const copy = {
 <script>
   const section = document.getElementById('hero')!;
   const canvas = section.querySelector<HTMLCanvasElement>('[data-hero-canvas]')!;
+  const fallbackImg = section.querySelector<HTMLElement>('[data-hero-fallback]')!;
   const steps = [...section.querySelectorAll<HTMLElement>('[data-step]')];
   const bar = section.querySelector<HTMLElement>('[data-hero-bar]')!;
   const hint = section.querySelector<HTMLElement>('[data-hint]')!;
@@ -170,12 +181,14 @@ const copy = {
   const calloutEls = new Map([...section.querySelectorAll<HTMLElement>('[data-callout]')].map((el) => [el.dataset.callout!, el]));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const rtl = document.documentElement.dir === 'rtl';
-  const mq = matchMedia('(max-width: 767px)');
+  const mq = matchMedia('(max-width: 767px), (max-width: 1023px) and (min-height: 600px)'); // stacked layout: instrument in the band above the copy
+  const phone = matchMedia('(max-width: 767px)').matches; // lighter geometry for phones only
 
   // [start, end] progress window for each text step
   const windows: [number, number][] = [[-1, 0.12], [0.16, 0.38], [0.42, 0.68], [0.78, 2]];
   const fade = 0.04;
   let scene: import('../../scripts/hero/scene').HeroScene | undefined;
+  let io: IntersectionObserver | undefined;
 
   const progress = () => {
     const r = section.getBoundingClientRect();
@@ -189,7 +202,7 @@ const copy = {
       const [a, b] = windows[i];
       const o = Math.min(1, Math.max(0, Math.min((p - a) / fade, (b - p) / fade)));
       el.style.opacity = String(o);
-      el.style.transform = `translateY(${(1 - o) * (p < a ? 24 : -24)}px)`;
+      el.style.transform = reduced ? '' : `translateY(${(1 - o) * (p < a ? 24 : -24)}px)`;
       el.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
       el.toggleAttribute('inert', o < 0.5);
     });
@@ -202,46 +215,96 @@ const copy = {
   addEventListener('resize', paint);
   paint();
 
+  // Phones: the instrument (3D or poster) lives in the band between the header and the tallest copy block,
+  // so text and model can't collide whatever the viewport height, language or font.
+  function band() {
+    const H = canvas.clientHeight || innerHeight;
+    const top = 80;
+    const copyTop = Math.min(...steps.map((el) => el.offsetTop));
+    const h = Math.max(120, copyTop - 12 - top);
+    return { H, top, h, cy: top + h / 2 };
+  }
+
   function layout() {
-    const short = innerHeight / innerWidth < 1.95; // e.g. iPhone SE: push the instrument higher and smaller
+    let offsetY = 0;
+    let fit: number | undefined;
+    if (mq.matches) {
+      const { H, h, cy } = band();
+      section.style.setProperty('--model-s', String(h / 200));
+      offsetY = (H / 2 - cy) / H;
+      // camera distance multiplier so the model's height at its closest keyframe fills the band (0.66 ≈ model height / visible height at 1x)
+      fit = Math.min(3.2, Math.max(1, 0.66 / (h / H)));
+    } else {
+      section.style.removeProperty('--model-s');
+    }
     // Desktop: anchor the instrument to the 1320px content column, not the screen edge (ultrawide-safe)
     const desk = Math.min(0.2, (Math.min(innerWidth, 1320) * 0.22) / innerWidth) * (rtl ? -1 : 1);
     const offsetX = mq.matches ? 0.14 : desk;
     section.style.setProperty('--glow-x', `${50 + offsetX * 100}%`);
-    scene?.setLayout({ offsetX, offsetY: mq.matches ? (short ? 0.27 : 0.25) : 0, mobile: mq.matches, compact: mq.matches && short });
+    scene?.setLayout({ offsetX, offsetY, mobile: mq.matches, fit });
+  }
+  // Copy height changes with fonts, language and viewport; the observer also fires once on observe, which sets the first layout.
+  let queued = 0;
+  const relayout = new ResizeObserver(() => { cancelAnimationFrame(queued); queued = requestAnimationFrame(layout); });
+  steps.forEach((el) => relayout.observe(el));
+  mq.addEventListener('change', layout);
+  addEventListener('resize', layout);
+
+  // Static image: no WebGL, reduced motion, or a runtime failure. The <img> is lazy, so it only downloads once shown.
+  function showFallback() {
+    io?.disconnect();
+    scene?.dispose();
+    scene = undefined;
+    canvas.classList.add('hidden');
+    fallbackImg.classList.remove('hidden');
+    schematic.style.opacity = '0';
+    calloutEls.forEach((el) => (el.style.opacity = '0'));
   }
 
   async function boot() {
-    const gl = document.createElement('canvas').getContext('webgl2');
-    if (!gl) { section.querySelector('[data-hero-fallback]')!.classList.remove('hidden'); return; }
-    const { createHeroScene } = await import('../../scripts/hero/scene');
-    await document.fonts?.ready; // canvas textures use the web fonts
-    scene = createHeroScene(canvas, { mobile: mq.matches, reducedMotion: reduced });
-    layout();
-    mq.addEventListener('change', layout);
-    addEventListener('resize', layout);
-    new ResizeObserver(() => scene!.resize()).observe(canvas);
+    const probe = document.createElement('canvas').getContext('webgl2');
+    if (!probe) return showFallback();
+    probe.getExtension('WEBGL_lose_context')?.loseContext();
+    try {
+      const { createHeroScene } = await import('../../scripts/hero/scene');
+      // Canvas textures draw text, so the faces must be loaded first (hashed, lazy unicode-range files) — but never wait long.
+      const css = getComputedStyle(document.documentElement);
+      const fonts = { display: css.getPropertyValue('--font-archivo').trim() || 'sans-serif', mono: css.getPropertyValue('--font-jetbrains').trim() || 'monospace' };
+      await Promise.race([
+        Promise.all([document.fonts.load(`600 64px ${fonts.display}`), document.fonts.load(`500 20px ${fonts.mono}`)]),
+        new Promise((r) => setTimeout(r, 2500)),
+      ]);
+      scene = await createHeroScene(canvas, { mobile: phone, reducedMotion: false, fonts, onFail: showFallback });
+      layout();
+      new ResizeObserver(() => scene?.resize()).observe(canvas);
 
-    scene.onFrame(() => {
-      const e = scene!.explodeAmount();
-      schematic.style.opacity = String(Math.min(1, e * 1.5) * 0.9);
-      for (const c of scene!.callouts) {
-        const el = calloutEls.get(c.id)!;
-        const s = scene!.project(c.anchor);
-        el.style.left = `${s.x}px`;
-        el.style.top = `${s.y}px`;
-        el.style.opacity = String(Math.max(0, e * 1.6 - 0.6));
-      }
-    });
+      scene.onFrame(() => {
+        if (!scene) return;
+        const e = scene.explodeAmount();
+        schematic.style.opacity = String(Math.min(1, e * 1.5) * 0.9);
+        for (const c of scene.callouts) {
+          const el = calloutEls.get(c.id)!;
+          const s = scene.project(c.anchor);
+          el.style.transform = `translate(${s.x}px, ${s.y}px)`; // transform, not left/top: moving them must not count as layout shift
+          el.style.opacity = String(Math.max(0, e * 1.6 - 0.6));
+        }
+      });
 
-    paint();
-    canvas.classList.remove('opacity-0');
-    // Only render while the hero is on screen
-    new IntersectionObserver(([en]) => (en.isIntersecting ? scene!.start() : scene!.stop())).observe(section);
-    if (reduced) scene.setProgress(progress());
+      paint();
+      canvas.classList.remove('opacity-0');
+      // Only render while the hero is on screen
+      io = new IntersectionObserver(([en]) => (en.isIntersecting ? scene?.start() : scene?.stop()));
+      io.observe(section);
+    } catch {
+      showFallback();
+    }
   }
 
-  // Let the copy paint first; WebGL loads once the page is idle.
-  const idle = (window as any).requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 200));
-  if (document.readyState === 'complete') idle(boot); else addEventListener('load', () => idle(boot), { once: true });
+  // Reduced motion gets the static image and never loads Three.js. Everyone else: let the copy paint first, boot WebGL when idle.
+  if (reduced) {
+    showFallback();
+  } else {
+    const idle = (window as any).requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 200));
+    if (document.readyState === 'complete') idle(boot); else addEventListener('load', () => idle(boot), { once: true });
+  }
 </script>

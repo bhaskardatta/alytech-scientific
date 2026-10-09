@@ -1,0 +1,45 @@
+---
+/** Dark GasMix call-to-action closing a tool page: copy + quote button + the real product cards. */
+import ProductCard from '../../components/ProductCard.astro';
+import Ribbon from '../../components/Ribbon.astro';
+import Icon from '../../components/Icon.astro';
+import { brands, claim } from '../../data/brands';
+import { productsOf } from '../../data/catalog';
+import { t, localize, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  id: string;
+  head: string;
+  body: string;
+  /** GasMix product slugs to show. */
+  slugs: string[];
+  /** Lead subject (what the visitor is asking about). */
+  subject: string;
+  ghost: { href: string; label: string };
+  link: { href: string; label: string };
+}
+const { lang, id, head, body, slugs, subject, ghost, link } = Astro.props;
+const L = (x: string) => localize(lang, x);
+const brand = brands.find((b) => b.slug === 'gasmix')!;
+const all = productsOf('gasmix');
+const products = slugs.map((s) => all.find((p) => p.slug === s)).filter((p): p is NonNullable<typeof p> => !!p);
+---
+<section data-header="dark" class="on-dark relative overflow-hidden bg-night-950 py-14 text-white md:py-20" aria-labelledby={id}>
+  <Ribbon class="absolute inset-0 h-full w-full text-brand-600 opacity-35" lines={34} />
+  <div class="wrap relative grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+    <div>
+      <p class="label text-brand-300">GasMix · {claim(brand)[lang]}</p>
+      <h2 id={id} class="display mt-3 text-[clamp(1.8rem,3.6vw,3rem)]">{head}</h2>
+      <p class="mt-5 max-w-xl text-[17px] leading-relaxed text-white/75">{body}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <button type="button" class="btn btn-primary" data-lead="quote" data-product={subject} data-brand={brand.name}>{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
+        <a href={L(ghost.href)} class="btn btn-ghost">{ghost.label}</a>
+      </div>
+      <p class="mt-6"><a href={L(link.href)} class="link-arrow">{link.label} <Icon name="arrow" size={16} flip /></a></p>
+    </div>
+    <div class:list={['grid gap-3', products.length > 1 && 'sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2']}>
+      {products.map((p) => <ProductCard lang={lang} brand={brand} product={p} tone="dark" />)}
+    </div>
+  </div>
+</section>

@@ -14,10 +14,10 @@ const { lang } = Astro.props;
 const ar = lang === 'ar';
 const L = (x: string) => localize(lang, x);
 const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.principals') }];
-const title = ar ? 'شركاؤنا المصنّعون | موزع معتمد لأجهزة المختبرات في الشرق الأوسط | AlyTech' : 'Our Principals | Authorized Laboratory Instrument Distributor, Middle East | AlyTech';
+const title = ar ? 'شركاؤنا المصنّعون | موزع معتمد في الإمارات | AlyTech' : 'Our Principals | Authorized Distributor UAE | AlyTech';
 const description = ar
-  ? 'AlyTech Scientific موزع معتمد لتسعة مصنّعين: GasMix وThermtest وProto وDucom وInstroTek وF-DGS وSchmidt + Haensch وLamy Rheology وVinci Technologies.'
-  : 'AlyTech Scientific is the authorized Middle East distributor for GasMix, Thermtest, Proto XRD, Ducom, InstroTek, F-DGS, Schmidt + Haensch, Lamy Rheology and Vinci Technologies.';
+  ? 'AlyTech Scientific موزع معتمد لتسعة مصنّعين: GasMix وThermtest وProto وDucom وInstroTek وF-DGS وSchmidt + Haensch وLamy Rheology وVinci.'
+  : 'Authorized Middle East distributor for GasMix, Thermtest, Proto XRD, Ducom, InstroTek, F-DGS, Schmidt + Haensch, Lamy Rheology and Vinci Technologies.';
 ---
 <Base lang={lang} title={title} description={description} schema={[breadcrumbLd(crumbs, L('/principals/'))]}>
   <section class="border-b border-line bg-card pt-[72px]">
@@ -46,7 +46,7 @@ const description = ar
                     <span class:list={['flex aspect-square w-full items-center justify-center rounded-sm p-3', b.slug === 'gasmix' ? 'bg-white/[0.05]' : 'bg-surface']}>
                       <ProductImage brand={b.slug} brandName={b.name} slug={p.slug} alt={`${b.name} ${p.name}`} class="max-h-full w-auto" sizes="120px" />
                     </span>
-                    <span class:list={['line-clamp-1 text-[12.5px]', b.slug === 'gasmix' ? 'text-white/60' : 'text-mute']}>{shortName(p)}</span>
+                    <span class:list={['line-clamp-1 text-[12.5px]', b.slug === 'gasmix' ? 'text-white/60' : 'text-mute']}>{shortName(p, lang)}</span>
                   </li>
                 ))}
               </ul>

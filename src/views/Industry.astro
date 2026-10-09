@@ -7,10 +7,12 @@ import Faq from '../components/Faq.astro';
 import Icon from '../components/Icon.astro';
 import { brands } from '../data/brands';
 import { productsOf, brandPath } from '../data/catalog';
+import { families, categoryPath, renderOf } from '../data/equipment';
 import { industryContent } from '../data/industryContent';
 import type { Industry as Ind } from '../data/industries';
 import { breadcrumbLd, faqLd } from '../data/schema';
 import { t, localize, type Lang } from '../i18n';
+import { titleOf, descOf } from '../lib/seo';
 
 interface Props { lang: Lang; industry: Ind }
 const { lang, industry } = Astro.props;
@@ -22,6 +24,10 @@ const items = brands
   .flatMap((b) => productsOf(b.slug).filter((p) => p.priority !== 'niche' && p.industries.includes(industry.slug)).map((p) => ({ b, p })))
   .sort((x, y) => c.brands.indexOf(x.b.slug) - c.brands.indexOf(y.b.slug))
   .slice(0, 8);
+// Tier-2 (unbranded) equipment relevant to this sector, grouped by family; the tagging lives on each category in equipment.json.
+const equip = families
+  .map((f) => ({ f, cats: f.categories.filter((x) => x.industries.includes(industry.slug)) }))
+  .filter((g) => g.cats.length > 0);
 const faqs = c.faqs.map((f) => ({ q: f.q[lang], a: f.a[lang] }));
 const crumbs = [
   { label: ar ? 'الرئيسية' : 'Home', href: L('/') },
@@ -29,9 +35,9 @@ const crumbs = [
   { label: industry.name[lang] },
 ];
 const url = L(`/industries/${industry.slug}/`);
-const title = ar ? `أجهزة ${industry.name.ar} في الإمارات والشرق الأوسط | AlyTech` : `${industry.name.en} Laboratory Instruments in the UAE & Middle East | AlyTech`;
+const title = titleOf(ar ? `أجهزة ${industry.name.ar} في الإمارات` : `${industry.name.en} Lab Instruments UAE`, ['AlyTech', '']);
 ---
-<Base lang={lang} title={title} description={c.intro[lang].slice(0, 158)} schema={[faqLd(faqs), breadcrumbLd(crumbs, url)]}>
+<Base lang={lang} title={title} description={descOf(c.intro[lang])} schema={[faqLd(faqs), breadcrumbLd(crumbs, url)]}>
   <section class="border-b border-line bg-card pt-[72px]">
     <div class="wrap py-12 md:py-16">
       <Breadcrumbs items={crumbs} />
@@ -50,6 +56,41 @@ const title = ar ? `أجهزة ${industry.name.ar} في الإمارات وال�
         <h2 id="ind-prod-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أجهزة مختارة لهذا القطاع' : 'Instruments for this sector'}</h2>
         <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {items.map(({ b, p }) => <ProductCard lang={lang} brand={b} product={p} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {equip.length > 0 && (
+    <section class="border-t border-line py-14 md:py-20" aria-labelledby="ind-eq-h">
+      <div class="wrap">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 id="ind-eq-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{t(lang, 'ind.equip.title')}</h2>
+            <p class="mt-3 max-w-2xl text-[16px] text-mute">{t(lang, 'ind.equip.lead')}</p>
+          </div>
+          <a href={L('/equipment/')} class="link-arrow">{t(lang, 'ind.equip.all')} <Icon name="arrow" size={16} flip /></a>
+        </div>
+        <div class="mt-8">
+          {equip.map(({ f, cats }) => (
+            <div class="grid gap-4 border-b border-line py-8 last:border-0 lg:grid-cols-[1fr_2fr] lg:gap-14">
+              <h3 class="display text-[clamp(1.2rem,2vw,1.5rem)]">{(ar && f.ar?.name) || f.name}</h3>
+              <ul class="grid gap-2 sm:grid-cols-2">
+                {cats.map((cat) => (
+                  <li>
+                    <a href={L(categoryPath(cat))} class="group flex h-full items-start gap-4 rounded-sm border border-transparent p-3 transition-[background-color,border-color] duration-200 hover:border-line hover:bg-card">
+                      {renderOf(cat.slug) && <img src={renderOf(cat.slug).sm} width="112" height="84" alt="" loading="lazy" decoding="async" class="h-[84px] w-28 shrink-0 rounded-xs object-cover" />}
+                      <span class="flex-1 py-1">
+                        <span class="block font-semibold">{(ar && cat.ar?.name) || cat.name}</span>
+                        <span class="mt-1 line-clamp-2 text-[14px] text-mute" lang={ar && !cat.ar?.summary ? 'en' : undefined}>{(ar && cat.ar?.summary) || cat.summary}</span>
+                      </span>
+                      <Icon name="arrow" size={18} flip class="mt-2 shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>

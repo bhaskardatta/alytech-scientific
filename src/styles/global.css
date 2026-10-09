@@ -31,9 +31,11 @@
   --color-success: #0f7b4b;
   --color-danger: #b42318;
 
-  --font-display: "Archivo", "Noto Kufi Arabic", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "IBM Plex Sans", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  /* Self-hosted via Astro's Fonts API (astro.config.mjs): --font-* hold the hashed family + its metric-matched fallback.
+     The literal fallbacks keep standalone layouts that don't mount <Font> (admin) readable. */
+  --font-display: var(--font-archivo, "Archivo"), "Archivo fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex, "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--font-jetbrains, "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace);
 
   --radius-xs: 4px;
   --radius-sm: 6px;
@@ -46,10 +48,22 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Arabic pages swap the display/body stacks */
+/* Metric-matched fallback for the display face: Archivo 600 at wdth 112 measures ~9% wider than Arial Bold across the site's headings (ascent .88em / descent .21em).
+   ascent/descent overrides are divided by size-adjust (capsize convention). Without Arial (Android) the stack falls through to system-ui. */
+@font-face {
+  font-family: "Archivo fallback";
+  src: local("Arial");
+  font-weight: 600;
+  size-adjust: 109%;
+  ascent-override: 80.7%;
+  descent-override: 19.3%;
+  line-gap-override: 0%;
+}
+
+/* Arabic pages swap the display/body stacks (both Arabic families carry their own latin glyphs) */
 :root[lang="ar"] {
-  --font-display: "Noto Kufi Arabic", "Archivo", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "IBM Plex Sans Arabic", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-kufi), var(--font-archivo, "Archivo"), "Archivo fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-ar), var(--font-plex), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* ---------- Base ---------- */
@@ -148,9 +162,14 @@
     color: var(--color-brand-600); transition: gap 0.2s ease, color 0.2s ease;
   }
   .link-arrow:hover { gap: 12px; color: var(--color-brand-700); }
-  /* Grow the touch target to 44px without changing the layout */
-  @media (pointer: coarse) {
+  /* Touch screens and phone widths: 44px targets without changing the surrounding layout */
+  @media (pointer: coarse), (max-width: 767px) {
     .link-arrow, .tap { padding-block: 10px; margin-block: -10px; }
+    /* .hit: the link's box grows to 44px, the negative margin (1lh = its own line height) hands the extra back to the layout */
+    .hit { display: inline-flex; align-items: center; min-height: 44px; margin-block: calc((1lh - 44px) / 2); }
+    .btn-sm { min-height: 44px; }
+    /* pill links (industry / family chips) */
+    a.rounded-full { display: inline-flex; align-items: center; min-height: 44px; }
   }
   .on-dark .link-arrow { color: var(--color-brand-300); }
 
@@ -194,7 +213,7 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .field:hover { border-color: var(--color-mute); }
-  .field:focus { outline: none; border-color: var(--color-brand-500); box-shadow: 0 0 0 3px rgb(109 60 224 / 0.18); }
+  .field:focus { outline: 2px solid var(--color-brand-600); outline-offset: 1px; border-color: var(--color-brand-600); box-shadow: 0 0 0 4px rgb(96 0 205 / 0.16); }
   .field[aria-invalid="true"] { border-color: var(--color-danger); }
 }
 

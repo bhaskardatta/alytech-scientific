@@ -1,0 +1,88 @@
+---
+/** Shared frame for the calculator pages: hero, slots for calculator / article / CTA, FAQ, sibling tools. */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+import { breadcrumbLd, faqLd } from '../../data/schema';
+import { site } from '../../data/site';
+import { localize, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  /** Path without locale prefix, e.g. /tools/gas-dilution-calculator/ */
+  path: string;
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  faqs: { q: string; a: string }[];
+  /** Other tools to link at the bottom. */
+  more: { href: string; title: string; text: string }[];
+}
+const { lang, path, title, description, h1, intro, faqs, more } = Astro.props;
+const ar = lang === 'ar';
+const L = (x: string) => localize(lang, x);
+const url = L(path);
+const crumbs = [
+  { label: ar ? 'الرئيسية' : 'Home', href: L('/') },
+  { label: ar ? 'أدوات هندسية' : 'Engineering tools', href: L('/tools/') },
+  { label: h1 },
+];
+const webPage = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: h1,
+  description,
+  url: new URL(url, site.url).href,
+  inLanguage: lang,
+  isPartOf: { '@type': 'WebSite', name: site.name, url: site.url },
+  publisher: { '@type': 'Organization', name: site.name, url: site.url },
+};
+---
+<Base lang={lang} title={title} description={description} schema={[webPage, faqLd(faqs), breadcrumbLd(crumbs, url)]}>
+  <section class="border-b border-line bg-card pt-[72px]">
+    <div class="wrap py-12 md:py-16">
+      <Breadcrumbs items={crumbs} />
+      <p class="label mt-10 text-brand-600">{ar ? 'أداة هندسية مجانية' : 'Free engineering tool'}</p>
+      <h1 class="display mt-3 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">{h1}</h1>
+      <p class="mt-5 max-w-3xl text-[18px] leading-relaxed text-ink-soft">{intro}</p>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-14" aria-label={ar ? 'الحاسبة' : 'Calculator'}>
+    <div class="wrap"><slot name="calc" /></div>
+  </section>
+
+  <slot />
+
+  <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="tool-faq-h">
+    <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+      <div>
+        <h2 id="tool-faq-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أسئلة شائعة' : 'Common questions'}</h2>
+      </div>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <slot name="cta" />
+
+  <section class="py-14 md:py-20" aria-labelledby="tool-more-h">
+    <div class="wrap">
+      <h2 id="tool-more-h" class="display text-[clamp(1.4rem,2.6vw,2rem)]">{ar ? 'أدوات أخرى' : 'More tools'}</h2>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+        {more.map((m) => (
+          <li>
+            <a href={L(m.href)} class="group card flex h-full items-center gap-4 p-5 pe-6 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
+              <span class="flex-1">
+                <span class="display block text-lg">{m.title}</span>
+                <span class="mt-1 block text-[14.5px] text-mute">{m.text}</span>
+              </span>
+              <Icon name="arrow" size={18} flip class="shrink-0 text-mute transition-colors group-hover:text-brand-600" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

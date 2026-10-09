@@ -2,22 +2,28 @@
 import Admin from '../../layouts/Admin.astro';
 import { isAdmin } from '../../lib/auth';
 import { dbReady, select } from '../../lib/db';
-import { ago } from '../../lib/admin';
+import { ago, dbNotice, go } from '../../lib/admin';
 export const prerender = false;
 
-if (!(await isAdmin(Astro.cookies))) return Astro.redirect('/admin/login/');
+if (!(await isAdmin(Astro.cookies))) return go(Astro, '/admin/login/');
 
-// ISPs and mobile carriers say nothing about the visitor's employer — hide them by default.
-const ISP = /etisalat|emirates telecom|e&|du |emirates integrated|stc|saudi telecom|mobily|zain|ooredoo|omantel|batelco|vodafone|orange|google|amazon|microsoft|cloudflare|akamai|digitalocean|ovh|hetzner|tata|airtel|jio|bsnl|reliance|starlink|apple|facebook|meta/i;
+// ISPs, mobile carriers and big clouds say nothing about the visitor's employer — hide them by default.
+// Whole-word match on named providers only, so a company that merely contains "tata", "meta", "orange" or "du" stays visible.
+const ISP = /(?<![a-z0-9])(?:etisalat|emirates telecommunications|emirates integrated telecommunications|eitc|e&|stc|saudi telecom|mobily|zain|ooredoo|omantel|batelco|telecom egypt|vodafone|orange (?:s\.?a|egypt|jordan)|airtel|jio|bsnl|tata (?:communications|teleservices)|starlink|cloudflare|google|amazon|microsoft|digitalocean|ovh|hetzner|akamai|apple inc|facebook|meta platforms)(?![a-z0-9])/i;
 
 let orgs: any[] = [], products: any[] = [], searches: any[] = [], days: any[] = [];
+let error: unknown;
 if (dbReady()) {
-  [orgs, products, searches, days] = await Promise.all([
-    select('v_org_activity', 'select=*&order=pageviews.desc&limit=200'),
-    select('v_top_products', 'select=*&order=views.desc&limit=30'),
-    select('v_top_searches', 'select=*&order=searches.desc&limit=40'),
-    select('v_daily', 'select=*&order=day.asc'),
-  ]);
+  try {
+    [orgs, products, searches, days] = await Promise.all([
+      select('v_org_activity', 'select=*&order=pageviews.desc&limit=200'),
+      select('v_top_products', 'select=*&order=views.desc&limit=30'),
+      select('v_top_searches', 'select=*&order=searches.desc&limit=40'),
+      select('v_daily', 'select=*&order=day.asc'),
+    ]);
+  } catch (e) {
+    error = e;
+  }
 }
 const showAll = Astro.url.searchParams.get('isp') === '1';
 const companies = orgs.filter((o) => showAll || !ISP.test(o.ip_org));
@@ -25,8 +31,7 @@ const totalViews = days.reduce((s, d) => s + d.pageviews, 0);
 const totalVisitors = days.reduce((s, d) => s + d.visitors, 0);
 const maxDay = Math.max(1, ...days.map((d) => d.pageviews));
 ---
-<Admin title="Visitors & demand">
-  {!dbReady() && <p class="mb-6 rounded-sm bg-danger/5 p-4 text-danger">Database not connected.</p>}
+<Admin title="Visitors & demand" notice={dbNotice(error)}>
   <div class="grid gap-3 sm:grid-cols-3">
     <div class="card p-5"><p class="label text-mute">Page views · 30 days</p><p class="display mt-2 text-3xl">{totalViews}</p></div>
     <div class="card p-5"><p class="label text-mute">Visitor-days · 30 days</p><p class="display mt-2 text-3xl">{totalVisitors}</p></div>

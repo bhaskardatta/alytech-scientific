@@ -1,3 +1,5 @@
+import { dbReady } from './db';
+
 export const fmt = (iso: string) =>
   new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Dubai', dateStyle: 'medium', timeStyle: 'short' }).format(new Date(iso));
 
@@ -8,7 +10,21 @@ export const ago = (iso: string) => {
   return `${Math.round(m / 1440)} d ago`;
 };
 
-/** Strip PostgREST operator characters from free-text search. */
+/** Redirect for admin pages: like every other /admin response it must never be cached (rendered pages get the header from layouts/Admin.astro). */
+export const go = (Astro: { redirect: (to: string) => Response }, to: string) => {
+  const res = Astro.redirect(to);
+  res.headers.set('cache-control', 'no-store');
+  return res;
+};
+
+/** Banner text for the admin pages when Supabase is unconfigured, the schema is missing/out of date, or a query failed. Empty when all is well. */
+export const dbNotice = (e?: unknown) =>
+  !dbReady() ? 'Database not connected — set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Vercel, then redeploy.'
+  : !e ? ''
+  : /PGRST20[25]|42P01|42703/.test(String(e)) ? 'Database tables or views are missing or out of date — run supabase/schema.sql in the Supabase SQL editor (safe to re-run).'
+  : `Database error: ${String(e).slice(0, 300)}`;
+
+/** Strip PostgREST operator characters from free-text search (callers still URL-encode the result). */
 export const safeQ = (q: string) => q.replace(/[,()*:%\\."]/g, ' ').trim().slice(0, 60);
 
 export const waHref = (phone: string, name?: string) =>

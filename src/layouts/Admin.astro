@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css';
-interface Props { title: string; nav?: boolean }
-const { title, nav = true } = Astro.props;
+import { Font } from 'astro:assets';
+interface Props { title: string; nav?: boolean; notice?: string }
+const { title, nav = true, notice } = Astro.props;
+Astro.response.headers.set('cache-control', 'no-store');
 const here = Astro.url.pathname;
 const links = [
   { href: '/admin/', label: 'Leads' },
@@ -16,9 +18,9 @@ const links = [
     <meta name="robots" content="noindex,nofollow" />
     <title>{title} · AlyTech admin</title>
     <link rel="icon" type="image/png" href="/brand/logo-96.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <Font cssVariable="--font-archivo" />
+    <Font cssVariable="--font-plex" />
+    <Font cssVariable="--font-jetbrains" />
   </head>
   <body class="min-h-screen bg-surface text-[14px]">
     {nav && (
@@ -35,6 +37,9 @@ const links = [
         </div>
       </header>
     )}
-    <main class="mx-auto max-w-[1400px] px-4 py-8 sm:px-6"><slot /></main>
+    <main class="mx-auto max-w-[1400px] px-4 py-8 sm:px-6">
+      {notice && <p class="mb-6 rounded-sm bg-danger/5 p-4 text-danger" role="alert">{notice}</p>}
+      <slot />
+    </main>
   </body>
 </html>

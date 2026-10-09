@@ -13,6 +13,8 @@ const strings = {
   'nav.gasmix': { en: 'GasMix', ar: 'GasMix' },
   'nav.principals': { en: 'Principals', ar: 'الشركاء' },
   'nav.equipment': { en: 'Lab & Test Equipment', ar: 'معدات المختبرات والاختبار' },
+  'nav.standards': { en: 'Test standards', ar: 'المعايير الاختبارية' },
+  'nav.tools': { en: 'Engineering tools', ar: 'أدوات هندسية' },
   'nav.industries': { en: 'Industries', ar: 'القطاعات' },
   'nav.services': { en: 'Service & Support', ar: 'الخدمة والدعم' },
   'nav.about': { en: 'About', ar: 'من نحن' },
@@ -57,7 +59,6 @@ const strings = {
   'lead.done.body': { en: 'Thank you. An AlyTech engineer will contact you shortly.', ar: 'شكراً لك. سيتواصل معك مهندس من AlyTech قريباً.' },
   'lead.err.name': { en: 'Please enter your name.', ar: 'يرجى إدخال اسمك.' },
   'lead.err.contact': { en: 'Please enter a valid email or mobile number.', ar: 'يرجى إدخال بريد إلكتروني أو رقم جوال صحيح.' },
-  'lead.err.send': { en: 'Something went wrong. Please try again or use WhatsApp.', ar: 'حدث خطأ. حاول مرة أخرى أو استخدم واتساب.' },
   'lead.close': { en: 'Close', ar: 'إغلاق' },
 
   'wa.greeting': { en: 'Hello AlyTech, I am interested in', ar: 'مرحباً AlyTech، أنا مهتم بـ' },
@@ -75,6 +76,14 @@ const strings = {
   'consent.text': { en: 'We use cookies to understand which instruments you’re researching and to follow up on your requests.', ar: 'نستخدم ملفات تعريف الارتباط لفهم الأجهزة التي تبحث عنها ولمتابعة طلباتك.' },
   'consent.accept': { en: 'Accept', ar: 'موافق' },
   'consent.decline': { en: 'Essential only', ar: 'الضرورية فقط' },
+  'lead.err.unavailable': { en: 'We couldn’t send your request. Please try again in a moment, or email us at', ar: 'تعذّر إرسال طلبك. حاول مرة أخرى بعد قليل، أو راسلنا عبر البريد الإلكتروني:' },
+  'img.onRequest': { en: 'Product image on request', ar: 'صورة المنتج عند الطلب' },
+  'ind.equip.title': { en: 'Lab & test equipment for this sector', ar: 'معدات المختبرات والاختبار لهذا القطاع' },
+  'ind.equip.lead': { en: 'Specified to your standard and capacity, then supplied, installed and supported by AlyTech.', ar: 'تُحدَّد المواصفات وفق المعيار والسعة المطلوبين، ثم تتولى AlyTech التوريد والتركيب والدعم.' },
+  'ind.equip.all': { en: 'All lab & test equipment', ar: 'كل معدات المختبرات والاختبار' },
+  'prod.region': { en: 'In the region:', ar: 'في المنطقة:' },
+  'consent.label': { en: 'Cookie consent', ar: 'الموافقة على ملفات تعريف الارتباط' },
+  'footer.cookies': { en: 'Cookie settings', ar: 'إعدادات ملفات تعريف الارتباط' },
 } as const;
 
 export type Key = keyof typeof strings;

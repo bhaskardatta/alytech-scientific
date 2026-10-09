@@ -20,6 +20,8 @@ create table if not exists leads (
   lang        text,
   path        text,
   referrer    text,
+  landing_page text,                            -- first campaign landing path of the session (ad clicks)
+  attribution jsonb,                            -- utm_* / gclid / gbraid / wbraid / msclkid / li_fat_id from that landing URL
   visitor_id  text,
   session_id  text,
   ip          inet,
@@ -32,13 +34,17 @@ create table if not exists leads (
   created_at  timestamptz not null default now(),
   updated_at  timestamptz not null default now()
 );
+-- Existing databases: the create table above is skipped, so add the newer columns here (safe to re-run).
+alter table leads add column if not exists landing_page text;
+alter table leads add column if not exists attribution jsonb;
+
 create index if not exists leads_created_idx on leads (created_at desc);
 create index if not exists leads_visitor_idx on leads (visitor_id);
 
 create table if not exists events (
   id          bigint generated always as identity primary key,
   ts          timestamptz not null default now(),
-  type        text not null,                    -- pageview | lead_open | search | nudge
+  type        text not null,                    -- pageview | lead_open | search | nudge | admin_login_fail (data.ip, for login lockout)
   visitor_id  text,
   session_id  text,
   path        text,
@@ -91,3 +97,19 @@ create or replace view v_daily with (security_invoker = on) as
   group by 1;
 
 revoke all on leads, events, v_org_activity, v_top_products, v_top_searches, v_daily from anon, authenticated;
+
+-- Data retention, matching the privacy policy: enquiry records up to 5 years after last contact,
+-- page-view (event) records up to 24 months. Failed-admin-login events (they hold an IP) are only needed for the lockout, so 30 days.
+-- leads.updated_at moves on every save from the site form, so it is the "last contact" clock.
+create or replace function purge_old_data() returns void language sql as $$
+  delete from events where type = 'admin_login_fail' and ts < now() - interval '30 days';
+  delete from events where ts < now() - interval '24 months';
+  delete from leads  where updated_at < now() - interval '5 years';
+$$;
+revoke all on function purge_old_data() from public, anon, authenticated;
+
+-- Run it daily at 03:00 UTC with pg_cron (Supabase: Database > Extensions > enable "pg_cron", then run once):
+--   select cron.schedule('purge-old-data', '0 3 * * *', 'select purge_old_data()');
+-- To change or remove it later:
+--   select cron.unschedule('purge-old-data');
+-- To run it by hand: select purge_old_data();

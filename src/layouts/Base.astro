@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { Font } from 'astro:assets';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import LeadModal from '../components/LeadModal.astro';
@@ -8,6 +9,7 @@ import Nudge from '../components/Nudge.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 import { t, dir, localize, unlocalize, type Lang } from '../i18n';
+import { fit, TITLE_MAX, DESC_MAX } from '../lib/seo';
 
 interface Props {
   lang: Lang;
@@ -18,21 +20,32 @@ interface Props {
   image?: string;
   /** Marks product pages for engagement tracking + nudges. */
   product?: string;
+  /** Localized display name for the nudge; `product` stays English for lead records. */
+  productLabel?: string;
   noindex?: boolean;
+  /** false for pages with no twin to point at (404): no canonical, hreflang or og:url. */
+  alternates?: boolean;
 }
-const { lang, title, description, schema = [], image = '/og/default.png', product, noindex } = Astro.props;
+const { lang, title: rawTitle, description: rawDesc, schema = [], image, product, productLabel, noindex, alternates = true } = Astro.props;
+// Last line of defence: views build their own meta (src/lib/seo.ts); anything over budget is trimmed on a word boundary and flagged.
+const title = rawTitle.length > TITLE_MAX ? fit(rawTitle, TITLE_MAX).replace(/\.$/, '') : rawTitle;
+const description = rawDesc.length > DESC_MAX ? fit(rawDesc, DESC_MAX - 5) : rawDesc;
+if (title !== rawTitle || description !== rawDesc) console.warn(`[seo] meta over budget on ${Astro.url.pathname}: shorten it in the view`);
 const path = Astro.url.pathname;
 const base = unlocalize(path);
 const canonical = new URL(path, site.url).href;
 const alt = (l: Lang) => new URL(localize(l, base), site.url).href;
+const ogImage = new URL(image ?? (lang === 'ar' ? '/og/default-ar.png' : '/og/default.png'), site.url).href;
 
-const fonts = [
-  'family=Archivo:wdth,wght@62..125,400..700',
-  'family=IBM+Plex+Sans:wght@400;500;600',
-  'family=JetBrains+Mono:wght@400;500',
-  ...(lang === 'ar' ? ['family=IBM+Plex+Sans+Arabic:wght@400;500;600', 'family=Noto+Kufi+Arabic:wght@500..700'] : []),
-].join('&');
-
+const postal = {
+  '@type': 'PostalAddress',
+  streetAddress: site.address.street,
+  postOfficeBoxNumber: '8909',
+  addressLocality: site.address.city,
+  addressCountry: site.address.countryCode,
+};
+// ponytail: email only on purpose (WhatsApp-only policy: no telephone anywhere).
+const markets = ['AE', 'SA', 'QA', 'OM', 'KW', 'BH', 'JO', 'IQ', 'EG'];
 const org = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -40,19 +53,20 @@ const org = {
   name: site.name,
   legalName: site.legalName,
   url: site.url,
-  logo: `${site.url}/brand/logo-192.png`,
+  logo: { '@type': 'ImageObject', url: `${site.url}/brand/logo-192.png`, width: 187, height: 192 },
   email: site.email,
   foundingDate: site.founded,
-  parentOrganization: { '@type': 'Organization', name: site.parent, url: 'https://www.alytech.fr' },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.address.street,
-    postOfficeBoxNumber: '8909',
-    addressLocality: site.address.city,
-    addressCountry: site.address.countryCode,
+  parentOrganization: { '@type': 'Organization', name: site.parent, url: 'https://www.alytech.fr', sameAs: [site.parentLinkedin] },
+  address: postal,
+  location: {
+    '@type': 'Place',
+    name: `${site.name}, ${site.address.street}`,
+    address: postal,
+    geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+    hasMap: site.mapUrl,
   },
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: site.email, areaServed: markets, availableLanguage: ['en', 'ar'] }],
   areaServed: 'Middle East',
-  sameAs: Object.values(site.social),
 };
 ---
 <!doctype html>
@@ -62,24 +76,33 @@ const org = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={alt('en')} />
-    <link rel="alternate" hreflang="ar" href={alt('ar')} />
-    <link rel="alternate" hreflang="x-default" href={alt('en')} />
+    {alternates && <link rel="canonical" href={canonical} />}
+    {alternates && <link rel="alternate" hreflang="en" href={alt('en')} />}
+    {alternates && <link rel="alternate" hreflang="ar" href={alt('ar')} />}
+    {alternates && <link rel="alternate" hreflang="x-default" href={alt('en')} />}
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL(image, site.url).href} />
+    {alternates && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImage} />
+    {!image && <meta property="og:image:width" content="1200" />}
+    {!image && <meta property="og:image:height" content="630" />}
+    {!image && <meta property="og:image:alt" content={site.name} />}
     <meta property="og:locale" content={lang === 'ar' ? 'ar_AE' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'ar' ? 'en_US' : 'ar_AE'} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#08060f" />
-    <link rel="icon" type="image/png" href="/brand/logo-96.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href={`https://fonts.googleapis.com/css2?${fonts}&display=swap`} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <Font cssVariable="--font-archivo" preload={lang === 'en' ? [{ subset: 'latin' }] : false} />
+    <Font cssVariable="--font-plex" preload={lang === 'en' ? [{ subset: 'latin', weight: 400 }] : false} />
+    <Font cssVariable="--font-jetbrains" />
+    {lang === 'ar' && <Font cssVariable="--font-kufi" preload={[{ subset: 'arabic' }]} />}
+    {lang === 'ar' && <Font cssVariable="--font-plex-ar" preload={[{ subset: 'arabic', weight: 400 }]} />}
     <script type="application/ld+json" set:html={JSON.stringify(org)} />
     {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
@@ -95,7 +118,7 @@ const org = {
       <span class="hidden text-[15px] font-semibold sm:inline">WhatsApp</span>
     </button>
 
-    {product && <Nudge lang={lang} product={product} />}
+    {product && <Nudge lang={lang} product={product} label={productLabel ?? product} />}
     <LeadModal lang={lang} />
     <Consent lang={lang} />
   </body>

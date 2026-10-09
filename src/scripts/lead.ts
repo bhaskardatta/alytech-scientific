@@ -23,6 +23,22 @@ export const visitorId = (() => {
 })();
 const sessionId = sessionStorage.getItem('aly-sid') || (sessionStorage.setItem('aly-sid', uid()), sessionStorage.getItem('aly-sid')!);
 
+// Campaign attribution (ads ROI). First touch in the tab session wins; sessionStorage only, so nothing persists without consent.
+// Keep in sync with ATTR_KEYS in lib/visitor.ts (the API drops anything else).
+const ATTR_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid', 'li_fat_id'];
+const touch = (() => {
+  try {
+    const saved = sessionStorage.getItem('aly-touch');
+    if (saved) return JSON.parse(saved) as { attribution: Record<string, string>; landing: string };
+    const params = new URLSearchParams(location.search);
+    const attribution = Object.fromEntries(ATTR_KEYS.flatMap((k) => (params.get(k) ? [[k, params.get(k)!.slice(0, 200)]] : [])));
+    if (!Object.keys(attribution).length) return {};
+    const t = { attribution, landing: location.pathname };
+    sessionStorage.setItem('aly-touch', JSON.stringify(t));
+    return t;
+  } catch { return {}; }
+})();
+
 const send = (url: string, body: object) => {
   const data = JSON.stringify({ ...body, visitorId, sessionId, lang: I.lang, path: location.pathname, ts: Date.now() });
   if (navigator.sendBeacon?.(url, new Blob([data], { type: 'application/json' }))) return;
@@ -40,12 +56,14 @@ let partialTimer: number | undefined;
 const q = <T extends Element>(s: string) => dialog!.querySelector<T>(s)!;
 const fieldsOf = () => Object.fromEntries(new FormData(form!)) as Record<string, string>;
 const subject = () => ctx.product || ctx.category || ctx.brand || '';
+// With the placeholder number (site.whatsapp) there is nothing to open: behave like any other request form.
+const viaWa = () => ctx.mode === 'whatsapp' && I.waReady;
 
 export function openLead(next: Ctx) {
   if (!dialog || !form) return;
   ctx = next;
   leadKey = uid();
-  const wa = ctx.mode === 'whatsapp';
+  const wa = viaWa();
   q('[data-lead-eyebrow] span').textContent = subject() || 'AlyTech Scientific';
   q('[data-lead-title]').textContent = I.titles[ctx.mode] ?? I.titles.quote;
   q('[data-lead-sub]').textContent = wa ? I.subWa : I.subDefault;
@@ -76,7 +94,7 @@ if (dialog && form) {
     clearTimeout(partialTimer);
     partialTimer = window.setTimeout(() => {
       const f = fieldsOf();
-      if (f.name || f.email || f.phone) send('/api/lead/', { ...f, leadKey, partial: true });
+      if (f.name || f.email || f.phone) send('/api/lead/', { ...f, leadKey, partial: true, ...touch });
     }, 900);
   });
 
@@ -102,28 +120,31 @@ if (dialog && form) {
     }
 
     store.set('aly-contact', JSON.stringify({ name: f.name, email: f.email, phone: f.phone, company: f.company, country: f.country }));
+    const payload = { ...f, leadKey, visitorId, sessionId, lang: I.lang, path: location.pathname, referrer: document.referrer, ts: Date.now(), ...touch };
+    const post = (keepalive = false) => fetch('/api/lead/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), keepalive });
+
+    if (viaWa()) {
+      // window.open must run synchronously inside the click gesture (Safari/iOS block it after an await), so the lead is sent in the background.
+      const text = `${I.greeting} ${subject() || I.general}.\n— ${f.name}${f.company ? `, ${f.company}` : ''}`;
+      window.open(`https://wa.me/${I.wa}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+      post(true).catch(() => {});
+      dialog.close();
+      return;
+    }
+
     const btn = q<HTMLButtonElement>('[data-lead-submit]');
     const label = btn.querySelector('span')!;
     const prev = label.textContent;
     btn.disabled = true; label.textContent = I.sending;
-
-    const payload = { ...f, leadKey, visitorId, sessionId, lang: I.lang, path: location.pathname, referrer: document.referrer, ts: Date.now() };
     let ok = false;
     let specs: { label: string; value: string }[] | null = null;
     try {
-      const res = await fetch('/api/lead/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
+      const res = await post();
       ok = res.ok;
       if (ok) specs = (await res.json()).specs ?? null;
     } catch {}
     btn.disabled = false; label.textContent = prev;
 
-    if (ctx.mode === 'whatsapp') {
-      // Never block the conversation on our backend: open WhatsApp regardless.
-      const text = `${I.greeting} ${subject() || I.general}.\n— ${f.name}${f.company ? `, ${f.company}` : ''}`;
-      window.open(`https://wa.me/${I.wa}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-      dialog.close();
-      return;
-    }
     if (!ok) {
       const err = q<HTMLElement>('[data-lead-error]');
       err.textContent = I.errSend; err.classList.remove('hidden');

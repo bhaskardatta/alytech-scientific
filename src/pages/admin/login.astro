@@ -1,6 +1,9 @@
 ---
 import Admin from '../../layouts/Admin.astro';
 import { login, logout, isAdmin, authConfigured } from '../../lib/auth';
+import { loginLocked, loginFailed } from '../../lib/guard';
+import { requestInfo } from '../../lib/visitor';
+import { go } from '../../lib/admin';
 export const prerender = false;
 
 let error = '';
@@ -8,13 +11,22 @@ if (Astro.request.method === 'POST') {
   const form = await Astro.request.formData();
   if (form.get('logout')) {
     logout(Astro.cookies);
-    return Astro.redirect('/admin/login/');
+    return go(Astro, '/admin/login/');
   }
-  if (await login(String(form.get('password') ?? ''), Astro.cookies)) return Astro.redirect('/admin/');
-  await new Promise((r) => setTimeout(r, 800)); // slow down guessing
-  error = 'That password is not correct.';
+  const { ip } = requestInfo(Astro.request, Astro.clientAddress);
+  if (await loginLocked(ip)) {
+    // Checked before the password, so a locked-out guesser learns nothing, not even from a correct attempt.
+    Astro.response.status = 429;
+    error = 'Too many failed attempts. Try again in 15 minutes.';
+  } else if (await login(String(form.get('password') ?? ''), Astro.cookies)) {
+    return go(Astro, '/admin/');
+  } else {
+    await loginFailed(ip);
+    await new Promise((r) => setTimeout(r, 800)); // slow down guessing
+    error = 'That password is not correct.';
+  }
 } else if (await isAdmin(Astro.cookies)) {
-  return Astro.redirect('/admin/');
+  return go(Astro, '/admin/');
 }
 ---
 <Admin title="Sign in" nav={false}>
