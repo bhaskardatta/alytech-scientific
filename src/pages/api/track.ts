@@ -27,7 +27,13 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const pageviewData = { ...cleanUtm(attribution), ...(dup === true && { dup: true }) };
 
   let row;
-  if (anon === true) {
+  if (type === 'hero') {
+    // 3D health report: device facts only, never linked to a visitor (no ids, no IP lookup, no city).
+    row = {
+      type, anon: true, path: clean(path, 300), lang: lang === 'ar' ? 'ar' : 'en', geo_country: meta.geo_country, device,
+      data: { status: clean(b.status, 20), what: clean(b.what, 40), reason: clean(b.reason, 300), lite: b.lite === true, reduced: b.reduced === true, dpr: Number(b.dpr) || null, vw: Number(b.vw) || null, vh: Number(b.vh) || null },
+    };
+  } else if (anon === true) {
     // Anonymous counting for visitors who have not accepted cookies. Page views only, and only what the privacy policy lists:
     // path, product page, referrer host, country, device class, language, campaign tags. No ids, no IP lookup, no city, no title, no IP stored.
     if (type !== 'pageview') return new Response(null, { status: 204 });

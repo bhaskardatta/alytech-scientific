@@ -90,6 +90,7 @@ create table if not exists lead_notes (
   created_at  timestamptz not null default now()
 );
 create index if not exists lead_notes_lead_idx on lead_notes (lead_id, created_at);
+create index if not exists lead_notes_author_idx on lead_notes (author_id) where author_id is not null;
 
 -- Site settings owned by the business (WhatsApp number, alert recipients, contact email, office hours, announcement bar, publish status).
 create table if not exists settings (
@@ -98,6 +99,7 @@ create table if not exists settings (
   updated_by  uuid references admin_users (id) on delete set null,
   updated_at  timestamptz not null default now()
 );
+create index if not exists settings_updated_by_idx on settings (updated_by) where updated_by is not null;
 
 -- Who did what in the admin panel (owner-only page).
 create table if not exists admin_audit (
@@ -183,12 +185,12 @@ revoke all on leads, events, v_org_activity, v_top_products, v_top_searches, v_d
 -- ---------------------------------------------------------------------------------------------------------------------
 
 -- "https://www.google.com/search?q=x" or just "google.com" (anonymous page views store the host only) -> "google.com"
-create or replace function host_of(u text) returns text language sql immutable as $$
+create or replace function host_of(u text) returns text language sql immutable set search_path = public as $$
   select nullif(lower(regexp_replace(coalesce(substring(u from '^(?:[a-zA-Z][a-zA-Z0-9+.-]*://)?([^/:?#]+)'), ''), '^www\.', '')), '')
 $$;
 
 -- direct / search / social / referral / campaign (utm present). 'internal' (our own site) is excluded from the source charts.
-create or replace function traffic_channel(src text, med text, host text) returns text language sql immutable as $$
+create or replace function traffic_channel(src text, med text, host text) returns text language sql immutable set search_path = public as $$
   select case
     when coalesce(src, '') <> '' or coalesce(med, '') <> '' then 'campaign'
     when coalesce(host, '') = '' then 'direct'
@@ -203,7 +205,7 @@ $$;
 -- Page views count every recorded view (consented and anonymous; the copy re-sent when a visitor clicks Accept is flagged dup and skipped).
 -- "visitors" are distinct visitor ids, which exist only for visitors who accepted cookies. Spam leads are excluded everywhere.
 -- "converted" = identified visitors who submitted an enquiry or started a WhatsApp chat (same population as the visitors figure).
-create or replace function admin_kpis(p_from timestamptz, p_to timestamptz) returns jsonb language sql stable as $$
+create or replace function admin_kpis(p_from timestamptz, p_to timestamptz) returns jsonb language sql stable set search_path = public as $$
   with pv as (
     select 1 from events
     where type = 'pageview' and ts >= p_from and ts < p_to and coalesce(data->>'dup', '') <> 'true'
@@ -231,7 +233,7 @@ create or replace function admin_kpis(p_from timestamptz, p_to timestamptz) retu
   )
 $$;
 
-create or replace function admin_overview(p_from timestamptz, p_to timestamptz) returns jsonb language sql stable as $$
+create or replace function admin_overview(p_from timestamptz, p_to timestamptz) returns jsonb language sql stable set search_path = public as $$
   with pv_all as materialized (
     select visitor_id, path, product, referrer, geo_country, device, ip_org, ts,
            data->>'utm_source' as utm_source, data->>'utm_medium' as utm_medium, data->>'utm_campaign' as utm_campaign,
@@ -327,7 +329,7 @@ $$;
 -- Data retention, matching the privacy policy: enquiry records up to 5 years after last contact,
 -- page-view (event) records up to 24 months. Failed-admin-login events (they hold an IP) are only needed for the lockout, so 30 days.
 -- leads.updated_at moves on every save from the site form, so it is the "last contact" clock. The admin activity log keeps 24 months.
-create or replace function purge_old_data() returns void language sql as $$
+create or replace function purge_old_data() returns void language sql set search_path = public as $$
   delete from events where type = 'admin_login_fail' and ts < now() - interval '30 days';
   delete from events where ts < now() - interval '24 months';
   delete from leads  where updated_at < now() - interval '5 years';
@@ -337,8 +339,13 @@ $$;
 -- Only the server (service_role) may call these; public / anon / authenticated cannot.
 revoke all on function host_of(text), traffic_channel(text, text, text), admin_kpis(timestamptz, timestamptz), admin_overview(timestamptz, timestamptz), purge_old_data()
   from public, anon, authenticated;
+-- Server-only access, granted explicitly: new Supabase projects may not expose tables to the Data API by default.
 do $$ begin
   if exists (select 1 from pg_roles where rolname = 'service_role') then
+    grant usage on schema public to service_role;
+    grant select, insert, update, delete on leads, events, admin_users, lead_notes, settings, admin_audit to service_role;
+    grant select on v_org_activity, v_top_products, v_top_searches, v_daily to service_role;
+    grant usage, select on all sequences in schema public to service_role;
     grant execute on function host_of(text), traffic_channel(text, text, text), admin_kpis(timestamptz, timestamptz), admin_overview(timestamptz, timestamptz), purge_old_data() to service_role;
   end if;
 end $$;
