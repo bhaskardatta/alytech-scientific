@@ -30,6 +30,15 @@ export const safeQ = (q: string) => q.replace(/[,()*:%\\."]/g, ' ').trim().slice
 export const waHref = (phone: string, name?: string) =>
   `https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hello${name ? ` ${name}` : ''}, this is AlyTech Scientific following up on your enquiry.`)}`;
 
+const phProject = import.meta.env.POSTHOG_PROJECT_ID as string | undefined;
+/** PostHog session-replay link for a lead or WhatsApp click (needs POSTHOG_PROJECT_ID; EU cloud). */
+export const replayUrl = (session?: string | null) =>
+  session && phProject ? `https://eu.posthog.com/project/${encodeURIComponent(phProject)}/replay/${encodeURIComponent(session)}` : null;
+
+/** "google / cpc / spring-launch" from stored utm_* / click ids. */
+export const campaignOf = (a?: Record<string, string> | null) =>
+  !a ? '' : [a.utm_source ?? (a.gclid || a.gbraid || a.wbraid ? 'google ads' : a.msclkid ? 'bing ads' : a.li_fat_id ? 'linkedin' : ''), a.utm_medium, a.utm_campaign].filter(Boolean).join(' / ');
+
 export const modeLabel: Record<string, string> = {
   whatsapp: 'WhatsApp', datasheet: 'Datasheet', price: 'Pricing', quote: 'Quote', specs: 'Specs', interest: 'Interest',
 };

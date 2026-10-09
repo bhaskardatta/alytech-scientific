@@ -4,67 +4,249 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Content-Security-Policy", "value": "frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://eu.posthog.com; base-uri 'self'; object-src 'none'; form-action 'self'"
+        }
       ]
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": ".*\\.vercel\\.app" }],
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "has": [
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/images/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/brand/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/og/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/admin/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
     }
   ],
   "redirects": [
-    { "source": "/index.html", "destination": "/", "statusCode": 301 },
-    { "source": "/indexdoop.html", "destination": "/", "statusCode": 301 },
-    { "source": "/about.html", "destination": "/about/", "statusCode": 301 },
-    { "source": "/team.html", "destination": "/about/", "statusCode": 301 },
-    { "source": "/contact.html", "destination": "/contact/", "statusCode": 301 },
-    { "source": "/appque.html", "destination": "/contact/", "statusCode": 301 },
-    { "source": "/success.html", "destination": "/contact/", "statusCode": 301 },
-    { "source": "/services.html", "destination": "/services/", "statusCode": 301 },
-    { "source": "/suppliers.html", "destination": "/principals/", "statusCode": 301 },
-    { "source": "/products.html", "destination": "/gasmix/", "statusCode": 301 },
-    { "source": "/aiolos.html", "destination": "/gasmix/aiolos-iii/", "statusCode": 301 },
-    { "source": "/zephyr.html", "destination": "/gasmix/zephyr-ii/", "statusCode": 301 },
-    { "source": "/hurricane.html", "destination": "/gasmix/hurricane/", "statusCode": 301 },
-    { "source": "/gmrack.html", "destination": "/gasmix/grack/", "statusCode": 301 },
-    { "source": "/liqmix.html", "destination": "/gasmix/nephos/", "statusCode": 301 },
-    { "source": "/atmo.html", "destination": "/gasmix/", "statusCode": 301 },
-    { "source": "/specialtygases.html", "destination": "/gasmix/", "statusCode": 301 },
-    { "source": "/specialtygases-new.html", "destination": "/gasmix/", "statusCode": 301 },
-    { "source": "/flash.html", "destination": "/principals/", "statusCode": 301 },
-    { "source": "/detoure.html", "destination": "/principals/", "statusCode": 301 },
-    { "source": "/applications.html", "destination": "/industries/", "statusCode": 301 },
-    { "source": "/og.html", "destination": "/industries/oil-gas/", "statusCode": 301 },
-    { "source": "/og-new.html", "destination": "/industries/oil-gas/", "statusCode": 301 },
-    { "source": "/petrochemisty.html", "destination": "/industries/petrochemical-refining/", "statusCode": 301 },
-    { "source": "/pharmaceutica.html", "destination": "/industries/pharmaceutical-biotech/", "statusCode": 301 },
-    { "source": "/pharmaceutical.html", "destination": "/industries/pharmaceutical-biotech/", "statusCode": 301 },
-    { "source": "/portfolio-single.html", "destination": "/industries/pharmaceutical-biotech/", "statusCode": 301 },
-    { "source": "/environment.html", "destination": "/industries/environmental-monitoring/", "statusCode": 301 },
-    { "source": "/environment-new.html", "destination": "/industries/environmental-monitoring/", "statusCode": 301 },
-    { "source": "/rd.html", "destination": "/industries/research-academia/", "statusCode": 301 },
-    { "source": "/rd-new.html", "destination": "/industries/research-academia/", "statusCode": 301 }
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/indexdoop.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/team.html",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/appque.html",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/success.html",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services.html",
+      "destination": "/services/",
+      "statusCode": 301
+    },
+    {
+      "source": "/suppliers.html",
+      "destination": "/principals/",
+      "statusCode": 301
+    },
+    {
+      "source": "/products.html",
+      "destination": "/gasmix/",
+      "statusCode": 301
+    },
+    {
+      "source": "/aiolos.html",
+      "destination": "/gasmix/aiolos-iii/",
+      "statusCode": 301
+    },
+    {
+      "source": "/zephyr.html",
+      "destination": "/gasmix/zephyr-ii/",
+      "statusCode": 301
+    },
+    {
+      "source": "/hurricane.html",
+      "destination": "/gasmix/hurricane/",
+      "statusCode": 301
+    },
+    {
+      "source": "/gmrack.html",
+      "destination": "/gasmix/grack/",
+      "statusCode": 301
+    },
+    {
+      "source": "/liqmix.html",
+      "destination": "/gasmix/nephos/",
+      "statusCode": 301
+    },
+    {
+      "source": "/atmo.html",
+      "destination": "/gasmix/",
+      "statusCode": 301
+    },
+    {
+      "source": "/specialtygases.html",
+      "destination": "/gasmix/",
+      "statusCode": 301
+    },
+    {
+      "source": "/specialtygases-new.html",
+      "destination": "/gasmix/",
+      "statusCode": 301
+    },
+    {
+      "source": "/flash.html",
+      "destination": "/principals/",
+      "statusCode": 301
+    },
+    {
+      "source": "/detoure.html",
+      "destination": "/principals/",
+      "statusCode": 301
+    },
+    {
+      "source": "/applications.html",
+      "destination": "/industries/",
+      "statusCode": 301
+    },
+    {
+      "source": "/og.html",
+      "destination": "/industries/oil-gas/",
+      "statusCode": 301
+    },
+    {
+      "source": "/og-new.html",
+      "destination": "/industries/oil-gas/",
+      "statusCode": 301
+    },
+    {
+      "source": "/petrochemisty.html",
+      "destination": "/industries/petrochemical-refining/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pharmaceutica.html",
+      "destination": "/industries/pharmaceutical-biotech/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pharmaceutical.html",
+      "destination": "/industries/pharmaceutical-biotech/",
+      "statusCode": 301
+    },
+    {
+      "source": "/portfolio-single.html",
+      "destination": "/industries/pharmaceutical-biotech/",
+      "statusCode": 301
+    },
+    {
+      "source": "/environment.html",
+      "destination": "/industries/environmental-monitoring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/environment-new.html",
+      "destination": "/industries/environmental-monitoring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/rd.html",
+      "destination": "/industries/research-academia/",
+      "statusCode": 301
+    },
+    {
+      "source": "/rd-new.html",
+      "destination": "/industries/research-academia/",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/ingest/static/:path*",
+      "destination": "https://eu-assets.i.posthog.com/static/:path*"
+    },
+    {
+      "source": "/ingest/array/:path*",
+      "destination": "https://eu-assets.i.posthog.com/array/:path*"
+    },
+    {
+      "source": "/ingest/:path*",
+      "destination": "https://eu.i.posthog.com/:path*"
+    }
   ]
 }

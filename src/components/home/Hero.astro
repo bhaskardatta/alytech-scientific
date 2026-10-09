@@ -30,6 +30,7 @@ const copy = {
     ? 'نورّد ونركّب وندرّب ونصون كل جهاز نبيعه — بمهندسين محليين، وعقود صيانة سنوية، وقطع غيار في المنطقة.'
     : 'We supply, install, train and maintain every instrument we sell — with local engineers, annual maintenance contracts and spares held in the region.',
   hint: ar ? 'مرّر لرؤية ما بداخله' : 'Scroll to look inside',
+  view3d: ar ? 'اعرض النموذج ثلاثي الأبعاد' : 'Explore the 3D model',
   schematic: ar ? 'عرض تخطيطي' : 'Schematic view',
   callouts: {
     mfc: ar ? 'وحدة تحكم بالتدفق الكتلي لكل قناة' : 'Mass flow controller per channel',
@@ -65,6 +66,8 @@ const copy = {
         <div class="hero-ctas flex flex-wrap gap-3">
           <a href={L('/gasmix/')} class="btn btn-primary">{t(lang, 'cta.explore')} <Icon name="arrow" size={18} flip /></a>
           <button type="button" class="btn btn-wa" data-lead="whatsapp"><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'cta.whatsapp')}</button>
+          {/* Reduced-motion visitors get the still image; this lets them opt in to the scroll-driven 3D view. */}
+          <button type="button" class="btn btn-ghost hidden" data-hero-3d>{copy.view3d}</button>
         </div>
       </div>
 
@@ -274,7 +277,7 @@ const copy = {
         Promise.all([document.fonts.load(`600 64px ${fonts.display}`), document.fonts.load(`500 20px ${fonts.mono}`)]),
         new Promise((r) => setTimeout(r, 2500)),
       ]);
-      scene = await createHeroScene(canvas, { mobile: phone, reducedMotion: false, fonts, onFail: showFallback });
+      scene = await createHeroScene(canvas, { mobile: phone, reducedMotion: reduced, fonts, onFail: showFallback });
       layout();
       new ResizeObserver(() => scene?.resize()).observe(canvas);
 
@@ -300,9 +303,18 @@ const copy = {
     }
   }
 
-  // Reduced motion gets the static image and never loads Three.js. Everyone else: let the copy paint first, boot WebGL when idle.
+  // Reduced motion gets the static image and never loads Three.js unless the visitor asks for it.
+  // Everyone else: let the copy paint first, boot WebGL when idle.
   if (reduced) {
     showFallback();
+    const optIn = section.querySelector<HTMLButtonElement>('[data-hero-3d]')!;
+    if (document.createElement('canvas').getContext('webgl2')) optIn.classList.remove('hidden');
+    optIn.addEventListener('click', () => {
+      optIn.classList.add('hidden');
+      fallbackImg.classList.add('hidden');
+      canvas.classList.remove('hidden');
+      boot();
+    }, { once: true });
   } else {
     const idle = (window as any).requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 200));
     if (document.readyState === 'complete') idle(boot); else addEventListener('load', () => idle(boot), { once: true });

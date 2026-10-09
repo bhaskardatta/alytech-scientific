@@ -3,6 +3,8 @@
  * Sends to our own /api endpoints (admin panel reads the same DB). Nothing here identifies a person
  * until they type their details; the anonymous visitor id only links their page history to that lead.
  */
+import { capture, phSession } from './analytics';
+
 type Mode = 'whatsapp' | 'datasheet' | 'price' | 'quote' | 'specs' | 'interest';
 interface Ctx { mode: Mode; product?: string; brand?: string; category?: string }
 
@@ -39,12 +41,28 @@ const touch = (() => {
   } catch { return {}; }
 })();
 
-const send = (url: string, body: object) => {
-  const data = JSON.stringify({ ...body, visitorId, sessionId, lang: I.lang, path: location.pathname, ts: Date.now() });
+/** `anon` drops the visitor/session ids (used for requests a visitor makes before accepting cookies). */
+const send = (url: string, body: object, anon = false) => {
+  const data = JSON.stringify({ ...body, ...(!anon && { visitorId, sessionId }), lang: I.lang, path: location.pathname, ts: Date.now() });
   if (navigator.sendBeacon?.(url, new Blob([data], { type: 'application/json' }))) return;
   fetch(url, { method: 'POST', body: data, headers: { 'content-type': 'application/json' }, keepalive: true }).catch(() => {});
 };
-export const track = (type: string, data: object = {}) => { if (consented()) send('/api/track/', { type, ...data }); };
+export const track = (type: string, data: Record<string, unknown> = {}) => {
+  if (!consented()) return;
+  send('/api/track/', { type, ...data });
+  capture(type, data);
+};
+
+// ---------- WhatsApp: straight to the chat ----------
+// No form in the way. The prefilled message carries the product and a short reference; the same reference is logged
+// with the page, campaign and session, so the engineer can look up what the visitor was viewing (admin → Visitors).
+function openWhatsApp(c: Ctx) {
+  const ref = uid().replace(/-/g, '').slice(0, 5).toUpperCase();
+  const what = c.product || c.category || c.brand || '';
+  window.open(`https://wa.me/${I.wa}?text=${encodeURIComponent(`${I.greeting} ${what || I.general}.\n(Ref ${ref})`)}`, '_blank', 'noopener');
+  send('/api/track/', { type: 'whatsapp', ref, product: c.product, brand: c.brand, category: c.category, ...touch, ph: phSession() }, !consented());
+  capture('whatsapp_click', { product: what || undefined });
+}
 
 // ---------- Modal ----------
 const dialog = document.getElementById('lead-dialog') as HTMLDialogElement | null;
@@ -56,19 +74,16 @@ let partialTimer: number | undefined;
 const q = <T extends Element>(s: string) => dialog!.querySelector<T>(s)!;
 const fieldsOf = () => Object.fromEntries(new FormData(form!)) as Record<string, string>;
 const subject = () => ctx.product || ctx.category || ctx.brand || '';
-// With the placeholder number (site.whatsapp) there is nothing to open: behave like any other request form.
-const viaWa = () => ctx.mode === 'whatsapp' && I.waReady;
-
 export function openLead(next: Ctx) {
+  // ponytail: until the real number replaces the placeholder (site.whatsapp), WhatsApp buttons fall back to the request form.
+  if (next.mode === 'whatsapp' && I.waReady) return openWhatsApp(next);
   if (!dialog || !form) return;
   ctx = next;
   leadKey = uid();
-  const wa = viaWa();
   q('[data-lead-eyebrow] span').textContent = subject() || 'AlyTech Scientific';
   q('[data-lead-title]').textContent = I.titles[ctx.mode] ?? I.titles.quote;
-  q('[data-lead-sub]').textContent = wa ? I.subWa : I.subDefault;
-  q('[data-lead-submit] span').textContent = wa ? I.submitWa : I.submitDefault;
-  q<HTMLElement>('[data-message-row]').hidden = wa;
+  q('[data-lead-sub]').textContent = I.subDefault;
+  q('[data-lead-submit] span').textContent = I.submitDefault;
   for (const k of ['mode', 'product', 'brand', 'category'] as const) (form.elements.namedItem(k) as HTMLInputElement).value = (ctx as any)[k] || '';
 
   // Returning visitors: prefill what they gave us before.
@@ -120,17 +135,8 @@ if (dialog && form) {
     }
 
     store.set('aly-contact', JSON.stringify({ name: f.name, email: f.email, phone: f.phone, company: f.company, country: f.country }));
-    const payload = { ...f, leadKey, visitorId, sessionId, lang: I.lang, path: location.pathname, referrer: document.referrer, ts: Date.now(), ...touch };
-    const post = (keepalive = false) => fetch('/api/lead/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), keepalive });
-
-    if (viaWa()) {
-      // window.open must run synchronously inside the click gesture (Safari/iOS block it after an await), so the lead is sent in the background.
-      const text = `${I.greeting} ${subject() || I.general}.\n— ${f.name}${f.company ? `, ${f.company}` : ''}`;
-      window.open(`https://wa.me/${I.wa}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-      post(true).catch(() => {});
-      dialog.close();
-      return;
-    }
+    const payload = { ...f, leadKey, visitorId, sessionId, lang: I.lang, path: location.pathname, referrer: document.referrer, ts: Date.now(), ...touch, ph: phSession() };
+    const post = () => fetch('/api/lead/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
 
     const btn = q<HTMLButtonElement>('[data-lead-submit]');
     const label = btn.querySelector('span')!;
@@ -150,6 +156,7 @@ if (dialog && form) {
       err.textContent = I.errSend; err.classList.remove('hidden');
       return;
     }
+    capture('lead_submitted', { mode: ctx.mode, product: ctx.product, brand: ctx.brand, category: ctx.category }); // no contact details
     const dl = q<HTMLElement>('[data-lead-specs]');
     dl.replaceChildren(...(specs ?? []).map((sp) => {
       const row = document.createElement('div');

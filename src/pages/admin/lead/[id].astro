@@ -2,7 +2,7 @@
 import Admin from '../../../layouts/Admin.astro';
 import { isAdmin } from '../../../lib/auth';
 import { dbReady, select, update } from '../../../lib/db';
-import { fmt, waHref, modeLabel, dbNotice, go } from '../../../lib/admin';
+import { fmt, waHref, modeLabel, dbNotice, go, replayUrl, campaignOf } from '../../../lib/admin';
 export const prerender = false;
 
 if (!(await isAdmin(Astro.cookies))) return go(Astro, '/admin/login/');
@@ -40,7 +40,7 @@ const fields: [string, any][] = !lead ? [] : [
   ['Request', modeLabel[lead.mode] ?? lead.mode], ['Product', lead.product], ['Company', lead.company], ['Country (stated)', lead.country],
   ['Email', lead.email], ['Phone / WhatsApp', lead.phone], ['Network', lead.ip_org], ['Location (IP)', [lead.geo_city, lead.geo_country].filter(Boolean).join(', ')],
   ['Language', lead.lang === 'ar' ? 'Arabic' : 'English'], ['Came from', lead.referrer],
-  ['Landing page', lead.landing_page], ['Campaign', Object.entries(lead.attribution ?? {}).map(([k, v]) => `${k}: ${v}`).join(' · ')], ['Device', lead.user_agent],
+  ['Landing page', lead.landing_page], ['Campaign', campaignOf(lead.attribution)], ['Campaign tags', Object.entries(lead.attribution ?? {}).map(([k, v]) => `${k}: ${v}`).join(' · ')], ['Device', lead.user_agent],
 ];
 ---
 <Admin title={lead?.name ?? 'Lead'} notice={dbNotice(error)}>
@@ -55,6 +55,7 @@ const fields: [string, any][] = !lead ? [] : [
           </div>
           <div class="flex gap-2">
             {lead.phone && <a class="btn btn-primary btn-sm" href={waHref(lead.phone, lead.name)} target="_blank" rel="noopener noreferrer">WhatsApp them</a>}
+            {replayUrl(lead.ph_session) && <a class="btn btn-ghost btn-sm" href={replayUrl(lead.ph_session)!} target="_blank" rel="noopener noreferrer">Watch session</a>}
             {lead.email && <a class="btn btn-ghost btn-sm" href={`mailto:${lead.email}?subject=${encodeURIComponent(`Your enquiry: ${lead.product ?? 'AlyTech Scientific'}`)}`}>Email</a>}
           </div>
         </div>

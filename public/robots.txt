@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /api/
+Disallow: /ingest/
 
 Sitemap: https://www.alytechme.com/sitemap-index.xml

@@ -22,6 +22,7 @@ create table if not exists leads (
   referrer    text,
   landing_page text,                            -- first campaign landing path of the session (ad clicks)
   attribution jsonb,                            -- utm_* / gclid / gbraid / wbraid / msclkid / li_fat_id from that landing URL
+  ph_session  text,                             -- PostHog session id (admin links to the replay)
   visitor_id  text,
   session_id  text,
   ip          inet,
@@ -37,6 +38,7 @@ create table if not exists leads (
 -- Existing databases: the create table above is skipped, so add the newer columns here (safe to re-run).
 alter table leads add column if not exists landing_page text;
 alter table leads add column if not exists attribution jsonb;
+alter table leads add column if not exists ph_session text;
 
 create index if not exists leads_created_idx on leads (created_at desc);
 create index if not exists leads_visitor_idx on leads (visitor_id);

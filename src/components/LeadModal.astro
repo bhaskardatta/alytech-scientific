@@ -13,9 +13,7 @@ const countries = lang === 'ar'
 // Everything the client script needs, serialised once.
 const i18n = {
   titles: Object.fromEntries(modes.map((m) => [m, t(lang, `lead.title.${m}`)])),
-  subWa: t(lang, 'lead.sub.whatsapp'),
   subDefault: t(lang, 'lead.sub.default'),
-  submitWa: t(lang, 'lead.submit.whatsapp'),
   submitDefault: t(lang, 'lead.submit.default'),
   sending: t(lang, 'lead.sending'),
   errName: t(lang, 'lead.err.name'),
@@ -69,7 +67,7 @@ const i18n = {
             {countries.map((c) => <option>{c}</option>)}
           </select>
         </div>
-        <div class="sm:col-span-2" data-message-row>
+        <div class="sm:col-span-2">
           <label for="lead-message" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.message')}</label>
           <textarea id="lead-message" name="message" rows="3" class="field resize-y"></textarea>
         </div>

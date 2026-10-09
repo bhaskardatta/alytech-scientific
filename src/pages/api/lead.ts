@@ -52,6 +52,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     referrer: clean(b.referrer, 500),
     // Only sent when present, so a lead without a campaign never touches the (newer) columns.
     ...(attribution && { attribution, landing_page: clean(b.landing, 300) }),
+    ...(clean(b.ph, 100) && { ph_session: clean(b.ph, 100) }), // PostHog session, for the replay link in admin
     visitor_id: clean(b.visitorId, 64),
     session_id: clean(b.sessionId, 64),
     ...meta,

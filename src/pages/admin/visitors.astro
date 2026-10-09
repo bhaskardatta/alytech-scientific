@@ -2,7 +2,7 @@
 import Admin from '../../layouts/Admin.astro';
 import { isAdmin } from '../../lib/auth';
 import { dbReady, select } from '../../lib/db';
-import { ago, dbNotice, go } from '../../lib/admin';
+import { ago, fmt, dbNotice, go, replayUrl, campaignOf } from '../../lib/admin';
 export const prerender = false;
 
 if (!(await isAdmin(Astro.cookies))) return go(Astro, '/admin/login/');
@@ -11,15 +11,16 @@ if (!(await isAdmin(Astro.cookies))) return go(Astro, '/admin/login/');
 // Whole-word match on named providers only, so a company that merely contains "tata", "meta", "orange" or "du" stays visible.
 const ISP = /(?<![a-z0-9])(?:etisalat|emirates telecommunications|emirates integrated telecommunications|eitc|e&|stc|saudi telecom|mobily|zain|ooredoo|omantel|batelco|telecom egypt|vodafone|orange (?:s\.?a|egypt|jordan)|airtel|jio|bsnl|tata (?:communications|teleservices)|starlink|cloudflare|google|amazon|microsoft|digitalocean|ovh|hetzner|akamai|apple inc|facebook|meta platforms)(?![a-z0-9])/i;
 
-let orgs: any[] = [], products: any[] = [], searches: any[] = [], days: any[] = [];
+let orgs: any[] = [], products: any[] = [], searches: any[] = [], days: any[] = [], chats: any[] = [];
 let error: unknown;
 if (dbReady()) {
   try {
-    [orgs, products, searches, days] = await Promise.all([
+    [orgs, products, searches, days, chats] = await Promise.all([
       select('v_org_activity', 'select=*&order=pageviews.desc&limit=200'),
       select('v_top_products', 'select=*&order=views.desc&limit=30'),
       select('v_top_searches', 'select=*&order=searches.desc&limit=40'),
       select('v_daily', 'select=*&order=day.asc'),
+      select('events', 'select=ts,path,product,ip_org,geo_country,data&type=eq.whatsapp&order=ts.desc&limit=50'),
     ]);
   } catch (e) {
     error = e;
@@ -85,4 +86,28 @@ const maxDay = Math.max(1, ...days.map((d) => d.pageviews));
       </section>
     </div>
   </div>
+
+  <section class="card mt-6 overflow-x-auto">
+    <div class="border-b border-line p-5">
+      <h2 class="display text-lg">WhatsApp chats started</h2>
+      <p class="text-mute">Each click opens WhatsApp with "(Ref XXXXX)" in the message. Match the ref from the chat to see what they were viewing.</p>
+    </div>
+    <table class="w-full text-start">
+      <thead class="text-mute"><tr>{['When', 'Ref', 'Interested in', 'Page', 'Organisation', 'Campaign', ''].map((h) => <th scope="col" class="label px-5 py-3 text-start font-medium">{h}</th>)}</tr></thead>
+      <tbody class="divide-y divide-line">
+        {chats.length === 0 && <tr><td colspan="7" class="px-5 py-10 text-center text-mute">No WhatsApp clicks yet.</td></tr>}
+        {chats.map((c) => (
+          <tr class="align-top">
+            <td class="px-5 py-3 whitespace-nowrap text-mute">{fmt(c.ts)}</td>
+            <td class="px-5 py-3 font-mono font-semibold">{c.data?.ref}</td>
+            <td class="px-5 py-3">{c.product ?? c.data?.category ?? c.data?.brand ?? 'General'}</td>
+            <td class="px-5 py-3 text-mute">{c.path}</td>
+            <td class="px-5 py-3">{c.ip_org?.replace(/^AS\d+\s*/, '') ?? '—'}<span class="block text-[12px] text-mute">{c.geo_country}</span></td>
+            <td class="px-5 py-3 text-mute">{campaignOf(c.data?.attribution) || '—'}</td>
+            <td class="px-5 py-3">{replayUrl(c.data?.ph) && <a class="link-arrow text-sm" href={replayUrl(c.data?.ph)!} target="_blank" rel="noopener noreferrer">Replay</a>}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
 </Admin>

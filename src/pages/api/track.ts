@@ -5,7 +5,7 @@ import { originOk, limited } from '../../lib/guard';
 
 export const prerender = false;
 
-const TYPES = new Set(['pageview', 'lead_open', 'search', 'nudge']);
+const TYPES = new Set(['pageview', 'lead_open', 'search', 'nudge', 'whatsapp']); // whatsapp: a click straight to the chat (ref, page, campaign)
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   if (!originOk(request)) return new Response(null, { status: 403 });
