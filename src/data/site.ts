@@ -7,7 +7,7 @@ export const site = {
   founded: '2015',
   email: 'alytech@alytechme.ae',
   // ponytail: placeholder until the client sends the WhatsApp Business number (digits only, intl format).
-  whatsapp: '971000000000',
+  whatsapp: '971501811657',
   address: {
     street: 'Mussafah M40',
     poBox: 'PO Box 8909',
