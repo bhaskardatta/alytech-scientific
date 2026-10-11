@@ -138,6 +138,13 @@ export function openLead(next: Ctx) {
   q<HTMLButtonElement>('[data-lead-submit]').disabled = false;
   q('[data-lead-form-wrap]').classList.remove('hidden');
   q('[data-lead-done]').classList.add('hidden');
+  // Return focus on close to the control that opened the dialog; if that control is gone (the mobile menu closed
+  // under it), fall back to the menu toggle or the main content.
+  const opener = document.activeElement as HTMLElement | null;
+  dialog.addEventListener('close', () => {
+    const target = opener?.isConnected && opener.offsetParent ? opener : document.querySelector<HTMLElement>('[data-mobile-toggle]')?.offsetParent ? document.querySelector<HTMLElement>('[data-mobile-toggle]') : document.getElementById('main');
+    target?.focus();
+  }, { once: true });
   dialog.showModal();
   dialog.scrollTop = 0;
   field('name').focus();
@@ -174,7 +181,8 @@ if (dialog && form) {
     setErr('name', nameBad ? I.errName : '');
     setErr('contact', contactBad ? I.errContact : '');
     if (nameBad || contactBad) {
-      const bad = form.querySelector<HTMLElement>('[aria-invalid="true"]')!;
+      // Focus the field the visitor actually got wrong: name, else the email they typed, else the phone.
+      const bad = nameBad ? field('name') : (f.email && !emailOk) ? field('email') : field('phone');
       bad.focus({ preventScroll: true });
       bad.scrollIntoView({ block: 'center' });
       return;

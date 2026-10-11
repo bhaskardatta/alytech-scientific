@@ -25,7 +25,7 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
       <Breadcrumbs items={crumbs} />
       <h1 class="display mt-10 max-w-3xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'معدات المختبرات والاختبار، بالمواصفات التي تحتاجها.' : 'Lab and test equipment, sourced to your specification.'}</h1>
       <p class="mt-5 max-w-2xl text-[17px] text-mute">{ar ? 'أخبرنا بالمعيار والسعة والميزانية. يحدد مهندسونا الجهاز المناسب ونورّده من مصنّعين اختبرناهم، ثم نفحصه ونركّبه وندعمه محلياً.' : 'Tell us the standard, the capacity and the budget. Our engineers specify the right unit, source it from manufacturers we have vetted, then inspect, install and support it locally.'}</p>
-      <nav class="-mx-4 mt-10 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0" aria-label={ar ? 'فئات المعدات' : 'Equipment families'}>
+      <nav class="-mx-4 mt-9 flex gap-2 overflow-x-auto px-4 py-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0" aria-label={ar ? 'فئات المعدات' : 'Equipment families'}>
         {families.map((f) => <a href={`#${f.slug}`} class="shrink-0 whitespace-nowrap rounded-full border border-line-strong px-3.5 py-2 text-[14px] font-medium transition-colors hover:border-brand-500 hover:text-brand-700">{(ar && f.ar?.name) || f.name}</a>)}
       </nav>
     </div>

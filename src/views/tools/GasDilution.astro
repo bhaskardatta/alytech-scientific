@@ -156,7 +156,7 @@ const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
             <label class="relative block">
               <input type="radio" name="mode" value={m} checked={i === 0} class="peer sr-only" />
               <Icon name="check" size={16} class="pointer-events-none absolute start-3 top-1/2 z-10 hidden -translate-y-1/2 text-white peer-checked:block" />
-              <span class="flex min-h-[48px] cursor-pointer items-center justify-center rounded-sm border border-line-strong px-4 py-2 text-center text-[15px] font-semibold transition-colors duration-200 hover:border-ink peer-checked:border-brand-600 peer-checked:hover:border-brand-600 peer-checked:bg-brand-600 peer-checked:ps-9 peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand-500">{s.modes[m]}</span>
+              <span class="flex min-h-[48px] cursor-pointer items-center justify-center rounded-sm border border-control px-4 py-2 text-center text-[15px] font-semibold transition-colors duration-200 hover:border-ink peer-checked:border-brand-600 peer-checked:hover:border-brand-600 peer-checked:bg-brand-600 peer-checked:ps-9 peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand-500">{s.modes[m]}</span>
             </label>
           ))}
         </div>

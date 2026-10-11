@@ -80,7 +80,7 @@ const description = ar
     <div class="wrap">
       <p class="label text-brand-600">{ar ? 'اختر الطراز' : 'Choose a model'}</p>
       <h2 id="cmp-h" class="display mt-3 max-w-2xl text-[clamp(1.7rem,3.2vw,2.6rem)]">{ar ? 'من مخفف بقناتين إلى ست عشرة قناة.' : 'From a two-channel diluter to sixteen channels.'}</h2>
-      <div class="cmp-scroll mt-10 overflow-x-auto rounded-[var(--radius-md)] border border-line bg-card" tabindex="0" role="region" aria-labelledby="cmp-h">
+      <div class="cmp-scroll mt-10 overflow-x-auto rounded-[var(--radius-md)] border border-line bg-card" tabindex="0" role="region" aria-label={ar ? 'جدول مقارنة الطرازات' : 'Model comparison table'}>
         <table class="w-full min-w-[760px] text-start text-[15px]">
           <thead>
             <tr class="border-b border-line text-mute">

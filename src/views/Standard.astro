@@ -153,7 +153,7 @@ const hasAlso = s.categories.length > 0 || s.industries.length > 0 || rel.length
             <div>
               <h3 class="label text-mute">{T.relStd}</h3>
               <ul class="mt-4 flex flex-wrap gap-2" dir="ltr">
-                {rel.map((r) => <li><a href={L(standardPath(r))} class="inline-flex rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px] transition-colors hover:border-brand-500 hover:text-brand-700">{r.designation}</a></li>)}
+                {rel.map((r) => <li><a href={L(standardPath(r))} class="inline-flex min-h-11 items-center rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px] transition-colors hover:border-brand-500 hover:text-brand-700 md:min-h-0">{r.designation}</a></li>)}
               </ul>
             </div>
           )}

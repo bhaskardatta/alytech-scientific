@@ -18,13 +18,14 @@ const nav = [
   { href: '/contact/', label: t(lang, 'nav.contact') },
 ];
 const bare = unlocalize(path);
+// Pages that open on a dark section render the light-on-dark header from the start (no flash, readable without JS).
+const darkTop = /^\/(?:gasmix\/(?:[^/]+\/)?|services\/)?$/.test(bare);
 const current = (href: string) => (bare + '/').startsWith(href);
 const here = (href: string) => (current(href) ? 'page' : undefined);
 // Everything the Products menu leads to; the trigger is a button, so it gets aria-current="true" rather than "page"
 const inProducts = ['/gasmix/', '/principals/', '/equipment/', '/standards/', '/tools/'].some(current);
 ---
-<header id="site-header" class="group/header fixed inset-x-0 top-0 z-50 transition-[color] duration-300" data-tone="light">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-3 focus:z-10 focus:rounded-sm focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white">{t(lang, 'nav.skip')}</a>
+<header id="site-header" class="group/header fixed inset-x-0 top-0 z-50 transition-[color] duration-300" data-tone={darkTop ? 'dark' : 'light'}>
   <div class="header-bar border-b">
     <div class="wrap flex h-[72px] items-center gap-6">
       <a href={L('/')} class="flex shrink-0 items-center gap-3" aria-label={t(lang, 'nav.home')}>
@@ -192,6 +193,8 @@ const inProducts = ['/gasmix/', '/principals/', '/equipment/', '/standards/', '/
       menu.addEventListener('mouseleave', () => { timer = window.setTimeout(() => set(false), 160); });
     }
     menu.addEventListener('keydown', (e) => { if (e.key === 'Escape') { set(false); btn.focus(); } });
+    // Esc also dismisses a menu opened by hover, wherever focus is (WCAG 1.4.13)
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.classList.contains('is-open') && !menu.contains(document.activeElement)) set(false); });
     menu.addEventListener('focusout', (e) => { if (!menu.contains(e.relatedTarget as Node)) set(false); });
   });
 

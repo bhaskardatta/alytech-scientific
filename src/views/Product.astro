@@ -132,7 +132,7 @@ const assurances = ar
           <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
           {p.model && <span class:list={['label absolute start-5 top-5 z-10', gas && !img?.opaque ? 'text-white/60' : 'text-mute']}>{p.model}</span>}
           <ProductImage brand={brand.slug} brandName={brand.name} slug={p.slug} alt={`${brand.name} ${p.name}`} class:list={['absolute inset-0 h-full w-full p-8 sm:p-12', !img?.opaque && 'drop-shadow-[0_30px_40px_rgb(15_23_42/0.18)]']} eager />
-          <span class:list={['absolute bottom-4 end-5 z-10 text-[12px]', gas && !img?.opaque ? 'text-white/60' : 'text-mute']}>{ar ? 'الصورة' : 'Image'}: {brand.name}</span>
+          <span class:list={['absolute bottom-4 end-5 z-10 text-[12px]', gas && !img?.opaque ? 'text-white/70' : 'text-ink-soft']}>{ar ? 'الصورة' : 'Image'}: {brand.name}</span>
         </div>
       </div>
     </div>

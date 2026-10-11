@@ -11,7 +11,7 @@ const tick = 'hidden [[aria-pressed=true]>&]:block';
   <div class="consent-card card flex flex-col gap-3 p-4 shadow-[var(--shadow-pop)] sm:gap-4 sm:p-5">
     <p class="text-[13px] leading-snug text-ink-soft sm:text-sm">
       <!-- phones and landscape phones: one short line that is itself the link to the full policy -->
-      <a href={localize(lang, '/privacy/')} class="consent-short underline underline-offset-2 hover:text-ink">{lang === 'ar' ? 'نستخدم ملفات تعريف الارتباط لمتابعة طلباتك.' : 'We use cookies to follow up on your requests.'}</a>
+      <span class="consent-short">{lang === 'ar' ? 'نستخدم ملفات تعريف الارتباط للتحليلات ولمتابعة طلباتك.' : 'We use cookies for analytics and to follow up on your requests.'} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a></span>
       <span class="consent-full">{t(lang, 'consent.text')} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a></span>
     </p>
     <div class="flex gap-2">

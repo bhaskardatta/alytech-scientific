@@ -51,7 +51,8 @@ for p in pages:
         if u.startswith(('/api/', '/admin', '/ingest/')): continue
         if not os.path.exists(root + u + ('index.html' if u.endswith('/') else '')): issues['broken internal link'].append((rel, u))
     for m in re.finditer(r'<img\b[^>]*>', s):
-        if not all(a in m.group(0) for a in ('width=', 'height=', 'alt=')): issues['img missing width/height/alt'].append((rel, m.group(0)[:80]))
+        # a bare `alt` (how Astro prints alt="") is a valid empty alternative for decorative images
+        if not all(re.search(rf'\s{a}(=|[\s/>])', m.group(0)) for a in ('width', 'height', 'alt')): issues['img missing width/height/alt'].append((rel, m.group(0)[:80]))
     low = s.lower()
     for v in vendors:
         if re.search(r'(?<![a-z0-9])' + re.escape(v.lower()) + r'(?![a-z0-9])', low): issues['Tier-2 vendor name leaked'].append((rel, v))

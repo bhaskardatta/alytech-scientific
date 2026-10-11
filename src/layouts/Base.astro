@@ -111,6 +111,7 @@ const org = {
     {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body data-product={product}>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-3 focus:z-[70] focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-sm focus:bg-brand-600 focus:px-4 focus:text-white">{t(lang, 'nav.skip')}</a>
     {bar && <Announcement lang={lang} a={cfg.announcement} />}
     <Header lang={lang} path={path} />
     <main id="main" tabindex="-1" class="outline-none">
@@ -135,8 +136,7 @@ const org = {
           for (const e of entries) e.isIntersecting ? seen.add(e.target) : seen.delete(e.target);
           const away = seen.size > 0;
           fab.classList.toggle('away', away);
-          fab.tabIndex = away ? -1 : 0; // hidden from keyboard and screen readers while stepped aside
-          fab.toggleAttribute('aria-hidden', away);
+          fab.inert = away; // out of the tab order and the accessibility tree while stepped aside
           if (away && document.activeElement === fab) fab.blur();
         });
         document.querySelectorAll('[data-lead="whatsapp"]').forEach((el) => { if (el !== fab && !el.closest('#nudge, dialog, #mobile-nav')) io.observe(el); });

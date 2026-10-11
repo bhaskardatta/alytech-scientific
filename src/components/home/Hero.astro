@@ -43,7 +43,7 @@ const copy = {
   <div class="hero-sticky sticky top-0 h-[100svh] overflow-hidden">
     <div class="hero-bg absolute inset-0" aria-hidden="true"></div>
     <img src="/images/gasmix/aiolos-iii.webp" srcset="/images/gasmix/aiolos-iii-sm.webp 480w, /images/gasmix/aiolos-iii.webp 1299w" sizes="(max-width: 767px) 40vw, 380px" alt={ar ? 'جهاز GasMix Aiolos III لخلط الغازات وتخفيفها' : 'GasMix Aiolos III gas mixer and diluter'} width="1299" height="1772" loading="lazy" decoding="async" class="hero-fallback absolute hidden" data-hero-fallback />
-    <canvas class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-700" data-hero-canvas aria-hidden="true"></canvas>
+    <canvas class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-700" data-hero-canvas role="img" aria-label={ar ? 'نموذج ثلاثي الأبعاد لجهاز GasMix Aiolos III لخلط الغازات وتخفيفها، يُفتح مع التمرير ليُظهر مكوّناته' : '3D model of the GasMix Aiolos III gas mixer and diluter, which opens up as you scroll to show its internal parts'}></canvas>
     <p class="hero-debug hidden" data-hero-debug></p>
 
     {/* overflow-clip: the labels start off-screen; in RTL that leaked scrollable overflow into .hero-sticky, and its removal on boot registered as a 0.23 layout shift */}
@@ -221,12 +221,18 @@ const copy = {
       el.style.opacity = String(o);
       el.style.transform = reduced ? '' : `translateY(${(1 - o) * (p < a ? 24 : -24)}px)`;
       el.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
-      el.toggleAttribute('inert', o < 0.5);
     });
     bar.style.transform = `scaleX(${p})`;
     hint.style.opacity = String(1 - Math.min(1, p * 8));
     scene?.setProgress(p);
   }
+
+  // Every step stays in the accessibility tree and its links in the tab order; tabbing into a step scrolls the page to it.
+  steps.forEach((el, i) => el.addEventListener('focusin', () => {
+    const total = section.offsetHeight - innerHeight;
+    const target = section.offsetTop + total * Math.max(0, windows[i][0] + fade * 1.5);
+    if (Math.abs(scrollY - target) > 4) scrollTo({ top: target, behavior: reduced ? 'auto' : 'smooth' });
+  }));
 
   addEventListener('scroll', paint, { passive: true });
   addEventListener('resize', paint);
@@ -276,7 +282,7 @@ const copy = {
   // so the CSP is unaffected.
   const hits = (a: DOMRect, b: DOMRect) => a.left < b.right + 8 && a.right > b.left - 8 && a.top < b.bottom + 4 && a.bottom > b.top - 4;
   function fitCallouts() {
-    const text = steps.find((el) => !el.hasAttribute('inert'));
+    const text = steps.find((el) => Number(el.style.opacity) > 0.5);
     const copy = text ? [...text.children].map((c) => c.getBoundingClientRect()) : [];
     const items = [...calloutEls.values()].map((el) => {
       const label = el.querySelector<HTMLElement>('.callout-label')!;

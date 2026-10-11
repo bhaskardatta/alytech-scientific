@@ -18,7 +18,8 @@ export function ltr(s: string, lang: 'en' | 'ar', mono = false): string {
       const c = core.slice(-1);
       if (/[.,:;(]/.test(c) || (c === ')' && close > open)) { tail = c + tail; core = core.slice(0, -1); } else break;
     }
-    out += esc(s.slice(last, m.index)) + `<bdi dir="ltr" class="${mono ? 'font-mono ' : ''}${core.length <= 18 ? 'whitespace-nowrap' : ''}">${esc(core)}</bdi>` + esc(tail);
+    const words = /[A-Za-z]{2,}/.test(core) ? ' lang="en"' : ''; // so screen readers pronounce Latin names in English
+    out += esc(s.slice(last, m.index)) + `<bdi dir="ltr"${words} class="${mono ? 'font-mono ' : ''}${core.length <= 18 ? 'whitespace-nowrap' : ''}">${esc(core)}</bdi>` + esc(tail);
     last = m.index! + m[0].length;
   }
   return out + esc(s.slice(last));
