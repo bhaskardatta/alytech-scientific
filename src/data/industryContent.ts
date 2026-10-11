@@ -6,8 +6,8 @@ export const industryContent: Record<string, IndustryContent> = {
   'oil-gas': {
     brands: ['vinci', 'gasmix', 'ducom', 'thermtest'],
     intro: {
-      en: 'Upstream and midstream laboratories in the region need reservoir data they can defend and analysers they can trust. We supply Vinci Technologies core-analysis and PVT systems, GasMix calibration-gas generators for process and emissions analysers, and Ducom lubricant testers — installed, commissioned and supported by our own engineers.',
-      ar: 'تحتاج مختبرات قطاع الاستكشاف والإنتاج والنقل في المنطقة إلى بيانات مكامن موثوقة ومحللات يمكن الاعتماد عليها. نورّد أنظمة Vinci Technologies لتحليل العينات اللبية واختبارات PVT، ومولّدات غازات المعايرة GasMix لمحللات العمليات والانبعاثات، وأجهزة Ducom لاختبار مواد التشحيم — مع التركيب والتشغيل والدعم بواسطة مهندسينا.',
+      en: 'Upstream and midstream laboratories in the region need reservoir data they can defend and analyzers they can trust. We supply Vinci Technologies core-analysis and PVT systems, GasMix gas mixers and diluters for process and emissions analyzers, and Ducom lubricant testers — installed, commissioned and supported by our own engineers.',
+      ar: 'تحتاج مختبرات قطاع الاستكشاف والإنتاج والنقل في المنطقة إلى بيانات مكامن موثوقة ومحللات يمكن الاعتماد عليها. نورّد أنظمة Vinci Technologies لتحليل العينات اللبية واختبارات PVT، وخلاطات ومخففات الغاز من GasMix لمحللات العمليات والانبعاثات، وأجهزة Ducom لاختبار مواد التشحيم — مع التركيب والتشغيل والدعم بواسطة مهندسينا.',
     },
     faqs: [
       {
@@ -15,7 +15,7 @@ export const industryContent: Record<string, IndustryContent> = {
         a: { en: 'AlyTech Scientific is the exclusive distributor of Vinci Technologies in Qatar and an authorized distributor across the wider Middle East. We supply, install and support Vinci core-analysis, PVT and enhanced-oil-recovery systems.', ar: 'AlyTech Scientific هي الموزع الحصري لشركة Vinci Technologies في قطر والموزع المعتمد في بقية الشرق الأوسط. نورّد أنظمة Vinci لتحليل العينات اللبية واختبارات PVT والاستخلاص المعزز للنفط ونركّبها وندعمها.' },
       },
       {
-        q: { en: 'Can we generate calibration gas for H2S and hydrocarbon analysers on site?', ar: 'هل يمكننا توليد غاز المعايرة لمحللات H2S والهيدروكربونات في الموقع؟' },
+        q: { en: 'Can we generate calibration gas for H2S and hydrocarbon analyzers on site?', ar: 'هل يمكننا توليد غاز المعايرة لمحللات H2S والهيدروكربونات في الموقع؟' },
         a: { en: 'Yes. GasMix dynamic diluters such as Aiolos III and Zephyr II blend a certified high-concentration standard with a diluent through mass flow controllers, producing each lower concentration on demand instead of a separate cylinder for every level.', ar: 'نعم. تمزج مخففات GasMix الديناميكية مثل Aiolos III وZephyr II معياراً معتمداً عالي التركيز مع غاز مخفف عبر وحدات تحكم بالتدفق الكتلي، فتنتج كل تركيز أقل عند الحاجة بدلاً من أسطوانة منفصلة لكل مستوى.' },
       },
       {
@@ -27,13 +27,13 @@ export const industryContent: Record<string, IndustryContent> = {
   'petrochemical-refining': {
     brands: ['gasmix', 'f-dgs', 'ducom', 'lamy-rheology'],
     intro: {
-      en: 'Refinery and petrochemical labs run on gas chromatographs, process analysers and petroleum test methods. We cover the gases those instruments depend on — calibration mixtures, LPG vaporisation, hydrogen, nitrogen and zero air — and the physical tests behind product release, from flash point to viscosity.',
-      ar: 'تعتمد مختبرات المصافي والبتروكيماويات على أجهزة الكروماتوغرافيا الغازية ومحللات العمليات وطرق اختبار المنتجات البترولية. نوفر الغازات التي تحتاجها هذه الأجهزة — مزائج المعايرة وتبخير غاز البترول المسال والهيدروجين والنيتروجين والهواء الصفري — والاختبارات الفيزيائية اللازمة لإجازة المنتجات، من نقطة الوميض إلى اللزوجة.',
+      en: 'Refinery and petrochemical labs run on gas chromatographs, process analyzers and petroleum test methods. We cover the gases those instruments depend on — calibration mixtures, LPG vaporization, hydrogen, nitrogen and zero air — and the physical tests behind product release, from flash point to viscosity.',
+      ar: 'تعتمد مختبرات المصافي والبتروكيماويات على أجهزة الكروماتوغرافيا الغازية ومحللات العمليات وطرق اختبار المنتجات البترولية. نوفر الغازات التي تحتاجها هذه الأجهزة — مخاليط المعايرة وتبخير غاز البترول المسال والهيدروجين والنيتروجين والهواء الصفري — والاختبارات الفيزيائية اللازمة للإفراج عن المنتجات، من نقطة الوميض إلى اللزوجة.',
     },
     faqs: [
       {
         q: { en: 'How do we inject LPG into a GC without discriminating the sample?', ar: 'كيف نحقن غاز البترول المسال في جهاز الكروماتوغرافيا دون تحيّز في العينة؟' },
-        a: { en: 'The GasMix AURA II vaporiser converts LPG and other liquefied gases into a fully gaseous sample in a regulated heating chamber, then delivers it through a heated transfer line so lighter and heavier components reach the GC in the right proportions.', ar: 'يحوّل مبخّر GasMix AURA II غاز البترول المسال والغازات المسالة الأخرى إلى عينة غازية بالكامل داخل حجرة تسخين منظَّمة، ثم ينقلها عبر خط نقل مسخَّن لتصل المكونات الخفيفة والثقيلة إلى جهاز الكروماتوغرافيا بنسبها الصحيحة.' },
+        a: { en: 'The GasMix AURA II vaporizer converts LPG and other liquefied gases into a fully gaseous sample in a regulated heating chamber, then delivers it through a heated transfer line so lighter and heavier components reach the GC in the right proportions.', ar: 'يحوّل مبخّر GasMix AURA II غاز البترول المسال والغازات المسالة الأخرى إلى عينة غازية بالكامل داخل حجرة تسخين منظَّمة، ثم ينقلها عبر خط نقل مسخَّن لتصل المكونات الخفيفة والثقيلة إلى جهاز الكروماتوغرافيا بنسبها الصحيحة.' },
       },
       {
         q: { en: 'Can a gas generator replace hydrogen and nitrogen cylinders in the lab?', ar: 'هل يمكن لمولّد الغاز أن يحل محل أسطوانات الهيدروجين والنيتروجين في المختبر؟' },
@@ -41,7 +41,7 @@ export const industryContent: Record<string, IndustryContent> = {
       },
       {
         q: { en: 'Which flash point methods can you supply instruments for?', ar: 'ما طرق قياس نقطة الوميض التي توفرون أجهزتها؟' },
-        a: { en: 'Ducom offers Pensky-Martens closed-cup, Cleveland open-cup and Abel flash point testers, alongside cloud and pour point and Noack volatility testers for fuels and lubricants.', ar: 'توفر Ducom أجهزة نقطة الوميض بطريقة Pensky-Martens بالكوب المغلق وCleveland بالكوب المفتوح وAbel، إلى جانب أجهزة نقطة التعكّر والانسكاب واختبار التطاير Noack للوقود ومواد التشحيم.' },
+        a: { en: 'Ducom offers Pensky-Martens closed-cup, Cleveland open-cup and Abel flash point testers, alongside cloud and pour point and Noack volatility testers for fuels and lubricants.', ar: 'توفر Ducom أجهزة نقطة الوميض بطريقة Pensky-Martens بالكأس المغلق وCleveland بالكأس المفتوح وAbel، إلى جانب أجهزة نقطة التعكّر والانسكاب واختبار التطاير Noack للوقود ومواد التشحيم.' },
       },
     ],
   },
@@ -53,8 +53,8 @@ export const industryContent: Record<string, IndustryContent> = {
     },
     faqs: [
       {
-        q: { en: 'Does a nuclear density gauge need a licence in the UAE?', ar: 'هل يحتاج مقياس الكثافة النووي إلى ترخيص في الإمارات؟' },
-        a: { en: 'Yes. Nuclear moisture-density gauges contain sealed radioactive sources, so owning and operating one requires authorisation from the national regulator — in the UAE, the Federal Authority for Nuclear Regulation. Talk to us early so licensing can run in parallel with supply.', ar: 'نعم. تحتوي مقاييس الكثافة والرطوبة النووية على مصادر مشعة مغلقة، لذا يتطلب امتلاكها وتشغيلها تصريحاً من الجهة الرقابية الوطنية — وهي في الإمارات الهيئة الاتحادية للرقابة النووية. تواصل معنا مبكراً ليسير الترخيص بالتوازي مع التوريد.' },
+        q: { en: 'Does a nuclear density gauge need a license in the UAE?', ar: 'هل يحتاج مقياس الكثافة النووي إلى ترخيص في الإمارات؟' },
+        a: { en: 'Yes. Nuclear moisture-density gauges contain sealed radioactive sources, so owning and operating one requires authorization from the national regulator — in the UAE, the Federal Authority for Nuclear Regulation. Talk to us early so licensing can run in parallel with supply.', ar: 'نعم. تحتوي مقاييس الكثافة والرطوبة النووية على مصادر مشعة مغلقة، لذا يتطلب امتلاكها وتشغيلها تصريحاً من الجهة الرقابية الوطنية — وهي في الإمارات الهيئة الاتحادية للرقابة النووية. تواصل معنا مبكراً ليسير الترخيص بالتوازي مع التوريد.' },
       },
       {
         q: { en: 'What is a Hamburg wheel tracker used for?', ar: 'ما استخدام جهاز Hamburg لتتبع العجلات؟' },
@@ -69,8 +69,8 @@ export const industryContent: Record<string, IndustryContent> = {
   'materials-manufacturing': {
     brands: ['proto', 'ducom', 'thermtest'],
     intro: {
-      en: 'Fabrication shops, aerospace MRO and metal producers need to know how components behave under load, heat and wear. We supply Proto X-ray diffraction systems for residual stress, Ducom tribometers for friction and wear, Thermtest thermal-property instruments and universal testing machines.',
-      ar: 'تحتاج ورش التصنيع وصيانة الطائرات ومنتجو المعادن إلى معرفة سلوك المكونات تحت الحمل والحرارة والتآكل. نورّد أنظمة حيود الأشعة السينية من Proto لقياس الإجهاد المتبقي، وأجهزة Ducom للاحتكاك والتآكل، وأجهزة Thermtest للخواص الحرارية، وآلات الاختبار الشاملة.',
+      en: 'Fabrication shops, aerospace MRO and metal producers need to know how components behave under load, heat and wear. We supply Proto XRD systems for residual stress, Ducom tribometers for friction and wear, Thermtest thermal-property instruments and universal testing machines.',
+      ar: 'تحتاج ورش التصنيع وصيانة الطائرات ومنتجو المعادن إلى معرفة سلوك المكونات تحت الحمل والحرارة والبلى. نورّد أنظمة حيود الأشعة السينية من Proto لقياس الإجهاد المتبقي، وأجهزة Ducom للاحتكاك والبلى، وأجهزة Thermtest للخواص الحرارية، وآلات الاختبار الشاملة.',
     },
     faqs: [
       {
@@ -79,7 +79,7 @@ export const industryContent: Record<string, IndustryContent> = {
       },
       {
         q: { en: 'What does a pin-on-disk tribometer measure?', ar: 'ماذا يقيس جهاز الاحتكاك بطريقة الدبوس على القرص؟' },
-        a: { en: 'It presses a pin against a rotating disk under controlled load and speed, recording the friction coefficient and wear of the material pair. Ducom’s POD 4.0 follows methods such as ASTM G99.', ar: 'يضغط دبوساً على قرص دوّار تحت حمل وسرعة مضبوطين، ويسجل معامل الاحتكاك والتآكل لزوج المواد. يتبع جهاز POD 4.0 من Ducom طرقاً مثل ASTM G99.' },
+        a: { en: 'It presses a pin against a rotating disk under controlled load and speed, recording the friction coefficient and wear of the material pair. Ducom’s POD 4.0 follows methods such as ASTM G99.', ar: 'يضغط دبوساً على قرص دوّار تحت حمل وسرعة مضبوطين، ويسجل معامل الاحتكاك والبلى لزوج المواد. يتبع جهاز POD 4.0 من Ducom طرقاً مثل ASTM G99.' },
       },
       {
         q: { en: 'Can you supply universal testing machines?', ar: 'هل يمكنكم توريد آلات الاختبار الشاملة؟' },
@@ -90,17 +90,17 @@ export const industryContent: Record<string, IndustryContent> = {
   'pharmaceutical-biotech': {
     brands: ['schmidt-haensch', 'lamy-rheology'],
     intro: {
-      en: 'Pharmaceutical QC labs work to pharmacopoeia methods and audit trails. We supply Schmidt + Haensch polarimeters, refractometers and density meters, and Lamy Rheology viscometers and rheometers, with installation, operator training and maintenance contracts delivered locally.',
+      en: 'Pharmaceutical QC labs work to pharmacopeia methods and audit trails. We supply Schmidt + Haensch polarimeters, refractometers and density meters, and Lamy Rheology viscometers and rheometers, with installation, operator training and maintenance contracts delivered locally.',
       ar: 'تعمل مختبرات مراقبة الجودة الدوائية وفق طرق دساتير الأدوية وسجلات التدقيق. نورّد أجهزة قياس الاستقطاب والانكسار والكثافة من Schmidt + Haensch، ومقاييس اللزوجة والريولوجيا من Lamy Rheology، مع التركيب وتدريب المشغلين وعقود الصيانة محلياً.',
     },
     faqs: [
       {
-        q: { en: 'Which instrument measures optical rotation for pharmacopoeia testing?', ar: 'ما الجهاز الذي يقيس الدوران الضوئي لاختبارات دساتير الأدوية؟' },
+        q: { en: 'Which instrument measures optical rotation for pharmacopeia testing?', ar: 'ما الجهاز الذي يقيس الدوران الضوئي لاختبارات دساتير الأدوية؟' },
         a: { en: 'A polarimeter. Schmidt + Haensch polarimeters measure optical and specific rotation for identity and purity testing; we help you choose by accuracy, temperature control and data-handling features.', ar: 'مقياس الاستقطاب. تقيس أجهزة Schmidt + Haensch الدوران الضوئي والدوران النوعي لاختبارات الهوية والنقاء، ونساعدك في الاختيار حسب الدقة والتحكم بالحرارة وخصائص إدارة البيانات.' },
       },
       {
         q: { en: 'What is the difference between a viscometer and a rheometer?', ar: 'ما الفرق بين مقياس اللزوجة ومقياس الريولوجيا؟' },
-        a: { en: 'A viscometer reports viscosity at set conditions, which suits routine QC. A rheometer characterises how flow behaviour changes with shear rate, stress or time — needed for gels, creams and suspensions. Lamy Rheology offers both.', ar: 'يقيس مقياس اللزوجة اللزوجة عند ظروف محددة، وهو مناسب لمراقبة الجودة الروتينية. أما مقياس الريولوجيا فيصف تغيّر سلوك الجريان مع معدل القص أو الإجهاد أو الزمن، وهو ضروري للمواد الهلامية والكريمات والمعلّقات. توفر Lamy Rheology النوعين.' },
+        a: { en: 'A viscometer reports viscosity at set conditions, which suits routine QC. A rheometer characterizes how flow behavior changes with shear rate, stress or time — needed for gels, creams and suspensions. Lamy Rheology offers both.', ar: 'يقيس مقياس اللزوجة اللزوجة عند ظروف محددة، وهو مناسب لمراقبة الجودة الروتينية. أما مقياس الريولوجيا فيصف تغيّر سلوك الجريان مع معدل القص أو الإجهاد أو الزمن، وهو ضروري للمواد الهلامية والكريمات والمعلّقات. توفر Lamy Rheology النوعين.' },
       },
       {
         q: { en: 'Can you supply stability and climatic test chambers?', ar: 'هل توردون غرف اختبار الثبات والظروف المناخية؟' },
@@ -111,8 +111,8 @@ export const industryContent: Record<string, IndustryContent> = {
   'food-beverage': {
     brands: ['schmidt-haensch', 'lamy-rheology'],
     intro: {
-      en: 'Sugar refiners, dairies and beverage plants release product on sugar content, density, viscosity and texture. We supply Schmidt + Haensch saccharimeters, refractometers and density meters, and Lamy Rheology viscometers and texture analysers.',
-      ar: 'تعتمد مصافي السكر ومصانع الألبان والمشروبات في إجازة منتجاتها على محتوى السكر والكثافة واللزوجة والقوام. نورّد أجهزة قياس السكر والانكسار والكثافة من Schmidt + Haensch، ومقاييس اللزوجة ومحللات القوام من Lamy Rheology.',
+      en: 'Sugar refiners, dairies and beverage plants release product on sugar content, density, viscosity and texture. We supply Schmidt + Haensch saccharimeters, refractometers and density meters, and Lamy Rheology viscometers and texture analyzers.',
+      ar: 'تعتمد مصافي السكر ومصانع الألبان والمشروبات في الإفراج عن منتجاتها على محتوى السكر والكثافة واللزوجة والقوام. نورّد أجهزة قياس السكر والانكسار والكثافة من Schmidt + Haensch، ومقاييس اللزوجة ومحللات القوام من Lamy Rheology.',
     },
     faqs: [
       {
@@ -120,7 +120,7 @@ export const industryContent: Record<string, IndustryContent> = {
         a: { en: 'With a saccharimeter — a polarimeter scaled in International Sugar Scale degrees (°Z). The Schmidt + Haensch Saccharomat V is built for this routine, following ICUMSA methods.', ar: 'بجهاز قياس السكر، وهو مقياس استقطاب مدرّج بدرجات المقياس الدولي للسكر (°Z). صُمم جهاز Saccharomat V من Schmidt + Haensch لهذا العمل الروتيني وفق طرق ICUMSA.' },
       },
       {
-        q: { en: 'What does a texture analyser measure?', ar: 'ماذا يقيس محلل القوام؟' },
+        q: { en: 'What does a texture analyzer measure?', ar: 'ماذا يقيس محلل القوام؟' },
         a: { en: 'It applies controlled compression or tension to a sample and records force against distance or time, giving values such as hardness, firmness and adhesiveness. Lamy Rheology’s TX-700 is designed for food and cosmetic products.', ar: 'يطبّق ضغطاً أو شداً مضبوطاً على العينة ويسجل القوة مقابل المسافة أو الزمن، فيعطي قيماً مثل الصلابة والتماسك والالتصاق. صُمم جهاز TX-700 من Lamy Rheology للمنتجات الغذائية ومستحضرات التجميل.' },
       },
       {
@@ -133,20 +133,20 @@ export const industryContent: Record<string, IndustryContent> = {
     brands: ['gasmix', 'f-dgs'],
     intro: {
       en: 'Air-quality stations and stack-emission systems are only as good as their calibration. GasMix diluters produce traceable mixtures down to ppb on site, Nephos generates standards for VOCs that cannot be stored in cylinders, and F-DGS generators supply zero air and nitrogen.',
-      ar: 'لا تتجاوز دقة محطات جودة الهواء وأنظمة رصد انبعاثات المداخن دقة معايرتها. تنتج مخففات GasMix مزائج قابلة للتتبع حتى مستوى أجزاء في البليون في الموقع، ويولّد Nephos معايير للمركبات العضوية المتطايرة التي لا يمكن تخزينها في أسطوانات، وتوفر مولّدات F-DGS الهواء الصفري والنيتروجين.',
+      ar: 'لا تتجاوز دقة محطات جودة الهواء وأنظمة رصد انبعاثات المداخن دقة معايرتها. تنتج مخففات GasMix مخاليط قابلة للتتبع حتى مستوى أجزاء في البليون في الموقع، ويولّد جهاز Nephos معايير للمركبات العضوية المتطايرة التي لا يمكن تخزينها في أسطوانات، وتوفر مولّدات F-DGS الهواء الصفري والنيتروجين.',
     },
     faqs: [
       {
-        q: { en: 'How can we produce ppb-level calibration standards for air-quality analysers?', ar: 'كيف ننتج معايير معايرة بمستوى أجزاء في البليون لمحللات جودة الهواء؟' },
+        q: { en: 'How can we produce ppb-level calibration standards for air-quality analyzers?', ar: 'كيف ننتج معايير معايرة بمستوى أجزاء في البليون لمحللات جودة الهواء؟' },
         a: { en: 'By dynamic dilution. A GasMix diluter blends a certified standard with zero air through mass flow controllers to reach percent-to-ppb concentrations, and AlySoft calculates the uncertainty of each point.', ar: 'بالتخفيف الديناميكي. يمزج مخفف GasMix معياراً معتمداً مع الهواء الصفري عبر وحدات تحكم بالتدفق الكتلي للوصول إلى تراكيز من النسب المئوية حتى أجزاء في البليون، ويحسب برنامج AlySoft عدم اليقين لكل نقطة.' },
       },
       {
         q: { en: 'What is zero air and why generate it?', ar: 'ما الهواء الصفري ولماذا يتم توليده؟' },
-        a: { en: 'Zero air is air with hydrocarbons and other contaminants removed, used to zero analysers and feed FID detectors. F-DGS zero-air generators produce it continuously, avoiding cylinder supply.', ar: 'الهواء الصفري هواء أُزيلت منه الهيدروكربونات والملوثات الأخرى، ويُستخدم لتصفير المحللات وتغذية كواشف FID. تنتجه مولّدات F-DGS باستمرار دون الحاجة إلى أسطوانات.' },
+        a: { en: 'Zero air is air with hydrocarbons and other contaminants removed, used to zero analyzers and feed FID detectors. F-DGS zero-air generators produce it continuously, avoiding cylinder supply.', ar: 'الهواء الصفري هواء أُزيلت منه الهيدروكربونات والملوثات الأخرى، ويُستخدم لتصفير المحللات وتغذية كواشف FID. تنتجه مولّدات F-DGS باستمرار دون الحاجة إلى أسطوانات.' },
       },
       {
-        q: { en: 'Can you calibrate for VOCs and moisture that are not available in cylinders?', ar: 'هل يمكن المعايرة للمركبات العضوية المتطايرة والرطوبة غير المتوفرة في أسطوانات؟' },
-        a: { en: 'Yes. GasMix Nephos doses pure liquids or liquid mixtures and vaporises them into a carrier gas, producing gas-phase standards for VOCs, alcohols, siloxanes and water vapour.', ar: 'نعم. يقوم GasMix Nephos بجرعات من السوائل النقية أو مخاليطها ويبخّرها في غاز حامل، فينتج معايير في الطور الغازي للمركبات العضوية المتطايرة والكحولات والسيلوكسانات وبخار الماء.' },
+        q: { en: 'Can you generate calibration standards for VOCs and moisture that aren’t available in cylinders?', ar: 'هل يمكنكم توليد معايير معايرة للمركبات العضوية المتطايرة والرطوبة غير المتوفرة في أسطوانات؟' },
+        a: { en: 'Yes. GasMix Nephos doses pure liquids or liquid mixtures and vaporizes them into a carrier gas, so you can generate gas-phase calibration standards on site for VOCs, alcohols, siloxanes and water vapor.', ar: 'نعم. يجرّع جهاز GasMix Nephos سوائل نقية أو مخاليط سائلة ويبخّرها في غاز حامل، فيمكنك توليد معايير معايرة في الطور الغازي في الموقع للمركبات العضوية المتطايرة والكحولات والسيلوكسانات وبخار الماء.' },
       },
     ],
   },
@@ -154,7 +154,7 @@ export const industryContent: Record<string, IndustryContent> = {
     brands: ['thermtest', 'f-dgs', 'gasmix'],
     intro: {
       en: 'Utilities and renewable developers need to know how heat moves through soil, backfill and insulation. We supply Thermtest instruments for soil thermal resistivity and building materials, F-DGS hydrogen and nitrogen generators, and GasMix systems for gas-blend testing.',
-      ar: 'تحتاج شركات المرافق ومطورو الطاقة المتجددة إلى معرفة انتقال الحرارة عبر التربة ومواد الردم والعزل. نورّد أجهزة Thermtest لقياس المقاومة الحرارية للتربة ومواد البناء، ومولّدات F-DGS للهيدروجين والنيتروجين، وأنظمة GasMix لاختبار مزائج الغازات.',
+      ar: 'تحتاج شركات المرافق ومطورو الطاقة المتجددة إلى معرفة انتقال الحرارة عبر التربة ومواد الردم والعزل. نورّد أجهزة Thermtest لقياس المقاومة الحرارية للتربة ومواد البناء، ومولّدات F-DGS للهيدروجين والنيتروجين، وأنظمة GasMix لاختبار مخاليط الغازات.',
     },
     faqs: [
       {
@@ -174,13 +174,13 @@ export const industryContent: Record<string, IndustryContent> = {
   'research-academia': {
     brands: ['thermtest', 'proto', 'lamy-rheology', 'ducom'],
     intro: {
-      en: 'University and research labs need instruments that cover many materials and methods, and a supplier who stays after installation. We supply Thermtest, Proto, Lamy Rheology and Ducom systems for thermal, structural, rheological and tribological characterisation.',
+      en: 'University and research labs need instruments that cover many materials and methods, and a supplier who stays after installation. We supply Thermtest, Proto, Lamy Rheology and Ducom systems for thermal, structural, rheological and tribological characterization.',
       ar: 'تحتاج مختبرات الجامعات ومراكز الأبحاث إلى أجهزة تغطي مواد وطرقاً متعددة، وإلى مورّد يبقى معها بعد التركيب. نورّد أنظمة Thermtest وProto وLamy Rheology وDucom للتوصيف الحراري والبنيوي والريولوجي والاحتكاكي.',
     },
     faqs: [
       {
         q: { en: 'What is the transient plane source method?', ar: 'ما طريقة المصدر المستوي العابر؟' },
-        a: { en: 'A sensor placed between two sample pieces delivers a short heat pulse and records the temperature response, giving thermal conductivity and diffusivity in one measurement. It is standardised in ISO 22007-2 and used in Thermtest TPS instruments.', ar: 'يوضع حسّاس بين قطعتين من العينة ويطلق نبضة حرارية قصيرة ويسجل استجابة الحرارة، فيعطي الموصلية والانتشارية الحرارية في قياس واحد. الطريقة معتمدة في ISO 22007-2 وتستخدمها أجهزة Thermtest TPS.' },
+        a: { en: 'A sensor placed between two sample pieces delivers a short heat pulse and records the temperature response, giving thermal conductivity and diffusivity in one measurement. It is standardized in ISO 22007-2 and used in Thermtest TPS instruments.', ar: 'يوضع حسّاس بين قطعتين من العينة ويطلق نبضة حرارية قصيرة ويسجل استجابة الحرارة، فيعطي الموصلية والانتشارية الحرارية في قياس واحد. الطريقة معتمدة في ISO 22007-2 وتستخدمها أجهزة Thermtest TPS.' },
       },
       {
         q: { en: 'Can you help us compare instruments before a tender?', ar: 'هل يمكنكم مساعدتنا في مقارنة الأجهزة قبل المناقصة؟' },

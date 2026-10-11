@@ -25,7 +25,7 @@
   --color-line: #e3e1ea;
   --color-line-strong: #cbc7d6;
   --color-surface: #f7f7fa;
-  --color-card: #ffffff;
+  --color-card: #fdfdfe; /* toned white: pure #fff reads harsh next to the surface tint */
 
   --color-whatsapp: #25d366;
   --color-success: #0f7b4b;
@@ -152,26 +152,39 @@ html[data-announce] body { padding-top: var(--bar-h); }
     cursor: pointer;
   }
   .btn:active { transform: translateY(1px); }
+  /* Tailwind's preflight leaves <button> with the arrow cursor; every clickable control shows the hand. */
+  button:not(:disabled), [role="button"], summary { cursor: pointer; }
   .btn[disabled], .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; transform: none; }
   .btn-primary { background: var(--color-brand-600); color: #fff; }
-  .btn-primary:hover { background: var(--color-brand-700); box-shadow: 0 8px 24px -10px rgb(96 0 205 / 0.6); }
   .btn-ghost { border: 1px solid var(--color-line-strong); color: var(--color-ink); background: transparent; }
-  .btn-ghost:hover { border-color: var(--color-ink); background: var(--color-card); }
   .on-dark .btn-ghost { border-color: rgb(255 255 255 / 0.22); color: #fff; }
-  .on-dark .btn-ghost:hover { border-color: rgb(255 255 255 / 0.6); background: rgb(255 255 255 / 0.06); }
   /* WhatsApp is the secondary action next to the purple primary: outlined, carried by its green icon (the floating
      WhatsApp button stays solid). */
   .btn-wa { border: 1px solid var(--color-line-strong); color: var(--color-ink); background: var(--color-card); }
-  .btn-wa:hover { border-color: var(--color-whatsapp); background: rgb(37 211 102 / 0.06); }
   .on-dark .btn-wa { border-color: rgb(255 255 255 / 0.28); color: #fff; background: rgb(255 255 255 / 0.04); }
-  .on-dark .btn-wa:hover { border-color: var(--color-whatsapp); background: rgb(37 211 102 / 0.1); }
+  /* Hover only where a pointer can hover: on touch screens a tapped button must not stay in its hover colour. */
+  @media (hover: hover) {
+    .btn-primary:not([disabled], [aria-disabled="true"]):hover { background: var(--color-brand-700); box-shadow: 0 8px 24px -10px rgb(96 0 205 / 0.6); }
+    .btn-ghost:not([disabled], [aria-disabled="true"]):hover { border-color: var(--color-ink); background: var(--color-card); }
+    .on-dark .btn-ghost:not([disabled], [aria-disabled="true"]):hover { border-color: rgb(255 255 255 / 0.6); background: rgb(255 255 255 / 0.06); }
+    .btn-wa:not([disabled], [aria-disabled="true"]):hover { border-color: var(--color-whatsapp); background: rgb(37 211 102 / 0.06); }
+    .on-dark .btn-wa:not([disabled], [aria-disabled="true"]):hover { border-color: var(--color-whatsapp); background: rgb(37 211 102 / 0.1); }
+  }
+  .btn-primary:not([disabled]):active { background: var(--color-brand-800); }
   .btn-sm { min-height: 40px; padding: 0 16px; font-size: 14px; }
 
   .link-arrow {
     display: inline-flex; align-items: center; gap: 8px; font-weight: 600;
-    color: var(--color-brand-600); transition: gap 0.2s ease, color 0.2s ease;
+    color: var(--color-brand-600); transition: color 0.2s ease;
   }
-  .link-arrow:hover { gap: 12px; color: var(--color-brand-700); }
+  /* The arrow moves, not the gap, so nothing next to the link shifts (translate, so the RTL flip transform is kept). */
+  .link-arrow > svg:last-child { transition: translate 0.2s ease; }
+  @media (hover: hover) {
+    .link-arrow:hover { color: var(--color-brand-700); }
+    .link-arrow:hover > svg:last-child { translate: 4px 0; }
+    [dir="rtl"] .link-arrow:hover > svg:last-child { translate: -4px 0; }
+  }
+  .link-arrow:active { opacity: 0.75; }
   /* Touch screens and phone widths: 44px targets without changing the surrounding layout */
   @media (pointer: coarse), (max-width: 767px) {
     .link-arrow, .tap { padding-block: 10px; margin-block: -10px; }
@@ -182,6 +195,9 @@ html[data-announce] body { padding-top: var(--bar-h); }
     a.rounded-full { display: inline-flex; align-items: center; min-height: 44px; }
   }
   .on-dark .link-arrow { color: var(--color-brand-300); }
+
+  /* Product photos shot on white: the white background blends into the light stage instead of showing as a box */
+  .img-opaque { mix-blend-mode: multiply; }
 
   .card {
     background: var(--color-card);
@@ -202,13 +218,16 @@ html[data-announce] body { padding-top: var(--bar-h); }
     padding: 10px 12px; border-radius: var(--radius-xs); font-size: 15px; font-weight: 500;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
-  .nav-link:hover, .nav-link[aria-expanded="true"] { background: rgb(15 23 42 / 0.05); }
+  .nav-link[aria-expanded="true"] { background: rgb(15 23 42 / 0.05); }
+  @media (hover: hover) { .nav-link:hover { background: rgb(15 23 42 / 0.05); } }
+  .nav-link:active { background: rgb(15 23 42 / 0.09); }
   .nav-link[aria-current="page"] { color: var(--color-brand-600); }
   .icon-btn {
     display: inline-flex; align-items: center; justify-content: center; height: 44px; width: 44px;
     border-radius: var(--radius-sm); transition: background-color 0.2s ease;
   }
-  .icon-btn:hover { background: rgb(15 23 42 / 0.06); }
+  @media (hover: hover) { .icon-btn:hover { background: rgb(15 23 42 / 0.06); } }
+  .icon-btn:active { background: rgb(15 23 42 / 0.1); }
   .mobile-link { display: block; padding: 12px 0; font-size: 20px; font-weight: 600; border-bottom: 1px solid var(--color-line); }
 
   .field {
@@ -217,12 +236,12 @@ html[data-announce] body { padding-top: var(--bar-h); }
     padding: 12px 14px;
     border: 1px solid var(--color-line-strong);
     border-radius: var(--radius-sm);
-    background: #fff;
+    background: var(--color-card);
     color: var(--color-ink);
     font-size: 16px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .field:hover { border-color: var(--color-mute); }
+  @media (hover: hover) { .field:hover { border-color: var(--color-mute); } }
   .field:focus { outline: 2px solid var(--color-brand-600); outline-offset: 1px; border-color: var(--color-brand-600); box-shadow: 0 0 0 4px rgb(96 0 205 / 0.16); }
   .field[aria-invalid="true"] { border-color: var(--color-danger); }
 }

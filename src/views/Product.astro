@@ -128,11 +128,11 @@ const assurances = ar
       </div>
 
       <div class="order-2">
-        <div class:list={['stage relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[var(--radius-lg)] p-8 sm:aspect-[16/10] sm:p-12 lg:aspect-square', gas ? 'bg-white/[0.035] ring-1 ring-white/10' : 'bg-surface ring-1 ring-line']}>
+        <div class:list={['stage relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] sm:aspect-[16/10] lg:aspect-square', gas && !img?.opaque ? 'bg-white/[0.035] ring-1 ring-white/10' : 'bg-surface ring-1 ring-line']}>
           <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
-          {p.model && <span class:list={['label absolute start-5 top-5', gas ? 'text-white/60' : 'text-mute']}>{p.model}</span>}
-          <ProductImage brand={brand.slug} brandName={brand.name} slug={p.slug} alt={`${brand.name} ${p.name}`} class="relative max-h-full w-auto drop-shadow-[0_30px_40px_rgb(15_23_42/0.18)]" eager />
-          <span class:list={['absolute bottom-4 end-5 text-[11px]', gas ? 'text-white/60' : 'text-mute']}>{ar ? 'الصورة' : 'Image'}: {brand.name}</span>
+          {p.model && <span class:list={['label absolute start-5 top-5 z-10', gas && !img?.opaque ? 'text-white/60' : 'text-mute']}>{p.model}</span>}
+          <ProductImage brand={brand.slug} brandName={brand.name} slug={p.slug} alt={`${brand.name} ${p.name}`} class:list={['absolute inset-0 h-full w-full p-8 sm:p-12', !img?.opaque && 'drop-shadow-[0_30px_40px_rgb(15_23_42/0.18)]']} eager />
+          <span class:list={['absolute bottom-4 end-5 z-10 text-[12px]', gas && !img?.opaque ? 'text-white/60' : 'text-mute']}>{ar ? 'الصورة' : 'Image'}: {brand.name}</span>
         </div>
       </div>
     </div>
@@ -198,7 +198,7 @@ const assurances = ar
                 // Index-aligned with p.standards (Arabic overrides only swap descriptors), so the English string finds the page.
                 const slug = standardSlug(p.standards[i]);
                 return slug
-                  ? <li><a href={L(`/standards/${slug}/`)} class="block rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px] transition-colors hover:border-brand-600 hover:text-brand-700">{s}</a></li>
+                  ? <li><a href={L(`/standards/${slug}/`)} class="flex min-h-11 items-center rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px] transition-colors hover:border-brand-600 hover:text-brand-700 md:min-h-0">{s}</a></li>
                   : <li class="rounded-xs border border-line-strong px-2.5 py-1 font-mono text-[13px]">{s}</li>;
               })}
             </ul>

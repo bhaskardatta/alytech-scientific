@@ -19,7 +19,7 @@ const label = arName ? `${brandName} ${arName}` : alt;
     loading={eager ? 'eager' : 'lazy'}
     fetchpriority={eager ? 'high' : 'auto'}
     decoding="async"
-    class:list={['object-contain', cls]}
+    class:list={['object-contain', cls, img.opaque && 'img-opaque']}
   />
 ) : (
   <div class:list={['placeholder flex items-center justify-center text-center', cls]} role="img" aria-label={label}>

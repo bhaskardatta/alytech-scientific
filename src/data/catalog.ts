@@ -41,7 +41,7 @@ export const brandPath = (b: Pick<Brand, 'slug'>) => (b.slug === 'gasmix' ? '/ga
 export const productPath = (b: Pick<Brand, 'slug'>, p: Pick<Product, 'slug'>) => `${brandPath(b)}${p.slug}/`;
 
 export const imageOf = (brand: string, slug: string) =>
-  (images as Record<string, { src: string; w: number; h: number }>)[`${brand}/${slug}`];
+  (images as Record<string, { src: string; w: number; h: number; opaque?: boolean }>)[`${brand}/${slug}`];
 
 /** Short display name: "Aiolos III Gas Mixer and Gas Diluter" -> "Aiolos III" when a model code exists.
  *  Arabic names keep the English shape (model first), so the same rule applies to them. */

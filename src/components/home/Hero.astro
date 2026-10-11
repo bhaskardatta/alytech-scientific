@@ -14,7 +14,7 @@ const copy = {
   sub: ar
     ? 'معايرة الغازات، الخواص الحرارية، حيود الأشعة السينية، الاحتكاك والتآكل، الريولوجيا، تحليل المكامن واختبار المواد — نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط، بمهندسينا في الموقع.'
     : 'Gas calibration, thermal properties, X-ray diffraction, tribology, rheology, reservoir and materials testing. We represent manufacturers and support customers across the Middle East, with our own engineers on site.',
-  s1k: ar ? 'GasMix™ · صُمم في فرنسا' : 'GasMix™ · designed in France',
+  s1k: ar ? 'GasMix™\u200e · صُمم في فرنسا' : 'GasMix™ · designed in France',
   s1h: ar ? 'Aiolos III: مخاليط معايرة عند الطلب.' : 'Aiolos III. Calibration mixtures on demand.',
   s1p: ar
     ? 'جهاز خلط وتخفيف غازات معياري: من قناتين إلى ست قنوات، ومن مستوى النسب المئوية حتى أجزاء في البليون. يولّد المزيج الذي يحتاجه محللك عند الحاجة — بدلاً من أسطوانة لكل تركيز.'
@@ -135,10 +135,11 @@ const copy = {
     .hero-ctas { flex-wrap: nowrap; }
     .hero-ctas :global(.btn) { min-height: 44px; padding-inline: 14px; font-size: 14px; }
   }
-  .step-n { inset-inline-start: 16px; bottom: 96px; }
-  @media (min-width: 640px) { .step-n { inset-inline-start: 24px; } }
+  /* Both edges carry the page gutter, so step copy never runs to the screen edge */
+  .step-n { inset-inline: 16px; bottom: 96px; }
+  @media (min-width: 640px) { .step-n { inset-inline: 24px; } }
   @media (min-width: 768px) { .step-n { bottom: auto; top: 50%; translate: 0 -50%; } }
-  @media (min-width: 1024px) { .step-n { inset-inline-start: 40px; } }
+  @media (min-width: 1024px) { .step-n { inset-inline: 40px auto; } }
 
   /* Phones and portrait tablets: copy sits on a scrim at the bottom, instrument above (side by side doesn't fit under 1024px) */
   @media (max-width: 767px), (max-width: 1023px) and (min-height: 600px) {

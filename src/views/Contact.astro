@@ -29,26 +29,28 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
       <p class="mt-5 max-w-xl text-[17px] text-mute">{t(lang, 'lead.sub.default')}</p>
 
       <div class="mt-12 grid gap-3 md:grid-cols-[1.3fr_1fr_1fr]">
-        <button type="button" data-lead="whatsapp" class="group on-dark flex min-h-[220px] flex-col justify-between rounded-[var(--radius-md)] bg-night-900 p-7 text-start text-white transition-shadow duration-200 hover:shadow-[var(--shadow-pop)]">
+        <button type="button" data-lead="whatsapp" class="group on-dark flex min-h-[220px] flex-col gap-6 rounded-[var(--radius-md)] bg-night-900 p-7 text-start text-white transition-shadow duration-200 hover:shadow-[var(--shadow-pop)]">
           <span class="flex h-12 w-12 items-center justify-center rounded-full bg-whatsapp"><Icon name="whatsapp" size={24} /></span>
-          <span>
+          <span class="flex flex-1 flex-col">
             <span class="display block text-2xl">{t(lang, 'wa.label')}</span>
             <span class="mt-1 block text-white/70">{ar ? 'الطريقة الأسرع. أرسل اسم الجهاز أو صورة العيّنة.' : 'Fastest. Send the instrument name or a photo of your sample.'}</span>
-            <span class="link-arrow mt-4">{ar ? 'ابدأ المحادثة' : 'Start a chat'} <Icon name="arrow" size={16} flip /></span>
+            <span class="link-arrow mt-auto pt-4">{ar ? 'ابدأ المحادثة' : 'Start a chat'} <Icon name="arrow" size={16} flip /></span>
           </span>
         </button>
-        <button type="button" data-lead="quote" class="group card flex min-h-[220px] flex-col justify-between p-7 text-start transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
-          <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="arrow" size={22} flip /></span>
-          <span>
-            <span class="display block text-xl">{t(lang, 'cta.quote')}</span>
+        <button type="button" data-lead="quote" class="group card flex min-h-[220px] flex-col gap-6 p-7 text-start transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
+          <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="package" size={22} /></span>
+          <span class="flex flex-1 flex-col">
+            <span class="display block text-2xl">{t(lang, 'cta.quote')}</span>
             <span class="mt-1 block text-mute">{ar ? 'أرسل متطلباتك وسنرد عليك بعرض سعر.' : 'Send your requirement; we reply with a proposal.'}</span>
+            <span class="link-arrow mt-auto pt-4">{ar ? 'أرسل طلبك' : 'Send a request'} <Icon name="arrow" size={16} flip /></span>
           </span>
         </button>
-        <a href={`mailto:${cfg.contactEmail}`} class="group card flex min-h-[220px] flex-col justify-between p-7 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
+        <a href={`mailto:${cfg.contactEmail}`} class="group card flex min-h-[220px] flex-col gap-6 p-7 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
           <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="mail" size={22} /></span>
-          <span>
-            <span class="display block text-xl">{ar ? 'البريد الإلكتروني' : 'Email'}</span>
-            <span class="mt-1 block text-mute" dir="ltr">{cfg.contactEmail}</span>
+          <span class="flex flex-1 flex-col">
+            <span class="display block text-2xl">{ar ? 'البريد الإلكتروني' : 'Email'}</span>
+            <span class="mt-1 block text-mute"><bdi dir="ltr">{cfg.contactEmail}</bdi></span>
+            <span class="link-arrow mt-auto pt-4">{ar ? 'راسلنا' : 'Write to us'} <Icon name="arrow" size={16} flip /></span>
           </span>
         </a>
       </div>
