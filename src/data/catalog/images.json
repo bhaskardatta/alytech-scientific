@@ -374,8 +374,8 @@
     "w": 532
   },
   "proto/ixrd-mini": {
+    "dark": true,
     "h": 1028,
-    "opaque": true,
     "src": "/images/products/proto/ixrd-mini.webp",
     "w": 916
   },

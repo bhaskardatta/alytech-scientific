@@ -170,7 +170,7 @@ const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
           <select id="dil-flow" name="flowUnit" class="field sm:max-w-xs" aria-describedby="dil-flow-hint">
             {flowOpts.map(([v, text]) => <option value={v}>{text}</option>)}
           </select>
-          <p id="dil-flow-hint" class="mt-1.5 text-[13px] text-mute">{s.flowUnitHint}</p>
+          <p id="dil-flow-hint" class="mt-1.5 text-[13px] text-mute" set:html={ltr(s.flowUnitHint, lang)} />
         </div>
 
         <ToolField dataFor="forward" id="dil-qs" name="qs" label={s.qs} value="10" />
@@ -202,7 +202,7 @@ const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
       <div>
         <p class="label text-brand-600">{s.methodKicker}</p>
         <h2 id="dil-formulas-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{s.formulasH}</h2>
-        <p class="mt-5 max-w-[60ch] text-[16.5px] leading-[1.75] text-ink-soft">{s.formulasIntro}</p>
+        <p class="mt-5 max-w-[60ch] text-[16.5px] leading-[1.75] text-ink-soft" set:html={ltr(s.formulasIntro, lang)} />
         <dl class="mt-8 grid grid-cols-[auto_1fr] gap-x-5 gap-y-2 text-[15px]">
           {s.vars.map(([k, v]) => (<><dt dir="ltr" class="font-mono text-ink" set:html={sub(k)} /><dd class="text-ink-soft" set:html={sub(v)} /></>))}
         </dl>
@@ -224,7 +224,7 @@ const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
       <h2 id="dil-ex-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{s.exH}</h2>
       <div class="mt-8 grid gap-4 lg:grid-cols-3">
         <article class="card min-w-0 p-6">
-          <h3 class="display text-lg">{s.exA}</h3>
+          <h3 class="display text-lg" set:html={ltr(s.exA, lang)} />
           <p class="label mt-5 text-mute">{s.given}</p>
           <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start" set:html={sub('C_s = 1,000 ppm<br />Q_s = 10 mL/min<br />Q_d = 990 mL/min')} />
           <p class="label mt-5 text-mute">{s.calc}</p>
@@ -233,7 +233,7 @@ const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
           <p dir="ltr" class="mt-1.5 font-mono text-[18px] font-medium text-ink text-start">{fmt(A.cOutPpm)} ppm</p>
         </article>
         <article class="card min-w-0 p-6">
-          <h3 class="display text-lg">{s.exB}</h3>
+          <h3 class="display text-lg" set:html={ltr(s.exB, lang)} />
           <p class="label mt-5 text-mute">{s.given}</p>
           <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start" set:html={sub('C_s = 1 % = 10,000 ppm<br />C_t = 50 ppm<br />Q_t = 2 L/min = 2,000 mL/min')} />
           <p class="label mt-5 text-mute">{s.calc}</p>
@@ -242,8 +242,8 @@ const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
           <p dir="ltr" class="mt-1.5 font-mono text-[18px] font-medium text-ink text-start" set:html={sub(`Q_s ${fmt(B.qs)} · Q_d ${fmt(B.qd)} mL/min`)} />
         </article>
         <article class="card min-w-0 p-6">
-          <h3 class="display text-lg">{s.exC}</h3>
-          <p class="mt-5 text-[14.5px] leading-relaxed text-ink-soft">{s.exCgiven}</p>
+          <h3 class="display text-lg" set:html={ltr(s.exC, lang)} />
+          <p class="mt-5 text-[14.5px] leading-relaxed text-ink-soft" set:html={ltr(s.exCgiven, lang)} />
           <div class="mt-4 overflow-x-auto" dir="ltr" tabindex="0" role="region" aria-label={s.exC}>
             <table dir="ltr" class="w-full border-collapse text-end font-mono text-[13px] text-ink">
               <caption class="sr-only">{s.exC}</caption>

@@ -75,8 +75,8 @@ const copy = {
           <p class="label text-brand-300">{k}</p>
           <h2 class="hero-h2 display text-white">{h}</h2>
           <p class="hero-p text-white/75">{p}</p>
-          {i === 0 && <a href={L('/gasmix/aiolos-iii/')} class="link-arrow pointer-events-auto mt-6">{ar ? 'مواصفات Aiolos III' : 'Aiolos III specifications'} <Icon name="arrow" size={16} flip /></a>}
-          {i === 2 && <a href={L('/principals/')} class="link-arrow pointer-events-auto mt-6">{ar ? 'تعرّف على شركائنا' : 'Meet our principals'} <Icon name="arrow" size={16} flip /></a>}
+          {i === 0 && <a href={L('/gasmix/aiolos-iii/')} class="link-arrow mt-6">{ar ? 'مواصفات Aiolos III' : 'Aiolos III specifications'} <Icon name="arrow" size={16} flip /></a>}
+          {i === 2 && <a href={L('/principals/')} class="link-arrow mt-6">{ar ? 'تعرّف على شركائنا' : 'Meet our principals'} <Icon name="arrow" size={16} flip /></a>}
         </div>
       ))}
     </div>
@@ -258,7 +258,8 @@ const copy = {
       // Camera distance multiplier: the model's height at its closest keyframe fills the band with a little air (0.6 ≈ model
       // height / visible height at 1x). Narrow screens are also limited by width, so the opened-up view still fits.
       const W = canvas.clientWidth || innerWidth;
-      fit = Math.min(3.2, Math.max(0.9, 0.6 / (h / H), 0.6 * 1.1 / (W / H)));
+      const air = H < 650 ? 0.68 : 0.6; // short phones: a little more room so the base clears the eyebrow line
+      fit = Math.min(3.2, Math.max(0.9, air / (h / H), air * 1.1 / (W / H)));
     } else {
       section.style.removeProperty('--model-s');
     }
@@ -296,7 +297,9 @@ const copy = {
     for (const { label, r } of items) {
       const overlaps = r.top < floor;
       const dy = overlaps ? floor - r.top : 0;
-      if (dy) label.style.translate = `0 ${dy}px`;
+      // and never past either screen edge
+      const dx = r.right > innerWidth - 8 ? innerWidth - 8 - r.right : r.left < 8 ? 8 - r.left : 0;
+      if (dx || dy) label.style.translate = `${dx}px ${dy}px`;
       floor = r.bottom + dy + 4;
     }
   }

@@ -106,7 +106,7 @@ const assurances = ar
       <div class="order-1">
         <Breadcrumbs items={crumbs} tone={gas ? 'dark' : 'light'} />
         <p class:list={['label mt-8', gas ? 'text-brand-300' : 'text-brand-600']}>{brand.name} · {category}</p>
-        <h1 class="display mt-3 text-[clamp(2.2rem,5vw,4rem)]">{name}</h1>
+        <h1 class="display mt-3 text-[clamp(2.2rem,5vw,4rem)]" set:html={fmt(name)} />
         {fullName !== name && <p class:list={['mt-2 text-lg', gas ? 'text-white/70' : 'text-ink-soft']} set:html={fmt(fullName)} />}
         <p class:list={['mt-5 max-w-xl text-[17px] leading-relaxed', gas ? 'text-white/75' : 'text-mute']} lang={contentLang} set:html={fmt(summary)} />
 
@@ -128,7 +128,7 @@ const assurances = ar
       </div>
 
       <div class="order-2">
-        <div class:list={['stage relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] sm:aspect-[16/10] lg:aspect-square', gas && !img?.opaque ? 'bg-white/[0.035] ring-1 ring-white/10' : 'bg-surface ring-1 ring-line']}>
+        <div class:list={['stage relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] sm:aspect-[16/10] lg:aspect-square', img?.dark ? 'bg-[#242424] ring-1 ring-line' : gas && !img?.opaque ? 'bg-white/[0.035] ring-1 ring-white/10' : 'bg-surface ring-1 ring-line']}>
           <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
           {p.model && <span class:list={['label absolute start-5 top-5 z-10', gas && !img?.opaque ? 'text-white/60' : 'text-mute']}>{p.model}</span>}
           <ProductImage brand={brand.slug} brandName={brand.name} slug={p.slug} alt={`${brand.name} ${p.name}`} class:list={['absolute inset-0 h-full w-full p-8 sm:p-12', !img?.opaque && 'drop-shadow-[0_30px_40px_rgb(15_23_42/0.18)]']} eager />

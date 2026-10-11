@@ -37,32 +37,38 @@ def trim(im, pad=0.04, tol=12):
     """Crop transparent margins + uniform borders/frames (judged from the corner pixels), then pad evenly."""
     im = im.convert('RGBA')
     opaque = im.getchannel('A').getextrema()[0] > 250
+    bd = (255, 255, 255)  # backdrop: the last uniform layer peeled off (white for studio shots, dark for dark ones)
     for _ in range(6):  # each pass peels one layer: frame line, then the white behind it, ...
         w, h = im.size
         flat = Image.alpha_composite(Image.new('RGBA', im.size, 'white'), im).convert('RGB')
         box = im.getchannel('A').point(lambda v: 255 if v > 8 else 0).getbbox()
         c = [flat.getpixel(p) for p in ((0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1))]
-        if all(max(abs(x - y) for x, y in zip(c[0], q)) <= tol for q in c):
+        uniform = all(max(abs(x - y) for x, y in zip(c[0], q)) <= tol for q in c)
+        if uniform:
             d = ImageChops.difference(flat, Image.new('RGB', im.size, c[0])).convert('L')
             d = d.point(lambda v: 255 if v > tol else 0).getbbox()
             box = d if box is None else (max(box[0], d[0]), max(box[1], d[1]), min(box[2], d[2]), min(box[3], d[3])) if d else box
         if not box or box == (0, 0, w, h):
             break
+        if uniform:
+            bd = c[0]
         im = im.crop(box)
     p = round(max(im.size) * pad)
-    out = Image.new('RGB' if opaque else 'RGBA', (im.width + 2 * p, im.height + 2 * p), 'white' if opaque else (255, 255, 255, 0))
+    # opaque photos are padded with their own backdrop colour, so a dark studio shot doesn't get a white frame
+    fill = bd if opaque else (255, 255, 255, 0)
+    out = Image.new('RGB' if opaque else 'RGBA', (im.width + 2 * p, im.height + 2 * p), fill)
     out.paste(im.convert(out.mode), (p, p))
     return out
 
 def selftest():
     prod = Image.new('RGB', (100, 60), (30, 30, 120))
-    for bg, frame in (((255, 255, 255), None), ((255, 255, 255), (150, 150, 150)), ((240, 240, 240), (200, 0, 0))):
+    for bg, frame in (((255, 255, 255), None), ((255, 255, 255), (150, 150, 150)), ((240, 240, 240), (200, 0, 0)), ((36, 36, 36), (255, 255, 255))):
         im = Image.new('RGB', (400, 300), frame or bg)
         if frame: im.paste(Image.new('RGB', (392, 292), bg), (4, 4))
         im.paste(prod, (150, 120))
         out = trim(im, pad=0.1)  # product 100x60, pad 10px each side
         assert out.size == (120, 80), (bg, frame, out.size)
-        assert out.getpixel((60, 40)) == (30, 30, 120) and out.getpixel((0, 0)) == (255, 255, 255)
+        assert out.getpixel((60, 40)) == (30, 30, 120) and out.getpixel((0, 0)) == bg, (bg, out.getpixel((0, 0)))  # padded with its backdrop
     t = Image.new('RGBA', (400, 300), (0, 0, 0, 0)); t.paste(prod, (150, 120))
     out = trim(t, pad=0.1)
     assert out.size == (120, 80) and out.mode == 'RGBA' and out.getpixel((0, 0))[3] == 0
@@ -111,18 +117,28 @@ for f in files:
     (OUT / f'{brand}.json').write_text(json.dumps(data, ensure_ascii=False, indent=2))
 
 # Products the catalog no longer lists drop out of the manifest; `opaque` marks photos shot on a solid white
-# background (the site blends those into light stages instead of drawing a white box).
+# background (the site blends those into light stages instead of drawing a white box), `dark` a solid dark backdrop.
 listed = {f'{json.loads(f.read_text())["brandSlug"]}/{short(json.loads(f.read_text())["brandSlug"], p["slug"])}' for f in sorted(SRC.glob('*.json')) for p in json.loads(f.read_text())['products']}
 for key in [k for k in manifest if k not in listed]:
     del manifest[key]
+def backdrop(path):
+    """'white' or 'dark' when the photo sits on a solid opaque backdrop (judged from 8 edge points), else None."""
+    im = Image.open(path).convert('RGBA')
+    w, h = im.size
+    pts = [im.getpixel(q) for q in [(x, y) for x in (1, w // 2, w - 2) for y in (1, h - 2)] + [(1, h // 2), (w - 2, h // 2)]]
+    if not all(px[3] == 255 for px in pts): return None
+    if all(min(px[:3]) >= 235 for px in pts): return 'white'
+    if all(max(px[:3]) <= 60 for px in pts): return 'dark'
+    return None
 def opaque_white(path):
     im = Image.open(path).convert('RGBA')
     w, h = im.size
     pts = [(x, y) for x in (1, w // 2, w - 2) for y in (1, h - 2)] + [(1, h // 2), (w - 2, h // 2)]
     return all(im.getpixel(q)[3] == 255 and min(im.getpixel(q)[:3]) >= 235 for q in pts)
 for key, entry in manifest.items():
-    entry.pop('opaque', None)
-    if opaque_white(ROOT / 'public' / entry['src'].lstrip('/')):
-        entry['opaque'] = True
+    entry.pop('opaque', None); entry.pop('dark', None)
+    kind = backdrop(ROOT / 'public' / entry['src'].lstrip('/'))
+    if kind == 'white': entry['opaque'] = True
+    if kind == 'dark': entry['dark'] = True  # shown on a matching dark stage
 manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True))
 print('MISSING (no image):', *missing) if missing else print('all products have an image')

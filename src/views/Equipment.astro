@@ -37,7 +37,7 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
         <div class="grid gap-8 border-b border-line py-10 group-last:border-0 lg:grid-cols-[1fr_2fr] lg:gap-14">
         <div>
           <h2 id={`${f.slug}-h`} class="display text-[clamp(1.4rem,2.4vw,1.9rem)]">{(ar && f.ar?.name) || f.name}</h2>
-          <p class="mt-3 text-[15px] text-mute" lang={ar && !f.ar?.intro ? 'en' : undefined}>{(ar && f.ar?.intro) || f.intro}</p>
+          <p class="mt-3 text-[15px] text-mute" lang={ar && !f.ar?.intro ? 'en' : undefined} set:html={ltr((ar && f.ar?.intro) || f.intro, lang)} />
         </div>
         <ul class="grid gap-2 sm:grid-cols-2">
           {f.categories.map((c) => (

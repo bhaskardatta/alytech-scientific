@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { t } from '../i18n';
+import { ltr } from '../lib/bidi';
 interface Props { items: { label: string; href?: string }[]; tone?: 'light' | 'dark' }
 const { items, tone = 'light' } = Astro.props;
 const lang = /^\/ar(\/|$)/.test(Astro.url.pathname) ? 'ar' : 'en';
@@ -10,7 +11,7 @@ const lang = /^\/ar(\/|$)/.test(Astro.url.pathname) ? 'ar' : 'en';
     {items.map((it, i) => (
       <li class="flex items-center gap-2">
         {i > 0 && <Icon name="chevron" size={14} flip class="opacity-60" />}
-        {it.href ? <a href={it.href} class:list={['hit transition-colors', tone === 'dark' ? 'hover:text-white' : 'hover:text-ink']}>{it.label}</a> : <span aria-current="page" class:list={[tone === 'dark' ? 'text-white' : 'text-ink']}>{it.label}</span>}
+        {it.href ? <a href={it.href} class:list={['hit transition-colors', tone === 'dark' ? 'hover:text-white' : 'hover:text-ink']} set:html={ltr(it.label, lang)} /> : <span aria-current="page" class:list={[tone === 'dark' ? 'text-white' : 'text-ink']} set:html={ltr(it.label, lang)} />}
       </li>
     ))}
   </ol>

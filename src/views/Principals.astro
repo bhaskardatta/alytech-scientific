@@ -44,7 +44,7 @@ const description = ar
               <ul class="grid grid-cols-3 gap-3">
                 {[...new Map(top.map((p) => [p.slug, p])).values()].map((p) => (
                   <li class="flex flex-col items-center gap-2 text-center">
-                    <span class:list={['relative aspect-square w-full overflow-hidden rounded-sm', b.slug === 'gasmix' && !imageOf(b.slug, p.slug)?.opaque ? 'bg-white/[0.05]' : 'bg-surface']}>
+                    <span class:list={['relative aspect-square w-full overflow-hidden rounded-sm', imageOf(b.slug, p.slug)?.dark ? 'bg-[#242424]' : b.slug === 'gasmix' && !imageOf(b.slug, p.slug)?.opaque ? 'bg-white/[0.05]' : 'bg-surface']}>
                       <ProductImage brand={b.slug} brandName={b.name} slug={p.slug} alt={`${b.name} ${p.name}`} class="absolute inset-0 h-full w-full p-3" sizes="120px" />
                     </span>
                     <span class:list={['line-clamp-1 text-[12.5px]', b.slug === 'gasmix' ? 'text-white/60' : 'text-mute']}>{shortName(p, lang)}</span>

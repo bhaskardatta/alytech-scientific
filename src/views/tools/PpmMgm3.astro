@@ -205,7 +205,7 @@ const gasName = (g: (typeof GASES)[number]) => `${ar ? g.ar : g.en} (${g.f})`;
       <div>
         <p class="label text-brand-600">{s.methodKicker}</p>
         <h2 id="ppm-formulas-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{s.formulasH}</h2>
-        <p class="mt-5 max-w-[60ch] text-[16.5px] leading-[1.75] text-ink-soft">{s.formulasIntro}</p>
+        <p class="mt-5 max-w-[60ch] text-[16.5px] leading-[1.75] text-ink-soft" set:html={ltr(s.formulasIntro, lang)} />
         <dl class="mt-8 grid grid-cols-[auto_1fr] gap-x-5 gap-y-2 text-[15px]">
           {s.vars.map(([k, v]) => (<><dt dir="ltr" class="font-mono text-ink" set:html={sub(k)} /><dd class="text-ink-soft" set:html={sub(v)} /></>))}
         </dl>
@@ -228,7 +228,7 @@ const gasName = (g: (typeof GASES)[number]) => `${ar ? g.ar : g.en} (${g.f})`;
       <h2 id="ppm-ex-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{s.exH}</h2>
       <div class="mt-8 grid gap-4 lg:grid-cols-2">
         <article class="card p-6">
-          <h3 class="display text-lg">{s.exA}</h3>
+          <h3 class="display text-lg" set:html={ltr(s.exA, lang)} />
           <p class="label mt-5 text-mute">{s.given}</p>
           <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start">50 ppm CO, M = {fmt(mCO)} g/mol<br />T = 25 °C = 298.15 K, P = 101.325 kPa</p>
           <p class="label mt-5 text-mute">{s.calc}</p>
@@ -237,7 +237,7 @@ const gasName = (g: (typeof GASES)[number]) => `${ar ? g.ar : g.en} (${g.f})`;
           <p dir="ltr" class="mt-1.5 font-mono text-[18px] font-medium text-ink text-start">{fmt(aMg)} mg/m³</p>
         </article>
         <article class="card p-6">
-          <h3 class="display text-lg">{s.exB}</h3>
+          <h3 class="display text-lg" set:html={ltr(s.exB, lang)} />
           <p class="label mt-5 text-mute">{s.given}</p>
           <p dir="ltr" class="mt-1.5 font-mono text-[14px] leading-relaxed text-ink-soft text-start">100 mg/m³ SO₂, M = {fmt(mSO2)} g/mol<br />T = 25 °C = 298.15 K, P = 101.325 kPa</p>
           <p class="label mt-5 text-mute">{s.calc}</p>
