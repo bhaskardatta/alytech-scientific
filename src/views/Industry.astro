@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ltr } from '../lib/bidi';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductCard from '../components/ProductCard.astro';
 import ServiceStrip from '../components/ServiceStrip.astro';
@@ -20,9 +21,12 @@ const ar = lang === 'ar';
 const L = (x: string) => localize(lang, x);
 const c = industryContent[industry.slug];
 const featured = c.brands.map((s) => brands.find((b) => b.slug === s)!).filter(Boolean);
+const rank = (slug: string) => { const i = c.brands.indexOf(slug); return i < 0 ? c.brands.length : i; };
 const items = brands
   .flatMap((b) => productsOf(b.slug).filter((p) => p.priority !== 'niche' && p.industries.includes(industry.slug)).map((p) => ({ b, p })))
-  .sort((x, y) => c.brands.indexOf(x.b.slug) - c.brands.indexOf(y.b.slug))
+  // The sector's own brands first (in its order), flagships first within a brand, at most 3 per brand so the grid stays varied.
+  .sort((x, y) => rank(x.b.slug) - rank(y.b.slug) || Number(y.p.priority === 'flagship') - Number(x.p.priority === 'flagship'))
+  .filter((x, i, all) => all.slice(0, i).filter((y) => y.b.slug === x.b.slug).length < 3)
   .slice(0, 8);
 // Tier-2 (unbranded) equipment relevant to this sector, grouped by family; the tagging lives on each category in equipment.json.
 const equip = families
@@ -43,7 +47,7 @@ const title = titleOf(ar ? `أجهزة ${industry.name.ar} في الإمارات
       <Breadcrumbs items={crumbs} />
       <p class="label mt-10 text-brand-600">{t(lang, 'nav.industries')}</p>
       <h1 class="display mt-3 text-[clamp(2.2rem,5vw,4rem)]">{industry.name[lang]}</h1>
-      <p class="mt-5 max-w-3xl text-[18px] leading-relaxed text-ink-soft">{c.intro[lang]}</p>
+      <p class="mt-5 max-w-3xl text-[18px] leading-relaxed text-ink-soft" set:html={ltr(c.intro[lang], lang)} />
       <ul class="mt-8 flex flex-wrap gap-2">
         {featured.map((b) => <li><a href={L(brandPath(b))} class="inline-flex items-center gap-2 rounded-full border border-line-strong px-3.5 py-1.5 text-[14px] font-medium transition-colors hover:border-brand-500 hover:text-brand-700">{b.name}<Icon name="arrow" size={14} flip /></a></li>)}
       </ul>
@@ -82,7 +86,7 @@ const title = titleOf(ar ? `أجهزة ${industry.name.ar} في الإمارات
                       {renderOf(cat.slug) && <img src={renderOf(cat.slug).sm} width="112" height="84" alt="" loading="lazy" decoding="async" class="h-[84px] w-28 shrink-0 rounded-xs object-cover" />}
                       <span class="flex-1 py-1">
                         <span class="block font-semibold">{(ar && cat.ar?.name) || cat.name}</span>
-                        <span class="mt-1 line-clamp-2 text-[14px] text-mute" lang={ar && !cat.ar?.summary ? 'en' : undefined}>{(ar && cat.ar?.summary) || cat.summary}</span>
+                        <span class="mt-1 line-clamp-2 text-[14px] text-mute" lang={ar && !cat.ar?.summary ? 'en' : undefined} set:html={ltr((ar && cat.ar?.summary) || cat.summary, lang)} />
                       </span>
                       <Icon name="arrow" size={18} flip class="mt-2 shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
                     </a>
@@ -99,7 +103,7 @@ const title = titleOf(ar ? `أجهزة ${industry.name.ar} في الإمارات
   <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="faq-h">
     <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr]">
       <div>
-        <h2 id="faq-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أسئلة شائعة' : 'Questions we hear'}</h2>
+        <h2 id="faq-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أسئلة شائعة' : 'Common questions'}</h2>
         <p class="mt-4 text-mute">{ar ? 'لم تجد إجابتك؟' : 'Not covered here?'}</p>
         <button type="button" class="link-arrow mt-2" data-lead="whatsapp" data-product={industry.name.en}><Icon name="whatsapp" size={18} />{t(lang, 'cta.whatsapp')}</button>
       </div>

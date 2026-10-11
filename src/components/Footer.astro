@@ -46,10 +46,10 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
     <div>
       <p class="label mb-4 text-brand-300">{t(lang, 'footer.office')}</p>
       <address class="text-[15px] not-italic">
-        {site.address.street}<br />{site.address.poBox}<br />{site.address.city}, {lang === 'ar' ? 'الإمارات العربية المتحدة' : site.address.country}
+        {site.addressLines[lang].map((line, i) => <>{i > 0 && <br />}{line}</>)}
       </address>
       <ul class="mt-4 space-y-3 text-[15px]">
-        <li><button type="button" class="hit inline-flex items-center gap-2 hover:text-white" data-lead="whatsapp"><Icon name="whatsapp" size={18} />WhatsApp</button></li>
+        <li><button type="button" class="hit inline-flex items-center gap-2 hover:text-white" data-lead="whatsapp"><Icon name="whatsapp" size={18} />{t(lang, 'wa.label')}</button></li>
         <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={`mailto:${cfg.contactEmail}`}><Icon name="mail" size={18} />{cfg.contactEmail}</a></li>
         <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={site.mapUrl} {...ext}><Icon name="pin" size={18} />{lang === 'ar' ? 'افتح في الخرائط' : 'Open in Maps'}</a></li>
       </ul>
@@ -58,7 +58,7 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
   <div class="border-t border-white/10">
     <div class="wrap flex flex-col gap-2 py-6 text-[13px] text-white/60 sm:flex-row sm:justify-between">
       <p>© <span data-year>2026</span> {site.legalName}. {t(lang, 'footer.rights')}</p>
-      <p>{lang === 'ar' ? 'GasMix™ علامة تجارية لشركة AlyTech فرنسا. العلامات الأخرى ملك لأصحابها.' : 'GasMix™ is a trademark of AlyTech France. Other brand names belong to their owners.'}</p>
+      <p>{lang === 'ar' ? 'GasMix™ علامة تجارية لشركة AlyTech France. العلامات الأخرى ملك لأصحابها.' : 'GasMix™ is a trademark of AlyTech France. Other brand names belong to their owners.'}</p>
     </div>
   </div>
 </footer>

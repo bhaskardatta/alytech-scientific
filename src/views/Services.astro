@@ -47,7 +47,7 @@ const services = [
 ---
 <Base
   lang={lang}
-  title={ar ? 'الخدمة والدعم | التركيب والصيانة والتدريب | AlyTech' : 'Service & Support | Installation, AMC, Training | AlyTech'}
+  title={ar ? 'الخدمة والدعم | التركيب والصيانة والتدريب | AlyTech' : 'Service & Support | Installation, Maintenance, Training | AlyTech'}
   description={ar ? 'تركيب وتشغيل الأجهزة المخبرية، وتدريب المشغلين، وعقود الصيانة السنوية، وخدمة الضمان، وقطع الغيار من AlyTech Scientific في أبوظبي.' : 'Installation and commissioning, operator training, annual maintenance contracts, warranty service and spares for lab instruments from AlyTech, Abu Dhabi.'}
   schema={[breadcrumbLd(crumbs, L('/services/'))]}
 >
@@ -57,9 +57,9 @@ const services = [
       <Breadcrumbs items={crumbs} tone="dark" />
       <p class="label mt-10 text-brand-300">{t(lang, 'footer.iso')}</p>
       <h1 class="display mt-4 max-w-4xl text-[clamp(2.3rem,5.4vw,4.4rem)]">{ar ? 'الجهاز هو البداية فقط.' : 'The instrument is only the beginning.'}</h1>
-      <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-white/75">{ar ? 'يبيع كثير من الموردين في المنطقة الأجهزة ثم يختفون. نحن نركّب وندرّب ونصون كل جهاز نورّده، بفريق مقره أبوظبي يخدم الشرق الأوسط بأكمله.' : 'Many suppliers in the region ship a crate and disappear. We install, train and maintain every instrument we supply, with a team based in Abu Dhabi serving the whole Middle East.'}</p>
+      <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-white/75">{ar ? 'التوريد ليس سوى البداية. نحن نركّب وندرّب ونصون كل جهاز نورّده، بفريق مقره أبوظبي يخدم الشرق الأوسط بأكمله.' : 'Delivery is only the start. We install, train and maintain every instrument we supply, with a team based in Abu Dhabi serving the whole Middle East.'}</p>
       <div class="mt-9 flex flex-wrap gap-3">
-        <button type="button" class="btn btn-primary" data-lead="quote" data-product={ar ? 'طلب خدمة' : 'Service request'}>{ar ? 'اطلب زيارة خدمة' : 'Request a service visit'} <Icon name="arrow" size={18} flip /></button>
+        <button type="button" class="btn btn-primary" data-lead="quote" data-product={ar ? 'طلب خدمة' : 'Service request'}>{ar ? 'اطلب زيارة صيانة' : 'Request a service visit'} <Icon name="arrow" size={18} flip /></button>
         <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={ar ? 'الخدمة والدعم' : 'Service & support'}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'cta.whatsapp')}</button>
       </div>
     </div>

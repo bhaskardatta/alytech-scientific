@@ -23,14 +23,17 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
 
 // Verified against gasmix.com product pages (Oct 2026). Order = smallest to largest.
 const compare = [
-  { slug: 'zephyr-ii', ch: '2', dil: '1:10 000', fmt: { en: 'Compact bench / field, optional battery', ar: 'مدمج للمختبر والميدان، بطارية اختيارية' }, ctl: { en: '7″ touchscreen, embedded AlySoft', ar: 'شاشة لمس 7″ وبرنامج AlySoft مدمج' } },
-  { slug: 'nomad', ch: '2–4', dil: '1:10 000', fmt: { en: 'Portable carry case', ar: 'حقيبة محمولة' }, ctl: { en: 'Built-in industrial PC or external PC', ar: 'حاسوب صناعي مدمج أو خارجي' } },
-  { slug: 'aiolos-iii', ch: '2–6', dil: '10⁴ · 10⁸ with Cascade', fmt: { en: 'Modular laboratory', ar: 'مخبري معياري' }, ctl: { en: 'AlySoft on PC via Ethernet', ar: 'AlySoft على حاسوب عبر إيثرنت' } },
-  { slug: 'grack', ch: '2–6', dil: '1:10 000', fmt: { en: '19″ rack (GMRack adds touchscreen)', ar: 'رف 19″ (GMRack مع شاشة لمس)' }, ctl: { en: 'AlySoft on PC; PLC/DCS I/O', ar: 'AlySoft على حاسوب؛ مداخل PLC/DCS' } },
+  { slug: 'zephyr-ii', ch: '2', dil: '1:10,000', fmt: { en: 'Compact bench / field, optional battery', ar: 'مدمج للمختبر والميدان، بطارية اختيارية' }, ctl: { en: '7″ touchscreen, embedded AlySoft', ar: 'شاشة لمس 7″ وبرنامج AlySoft مدمج' } },
+  { slug: 'nomad', ch: '2–4', dil: '1:10,000', fmt: { en: 'Portable carry case', ar: 'حقيبة محمولة' }, ctl: { en: 'Built-in industrial PC or external PC', ar: 'حاسوب صناعي مدمج أو خارجي' } },
+  { slug: 'aiolos-iii', ch: '2–6', dil: { en: '10⁴ · 10⁸ with Cascade', ar: '10⁴ · 10⁸ مع التخفيف المتتالي' }, fmt: { en: 'Modular laboratory', ar: 'مخبري معياري' }, ctl: { en: 'AlySoft on PC via Ethernet', ar: 'AlySoft على حاسوب عبر إيثرنت' } },
+  { slug: 'grack', ch: '2–6', dil: '1:10,000', fmt: { en: '19″ rack (GMRack adds touchscreen)', ar: 'رف 19″ (GMRack مع شاشة لمس)' }, ctl: { en: 'AlySoft on PC; PLC/DCS I/O', ar: 'AlySoft على حاسوب؛ مداخل PLC/DCS' } },
   { slug: 'hurricane', ch: '7–16', dil: '—', fmt: { en: 'High-channel laboratory (custom to 20)', ar: 'مخبري متعدد القنوات (حتى 20 حسب الطلب)' }, ctl: { en: 'GasMix PC software', ar: 'برنامج GasMix على حاسوب' } },
-  { slug: 'nephos', ch: '1–2 liquid + 1–4 gas', dil: '10⁴ · 10⁸ with Cascade', fmt: { en: 'Liquid-to-gas generator', ar: 'مولّد من السائل إلى الغاز' }, ctl: { en: 'AlySoft on PC via Ethernet', ar: 'AlySoft على حاسوب عبر إيثرنت' } },
+  { slug: 'nephos', ch: { en: '1–2 liquid + 1–4 gas', ar: '1–2 سائل + 1–4 غاز' }, dil: { en: '10⁴ · 10⁸ with Cascade', ar: '10⁴ · 10⁸ مع التخفيف المتتالي' }, fmt: { en: 'Liquid-to-gas generator', ar: 'مولّد من السائل إلى الغاز' }, ctl: { en: 'AlySoft on PC via Ethernet', ar: 'AlySoft على حاسوب عبر إيثرنت' } },
 ];
 const bySlug = new Map(all.map((p) => [p.slug, p]));
+const local = (v: string | { en: string; ar: string }) => (typeof v === 'string' ? v : v[lang]);
+// Right-to-left: keep each number run ("2–6", "1:10,000", "10⁴ · 10⁸") left-to-right so ranges don't flip.
+const iso = (v: string) => v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/[0-9][0-9.,:⁰-⁹⁴⁸–·\s]*[0-9⁰-⁹⁴⁸]|[0-9]/g, (m) => `<bdi dir="ltr">${m}</bdi>`);
 
 const common = ar
   ? ['دقة التدفق ±1 % من القيمة المضبوطة', 'تكرارية أقل من 0.1 %', 'معايرة مصنعية من 400 نقطة قابلة للتتبع إلى NIST', 'مسارات من الفولاذ المقاوم 316 بطلاء خامل']
@@ -95,8 +98,8 @@ const description = ar
                   <th scope="row" class="px-5 py-4 text-start">
                     <a href={L(productPath(brand, p))} class="tap display inline-block text-[17px] hover:text-brand-600">{p.model}</a>
                   </th>
-                  <td class="px-5 py-4 font-mono text-[14px]" dir="ltr">{c.ch}</td>
-                  <td class="px-5 py-4 font-mono text-[14px]" dir="ltr">{c.dil}</td>
+                  <td class="px-5 py-4 font-mono text-[14px]" set:html={iso(local(c.ch))} />
+                  <td class="px-5 py-4 font-mono text-[14px]" set:html={iso(local(c.dil))} />
                   <td class="px-5 py-4 text-ink-soft">{c.fmt[lang]}</td>
                   <td class="px-5 py-4 text-ink-soft">{c.ctl[lang]}</td>
                 </tr>

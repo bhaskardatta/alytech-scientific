@@ -163,7 +163,9 @@ if (dialog && form) {
       const row = document.createElement('div');
       row.className = 'grid gap-1 py-3 sm:grid-cols-[1fr_1.3fr] sm:gap-4';
       const dt = document.createElement('dt'); dt.className = 'text-[14px] text-mute'; dt.textContent = sp.label;
-      const dd = document.createElement('dd'); dd.className = 'font-mono text-[13.5px]'; dd.textContent = sp.value;
+      // Values are numbers and units: isolated left-to-right so ranges read correctly on Arabic pages.
+      const dd = document.createElement('dd'); dd.className = 'font-mono text-[13.5px]';
+      const v = document.createElement('bdi'); v.dir = 'auto'; v.textContent = sp.value; dd.append(v);
       row.append(dt, dd);
       return row;
     }));

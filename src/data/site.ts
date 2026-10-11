@@ -17,6 +17,11 @@ export const site = {
     country: 'United Arab Emirates',
     countryCode: 'AE',
   },
+  /** Display lines per language (the Arabic form uses the Arabic place names and ص.ب). */
+  addressLines: {
+    en: ['Mussafah M40', 'PO Box 8909', 'Abu Dhabi, United Arab Emirates'],
+    ar: ['مصفح M40', 'ص.ب 8909', 'أبوظبي، الإمارات العربية المتحدة'],
+  },
   geo: { lat: 24.3515556, lng: 54.4871667 },
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=24.3515556,54.4871667',
   certifications: ['ISO 9001'],

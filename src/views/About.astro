@@ -15,10 +15,10 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
 
 // Sourced from the 2018 AlyTech Middle East site and the client brief.
 const timeline = [
-  { y: '1999', en: 'AlyTech is founded in the Paris region. Its team of chemists and electronic and software engineers specialises in gas systems, chromatography and elemental analysis.', ar: 'تأسست AlyTech في منطقة باريس، ويتخصص فريقها من الكيميائيين ومهندسي الإلكترونيات والبرمجيات في أنظمة الغاز والكروماتوغرافيا والتحليل العنصري.' },
-  { y: '2007', en: 'The first automated gas preparation systems are sold under the GasMix™ brand.', ar: 'بيع أولى أنظمة تحضير الغاز الآلية تحت علامة GasMix™.' },
+  { y: '1999', en: 'AlyTech is founded in the Paris region. Its team of chemists and electronic and software engineers specializes in gas systems, chromatography and elemental analysis.', ar: 'تأسست AlyTech في منطقة باريس، ويضم فريقها كيميائيين ومهندسي إلكترونيات وبرمجيات متخصصين في أنظمة الغاز والكروماتوغرافيا والتحليل العنصري.' },
+  { y: '2007', en: 'The first automated gas preparation systems are sold under the GasMix™ brand.', ar: 'بِيعت أولى أنظمة تحضير الغاز الآلية تحت علامة GasMix™.' },
   { y: '2015', en: 'AlyTech launches in the Middle East.', ar: 'انطلاق AlyTech في الشرق الأوسط.' },
-  { y: ar ? 'اليوم' : 'Today', en: 'As AlyTech Scientific Equipment Trading LLC in Mussafah, Abu Dhabi, we represent manufacturers and support customers across the Middle East.', ar: 'بصفتها AlyTech Scientific Equipment Trading LLC في مصفح بأبوظبي، نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط.' },
+  { y: ar ? 'اليوم' : 'Today', en: 'Today, as AlyTech Scientific Equipment Trading LLC in Mussafah, Abu Dhabi, we serve laboratories across the Middle East.', ar: 'واليوم، بصفتنا AlyTech Scientific Equipment Trading LLC في مصفح بأبوظبي، نخدم المختبرات في جميع أنحاء الشرق الأوسط.' },
 ];
 ---
 <Base
@@ -30,7 +30,7 @@ const timeline = [
   <section class="border-b border-line bg-card pt-[72px]">
     <div class="wrap py-12 md:py-16">
       <Breadcrumbs items={crumbs} />
-      <h1 class="display mt-10 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'شركة أجهزة فرنسية في جذورها، محلية في خدمتها.' : 'French instrument makers by origin. Local by service.'}</h1>
+      <h1 class="display mt-10 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'أجهزة متخصصة، ومهندسون في الموقع.' : 'Specialist instruments. Engineers on the ground.'}</h1>
       <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute">{ar ? 'نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط. يتولى مهندسونا التركيب والتشغيل والتدريب والصيانة في الموقع، من أول تشغيل حتى عقد الصيانة السنوي.' : 'We represent manufacturers and support customers across the Middle East. Our own engineers install, commission, train and maintain on site, from the first start-up to the annual maintenance contract.'}</p>
     </div>
   </section>
@@ -62,8 +62,8 @@ const timeline = [
       </div>
       <div>
         <p class="label text-mute">{ar ? 'المكتب' : 'Office'}</p>
-        <p class="mt-2 font-semibold">{site.address.street}, {site.address.poBox}</p>
-        <p class="text-mute">{site.address.city}, {ar ? 'الإمارات العربية المتحدة' : site.address.country}</p>
+        <p class="mt-2 font-semibold">{site.addressLines[lang][0]}{ar ? '، ' : ', '}{site.addressLines[lang][1]}</p>
+        <p class="text-mute">{site.addressLines[lang][2]}</p>
         <a href={L('/contact/#office')} class="link-arrow tap mt-3">{ar ? 'عرض على الخريطة' : 'See it on the map'} <Icon name="arrow" size={16} flip /></a>
       </div>
     </div>

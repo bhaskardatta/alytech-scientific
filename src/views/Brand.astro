@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ltr } from '../lib/bidi';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductCard from '../components/ProductCard.astro';
 import ServiceStrip from '../components/ServiceStrip.astro';
@@ -26,7 +27,7 @@ const crumbs = [
 const url = L(brandPath(brand));
 const title = titleOf(ar ? `${brand.name} الإمارات: ${brand.discipline.ar}` : `${brand.name} UAE: ${brand.discipline.en}`, ['AlyTech', '']);
 const description = descOf(
-  ar ? `أجهزة ${brand.name} في الشرق الأوسط: ${brand.discipline.ar}.` : `${brand.name} instruments in the Middle East: ${brand.discipline.en.toLowerCase()}.`,
+  ar ? `أجهزة ${brand.name} في الشرق الأوسط: ${brand.discipline.ar}.` : `${brand.name} in the UAE and Middle East: ${brand.discipline.en}.`,
   ar
     ? ['التوريد والتركيب والدعم من AlyTech في أبوظبي. اطلب المواصفات والسعر.', 'التوريد والتركيب والدعم من AlyTech Scientific في أبوظبي.', 'التوريد والدعم من AlyTech في أبوظبي.']
     : ['Supplied, installed and supported by AlyTech in Abu Dhabi. Request specs and pricing.', 'Supplied, installed and supported by AlyTech Scientific in Abu Dhabi.', 'Supplied and supported by AlyTech in Abu Dhabi.'],
@@ -42,12 +43,12 @@ const description = descOf(
           <h1 class:list={['display text-[clamp(2.4rem,5.5vw,4.4rem)]', brand.exclusive && 'mt-4']}>{brand.name}</h1>
           <p class="label mt-2 text-mute">{origin(brand)[lang]}</p>
           <p class="mt-3 text-xl text-ink-soft">{brand.discipline[lang]}</p>
-          {info && <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute" lang={ar && !info.brandSummaryAr ? 'en' : undefined}>{ar && info.brandSummaryAr ? info.brandSummaryAr : info.brandSummary}</p>}
+          {info && <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute" lang={ar && !info.brandSummaryAr ? 'en' : undefined} set:html={ltr(ar && info.brandSummaryAr ? info.brandSummaryAr : info.brandSummary, lang)}></p>}
           <p class="label mt-6 flex items-center gap-2 text-brand-600"><Icon name="check" size={14} />{claimFull[lang]}</p>
         </div>
         <div class="flex flex-wrap gap-3 lg:justify-end">
           <button type="button" class="btn btn-primary" data-lead="quote" data-brand={brand.name} data-product={`${brand.name} instruments`}>{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
-          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-brand={brand.name} data-product={`${brand.name} instruments`}><Icon name="whatsapp" size={18} class="text-whatsapp" />WhatsApp</button>
+          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-brand={brand.name} data-product={`${brand.name} instruments`}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'wa.label')}</button>
         </div>
       </div>
     </div>
@@ -61,7 +62,7 @@ const description = descOf(
       </div>
       {more.length > 0 && (
         <>
-          <h3 class="label mt-14 text-mute">{ar ? 'ملحقات وأجهزة متخصصة' : 'Accessories & specialist items'}</h3>
+          <h3 class="label mt-14 text-mute">{ar ? 'منتجات أخرى' : 'More products'}</h3>
           <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {more.map((p) => <ProductCard lang={lang} brand={brand} product={p} />)}
           </div>

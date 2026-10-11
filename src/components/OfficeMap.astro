@@ -16,7 +16,7 @@ const embed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${site
   <div class="map-grid absolute inset-0" aria-hidden="true"></div>
   <div class="relative flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
     <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="pin" size={22} /></span>
-    <p class="label text-mute">{site.address.street} · {ar ? 'مصفح، أبوظبي' : 'Mussafah, Abu Dhabi'}</p>
+    <p class="label text-mute">{site.addressLines[lang][0]} · {ar ? 'أبوظبي' : 'Abu Dhabi'}</p>
     <button type="button" class="btn btn-primary" data-map-load>{ar ? 'عرض الخريطة' : 'Show the map'}</button>
     <p class="max-w-[34ch] text-[13px] text-mute">{ar ? 'تُحمَّل الخريطة من Google عند النقر.' : 'The map loads from Google when you click.'}</p>
   </div>

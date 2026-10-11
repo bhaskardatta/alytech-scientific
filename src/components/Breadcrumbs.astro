@@ -1,9 +1,11 @@
 ---
 import Icon from './Icon.astro';
+import { t } from '../i18n';
 interface Props { items: { label: string; href?: string }[]; tone?: 'light' | 'dark' }
 const { items, tone = 'light' } = Astro.props;
+const lang = /^\/ar(\/|$)/.test(Astro.url.pathname) ? 'ar' : 'en';
 ---
-<nav aria-label="Breadcrumb" class:list={['text-[13.5px]', tone === 'dark' ? 'text-white/60' : 'text-mute']}>
+<nav aria-label={t(lang, 'nav.breadcrumb')} class:list={['text-[13.5px]', tone === 'dark' ? 'text-white/60' : 'text-mute']}>
   <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
     {items.map((it, i) => (
       <li class="flex items-center gap-2">

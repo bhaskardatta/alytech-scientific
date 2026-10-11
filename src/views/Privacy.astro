@@ -28,11 +28,11 @@ const copy: Record<Lang, { title: string; updated: string; sections: Section[] }
         h: 'What we collect',
         ul: [
           '<b>Details you type into our forms</b> — name, company, email, mobile/WhatsApp number, country, your message and the product you asked about. We save these as you type, so an engineer can follow up even if you don’t press send.',
-          '<b>Technical data</b> — your IP address, approximate location derived from it, the network or organisation it belongs to, browser type, the page you came from, and the pages and products you view on this site.',
+          '<b>Technical data</b> — your IP address, approximate location derived from it, the network or organization it belongs to, browser type, the page you came from, and the pages and products you view on this site.',
           '<b>Campaign information</b> — if you arrive from a campaign link, the campaign parameters in that link (for example utm_source or gclid) and the landing page are kept for that browser tab only. They are saved with a request only if you submit one.',
           '<b>Anonymous visit counts</b> — even if you choose “Essential only”, we count each page view without linking it to you: the page, the name of the website you came from (not the full address), your country, whether you use a phone, tablet or computer, the page language, and any campaign tags in the link you followed. No IP address, identifier or cookie is stored with it, and we do not look up your network. It cannot be traced back to you.',
-          '<b>Searches</b> you run on this site.',
-          '<b>WhatsApp conversations</b> you start with us, handled in WhatsApp under Meta’s terms.',
+          '<b>Searches</b> — the words you search for on this site.',
+          '<b>WhatsApp conversations</b> — the chats you start with us, handled in WhatsApp under Meta’s terms.',
           '<b>WhatsApp clicks</b> — when you press a WhatsApp button, we record the page, the product and the short reference code added to your message, so the engineer who replies knows what you were looking at.',
         ],
       },
@@ -49,7 +49,7 @@ const copy: Record<Lang, { title: string; updated: string; sections: Section[] }
       {
         h: 'Why we use it',
         ul: [
-          'To answer your enquiry, send datasheets, quotations and specifications, and follow up on requests — including requests you started but didn’t submit.',
+          'To answer your inquiry, send datasheets, quotations and specifications, and follow up on requests — including requests you started but didn’t submit.',
           'To understand demand for our instruments and improve this site, including counting how many people visit it.',
           'To protect our forms from abuse: we use IP addresses to rate-limit requests.',
           'To send product news and offers <b>only if you ticked the box</b> asking for them. You can unsubscribe at any time.',
@@ -57,11 +57,11 @@ const copy: Record<Lang, { title: string; updated: string; sections: Section[] }
       },
       {
         h: 'Who we share it with',
-        p: ['Our own staff, and service providers that host or process data for us: Cloudflare and Vercel (website hosting), Supabase (database), Resend (email notifications), IPinfo (identifying the network an IP address belongs to) and, only if you click “Accept”, PostHog (website analytics, EU servers). Where relevant to your request, we may share your enquiry with the manufacturer of the instrument you asked about. We do not sell personal data.'],
+        p: ['Our own staff, and service providers that host or process data for us: Cloudflare and Vercel (website hosting), Supabase (database), Resend (email notifications), IPinfo (identifying the network an IP address belongs to) and, only if you click “Accept”, PostHog (website analytics, EU servers). Where relevant to your request, we may share your inquiry with the manufacturer of the instrument you asked about. We do not sell personal data.'],
       },
       {
         h: 'How long we keep it',
-        p: ['Enquiry records are kept for as long as needed to serve you and for up to five years after our last contact, unless the law requires longer. Page-view records are kept for up to 24 months. PostHog keeps analytics data for up to 12 months and session replays for up to 30 days.'],
+        p: ['Inquiry records are kept for as long as needed to serve you and for up to five years after our last contact, unless the law requires longer. Page-view records are kept for up to 24 months. PostHog keeps analytics data for up to 12 months and session replays for up to 30 days.'],
       },
       {
         h: 'Your rights',
@@ -82,7 +82,7 @@ const copy: Record<Lang, { title: string; updated: string; sections: Section[] }
         ul: [
           '<b>البيانات التي تكتبها في نماذجنا</b> — الاسم والشركة والبريد الإلكتروني ورقم الجوال/واتساب والدولة ورسالتك والمنتج الذي استفسرت عنه. نحفظ هذه البيانات أثناء كتابتك لها، ليتمكن مهندس من متابعتك حتى لو لم تضغط «إرسال».',
           '<b>البيانات التقنية</b> — عنوان IP الخاص بك، والموقع التقريبي المستدل عليه منه، والشبكة أو الجهة التي ينتمي إليها، ونوع المتصفح، والصفحة التي جئت منها، والصفحات والمنتجات التي تطّلع عليها في هذا الموقع.',
-          '<b>معلومات الحملات</b> — إذا وصلت إلينا عبر رابط حملة، يُحتفظ ببارامترات الحملة الواردة في ذلك الرابط (مثل utm_source أو gclid) وبصفحة الوصول لعلامة التبويب هذه في المتصفح فقط، ولا تُحفظ مع أي طلب إلا إذا أرسلت طلباً.',
+          '<b>معلومات الحملات</b> — إذا وصلت إلينا عبر رابط حملة، يُحتفظ بمعاملات الحملة الواردة في ذلك الرابط (مثل utm_source أو gclid) وبصفحة الوصول الأولى في علامة التبويب هذه في المتصفح فقط، ولا تُحفظ مع أي طلب إلا إذا أرسلت طلباً.',
           '<b>أعداد الزيارات المجهولة</b> — حتى لو اخترت «الضرورية فقط»، نحتسب كل مشاهدة للصفحة دون ربطها بك: الصفحة نفسها، واسم الموقع الذي جئت منه (دون العنوان الكامل)، والدولة، ونوع الجهاز (هاتف أو جهاز لوحي أو حاسوب)، ولغة الصفحة، ووسوم الحملة الواردة في الرابط الذي اتبعته. ولا يُحفظ معها عنوان IP ولا معرّف ولا ملف تعريف ارتباط، ولا نبحث عن شبكتك، ولا يمكن ردّها إليك.',
           '<b>عمليات البحث</b> التي تجريها في هذا الموقع.',
           '<b>محادثات واتساب</b> التي تبدؤها معنا، وتُعالج في واتساب وفق شروط شركة Meta.',

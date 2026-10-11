@@ -48,6 +48,19 @@ export function titleOf(main: string, suffixes: string[], max = 60, hard = TITLE
 }
 
 /**
+ * Picks the first candidate (most descriptive first) that fits with a suffix — within the soft `max`, else the hard cap —
+ * then the first that fits bare. A long product name gives way to a shorter but still whole phrase instead of being cut
+ * mid-phrase.
+ */
+export function titleFrom(candidates: (string | false | undefined)[], suffixes: string[], max = 60, hard = TITLE_MAX): string {
+  const list = [...new Set(candidates.filter((c): c is string => !!c).map((c) => c.replace(/\s+/g, ' ').trim()))];
+  const tails = suffixes.filter(Boolean);
+  for (const c of list) for (const limit of [max, hard]) for (const tail of tails) if (`${c} | ${tail}`.length <= limit) return `${c} | ${tail}`;
+  for (const c of list) if (c.length <= hard) return c;
+  return titleOf(list[list.length - 1], suffixes, max, hard);
+}
+
+/**
  * Description built from whole sentences: the fewest leading sentences of `body` (plus the richest closing line from
  * `tails` that fits) landing in min..max. Only if no whole-sentence combination fits is the body trimmed on a clause boundary.
  */

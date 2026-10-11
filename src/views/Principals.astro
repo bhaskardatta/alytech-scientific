@@ -51,7 +51,7 @@ const description = ar
                   </li>
                 ))}
               </ul>
-              <span class="link-arrow justify-self-start md:justify-self-end">{productsOf(b.slug).length} {ar ? 'جهازاً' : 'instruments'} <Icon name="arrow" size={18} flip /></span>
+              <span class="link-arrow justify-self-start md:justify-self-end">{productsOf(b.slug).length} {ar ? (productsOf(b.slug).length <= 10 ? 'منتجات' : 'منتجاً') : 'products'} <Icon name="arrow" size={18} flip /></span>
             </a>
           </li>
         );

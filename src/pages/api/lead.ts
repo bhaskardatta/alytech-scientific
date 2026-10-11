@@ -61,7 +61,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   };
 
   // The reward for a "specs" inquiry: gated typical ranges, never present in page HTML.
-  const specs = !partial && row.mode === 'specs' && row.category ? specsFor(row.category) : null;
+  const specs = !partial && row.mode === 'specs' && row.category ? specsFor(row.category, row.lang) : null;
 
   let stored = false;
   if (dbReady()) {

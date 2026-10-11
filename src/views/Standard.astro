@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ltr } from '../lib/bidi';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductCard from '../components/ProductCard.astro';
 import ServiceStrip from '../components/ServiceStrip.astro';
@@ -55,8 +56,8 @@ const description = compose();
 
 const faqs = ar
   ? [
-      { q: `ما الجهاز المناسب لطريقة ${d}؟`, a: `لطريقة ${d} تورّد AlyTech Scientific ${listed(3)}. وتدرج الشركات المصنِّعة ${d} ${plural ? 'لهذه الأجهزة' : 'لهذا الجهاز'}؛ ويعتمد اختيار الطراز المناسب على عيناتك والإجراء والإصدار الذي يعتمده مختبرك والإنتاجية التي تحتاجها، لذلك يؤكد مهندس تطبيقات التهيئة قبل تقديم عرض السعر.` },
-      { q: 'هل تركّبون هذه الأجهزة وتدعمونها في الإمارات والشرق الأوسط؟', a: 'نعم. تقوم AlyTech Scientific، ومقرها في المصفح بأبوظبي، بتركيب الأجهزة وتشغيلها وتدريب المشغلين، وتدعمها بخدمة الضمان وعقود الصيانة السنوية وقطع الغيار والإصلاح في أنحاء الإمارات والشرق الأوسط.' },
+      { q: `ما الجهاز المناسب لطريقة ${d}؟`, a: `لطريقة ${d} تورّد AlyTech Scientific ${listed(3)}. وتدرج الشركات المصنِّعة ${d} ${plural ? 'لهذه الأجهزة' : 'لهذا الجهاز'}؛ ويعتمد اختيار الطراز المناسب على عيّناتك والإجراء والإصدار الذي يعتمده مختبرك والإنتاجية التي تحتاجها، لذلك يؤكد مهندس تطبيقات التهيئة قبل تقديم عرض السعر.` },
+      { q: 'هل تركّبون هذه الأجهزة وتدعمونها في الإمارات والشرق الأوسط؟', a: 'نعم. تقوم AlyTech Scientific، ومقرها في مصفح بأبوظبي، بتركيب الأجهزة وتشغيلها وتدريب المشغلين، وتدعمها بخدمة الضمان وعقود الصيانة السنوية وقطع الغيار والإصلاح في أنحاء الإمارات والشرق الأوسط.' },
       { q: `كيف أحصل على عرض سعر لأجهزة ${d}؟`, a: 'اضغط زر «اطلب عرض سعر» في هذه الصفحة وأخبرنا باسمك ووسيلة تواصل وبالعينات التي تختبرها. يرسل لك مهندس تطبيقات الأسعار والنشرات الفنية، ويرد خلال يوم عمل واحد. ويمكنك أيضاً مراسلة مهندس عبر واتساب من الصفحة نفسها.' },
     ]
   : [
@@ -67,7 +68,7 @@ const faqs = ar
 
 const crumbs = [
   { label: ar ? 'الرئيسية' : 'Home', href: L('/') },
-  { label: ar ? 'المعايير الاختبارية' : 'Test standards', href: L('/standards/') },
+  { label: ar ? 'معايير الاختبار' : 'Test standards', href: L('/standards/') },
   { label: d },
 ];
 const url = L(standardPath(s));
@@ -80,8 +81,8 @@ const itemList = {
 };
 
 const T = ar
-  ? { kicker: 'معيار اختباري', official: 'العنوان الرسمي', publisher: 'الجهة الناشرة', note: 'الملخص أدناه وصف مبسّط من AlyTech وليس نص المعيار. اعتمد دائماً على الإصدار الحالي الصادر عن الجهة الناشرة.', what: 'ما الذي تقيسه الطريقة', inst: `الأجهزة التي نورّدها لطريقة ${d}`, instSub: 'مدرجة لدى الشركات المصنِّعة التي نمثلها لهذه الطريقة. يؤكد مهندس تطبيقات التهيئة النهائية حسب عيناتك.', also: 'انظر أيضاً', cats: 'فئات المعدات ذات الصلة', inds: 'القطاعات', relStd: 'معايير ذات صلة', faq: 'أسئلة شائعة', faqSub: 'لا تجد إجابتك؟', all: 'كل المعايير' }
-  : { kicker: 'Test standard', official: 'Official title', publisher: 'Published by', note: 'The summary below is AlyTech’s plain-language description, not the text of the standard. Always work from the current edition issued by the publisher.', what: 'What the method measures', inst: `Instruments we supply for ${d}`, instSub: 'Listed against this method by the manufacturers we represent. An application engineer confirms the final configuration for your samples.', also: 'See also', cats: 'Related equipment categories', inds: 'Industries', relStd: 'Related standards', faq: 'Buyer questions', faqSub: 'Not covered here?', all: 'All standards' };
+  ? { kicker: 'معيار اختبار', official: 'العنوان الرسمي', publisher: 'الجهة الناشرة', note: 'الملخص أدناه وصف مبسّط من AlyTech وليس نص المعيار. اعتمد دائماً على الإصدار الحالي الصادر عن الجهة الناشرة.', what: 'ما الذي تقيسه الطريقة', inst: `الأجهزة التي نورّدها لطريقة ${d}`, instSub: 'الأجهزة التالية مدرجة لهذه الطريقة لدى الشركات المصنِّعة التي نمثّلها، ويؤكد مهندس التطبيقات التهيئة النهائية بحسب عيّناتك.', also: 'انظر أيضاً', cats: 'فئات المعدات ذات الصلة', inds: 'القطاعات', relStd: 'معايير ذات صلة', faq: 'أسئلة شائعة', faqSub: 'لم تجد إجابتك؟', all: 'كل المعايير' }
+  : { kicker: 'Test standard', official: 'Official title', publisher: 'Published by', note: 'The summary below is AlyTech’s plain-language description, not the text of the standard. Always work from the current edition issued by the publisher.', what: 'What the method measures', inst: `Instruments we supply for ${d}`, instSub: 'Listed against this method by the manufacturers we represent. An application engineer confirms the final configuration for your samples.', also: 'See also', cats: 'Related equipment categories', inds: 'Industries', relStd: 'Related standards', faq: 'Common questions', faqSub: 'Not covered here?', all: 'All standards' };
 const hasAlso = s.categories.length > 0 || s.industries.length > 0 || rel.length > 0;
 ---
 <Base lang={lang} title={title} description={description} product={d} schema={[itemList, faqLd(faqs), breadcrumbLd(crumbs, url)]}>
@@ -94,10 +95,10 @@ const hasAlso = s.categories.length > 0 || s.industries.length > 0 || rel.length
           {ar ? <>{label} <bdi dir="ltr">{d}</bdi></> : <>{d} {label}</>}
         </h1>
         <h2 class="label mt-8 text-mute">{T.what}</h2>
-        <p class="mt-3 max-w-[62ch] text-[17px] leading-[1.75] text-ink-soft">{s.summary[lang]}</p>
+        <p class="mt-3 max-w-[62ch] text-[17px] leading-[1.75] text-ink-soft" set:html={ltr(s.summary[lang], lang)} />
         <div class="mt-8 flex flex-wrap gap-3">
           <button type="button" class="btn btn-primary" data-lead="quote" data-product={d}>{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
-          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={d}><Icon name="whatsapp" size={18} class="text-whatsapp" />WhatsApp</button>
+          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={d}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'wa.label')}</button>
         </div>
       </div>
 

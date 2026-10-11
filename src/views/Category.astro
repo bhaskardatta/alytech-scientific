@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ltr } from '../lib/bidi';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Faq from '../components/Faq.astro';
 import Icon from '../components/Icon.astro';
@@ -40,18 +41,17 @@ const description = descOf(A.summary ?? c.summary, ar
         <Breadcrumbs items={crumbs} />
         <p class="label mt-8 text-brand-600">{fam}</p>
         <h1 class="display mt-3 text-[clamp(2.1rem,4.6vw,3.6rem)]">{name}</h1>
-        <p class="mt-5 max-w-xl text-[17px] leading-relaxed text-mute" lang={en}>{A.summary ?? c.summary}</p>
+        <p class="mt-5 max-w-xl text-[17px] leading-relaxed text-mute" lang={en} set:html={ltr(A.summary ?? c.summary, lang)} />
         <div class="mt-8 flex flex-wrap gap-3">
           <button type="button" class="btn btn-primary" data-lead="quote" data-category={c.name} data-product={c.name}>{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
           <button type="button" class="btn btn-ghost" data-lead="specs" data-category={c.name} data-product={c.name}><Icon name="lock" size={16} />{t(lang, 'cta.specs')}</button>
-          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-category={c.name} data-product={c.name}><Icon name="whatsapp" size={18} class="text-whatsapp" />WhatsApp</button>
+          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-category={c.name} data-product={c.name}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'wa.label')}</button>
         </div>
       </div>
       <div class="order-1 lg:order-2">
         {render ? (
           <figure class="overflow-hidden rounded-[var(--radius-lg)] ring-1 ring-line">
-            <img src={render.src} width={render.w} height={render.h} alt={ar ? `صورة توضيحية لـ ${name}` : `Illustration of a ${c.name.toLowerCase()}`} class="block h-auto w-full" fetchpriority="high" decoding="async" />
-            <figcaption class="sr-only">{ar ? 'صورة توضيحية؛ قد يختلف الطراز المورَّد.' : 'Illustrative render; the supplied model may differ.'}</figcaption>
+            <img src={render.src} width={render.w} height={render.h} alt={ar ? `صورة توضيحية: ${name}` : `${c.name}, illustrative render`} class="block h-auto w-full" fetchpriority="high" decoding="async" />
           </figure>
         ) : (
           <div class="render-slot relative flex aspect-[4/3] flex-col items-center justify-center gap-3 overflow-hidden rounded-[var(--radius-lg)] bg-surface p-8 text-center ring-1 ring-line">
@@ -69,18 +69,18 @@ const description = descOf(A.summary ?? c.summary, ar
     <div class="wrap grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
       <div>
         <p class="label text-brand-600">{ar ? 'نظرة عامة' : 'Overview'}</p>
-        <h2 class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `ما يجب معرفته عن ${name}` : `What to know about the ${c.name.toLowerCase()}`}</h2>
-        <p class="mt-6 max-w-[68ch] text-[17px] leading-[1.75] text-ink-soft" lang={en}>{A.description ?? c.description}</p>
+        <h2 class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `ما يجب معرفته عن ${name}` : `${c.name}: what to know`}</h2>
+        <p class="mt-6 max-w-[68ch] text-[17px] leading-[1.75] text-ink-soft" lang={en} set:html={ltr(A.description ?? c.description, lang)} />
         <div class="mt-10 grid gap-8 sm:grid-cols-2">
           {(A.variants ?? c.variants).length > 0 && (
             <div>
               <h3 class="label text-mute">{ar ? 'الأنواع والتهيئات' : 'Variants'}</h3>
-              <ul class="mt-3 grid gap-2 text-[15px]" lang={ar && !A.variants ? 'en' : undefined}>{(A.variants ?? c.variants).map((v) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span>{v}</li>)}</ul>
+              <ul class="mt-3 grid gap-2 text-[15px]" lang={ar && !A.variants ? 'en' : undefined}>{(A.variants ?? c.variants).map((v) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span><span set:html={ltr(v, lang)} /></li>)}</ul>
             </div>
           )}
           <div>
             <h3 class="label text-mute">{ar ? 'التطبيقات' : 'Applications'}</h3>
-            <ul class="mt-3 grid gap-2 text-[15px]" lang={ar && !A.applications ? 'en' : undefined}>{(A.applications ?? c.applications).map((v) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span>{v}</li>)}</ul>
+            <ul class="mt-3 grid gap-2 text-[15px]" lang={ar && !A.applications ? 'en' : undefined}>{(A.applications ?? c.applications).map((v) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span><span set:html={ltr(v, lang)} /></li>)}</ul>
           </div>
         </div>
         {c.standards.length > 0 && (
@@ -120,7 +120,7 @@ const description = descOf(A.summary ?? c.summary, ar
   <section class="border-t border-line bg-card py-14 md:py-20" aria-labelledby="cat-faq-h">
     <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr]">
       <div>
-        <h2 id="cat-faq-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أسئلة شائعة' : 'Buyer questions'}</h2>
+        <h2 id="cat-faq-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أسئلة شائعة' : 'Common questions'}</h2>
         <p class="mt-4 max-w-sm text-mute">{ar ? 'نحدد المواصفات ونورّد من مصنّعين معتمدين لدينا، ونفحص ونركّب وندعم كل جهاز.' : 'We specify to your standard, source from manufacturers we have vetted, then inspect, install and support every unit.'}</p>
       </div>
       <Faq items={faqs} />

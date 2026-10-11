@@ -22,13 +22,13 @@ const current = (href: string) => unlocalize(path).startsWith(href);
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-3 focus:z-10 focus:rounded-sm focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white">{t(lang, 'nav.skip')}</a>
   <div class="header-bar border-b">
     <div class="wrap flex h-[72px] items-center gap-6">
-      <a href={L('/')} class="flex shrink-0 items-center gap-3" aria-label="AlyTech Scientific — home">
+      <a href={L('/')} class="flex shrink-0 items-center gap-3" aria-label={t(lang, 'nav.home')}>
         <img src="/brand/logo-96.png" srcset="/brand/logo-192.png 2x" width="47" height="48" alt="" class="logo-dark h-12 w-auto" />
         <img src="/brand/logo-light-96.png" srcset="/brand/logo-light-192.png 2x" width="47" height="48" alt="" class="logo-light hidden h-12 w-auto" />
-        <span class="label hidden border-s border-current/20 ps-3 text-[11px] leading-tight opacity-80 sm:block">Scientific<br />Equipment</span>
+        <span class="label hidden border-s border-current/20 ps-3 text-[11px] leading-tight opacity-80 sm:block">{lang === 'ar' ? <>معدات<br />علمية</> : <>Scientific<br />Equipment</>}</span>
       </a>
 
-      <nav class="ms-4 hidden items-center gap-1 xl:flex" aria-label="Primary">
+      <nav class="ms-4 hidden items-center gap-1 xl:flex" aria-label={t(lang, 'nav.primary')}>
         <div class="relative" data-menu>
           <button type="button" class="nav-link inline-flex items-center gap-1.5" aria-expanded="false" aria-controls="mega-products" data-menu-button>
             {t(lang, 'nav.products')}
@@ -87,7 +87,7 @@ const current = (href: string) => unlocalize(path).startsWith(href);
   </div>
 
   <div id="mobile-nav" class="fixed inset-0 top-[calc(72px+var(--bar-h,0px))] hidden overflow-y-auto bg-card text-ink xl:hidden" data-mobile-panel>
-    <nav class="wrap flex flex-col py-6" aria-label="Mobile">
+    <nav class="wrap flex flex-col py-6" aria-label={t(lang, 'nav.mobile')}>
       <a href={L('/gasmix/')} class="mobile-link">GasMix™</a>
       <p class="label mt-6 mb-2 text-mute">{t(lang, 'nav.principals')}</p>
       {principals.map((b) => <a href={L(`/principals/${b.slug}/`)} class="mobile-link text-lg">{b.name}</a>)}

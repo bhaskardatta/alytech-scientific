@@ -24,6 +24,8 @@ const bPpm = mgm3ToPpm(100, mSO2, vm25);    // 38.19
 const co1 = ppmToMgm3(1, mCO, vm25), no2_1 = ppmToMgm3(1, mNO2, vm25);
 const pctDiff = Math.round((vm25 / vm0 - 1) * 100);
 const sub = (x: string) => x.replace(/_(\w+)/g, '<sub>$1</sub>');
+// FAQ text is plain (also used in the FAQPage JSON-LD), so "Q_s" reads "Qs" there.
+const plainSub = (x: string) => x.replace(/_(\w+)/g, '$1');
 
 // ---- Strings (EN / AR) ----
 const T = {
@@ -138,7 +140,7 @@ const s = T[lang];
 const M = { err: errMsgs(lang), hint: s.hint, units: s.units, r: s.r };
 const gasName = (g: (typeof GASES)[number]) => `${ar ? g.ar : g.en} (${g.f})`;
 ---
-<ToolShell lang={lang} path="/tools/ppm-to-mg-m3/" title={s.title} description={s.description} h1={s.h1} intro={s.intro} faqs={s.faqs} more={s.more}>
+<ToolShell lang={lang} path="/tools/ppm-to-mg-m3/" title={s.title} description={s.description} h1={s.h1} intro={s.intro} faqs={s.faqs.map((f) => ({ q: plainSub(f.q), a: plainSub(f.a) }))} more={s.more}>
   <!-- Converter -->
   <div slot="calc" data-tool="ppm" class="grid gap-5 lg:grid-cols-[1.15fr_1fr] lg:gap-6">
     <form class="card p-5 sm:p-8" novalidate>

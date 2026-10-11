@@ -138,11 +138,13 @@ const exB = [`Q_s = ${fmt(2000)} × ${fmt(50)} / ${fmt(10000)} = ${fmt(B.qs)} mL
 
 /** C_out -> C<sub>out</sub>. Input is our own static strings, never user text. */
 const sub = (x: string) => x.replace(/_(\w+)/g, '<sub>$1</sub>');
+// FAQ text is plain (also used in the FAQPage JSON-LD), so "Q_s" reads "Qs" there.
+const plainSub = (x: string) => x.replace(/_(\w+)/g, '$1');
 const concOpts: [string, string][] = [['pct', '%'], ['ppm', 'ppm'], ['ppb', 'ppb']];
 const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
 
 ---
-<ToolShell lang={lang} path="/tools/gas-dilution-calculator/" title={s.title} description={s.description} h1={s.h1} intro={s.intro} faqs={s.faqs} more={s.more}>
+<ToolShell lang={lang} path="/tools/gas-dilution-calculator/" title={s.title} description={s.description} h1={s.h1} intro={s.intro} faqs={s.faqs.map((f) => ({ q: plainSub(f.q), a: plainSub(f.a) }))} more={s.more}>
   <!-- Calculator -->
   <div slot="calc" data-tool="dilution" class="grid gap-5 lg:grid-cols-[1.15fr_1fr] lg:gap-6">
     <form class="card p-5 sm:p-8" novalidate>
@@ -245,7 +247,7 @@ const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
             <table dir="ltr" class="w-full border-collapse text-end font-mono text-[13px] text-ink">
               <caption class="sr-only">{s.exC}</caption>
               <thead>
-                <tr>{s.exCcols.map((c) => <th scope="col" class="border-b border-line-strong px-2 py-2 text-end text-[12px] font-medium text-mute first:text-start">{c}</th>)}</tr>
+                <tr>{s.exCcols.map((c) => <th scope="col" class="border-b border-line-strong px-2 py-2 text-end text-[12px] font-medium text-mute first:text-start" set:html={sub(c)} />)}</tr>
               </thead>
               <tbody>
                 {C.rows.map((r) => (

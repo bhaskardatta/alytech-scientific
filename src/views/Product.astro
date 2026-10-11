@@ -11,7 +11,8 @@ import { industries } from '../data/industries';
 import { breadcrumbLd, productLd } from '../data/schema';
 import { standardSlug } from '../data/standards';
 import { t, localize, pick, type Lang } from '../i18n';
-import { titleOf, descOf, plain } from '../lib/seo';
+import { titleFrom, descOf, plain } from '../lib/seo';
+import { ltr } from '../lib/bidi';
 
 interface Props { lang: Lang; brand: Brand; product: Product }
 const { lang, brand, product: p } = Astro.props;
@@ -22,6 +23,8 @@ const gas = brand.slug === 'gasmix';
 const arx = (ar ? p.ar ?? {} : {}) as { keySpecs?: Spec[]; standards?: string[]; whyMiddleEast?: string };
 const name = shortName(p, lang);
 const fullName = (ar && p.ar?.name) || p.name;
+// Arabic "for X": attached لـ before an Arabic word (لجهاز، للجهاز), separated "لـ " only before a Latin name.
+const lam = (n: string) => (/^[\u0600-\u06FF]/.test(n) ? (n.startsWith('ال') ? `ل${n.slice(1)}` : `ل${n}`) : `لـ ${n}`);
 const category = pick(lang, { en: p.category, ar: p.ar?.category });
 const summary = pick(lang, { en: p.summary, ar: p.ar?.summary });
 const description = pick(lang, { en: p.description, ar: p.ar?.description });
@@ -32,25 +35,7 @@ const specsAr = specs !== p.keySpecs;
 const standards = ar && arx.standards?.length === p.standards.length ? arx.standards : p.standards;
 const regional = ar ? arx.whyMiddleEast : p.whyMiddleEast;
 
-// Right-to-left text scrambles numbers with units ("150 °C" shows as "C° 150"). Isolate each Latin/number run left-to-right.
-const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const BODY = `[A-Za-z0-9_.,:/%°µ²³⁴⁵⁶⁷⁸⁹⁻⁰¹×·'"()+−–~≈′″\u0370-\u03FF\u00C0-\u00FF-]`;
-const LTR_RUN = new RegExp(`(?:[<>≤≥±~+−–-]\\s?)?[A-Za-z0-9]${BODY}*(?: [A-Za-z0-9°%±+<>≤≥−–~µ]${BODY}*)*`, 'g');
-const fmt = (s: string, mono = false) => {
-  if (!ar) return esc(s);
-  let out = '', last = 0;
-  for (const m of s.matchAll(LTR_RUN)) {
-    let core = m[0], tail = '';
-    for (;;) {
-      const open = (core.match(/\(/g) ?? []).length, close = (core.match(/\)/g) ?? []).length;
-      const c = core.slice(-1);
-      if (/[.,:;(]/.test(c) || (c === ')' && close > open)) { tail = c + tail; core = core.slice(0, -1); } else break;
-    }
-    out += esc(s.slice(last, m.index)) + `<bdi dir="ltr" class="${mono ? 'font-mono ' : ''}${core.length <= 18 ? 'whitespace-nowrap' : ''}">${esc(core)}</bdi>` + esc(tail);
-    last = m.index! + m[0].length;
-  }
-  return out + esc(s.slice(last));
-};
+const fmt = (s: string, mono = false) => ltr(s, lang, mono);
 const inds = industries.filter((i) => p.industries.includes(i.slug));
 const related = productsOf(brand.slug).filter((x) => x.slug !== p.slug && x.priority !== 'niche').slice(0, 4);
 const img = imageOf(brand.slug, p.slug);
@@ -63,10 +48,37 @@ const crumbs = [
   { label: name },
 ];
 const url = L(productPath(brand, p));
-// "Thermtest MP-1 Thermal Properties Analyzer | AlyTech UAE" — brand + model + category first, localized category on /ar/.
+// "Thermtest MP-1 Thermal Properties Analyzer | AlyTech UAE". Candidates run from the full name to shorter whole phrases:
+// English noun phrases end in the head noun, so qualifiers drop from the left ("RPS 700 Relative Permeameter"); Arabic
+// ones start with it, so they drop from the right and the brand follows ("جهاز قياس النفاذية النسبية RPS 700 من Vinci").
 const cat = plain(category);
-const headline = subject.toLowerCase().includes(cat.toLowerCase()) ? subject : `${subject} ${cat}`;
-const title = titleOf(headline, ar ? ['AlyTech الإمارات', 'AlyTech', ''] : ['AlyTech UAE', 'AlyTech', '']);
+const split = (s: string) => (p.model && s.includes(p.model) ? s.replace(p.model, ' ') : s).replace(/\s+/g, ' ').trim().split(' ');
+// Titles use the names buyers search for: "Ducom", "Vinci" (the hub pages keep the full company names).
+const B = ({ ducom: 'Ducom', vinci: 'Vinci' } as Record<string, string>)[brand.slug] ?? brand.name;
+const AR_LETTER = /[\u0600-\u06FF]/;
+// Arabic words that can't end a title: prepositions, a trailing "و…", verbal nouns that need an object ("لقياس"), and words
+// that need a complement ("نقطة الوميض", "قابل للبرمجة", "متعدد القنوات").
+const AR_DANGLING = /^(?:في|من|على|مع|عن|إلى|نقطة|و.*|ل(?:قياس|اختبار|تحديد|تقييم|جهاز|نظام)|قابل[ةه]?|عالي[ةه]?|متعدد[ةه]?|الناجم|الناتج|ثنائي[ةه]?|فائق[ةه]?|الخاص[ةه]?)$/;
+const titleCandidates = () => {
+  if (!ar) {
+    const M = p.model, w = split(p.name);
+    const tails = M ? w.map((_, k) => w.slice(k)).filter((x) => x.length && !/^(and|or|for|with|of|on|in|to|at|by|&|\+)$/i.test(x[0])).map((x) => `${B} ${M} ${x.join(' ')}`) : [];
+    return [`${B} ${p.name}`, ...tails, M && !cat.toLowerCase().includes(M.toLowerCase()) && `${B} ${M} ${cat}`, `${B} ${shortName(p)}`];
+  }
+  // Arabic: generic name first, then the Latin model, then the brand — "مولّد نيتروجين COSMOS N2/ZN2 من F-DGS".
+  const words = plain(p.ar?.name || '').split(' ').filter(Boolean);
+  const lead = words.findIndex((x) => AR_LETTER.test(x));
+  const firstLatin = lead > 0 ? words.slice(0, lead) : [];
+  const rest = lead >= 0 ? words.slice(lead) : [];
+  const lastAr = rest.reduce((i, x, j) => (AR_LETTER.test(x) ? j : i), -1);
+  const generic = rest.slice(0, lastAr + 1);
+  const model = [...firstLatin, ...rest.slice(lastAr + 1)].join(' ');
+  const tail = `${model ? ` ${model}` : ''} من ${B}`;
+  const heads = generic.map((_, k) => generic.slice(0, generic.length - k)).filter((x) => x.length >= Math.min(2, generic.length) && !AR_DANGLING.test(x[x.length - 1]));
+  const arCat = plain(p.ar?.category || '');
+  return [...heads.map((x) => `${x.join(' ')}${tail}`), arCat && AR_LETTER.test(arCat) && `${arCat}${tail}`, model && `${model} من ${B}`, `${generic.slice(0, 2).join(' ')}${tail}`];
+};
+const title = titleFrom(titleCandidates(), ar ? ['AlyTech الإمارات', 'AlyTech'] : ['AlyTech UAE', 'AlyTech']);
 const metaDesc = descOf(summary, ar
   ? ['التوريد والتركيب والدعم من AlyTech في الإمارات.', 'التوريد والدعم من AlyTech في الإمارات.', 'من AlyTech في الإمارات.']
   : ['Supplied, installed and supported by AlyTech in the UAE.', 'Supplied and supported by AlyTech in the UAE.', 'Supplied by AlyTech UAE.']);
@@ -101,7 +113,7 @@ const assurances = ar
         <div class="mt-8 flex flex-wrap gap-3">
           <button type="button" class="btn btn-primary" data-lead="price" data-product={subject} data-brand={brand.name}>{t(lang, 'cta.price')} <Icon name="arrow" size={18} flip /></button>
           <button type="button" class="btn btn-ghost" data-lead="datasheet" data-product={subject} data-brand={brand.name}><Icon name="lock" size={16} />{t(lang, 'cta.datasheet')}</button>
-          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={subject} data-brand={brand.name}><Icon name="whatsapp" size={18} class="text-whatsapp" />WhatsApp</button>
+          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={subject} data-brand={brand.name}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'wa.label')}</button>
         </div>
 
         <ul class="mt-8 grid gap-2 text-[15px]">
@@ -131,7 +143,7 @@ const assurances = ar
     <div class="wrap grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:gap-14">
       <div>
         <p class="label text-brand-600">{ar ? 'المواصفات' : 'Specifications'}</p>
-        <h2 id="specs-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `المواصفات الرئيسية لـ ${name}` : `${name} key specifications`}</h2>
+        <h2 id="specs-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `المواصفات الرئيسية ${lam(name)}` : `${name} key specifications`}</h2>
         <dl class="mt-8 divide-y divide-line border-y border-line" lang={ar && !specsAr ? 'en' : undefined} dir={ar && !specsAr ? 'ltr' : undefined}>
           {specs.map((s) => (
             <div class="grid gap-1 py-4 sm:grid-cols-[minmax(180px,0.8fr)_1.2fr] sm:gap-6">
@@ -147,7 +159,7 @@ const assurances = ar
         <div class="on-dark relative overflow-hidden rounded-[var(--radius-lg)] bg-night-900 p-7 text-white lg:sticky lg:top-28">
           <Ribbon class="absolute inset-0 h-full w-full text-brand-600 opacity-30" lines={20} />
           <div class="relative">
-            <p class="label flex items-center gap-2 text-brand-300"><Icon name="lock" size={14} />{ar ? 'للعملاء المسجلين' : 'On request'}</p>
+            <p class="label flex items-center gap-2 text-brand-300"><Icon name="lock" size={14} />{ar ? 'عند الطلب' : 'On request'}</p>
             <p class="display mt-4 text-2xl">{ar ? 'النشرة الفنية الكاملة والسعر ومدة التوريد' : 'Full datasheet, pricing and lead time'}</p>
             <p class="mt-3 text-[15px] text-white/70">{ar ? 'يرسلها إليك مهندس تطبيقات مع التهيئة المناسبة لطريقتك.' : 'An application engineer sends them with the configuration that fits your method.'}</p>
             <div class="mt-6 grid gap-2">
@@ -165,7 +177,7 @@ const assurances = ar
     <div class="wrap grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:gap-14">
       <div>
         <p class="label text-brand-600">{ar ? 'نظرة عامة' : 'Overview'}</p>
-        <h2 id="ov-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `ما الذي يقيسه ${name}` : `What ${name} does`}</h2>
+        <h2 id="ov-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `نبذة عن ${name}` : `What ${name} does`}</h2>
         <p class="mt-6 max-w-[68ch] text-[17px] leading-[1.75] text-ink-soft" lang={contentLang} set:html={fmt(description)} />
         {regional && <p class="mt-6 max-w-[68ch] border-s-2 border-brand-500 ps-5 text-[16px] text-ink-soft"><span class="font-semibold text-ink">{t(lang, 'prod.region')}</span> <Fragment set:html={fmt(regional)} /></p>}
       </div>
