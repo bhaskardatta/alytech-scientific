@@ -1,4 +1,5 @@
 ---
+import { ltr } from '../lib/bidi';
 import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductCard from '../components/ProductCard.astro';
@@ -69,7 +70,7 @@ const description = ar
     </div>
     <div class="relative border-t border-white/10">
       <ul class="wrap grid grid-cols-2 gap-px py-6 text-[14px] text-white/70 lg:grid-cols-4">
-        {common.map((c) => <li class="flex items-center gap-2.5 py-2"><Icon name="check" size={16} class="shrink-0 text-brand-300" />{c}</li>)}
+        {common.map((c) => <li class="flex items-center gap-2.5 py-2"><Icon name="check" size={16} class="shrink-0 text-brand-300" /><span set:html={ltr(c, lang)} /></li>)}
       </ul>
     </div>
   </section>
@@ -79,7 +80,7 @@ const description = ar
     <div class="wrap">
       <p class="label text-brand-600">{ar ? 'اختر الطراز' : 'Choose a model'}</p>
       <h2 id="cmp-h" class="display mt-3 max-w-2xl text-[clamp(1.7rem,3.2vw,2.6rem)]">{ar ? 'من مخفف بقناتين إلى ست عشرة قناة.' : 'From a two-channel diluter to sixteen channels.'}</h2>
-      <div class="cmp-scroll mt-10 overflow-x-auto rounded-[var(--radius-md)] border border-line bg-card">
+      <div class="cmp-scroll mt-10 overflow-x-auto rounded-[var(--radius-md)] border border-line bg-card" tabindex="0" role="region" aria-labelledby="cmp-h">
         <table class="w-full min-w-[760px] text-start text-[15px]">
           <thead>
             <tr class="border-b border-line text-mute">

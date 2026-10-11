@@ -58,8 +58,8 @@ const lk = 'hit transition-colors duration-200 hover:text-white hover:underline 
     </div>
   </div>
   <div class="border-t border-white/10">
-    <!-- pb-24 on phones keeps the last line clear of the floating WhatsApp button (fixed bottom-5, 56px tall) -->
-    <div class="wrap flex flex-col gap-2 pt-6 pb-24 text-[13px] text-white/60 sm:flex-row sm:justify-between sm:pb-6">
+    <!-- The last line stays clear of the floating WhatsApp button (fixed bottom-5 end-5): bottom room on phones, end room from sm up -->
+    <div class="wrap flex flex-col gap-2 pt-6 pb-24 text-[13px] text-white/60 sm:flex-row sm:pe-48 sm:justify-between sm:pb-6">
       <p>© <span data-year>2026</span> {site.legalName}. {t(lang, 'footer.rights')}</p>
       {lang === 'ar'
         ? <p><bdi dir="ltr">GasMix™</bdi> علامة تجارية لشركة <bdi dir="ltr">AlyTech France</bdi>. العلامات الأخرى ملك لأصحابها.</p>

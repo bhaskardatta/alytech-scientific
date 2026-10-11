@@ -40,7 +40,7 @@ const description = descOf(
       <div class="mt-10 max-w-4xl">
         <div>
           {brand.exclusive && <p class="label text-brand-600">{claim(brand)[lang]}</p>}
-          <h1 class:list={['display text-[clamp(2.4rem,5.5vw,4.4rem)]', brand.exclusive && 'mt-4']}>{brand.name}</h1>
+          <h1 class:list={['display text-[clamp(2.4rem,5.5vw,4.4rem)]', brand.exclusive && 'mt-4']}>{brand.name.replace(/ \+ /g, '\u00a0+\u00a0')}</h1>
           <p class="label mt-2 text-mute">{origin(brand)[lang]}</p>
           <p class="mt-3 text-xl text-ink-soft">{brand.discipline[lang]}</p>
           {info && <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute" lang={ar && !info.brandSummaryAr ? 'en' : undefined} set:html={ltr(ar && info.brandSummaryAr ? info.brandSummaryAr : info.brandSummary, lang)}></p>}

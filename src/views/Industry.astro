@@ -83,8 +83,8 @@ const title = titleOf(ar ? `أجهزة ${industry.name.ar} في الإمارات
                 {cats.map((cat) => (
                   <li>
                     <a href={L(categoryPath(cat))} class="group flex h-full items-start gap-4 rounded-sm border border-transparent p-3 transition-[background-color,border-color] duration-200 hover:border-line hover:bg-card">
-                      {renderOf(cat.slug) && <img src={renderOf(cat.slug).sm} width="112" height="84" alt="" loading="lazy" decoding="async" class="h-[84px] w-28 shrink-0 rounded-xs object-cover" />}
-                      <span class="flex-1 py-1">
+                      {renderOf(cat.slug) && <img src={renderOf(cat.slug).sm} width="112" height="84" alt="" loading="lazy" decoding="async" class="h-[60px] w-20 shrink-0 min-[360px]:h-[84px] min-[360px]:w-28 rounded-xs object-cover" />}
+                      <span class="min-w-0 flex-1 py-1">
                         <span class="block font-semibold">{(ar && cat.ar?.name) || cat.name}</span>
                         <span class="mt-1 line-clamp-2 text-[14px] text-mute" lang={ar && !cat.ar?.summary ? 'en' : undefined} set:html={ltr((ar && cat.ar?.summary) || cat.summary, lang)} />
                       </span>

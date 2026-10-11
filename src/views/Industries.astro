@@ -34,7 +34,7 @@ const name = (s: string) => brands.find((b) => b.slug === s)?.name;
           <a href={L(`/industries/${ind.slug}/`)} class="group card flex h-full flex-col gap-4 p-7 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
             <span class="flex items-center justify-between gap-4">
               <span class="display text-2xl">{ind.name[lang]}</span>
-              <Icon name="arrow" size={20} flip class="text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
+              <Icon name="arrow" size={20} flip class="shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
             </span>
             <span class="text-[15.5px] text-mute">{industryContent[ind.slug].intro[lang]}</span>
             <span class="label mt-auto text-ink-soft">{industryContent[ind.slug].brands.map(name).join(' · ')}</span>

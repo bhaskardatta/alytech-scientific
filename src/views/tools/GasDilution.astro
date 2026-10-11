@@ -1,4 +1,5 @@
 ---
+import { ltr } from '../../lib/bidi';
 import ToolShell from './ToolShell.astro';
 import ToolField from './ToolField.astro';
 import GasMixCta from './GasMixCta.astro';
@@ -270,7 +271,7 @@ const flowOpts: [string, string][] = [['ml', 'mL/min (sccm)'], ['l', 'L/min']];
     <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.6fr]">
       <h2 id="dil-assume-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{s.assumeH}</h2>
       <ul class="grid gap-4 text-[16px] leading-relaxed text-ink-soft">
-        {s.assume.map((a) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span><span>{a}</span></li>)}
+        {s.assume.map((a) => <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span><span set:html={ltr(a, lang)} /></li>)}
       </ul>
     </div>
   </section>

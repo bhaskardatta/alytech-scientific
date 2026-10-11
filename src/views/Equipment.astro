@@ -43,8 +43,8 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
           {f.categories.map((c) => (
             <li>
               <a href={L(categoryPath(c))} class="group flex h-full items-start gap-4 rounded-sm border border-transparent p-3 transition-[background-color,border-color] duration-200 hover:border-line hover:bg-card">
-                {renderOf(c.slug) && <img src={renderOf(c.slug).sm} width="112" height="84" alt="" loading="lazy" decoding="async" class="h-[84px] w-28 shrink-0 rounded-xs object-cover" />}
-                <span class="flex-1 py-1">
+                {renderOf(c.slug) && <img src={renderOf(c.slug).sm} width="112" height="84" alt="" loading="lazy" decoding="async" class="h-[60px] w-20 shrink-0 min-[360px]:h-[84px] min-[360px]:w-28 rounded-xs object-cover" />}
+                <span class="min-w-0 flex-1 py-1">
                   <span class="block font-semibold">{(ar && c.ar?.name) || c.name}</span>
                   <span class="mt-1 line-clamp-2 text-[14px] text-mute" lang={ar && !c.ar?.summary ? 'en' : undefined} set:html={ltr((ar && c.ar?.summary) || c.summary, lang)} />
                 </span>

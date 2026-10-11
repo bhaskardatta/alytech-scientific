@@ -75,8 +75,8 @@ export default defineConfig({
     ...(cf ? [(await import('./cloudflare/assets-rules.mjs')).default()] : []),
     sitemap({
       i18n: { defaultLocale: 'en', locales: { en: 'en', ar: 'ar' } },
-      // /search/ is noindex; /admin/ and /thank-you/ are not for crawlers.
-      filter: (page) => !/\/(admin|thank-you|search)\//.test(page),
+      // /search/ and /ar/404/ are noindex; /admin/ and /thank-you/ are not for crawlers.
+      filter: (page) => !/\/(admin|thank-you|search|404)\//.test(page),
       lastmod: new Date(),
     }),
   ],

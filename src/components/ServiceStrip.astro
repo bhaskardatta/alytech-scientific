@@ -19,7 +19,7 @@ const items = [
       <h2 id="svc-strip-h" class="display mt-3 text-[clamp(1.5rem,2.6vw,2.1rem)]">{ar ? 'كل جهاز نبيعه، ندعمه محلياً.' : 'Every instrument we sell, we support locally.'}</h2>
       <a href={localize(lang, '/services/')} class="link-arrow mt-5">{t(lang, 'nav.services')} <Icon name="arrow" size={16} flip /></a>
     </div>
-    <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line sm:grid-cols-3 xl:grid-cols-5">
+    <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line sm:grid-cols-3 xl:grid-cols-5 [&>li:last-child]:col-span-2 xl:[&>li:last-child]:col-span-1">
       {items.map((i) => (
         <li class="flex flex-col gap-4 bg-card p-5">
           <Icon name={i.icon} size={22} class="text-brand-600" />

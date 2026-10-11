@@ -107,7 +107,7 @@ const description = ar
               {(() => { const r = f.categories.map((c) => renderOf(c.slug)).find(Boolean); return r && <img src={r.sm} width={r.w} height={r.h} alt="" loading="lazy" decoding="async" class="mb-2 aspect-[4/3] w-full rounded-xs object-cover transition-transform duration-500 group-hover:scale-[1.02]" />; })()}
               <span class="flex items-center justify-between gap-3">
                 <span class="display text-[15px] leading-snug sm:text-lg">{(ar && f.ar?.name) || f.name}</span>
-                <Icon name="arrow" size={18} flip class="text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
+                <Icon name="arrow" size={18} flip class="shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
               </span>
               <span class="hidden text-[14px] text-mute sm:block">{f.categories.slice(0, 3).map((c) => (ar && c.ar?.name) || c.name).join(' · ')}</span>
             </a>
@@ -150,7 +150,7 @@ const description = ar
             <a href={L(`/industries/${ind.slug}/`)} class="group flex h-full flex-col gap-2 p-6 transition-colors duration-200 hover:bg-card md:p-7">
               <span class="flex items-center justify-between gap-3">
                 <span class="display text-lg">{ind.name[lang]}</span>
-                <Icon name="arrow" size={18} flip class="text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
+                <Icon name="arrow" size={18} flip class="shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
               </span>
               <span class="text-[15px] text-mute">{ind.line[lang]}</span>
             </a>

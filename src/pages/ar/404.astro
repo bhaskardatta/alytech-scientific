@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+// Arabic "page not found": /404.html forwards missing /ar/… URLs here.
+---
+<Base lang="ar" title="الصفحة غير موجودة | AlyTech Scientific" description="الصفحة التي تبحث عنها نُقلت أو لم تعد موجودة. ابحث في أجهزتنا المخبرية أو راسل مهندساً من AlyTech عبر واتساب." noindex alternates={false}>
+  <section class="flex min-h-[80vh] items-center bg-card pt-[72px]">
+    <div class="wrap max-w-2xl py-16">
+      <p class="label text-brand-600">404</p>
+      <h1 class="display mt-4 text-[clamp(2rem,4.4vw,3.2rem)]">الصفحة غير موجودة أو تم نقلها.</h1>
+      <form action="/ar/search/" method="get" class="mt-8 flex gap-2" role="search">
+        <label for="nf-q" class="sr-only">ابحث عن جهاز</label>
+        <input id="nf-q" name="q" class="field" placeholder="ابحث عن جهاز" />
+        <button class="btn btn-primary">بحث</button>
+      </form>
+      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+        <a href="/ar/" class="link-arrow">الرئيسية <Icon name="arrow" size={16} flip /></a>
+        <button type="button" class="link-arrow" data-lead="whatsapp"><Icon name="whatsapp" size={18} />راسل مهندساً عبر واتساب</button>
+      </div>
+    </div>
+  </section>
+</Base>

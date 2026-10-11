@@ -99,8 +99,6 @@ html[data-announce] body { padding-top: var(--bar-h); }
     letter-spacing: 0;
     line-height: 1.35;
   }
-  /* Hyphenate headings only on the narrowest phones, where a long technical word could otherwise overflow; never mid-word elsewhere */
-  @media (max-width: 340px) { :is(h1, h2, h3, h4) { hyphens: auto; } }
   p { text-wrap: pretty; }
   :focus-visible {
     outline: 2px solid var(--color-brand-500);
@@ -189,7 +187,7 @@ html[data-announce] body { padding-top: var(--bar-h); }
   @media (pointer: coarse), (max-width: 767px) {
     .link-arrow, .tap { padding-block: 10px; margin-block: -10px; }
     /* .hit: the link's box grows to 44px, the negative margin (1lh = its own line height) hands the extra back to the layout */
-    .hit { display: inline-flex; align-items: center; min-height: 44px; margin-block: calc((1lh - 44px) / 2); }
+    .hit { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; margin-block: calc((1lh - 44px) / 2); }
     .btn-sm { min-height: 44px; }
     /* pill links (industry / family chips) */
     a.rounded-full { display: inline-flex; align-items: center; min-height: 44px; }
