@@ -37,7 +37,7 @@ const description = descOf(
   <section class="border-b border-line bg-card pt-[72px]">
     <div class="wrap py-12 md:py-16">
       <Breadcrumbs items={crumbs} />
-      <div class="mt-10 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+      <div class="mt-10 max-w-4xl">
         <div>
           {brand.exclusive && <p class="label text-brand-600">{claim(brand)[lang]}</p>}
           <h1 class:list={['display text-[clamp(2.4rem,5.5vw,4.4rem)]', brand.exclusive && 'mt-4']}>{brand.name}</h1>
@@ -46,7 +46,7 @@ const description = descOf(
           {info && <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute" lang={ar && !info.brandSummaryAr ? 'en' : undefined} set:html={ltr(ar && info.brandSummaryAr ? info.brandSummaryAr : info.brandSummary, lang)}></p>}
           <p class="label mt-6 flex items-center gap-2 text-brand-600"><Icon name="check" size={14} />{claimFull[lang]}</p>
         </div>
-        <div class="flex flex-wrap gap-3 lg:justify-end">
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap max-sm:*:w-full">
           <button type="button" class="btn btn-primary" data-lead="quote" data-brand={brand.name} data-product={`${brand.name} instruments`}>{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
           <button type="button" class="btn btn-wa" data-lead="whatsapp" data-brand={brand.name} data-product={`${brand.name} instruments`}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'wa.label')}</button>
         </div>

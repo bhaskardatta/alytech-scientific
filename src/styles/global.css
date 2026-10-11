@@ -99,8 +99,8 @@ html[data-announce] body { padding-top: var(--bar-h); }
     letter-spacing: 0;
     line-height: 1.35;
   }
-  /* Hyphenate headings only where a long technical word could otherwise overflow (narrow phones); never mid-word on larger screens */
-  @media (max-width: 400px) { :is(h1, h2, h3, h4) { hyphens: auto; } }
+  /* Hyphenate headings only on the narrowest phones, where a long technical word could otherwise overflow; never mid-word elsewhere */
+  @media (max-width: 340px) { :is(h1, h2, h3, h4) { hyphens: auto; } }
   p { text-wrap: pretty; }
   :focus-visible {
     outline: 2px solid var(--color-brand-500);
@@ -159,10 +159,12 @@ html[data-announce] body { padding-top: var(--bar-h); }
   .btn-ghost:hover { border-color: var(--color-ink); background: var(--color-card); }
   .on-dark .btn-ghost { border-color: rgb(255 255 255 / 0.22); color: #fff; }
   .on-dark .btn-ghost:hover { border-color: rgb(255 255 255 / 0.6); background: rgb(255 255 255 / 0.06); }
-  .btn-wa { background: var(--color-ink); color: #fff; }
-  .btn-wa:hover { background: #1e293b; }
-  .on-dark .btn-wa { background: #fff; color: var(--color-ink); }
-  .on-dark .btn-wa:hover { background: var(--color-brand-100); }
+  /* WhatsApp is the secondary action next to the purple primary: outlined, carried by its green icon (the floating
+     WhatsApp button stays solid). */
+  .btn-wa { border: 1px solid var(--color-line-strong); color: var(--color-ink); background: var(--color-card); }
+  .btn-wa:hover { border-color: var(--color-whatsapp); background: rgb(37 211 102 / 0.06); }
+  .on-dark .btn-wa { border-color: rgb(255 255 255 / 0.28); color: #fff; background: rgb(255 255 255 / 0.04); }
+  .on-dark .btn-wa:hover { border-color: var(--color-whatsapp); background: rgb(37 211 102 / 0.1); }
   .btn-sm { min-height: 40px; padding: 0 16px; font-size: 14px; }
 
   .link-arrow {

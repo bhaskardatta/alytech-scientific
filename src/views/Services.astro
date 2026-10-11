@@ -66,7 +66,8 @@ const services = [
   </section>
 
   <section class="py-16 md:py-24" aria-label={t(lang, 'nav.services')}>
-    <ul class="wrap grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+    <div class="wrap">
+    <ul class="grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
       {services.map((s) => (
         <li class="flex flex-col gap-5 bg-card p-8">
           <span class="flex h-11 w-11 items-center justify-center rounded-sm bg-brand-50 text-brand-600"><Icon name={s.icon} size={22} /></span>
@@ -75,6 +76,7 @@ const services = [
         </li>
       ))}
     </ul>
+    </div>
   </section>
 
   <section class="border-t border-line bg-card py-14">

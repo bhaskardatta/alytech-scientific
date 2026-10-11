@@ -23,7 +23,7 @@ const items = [
       {items.map((i) => (
         <li class="flex flex-col gap-4 bg-card p-5">
           <Icon name={i.icon} size={22} class="text-brand-600" />
-          <span class="text-[14.5px] font-medium leading-snug [overflow-wrap:anywhere] [hyphens:auto]">{i[lang]}</span>
+          <span class="text-[14.5px] font-medium leading-snug break-words">{i[lang]}</span>
         </li>
       ))}
     </ul>

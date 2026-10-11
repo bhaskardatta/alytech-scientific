@@ -103,14 +103,14 @@ const assurances = ar
   <section data-header={gas ? 'dark' : undefined} class:list={['relative overflow-hidden pt-[72px]', gas ? 'on-dark bg-night-950 text-white' : 'bg-card']}>
     {gas && <Ribbon class="absolute inset-0 h-full w-full text-brand-600 opacity-35" lines={34} />}
     <div class="wrap relative grid gap-10 py-10 md:py-14 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
-      <div class="order-2 lg:order-1">
+      <div class="order-1">
         <Breadcrumbs items={crumbs} tone={gas ? 'dark' : 'light'} />
         <p class:list={['label mt-8', gas ? 'text-brand-300' : 'text-brand-600']}>{brand.name} · {category}</p>
         <h1 class="display mt-3 text-[clamp(2.2rem,5vw,4rem)]">{name}</h1>
         {fullName !== name && <p class:list={['mt-2 text-lg', gas ? 'text-white/70' : 'text-ink-soft']} set:html={fmt(fullName)} />}
         <p class:list={['mt-5 max-w-xl text-[17px] leading-relaxed', gas ? 'text-white/75' : 'text-mute']} lang={contentLang} set:html={fmt(summary)} />
 
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap max-sm:*:w-full">
           <button type="button" class="btn btn-primary" data-lead="price" data-product={subject} data-brand={brand.name}>{t(lang, 'cta.price')} <Icon name="arrow" size={18} flip /></button>
           <button type="button" class="btn btn-ghost" data-lead="datasheet" data-product={subject} data-brand={brand.name}><Icon name="lock" size={16} />{t(lang, 'cta.datasheet')}</button>
           <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={subject} data-brand={brand.name}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'wa.label')}</button>
@@ -127,8 +127,8 @@ const assurances = ar
         <p class:list={['label mt-2', gas ? 'text-white/50' : 'text-mute']}>{brand.name} · {origin(brand)[lang]}</p>
       </div>
 
-      <div class="order-1 lg:order-2">
-        <div class:list={['stage relative flex aspect-square items-center justify-center overflow-hidden rounded-[var(--radius-lg)] p-8 sm:p-12', gas ? 'bg-white/[0.035] ring-1 ring-white/10' : 'bg-surface ring-1 ring-line']}>
+      <div class="order-2">
+        <div class:list={['stage relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[var(--radius-lg)] p-8 sm:aspect-[16/10] sm:p-12 lg:aspect-square', gas ? 'bg-white/[0.035] ring-1 ring-white/10' : 'bg-surface ring-1 ring-line']}>
           <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
           {p.model && <span class:list={['label absolute start-5 top-5', gas ? 'text-white/60' : 'text-mute']}>{p.model}</span>}
           <ProductImage brand={brand.slug} brandName={brand.name} slug={p.slug} alt={`${brand.name} ${p.name}`} class="relative max-h-full w-auto drop-shadow-[0_30px_40px_rgb(15_23_42/0.18)]" eager />

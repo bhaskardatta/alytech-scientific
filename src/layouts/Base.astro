@@ -118,12 +118,30 @@ const org = {
     </main>
     <Footer lang={lang} />
 
-    <button type="button" data-lead="whatsapp" data-product={product} class="wa-fab fixed bottom-5 end-5 z-40 inline-flex h-14 items-center gap-2 rounded-full bg-ink ps-4 pe-5 text-white shadow-[var(--shadow-pop)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-night-800" aria-label={t(lang, 'cta.whatsapp')}>
+    <button type="button" data-lead="whatsapp" data-product={product} class="wa-fab fixed bottom-5 end-5 z-40 inline-flex h-14 items-center gap-2 rounded-full bg-ink ps-4 pe-5 text-white shadow-[var(--shadow-pop)] transition-[transform,background-color,opacity] duration-200 hover:-translate-y-0.5 hover:bg-night-800 [&.away]:pointer-events-none [&.away]:translate-y-4 [&.away]:opacity-0" aria-label={t(lang, 'cta.whatsapp')}>
       <span class="flex h-8 w-8 items-center justify-center rounded-full bg-whatsapp text-white"><Icon name="whatsapp" size={18} /></span>
       <span class="hidden text-[15px] font-semibold sm:inline">{t(lang, 'wa.label')}</span>
     </button>
 
     {product && <Nudge lang={lang} product={product} label={productLabel ?? product} />}
+
+    <script>
+      // The floating WhatsApp button steps aside while another WhatsApp button is on screen, so the page never shows the
+      // same action twice (hero, Contact card, product CTAs). It stays reachable everywhere else.
+      const fab = document.querySelector<HTMLElement>('.wa-fab');
+      if (fab && 'IntersectionObserver' in window) {
+        const seen = new Set<Element>();
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) e.isIntersecting ? seen.add(e.target) : seen.delete(e.target);
+          const away = seen.size > 0;
+          fab.classList.toggle('away', away);
+          fab.tabIndex = away ? -1 : 0; // hidden from keyboard and screen readers while stepped aside
+          fab.toggleAttribute('aria-hidden', away);
+          if (away && document.activeElement === fab) fab.blur();
+        });
+        document.querySelectorAll('[data-lead="whatsapp"]').forEach((el) => { if (el !== fab && !el.closest('#nudge, dialog, #mobile-nav')) io.observe(el); });
+      }
+    </script>
     <LeadModal lang={lang} />
     <Consent lang={lang} />
   </body>

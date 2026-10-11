@@ -86,7 +86,7 @@ const i18n = { count: T.count(-1).replace('-1', '{n}'), none: T.none };
 
   <div data-std-list>
     {groups.map((g) => (
-      <section class="border-b border-line py-12 md:py-16" id={`org-${g.org.replace('/', '-')}`} aria-labelledby={`h-${g.org.replace('/', '-')}`} data-std-group>
+      <section class="border-b border-line py-8 md:py-10" id={`org-${g.org.replace('/', '-')}`} aria-labelledby={`h-${g.org.replace('/', '-')}`} data-std-group>
         <div class="wrap">
           <h2 id={`h-${g.org.replace('/', '-')}`} class="display text-[clamp(1.5rem,2.8vw,2.1rem)]">{orgs[g.org].name[lang]}</h2>
           <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

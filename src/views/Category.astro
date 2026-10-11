@@ -37,21 +37,21 @@ const description = descOf(A.summary ?? c.summary, ar
 <Base lang={lang} title={title} description={description} product={c.name} productLabel={name} schema={[faqLd(faqs), breadcrumbLd(crumbs, url)]}>
   <section class="border-b border-line bg-card pt-[72px]">
     <div class="wrap grid gap-10 py-10 md:py-14 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16">
-      <div class="order-2 lg:order-1">
+      <div class="order-1">
         <Breadcrumbs items={crumbs} />
         <p class="label mt-8 text-brand-600">{fam}</p>
         <h1 class="display mt-3 text-[clamp(2.1rem,4.6vw,3.6rem)]">{name}</h1>
         <p class="mt-5 max-w-xl text-[17px] leading-relaxed text-mute" lang={en} set:html={ltr(A.summary ?? c.summary, lang)} />
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap max-sm:*:w-full">
           <button type="button" class="btn btn-primary" data-lead="quote" data-category={c.name} data-product={c.name}>{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
           <button type="button" class="btn btn-ghost" data-lead="specs" data-category={c.name} data-product={c.name}><Icon name="lock" size={16} />{t(lang, 'cta.specs')}</button>
           <button type="button" class="btn btn-wa" data-lead="whatsapp" data-category={c.name} data-product={c.name}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'wa.label')}</button>
         </div>
       </div>
-      <div class="order-1 lg:order-2">
+      <div class="order-2">
         {render ? (
           <figure class="overflow-hidden rounded-[var(--radius-lg)] ring-1 ring-line">
-            <img src={render.src} width={render.w} height={render.h} alt={ar ? `صورة توضيحية: ${name}` : `${c.name}, illustrative render`} class="block h-auto w-full" fetchpriority="high" decoding="async" />
+            <img src={render.src} width={render.w} height={render.h} alt={ar ? `صورة توضيحية: ${name}` : `${c.name}, illustrative render`} class="block h-auto w-full max-lg:max-h-[380px] max-lg:object-cover" fetchpriority="high" decoding="async" />
           </figure>
         ) : (
           <div class="render-slot relative flex aspect-[4/3] flex-col items-center justify-center gap-3 overflow-hidden rounded-[var(--radius-lg)] bg-surface p-8 text-center ring-1 ring-line">

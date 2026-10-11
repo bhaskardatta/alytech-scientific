@@ -150,8 +150,8 @@ const gasName = (g: (typeof GASES)[number]) => `${ar ? g.ar : g.en} (${g.f})`;
           {(['toMass', 'toPpm'] as const).map((d, i) => (
             <label class="relative block">
               <input type="radio" name="dir" value={d} checked={i === 0} class="peer sr-only" />
-              <Icon name="check" size={16} class="pointer-events-none absolute start-3 top-1/2 hidden -translate-y-1/2 text-white peer-checked:block" />
-              <span dir="ltr" class="flex min-h-[48px] cursor-pointer items-center justify-center rounded-sm border border-line-strong px-4 py-2 text-center font-mono text-[15px] font-medium transition-colors duration-200 hover:border-ink peer-checked:border-brand-600 peer-checked:bg-brand-600 peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand-500">{s.dirs[d]}</span>
+              <Icon name="check" size={16} class="pointer-events-none absolute start-3 top-1/2 z-10 hidden -translate-y-1/2 text-white peer-checked:block" />
+              <span dir="ltr" class="flex min-h-[48px] cursor-pointer items-center justify-center rounded-sm border border-line-strong px-4 py-2 text-center font-mono text-[15px] font-medium transition-colors duration-200 hover:border-ink peer-checked:border-brand-600 peer-checked:bg-brand-600 peer-checked:ps-9 peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand-500">{s.dirs[d]}</span>
             </label>
           ))}
         </div>

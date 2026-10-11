@@ -11,8 +11,9 @@ const dark = tone === 'dark';
 const href = localize(lang, productPath(brand, p));
 ---
 <a href={href} class:list={['group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] border transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5', dark ? 'border-white/10 bg-night-800/60 text-white hover:border-brand-300/40' : 'card hover:border-brand-200 hover:shadow-[var(--shadow-card)]']}>
-  <div class:list={['stage relative flex aspect-[4/3] items-center justify-center p-6', dark ? 'bg-white/[0.04]' : 'bg-surface']}>
-    <ProductImage brand={brand.slug} brandName={brand.name} slug={p.slug} alt={`${brand.name} ${p.name}`} class="max-h-full w-auto transition-transform duration-500 group-hover:scale-[1.03]" sizes="(min-width: 1024px) 25vw, 50vw" />
+  {/* Fixed 4:3 stage; the image is contained inside it, so every card in a row has the same image area whatever the photo's shape */}
+  <div class:list={['stage relative aspect-[4/3] overflow-hidden', dark ? 'bg-white/[0.04]' : 'bg-surface']}>
+    <ProductImage brand={brand.slug} brandName={brand.name} slug={p.slug} alt={`${brand.name} ${p.name}`} class="absolute inset-0 h-full w-full p-6 transition-transform duration-500 group-hover:scale-[1.03]" sizes="(min-width: 1024px) 25vw, 50vw" />
   </div>
   <div class="flex flex-1 flex-col gap-2 p-5">
     <p class:list={['label', dark ? 'text-brand-300' : 'text-mute']}>{pick(lang, { en: p.category, ar: p.ar?.category })}</p>

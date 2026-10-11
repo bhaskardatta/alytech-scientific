@@ -51,7 +51,7 @@ const description = ar
       <div>
         <Breadcrumbs items={crumbs} tone="dark" />
         <p class="label mt-10 text-brand-300">{claim(brand)[lang]}</p>
-        <h1 class="display mt-4 text-[clamp(2.4rem,5.6vw,4.6rem)]">{ar ? 'أجهزة GasMix™ لخلط الغازات وتخفيفها' : 'GasMix™ gas mixers & diluters'}</h1>
+        <h1 class="display mt-4 text-[clamp(2.4rem,5.6vw,4.6rem)]">{ar ? <>أجهزة <bdi dir="ltr">GasMix™</bdi> لخلط الغازات وتخفيفها</> : 'GasMix™ gas mixers & diluters'}</h1>
         <p class="mt-6 max-w-xl text-[17px] leading-relaxed text-white/75">{ar ? 'صممتها وصنعتها AlyTech في فرنسا. تولّد معايير المعايرة في موقعك — من النسب المئوية حتى أجزاء في البليون — بدلاً من شراء أسطوانة لكل تركيز.' : 'Designed and assembled by AlyTech in Juvisy-sur-Orge, France. Generate calibration standards on site — from percent levels down to ppb — instead of buying a cylinder for every concentration.'}</p>
         <div class="mt-9 flex flex-wrap gap-3">
           <button type="button" class="btn btn-primary" data-lead="quote" data-brand="GasMix" data-product="GasMix">{t(lang, 'cta.quote')} <Icon name="arrow" size={18} flip /></button>
@@ -79,7 +79,7 @@ const description = ar
     <div class="wrap">
       <p class="label text-brand-600">{ar ? 'اختر الطراز' : 'Choose a model'}</p>
       <h2 id="cmp-h" class="display mt-3 max-w-2xl text-[clamp(1.7rem,3.2vw,2.6rem)]">{ar ? 'من مخفف بقناتين إلى ست عشرة قناة.' : 'From a two-channel diluter to sixteen channels.'}</h2>
-      <div class="mt-10 overflow-x-auto rounded-[var(--radius-md)] border border-line bg-card">
+      <div class="cmp-scroll mt-10 overflow-x-auto rounded-[var(--radius-md)] border border-line bg-card">
         <table class="w-full min-w-[760px] text-start text-[15px]">
           <thead>
             <tr class="border-b border-line text-mute">
@@ -96,7 +96,7 @@ const description = ar
               return p && (
                 <tr class="transition-colors hover:bg-brand-50/60">
                   <th scope="row" class="px-5 py-4 text-start">
-                    <a href={L(productPath(brand, p))} class="tap display inline-block text-[17px] hover:text-brand-600">{p.model}</a>
+                    <a href={L(productPath(brand, p))} class="tap display inline-flex items-center gap-1.5 text-[17px] text-brand-700 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-600 hover:decoration-brand-500">{p.model}<Icon name="arrow" size={14} flip /></a>
                   </th>
                   <td class="px-5 py-4 font-mono text-[14px]" set:html={iso(local(c.ch))} />
                   <td class="px-5 py-4 font-mono text-[14px]" set:html={iso(local(c.dil))} />
@@ -126,3 +126,11 @@ const description = ar
 
   <ServiceStrip lang={lang} />
 </Base>
+
+<style>
+  /* Phones: the comparison table scrolls sideways; fade the trailing edge so it reads as scrollable */
+  @media (max-width: 767px) {
+    .cmp-scroll { mask-image: linear-gradient(to right, #000 82%, transparent); }
+    :global([dir="rtl"]) .cmp-scroll { mask-image: linear-gradient(to left, #000 82%, transparent); }
+  }
+</style>

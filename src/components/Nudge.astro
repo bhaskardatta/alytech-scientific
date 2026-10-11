@@ -5,7 +5,7 @@ interface Props { lang: Lang; product: string; label: string }
 const { lang, product, label } = Astro.props;
 const ar = lang === 'ar';
 ---
-<aside id="nudge" hidden class="nudge fixed bottom-5 start-5 z-40 w-[min(380px,calc(100vw-110px))]" aria-label={ar ? 'عرض سعر' : 'Pricing'}>
+<aside id="nudge" hidden class="nudge fixed bottom-24 start-4 z-40 w-[calc(100vw-32px)] sm:bottom-5 sm:start-5 sm:w-[min(380px,calc(100vw-110px))]" aria-label={ar ? 'عرض سعر' : 'Pricing'}>
   <div class="card relative p-5 shadow-[var(--shadow-pop)]">
     <button type="button" class="absolute end-1 top-1 inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors hover:bg-surface hover:text-ink" aria-label={t(lang, 'lead.close')} data-nudge-close><Icon name="x" size={18} /></button>
     <p class="label text-brand-600">{label}</p>

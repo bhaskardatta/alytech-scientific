@@ -9,7 +9,7 @@ const ar = lang === 'ar';
 
 const copy = {
   eyebrow: ar ? 'AlyTech Scientific · أبوظبي · منذ 2015' : 'AlyTech Scientific · Abu Dhabi · since 2015',
-  h1: ar ? 'أجهزة دقيقة لأكثر مختبرات الشرق الأوسط تطلباً.' : 'Precision instruments for the Middle East’s most demanding labs.',
+  h1: ar ? 'أجهزة دقيقة لأكثر مختبرات الشرق الأوسط تطلباً.' : 'Precision instruments for the Middle\u00a0East’s most demanding labs.',
   subShort: ar ? 'نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط.' : 'We represent manufacturers and support customers across the Middle East.',
   sub: ar
     ? 'معايرة الغازات، الخواص الحرارية، حيود الأشعة السينية، الاحتكاك والتآكل، الريولوجيا، تحليل المكامن واختبار المواد — نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط، بمهندسينا في الموقع.'
@@ -65,7 +65,7 @@ const copy = {
         <p class="hero-p sub-long max-w-[520px] text-white/75">{copy.sub}</p>
         <p class="hero-p sub-short max-w-[520px] text-white/75">{copy.subShort}</p>
         <div class="hero-ctas flex flex-wrap gap-3">
-          <a href={L('/gasmix/')} class="btn btn-primary">{t(lang, 'cta.explore')} <Icon name="arrow" size={18} flip /></a>
+          <a href={L('/principals/')} class="btn btn-primary">{t(lang, 'cta.explore')} <Icon name="arrow" size={18} flip /></a>
           <button type="button" class="btn btn-wa" data-lead="whatsapp"><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'cta.whatsapp')}</button>
         </div>
       </div>
@@ -113,6 +113,7 @@ const copy = {
   .hero-p { margin-top: clamp(0.75rem, 2.4svh, 1.5rem); font-size: clamp(15px, 2.1svh, 17px); line-height: 1.6; }
   .hero-ctas { margin-top: clamp(1rem, 3.6svh, 2.25rem); }
   .sub-short { display: none; }
+  @media (min-width: 1280px) { .step-0 { max-width: 640px; } }
   @media (min-width: 1600px) { .step-0 { max-width: 680px; } }
   @media (max-width: 767px) {
     .hero-h1 { font-size: clamp(1.45rem, min(8.4vw, 4.9svh), 2.5rem); }
@@ -138,7 +139,6 @@ const copy = {
   @media (min-width: 640px) { .step-n { inset-inline-start: 24px; } }
   @media (min-width: 768px) { .step-n { bottom: auto; top: 50%; translate: 0 -50%; } }
   @media (min-width: 1024px) { .step-n { inset-inline-start: 40px; } }
-  @media (min-width: 1320px) { .step-n { inset-inline-start: calc((100vw - 1320px) / 2 + 40px); } }
 
   /* Phones and portrait tablets: copy sits on a scrim at the bottom, instrument above (side by side doesn't fit under 1024px) */
   @media (max-width: 767px), (max-width: 1023px) and (min-height: 600px) {
