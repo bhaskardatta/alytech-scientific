@@ -93,6 +93,7 @@
       "whyMiddleEast": "A multi-method platform lets university and research-centre laboratories characterise insulation, composites, construction materials and heat-transfer fluids on a single instrument.",
       "sourceUrl": "https://thermtest.com/mp-1",
       "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/MP-1.png",
         "https://thermtest.com/wp-content/uploads/MP-1-TPS-THW.jpg",
         "https://thermtest.com/wp-content/uploads/MP-1-Front-View-with-Sensors.jpg"
       ],
@@ -240,6 +241,7 @@
       "whyMiddleEast": "",
       "sourceUrl": "https://thermtest.com/mp-v",
       "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/MP-V-Front-View-1.png",
         "https://thermtest.com/wp-content/uploads/MP-V-Front-View.png"
       ],
       "datasheetUrl": "https://thermtest.com/wp-content/uploads/MP-model-comparison.pdf",
@@ -652,6 +654,7 @@
       "whyMiddleEast": "Insulation performance directly affects cooling load in Gulf buildings, so conductivity data supports material approval and energy-code compliance.",
       "sourceUrl": "https://thermtest.com/heat-flow-meter",
       "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/HFM-100-50-heat-flow-meter.jpg",
         "https://thermtest.com/wp-content/uploads/heat-flow-meter-series.jpg",
         "https://thermtest.com/wp-content/uploads/heat-flow-meter-htm-100-front-view2.jpg"
       ],
@@ -784,6 +787,7 @@
       "whyMiddleEast": "Insulation used on hot roofs and in hot-climate construction can be characterised at temperatures above ambient.",
       "sourceUrl": "https://thermtest.com/heat-flow-meter",
       "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/HFM-100-50-heat-flow-meter.jpg",
         "https://thermtest.com/wp-content/uploads/heat-flow-meter-series.jpg"
       ],
       "datasheetUrl": null,
@@ -908,6 +912,7 @@
       "whyMiddleEast": "",
       "sourceUrl": "https://thermtest.com/heat-flow-meter",
       "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/HFM-100-50-heat-flow-meter.jpg",
         "https://thermtest.com/wp-content/uploads/heat-flow-meter-series.jpg"
       ],
       "datasheetUrl": null,
@@ -1518,6 +1523,8 @@
       "whyMiddleEast": "",
       "sourceUrl": "https://thermtest.com/mp-1",
       "imageUrls": [
+        "https://thermtest.com/wp-content/uploads/mp-1-with-tps-battery-package.png",
+        "https://thermtest.com/wp-content/uploads/mp-1-batteries-package-new.png",
         "https://thermtest.com/wp-content/uploads/Cyclinder-Batteries_004342.jpg",
         "https://thermtest.com/wp-content/uploads/Pouch-Anisotropic-Module-004461.jpg"
       ],

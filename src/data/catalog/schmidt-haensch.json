@@ -83,7 +83,9 @@
       ],
       "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
       "sourceUrl": "https://schmidt-haensch.com/product/saccharomat-v-sugar-polarimeter/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/saccharomat-v.jpg"
+      ],
       "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/04/SH_Saccharomat-V_ENG_18112019.pdf",
       "ar": {
         "name": "Saccharomat V مقياس استقطاب سكر بإسفين الكوارتز",
@@ -205,7 +207,9 @@
       ],
       "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
       "sourceUrl": "https://schmidt-haensch.com/product/purity-analyzer/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/purity-analyzer.png"
+      ],
       "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/08/SH-Purity-Analyser_eng_160912.pdf",
       "ar": {
         "name": "محلل النقاء",
@@ -327,7 +331,9 @@
       ],
       "whyMiddleEast": "Pharmaceutical plants and QC laboratories in the GCC apply pharmacopoeial optical rotation tests, which this instrument is built to meet.",
       "sourceUrl": "https://schmidt-haensch.com/product/polartronic-v-allrounder-polarimeter/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/polartronic-v.jpg"
+      ],
       "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/04/SH_Polartronic-V_ENG_23052019.pdf",
       "ar": {
         "name": "Polartronic V مقياس استقطاب دائري",
@@ -465,7 +471,9 @@
       ],
       "whyMiddleEast": "Pharmaceutical plants and QC laboratories in the GCC apply pharmacopoeial optical rotation tests, which this instrument is built to meet.",
       "sourceUrl": "https://schmidt-haensch.com/product/varipol-series/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/varipol.png"
+      ],
       "datasheetUrl": null,
       "ar": {
         "name": "VariPol مقياس استقطاب صيدلاني",
@@ -603,7 +611,10 @@
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://schmidt-haensch.com/product/unipol-v-digital-polarimeter/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/unipol-v.png",
+        "file:images/schmidt-haensch/unipol-v.jpg"
+      ],
       "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2024/08/UniPol-V-v1.0.pdf",
       "ar": {
         "name": "UniPol V مقياس استقطاب رقمي",
@@ -739,7 +750,9 @@
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://schmidt-haensch.com/product/variref-refractometer/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/variref.png"
+      ],
       "datasheetUrl": null,
       "ar": {
         "name": "VariRef² مقياس انكسار مخبري",
@@ -854,7 +867,9 @@
       ],
       "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
       "sourceUrl": "https://schmidt-haensch.com/product/atr-p/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/atr-p.png"
+      ],
       "datasheetUrl": null,
       "ar": {
         "name": "ATR P مقياس انكسار للسكر",
@@ -953,7 +968,9 @@
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://schmidt-haensch.com/product/atr-br/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/atr-br.jpg"
+      ],
       "datasheetUrl": null,
       "ar": {
         "name": "ATR BR مقياس انكسار مدمج",
@@ -1063,7 +1080,9 @@
       ],
       "whyMiddleEast": "Refinery and petrochemical laboratories in the Gulf test hydrocarbon liquids against ASTM refractive-index methods such as D1218.",
       "sourceUrl": "https://schmidt-haensch.com/product/atr-l-multi-wavelength-refractometer/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/atr-l.jpg"
+      ],
       "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/04/SH_Dispersion-Refractometer_ATR-L_191127.pdf",
       "ar": {
         "name": "ATR-L مقياس انكسار التشتت",
@@ -1202,7 +1221,9 @@
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://schmidt-haensch.com/product/varidens-density-meter/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/varidens.jpg"
+      ],
       "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2023/01/SH_VariDens_data-sheet_ENG_0123.pdf",
       "ar": {
         "name": "VariDens مقياس الكثافة",
@@ -1341,7 +1362,9 @@
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://schmidt-haensch.com/product/ipr-c2-compact-inline-process-refractometer/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/ipr-c2.jpg"
+      ],
       "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2021/10/SH_iPR-C2_eng_1021.pdf",
       "ar": {
         "name": "iPR C2 مقياس انكسار مدمج للعمليات داخل الخط",
@@ -1469,7 +1492,9 @@
       ],
       "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
       "sourceUrl": "https://schmidt-haensch.com/product/coloromat-100-digital-single-beam-photometer-for-the-determination-of-liquid-colour/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/schmidt-haensch/coloromat-100.jpg"
+      ],
       "datasheetUrl": "https://schmidt-haensch.com/wp-content/uploads/2023/03/SH_Coloromat100-V2_data-sheet_ENG_0323.pdf",
       "ar": {
         "name": "Coloromat 100 مقياس اللون",

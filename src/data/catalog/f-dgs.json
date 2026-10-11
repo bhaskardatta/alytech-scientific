@@ -1615,7 +1615,9 @@
       ],
       "whyMiddleEast": "The design temperature range extends to 50 °C, with correction factors given, which suits hot ambient conditions in the Gulf.",
       "sourceUrl": "https://www.f-dgs.com/product/gas-generators/nitrogen/tornado/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/f-dgs/tornado-nitrogen-generator.png"
+      ],
       "datasheetUrl": "https://www.f-dgs.com/wp-content/uploads/2022/03/TORNADO-DOC-EN-FDGSI.pdf",
       "ar": {
         "name": "TORNADO مولّد نيتروجين صناعي",

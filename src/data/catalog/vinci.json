@@ -69,7 +69,9 @@
       ],
       "whyMiddleEast": "The region hosts very large gas-condensate fields, including Qatar's North Field, so reservoir-fluid PVT is a routine service at operator and contract laboratories.",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/pvt/phase-behavior/pvt-system-for-pvt-studies-and-wax-asphaltene-precipitation-studies/82558/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/vinci/fluid-eval-pvt.jpg"
+      ],
       "datasheetUrl": "https://www.vinci-technologies.com/Medias/documentation/catalog-FLUIDS.pdf",
       "ar": {
         "name": "Fluid Eval نظام PVT (قياسي وMaxi)",
@@ -183,7 +185,9 @@
       ],
       "whyMiddleEast": "The Gulf holds some of the world's largest gas-condensate fields, where retrograde condensate behaviour drives development planning.",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/pvt/phase-behavior/full-visual-pvt-system-for-reservoir-fluid-analysis/113603/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/vinci/visual-fluid-eval.jpg"
+      ],
       "datasheetUrl": "https://www.vinci-technologies.com/Medias/documentation/catalog-FLUIDS.pdf",
       "ar": {
         "name": "Visual Fluid Eval نظام PVT مرئي بالكامل",
@@ -1605,7 +1609,9 @@
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/enhanced-oil-recovery/multi-purpose-eor-flooding-systems/bcf-700-benchtop-core-flood-system/113579/",
-      "imageUrls": [],
+      "imageUrls": [
+        "file:images/vinci/bcf-700.jpg"
+      ],
       "datasheetUrl": "https://www.vinci-technologies.com/Medias/documentation/catalog-ADVANCED-ROCKS.pdf",
       "ar": {
         "name": "BCF 700 نظام مكتبي لغمر العينات اللبية",

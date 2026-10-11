@@ -238,8 +238,8 @@
       "whyMiddleEast": "Compact, battery-optional and rated for 10–50 °C operation, it suits mobile analyzer calibration at remote oil and gas sites and in site laboratories.",
       "sourceUrl": "https://gasmix.com/products/zephyr-ii/",
       "imageUrls": [
-        "https://gasmix.com/wp-content/uploads/2026/01/vue-01-sans-fond-1-scaled-1-e1772178939637.webp",
-        "https://gasmix.com/wp-content/uploads/2026/01/vue-01-sans-fond-1-scaled.png"
+        "https://gasmix.com/wp-content/uploads/2026/01/vue-01-sans-fond-1-scaled.png",
+        "https://gasmix.com/wp-content/uploads/2026/01/vue-01-sans-fond-1-scaled-1-e1772178939637.webp"
       ],
       "datasheetUrl": "https://gasmix.com/wp-content/uploads/2026/01/ZEPHYR-II_english.pdf",
       "ar": {
@@ -519,6 +519,7 @@
       "whyMiddleEast": "Complex multi-component mixtures are used for refinery gas analyzer (RGA) and natural gas analyzer calibration in refining and gas-processing laboratories.",
       "sourceUrl": "https://gasmix.com/products/hurricane/",
       "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2025/10/Hurricane-.jpg",
         "https://gasmix.com/wp-content/uploads/2026/02/Hurricane_800px-1.png",
         "https://gasmix.com/wp-content/uploads/2026/01/Hurricane_800px.webp"
       ],
@@ -663,6 +664,7 @@
       "whyMiddleEast": "The rack format suits analyzer shelters at refineries and gas plants where emission and process analyzers are calibrated on an automated schedule.",
       "sourceUrl": "https://gasmix.com/products/grack/",
       "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2025/10/Gasmix-RACK.png",
         "https://gasmix.com/wp-content/uploads/2026/08/GMRack-sans-ecran-small.png",
         "https://gasmix.com/wp-content/uploads/2025/10/Gasmix-RACK-1-e1763245291411.png"
       ],
@@ -812,6 +814,8 @@
       "whyMiddleEast": "Petrochemical and environmental laboratories can make BTEX and other VOC standards in-house instead of sourcing special-order cylinders for reactive or heavy compounds.",
       "sourceUrl": "https://gasmix.com/products/nephos/",
       "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2022/11/Mon-projet.png",
+        "https://gasmix.com/wp-content/uploads/2022/12/liqmix-nephos.jpg",
         "https://gasmix.com/wp-content/uploads/2025/10/Nephos-seul.png",
         "https://gasmix.com/wp-content/uploads/2026/01/Nephos-seul-1.webp"
       ],
@@ -1188,7 +1192,7 @@
       "whyMiddleEast": "",
       "sourceUrl": "https://gasmix.com/accessories/",
       "imageUrls": [
-        "https://gasmix.com/wp-content/uploads/2026/01/FRED-int.webp",
+        "https://gasmix.com/wp-content/uploads/2018/08/FReD-Flow-Regulation-Device.png",
         "https://gasmix.com/wp-content/uploads/2026/01/FReD-Flow-Regulation-Device-300x250-1.webp"
       ],
       "datasheetUrl": null,
@@ -1273,6 +1277,7 @@
       "whyMiddleEast": "",
       "sourceUrl": "https://gasmix.com/accessories/",
       "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2018/08/multiplex.png",
         "https://gasmix.com/wp-content/uploads/2026/01/multiplex-300x250-1.webp"
       ],
       "datasheetUrl": null,
@@ -1352,7 +1357,7 @@
       "whyMiddleEast": "",
       "sourceUrl": "https://gasmix.com/accessories/",
       "imageUrls": [
-        "https://gasmix.com/wp-content/uploads/2026/01/PREM-int.webp",
+        "https://gasmix.com/wp-content/uploads/2018/08/prem.png",
         "https://gasmix.com/wp-content/uploads/2026/01/prem-300x250-1.webp"
       ],
       "datasheetUrl": null,
@@ -1381,81 +1386,6 @@
           {
             "label": "الموضع",
             "value": "بين مخرج المخفف ونقطة التسليم"
-          }
-        ]
-      }
-    },
-    {
-      "name": "Overpressure Limiter",
-      "model": "Overpressure Limiter",
-      "slug": "overpressure-limiter",
-      "category": "Accessory",
-      "priority": "niche",
-      "summary": "The overpressure limiter caps the outlet pressure of a GasMix or LiqMix instrument and prevents back pressure while gas loops, small reactors or sampling containers are being filled. The standard limit is 0.7 bar(g) and other limits are available. It is usually paired with PReM to protect GC and µGC columns.",
-      "description": "Filling a gas loop, a small reactor or a sampling container from a mixer can build back pressure that disturbs flow control or stresses downstream components. The overpressure limiter restricts the pressure that can develop at the instrument outlet, so the mixer keeps delivering predictably and the connected equipment stays inside safe limits. The standard limit is 0.7 bar(g), and other limits can be supplied for a specific application. It is commonly installed together with PReM to form a stable-delivery setup for GC and µGC: PReM holds the working pressure while the limiter provides a hard ceiling, which keeps a steady supply pressure at the analyzer and protects columns from accidental over-pressurisation. The limiter is an accessory for the GasMix and LiqMix platforms and is listed on the manufacturer's accessories page alongside FReD, Multiplex, PReM and the LPG vaporizer AURA II, so a complete bench can be assembled from one supplier.",
-      "keySpecs": [
-        {
-          "label": "Function",
-          "value": "Limits outlet pressure and avoids back pressure"
-        },
-        {
-          "label": "Standard limit",
-          "value": "0.7 bar(g)"
-        },
-        {
-          "label": "Other limits",
-          "value": "Available on request"
-        },
-        {
-          "label": "Typical pairing",
-          "value": "PReM for stable delivery pressure"
-        }
-      ],
-      "standards": [],
-      "applications": [
-        "Filling gas loops and reactors safely",
-        "Protecting GC columns from over-pressurisation"
-      ],
-      "industries": [
-        "oil-gas",
-        "petrochemical-refining",
-        "environmental-monitoring",
-        "research-academia"
-      ],
-      "searchKeywords": [
-        "overpressure limiter gas mixer",
-        "back pressure protection calibration gas",
-        "gas outlet pressure limiter GC"
-      ],
-      "whyMiddleEast": "",
-      "sourceUrl": "https://gasmix.com/accessories/",
-      "imageUrls": [],
-      "datasheetUrl": null,
-      "ar": {
-        "name": "محدِّد الضغط الزائد",
-        "category": "ملحق",
-        "summary": "يحدّ محدِّد الضغط الزائد من ضغط مخرج جهاز GasMix أو LiqMix ويمنع الضغط الراجع أثناء تعبئة حلقات الغاز أو المفاعلات الصغيرة أو حاويات أخذ العينات. الحد القياسي هو 0.7 bar(g)، وتتوفر حدود أخرى. يُقرن عادةً بـ PReM لحماية أعمدة GC وµGC.",
-        "description": "قد يؤدي ملء حلقة غاز أو مفاعل صغير أو حاوية أخذ عينات من الخالط إلى تراكم ضغط راجع يعطّل التحكم في التدفق أو يجهد المكوّنات اللاحقة. يقيّد محدِّد الضغط الزائد الضغط الذي يمكن أن يتولد عند مخرج الجهاز، فيواصل الخالط التسليم بصورة متوقعة وتبقى المعدات الموصولة ضمن حدود آمنة. الحد القياسي هو 0.7 bar(g)، ويمكن توريد حدود أخرى لتطبيق معين. ويُركَّب عادةً مع PReM لتكوين إعداد تسليم مستقر لـ GC وµGC: يحافظ PReM على ضغط التشغيل بينما يوفّر المحدِّد سقفًا صارمًا، ما يُبقي ضغط الإمداد ثابتًا عند المحلل ويحمي الأعمدة من الضغط الزائد العرضي. المحدِّد ملحق لمنصتي GasMix وLiqMix، ومدرج في صفحة الملحقات لدى الشركة المصنّعة إلى جانب FReD وMultiplex وPReM ومبخِّر LPG AURA II، بحيث يمكن تجميع منصة كاملة من مورّد واحد.",
-        "applications": [
-          "تعبئة حلقات الغاز والمفاعلات بأمان",
-          "حماية أعمدة GC من الضغط الزائد"
-        ],
-        "keySpecs": [
-          {
-            "label": "الوظيفة",
-            "value": "يحدّ من ضغط المخرج ويتجنب الضغط الراجع"
-          },
-          {
-            "label": "الحد القياسي",
-            "value": "0.7 bar(g)"
-          },
-          {
-            "label": "حدود أخرى",
-            "value": "متوفرة عند الطلب"
-          },
-          {
-            "label": "الاقتران النموذجي",
-            "value": "PReM للحصول على ضغط تسليم مستقر"
           }
         ]
       }
@@ -1505,6 +1435,7 @@
       "whyMiddleEast": "",
       "sourceUrl": "https://gasmix.com/accessories/",
       "imageUrls": [
+        "https://gasmix.com/wp-content/uploads/2018/08/Cleac.png",
         "https://gasmix.com/wp-content/uploads/2026/01/Cleac-300x250-1.webp"
       ],
       "datasheetUrl": null,
@@ -1533,156 +1464,6 @@
           {
             "label": "يُستخدم مع",
             "value": "أنظمة LiqMix، ومنها Nephos"
-          }
-        ]
-      }
-    },
-    {
-      "name": "FL-KIT02-18 Simplified FReD",
-      "model": "FL-KIT02-18",
-      "slug": "fl-kit02-18",
-      "category": "Accessory",
-      "priority": "niche",
-      "summary": "FL-KIT02-18 is a simplified, manual version of FReD. A needle valve sets the outlet flow by hand, giving a low-cost way to hold a constant delivery flow where automated, software-controlled regulation is not required and the flow is set once.",
-      "description": "Not every calibration bench needs software-controlled flow regulation. The FL-KIT02-18 offers the same basic function as FReD in a simpler form: the outlet flow of the GasMix instrument is set manually with a needle valve, and the surplus is passed to vent. The result is a cost-effective way to present a steady flow to a single analyzer where the flow is set once and rarely changed. Because the adjustment is manual, it does not take part in automated sequences the way FReD does, so FReD remains the better choice for unattended multi-point routines, for benches that serve several analyzers, or wherever the delivery flow has to change during a run. The kit is listed on the manufacturer's products page among the accessories for the GasMix and LiqMix range, next to the full FReD module and the simplified pressure safeguard FL-KIT 01-18.",
-      "keySpecs": [
-        {
-          "label": "Function",
-          "value": "Manual outlet flow regulation"
-        },
-        {
-          "label": "Regulating element",
-          "value": "Needle valve"
-        },
-        {
-          "label": "Relationship",
-          "value": "Simplified alternative to FReD"
-        },
-        {
-          "label": "Control",
-          "value": "Manual; not part of automated sequences"
-        }
-      ],
-      "standards": [],
-      "applications": [
-        "Fixed-flow delivery to a single analyzer",
-        "Low-cost flow regulation on simple benches"
-      ],
-      "industries": [
-        "oil-gas",
-        "petrochemical-refining",
-        "environmental-monitoring",
-        "research-academia"
-      ],
-      "searchKeywords": [
-        "manual flow regulator gas mixer",
-        "needle valve outlet flow gas diluter",
-        "FL-KIT gas mixer accessory"
-      ],
-      "whyMiddleEast": "",
-      "sourceUrl": "https://gasmix.com/accessories/",
-      "imageUrls": [],
-      "datasheetUrl": null,
-      "ar": {
-        "name": "FL-KIT02-18 FReD مبسّط",
-        "category": "ملحق",
-        "summary": "FL-KIT02-18 نسخة يدوية مبسّطة من FReD. يضبط صمام إبري تدفق المخرج يدويًا، وهو وسيلة منخفضة الكلفة للحفاظ على تدفق تسليم ثابت حيث لا يلزم تنظيم آلي يتحكم فيه البرنامج ويُضبط التدفق مرة واحدة.",
-        "description": "لا تحتاج كل منصة معايرة إلى تنظيم تدفق يتحكم فيه البرنامج. يقدّم FL-KIT02-18 الوظيفة الأساسية نفسها لـ FReD بصورة أبسط: يُضبط تدفق خرج جهاز GasMix يدويًا بواسطة صمام إبري، ويُمرَّر الفائض إلى التنفيس. والنتيجة وسيلة فعالة من حيث الكلفة لتقديم تدفق ثابت إلى محلل واحد يُضبط فيه التدفق مرة واحدة ونادرًا ما يتغير. ولأن الضبط يدوي، فهو لا يشارك في التسلسلات الآلية كما يفعل FReD، لذا يبقى FReD الخيار الأفضل للإجراءات المتكررة متعددة النقاط التي تعمل دون إشراف، وللمنصات التي تخدم عدة محلّلات، أو حيثما يجب أن يتغير تدفق التسليم أثناء التشغيل. وهذه المجموعة مدرجة في صفحة منتجات الشركة المصنّعة ضمن ملحقات مجموعة GasMix وLiqMix، بجوار وحدة FReD الكاملة ووسيلة حماية الضغط المبسطة FL-KIT 01-18.",
-        "applications": [
-          "تسليم تدفق ثابت إلى محلل واحد",
-          "تنظيم تدفق منخفض الكلفة على المنصات البسيطة"
-        ],
-        "keySpecs": [
-          {
-            "label": "الوظيفة",
-            "value": "تنظيم يدوي لتدفق المخرج"
-          },
-          {
-            "label": "عنصر التنظيم",
-            "value": "صمام إبري"
-          },
-          {
-            "label": "العلاقة",
-            "value": "بديل مبسّط لـ FReD"
-          },
-          {
-            "label": "التحكم",
-            "value": "يدوي؛ ليس جزءاً من التسلسلات الآلية"
-          }
-        ]
-      }
-    },
-    {
-      "name": "FL-KIT 01-18 Simplified PReM",
-      "model": "FL-KIT 01-18",
-      "slug": "fl-kit01-18",
-      "category": "Accessory",
-      "priority": "niche",
-      "summary": "FL-KIT 01-18 is a compact pressure safeguard built around a calibrated safety valve, offered as a simplified alternative to PReM. The valve setting can be customised on request, protecting columns, loops and reactors without the cost of a full regulator manifold.",
-      "description": "Where a full pressure regulator manifold is more than the application needs, the FL-KIT 01-18 provides basic pressure protection in a compact form. A calibrated safety valve at the outlet of the GasMix instrument opens if the pressure rises above its set value, protecting downstream equipment such as columns, loops and reactors. The valve is set to a value agreed with the customer, and custom settings are available on request. Compared with PReM it does not provide an adjustable working pressure; it acts as a safeguard rather than a regulator. It suits simple installations where protection, rather than a regulated working pressure, is what the bench needs. The kit is listed on the manufacturer's products page among the accessories for the GasMix and LiqMix range, alongside PReM, the overpressure limiter and the simplified flow kit FL-KIT02-18, so the level of pressure control can be matched to the complexity of the bench.",
-      "keySpecs": [
-        {
-          "label": "Function",
-          "value": "Compact pressure safeguard"
-        },
-        {
-          "label": "Protection element",
-          "value": "Calibrated safety valve"
-        },
-        {
-          "label": "Valve setting",
-          "value": "Custom set on request"
-        },
-        {
-          "label": "Relationship",
-          "value": "Simplified alternative to PReM"
-        }
-      ],
-      "standards": [],
-      "applications": [
-        "Protecting columns, loops and reactors from over-pressure",
-        "Basic pressure protection on simple benches"
-      ],
-      "industries": [
-        "oil-gas",
-        "petrochemical-refining",
-        "environmental-monitoring",
-        "research-academia"
-      ],
-      "searchKeywords": [
-        "safety valve for gas mixer outlet",
-        "pressure safeguard calibration gas bench",
-        "FL-KIT gas diluter accessory"
-      ],
-      "whyMiddleEast": "",
-      "sourceUrl": "https://gasmix.com/accessories/",
-      "imageUrls": [],
-      "datasheetUrl": null,
-      "ar": {
-        "name": "FL-KIT 01-18 PReM مبسّط",
-        "category": "ملحق",
-        "summary": "FL-KIT 01-18 وسيلة حماية ضغط مدمجة مبنية حول صمام أمان معاير، تُقدَّم كبديل مبسّط لـ PReM. يمكن تخصيص ضبط الصمام عند الطلب، ما يحمي الأعمدة والحلقات والمفاعلات دون كلفة مشعب منظّم كامل.",
-        "description": "حيث يكون مشعب منظّم الضغط الكامل أكثر مما يحتاجه التطبيق، يوفّر FL-KIT 01-18 حماية ضغط أساسية بشكل مدمج. يُفتح صمام أمان معاير عند مخرج جهاز GasMix إذا ارتفع الضغط فوق قيمته المضبوطة، فيحمي المعدات اللاحقة مثل الأعمدة والحلقات والمفاعلات. يُضبط الصمام على قيمة يُتفق عليها مع العميل، وتتوفر ضبطات مخصصة عند الطلب. وبالمقارنة مع PReM، لا يوفّر ضغط تشغيل قابلًا للضبط؛ بل يعمل كوسيلة حماية لا كمنظّم. وهو يناسب التركيبات البسيطة التي تحتاج فيها المنصة إلى الحماية لا إلى ضغط تشغيل منظّم. وهذه المجموعة مدرجة في صفحة منتجات الشركة المصنّعة ضمن ملحقات مجموعة GasMix وLiqMix، إلى جانب PReM ومحدِّد الضغط الزائد ومجموعة التدفق المبسطة FL-KIT02-18، بحيث يمكن مواءمة مستوى التحكم في الضغط مع تعقيد المنصة.",
-        "applications": [
-          "حماية الأعمدة والحلقات والمفاعلات من الضغط الزائد",
-          "حماية أساسية من الضغط على المنصات البسيطة"
-        ],
-        "keySpecs": [
-          {
-            "label": "الوظيفة",
-            "value": "وسيلة حماية ضغط مدمجة"
-          },
-          {
-            "label": "عنصر الحماية",
-            "value": "صمام أمان معاير"
-          },
-          {
-            "label": "ضبط الصمام",
-            "value": "ضبط مخصص عند الطلب"
-          },
-          {
-            "label": "العلاقة",
-            "value": "بديل مبسّط لـ PReM"
           }
         ]
       }
