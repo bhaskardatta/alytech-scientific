@@ -90,7 +90,6 @@ html[data-announce] body { padding-top: var(--bar-h); }
   }
   h1, h2, h3, h4 {
     overflow-wrap: break-word;
-    hyphens: auto;
     font-family: var(--font-display);
     line-height: 1.08;
     letter-spacing: -0.02em;
@@ -100,6 +99,8 @@ html[data-announce] body { padding-top: var(--bar-h); }
     letter-spacing: 0;
     line-height: 1.35;
   }
+  /* Hyphenate headings only where a long technical word could otherwise overflow (narrow phones); never mid-word on larger screens */
+  @media (max-width: 400px) { :is(h1, h2, h3, h4) { hyphens: auto; } }
   p { text-wrap: pretty; }
   :focus-visible {
     outline: 2px solid var(--color-brand-500);

@@ -21,7 +21,15 @@ const lerp = THREE.MathUtils.lerp;
 const yieldMain = (): Promise<void> => ((globalThis as any).scheduler?.yield?.() ?? new Promise<void>((r) => setTimeout(r)));
 
 export interface Callout { id: string; anchor: THREE.Object3D }
-export interface HeroLayout { offsetX: number; offsetY: number; mobile: boolean; compact?: boolean; /** camera distance multiplier that fits the model in the free band above the copy */ fit?: number }
+export interface HeroLayout {
+  offsetX: number; offsetY: number; mobile: boolean; compact?: boolean;
+  /** camera distance multiplier that fits the model in the free band above the copy */
+  fit?: number;
+  /** Portrait choreography (phones, portrait tablets). The model is centred, so while it opens up the view slides by this
+   *  fraction of the screen width (parts leave toward screen-left) and pulls back by `explodeZoom`, keeping shell and parts
+   *  centred and on screen; `explodeScale` shortens how far the parts travel. Desktop leaves all three unset. */
+  explodePan?: number; explodeZoom?: number; explodeScale?: number;
+}
 export interface HeroOptions {
   /** phones and tablets (touch): fewer segments, smaller env map, 1.5 DPR cap. Desktop geometry is untouched. */
   mobile: boolean;
@@ -405,13 +413,15 @@ export async function createHeroScene(canvas: HTMLCanvasElement, opts: HeroOptio
   function update() {
     const p = progress;
     const time = opts.reducedMotion ? 0 : clock.getElapsedTime();
+    explode = ease(range(p, 0.4, 0.58)) * (1 - ease(range(p, 0.64, 0.76)));
     const [az, el, dist] = camAt(p);
-    const mobileDist = layout.fit ?? (layout.compact ? 1.95 : layout.mobile ? 1.62 : 1);
+    const mobileDist = (layout.fit ?? (layout.compact ? 1.95 : layout.mobile ? 1.62 : 1)) * (1 + (layout.explodeZoom ?? 0) * explode);
     const azR = THREE.MathUtils.degToRad(az + (opts.reducedMotion ? 0 : Math.sin(time * 0.25) * 2.2));
     camPos.set(Math.sin(azR) * dist * mobileDist, el * dist + 0.35, Math.cos(azR) * dist * mobileDist);
     camera.position.copy(camPos);
     target.set(0, 0.04, 0);
     camera.lookAt(target);
+    if (layout.explodePan) viewOffset();
 
     // X-ray cut: sweeps across the camera-facing (-x) half, then retracts
     const cutIn = ease(range(p, 0.16, 0.36));
@@ -425,9 +435,8 @@ export async function createHeroScene(canvas: HTMLCanvasElement, opts: HeroOptio
     (scan.material as THREE.MeshBasicMaterial).opacity = (range(p, 0.14, 0.2) * (1 - range(p, 0.36, 0.42)) + range(p, 0.7, 0.74) * (1 - range(p, 0.82, 0.86))) * 0.9;
 
     // Exploded view
-    explode = ease(range(p, 0.4, 0.58)) * (1 - ease(range(p, 0.64, 0.76)));
     for (const part of model.parts) {
-      const e = ease(clamp01((explode - part.delay * 0.6) / (1 - part.delay * 0.6)));
+      const e = ease(clamp01((explode - part.delay * 0.6) / (1 - part.delay * 0.6))) * (layout.explodeScale ?? 1);
       part.obj.position.copy(part.base).addScaledVector(part.dir, e);
     }
     model.tubeMat.opacity = 1 - clamp01(explode * 3);
@@ -469,14 +478,19 @@ export async function createHeroScene(canvas: HTMLCanvasElement, opts: HeroOptio
     if (!failed) raf = requestAnimationFrame(loop);
   };
 
+  let vw = 0, vh = 0;
+  // Shift the projection so the instrument sits beside the copy (desktop) or in the band above it (portrait)
+  function viewOffset() {
+    camera.setViewOffset(vw, vh, -(layout.offsetX + (layout.explodePan ?? 0) * explode) * vw, layout.offsetY * vh, vw, vh);
+    camera.updateProjectionMatrix();
+  }
   function resize() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
+    vw = w; vh = h;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    // Shift the projection so the instrument sits beside the copy instead of under it
-    camera.setViewOffset(w, h, -layout.offsetX * w, layout.offsetY * h, w, h);
-    camera.updateProjectionMatrix();
+    viewOffset();
     if (!running) safeUpdate();
   }
 

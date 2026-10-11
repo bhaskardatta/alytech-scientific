@@ -124,7 +124,7 @@ const copy = {
     .sub-short { display: block; }
   }
   /* Very short phones (iPhone SE class): headline and buttons only, so the instrument still fits above them */
-  @media (max-width: 767px) and (max-height: 600px) { .sub-short { display: none; } }
+  @media (max-width: 767px) and (max-height: 700px) { .sub-short { display: none; } }
   @media (max-height: 520px), (max-width: 300px) { .hero-eyebrow { display: none; } .hero-h1 { margin-top: 0; } }
   @media (max-height: 520px) and (min-width: 768px) { .hero-copy { padding-block: 72px 40px; } .step-n, .step-0 { max-width: 52%; } }
   @media (max-width: 767px) { .hero-ctas :global(.btn) { min-height: 44px; padding-inline: 16px; font-size: 14px; } }
@@ -156,7 +156,7 @@ const copy = {
   /* Phones: a fixed 200px box under the header; the script only scales it into the free band above the copy (--model-s).
      Transform, not top/height, so adjusting it after fonts load can never register as layout shift. */
   @media (max-width: 767px), (max-width: 1023px) and (min-height: 600px) {
-    .hero-fallback { top: 80px; height: 200px; inset-inline-end: 8%; transform-origin: 50% 0; transform: scale(var(--model-s, 1)); }
+    .hero-fallback { top: 76px; height: 200px; inset-inline: 0; margin-inline: auto; transform-origin: 50% 0; transform: scale(var(--model-s, 1)); }
   }
 
   .callout { display: flex; align-items: center; gap: 0; transition: opacity 0.25s ease; }
@@ -176,7 +176,7 @@ const copy = {
   }
   .callout-short { display: none; }
   .callout.flip { flex-direction: row; translate: 0 -50%; }
-  @media (max-width: 767px) {
+  @media (max-width: 767px), (max-height: 560px) {
     .callout-line { width: 22px; }
     .callout-label { font-size: 10px; padding: 4px 7px; }
     .callout-long { display: none; }
@@ -231,13 +231,13 @@ const copy = {
   addEventListener('resize', paint);
   paint();
 
-  // Phones: the instrument (3D or poster) lives in the band between the header and the tallest copy block,
-  // so text and model can't collide whatever the viewport height, language or font.
+  // Portrait (phones, portrait tablets): the instrument (3D or poster) is centred in the band between the header and the
+  // tallest copy block, whatever the viewport height, language or font; its floor reflection fades into the scrim behind the copy.
   function band() {
     const H = canvas.clientHeight || innerHeight;
-    const top = 80;
+    const top = 76;
     const copyTop = Math.min(...steps.map((el) => el.offsetTop));
-    const h = Math.max(120, copyTop - 12 - top);
+    const h = Math.max(140, copyTop - 8 - top);
     return { H, top, h, cy: top + h / 2 };
   }
 
@@ -248,16 +248,20 @@ const copy = {
       const { H, h, cy } = band();
       section.style.setProperty('--model-s', String(h / 200));
       offsetY = (H / 2 - cy) / H;
-      // camera distance multiplier so the model's height at its closest keyframe fills the band (0.66 ≈ model height / visible height at 1x)
-      fit = Math.min(3.2, Math.max(1, 0.66 / (h / H)));
+      // Camera distance multiplier: the model's height at its closest keyframe fills the band with a little air (0.6 ≈ model
+      // height / visible height at 1x). Narrow screens are also limited by width, so the opened-up view still fits.
+      const W = canvas.clientWidth || innerWidth;
+      fit = Math.min(3.2, Math.max(0.9, 0.6 / (h / H), 0.6 * 1.1 / (W / H)));
     } else {
       section.style.removeProperty('--model-s');
     }
-    // Desktop: anchor the instrument to the 1320px content column, not the screen edge (ultrawide-safe)
+    // Desktop: anchor the instrument to the 1320px content column, not the screen edge (ultrawide-safe). Portrait: centred.
     const desk = Math.min(0.2, (Math.min(innerWidth, 1320) * 0.22) / innerWidth) * (rtl ? -1 : 1);
-    const offsetX = mq.matches ? 0.14 : desk;
+    const offsetX = mq.matches ? 0 : desk;
     section.style.setProperty('--glow-x', `${50 + offsetX * 100}%`);
-    scene?.setLayout({ offsetX, offsetY, mobile: mq.matches, fit });
+    scene?.setLayout(mq.matches
+      ? { offsetX, offsetY, mobile: true, fit, explodePan: 0.17, explodeZoom: 0.22, explodeScale: 0.8 }
+      : { offsetX, offsetY, mobile: false });
   }
   // Copy height changes with fonts, language and viewport; the observer also fires once on observe, which sets the first layout.
   let queued = 0;
@@ -266,14 +270,19 @@ const copy = {
   mq.addEventListener('change', layout);
   addEventListener('resize', layout);
 
-  // Small screens: keep every label on screen and off the others. A label that would leave the screen moves to the other
-  // side of its dot; overlapping labels are pushed down. CSSOM only (no style attributes), so the CSP is unaffected.
+  // Keep every label on screen, off the copy and off the other labels. A label that would leave the screen or cover the
+  // visible text moves to the other side of its dot; overlapping labels are pushed down. CSSOM only (no style attributes),
+  // so the CSP is unaffected.
+  const hits = (a: DOMRect, b: DOMRect) => a.left < b.right + 8 && a.right > b.left - 8 && a.top < b.bottom + 4 && a.bottom > b.top - 4;
   function fitCallouts() {
+    const text = steps.find((el) => !el.hasAttribute('inert'));
+    const copy = text ? [...text.children].map((c) => c.getBoundingClientRect()) : [];
     const items = [...calloutEls.values()].map((el) => {
       const label = el.querySelector<HTMLElement>('.callout-label')!;
       el.classList.remove('flip');
       label.style.translate = '';
-      if (label.getBoundingClientRect().left < 8) el.classList.add('flip');
+      const r = label.getBoundingClientRect();
+      if (r.left < 8 || copy.some((c) => hits(r, c))) el.classList.add('flip');
       return { label, r: label.getBoundingClientRect() };
     }).sort((a, b) => a.r.top - b.r.top);
     let floor = -Infinity;
@@ -356,7 +365,7 @@ const copy = {
           el.style.transform = `translate(${s.x}px, ${s.y}px)`; // transform, not left/top: moving them must not count as layout shift
           el.style.opacity = String(Math.max(0, e * 1.6 - 0.6));
         }
-        if (e > 0.3 && innerWidth < 1024) fitCallouts();
+        if (e > 0.3) fitCallouts();
       });
 
       paint();
