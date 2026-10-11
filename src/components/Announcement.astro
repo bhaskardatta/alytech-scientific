@@ -14,7 +14,7 @@ const external = a.link.startsWith('https://');
 // Dismissal is remembered per message, so a new announcement shows again.
 const id = [...(a.en + a.ar + a.link)].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) | 0, 7).toString(36);
 ---
-<div id="announce" class="announce on-dark fixed inset-x-0 top-0 z-[55] bg-night-900 text-white" role="region" aria-label={t(lang, 'announce.label')} data-id={id} data-ends={announcementEnd(a)}>
+<div id="announce" class="announce on-dark fixed inset-x-0 top-0 z-[55] overflow-hidden bg-night-900 text-white transition-opacity duration-200" role="region" aria-label={t(lang, 'announce.label')} data-id={id} data-ends={announcementEnd(a)}>
   <div class="wrap flex h-full items-center gap-2">
     <p class="min-w-0 flex-1 text-[13px] leading-snug line-clamp-2 md:line-clamp-1 md:text-sm">
       {a.link ? <a href={href} class="underline underline-offset-2 hover:text-brand-300" {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{text}</a> : text}
@@ -23,12 +23,21 @@ const id = [...(a.en + a.ar + a.link)].reduce((h, c) => (Math.imul(h, 31) + c.ch
   </div>
 </div>
 <script is:inline set:html={announceBoot}></script>
+<style is:global>
+  /* --bar-h as a real <length> so closing the bar can glide: header, page padding and the bar itself all follow it */
+  @property --bar-h { syntax: '<length>'; inherits: true; initial-value: 0px; }
+  html.announce-closing[data-announce] { --bar-h: 0px; transition: --bar-h 0.3s var(--ease-out-expo); }
+  .announce.is-closing { opacity: 0; pointer-events: none; }
+</style>
 <script>
   const bar = document.getElementById('announce');
   bar?.querySelector('[data-announce-close]')?.addEventListener('click', () => {
     try { sessionStorage.setItem('aly-announce', bar.dataset.id!); } catch {}
-    document.documentElement.removeAttribute('data-announce');
-    bar.remove();
-    document.querySelector<HTMLElement>('#main')?.focus({ preventScroll: true }); // the button the keyboard user was on just disappeared
-  });
+    const root = document.documentElement;
+    // The button the keyboard user was on is about to disappear: move focus first, then let the bar collapse before removing it.
+    document.querySelector<HTMLElement>('#main')?.focus({ preventScroll: true });
+    root.classList.add('announce-closing'); // --bar-h glides to 0 while data-announce still holds the page padding in step
+    bar.classList.add('is-closing');
+    setTimeout(() => { root.removeAttribute('data-announce'); root.classList.remove('announce-closing'); bar.remove(); }, 320);
+  }, { once: true });
 </script>

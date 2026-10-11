@@ -1,26 +1,71 @@
 ---
+import Icon from './Icon.astro';
 import { t, localize, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
+// Reopened from "Cookie settings", the saved choice carries aria-pressed: ring + tick, so it isn't colour alone.
+const chosen = 'aria-pressed:ring-2 aria-pressed:ring-ink aria-pressed:ring-offset-2';
+const tick = 'hidden [[aria-pressed=true]>&]:block';
 ---
 <div id="consent" class="fixed inset-x-3 bottom-3 z-[60] hidden sm:inset-x-auto sm:end-6 sm:bottom-6 sm:max-w-md" role="region" aria-label={t(lang, 'consent.label')} tabindex="-1">
-  <div class="card flex flex-col gap-3 p-4 shadow-[var(--shadow-pop)] sm:gap-4 sm:p-5">
+  <div class="consent-card card flex flex-col gap-3 p-4 shadow-[var(--shadow-pop)] sm:gap-4 sm:p-5">
     <p class="text-[13px] leading-snug text-ink-soft sm:text-sm">
-      {t(lang, 'consent.text')} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a>
+      <!-- phones and landscape phones: one short line that is itself the link to the full policy -->
+      <a href={localize(lang, '/privacy/')} class="consent-short underline underline-offset-2 hover:text-ink">{lang === 'ar' ? 'نستخدم ملفات تعريف الارتباط لمتابعة طلباتك.' : 'We use cookies to follow up on your requests.'}</a>
+      <span class="consent-full">{t(lang, 'consent.text')} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a></span>
     </p>
     <div class="flex gap-2">
-      <button type="button" class="btn btn-primary btn-sm flex-1" data-consent="all">{t(lang, 'consent.accept')}</button>
-      <button type="button" class="btn btn-ghost btn-sm flex-1" data-consent="essential">{t(lang, 'consent.decline')}</button>
+      <button type="button" class:list={['btn btn-primary btn-sm flex-1', chosen]} data-consent="all"><Icon name="check" size={16} class={tick} />{t(lang, 'consent.accept')}</button>
+      <button type="button" class:list={['btn btn-ghost btn-sm flex-1', chosen]} data-consent="essential"><Icon name="check" size={16} class={tick} />{t(lang, 'consent.decline')}</button>
     </div>
   </div>
 </div>
+<style>
+  .consent-short { display: none; }
+  /* Phones: about 85px instead of 130, so the banner doesn't sit on top of the page's own CTAs */
+  @media (max-width: 639px), (max-height: 500px) {
+    .consent-short { display: inline; }
+    .consent-full { display: none; }
+    .consent-card { gap: 6px; padding: 8px 12px; }
+  }
+  /* Landscape phones: a single row, full width */
+  @media (min-width: 640px) and (max-height: 500px) {
+    #consent { inset-inline: 12px; bottom: 12px; max-width: none; }
+    .consent-card { flex-direction: row; align-items: center; gap: 16px; }
+    .consent-card > p { flex: 1; }
+    .consent-card > div { flex: none; width: min(360px, 45%); }
+  }
+</style>
+<style is:global>
+  /* Banner open: the floating WhatsApp button rides above it (--consent-h = banner height + its offset, measured below) */
+  .consent-open .wa-fab { bottom: calc(var(--consent-h, 0px) + 12px); transition-property: transform, background-color, opacity, bottom; }
+</style>
 <script>
   const el = document.getElementById('consent')!;
+  const root = document.documentElement;
+  const buttons = [...el.querySelectorAll<HTMLElement>('[data-consent]')];
   let choice: string | null = null;
   let opener: HTMLElement | null = null;
   try { choice = localStorage.getItem('aly-consent'); } catch {}
-  if (!choice) el.classList.remove('hidden');
-  const close = () => { el.classList.add('hidden'); opener?.focus(); opener = null; };
+
+  const lift = new ResizeObserver(() => root.style.setProperty('--consent-h', `${Math.ceil(innerHeight - el.getBoundingClientRect().top)}px`));
+  const show = () => {
+    // First visit: nothing pressed. Reopened: the current choice is pressed.
+    buttons.forEach((b) => (choice ? b.setAttribute('aria-pressed', String(b.dataset.consent === choice)) : b.removeAttribute('aria-pressed')));
+    el.classList.remove('hidden');
+    root.classList.add('consent-open');
+    lift.observe(el);
+  };
+  const close = () => {
+    el.classList.add('hidden');
+    root.classList.remove('consent-open');
+    lift.disconnect();
+    // Back to the footer link if that's where it was opened; otherwise the page itself (the button that had focus just vanished)
+    (opener ?? document.getElementById('main'))?.focus({ preventScroll: true });
+    opener = null;
+  };
+  if (!choice) show();
+
   el.addEventListener('click', (e) => {
     const v = (e.target as HTMLElement).closest<HTMLElement>('[data-consent]')?.dataset.consent;
     if (!v) return;
@@ -37,8 +82,8 @@ const { lang } = Astro.props;
     const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-consent-open]');
     if (!btn) return;
     opener = btn;
-    el.classList.remove('hidden');
-    el.querySelector<HTMLElement>('[data-consent]')?.focus();
+    show();
+    (el.querySelector<HTMLElement>('[aria-pressed="true"]') ?? buttons[0]).focus();
   });
   // Esc dismisses a reopened banner without changing the saved choice (the first-visit prompt stays until answered).
   el.addEventListener('keydown', (e) => { if (e.key === 'Escape' && choice) close(); });

@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { brands } from '../data/brands';
+import { families } from '../data/equipment';
 import { t, localize, unlocalize, type Lang } from '../i18n';
 
 interface Props { lang: Lang; path: string }
@@ -16,9 +17,13 @@ const nav = [
   { href: '/about/', label: t(lang, 'nav.about') },
   { href: '/contact/', label: t(lang, 'nav.contact') },
 ];
-const current = (href: string) => unlocalize(path).startsWith(href);
+const bare = unlocalize(path);
+const current = (href: string) => (bare + '/').startsWith(href);
+const here = (href: string) => (current(href) ? 'page' : undefined);
+// Everything the Products menu leads to; the trigger is a button, so it gets aria-current="true" rather than "page"
+const inProducts = ['/gasmix/', '/principals/', '/equipment/', '/standards/', '/tools/'].some(current);
 ---
-<header id="site-header" class="group/header fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color] duration-300" data-tone="light">
+<header id="site-header" class="group/header fixed inset-x-0 top-0 z-50 transition-[color] duration-300" data-tone="light">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-3 focus:z-10 focus:rounded-sm focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white">{t(lang, 'nav.skip')}</a>
   <div class="header-bar border-b">
     <div class="wrap flex h-[72px] items-center gap-6">
@@ -30,18 +35,18 @@ const current = (href: string) => unlocalize(path).startsWith(href);
 
       <nav class="ms-4 hidden items-center gap-1 xl:flex" aria-label={t(lang, 'nav.primary')}>
         <div class="relative" data-menu>
-          <button type="button" class="nav-link inline-flex items-center gap-1.5" aria-expanded="false" aria-controls="mega-products" data-menu-button>
+          <button type="button" class="nav-link inline-flex items-center gap-1.5" aria-expanded="false" aria-controls="mega-products" aria-current={inProducts ? 'true' : undefined} data-menu-button>
             {t(lang, 'nav.products')}
             <Icon name="chevron-down" size={16} class="transition-transform duration-200 [[aria-expanded=true]>&]:rotate-180" />
           </button>
-          <div id="mega-products" class="mega invisible absolute start-0 top-full w-[min(920px,calc(100vw-80px))] translate-y-2 pt-3 opacity-0 transition duration-200" data-menu-panel>
+          <div id="mega-products" class="mega absolute start-0 top-full w-[min(920px,calc(100vw-80px))] pt-3" data-menu-panel>
             <div class="card grid grid-cols-[1.1fr_1.4fr_1fr] gap-0 overflow-hidden text-ink shadow-[var(--shadow-pop)]">
-              <a href={L('/gasmix/')} class="group/g relative flex flex-col justify-between bg-night-900 p-6 text-white">
+              <a href={L('/gasmix/')} class="group/g on-dark relative flex flex-col justify-between bg-night-900 p-6 text-white transition-[background-color] hover:bg-night-800 focus-visible:outline-brand-300 focus-visible:outline-offset-[-4px]">
                 <span class="label text-brand-300">{lang === 'ar' ? 'موزع حصري · الشرق الأوسط' : 'Exclusive distributor · Middle East'}</span>
                 <span>
-                  <span class="display block text-3xl">GasMix™</span>
+                  <span class="display block text-3xl"><bdi dir="ltr">GasMix™</bdi></span>
                   <span class="mt-2 block text-sm text-white/70">{lang === 'ar' ? 'أجهزة خلط وتخفيف الغازات المصممة في فرنسا.' : 'Gas mixers and diluters designed by AlyTech in France.'}</span>
-                  <span class="link-arrow mt-4 text-sm">{lang === 'ar' ? 'استكشف GasMix' : 'Explore GasMix'} <Icon name="arrow" size={16} flip /></span>
+                  <span class="link-arrow mt-4 text-sm group-hover/g:gap-3">{lang === 'ar' ? 'استكشف GasMix' : 'Explore GasMix'} <Icon name="arrow" size={16} flip /></span>
                 </span>
               </a>
               <div class="p-6">
@@ -57,13 +62,17 @@ const current = (href: string) => unlocalize(path).startsWith(href);
                   ))}
                 </ul>
               </div>
-              <a href={L('/equipment/')} class="flex flex-col justify-between border-s border-line bg-surface p-6 transition-colors hover:bg-brand-50">
-                <span class="label text-mute">{t(lang, 'nav.equipment')}</span>
-                <span>
-                  <span class="block text-sm text-ink-soft">{lang === 'ar' ? 'غرف الاختبار البيئي، آلات الاختبار الشامل، اختبار الخرسانة والتربة، التغليف، الطلاءات والمزيد.' : 'Environmental chambers, universal testing machines, concrete & soil, packaging, coatings and more.'}</span>
-                  <span class="link-arrow mt-4 text-sm">{lang === 'ar' ? 'تصفح الفئات' : 'Browse categories'} <Icon name="arrow" size={16} flip /></span>
-                </span>
-              </a>
+              <div class="border-s border-line bg-surface p-6">
+                <p class="label mb-3 text-mute">{t(lang, 'nav.equipment')}</p>
+                <ul>
+                  {families.slice(0, 5).map((f) => (
+                    <li>
+                      <a href={L(`/equipment/#${f.slug}`)} class="block rounded-xs px-2 py-1.5 text-sm font-medium leading-snug transition-colors hover:bg-brand-50">{(lang === 'ar' && f.ar?.name) || f.name}</a>
+                    </li>
+                  ))}
+                </ul>
+                <a href={L('/equipment/')} class="link-arrow ms-2 mt-4 text-sm">{lang === 'ar' ? 'تصفح الفئات' : 'Browse categories'} <Icon name="arrow" size={16} flip /></a>
+              </div>
               <div class="col-span-3 flex flex-wrap items-center gap-x-6 border-t border-line px-6 py-2 text-sm">
                 <span class="label text-mute">{lang === 'ar' ? 'مراجع مجانية' : 'Free references'}</span>
                 <a href={L('/standards/')} class="link-arrow py-2">{t(lang, 'nav.standards')} <Icon name="arrow" size={16} flip /></a>
@@ -73,29 +82,32 @@ const current = (href: string) => unlocalize(path).startsWith(href);
           </div>
         </div>
         {nav.map((n) => (
-          <a href={L(n.href)} class="nav-link" aria-current={current(n.href) ? 'page' : undefined}>{n.label}</a>
+          <a href={L(n.href)} class="nav-link" aria-current={here(n.href)}>{n.label}</a>
         ))}
       </nav>
 
       <div class="ms-auto flex items-center gap-2">
         <a href={L('/search/')} class="icon-btn" aria-label={t(lang, 'nav.search')}><Icon name="search" /></a>
-        <a href={twin} hreflang={other} lang={other} class="icon-btn hidden w-auto gap-2 px-3 text-sm font-medium sm:inline-flex"><Icon name="globe" size={18} />{t(lang, 'nav.switch')}</a>
+        <a href={twin} hreflang={other} lang={other} data-lang-switch class="icon-btn hidden w-auto gap-2 px-3 text-sm font-medium sm:inline-flex"><Icon name="globe" size={18} />{t(lang, 'nav.switch')}</a>
         <button type="button" class="btn btn-primary btn-sm hidden md:inline-flex" data-lead="quote">{t(lang, 'cta.quote')}</button>
-        <button type="button" class="icon-btn xl:hidden" aria-expanded="false" aria-controls="mobile-nav" data-mobile-toggle aria-label={t(lang, 'nav.menu')}><Icon name="menu" /></button>
+        <button type="button" class="icon-btn xl:hidden" aria-expanded="false" aria-controls="mobile-nav" data-mobile-toggle data-label-menu={t(lang, 'nav.menu')} data-label-close={t(lang, 'nav.close')} aria-label={t(lang, 'nav.menu')}>
+          <Icon name="menu" class="[[aria-expanded=true]>&]:hidden" />
+          <Icon name="x" class="hidden [[aria-expanded=true]>&]:block" />
+        </button>
       </div>
     </div>
   </div>
 
-  <div id="mobile-nav" class="fixed inset-0 top-[calc(72px+var(--bar-h,0px))] hidden overflow-y-auto bg-card text-ink xl:hidden" data-mobile-panel>
+  <div id="mobile-nav" class="fixed inset-0 top-[calc(73px+var(--bar-h,0px))] hidden overflow-y-auto bg-card text-ink xl:hidden" data-mobile-panel>
     <nav class="wrap flex flex-col py-6" aria-label={t(lang, 'nav.mobile')}>
-      <a href={L('/gasmix/')} class="mobile-link">GasMix™</a>
+      <a href={L('/gasmix/')} class="mobile-link" aria-current={here('/gasmix/')}><bdi dir="ltr">GasMix™</bdi></a>
       <p class="label mt-6 mb-2 text-mute">{t(lang, 'nav.principals')}</p>
-      {principals.map((b) => <a href={L(`/principals/${b.slug}/`)} class="mobile-link text-lg">{b.name}</a>)}
-      <a href={L('/equipment/')} class="mobile-link mt-6">{t(lang, 'nav.equipment')}</a>
-      <a href={L('/standards/')} class="mobile-link">{t(lang, 'nav.standards')}</a>
-      <a href={L('/tools/')} class="mobile-link">{t(lang, 'nav.tools')}</a>
-      {nav.map((n) => <a href={L(n.href)} class="mobile-link">{n.label}</a>)}
-      <a href={twin} hreflang={other} lang={other} class="mobile-link">{t(lang, 'nav.switch')}</a>
+      {principals.map((b) => <a href={L(`/principals/${b.slug}/`)} class="mobile-link text-lg" aria-current={here(`/principals/${b.slug}/`)}>{b.name}</a>)}
+      <a href={L('/equipment/')} class="mobile-link mt-6" aria-current={here('/equipment/')}>{t(lang, 'nav.equipment')}</a>
+      <a href={L('/standards/')} class="mobile-link" aria-current={here('/standards/')}>{t(lang, 'nav.standards')}</a>
+      <a href={L('/tools/')} class="mobile-link" aria-current={here('/tools/')}>{t(lang, 'nav.tools')}</a>
+      {nav.map((n) => <a href={L(n.href)} class="mobile-link" aria-current={here(n.href)}>{n.label}</a>)}
+      <a href={twin} hreflang={other} lang={other} data-lang-switch class="mobile-link">{t(lang, 'nav.switch')}</a>
       <button type="button" class="btn btn-primary mt-8" data-lead="quote">{t(lang, 'cta.quote')}</button>
     </nav>
   </div>
@@ -104,7 +116,8 @@ const current = (href: string) => unlocalize(path).startsWith(href);
 <style>
   /* below the announcement bar when there is one (--bar-h is set in global.css) */
   #site-header { top: var(--bar-h, 0px); }
-  .header-bar { border-color: transparent; }
+  /* the bar carries the background, so the bar carries the fade */
+  .header-bar { border-color: transparent; transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease; }
   /* Tone: light (solid on scroll) vs dark (transparent over the night stage) */
   #site-header[data-tone="light"] { color: var(--color-ink); }
   #site-header[data-tone="light"].is-scrolled .header-bar,
@@ -116,10 +129,25 @@ const current = (href: string) => unlocalize(path).startsWith(href);
   #site-header[data-tone="dark"] .logo-light { display: block; }
   #site-header[data-tone="dark"].is-scrolled .header-bar { background: rgb(8 6 15 / 0.55); backdrop-filter: blur(14px); border-color: rgb(255 255 255 / 0.08); }
   #site-header[data-tone="dark"] .nav-link:hover, #site-header[data-tone="dark"] .nav-link[aria-expanded="true"], #site-header[data-tone="dark"] .icon-btn:hover { background: rgb(255 255 255 / 0.1); }
-  #site-header[data-tone="dark"] .nav-link[aria-current="page"] { color: var(--color-brand-300); }
+  #site-header[data-tone="dark"] .nav-link[aria-current] { color: var(--color-brand-300); }
   #site-header[data-tone="dark"] :focus-visible { outline-color: var(--color-brand-300); }
 
-  [data-menu].is-open .mega { visibility: visible; opacity: 1; transform: none; }
+  /* Current section: colour plus a 2px bar, so it doesn't rely on colour alone */
+  .nav-link[aria-current] { position: relative; color: var(--color-brand-600); }
+  .nav-link[aria-current]::after { content: ''; position: absolute; inset-inline: 12px; bottom: 4px; height: 2px; border-radius: 1px; background: currentColor; }
+  .mobile-link[aria-current="page"] { color: var(--color-brand-600); border-inline-start: 3px solid currentColor; padding-inline-start: 12px; }
+
+  /* Mega menu: fades both ways; visibility flips after the fade-out so the panel stays hoverable/focusable only while it's open */
+  .mega {
+    visibility: hidden; opacity: 0; translate: 0 8px; pointer-events: none;
+    transition: opacity 0.2s ease, translate 0.2s ease, visibility 0s linear 0.2s;
+  }
+  [data-menu].is-open .mega { visibility: visible; opacity: 1; translate: 0 0; pointer-events: auto; transition-delay: 0s; }
+</style>
+
+<style is:global>
+  /* Mobile sheet open: the page behind doesn't scroll (undone by the same attribute, so close, Esc and resize all restore it) */
+  html:has([data-mobile-toggle][aria-expanded="true"]) { overflow: hidden; scrollbar-gutter: stable; }
 </style>
 
 <script>
@@ -129,25 +157,38 @@ const current = (href: string) => unlocalize(path).startsWith(href);
   onScroll();
   addEventListener('scroll', onScroll, { passive: true });
 
-  // Tone follows whichever section sits under the header band
+  // Tone follows whichever section sits under the header band (and is always light while the mobile sheet is open)
+  const visible = new Set<Element>();
+  const applyTone = () => { header.dataset.tone = visible.size && !header.classList.contains('is-open') ? 'dark' : 'light'; };
   const darkSections = document.querySelectorAll('[data-header="dark"]');
   if (darkSections.length) {
-    const visible = new Set<Element>();
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
-      header.dataset.tone = visible.size && !header.classList.contains('is-open') ? 'dark' : 'light';
+      applyTone();
     }, { rootMargin: '0px 0px -92% 0px' });
     darkSections.forEach((s) => io.observe(s));
   }
+
+  // Language switch keeps the visitor's query (/search/?q=flash -> /ar/search/?q=flash); the static href has none
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((a) => { a.search = location.search; });
 
   // Products mega menu: click/keyboard toggles, hover opens on fine pointers
   document.querySelectorAll<HTMLElement>('[data-menu]').forEach((menu) => {
     const btn = menu.querySelector<HTMLButtonElement>('[data-menu-button]')!;
     let timer: number | undefined;
+    let hoverOpenedAt = -Infinity;
     const set = (open: boolean) => { menu.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); };
-    btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+    btn.addEventListener('click', (e) => {
+      // Hover already opened it; the click that follows is the visitor aiming at the button, not asking to close it. Keyboard clicks (detail 0) always toggle.
+      if (e.detail > 0 && performance.now() - hoverOpenedAt < 400) return;
+      set(btn.getAttribute('aria-expanded') !== 'true');
+    });
     if (matchMedia('(hover: hover)').matches) {
-      menu.addEventListener('mouseenter', () => { clearTimeout(timer); set(true); });
+      menu.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        if (!menu.classList.contains('is-open')) hoverOpenedAt = performance.now();
+        set(true);
+      });
       menu.addEventListener('mouseleave', () => { timer = window.setTimeout(() => set(false), 160); });
     }
     menu.addEventListener('keydown', (e) => { if (e.key === 'Escape') { set(false); btn.focus(); } });
@@ -159,12 +200,16 @@ const current = (href: string) => unlocalize(path).startsWith(href);
   const panel = document.querySelector<HTMLElement>('[data-mobile-panel]')!;
   const setMobile = (open: boolean) => {
     toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', (open ? toggle.dataset.labelClose : toggle.dataset.labelMenu)!);
     panel.classList.toggle('hidden', !open);
     header.classList.toggle('is-open', open);
-    if (open) header.dataset.tone = 'light';
-    document.documentElement.style.overflow = open ? 'hidden' : '';
+    // Focus stays in the header + sheet: everything behind is inert (scroll is locked in the style block above)
+    document.querySelectorAll('main, footer, .wa-fab, #nudge').forEach((el) => el.toggleAttribute('inert', open));
+    applyTone();
   };
   toggle.addEventListener('click', () => setMobile(toggle.getAttribute('aria-expanded') !== 'true'));
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMobile(false); toggle.focus(); } });
   panel.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a,[data-lead]')) setMobile(false); });
+  // Resized up to the desktop nav (xl) with the sheet open: drop its lock and inert state
+  matchMedia('(min-width: 80rem)').addEventListener('change', (e) => { if (e.matches) setMobile(false); });
 </script>

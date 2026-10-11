@@ -8,8 +8,8 @@ const ar = lang === 'ar';
 <aside id="nudge" hidden class="nudge fixed bottom-24 start-4 z-40 w-[calc(100vw-32px)] sm:bottom-5 sm:start-5 sm:w-[min(380px,calc(100vw-110px))]" aria-label={ar ? 'عرض سعر' : 'Pricing'}>
   <div class="card relative p-5 shadow-[var(--shadow-pop)]">
     <button type="button" class="absolute end-1 top-1 inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors hover:bg-surface hover:text-ink" aria-label={t(lang, 'lead.close')} data-nudge-close><Icon name="x" size={18} /></button>
-    <p class="label text-brand-600">{label}</p>
-    <p class="display mt-2 pe-8 text-lg leading-snug">{ar ? 'هل تحتاج السعر ومدة التوريد؟' : 'Need pricing and lead time?'}</p>
+    <p class="label pe-10 text-brand-600">{label}</p>
+    <p class="display mt-2 pe-10 text-lg leading-snug">{ar ? 'هل تحتاج السعر ومدة التوريد؟' : 'Need pricing and lead time?'}</p>
     <p class="mt-1 text-[14px] text-mute">{ar ? 'يرسلهما مهندس تطبيقات اليوم مع التهيئة المناسبة.' : 'An application engineer can send them today, configured for your method.'}</p>
     <div class="mt-4 flex gap-2">
       <button type="button" class="btn btn-primary btn-sm flex-1" data-lead="price" data-product={product}>{t(lang, 'cta.price')}</button>
@@ -21,6 +21,10 @@ const ar = lang === 'ar';
   .nudge:not([hidden]) { animation: nudge-in 0.4s var(--ease-out-expo); }
   @keyframes nudge-in { from { opacity: 0; transform: translateY(16px); } }
 </style>
+<style is:global>
+  /* Never over the cookie banner (even when that is reopened after the nudge is up) or the footer links */
+  html.consent-open #nudge, #nudge.is-away { visibility: hidden; }
+</style>
 <script>
   const el = document.getElementById('nudge')!;
   const ss = { get: (k: string) => { try { return sessionStorage.getItem(k); } catch { return '1'; } }, set: (k: string, v: string) => { try { sessionStorage.setItem(k, v); } catch {} } };
@@ -30,20 +34,39 @@ const ar = lang === 'ar';
   const views = Number(ss.get('aly-pviews') || 0) + 1;
   ss.set('aly-pviews', String(views));
 
+  // At the bottom of the page the nudge would sit on the footer links: hidden while any of the footer is on screen
+  let footerIn = false;
+  const footer = document.querySelector('footer');
+  if (footer) new IntersectionObserver(([e]) => { footerIn = e.isIntersecting; el.classList.toggle('is-away', footerIn); }).observe(footer);
+
   if (!known && !ss.get('aly-nudged')) {
     let shown = false;
+    const busy = () => footerIn || document.documentElement.classList.contains('consent-open') || (document.getElementById('lead-dialog') as HTMLDialogElement | null)?.open;
     const show = () => {
-      if (shown || (document.getElementById('lead-dialog') as HTMLDialogElement | null)?.open) return;
+      if (shown || busy()) return; // the timer below retries; so do scroll and exit-intent
       shown = true;
       ss.set('aly-nudged', '1');
       el.hidden = false;
       import('../scripts/lead').then(({ track }) => track('nudge', { product: document.body.dataset.product }));
     };
-    setTimeout(show, views >= 2 ? 12000 : 40000);
+    const arm = (ms: number) => setTimeout(() => { show(); if (!shown) arm(4000); }, ms);
+    arm(views >= 2 ? 12000 : 40000);
     const onScroll = () => { if (scrollY + innerHeight > document.documentElement.scrollHeight * 0.7) show(); };
     addEventListener('scroll', onScroll, { passive: true });
     if (matchMedia('(hover: hover)').matches) document.addEventListener('mouseout', (e) => { if (!e.relatedTarget && e.clientY < 6) show(); });
   }
-  el.querySelector('[data-nudge-close]')!.addEventListener('click', () => (el.hidden = true));
-  el.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('[data-lead]')) el.hidden = true; });
+
+  // Closing: focus goes back to where the visitor was (the nudge never takes focus itself), else the page, instead of falling to <body>
+  let before: Element | null = null;
+  document.addEventListener('focusin', (e) => { if (!el.contains(e.target as Node)) before = e.target as Element; });
+  const dismiss = () => {
+    const hadFocus = el.contains(document.activeElement);
+    el.hidden = true;
+    if (!hadFocus) return;
+    const back = before?.isConnected ? (before as HTMLElement) : document.getElementById('main');
+    back?.focus({ preventScroll: true });
+  };
+  el.querySelector('[data-nudge-close]')!.addEventListener('click', dismiss);
+  el.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('[data-lead]')) dismiss(); });
+  el.addEventListener('keydown', (e) => { if (e.key === 'Escape') dismiss(); });
 </script>
