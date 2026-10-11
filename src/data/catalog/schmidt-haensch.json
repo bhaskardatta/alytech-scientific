@@ -3,7 +3,7 @@
   "brandSlug": "schmidt-haensch",
   "brandUrl": "https://schmidt-haensch.com",
   "headquarters": "Berlin, Germany",
-  "brandSummary": "Schmidt + Haensch is a family-owned Berlin company, established in 1864, that builds optical measuring instruments: polarimeters, refractometers, density meters, photometers and in-line process analyzers. Its quartz-wedge Saccharomat sugar polarimeter and its pharmaceutical VariFamily instruments are used in sugar, food, pharmaceutical and chemical laboratories, and its quality system is certified to ISO 9001.",
+  "brandSummary": "Schmidt + Haensch is a family-owned Berlin company, established in 1864, that builds optical measuring instruments: polarimeters, refractometers, density meters, photometers and in-line process analyzers. Its quartz-wedge Saccharomat sugar polarimeter and its pharmaceutical VariFamily instruments are used in sugar, food, pharmaceutical and chemical laboratories. Schmidt + Haensch's own manufacturing is ISO 9001 certified.",
   "logoUrl": null,
   "products": [
     {
@@ -79,7 +79,8 @@
         "saccharimeter quartz wedge",
         "ICUMSA polarimeter raw sugar",
         "polarimeter for sugar cane payment",
-        "international sugar scale polarimeter"
+        "international sugar scale polarimeter",
+        "saccharimetre quartz wedge"
       ],
       "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
       "sourceUrl": "https://schmidt-haensch.com/product/saccharomat-v-sugar-polarimeter/",
@@ -91,7 +92,7 @@
         "name": "Saccharomat V مقياس استقطاب سكر بإسفين الكوارتز",
         "category": "مقياس الاستقطاب",
         "summary": "Saccharomat V مقياس سكر يقيس السكروز على مقياس السكر الدولي باستخدام نظام تعويض بإسفين الكوارتز. ولأن الكوارتز والسكروز يُحدثان دوراناً للضوء شبه متطابق عبر الأطوال الموجية، يبقى الجهاز مستقراً دون حاجة إلى إعادة المعايرة، ويستطيع قراءة محاليل السكر الداكنة، مما يجعله أداة مرجعية في مختبرات استلام قصب السكر والبنجر.",
-        "description": "يحدد Saccharomat V الدوران الضوئي لمحاليل السكروز بإزاحة إسفين من الكوارتز داخل مسار الضوء حتى يلغي تماماً الدوران الناتج عن العينة. ويقرأ مشفّر خطي موضع الإسفين، فتؤخذ النتيجة مباشرة من الموضع دون تروس أو سيور. ولأن التشتت الدوراني الضوئي للكوارتز قريب جداً من تشتت السكروز، فإن أي انزياح طفيف في الطول الموجي لمصدر الضوء يؤثر في العينة والإسفين بالقدر نفسه فيلغي أحدهما أثر الآخر؛ ولذلك يحتفظ الجهاز بمعايرته طوال عمره التشغيلي. يمتد مدى القياس من -35 إلى +105°Z باستبانة 0.01°Z، وتبلغ الحساسية كثافة ضوئية قدرها 5، ويكتمل القياس خلال 4 ثوانٍ على الأكثر على كامل المدى. تتوفر أطوال موجية ثابتة عند 587 nm و882 nm، ويناسب خط الأشعة تحت الحمراء القريبة المحاليل الداكنة بعد ترشيحها. ويمكن تركيب أنابيب بأطوال 50 و100 و200 mm، ومنها إصدارات مزوّدة بحساس درجة الحرارة مدمج، وتُقرأ درجة حرارة العينة من 0 إلى 99°C. ويتم التشغيل عبر شاشة لمس مقاس 7 بوصات، مع واجهات Ethernet وUSB وRS232. ومن مستخدميه المعتادين معامل السكر ومصافيه ومختبرات الاستلام في قطاعي الأغذية والأدوية التي تختبر السكروز.",
+        "description": "يحدد Saccharomat V الدوران الضوئي لمحاليل السكروز بإزاحة إسفين من الكوارتز داخل مسار الضوء حتى يلغي تماماً الدوران الناتج عن العينة. ويقرأ مشفّر خطي موضع الإسفين، فتؤخذ النتيجة مباشرة من الموضع دون تروس أو سيور. ولأن التشتت الدوراني الضوئي للكوارتز قريب جداً من تشتت السكروز، فإن أي انزياح طفيف في الطول الموجي لمصدر الضوء يؤثر في العينة والإسفين بالقدر نفسه فيلغي أحدهما أثر الآخر؛ ولذلك يحتفظ الجهاز بمعايرته طوال عمره التشغيلي. يمتد مدى القياس من −35 إلى +105°Z باستبانة 0.01°Z، وتبلغ الحساسية كثافة ضوئية قدرها 5، ويكتمل القياس خلال 4 ثوانٍ على الأكثر على كامل المدى. تتوفر أطوال موجية ثابتة عند 587 nm و882 nm، ويناسب خط الأشعة تحت الحمراء القريبة المحاليل الداكنة بعد ترشيحها. ويمكن تركيب أنابيب بأطوال 50 و100 و200 mm، ومنها إصدارات مزوّدة بحساس درجة الحرارة مدمج، وتُقرأ درجة حرارة العينة من 0 إلى 99°C. ويتم التشغيل عبر شاشة لمس مقاس 7 بوصات، مع واجهات Ethernet وUSB وRS232. ومن مستخدميه المعتادين معامل السكر ومصافيه ومختبرات الاستلام في قطاعي الأغذية والأدوية التي تختبر السكروز.",
         "applications": [
           "تحديد السكروز في منتجات قصب السكر والبنجر",
           "اختبارات استلام السكر الخام ومحاسبة الدفع",
@@ -106,7 +107,7 @@
           },
           {
             "label": "مدى القياس",
-            "value": "-35 °Z إلى +105 °Z"
+            "value": "−35 °Z إلى +105 °Z"
           },
           {
             "label": "الدقة التحليلية",
@@ -155,10 +156,10 @@
       "name": "Purity Analyzer",
       "model": "Purity Analyzer",
       "slug": "purity-analyzer",
-      "category": "Sugar analysis system",
+      "category": "Sugar Analysis System",
       "priority": "core",
       "summary": "The Purity Analyzer couples an ATR refractometer with a polarimeter, either the quartz-wedge Saccharomat V or the circular Polartronic V, under one controller. It shows temperature-corrected Pol and Brix and calculates sugar purity directly, so mills and refineries need no separate computer for the calculation.",
-      "description": "Sugar purity is the proportion of sucrose in the total dissolved solids, and it is calculated from two measurements: polarization from a polarimeter and dry substance, expressed as Brix, from a refractometer. The Purity Analyzer joins both instruments through a single controller that applies temperature correction and displays Pol, Brix and the calculated purity together, following ICUMSA procedures. The refractometer is taken from the ATR series, and the polarimeter can be a Saccharomat V with quartz-wedge compensation or a Polartronic V circular polarimeter with a near-infrared option at 882 nm for dark solutions. Each instrument can still be used on its own. Optional sample preparation units support throughput: Autofilt filters turbid and strongly coloured samples so that near-infrared polarimetry works without chemical clarification, and Autodosage prepares dilutions gravimetrically or volumetrically. Results go to a laboratory information system or database over Ethernet and USB. The system is installed in the payment laboratories of cane and beet sugar receptions, where purity affects what a grower is paid, and in factory laboratories that follow juices and syrups through processing.",
+      "description": "Sugar purity is the proportion of sucrose in the total dissolved solids, and it is calculated from two measurements: polarization from a polarimeter and dry substance, expressed as Brix, from a refractometer. The Purity Analyzer joins both instruments through a single controller that applies temperature correction and displays Pol, Brix and the calculated purity together, following ICUMSA procedures. The refractometer is taken from the ATR series, and the polarimeter can be a Saccharomat V with quartz-wedge compensation or a Polartronic V circular polarimeter with a near-infrared option at 882 nm for dark solutions. Each instrument can still be used on its own. Optional sample preparation units support throughput: Autofilt filters turbid and strongly colored samples so that near-infrared polarimetry works without chemical clarification, and Autodosage prepares dilutions gravimetrically or volumetrically. Results go to a laboratory information system or database over Ethernet and USB. The system is installed in the payment laboratories of cane and beet sugar receptions, where purity affects what a grower is paid, and in factory laboratories that follow juices and syrups through processing.",
       "keySpecs": [
         {
           "label": "Measured values",
@@ -203,7 +204,8 @@
         "polarimeter refractometer combination",
         "Pol and Brix purity measurement",
         "sugar mill laboratory equipment",
-        "ICUMSA purity determination"
+        "ICUMSA purity determination",
+        "sugar purity analyser"
       ],
       "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
       "sourceUrl": "https://schmidt-haensch.com/product/purity-analyzer/",
@@ -311,7 +313,7 @@
       ],
       "applications": [
         "Optical rotation of pharmaceutical substances",
-        "Essential oils and flavours",
+        "Essential oils and flavors",
         "Sugar purity and concentration",
         "Chemical and polymer analysis",
         "Research on kinetics and optical isomers"
@@ -479,7 +481,7 @@
         "name": "VariPol مقياس استقطاب صيدلاني",
         "category": "مقياس الاستقطاب",
         "summary": "VariPol مقياس استقطاب معياري مصمم لمختبرات الأدوية، مزوّد بنظام Peltier مدمج يغيّر درجة حرارة العينة بمقدار 10°C في نحو 30 ثانية. يتوفر بدرجتين من الدقة، ويدعم برنامج Aquisys 3 الامتثال لمتطلبات 21 CFR Part 11.",
-        "description": "يُعدّ VariPol مقياس الاستقطاب ضمن VariFamily، وهي عائلة أجهزة المختبر المتصلة من S+H، وهو موجّه إلى مراقبة الجودة الدوائية، حيث يُقاس الدوران الضوئي عند تركيز ودرجة حرارة وطول موجي محددة ليمكن مقارنة النتائج بمتطلبات دساتير الأدوية. ولا تحتوي غرفة العينة على حجم ميت، مما يتيح الشطف السريع دون انتقال أثر من عينة إلى أخرى، ويضبط نظام Peltier المدمج درجة الحرارة بمقدار 10°C في نحو 30 ثانية؛ وبعد الاستقرار يستغرق القياس نفسه نحو 6 ثوانٍ. ويمكن استبدال وحدات الطول الموجي لتغيير الطول الموجي التشغيلي. ويلبي طرازان احتياجات مختلفة: يبلغ في VariPol C كل من الدقة وقابلية إعادة الإنتاج ±0.01° باستبانة 0.005° وضبط لدرجة الحرارة من 18 إلى 25°C، بينما يصل VariPol B إلى دقة ±0.003° وقابلية إعادة إنتاج ±0.001° واستبانة 0.001° وضبط لدرجة الحرارة من 10 إلى 40°C. ويبلغ مدى القياس ±89.9°. وتربط واجهات RS232 وUSB وEthernet وWLAN الجهاز بالشبكات وأنظمة المختبر، ويوفر برنامج Aquisys 3 سجل تدقيق وإدارة للمستخدمين وتخزيناً مشفّراً للبيانات.",
+        "description": "يُعدّ VariPol مقياس الاستقطاب ضمن VariFamily، وهي سلسلة أجهزة المختبر المتصلة من S+H، وهو موجّه إلى مراقبة الجودة الدوائية، حيث يُقاس الدوران الضوئي عند تركيز ودرجة حرارة وطول موجي محددة ليمكن مقارنة النتائج بمتطلبات دساتير الأدوية. ولا تحتوي غرفة العينة على حجم ميت، مما يتيح الشطف السريع دون انتقال أثر من عينة إلى أخرى، ويضبط نظام Peltier المدمج درجة الحرارة بمقدار 10°C في نحو 30 ثانية؛ وبعد الاستقرار يستغرق القياس نفسه نحو 6 ثوانٍ. ويمكن استبدال وحدات الطول الموجي لتغيير الطول الموجي التشغيلي. ويلبي طرازان احتياجات مختلفة: يبلغ في VariPol C كل من الدقة وقابلية إعادة الإنتاج ±0.01° باستبانة 0.005° وضبط لدرجة الحرارة من 18 إلى 25°C، بينما يصل VariPol B إلى دقة ±0.003° وقابلية إعادة إنتاج ±0.001° واستبانة 0.001° وضبط لدرجة الحرارة من 10 إلى 40°C. ويبلغ مدى القياس ±89.9°. وتربط واجهات RS232 وUSB وEthernet وWLAN الجهاز بالشبكات وأنظمة المختبر، ويوفر برنامج Aquisys 3 سجل تدقيق وإدارة للمستخدمين وتخزيناً مشفّراً للبيانات.",
         "applications": [
           "اختبار الدوران الضوئي للمستحضرات الدوائية",
           "مراقبة النقاوة الإنانتيومرية",
@@ -685,8 +687,8 @@
       "slug": "variref",
       "category": "Refractometer",
       "priority": "flagship",
-      "summary": "VariRef² is a modular laboratory refractometer series with four models covering refractive indices from 1.27 to 1.72, Peltier temperature control and a 7-inch touchscreen. It is 21 CFR Part 11 conform and ready for LIMS and ELN connection, which suits pharmaceutical, chemical and beverage laboratories.",
-      "description": "VariRef² measures refractive index and the Brix values derived from it, using critical-angle measurement and a 589 nm LED light source. The series has four models. VariRef² 301 covers 1.3200 to 1.5800 RI at 0.0001 RI resolution, and 401 covers 1.30000 to 1.66000 RI at 0.00001 RI resolution. The 501 and 601 extend the range to 1.27000 to 1.71000 RI and 1.27000 to 1.72000 RI. An integrated Peltier system controls sample temperature from 5 to 80 degrees Celsius on the 301 and 401, and from 5 to 100 degrees Celsius on the 501 and 601. Brix results are temperature-compensated to ICUMSA and other scales. The sample compartment is made of sapphire, FFKM and 1.4404 stainless steel, with Hastelloy on request, which allows work with aggressive solvents. Operation is through a 7-inch touchscreen or remotely from a browser, using the Aquisys 3 software. Ethernet, RS232, USB and WLAN interfaces connect the instrument to laboratory networks. The series is built for pharmaceutical, chemical, food and beverage laboratories that need documented purity checks and concentration measurements.",
+      "summary": "VariRef² is a modular laboratory refractometer series with four models covering refractive indices from 1.27 to 1.72, Peltier temperature control and a 7-inch touchscreen. It is 21 CFR Part 11 compliant and ready for LIMS and ELN connection, which suits pharmaceutical, chemical and beverage laboratories.",
+      "description": "VariRef² measures refractive index and the Brix values derived from it, using critical-angle measurement and a 589 nm LED light source. The series has four models. VariRef² 301 covers 1.3200 to 1.5800 RI at 0.0001 RI resolution, and 401 covers 1.30000 to 1.66000 RI at 0.00001 RI resolution. The 501 and 601 extend the range to 1.27000 to 1.71000 RI and 1.27000 to 1.72000 RI. An integrated Peltier system controls sample temperature from 5 to 80 degrees Celsius on the 301 and 401, and from 5 to 100 degrees Celsius on the 501 and 601. Brix results are temperature-compensated to ICUMSA and other scales. The sample compartment is made of sapphire, FFKM and 1.4404 stainless steel, with a corrosion-resistant nickel alloy on request, which allows work with aggressive solvents. Operation is through a 7-inch touchscreen or remotely from a browser, using the Aquisys 3 software. Ethernet, RS232, USB and WLAN interfaces connect the instrument to laboratory networks. The series is built for pharmaceutical, chemical, food and beverage laboratories that need documented purity checks and concentration measurements.",
       "keySpecs": [
         {
           "label": "Measuring range, VariRef² 301",
@@ -718,7 +720,7 @@
         },
         {
           "label": "Sample compartment materials",
-          "value": "Sapphire, FFKM, 1.4404 stainless steel (Hastelloy on request)"
+          "value": "Sapphire, FFKM, 1.4404 stainless steel (corrosion-resistant nickel alloy on request)"
         },
         {
           "label": "Interfaces",
@@ -758,7 +760,7 @@
         "name": "VariRef² مقياس انكسار مخبري",
         "category": "مقياس الانكسار",
         "summary": "VariRef² سلسلة مقاييس انكسار مخبرية معيارية بأربعة طرازات تغطي معاملات انكسار من 1.27 إلى 1.72، مع تحكم حراري بنظام Peltier وشاشة لمس مقاس 7 بوصات. وهي متوافقة مع 21 CFR Part 11 وجاهزة للربط مع LIMS وELN، مما يناسب مختبرات الأدوية والكيماويات والمشروبات.",
-        "description": "يقيس VariRef² معامل الانكسار وقيم Brix المشتقة منه، بطريقة قياس الزاوية الحرجة ومصدر ضوء LED بطول موجي 589 nm. تضم السلسلة أربعة طرازات. يغطي VariRef² 301 المدى من 1.3200 إلى 1.5800 RI باستبانة 0.0001 RI، ويغطي 401 المدى من 1.30000 إلى 1.66000 RI باستبانة 0.00001 RI. أما 501 و601 فيوسّعان المدى إلى 1.27000–1.71000 RI و1.27000–1.72000 RI على التوالي. ويتحكم نظام Peltier المدمج في درجة حرارة العينة من 5 إلى 80°C في الطرازين 301 و401، ومن 5 إلى 100°C في الطرازين 501 و601. وتُعوَّض نتائج Brix حرارياً وفق ICUMSA ومقاييس أخرى. وتُصنع حجيرة العينة من الياقوت الأزرق وFFKM والفولاذ المقاوم للصدأ 1.4404، مع Hastelloy عند الطلب، مما يتيح العمل مع المذيبات العدوانية. ويتم التشغيل عبر شاشة لمس مقاس 7 بوصات أو عن بُعد من متصفح، باستخدام برنامج Aquisys 3. وتربط واجهات Ethernet وRS232 وUSB وWLAN الجهاز بشبكات المختبر. وقد صُممت السلسلة لمختبرات الأدوية والكيماويات والأغذية والمشروبات التي تحتاج إلى فحوصات نقاوة وقياسات تركيز موثّقة.",
+        "description": "يقيس VariRef² معامل الانكسار وقيم Brix المشتقة منه، بطريقة قياس الزاوية الحرجة ومصدر ضوء LED بطول موجي 589 nm. تضم السلسلة أربعة طرازات. يغطي VariRef² 301 المدى من 1.3200 إلى 1.5800 RI باستبانة 0.0001 RI، ويغطي 401 المدى من 1.30000 إلى 1.66000 RI باستبانة 0.00001 RI. أما 501 و601 فيوسّعان المدى إلى 1.27000–1.71000 RI و1.27000–1.72000 RI على التوالي. ويتحكم نظام Peltier المدمج في درجة حرارة العينة من 5 إلى 80°C في الطرازين 301 و401، ومن 5 إلى 100°C في الطرازين 501 و601. وتُعوَّض نتائج Brix حرارياً وفق ICUMSA ومقاييس أخرى. وتُصنع حجيرة العينة من الياقوت الأزرق وFFKM والفولاذ المقاوم للصدأ 1.4404، مع سبيكة نيكل مقاومة للتآكل عند الطلب، مما يتيح العمل مع المذيبات العدوانية. ويتم التشغيل عبر شاشة لمس مقاس 7 بوصات أو عن بُعد من متصفح، باستخدام برنامج Aquisys 3. وتربط واجهات Ethernet وRS232 وUSB وWLAN الجهاز بشبكات المختبر. وقد صُممت السلسلة لمختبرات الأدوية والكيماويات والأغذية والمشروبات التي تحتاج إلى فحوصات نقاوة وقياسات تركيز موثّقة.",
         "applications": [
           "معامل الانكسار للمواد الخام الدوائية",
           "Brix للمشروبات والأشربة",
@@ -797,7 +799,7 @@
           },
           {
             "label": "مواد حجرة العينة",
-            "value": "الياقوت الأزرق، FFKM، فولاذ مقاوم للصدأ 1.4404 (Hastelloy عند الطلب)"
+            "value": "الياقوت الأزرق، FFKM، فولاذ مقاوم للصدأ 1.4404 (سبيكة نيكل مقاومة للتآكل عند الطلب)"
           },
           {
             "label": "الواجهات",
@@ -865,7 +867,7 @@
         "critical angle refractometer sapphire prism",
         "refractometer for molasses and syrup"
       ],
-      "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
+      "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and refractometry underpins process-control and quality checks on juices, syrups and raw sugar.",
       "sourceUrl": "https://schmidt-haensch.com/product/atr-p/",
       "imageUrls": [
         "file:images/schmidt-haensch/atr-p.png"
@@ -913,7 +915,7 @@
             "value": "VariControl مع شاشة لمس مقاس 7 بوصات"
           }
         ],
-        "whyMiddleEast": "يُعدّ تكرير السكر الخام صناعة كبيرة في الخليج، ويدعم قياس الاستقطاب فحوص الجودة والدفع للسكر الخام الوارد."
+        "whyMiddleEast": "يُعدّ تكرير السكر الخام صناعة كبيرة في الخليج، ويدعم قياس الانكسار فحوص الجودة ومراقبة العمليات للعصائر والأشربة والسكر الخام."
       }
     },
     {
@@ -922,8 +924,8 @@
       "slug": "atr-br",
       "category": "Refractometer",
       "priority": "core",
-      "summary": "ATR BR is a stand-alone critical-angle refractometer for liquids from thin to highly viscous, regardless of colour or turbidity. It covers 1.32000 to 1.54000 RI at 0.00001 RI resolution, which makes it a flexible general-purpose benchtop unit for food, chemical and quality-control laboratories.",
-      "description": "ATR BR measures refractive index by detecting the critical angle of total reflection at the boundary between its prism and the sample. Because the measurement depends on that boundary and not on light passing through the liquid, results do not depend on opacity or colour, and viscous or turbid samples can be measured as easily as clear ones. The instrument covers 1.32000 to 1.54000 RI, also shown as 100 percent Brix, with 0.00001 RI resolution and 0.01 percent Brix resolution. Precision is plus or minus 0.00002 RI between 1.32 and 1.44 RI and plus or minus 0.00003 RI between 1.44 and 1.54 RI. The unit is a compact stand-alone design that works without an external control unit. Typical uses include checking Brix of beverages, syrups and concentrates, identifying liquids by refractive index, and monitoring solution concentration in chemical and cosmetic production. It uses the same critical-angle sensing principle as the ATR P sugar refractometer.",
+      "summary": "ATR BR is a stand-alone critical-angle refractometer for liquids from thin to highly viscous, regardless of color or turbidity. It covers 1.32000 to 1.54000 RI at 0.00001 RI resolution, which makes it a flexible general-purpose benchtop unit for food, chemical and quality-control laboratories.",
+      "description": "ATR BR measures refractive index by detecting the critical angle of total reflection at the boundary between its prism and the sample. Because the measurement depends on that boundary and not on light passing through the liquid, results do not depend on opacity or color, and viscous or turbid samples can be measured as easily as clear ones. The instrument covers 1.32000 to 1.54000 RI, also shown as 100 percent Brix, with 0.00001 RI resolution and 0.01 percent Brix resolution. Precision is plus or minus 0.00002 RI between 1.32 and 1.44 RI and plus or minus 0.00003 RI between 1.44 and 1.54 RI. The unit is a compact stand-alone design that works without an external control unit. Typical uses include checking Brix of beverages, syrups and concentrates, identifying liquids by refractive index, and monitoring solution concentration in chemical and cosmetic production. It uses the same critical-angle sensing principle as the ATR P sugar refractometer.",
       "keySpecs": [
         {
           "label": "Measuring range",
@@ -943,7 +945,7 @@
         },
         {
           "label": "Sample types",
-          "value": "Low to high viscosity; independent of opacity and colour"
+          "value": "Low to high viscosity; independent of opacity and color"
         }
       ],
       "standards": [],
@@ -964,7 +966,8 @@
         "benchtop digital refractometer Brix",
         "refractometer for turbid liquids",
         "critical angle refractometer",
-        "refractive index meter stand-alone"
+        "refractive index meter stand-alone",
+        "refractive index metre stand-alone"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://schmidt-haensch.com/product/atr-br/",
@@ -1015,7 +1018,7 @@
       "category": "Refractometer",
       "priority": "niche",
       "summary": "ATR-L is a spectral refractometer that measures refractive index at seven LED wavelengths in about 20 seconds and calculates dispersion and Abbe number automatically. Its datasheet cites the ASTM method for refractive index and dispersion of hydrocarbon liquids, alongside optical materials and lens testing.",
-      "description": "A single refractive index value describes a liquid only at one wavelength, whereas dispersion, the change of index with wavelength, helps characterize hydrocarbons, polymers and optical materials. ATR-L measures at seven fixed LED wavelengths between 400 and 700 nm, using a CCD line detector with 2,048 elements to find the critical angle, and finishes all seven readings in about 20 seconds after the temperature has stabilized. The index range is 1.33200 to 1.70000 RI with 0.00001 RI resolution and precision of plus or minus 0.00004 RI. A solid-state Peltier system holds the sample between 10 and 80 degrees Celsius with 0.01 degree stability, and the sample compartment uses stainless steel, Delrin, Teflon, Viton and FFKM, with a YAG prism. The Abbe number is calculated automatically from the dispersion data. Its datasheet lists conformity with European and international pharmacopoeias and with ASTM, ISO and DIN methods, including the ASTM method for refractive index and dispersion of hydrocarbon liquids. Other uses are testing plastic and glass lenses, intraocular lens quality control, fibre-optic components and polymer compounds. The measuring head and control unit together weigh 8 kg.",
+      "description": "A single refractive index value describes a liquid only at one wavelength, whereas dispersion, the change of index with wavelength, helps characterize hydrocarbons, polymers and optical materials. ATR-L measures at seven fixed LED wavelengths between 400 and 700 nm, using a CCD line detector with 2,048 elements to find the critical angle, and finishes all seven readings in about 20 seconds after the temperature has stabilized. The index range is 1.33200 to 1.70000 RI with 0.00001 RI resolution and precision of plus or minus 0.00004 RI. A solid-state Peltier system holds the sample between 10 and 80 degrees Celsius with 0.01 degree stability, and the sample compartment uses stainless steel, acetal, PTFE, FKM and FFKM, with a YAG prism. The Abbe number is calculated automatically from the dispersion data. Its datasheet lists conformity with European and international pharmacopoeias and with ASTM, ISO and DIN methods, including the ASTM method for refractive index and dispersion of hydrocarbon liquids. Other uses are testing plastic and glass lenses, intraocular lens quality control, fiber-optic components and polymer compounds. The measuring head and control unit together weigh 8 kg.",
       "keySpecs": [
         {
           "label": "Measuring range",
@@ -1087,8 +1090,8 @@
       "ar": {
         "name": "ATR-L مقياس انكسار التشتت",
         "category": "مقياس الانكسار",
-        "summary": "ATR-L مقياس انكسار طيفي يقيس معامل الانكسار عند 7 أطوال موجية بمصابيح LED في نحو 20 ثانية، ويحسب التشتت وعدد آبي تلقائياً. وتذكر ورقة بياناته طريقة ASTM لمعامل الانكسار والتشتت للسوائل الهيدروكربونية، إلى جانب المواد البصرية واختبار العدسات.",
-        "description": "تصف قيمة واحدة لمعامل الانكسار السائلَ عند طول موجي واحد فقط، في حين أن التشتت، أي تغيّر المعامل مع الطول الموجي، يساعد في توصيف الهيدروكربونات والبوليمرات والمواد البصرية. ويقيس ATR-L عند 7 أطوال موجية ثابتة بمصابيح LED بين 400 و700 nm، مستخدماً كاشفاً خطياً من نوع CCD بـ 2,048 عنصراً لتحديد الزاوية الحرجة، ويُنهي القراءات السبع جميعها في نحو 20 ثانية بعد استقرار درجة الحرارة. يمتد مدى المعامل من 1.33200 إلى 1.70000 RI باستبانة 0.00001 RI وضبط ±0.00004 RI. ويحافظ نظام Peltier ذو الحالة الصلبة على درجة حرارة العينة بين 10 و80°C باستقرار 0.01 درجة، وتتكوّن حجيرة العينة من الفولاذ المقاوم للصدأ وDelrin وTeflon وViton وFFKM، مع منشور YAG. ويُحسب عدد آبي تلقائياً من بيانات التشتت. وتذكر ورقة بياناته توافقه مع دساتير الأدوية الأوروبية والدولية ومع طرائق ASTM وISO وDIN، ومنها طريقة ASTM لمعامل الانكسار والتشتت للسوائل الهيدروكربونية. وتشمل الاستخدامات الأخرى اختبار العدسات البلاستيكية والزجاجية، ومراقبة جودة العدسات داخل العين، ومكوّنات الألياف الضوئية، ومركّبات البوليمرات. ويبلغ وزن رأس القياس ووحدة التحكم معاً 8 kg.",
+        "summary": "ATR-L مقياس انكسار طيفي يقيس معامل الانكسار عند 7 أطوال موجية بمصابيح LED في نحو 20 ثانية، ويحسب التشتت وعدد آبي تلقائياً. وتذكر نشرته الفنية طريقة ASTM لمعامل الانكسار والتشتت للسوائل الهيدروكربونية، إلى جانب المواد البصرية واختبار العدسات.",
+        "description": "تصف قيمة واحدة لمعامل الانكسار السائلَ عند طول موجي واحد فقط، في حين أن التشتت، أي تغيّر المعامل مع الطول الموجي، يساعد في توصيف الهيدروكربونات والبوليمرات والمواد البصرية. ويقيس ATR-L عند 7 أطوال موجية ثابتة بمصابيح LED بين 400 و700 nm، مستخدماً كاشفاً خطياً من نوع CCD بـ 2,048 عنصراً لتحديد الزاوية الحرجة، ويُنهي القراءات السبع جميعها في نحو 20 ثانية بعد استقرار درجة الحرارة. يمتد مدى المعامل من 1.33200 إلى 1.70000 RI باستبانة 0.00001 RI وضبط ±0.00004 RI. ويحافظ نظام Peltier ذو الحالة الصلبة على درجة حرارة العينة بين 10 و80°C باستقرار 0.01 درجة، وتتكوّن حجيرة العينة من الفولاذ المقاوم للصدأ والأسيتال وPTFE وFKM وFFKM، مع منشور YAG. ويُحسب عدد آبي تلقائياً من بيانات التشتت. وتذكر نشرته الفنية توافقه مع دساتير الأدوية الأوروبية والدولية ومع طرائق ASTM وISO وDIN، ومنها طريقة ASTM لمعامل الانكسار والتشتت للسوائل الهيدروكربونية. وتشمل الاستخدامات الأخرى اختبار العدسات البلاستيكية والزجاجية، ومراقبة جودة العدسات داخل العين، ومكوّنات الألياف الضوئية، ومركّبات البوليمرات. ويبلغ وزن رأس القياس ووحدة التحكم معاً 8 kg.",
         "applications": [
           "معامل الانكسار والتشتت للسوائل الهيدروكربونية",
           "عدد آبي للعدسات والمواد البصرية",
@@ -1145,10 +1148,10 @@
       "name": "VariDens Density Meter",
       "model": "VariDens B / VariDens C",
       "slug": "varidens",
-      "category": "Density meter",
+      "category": "Density Meter",
       "priority": "core",
       "summary": "VariDens is a laboratory density meter with Peltier temperature control from 10 to 95 degrees Celsius, bubble detection and two accuracy grades down to 0.00005 g/cm3. Its datasheet lists the petroleum industry among its applications, together with beverages, pharmaceuticals, chemicals and cosmetics.",
-      "description": "VariDens measures liquid density over a range of 0 to 3 g/cm3, using a glass measuring cell that is temperature-controlled by a Peltier element between 10 and 95 degrees Celsius and tolerates pressure up to 10 bar. Two versions are offered: VariDens C has accuracy of plus or minus 0.0001 g/cm3 and reproducibility of 0.0001 g/cm3 with a measuring time under ten seconds, and VariDens B has accuracy of plus or minus 0.00005 g/cm3 and reproducibility of 0.00001 g/cm3 with a measuring time under 30 seconds after temperature stabilization. Bubble detection combines visual and electronic checks, an integrated air pump dries the cell, and the temperature compensation is built in. The minimum sample volume is 1.5 ml, wetted parts are borosilicate glass and PTFE, and the cell stabilizes from 25 to 20 degrees Celsius within 0.01 degrees in about 18 minutes. A 7-inch touchscreen is optional, and the instrument connects over Ethernet, RS232, USB or WLAN. VariDens is part of the VariFamily and is 21 CFR Part 11 conform through the Aquisys 3 software. Its datasheet lists beverage, chemical, cosmetic, food, medical, petroleum, pharmaceutical and sugar uses.",
+      "description": "VariDens measures liquid density over a range of 0 to 3 g/cm3, using a glass measuring cell that is temperature-controlled by a Peltier element between 10 and 95 degrees Celsius and tolerates pressure up to 10 bar. Two versions are offered: VariDens C has accuracy of plus or minus 0.0001 g/cm3 and reproducibility of 0.0001 g/cm3 with a measuring time under ten seconds, and VariDens B has accuracy of plus or minus 0.00005 g/cm3 and reproducibility of 0.00001 g/cm3 with a measuring time under 30 seconds after temperature stabilization. Bubble detection combines visual and electronic checks, an integrated air pump dries the cell, and the temperature compensation is built in. The minimum sample volume is 1.5 ml, wetted parts are borosilicate glass and PTFE, and the cell stabilizes from 25 to 20 degrees Celsius within 0.01 degrees in about 18 minutes. A 7-inch touchscreen is optional, and the instrument connects over Ethernet, RS232, USB or WLAN. VariDens is part of the VariFamily and is 21 CFR Part 11 compliant through the Aquisys 3 software. Its datasheet lists beverage, chemical, cosmetic, food, medical, petroleum, pharmaceutical and sugar uses.",
       "keySpecs": [
         {
           "label": "Measuring range",
@@ -1217,7 +1220,12 @@
         "digital density meter petroleum",
         "oscillating U-tube density meter",
         "density meter 21 CFR Part 11",
-        "density meter Peltier temperature control"
+        "density meter Peltier temperature control",
+        "laboratory density metre",
+        "digital density metre petroleum",
+        "oscillating U-tube density metre",
+        "density metre 21 CFR Part 11",
+        "density metre Peltier temperature control"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://schmidt-haensch.com/product/varidens-density-meter/",
@@ -1228,8 +1236,8 @@
       "ar": {
         "name": "VariDens مقياس الكثافة",
         "category": "مقياس الكثافة",
-        "summary": "VariDens مقياس كثافة مخبري بتحكم حراري Peltier من 10 إلى 95°C، مع كشف الفقاعات ودرجتين من الدقة تصل إلى 0.00005 g/cm3. وتدرج ورقة بياناته الصناعة البترولية ضمن تطبيقاته، إلى جانب المشروبات والأدوية والكيماويات ومستحضرات التجميل.",
-        "description": "يقيس VariDens كثافة السوائل ضمن مدى من 0 إلى 3 g/cm3، باستخدام خلية قياس زجاجية يتحكم عنصر Peltier في درجة حرارتها بين 10 و95°C وتتحمل ضغطاً حتى 10 bar. ويتوفر بإصدارين: VariDens C بدقة ±0.0001 g/cm3 وقابلية إعادة إنتاج 0.0001 g/cm3 وزمن قياس أقل من 10 ثوانٍ، وVariDens B بدقة ±0.00005 g/cm3 وقابلية إعادة إنتاج 0.00001 g/cm3 وزمن قياس أقل من 30 ثانية بعد استقرار درجة الحرارة. ويجمع كشف الفقاعات بين فحص بصري وفحص إلكتروني، وتقوم مضخة هواء مدمجة بتجفيف الخلية، والتعويض الحراري مدمج في الجهاز. وأدنى حجم للعينة 1.5 ml، والأجزاء الملامسة للعينة من زجاج البوروسيليكات وPTFE، وتستقر الخلية من 25 إلى 20°C ضمن 0.01 درجة في نحو 18 دقيقة. وشاشة اللمس مقاس 7 بوصات اختيارية، ويتصل الجهاز عبر Ethernet أو RS232 أو USB أو WLAN. وVariDens جزء من VariFamily وهو متوافق مع 21 CFR Part 11 عبر برنامج Aquisys 3. وتدرج ورقة بياناته استخدامات في المشروبات والكيماويات ومستحضرات التجميل والأغذية والمجال الطبي والصناعة البترولية والأدوية والسكر.",
+        "summary": "VariDens مقياس كثافة مخبري بتحكم حراري Peltier من 10 إلى 95°C، مع كشف الفقاعات ودرجتين من الدقة تصل إلى 0.00005 g/cm3. وتدرج نشرته الفنية الصناعة البترولية ضمن تطبيقاته، إلى جانب المشروبات والأدوية والكيماويات ومستحضرات التجميل.",
+        "description": "يقيس VariDens كثافة السوائل ضمن مدى من 0 إلى 3 g/cm3، باستخدام خلية قياس زجاجية يتحكم عنصر Peltier في درجة حرارتها بين 10 و95°C وتتحمل ضغطاً حتى 10 bar. ويتوفر بإصدارين: VariDens C بدقة ±0.0001 g/cm3 وقابلية إعادة إنتاج 0.0001 g/cm3 وزمن قياس أقل من 10 ثوانٍ، وVariDens B بدقة ±0.00005 g/cm3 وقابلية إعادة إنتاج 0.00001 g/cm3 وزمن قياس أقل من 30 ثانية بعد استقرار درجة الحرارة. ويجمع كشف الفقاعات بين فحص بصري وفحص إلكتروني، وتقوم مضخة هواء مدمجة بتجفيف الخلية، والتعويض الحراري مدمج في الجهاز. وأدنى حجم للعينة 1.5 ml، والأجزاء الملامسة للعينة من زجاج البوروسيليكات وPTFE، وتستقر الخلية من 25 إلى 20°C ضمن 0.01 درجة في نحو 18 دقيقة. وشاشة اللمس مقاس 7 بوصات اختيارية، ويتصل الجهاز عبر Ethernet أو RS232 أو USB أو WLAN. وVariDens جزء من VariFamily وهو متوافق مع 21 CFR Part 11 عبر برنامج Aquisys 3. وتدرج نشرته الفنية استخدامات في المشروبات والكيماويات ومستحضرات التجميل والأغذية والمجال الطبي والصناعة البترولية والأدوية والسكر.",
         "applications": [
           "كثافة المنتجات البترولية",
           "الكثافة النوعية وتركيز المشروبات",
@@ -1293,10 +1301,10 @@
       "name": "iPR C2 Compact In-Line Process Refractometer",
       "model": "iPR C2",
       "slug": "ipr-c2",
-      "category": "Process refractometer",
+      "category": "Process Refractometer",
       "priority": "core",
       "summary": "iPR C2 is a compact in-line refractometer that measures Brix or refractive index directly in the process line, with two 4-20 mA outputs, relay switches and a sapphire prism. It handles pressures up to 30 bar and temperatures from -10 to +65 degrees Celsius, and lists cutting oils and organic solvents among its uses.",
-      "description": "In-line refractometers give a continuous concentration reading from the pipe, so operators can react to dilution or contamination while production continues. The iPR C2 is a compact probe, 150 mm long and 65 mm in diameter, weighing about one kilogram, fitted with a sapphire prism and a temperature sensor placed inside the prism for accurate compensation. It measures refractive index from 1.3200 to 1.4209, equal to 0 to 50 Brix, with 0.0001 RI resolution and accuracy of plus or minus 0.0002 RI, or plus or minus 0.15 Brix at 25 degrees Celsius. Automatic temperature compensation works from 10 to 50 degrees Celsius, and the process side tolerates -10 to +65 degrees Celsius and up to 30 bar. Stainless steel or Hastelloy process-contact parts are available. Two isolated 4-20 mA outputs, two digital switch outputs rated to 1 A and a serial output on RS232, RS485 or USB connect it to control systems, and the probe runs on 24 V DC. Mounting accessories include VariVent, APV and TriClamp fittings. The datasheet lists beverage dilution, urea production, organic solvents, cutting oils, cooling lubricants, detergents, latex and wastewater control.",
+      "description": "In-line refractometers give a continuous concentration reading from the pipe, so operators can react to dilution or contamination while production continues. The iPR C2 is a compact probe, 150 mm long and 65 mm in diameter, weighing about one kilogram, fitted with a sapphire prism and a temperature sensor placed inside the prism for accurate compensation. It measures refractive index from 1.3200 to 1.4209, equal to 0 to 50 Brix, with 0.0001 RI resolution and accuracy of plus or minus 0.0002 RI, or plus or minus 0.15 Brix at 25 degrees Celsius. Automatic temperature compensation works from 10 to 50 degrees Celsius, and the process side tolerates -10 to +65 degrees Celsius and up to 30 bar. Stainless steel or corrosion-resistant nickel alloy process-contact parts are available. Two isolated 4-20 mA outputs, two digital switch outputs rated to 1 A and a serial output on RS232, RS485 or USB connect it to control systems, and the probe runs on 24 V DC. Mounting accessories include sanitary process-connection fittings. The datasheet lists beverage dilution, urea production, organic solvents, cutting oils, cooling lubricants, detergents, latex and wastewater control.",
       "keySpecs": [
         {
           "label": "Measuring range",
@@ -1328,7 +1336,7 @@
         },
         {
           "label": "Process contact material",
-          "value": "Stainless steel or Hastelloy"
+          "value": "Stainless steel or corrosion-resistant nickel alloy"
         },
         {
           "label": "Power supply",
@@ -1369,13 +1377,13 @@
       "ar": {
         "name": "iPR C2 مقياس انكسار مدمج للعمليات داخل الخط",
         "category": "مقياس انكسار للعمليات",
-        "summary": "iPR C2 مقياس انكسار مدمج يُركَّب مباشرة في خط العملية ويقيس Brix أو معامل الانكسار داخله، بمخرجين 4-20 mA ومفاتيح ترحيل (Relay) ومنشور من الياقوت الأزرق. يتحمل ضغوطاً حتى 30 bar ودرجات حرارة من -10 إلى +65°C، وتدرج ورقة بياناته زيوت القطع والمذيبات العضوية ضمن استخداماته.",
-        "description": "تتيح مقاييس الانكسار المركّبة في الخط قراءة مستمرة للتركيز من الأنبوب مباشرة، فيستطيع المشغّلون التفاعل مع التخفيف أو التلوث أثناء استمرار الإنتاج. وiPR C2 مسبار مدمج بطول 150 mm وقطر 65 mm ووزن نحو كيلوغرام واحد، مزوّد بمنشور من الياقوت الأزرق وحساس درجة الحرارة موضوع داخل المنشور لتعويض دقيق. يقيس معامل الانكسار من 1.3200 إلى 1.4209، وهو ما يقابل 0 إلى 50 Brix، باستبانة 0.0001 RI ودقة ±0.0002 RI أو ±0.15 Brix عند 25°C. ويعمل التعويض الحراري التلقائي من 10 إلى 50°C، ويتحمل جانب العملية من -10 إلى +65°C وضغطاً حتى 30 bar. وتتوفر أجزاء ملامسة للعملية من الفولاذ المقاوم للصدأ أو Hastelloy. ويربط مخرجان معزولان 4-20 mA ومخرجا تبديل رقميان بتصنيف حتى 1 A ومخرج تسلسلي عبر RS232 أو RS485 أو USB الجهاز بأنظمة التحكم، ويعمل المسبار بجهد 24 V DC. وتشمل ملحقات التركيب وصلات VariVent وAPV وTriClamp. وتدرج ورقة البيانات تخفيف المشروبات وإنتاج اليوريا والمذيبات العضوية وزيوت القطع ومواد التبريد والتزييت والمنظفات واللاتكس ومراقبة مياه الصرف.",
+        "summary": "iPR C2 مقياس انكسار مدمج يُركَّب مباشرة في خط العملية ويقيس Brix أو معامل الانكسار داخله، بمخرجين 4-20 mA ومفاتيح ترحيل (Relay) ومنشور من الياقوت الأزرق. يتحمل ضغوطاً حتى 30 bar ودرجات حرارة من −10 إلى +65°C، وتدرج نشرته الفنية زيوت القطع والمذيبات العضوية ضمن استخداماته.",
+        "description": "تتيح مقاييس الانكسار المركّبة في الخط قراءة مستمرة للتركيز من الأنبوب مباشرة، فيستطيع المشغّلون التفاعل مع التخفيف أو التلوث أثناء استمرار الإنتاج. وiPR C2 مسبار مدمج بطول 150 mm وقطر 65 mm ووزن نحو كيلوغرام واحد، مزوّد بمنشور من الياقوت الأزرق وحساس درجة الحرارة موضوع داخل المنشور لتعويض دقيق. يقيس معامل الانكسار من 1.3200 إلى 1.4209، وهو ما يقابل 0 إلى 50 Brix، باستبانة 0.0001 RI ودقة ±0.0002 RI أو ±0.15 Brix عند 25°C. ويعمل التعويض الحراري التلقائي من 10 إلى 50°C، ويتحمل جانب العملية من −10 إلى +65°C وضغطاً حتى 30 bar. وتتوفر أجزاء ملامسة للعملية من الفولاذ المقاوم للصدأ أو من سبيكة نيكل مقاومة للتآكل. ويربط مخرجان معزولان 4-20 mA ومخرجا تبديل رقميان بتصنيف حتى 1 A ومخرج تسلسلي عبر RS232 أو RS485 أو USB الجهاز بأنظمة التحكم، ويعمل المسبار بجهد 24 V DC. وتشمل ملحقات التركيب وصلات صحية لتوصيل العملية. وتدرج النشرة الفنية تخفيف المشروبات وإنتاج اليوريا والمذيبات العضوية وزيوت القطع ومواد التبريد والتشحيم والمنظفات واللاتكس ومراقبة مياه الصرف.",
         "applications": [
           "مراقبة Brix والتركيز مباشرة في الخط",
           "تخفيف المشروبات والمشروبات الغازية",
           "المذيبات العضوية وزيوت القطع",
-          "تركيز مواد التبريد والتزييت والمنظفات",
+          "تركيز مواد التبريد والتشحيم والمنظفات",
           "إنتاج اليوريا ومراقبة مياه الصرف"
         ],
         "keySpecs": [
@@ -1393,7 +1401,7 @@
           },
           {
             "label": "درجة حرارة العملية",
-            "value": "-10 °C إلى +65 °C"
+            "value": "−10 °C إلى +65 °C"
           },
           {
             "label": "ضغط العملية",
@@ -1409,7 +1417,7 @@
           },
           {
             "label": "مادة الأجزاء الملامسة للعملية",
-            "value": "فولاذ مقاوم للصدأ أو Hastelloy"
+            "value": "فولاذ مقاوم للصدأ أو سبيكة نيكل مقاومة للتآكل"
           },
           {
             "label": "مصدر الطاقة",
@@ -1428,8 +1436,8 @@
       "slug": "coloromat-100",
       "category": "Colorimeter",
       "priority": "niche",
-      "summary": "Coloromat 100 is a single-beam LED photometer for liquid colour, reading from 0 to 16,000 ICUMSA units. It handles sugar colour, beer and wort EBC colour, wine and soft drink colour index, and uses polarimeter flow-through tubes up to 100 mm, with up to 250 stored methods.",
-      "description": "Colour is a payment and quality parameter in sugar, brewing and beverage production, and it is reported in standardized units such as ICUMSA, EBC and APHA. Coloromat 100 measures transmission, extinction and colour units from 340 to 900 nm using an LED light source and narrow-band filters, with a typical bandwidth of 4 to 7 nm. It reads 0 to 16,000 ICUMSA units, with accuracy of plus or minus 0.020 extinction at 420 nm, extinction resolution of 0.001 and ICUMSA resolution of 1 unit. The sample compartment is open top and bottom, so spills cannot reach the electronics, and polarimeter tubes up to 100 mm can be used as cuvettes in single or flow-through mode. The optical design is not affected by stray light. A touchscreen provides method selection and alphanumeric input, and up to 250 methods can be programmed. A continuous mode with adjustable sampling rate tracks colour changes in a product stream over time. Data are output through RS232C and USB. Typical uses are liquid sugar colour, beer and wort EBC colour, wine and soft drink colour index, coffee extracts and enzymatic NAD(P)H methods.",
+      "summary": "Coloromat 100 is a single-beam LED photometer for liquid color, reading from 0 to 16,000 ICUMSA units. It handles sugar color, beer and wort EBC color, wine and soft drink color index, and uses polarimeter flow-through tubes up to 100 mm, with up to 250 stored methods.",
+      "description": "Color is a payment and quality parameter in sugar, brewing and beverage production, and it is reported in standardized units such as ICUMSA, EBC and APHA. Coloromat 100 measures transmission, extinction and color units from 340 to 900 nm using an LED light source and narrow-band filters, with a typical bandwidth of 4 to 7 nm. It reads 0 to 16,000 ICUMSA units, with accuracy of plus or minus 0.020 extinction at 420 nm, extinction resolution of 0.001 and ICUMSA resolution of 1 unit. The sample compartment is open top and bottom, so spills cannot reach the electronics, and polarimeter tubes up to 100 mm can be used as cuvettes in single or flow-through mode. The optical design is not affected by stray light. A touchscreen provides method selection and alphanumeric input, and up to 250 methods can be programmed. A continuous mode with adjustable sampling rate tracks color changes in a product stream over time. Data are output through RS232C and USB. Typical uses are liquid sugar color, beer and wort EBC color, wine and soft drink color index, coffee extracts and enzymatic NAD(P)H methods.",
       "keySpecs": [
         {
           "label": "Measuring range",
@@ -1470,27 +1478,34 @@
       ],
       "standards": [
         "ICUMSA",
-        "EBC colour",
-        "APHA colour"
+        "EBC color",
+        "APHA color"
       ],
       "applications": [
-        "ICUMSA colour of liquid and crystal sugar",
-        "EBC colour of beer and wort",
-        "Colour index of wine and soft drinks",
-        "Coffee and extract colour",
+        "ICUMSA color of liquid and crystal sugar",
+        "EBC color of beer and wort",
+        "Color index of wine and soft drinks",
+        "Coffee and extract color",
         "Enzymatic NAD(P)H methods"
       ],
       "industries": [
         "food-beverage"
       ],
       "searchKeywords": [
+        "ICUMSA color measurement",
+        "sugar color photometer",
+        "EBC color beer colorimeter",
+        "liquid color photometer LED",
+        "colorimeter for sugar solutions",
         "ICUMSA colour measurement",
         "sugar colour photometer",
-        "EBC colour beer colorimeter",
+        "sugar color photometre",
+        "EBC colour beer colourimeter",
         "liquid colour photometer LED",
-        "colorimeter for sugar solutions"
+        "liquid color photometre LED",
+        "colourimeter for sugar solutions"
       ],
-      "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and polarimetry underpins quality and payment checks on incoming raw sugar.",
+      "whyMiddleEast": "Raw sugar refining is a large industry in the Gulf, and color measurement underpins quality and payment checks on incoming raw sugar.",
       "sourceUrl": "https://schmidt-haensch.com/product/coloromat-100-digital-single-beam-photometer-for-the-determination-of-liquid-colour/",
       "imageUrls": [
         "file:images/schmidt-haensch/coloromat-100.jpg"
@@ -1551,9 +1566,9 @@
           "لون EBC",
           "لون APHA"
         ],
-        "whyMiddleEast": "يُعدّ تكرير السكر الخام صناعة كبيرة في الخليج، ويدعم قياس الاستقطاب فحوص الجودة والدفع للسكر الخام الوارد."
+        "whyMiddleEast": "يُعدّ تكرير السكر الخام صناعة كبيرة في الخليج، ويدعم قياس اللون فحوص الجودة والدفع للسكر الخام الوارد."
       }
     }
   ],
-  "brandSummaryAr": "Schmidt + Haensch شركة عائلية مقرها برلين، تأسست عام 1864، وتصنّع أجهزة القياس البصرية، ومنها مقاييس الاستقطاب ومقاييس الانكسار ومقاييس الكثافة وأجهزة القياس الضوئي ومحلّلات العمليات المركّبة مباشرة في خط الإنتاج. وتُستخدم أجهزتها، ومنها مقياس استقطاب السكر Saccharomat ذو إسفين الكوارتز وأجهزة VariFamily الصيدلانية، في مختبرات السكر والأغذية والأدوية والكيماويات، ويحمل نظام الجودة لديها شهادة ISO 9001."
+  "brandSummaryAr": "Schmidt + Haensch شركة عائلية مقرها برلين، تأسست عام 1864، وتصنّع أجهزة القياس البصرية، ومنها مقاييس الاستقطاب ومقاييس الانكسار ومقاييس الكثافة وأجهزة القياس الضوئي ومحلّلات العمليات المركّبة مباشرة في خط الإنتاج. وتُستخدم أجهزتها، ومنها مقياس استقطاب السكر Saccharomat ذو إسفين الكوارتز وأجهزة VariFamily الصيدلانية، في مختبرات السكر والأغذية والأدوية والكيماويات. وعمليات التصنيع لدى Schmidt + Haensch نفسها حاصلة على شهادة ISO 9001."
 }

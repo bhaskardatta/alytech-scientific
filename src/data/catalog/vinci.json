@@ -3,16 +3,16 @@
   "brandSlug": "vinci",
   "brandUrl": "https://www.vinci-technologies.com",
   "headquarters": "Nanterre (Paris area), France",
-  "brandSummary": "Vinci Technologies is a French manufacturer of laboratory instruments for reservoir characterization, based in Nanterre near Paris with subsidiaries in the United States and India. Its Rocks and Fluids range covers core preparation and analysis, enhanced oil recovery, formation damage and PVT, and the company also builds catalyst testing and vacuum deposition equipment. Its quality system is ISO 9001 certified.",
+  "brandSummary": "Vinci Technologies is a French manufacturer of laboratory instruments for reservoir characterization, based in Nanterre near Paris. Its Rocks and Fluids range covers core preparation and analysis, enhanced oil recovery, formation damage and PVT, and the company also builds catalyst testing and vacuum deposition equipment. Vinci Technologies' own manufacturing is ISO 9001 certified.",
   "logoUrl": "https://www.vinci-technologies.com/images/logo.png",
   "products": [
     {
       "name": "Fluid Eval PVT System (Standard and Maxi)",
       "model": "FLUID EVAL (500 cc / 1,000 cc)",
       "slug": "fluid-eval-pvt",
-      "category": "PVT system",
+      "category": "PVT System",
       "priority": "flagship",
-      "summary": "Fluid Eval is a mercury-free PVT cell that studies phase behaviour of black oil, volatile oil and gas condensate at reservoir pressure and temperature. A built-in pump, camera, magnetic stirrer and rocking mechanism automate the work, and optional solid-detection and microscope modules extend it to asphaltene and wax studies.",
+      "summary": "Fluid Eval is a mercury-free PVT cell that studies phase behavior of black oil, volatile oil and gas condensate at reservoir pressure and temperature. A built-in pump, camera, magnetic stirrer and rocking mechanism automate the work, and optional solid-detection and microscope modules extend it to asphaltene and wax studies.",
       "description": "Fluid Eval determines how a reservoir fluid behaves as pressure and temperature change, which is the basis for estimating reserves, designing separators and planning production. The standard model holds 500 cc at up to 20,000 psi, and the maxi model holds 1,000 cc at up to 15,000 psi. Temperature runs from ambient to 200 degrees Celsius, with a sub-ambient option down to -20 degrees Celsius, and regulation within 0.5 degrees Celsius. An embedded pump changes pressure and reads volume to 0.01 ml, a camera records the experiment, and automated detection identifies phase boundaries and measures phase volumes. A magnetically driven stirrer brings the sample to equilibrium quickly, and a motorized rocking system positions the cell. The design avoids mercury altogether. Its large cell volume allows representative sample studies. Typical tests include constant composition expansion, differential liberation and separator tests on black oils, volatile oils and condensates. An infrared laser solid detection system and a high-pressure microscope can be added for asphaltene and wax onset work, and viscosity and density modules can be attached. Pressure accuracy is 0.1 percent of full scale.",
       "keySpecs": [
         {
@@ -77,7 +77,7 @@
         "name": "Fluid Eval نظام PVT (قياسي وMaxi)",
         "category": "نظام PVT",
         "summary": "Fluid Eval خلية PVT خالية من الزئبق تدرس السلوك الطوري للنفط الأسود والنفط المتطاير ومكثفات الغاز عند ضغط ودرجة حرارة المكمن. وتؤتمت المضخة المدمجة والكاميرا والخلاط المغناطيسي وآلية التأرجح العمل، وتوسّع وحدتا كشف المواد الصلبة والمجهر الاختياريتان نطاقه إلى دراسات الأسفلتينات والشموع.",
-        "description": "يحدد Fluid Eval كيف يتصرف مائع المكمن مع تغير الضغط ودرجة الحرارة، وهو الأساس في تقدير الاحتياطيات وتصميم الفواصل وتخطيط الإنتاج. تبلغ سعة الطراز القياسي 500 cc بضغط يصل إلى 20,000 psi، وسعة الطراز الأكبر (maxi) 1,000 cc بضغط يصل إلى 15,000 psi. وتمتد درجة الحرارة من درجة الحرارة المحيطة إلى 200°C، مع خيار تبريد دون المحيطة حتى -20°C، وبضبط ضمن 0.5°C. وتغيّر مضخة مدمجة الضغط وتقرأ الحجم بدقة 0.01 ml، وتسجّل كاميرا التجربة، ويحدد الكشف الآلي حدود الأطوار ويقيس أحجامها. ويوصل محرّك تقليب يُدار مغناطيسياً العينة إلى الاتزان بسرعة، ويضع نظام تأرجح آلي الخلية في وضعها. ويستغني التصميم عن الزئبق كلياً. ويتيح حجم الخلية الكبير دراسة عينات ممثِّلة. وتشمل الاختبارات المعتادة التمدد بتركيب ثابت والتحرر التفاضلي واختبارات الفاصل على النفوط السوداء والنفوط المتطايرة والمكثفات. ويمكن إضافة نظام كشف مواد صلبة بالليزر بالأشعة تحت الحمراء ومجهر عالي الضغط لأعمال بدء ترسب الأسفلتينات والشموع، كما يمكن توصيل وحدات اللزوجة والكثافة. ودقة الضغط 0.1% من المدى الكامل.",
+        "description": "يحدد Fluid Eval كيف يتصرف مائع المكمن مع تغير الضغط ودرجة الحرارة، وهو الأساس في تقدير الاحتياطيات وتصميم الفواصل وتخطيط الإنتاج. تبلغ سعة الطراز القياسي 500 cc بضغط يصل إلى 20,000 psi، وسعة الطراز الأكبر (maxi) 1,000 cc بضغط يصل إلى 15,000 psi. وتمتد درجة الحرارة من درجة الحرارة المحيطة إلى 200°C، مع خيار تبريد دون المحيطة حتى −20°C، وبضبط ضمن 0.5°C. وتغيّر مضخة مدمجة الضغط وتقرأ الحجم بدقة 0.01 ml، وتسجّل كاميرا التجربة، ويحدد الكشف الآلي حدود الأطوار ويقيس أحجامها. ويوصل محرّك تقليب يُدار مغناطيسياً العينة إلى الاتزان بسرعة، ويضع نظام تأرجح آلي الخلية في وضعها. ويستغني التصميم عن الزئبق كلياً. ويتيح حجم الخلية الكبير دراسة عينات ممثِّلة. وتشمل الاختبارات المعتادة التمدد بتركيب ثابت والتحرر التفاضلي واختبارات الفاصل على النفوط السوداء والنفوط المتطايرة والمكثفات. ويمكن إضافة نظام كشف مواد صلبة بالليزر بالأشعة تحت الحمراء ومجهر عالي الضغط لأعمال بدء ترسب الأسفلتينات والشموع، كما يمكن توصيل وحدات اللزوجة والكثافة. ودقة الضغط 0.1% من المدى الكامل.",
         "applications": [
           "التمدد بتركيب ثابت والتحرر التفاضلي",
           "اختبارات PVT للنفط الأسود والنفط المتطاير ومكثفات الغاز",
@@ -92,7 +92,7 @@
           },
           {
             "label": "مدى درجات الحرارة",
-            "value": "من درجة الحرارة المحيطة إلى 200 °C (اختياري حتى -20 °C)"
+            "value": "من درجة الحرارة المحيطة إلى 200 °C (اختياري حتى −20 °C)"
           },
           {
             "label": "ضبط درجة الحرارة",
@@ -126,7 +126,7 @@
       "name": "Visual Fluid Eval Full Visual PVT System",
       "model": "VISUAL FLUID EVAL / HP VISUAL FLUID EVAL",
       "slug": "visual-fluid-eval",
-      "category": "PVT system",
+      "category": "PVT System",
       "priority": "core",
       "summary": "Visual Fluid Eval is a full-visibility PVT cell for swelling tests, volatile oil and gas condensate work, where the operator must see the sample. A video system tracks the gas-liquid interface and measures retrograde condensate, and the cell inverts for dew point detection. A high-pressure version reaches 25,000 psi.",
       "description": "Some PVT experiments cannot be judged from pressure and volume curves alone, and the Visual Fluid Eval gives full sight of the sample throughout. A single cell serves both oil and condensate studies: upright for oils, inverted for gas condensates to improve dew point detection, with a motorized rocking mechanism handling the rotation. A video camera continuously watches the gas-liquid interface and measures the volume of retrograde condensate as pressure falls. The standard model holds 400 ml at up to 15,000 psi, and the HP version holds 250 ml at up to 25,000 psi, with temperature up to 200 degrees Celsius and regulation to 0.2 degrees Celsius. An embedded high-pressure pump controls pressure and reads volume to 0.001 ml, and liquid deposits are measured to 0.005 ml. The pressure transducer is rated at 0.02 percent of full scale. A magnetically coupled stirrer shortens equilibration, polyimide seals tolerate fast gas decompression, and sub-ambient temperature control is available. The system is mercury-free and has minimal dead volume. It is well suited to swelling tests with injection gas and to volatile oil and condensate studies.",
@@ -168,7 +168,7 @@
       "applications": [
         "Swelling tests with injection gas",
         "Gas condensate dew point and retrograde condensate",
-        "Volatile oil phase behaviour",
+        "Volatile oil phase behavior",
         "Visual observation of phase transitions",
         "High-pressure reservoir fluid studies"
       ],
@@ -183,7 +183,7 @@
         "full visual PVT 25000 psi",
         "dew point detection PVT cell"
       ],
-      "whyMiddleEast": "The Gulf holds some of the world's largest gas-condensate fields, where retrograde condensate behaviour drives development planning.",
+      "whyMiddleEast": "The Gulf holds some of the world's largest gas-condensate fields, where retrograde condensate behavior drives development planning.",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/pvt/phase-behavior/full-visual-pvt-system-for-reservoir-fluid-analysis/113603/",
       "imageUrls": [
         "file:images/vinci/visual-fluid-eval.jpg"
@@ -242,10 +242,10 @@
       "name": "RPS 700 Steady-State and Unsteady-State Relative Permeameter",
       "model": "RPS 700",
       "slug": "rps-700",
-      "category": "Special core analysis",
+      "category": "Special Core Analysis",
       "priority": "flagship",
       "summary": "The RPS 700 measures relative permeability on reservoir core plugs by either the steady-state or unsteady-state method at pressures to 700 bar and temperatures to 150 degrees Celsius. Fluids recirculate through the sample, and automated pumps, back-pressure control and a visual separator run the test under software sequencing.",
-      "description": "Relative permeability curves describe how oil, water and gas move together through reservoir rock, and they feed directly into simulation models and recovery forecasts. The RPS 700 produces them under reservoir-representative conditions. A core plug sits in a Viton sleeve inside a hydrostatic core holder, which is located in an isothermal convection air bath together with valves, plumbing and a visual produced-fluid separator. In steady-state mode, fluids are co-injected at fixed ratios and permeability is calculated with Darcy's law; in unsteady-state mode the displacement is analysed with the Jones and Rozelle equations. Triple high-pressure pumps deliver pulse-free, recirculated flow between 0.005 and 50 cc per minute, while an automated confining pump holds net overburden pressure steady and an automated regulator holds outlet pore pressure. Maximum confining and pore pressure are 700 bar, and the maximum temperature is 150 degrees Celsius. Cores are 1.5 inches in diameter and 1 to 3 inches long, with other sizes on request. Proprietary software supports manual and automatic control, camera monitoring and test sequencing, and live oil use needs about 300 ml.",
+      "description": "Relative permeability curves describe how oil, water and gas move together through reservoir rock, and they feed directly into simulation models and recovery forecasts. The RPS 700 produces them under reservoir-representative conditions. A core plug sits in a fluoroelastomer (FKM) sleeve inside a hydrostatic core holder, which is located in an isothermal convection air bath together with valves, plumbing and a visual produced-fluid separator. In steady-state mode, fluids are co-injected at fixed ratios and permeability is calculated with Darcy's law; in unsteady-state mode the displacement is analyzed with the Jones and Rozelle equations. Triple high-pressure pumps deliver pulse-free, recirculated flow between 0.005 and 50 cc per minute, while an automated confining pump holds net overburden pressure steady and an automated regulator holds outlet pore pressure. Maximum confining and pore pressure are 700 bar, and the maximum temperature is 150 degrees Celsius. Cores are 1.5 inches in diameter and 1 to 3 inches long, with other sizes on request. Proprietary software supports manual and automatic control, camera monitoring and test sequencing, and live oil use needs about 300 ml.",
       "keySpecs": [
         {
           "label": "Maximum confining pressure",
@@ -293,7 +293,7 @@
         "Steady-state relative permeability",
         "Unsteady-state relative permeability",
         "Oil-water and gas-liquid systems",
-        "Reservoir-condition SCAL programmes",
+        "Reservoir-condition SCAL programs",
         "Input data for reservoir simulation"
       ],
       "industries": [
@@ -305,9 +305,10 @@
         "steady state relative permeameter",
         "unsteady state core flood Jones Rozelle",
         "SCAL laboratory equipment",
-        "reservoir condition relative permeability system"
+        "reservoir condition relative permeability system",
+        "steady state relative permeametre"
       ],
-      "whyMiddleEast": "Gulf reservoirs are largely carbonate, so acid response and rock-fluid behaviour in carbonate cores are routine questions for regional operators and laboratories.",
+      "whyMiddleEast": "Gulf reservoirs are largely carbonate, so acid response and rock-fluid behavior in carbonate cores are routine questions for regional operators and laboratories.",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/special-core-analysis/relative-permeability/rps-700-steady-state-and-unsteady-state-relative-permeameter/113448/",
       "imageUrls": [
         "https://www.vinci-technologies.com/Medias/content/113448.jpg"
@@ -317,7 +318,7 @@
         "name": "RPS 700 جهاز قياس النفاذية النسبية بالحالة المستقرة وغير المستقرة",
         "category": "التحليل الخاص للعينات اللبية",
         "summary": "يقيس RPS 700 النفاذية النسبية على سدادات اللب المأخوذة من المكامن بطريقة الحالة المستقرة أو الحالة غير المستقرة عند ضغوط تصل إلى 700 bar ودرجات حرارة تصل إلى 150°C. وتتم إعادة تدوير السوائل عبر العينة، وتدير المضخات الآلية والتحكم بالضغط الخلفي وفاصل مرئي الاختبار وفق تسلسل برمجي.",
-        "description": "تصف منحنيات النفاذية النسبية كيف يتحرك النفط والماء والغاز معاً عبر صخر المكمن، وهي تغذي نماذج المحاكاة وتوقعات الاستخلاص مباشرة. وينتجها RPS 700 في ظروف تمثّل المكمن. توضع سدادة اللب في غلاف من Viton داخل حامل عينات لبية هيدروستاتيكي، يقع في حمام هوائي بالحمل الحراري ثابت درجة الحرارة مع الصمامات والأنابيب وفاصل مرئي للسوائل المنتجة. وفي وضع الحالة المستقرة تُحقن السوائل معاً بنسب ثابتة وتُحسب النفاذية بقانون دارسي؛ وفي وضع الحالة غير المستقرة تُحلَّل عملية الإزاحة بمعادلات Jones وRozelle. وتوفّر مضخات ثلاثية عالية الضغط تدفقاً خالياً من النبضات ومعاد التدوير بين 0.005 و50 cc في الدقيقة، بينما تحافظ مضخة حصر آلية على ثبات صافي ضغط الطبقات العلوية ويحافظ منظم آلي على ضغط المسام عند المخرج. والحد الأقصى لضغط الحصر وضغط المسام 700 bar، والحد الأقصى لدرجة الحرارة 150°C. وقطر العينات 1.5 بوصة وطولها من 1 إلى 3 بوصات، مع أحجام أخرى عند الطلب. ويدعم البرنامج الخاص التحكم اليدوي والآلي ومراقبة الكاميرا وتسلسل الاختبار، ويحتاج استخدام النفط الحي إلى نحو 300 ml.",
+        "description": "تصف منحنيات النفاذية النسبية كيف يتحرك النفط والماء والغاز معاً عبر صخر المكمن، وهي تغذي نماذج المحاكاة وتوقعات الاستخلاص مباشرة. وينتجها RPS 700 في ظروف تمثّل المكمن. توضع سدادة اللب في غلاف من مطاط فلوري (FKM) داخل حامل عينات لبية هيدروستاتيكي، يقع في حمام هوائي بالحمل الحراري ثابت درجة الحرارة مع الصمامات والأنابيب وفاصل مرئي للسوائل المنتجة. وفي وضع الحالة المستقرة تُحقن السوائل معاً بنسب ثابتة وتُحسب النفاذية بقانون دارسي؛ وفي وضع الحالة غير المستقرة تُحلَّل عملية الإزاحة بمعادلات Jones وRozelle. وتوفّر مضخات ثلاثية عالية الضغط تدفقاً خالياً من النبضات ومعاد التدوير بين 0.005 و50 cc في الدقيقة، بينما تحافظ مضخة حصر آلية على ثبات صافي ضغط الطبقات العلوية ويحافظ منظم آلي على ضغط المسام عند المخرج. والحد الأقصى لضغط الحصر وضغط المسام 700 bar، والحد الأقصى لدرجة الحرارة 150°C. وقطر العينات 1.5 بوصة وطولها من 1 إلى 3 بوصات، مع أحجام أخرى عند الطلب. ويدعم البرنامج الخاص التحكم اليدوي والآلي ومراقبة الكاميرا وتسلسل الاختبار، ويحتاج استخدام النفط الحي إلى نحو 300 ml.",
         "applications": [
           "النفاذية النسبية بالحالة المستقرة",
           "النفاذية النسبية بالحالة غير المستقرة",
@@ -374,7 +375,7 @@
       "name": "AUTOFLOOD 700 Unsteady-State Relative Permeameter",
       "model": "AUTOFLOOD 700",
       "slug": "autoflood-700",
-      "category": "Special core analysis",
+      "category": "Special Core Analysis",
       "priority": "core",
       "summary": "AUTOFLOOD 700 determines absolute and relative permeability by the unsteady-state method for liquid-liquid and liquid-gas systems at reservoir pressure and temperature. A nitrogen line allows gas-liquid tests, and an automatic back-pressure regulator and visual fluid monitoring keep the experiment under constant outlet conditions.",
       "description": "AUTOFLOOD 700 is the dedicated unsteady-state version of Vinci's relative permeameter line, intended for automated displacement testing on core plugs. Fluid is injected at constant rate or pressure, and the produced volumes of water, oil and gas are tracked against time to derive absolute permeability and relative permeability curves. A nitrogen flow line supplies gas at constant pressure up to 200 bar for gas-liquid work. An integrated automatic back-pressure regulator at the outlet holds a stable pressure and reacts at once to pressure swings and phase changes. The confining pump maintains net overburden pressure so that temperature changes do not disturb it, and a visual separator follows water, oil and gas production through the whole test. Core holder, air-operated valves, separator and plumbing sit together in an isothermal air bath that remains easy to reach. Maximum confining and pore pressure are 700 bar, with a maximum temperature of 150 degrees Celsius. Cores are 1.5 inches in diameter and 1 to 3 inches long, with other sizes on request. Software offers manual and automatic modes with a test sequencer for unattended runs.",
@@ -421,7 +422,7 @@
         "Unsteady-state relative permeability",
         "Absolute permeability at reservoir conditions",
         "Liquid-liquid and gas-liquid displacement",
-        "Automated multi-plug SCAL programmes"
+        "Automated multi-plug SCAL programs"
       ],
       "industries": [
         "oil-gas",
@@ -432,7 +433,8 @@
         "automated core flood relative permeability",
         "gas liquid relative permeability core test",
         "AUTOFLOOD 700",
-        "SCAL core analysis equipment"
+        "SCAL core analysis equipment",
+        "unsteady state relative permeametre"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/special-core-analysis/relative-permeability/autoflood-700-unsteady-state-relative-permeameter/113447/",
@@ -495,10 +497,10 @@
       "name": "CAPRI Capillary Pressure and Resistivity Index System",
       "model": "CAPRI",
       "slug": "capri",
-      "category": "Special core analysis",
+      "category": "Special Core Analysis",
       "priority": "core",
       "summary": "CAPRI runs drainage and imbibition capillary pressure tests on core samples while measuring electrical resistivity at the same time, at reservoir pressure and temperature. From one experiment it yields the saturation exponent, formation factor and cementation exponent used in log interpretation.",
-      "description": "Capillary pressure and resistivity are usually measured in separate experiments, which makes it hard to link the two on the same saturation history. CAPRI performs both together. The core holder contains hydrophobic and hydrophilic ceramic discs so that drainage and imbibition cycles can be driven in either direction, and a four-electrode arrangement records resistivity as saturation changes. A separate cell measures brine resistivity. From the data, the saturation exponent n, the formation factor and the cementation exponent m are calculated, and the relationship between saturation profile, capillary pressure and electrical response can be examined. An automated, precise flow control system sets the capillary pressure steps within a range of -10 to +10 bar, and the full assembly sits in a temperature-controlled convective air bath. High-temperature pumps are placed inside the bath to avoid volume errors caused by temperature differences. Maximum confining and pore pressure are 700 bar, working temperature reaches 150 degrees Celsius, and cores of 2 to 3 inches in length and 1.5 inches in diameter are accepted. Wetted parts in contact with brine are Hastelloy.",
+      "description": "Capillary pressure and resistivity are usually measured in separate experiments, which makes it hard to link the two on the same saturation history. CAPRI performs both together. The core holder contains hydrophobic and hydrophilic ceramic discs so that drainage and imbibition cycles can be driven in either direction, and a four-electrode arrangement records resistivity as saturation changes. A separate cell measures brine resistivity. From the data, the saturation exponent n, the formation factor and the cementation exponent m are calculated, and the relationship between saturation profile, capillary pressure and electrical response can be examined. An automated, precise flow control system sets the capillary pressure steps within a range of -10 to +10 bar, and the full assembly sits in a temperature-controlled convective air bath. High-temperature pumps are placed inside the bath to avoid volume errors caused by temperature differences. Maximum confining and pore pressure are 700 bar, working temperature reaches 150 degrees Celsius, and cores of 2 to 3 inches in length and 1.5 inches in diameter are accepted. Wetted parts in contact with brine are a corrosion-resistant nickel alloy.",
       "keySpecs": [
         {
           "label": "Maximum confining pressure",
@@ -526,7 +528,7 @@
         },
         {
           "label": "Brine-wetted material",
-          "value": "Hastelloy"
+          "value": "Corrosion-resistant nickel alloy"
         },
         {
           "label": "Power supply",
@@ -562,7 +564,7 @@
         "name": "CAPRI نظام قياس الضغط الشعري ومؤشر المقاومية",
         "category": "التحليل الخاص للعينات اللبية",
         "summary": "يجري CAPRI اختبارات الضغط الشعري للتصريف والتشرّب على العينات اللبية مع قياس المقاومية الكهربائية في الوقت نفسه، عند ضغط ودرجة حرارة المكمن. ومن تجربة واحدة يعطي أس التشبع ومعامل التكوين وأس التلاحم، وهي القيم المستخدمة في تفسير السجلات البئرية.",
-        "description": "يُقاس الضغط الشعري والمقاومية عادةً في تجربتين منفصلتين، مما يصعّب ربط أحدهما بالآخر على تاريخ التشبع نفسه. ويجريهما CAPRI معاً. يحتوي حامل العينة على أقراص سيراميكية كارهة للماء ومحبة للماء بحيث يمكن إجراء دورات التصريف والتشرّب في أي من الاتجاهين، ويسجل ترتيب رباعي الأقطاب المقاومية مع تغير التشبع. وتقيس خلية منفصلة مقاومية المحلول الملحي. ومن البيانات يُحسب أس التشبع n ومعامل التكوين وأس التلاحم m، ويمكن فحص العلاقة بين ملف التشبع والضغط الشعري والاستجابة الكهربائية. ويضبط نظام تحكم آلي دقيق في التدفق خطوات الضغط الشعري ضمن مدى من -10 إلى +10 bar، ويوضع التجميع كاملاً في حمام هوائي بالحمل الحراري مضبوط درجة الحرارة. وتوضع مضخات الحرارة العالية داخل الحمام لتفادي أخطاء الحجم الناتجة عن فروق درجات الحرارة. والحد الأقصى لضغط الحصر وضغط المسام 700 bar، وتصل درجة حرارة التشغيل إلى 150°C، ويقبل الجهاز عينات بطول من 2 إلى 3 بوصات وقطر 1.5 بوصة. والأجزاء الملامسة للمحلول الملحي من Hastelloy.",
+        "description": "يُقاس الضغط الشعري والمقاومية عادةً في تجربتين منفصلتين، مما يصعّب ربط أحدهما بالآخر على تاريخ التشبع نفسه. ويجريهما CAPRI معاً. يحتوي حامل العينة على أقراص سيراميكية كارهة للماء ومحبة للماء بحيث يمكن إجراء دورات التصريف والتشرّب في أي من الاتجاهين، ويسجل ترتيب رباعي الأقطاب المقاومية مع تغير التشبع. وتقيس خلية منفصلة مقاومية المحلول الملحي. ومن البيانات يُحسب أس التشبع n ومعامل التكوين وأس التلاحم m، ويمكن فحص العلاقة بين ملف التشبع والضغط الشعري والاستجابة الكهربائية. ويضبط نظام تحكم آلي دقيق في التدفق خطوات الضغط الشعري ضمن مدى من −10 إلى +10 bar، ويوضع التجميع كاملاً في حمام هوائي بالحمل الحراري مضبوط درجة الحرارة. وتوضع مضخات الحرارة العالية داخل الحمام لتفادي أخطاء الحجم الناتجة عن فروق درجات الحرارة. والحد الأقصى لضغط الحصر وضغط المسام 700 bar، وتصل درجة حرارة التشغيل إلى 150°C، ويقبل الجهاز عينات بطول من 2 إلى 3 بوصات وقطر 1.5 بوصة. والأجزاء الملامسة للمحلول الملحي من سبيكة نيكل مقاومة للتآكل.",
         "applications": [
           "منحنيات الضغط الشعري في ظروف المكمن",
           "مؤشر المقاومية وأس التشبع n",
@@ -585,7 +587,7 @@
           },
           {
             "label": "مدى الضغط الشعري",
-            "value": "-10 إلى +10 bar (145 psi)"
+            "value": "−10 إلى +10 bar (145 psi)"
           },
           {
             "label": "طول العينة اللبية",
@@ -597,7 +599,7 @@
           },
           {
             "label": "المادة الملامسة للمحلول الملحي",
-            "value": "Hastelloy"
+            "value": "سبيكة نيكل مقاومة للتآكل"
           },
           {
             "label": "مصدر الطاقة",
@@ -611,10 +613,10 @@
       "name": "CFS Series Core Flood System",
       "model": "CFS Series",
       "slug": "cfs-series",
-      "category": "Enhanced oil recovery",
+      "category": "Enhanced Oil Recovery",
       "priority": "flagship",
       "summary": "The CFS series is a configurable core flood platform for single and multiphase displacement studies at reservoir conditions. It screens water flooding, polymer, ASP, miscible and immiscible gas, acid and microbial EOR methods, and each system is specified to order for pressure, temperature, core size and flow rate.",
-      "description": "A core flood tests whether an injection scheme will actually recover more oil from the reservoir rock before money is spent in the field. The CFS series is built around that purpose and is configured for each customer. It evaluates brine sensitivity, return permeability and critical flow velocity, and it supports secondary and tertiary recovery methods including water flooding, polymer injection, alkaline-surfactant-polymer injection, miscible and immiscible gas flooding, acid treatment and microbial flooding. From the experiments, relative permeability at irreducible water saturation and at residual oil saturation, displacement efficiency and incremental oil recovery can be determined. The system is computer-controlled, with software that runs manually or automatically and controls pumps, valves, video capture and data acquisition, plus a test sequencer for long programmes. The core holder, air-operated valves and, where selected, the produced-fluid separator are mounted in an isothermal convective air bath with easy access. The configuration depends on the test type, steady or unsteady flow, confining and pore pressure, maximum temperature, core diameter and length, flow rate, holder position, pressure taps, wetted materials, number of holders, pumps, accumulators and mixers.",
+      "description": "A core flood tests whether an injection scheme will actually recover more oil from the reservoir rock before money is spent in the field. The CFS series is built around that purpose and is configured for each customer. It evaluates brine sensitivity, return permeability and critical flow velocity, and it supports secondary and tertiary recovery methods including water flooding, polymer injection, alkaline-surfactant-polymer injection, miscible and immiscible gas flooding, acid treatment and microbial flooding. From the experiments, relative permeability at irreducible water saturation and at residual oil saturation, displacement efficiency and incremental oil recovery can be determined. The system is computer-controlled, with software that runs manually or automatically and controls pumps, valves, video capture and data acquisition, plus a test sequencer for long programs. The core holder, air-operated valves and, where selected, the produced-fluid separator are mounted in an isothermal convective air bath with easy access. The configuration depends on the test type, steady or unsteady flow, confining and pore pressure, maximum temperature, core diameter and length, flow rate, holder position, pressure taps, wetted materials, number of holders, pumps, accumulators and mixers.",
       "keySpecs": [
         {
           "label": "Test type",
@@ -660,7 +662,7 @@
         "miscible gas injection core flood",
         "core flooding apparatus reservoir conditions"
       ],
-      "whyMiddleEast": "Regional operators run active enhanced oil recovery programmes, including gas injection and polymer flooding, which creates steady demand for coreflood screening.",
+      "whyMiddleEast": "Regional operators run active enhanced oil recovery programs, including gas injection and polymer flooding, which creates steady demand for coreflood screening.",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/enhanced-oil-recovery/multi-purpose-eor-flooding-systems/cfs-series-core-flood-system-for-eor/113578/",
       "imageUrls": [
         "https://www.vinci-technologies.com/Medias/content/113578.jpg"
@@ -711,10 +713,10 @@
       "name": "FDS 350 Formation Damage and Well Treatment Evaluation System",
       "model": "FDS 350",
       "slug": "fds-350",
-      "category": "Reservoir stimulation",
+      "category": "Reservoir Stimulation",
       "priority": "flagship",
       "summary": "FDS 350 quantifies how drilling mud and treatment fluids affect a reservoir core by circulating fluid across one core face at reservoir pressure and temperature. It runs static and dynamic filtration, mud invasion, return permeability and acid stimulation tests with a heated mud recirculation pump.",
-      "description": "Formation damage lowers well productivity, and the FDS 350 lets a laboratory measure it before a mud system or treatment is chosen. Drilling fluid is circulated tangentially over one flat face of a cylindrical core, which reproduces the shear and erosion at the borehole wall, while liquid can be pushed through the core to find the effect on permeability. The system handles water-based and oil-based muds, cement effluents, chemical wash fluids and acidic or corrosive treatment fluids. Typical outputs are initial and return permeability, brine sensitivity, critical flow velocity, mud filtrate invasion and acid stimulation response. A heated mud recirculation pump supports dynamic filtration at flow rates up to 3 litres per minute. Maximum confining pressure is 700 bar, maximum pore and mud pressure are 350 bar, and temperature reaches 150 degrees Celsius. Cores are 1.5 inches in diameter and 2 to 4 inches long, and wetted parts are stainless steel, titanium and Hastelloy. Core holder, valves, mud pump and plumbing sit in an isothermal air bath. Proprietary software offers manual and automatic control and a sequencer for programmed tests.",
+      "description": "Formation damage lowers well productivity, and the FDS 350 lets a laboratory measure it before a mud system or treatment is chosen. Drilling fluid is circulated tangentially over one flat face of a cylindrical core, which reproduces the shear and erosion at the borehole wall, while liquid can be pushed through the core to find the effect on permeability. The system handles water-based and oil-based muds, cement effluents, chemical wash fluids and acidic or corrosive treatment fluids. Typical outputs are initial and return permeability, brine sensitivity, critical flow velocity, mud filtrate invasion and acid stimulation response. A heated mud recirculation pump supports dynamic filtration at flow rates up to 3 liters per minute. Maximum confining pressure is 700 bar, maximum pore and mud pressure are 350 bar, and temperature reaches 150 degrees Celsius. Cores are 1.5 inches in diameter and 2 to 4 inches long, and wetted parts are stainless steel, titanium and a corrosion-resistant nickel alloy. Core holder, valves, mud pump and plumbing sit in an isothermal air bath. Proprietary software offers manual and automatic control and a sequencer for programmed tests.",
       "keySpecs": [
         {
           "label": "Maximum confining pressure",
@@ -746,7 +748,7 @@
         },
         {
           "label": "Materials",
-          "value": "Stainless steel, titanium, Hastelloy"
+          "value": "Stainless steel, titanium, corrosion-resistant nickel alloy"
         },
         {
           "label": "Power supply",
@@ -772,7 +774,7 @@
         "mud invasion evaluation lab",
         "formation damage evaluation system"
       ],
-      "whyMiddleEast": "Gulf reservoirs are largely carbonate, so acid response and rock-fluid behaviour in carbonate cores are routine questions for regional operators and laboratories.",
+      "whyMiddleEast": "Gulf reservoirs are largely carbonate, so acid response and rock-fluid behavior in carbonate cores are routine questions for regional operators and laboratories.",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/reservoir-stimulation/formation-damage/fds-350-formation-damage-and-well-treatement-evaluation-system/113508/",
       "imageUrls": [
         "https://www.vinci-technologies.com/Medias/content/113508.jpg"
@@ -782,7 +784,7 @@
         "name": "FDS 350 نظام تقييم تضرر التكوين ومعالجة الآبار",
         "category": "تحفيز المكامن",
         "summary": "يحدد FDS 350 كمياً أثر طين الحفر وسوائل المعالجة في العينة اللبية بتدوير السائل عبر أحد وجهي العينة عند ضغط ودرجة حرارة المكمن. وينفذ اختبارات الترشيح الساكن والديناميكي وغزو الطين والنفاذية الراجعة والتحفيز الحمضي بمضخة تدوير طين مسخّنة.",
-        "description": "يخفض تضرر التكوين إنتاجية البئر، ويتيح FDS 350 للمختبر قياسه قبل اختيار منظومة طين أو معالجة. يُدار سائل الحفر مماسياً على أحد الوجهين المسطحين لعينة أسطوانية، وهو ما يحاكي القص والتآكل عند جدار البئر، بينما يمكن دفع السائل عبر العينة لمعرفة أثره في النفاذية. ويتعامل النظام مع الطين المائي والطين الزيتي ومخلفات الأسمنت وسوائل الغسيل الكيميائية وسوائل المعالجة الحمضية أو المسببة للتآكل. والمخرجات المعتادة هي النفاذية الابتدائية والراجعة وحساسية المحلول الملحي وسرعة التدفق الحرجة وغزو رشاحة الطين واستجابة التحفيز الحمضي. وتدعم مضخة تدوير الطين المسخّنة الترشيح الديناميكي بمعدلات تدفق تصل إلى 3 لترات في الدقيقة. والحد الأقصى لضغط الحصر 700 bar، والحد الأقصى لضغط المسام وضغط الطين 350 bar، وتصل درجة الحرارة إلى 150°C. وقطر العينات 1.5 بوصة وطولها من 2 إلى 4 بوصات، والأجزاء الملامسة من الفولاذ المقاوم للصدأ والتيتانيوم وHastelloy. ويوجد حامل العينات والصمامات ومضخة الطين والأنابيب في حمام هوائي ثابت درجة الحرارة. ويوفر البرنامج الخاص تحكماً يدوياً وآلياً ومُتسلسِل اختبارات للاختبارات المبرمجة.",
+        "description": "يخفض تضرر التكوين إنتاجية البئر، ويتيح FDS 350 للمختبر قياسه قبل اختيار منظومة طين أو معالجة. يُدار سائل الحفر مماسياً على أحد الوجهين المسطحين لعينة أسطوانية، وهو ما يحاكي القص والتعرية عند جدار البئر، بينما يمكن دفع السائل عبر العينة لمعرفة أثره في النفاذية. ويتعامل النظام مع الطين المائي والطين الزيتي ومخلفات الأسمنت وسوائل الغسيل الكيميائية وسوائل المعالجة الحمضية أو المسببة للتآكل. والمخرجات المعتادة هي النفاذية الابتدائية والراجعة وحساسية المحلول الملحي وسرعة التدفق الحرجة وغزو رشاحة الطين واستجابة التحفيز الحمضي. وتدعم مضخة تدوير الطين المسخّنة الترشيح الديناميكي بمعدلات تدفق تصل إلى 3 لترات في الدقيقة. والحد الأقصى لضغط الحصر 700 bar، والحد الأقصى لضغط المسام وضغط الطين 350 bar، وتصل درجة الحرارة إلى 150°C. وقطر العينات 1.5 بوصة وطولها من 2 إلى 4 بوصات، والأجزاء الملامسة من الفولاذ المقاوم للصدأ والتيتانيوم وسبيكة نيكل مقاومة للتآكل. ويوجد حامل العينات والصمامات ومضخة الطين والأنابيب في حمام هوائي ثابت درجة الحرارة. ويوفر البرنامج الخاص تحكماً يدوياً وآلياً ومُتسلسِل اختبارات للاختبارات المبرمجة.",
         "applications": [
           "الترشيح الديناميكي والساكن للطين",
           "النفاذية الراجعة بعد التعرض للطين",
@@ -821,7 +823,7 @@
           },
           {
             "label": "المواد",
-            "value": "فولاذ مقاوم للصدأ، تيتانيوم، Hastelloy"
+            "value": "فولاذ مقاوم للصدأ، تيتانيوم، سبيكة نيكل مقاومة للتآكل"
           },
           {
             "label": "مصدر الطاقة",
@@ -835,10 +837,10 @@
       "name": "MAT 700 Matrix Acidizing Tester",
       "model": "MAT 700",
       "slug": "mat-700",
-      "category": "Reservoir stimulation",
+      "category": "Reservoir Stimulation",
       "priority": "core",
       "summary": "MAT 700 measures how well an acid treatment dissolves the mineral matrix of reservoir rock, by comparing core permeability before and after acid injection at reservoir conditions. It compares acid types, flow rates and temperatures and plots pressure gradient or permeability against injected volume.",
-      "description": "Matrix acidizing aims to restore or improve permeability near the wellbore, and the right acid, rate and temperature differ from one rock to the next. The MAT 700 tests those choices on core before a field job. Acid is injected through a core sample under reservoir pressure and temperature, and the change in permeability between the start and end of the test shows how effective the treatment is. During the run, the system records pressure gradient and permeability against time and against cumulative acid volume, so the breakthrough behaviour of the acid can be seen graphically. Hydrochloric and hydrofluoric acids, among others, can be compared, along with the influence of flow rate and temperature. The core sits horizontally in the holder, and all wetted parts are Hastelloy to resist corrosive fluids. Maximum confining and pore pressure are 700 bar, maximum temperature is 150 degrees Celsius, and cores are 1.5 inches in diameter and 2 to 6 inches long, with other sizes on request. The unit runs on 220 VAC at 50 Hz and needs air at 7 bar. It supports stimulation design on reservoir core.",
+      "description": "Matrix acidizing aims to restore or improve permeability near the wellbore, and the right acid, rate and temperature differ from one rock to the next. The MAT 700 tests those choices on core before a field job. Acid is injected through a core sample under reservoir pressure and temperature, and the change in permeability between the start and end of the test shows how effective the treatment is. During the run, the system records pressure gradient and permeability against time and against cumulative acid volume, so the breakthrough behavior of the acid can be seen graphically. Hydrochloric and hydrofluoric acids, among others, can be compared, along with the influence of flow rate and temperature. The core sits horizontally in the holder, and all wetted parts are a corrosion-resistant nickel alloy to resist corrosive fluids. Maximum confining and pore pressure are 700 bar, maximum temperature is 150 degrees Celsius, and cores are 1.5 inches in diameter and 2 to 6 inches long, with other sizes on request. The unit runs on 220 VAC at 50 Hz and needs air at 7 bar. It supports stimulation design on reservoir core.",
       "keySpecs": [
         {
           "label": "Maximum confining pressure",
@@ -866,7 +868,7 @@
         },
         {
           "label": "Wetted parts",
-          "value": "Hastelloy"
+          "value": "Corrosion-resistant nickel alloy"
         },
         {
           "label": "Power supply",
@@ -877,7 +879,7 @@
       "applications": [
         "Acid response and permeability change",
         "HCl and HF acid comparison",
-        "Acid injection rate optimisation",
+        "Acid injection rate optimization",
         "Temperature effect on acid reaction",
         "Stimulation treatment design"
       ],
@@ -902,7 +904,7 @@
         "name": "MAT 700 جهاز اختبار المعالجة الحمضية للمصفوفة",
         "category": "تحفيز المكامن",
         "summary": "يقيس MAT 700 مدى كفاءة المعالجة الحمضية في إذابة المصفوفة المعدنية لصخر المكمن، بمقارنة نفاذية العينة اللبية قبل حقن الحمض وبعده في ظروف المكمن. ويقارن أنواع الأحماض ومعدلات التدفق ودرجات الحرارة، ويرسم تدرج الضغط أو النفاذية مقابل الحجم المحقون.",
-        "description": "يهدف التحميض المصفوفي إلى استعادة النفاذية أو تحسينها قرب البئر، ويختلف الحمض والمعدل ودرجة الحرارة المناسبة من صخر إلى آخر. ويختبر MAT 700 هذه الخيارات على العينات اللبية قبل التنفيذ الميداني. يُحقن الحمض عبر عينة لبية تحت ضغط ودرجة حرارة المكمن، ويبيّن تغير النفاذية بين بداية الاختبار ونهايته مدى فعالية المعالجة. وأثناء التشغيل يسجل النظام تدرج الضغط والنفاذية مقابل الزمن ومقابل حجم الحمض التراكمي، فيمكن رؤية سلوك اختراق الحمض بيانياً. ويمكن مقارنة حمض الهيدروكلوريك وحمض الهيدروفلوريك، ضمن أحماض أخرى، إلى جانب تأثير معدل التدفق ودرجة الحرارة. وتوضع العينة أفقياً في الحامل، وجميع الأجزاء الملامسة من Hastelloy لمقاومة السوائل المسببة للتآكل. والحد الأقصى لضغط الحصر وضغط المسام 700 bar، والحد الأقصى لدرجة الحرارة 150°C، وقطر العينات 1.5 بوصة وطولها من 2 إلى 6 بوصات، مع أحجام أخرى عند الطلب. وتعمل الوحدة بجهد 220 VAC عند 50 Hz وتحتاج إلى هواء بضغط 7 bar. وهي تدعم تصميم التحفيز على العينات اللبية للمكامن.",
+        "description": "يهدف التحميض المصفوفي إلى استعادة النفاذية أو تحسينها قرب البئر، ويختلف الحمض والمعدل ودرجة الحرارة المناسبة من صخر إلى آخر. ويختبر MAT 700 هذه الخيارات على العينات اللبية قبل التنفيذ الميداني. يُحقن الحمض عبر عينة لبية تحت ضغط ودرجة حرارة المكمن، ويبيّن تغير النفاذية بين بداية الاختبار ونهايته مدى فعالية المعالجة. وأثناء التشغيل يسجل النظام تدرج الضغط والنفاذية مقابل الزمن ومقابل حجم الحمض التراكمي، فيمكن رؤية سلوك اختراق الحمض بيانياً. ويمكن مقارنة حمض الهيدروكلوريك وحمض الهيدروفلوريك، ضمن أحماض أخرى، إلى جانب تأثير معدل التدفق ودرجة الحرارة. وتوضع العينة أفقياً في الحامل، وجميع الأجزاء الملامسة من سبيكة نيكل مقاومة للتآكل لمقاومة السوائل المسببة للتآكل. والحد الأقصى لضغط الحصر وضغط المسام 700 bar، والحد الأقصى لدرجة الحرارة 150°C، وقطر العينات 1.5 بوصة وطولها من 2 إلى 6 بوصات، مع أحجام أخرى عند الطلب. وتعمل الوحدة بجهد 220 VAC عند 50 Hz وتحتاج إلى هواء بضغط 7 bar. وهي تدعم تصميم التحفيز على العينات اللبية للمكامن.",
         "applications": [
           "استجابة الحمض وتغير النفاذية",
           "مقارنة حمضي HCl وHF",
@@ -937,7 +939,7 @@
           },
           {
             "label": "الأجزاء الملامسة للسوائل",
-            "value": "Hastelloy"
+            "value": "سبيكة نيكل مقاومة للتآكل"
           },
           {
             "label": "مصدر الطاقة",
@@ -951,7 +953,7 @@
       "name": "RC4500 Refrigerated Overburden Centrifuge",
       "model": "RC4500",
       "slug": "rc4500",
-      "category": "Special core analysis",
+      "category": "Special Core Analysis",
       "priority": "flagship",
       "summary": "RC4500 is a refrigerated centrifuge that measures capillary pressure and relative permeability on up to six core samples at once, at atmospheric or overburden conditions and up to 90 degrees Celsius. Cameras record fluid displacement in every cell, and software fits Pc and Kr curves by history matching.",
       "description": "Centrifuge methods give capillary pressure and relative permeability curves much faster than flow-through tests, because several plugs are spun together and the expelled fluid is read directly. The RC4500 rotates cells holding up to six cores of 1 inch, 30 mm or 1.5 inch diameter at speeds up to 4,500 rpm on a 23 cm large radius. Attainable capillary pressure depends on the fluid pair: oil-water drainage reaches 14.9 bar, air-water drainage reaches 44.6 bar, and imbibition is available in both systems. Temperature is controlled from 5 degrees Celsius at rest to 90 degrees Celsius, and speed is regulated to within 1 rpm with programmable ramps. A high-resolution camera captures images of every cell for visual surveillance of displaced volumes, and a rotor imbalance sensor protects the machine. Automated data acquisition and simulation software calculate saturation, capillary pressure and Kr and Pc curves through history matching. Tests can run on consolidated and unconsolidated cores, at atmospheric or overburden conditions, and with pore pressure up to 1,450 psi for brine-gas systems including CO2 and hydrogen. The centrifuge can also restore reservoir-condition saturation in samples.",
@@ -1085,7 +1087,7 @@
       "name": "COREVAL 700 Unsteady-State Gas Permeameter and Porosimeter",
       "model": "COREVAL 700",
       "slug": "coreval-700",
-      "category": "Routine core analysis",
+      "category": "Routine Core Analysis",
       "priority": "core",
       "summary": "COREVAL 700 measures porosity and gas permeability of core plugs at overburden confining pressures from 400 to 10,000 psi, using helium or nitrogen. Permeability comes from pressure fall-off, and porosity from gas expansion, with software reporting equivalent liquid permeability, slip and turbulence factors.",
       "description": "Routine core analysis at ambient stress overstates porosity and permeability for many reservoir rocks, which is why laboratories also measure at overburden pressure. COREVAL 700 does this on plug-size samples in a hydrostatic core holder, with confining pressure adjustable from 400 to 10,000 psi. Gas permeability is determined by the unsteady-state pressure fall-off method; after enough data points are collected, the software applies a linear interpolation and reports equivalent liquid permeability together with slip and turbulence factors. Pore volume and grain volume are obtained from an isothermal helium or nitrogen expansion using Boyle's and Charles' laws. The permeability range spans 0.001 millidarcy to 10 darcies and porosity reaches 60 percent, which covers tight rocks through high-permeability sands. Pore pressure is 250 psi, and temperature is ambient, measured to 0.1 degrees Celsius. Pressure transducers have 0.1 percent full-scale accuracy. Helium is supplied at 400 psi, nitrogen at 500 psi and dry air at 100 psi, and the system runs on 110 to 220 VAC. A data acquisition and calculation computer is included.",
@@ -1129,7 +1131,7 @@
         "Helium and nitrogen plug measurements",
         "Tight rock permeability",
         "Slip and turbulence factor determination",
-        "Routine core analysis programmes"
+        "Routine core analysis programs"
       ],
       "industries": [
         "oil-gas",
@@ -1140,7 +1142,8 @@
         "core plug porosity permeability at confining pressure",
         "unsteady state gas permeameter",
         "pressure fall-off permeability core",
-        "helium porosity permeability instrument"
+        "helium porosity permeability instrument",
+        "unsteady state gas permeametre"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.vinci-technologies.com/rocks-and-fluids/routine-core-analysis/gas-permeability/coreval-700-unsteady-state-gas-permeameter-and-porosimeter/113427/",
@@ -1200,7 +1203,7 @@
       "name": "POROPERM Steady-State Gas Permeameter and Porosimeter",
       "model": "POROPERM",
       "slug": "poroperm",
-      "category": "Routine core analysis",
+      "category": "Routine Core Analysis",
       "priority": "core",
       "summary": "POROPERM determines porosity and gas permeability of plug-size core samples in one instrument. Porosity comes from isothermal nitrogen expansion, permeability from steady-state flow, and equivalent liquid permeability and slip follow by interpolation. A hydrostatic core holder for overburden work is available as an option.",
       "description": "POROPERM combines two of the most requested routine core measurements in a single console. Porosity is calculated from the expansion of nitrogen into the sample's pore space, applying Boyle's and Charles' laws. Permeability to gas is measured by the steady-state method, and the equivalent liquid permeability and the slip correction are then obtained by linear interpolation. The standard configuration includes a control console, a quick-release Hassler core holder, a matrix cup and a data acquisition computer that supports manual and automatic operation. A high-grade stainless steel hydrostatic core holder can be fitted when measurements at overburden pressure are required, extending confining pressure from 400 psi (standard) up to 10,000 psi (option). Permeability range is 0.01 millidarcy to 10 darcies. Flow pressure is 0 to 150 psi, and gas flow is available in 0 to 50 and 0 to 600 cc per minute ranges. Pressure transducers carry 0.1 percent full-scale accuracy and flow accuracy is 1 percent. Cores are 1 inch in diameter, with 1.5 inch available as an option, and up to 3 inches long. It operates at ambient temperature on 110 to 220 VAC.",
@@ -1331,7 +1334,7 @@
       "name": "PTT 700 Pressure Transmission Tester",
       "model": "PTT 700",
       "slug": "ptt-700",
-      "category": "Drilling fluid testing",
+      "category": "Drilling Fluid Testing",
       "priority": "core",
       "summary": "PTT 700 measures how quickly drilling fluid filtrate moves into a shale sample under overbalanced pressure, by tracking the downstream pressure build-up. A model converts the data into hydraulic conductivity and a delay factor, which ranks muds by their ability to protect borehole stability.",
       "description": "Wellbore instability in shale often begins when filtrate invades the formation and raises pore pressure near the borehole. The PTT 700 reproduces this on a small shale specimen. A cylinder of shale is placed in a core holder and exposed to the test drilling fluid at a pressure above its native pore pressure, and the pressure rise on the downstream side is logged continuously. A mathematical model analyses the record to give the shale's hydraulic conductivity, from which a delay factor is derived; this shows how much more slowly the test fluid advances than the native pore fluid. Laboratories use it to compare oil-based mud, high-performance water-based mud and nanoparticle systems, and to design water-based fluids that are more compatible with shale, where instability risk is highest. Confining and pore pressure can each reach 10,000 psi and temperature reaches 150 degrees Celsius. Specimens are 1 inch in diameter and 0.3 to 0.7 inch long, with other sizes on request. Wetted parts are stainless steel. The unit needs air at 100 psi and runs on either 110 V at 60 Hz or 220 VAC at 50 Hz.",
@@ -1397,7 +1400,7 @@
       "ar": {
         "name": "PTT 700 جهاز اختبار انتقال الضغط",
         "category": "اختبار سوائل الحفر",
-        "summary": "يقيس PTT 700 سرعة انتقال رشاحة سائل الحفر إلى عينة من الصخر الطفلي تحت ضغط زائد، بتتبع تراكم الضغط في جانب المخرج. ويحوّل نموذج البيانات إلى توصيلية هيدروليكية ومعامل تأخير، فتُرتَّب الطينات بحسب قدرتها على حماية استقرار البئر.",
+        "summary": "يقيس PTT 700 سرعة انتقال رشاحة سائل الحفر إلى عينة من الصخر الطفلي تحت ضغط زائد، بتتبع تراكم الضغط في جانب المخرج. ويحوّل نموذج البيانات إلى توصيلية هيدروليكية ومعامل تأخير، فتُصنَّف الطينات بحسب قدرتها على حماية استقرار البئر.",
         "description": "كثيراً ما يبدأ عدم استقرار البئر في الصخر الطفلي عندما تغزو الرشاحة التكوين وترفع ضغط المسام قرب البئر. ويحاكي PTT 700 ذلك على عينة صغيرة من الصخر الطفلي. توضع أسطوانة من الصخر الطفلي في حامل عينات وتتعرض لسائل الحفر قيد الاختبار بضغط يزيد على ضغط المسام الأصلي فيها، ويُسجَّل ارتفاع الضغط في جانب المخرج باستمرار. ويحلل نموذج رياضي السجل ليعطي التوصيلية الهيدروليكية للصخر الطفلي، ويُشتق منها معامل التأخير؛ وهو يبيّن مقدار بطء تقدم سائل الاختبار مقارنةً بمائع المسام الأصلي. وتستخدمه المختبرات لمقارنة الطين الزيتي والطين المائي عالي الأداء وأنظمة الجسيمات النانوية، ولتصميم سوائل مائية أكثر توافقاً مع الصخر الطفلي، حيث يبلغ خطر عدم الاستقرار أقصاه. ويمكن أن يبلغ ضغط الحصر وضغط المسام كل منهما 10,000 psi وتصل درجة الحرارة إلى 150°C. وقطر العينات 1 بوصة وطولها من 0.3 إلى 0.7 بوصة، مع أحجام أخرى عند الطلب. والأجزاء الملامسة من الفولاذ المقاوم للصدأ. وتحتاج الوحدة إلى هواء بضغط 100 psi وتعمل إما بجهد 110 V عند 60 Hz أو 220 VAC عند 50 Hz.",
         "applications": [
           "اختبار انتقال الضغط في الصخر الطفلي",
@@ -1446,7 +1449,7 @@
       "name": "FLASS Flow Assurance System",
       "model": "FLASS",
       "slug": "flass",
-      "category": "Flow assurance",
+      "category": "Flow Assurance",
       "priority": "core",
       "summary": "FLASS combines reservoir fluid PVT with asphaltene and wax deposition studies in a single apparatus rated to 15,000 psi and 200 degrees Celsius. A laser solid detection system finds onset conditions, a filtration unit quantifies deposits, and a high-pressure microscope shows particles forming.",
       "description": "Organic solids that precipitate from live oil can block tubing and flowlines, and operators need to know the pressure and temperature at which this starts. FLASS addresses that question and the surrounding PVT work in one system. It can run constant mass expansion, differential vaporization, separator tests, swelling tests, isothermal depressurization, isobaric temperature decrease, titration experiments, bulk filtration, particle size distribution and solids onset determination. Detection is optical: a laser-based solid detection system registers the onset of asphaltene or wax precipitation, while an organic solid filtration system measures how much deposit forms as pressure, temperature or composition change. A high-pressure microscope allows visual observation of precipitation and of particle displacement, and in-house software evaluates particle size distribution and light absorbance. Particle size and morphology of wax crystals and asphaltene solids can be followed as functions of temperature, pressure, time and chemical treatment. The apparatus works up to 15,000 psi and from ambient temperature to 200 degrees Celsius, with a cooling option down to -20 degrees Celsius, on volumes up to 200 cc. Wetted materials are stainless steel and sapphire.",
@@ -1505,7 +1508,7 @@
         "name": "FLASS نظام ضمان التدفق",
         "category": "ضمان التدفق",
         "summary": "يجمع FLASS بين اختبارات PVT لمائع المكمن ودراسات ترسب الأسفلتينات والشموع في جهاز واحد بتصنيف 15,000 psi و200°C. ويحدد نظام كشف المواد الصلبة بالليزر ظروف بدء الترسب، وتقيس وحدة الترشيح كمية الرواسب، ويُظهر مجهر عالي الضغط تشكّل الجسيمات.",
-        "description": "يمكن للمواد الصلبة العضوية التي تترسب من النفط الحي أن تسد أنابيب الإنتاج وخطوط التدفق، ويحتاج المشغّلون إلى معرفة الضغط ودرجة الحرارة اللذين يبدأ عندهما ذلك. ويعالج FLASS هذا السؤال وأعمال PVT المحيطة به في نظام واحد. ويمكنه تنفيذ التمدد بكتلة ثابتة والتبخر التفاضلي واختبارات الفاصل واختبارات الانتفاخ وخفض الضغط عند درجة حرارة ثابتة وخفض درجة الحرارة عند ضغط ثابت وتجارب المعايرة والترشيح الكلي وتوزيع حجم الجسيمات وتحديد بدء ظهور المواد الصلبة. والكشف بصري: يسجّل نظام كشف المواد الصلبة بالليزر بدء ترسب الأسفلتين أو الشمع، بينما يقيس نظام ترشيح المواد الصلبة العضوية كمية الراسب المتشكل مع تغير الضغط أو درجة الحرارة أو التركيب. ويتيح مجهر عالي الضغط المراقبة البصرية للترسب ولحركة الجسيمات، ويقيّم برنامج مطوَّر داخلياً توزيع حجم الجسيمات وامتصاص الضوء. ويمكن تتبع حجم الجسيمات وشكلها (المورفولوجيا) لبلورات الشمع ومواد الأسفلتين الصلبة كدوال لدرجة الحرارة والضغط والزمن والمعالجة الكيميائية. ويعمل الجهاز حتى 15,000 psi ومن درجة الحرارة المحيطة إلى 200°C، مع خيار تبريد حتى -20°C، وعلى أحجام تصل إلى 200 cc. والمواد الملامسة من الفولاذ المقاوم للصدأ والياقوت الأزرق.",
+        "description": "يمكن للمواد الصلبة العضوية التي تترسب من النفط الحي أن تسد أنابيب الإنتاج وخطوط التدفق، ويحتاج المشغّلون إلى معرفة الضغط ودرجة الحرارة اللذين يبدأ عندهما ذلك. ويعالج FLASS هذا السؤال وأعمال PVT المحيطة به في نظام واحد. ويمكنه تنفيذ التمدد بكتلة ثابتة والتبخر التفاضلي واختبارات الفاصل واختبارات الانتفاخ وخفض الضغط عند درجة حرارة ثابتة وخفض درجة الحرارة عند ضغط ثابت وتجارب المعايرة والترشيح الكلي وتوزيع حجم الجسيمات وتحديد بدء ظهور المواد الصلبة. والكشف بصري: يسجّل نظام كشف المواد الصلبة بالليزر بدء ترسب الأسفلتين أو الشمع، بينما يقيس نظام ترشيح المواد الصلبة العضوية كمية الراسب المتشكل مع تغير الضغط أو درجة الحرارة أو التركيب. ويتيح مجهر عالي الضغط المراقبة البصرية للترسب ولحركة الجسيمات، ويقيّم برنامج مطوَّر داخلياً توزيع حجم الجسيمات وامتصاص الضوء. ويمكن تتبع حجم الجسيمات وشكلها (المورفولوجيا) لبلورات الشمع ومواد الأسفلتين الصلبة كدوال لدرجة الحرارة والضغط والزمن والمعالجة الكيميائية. ويعمل الجهاز حتى 15,000 psi ومن درجة الحرارة المحيطة إلى 200°C، مع خيار تبريد حتى −20°C، وعلى أحجام تصل إلى 200 cc. والمواد الملامسة من الفولاذ المقاوم للصدأ والياقوت الأزرق.",
         "applications": [
           "ضغط بدء ترسب الأسفلتين",
           "درجة حرارة ظهور الشمع",
@@ -1520,7 +1523,7 @@
           },
           {
             "label": "مدى درجات الحرارة",
-            "value": "من درجة الحرارة المحيطة إلى 200 °C (خيار التبريد -20 °C)"
+            "value": "من درجة الحرارة المحيطة إلى 200 °C (خيار التبريد −20 °C)"
           },
           {
             "label": "حجم العينة",
@@ -1546,10 +1549,10 @@
       "name": "BCF 700 Benchtop Core Flood System",
       "model": "BCF 700",
       "slug": "bcf-700",
-      "category": "Enhanced oil recovery",
+      "category": "Enhanced Oil Recovery",
       "priority": "core",
       "summary": "BCF 700 is a cost-effective benchtop core flood system for fluid-flow and EOR studies at reservoir pressure and temperature, rated to 700 bar and 150 degrees Celsius. It handles water, polymer, ASP, gas and microbial floods, and can be upgraded with pressure taps, a gas line, a fraction collector and an air bath.",
-      "description": "Not every laboratory needs a fully automated, multi-pump core flood rig, and the BCF 700 provides a lower-cost route into reservoir-condition flooding. It can evaluate secondary and tertiary recovery methods such as water flooding, polymer injection, alkaline-surfactant-polymer injection, miscible and immiscible gas flooding and microbial flooding. From the results, relative permeability at irreducible water saturation and residual oil saturation, displacement efficiency and incremental oil recovery can be determined. The standard configuration is intended to be extended: dual monitoring taps, a gas injection line, an automatic fraction collector and an air bath can be added as needs grow. Maximum pore and confining pressure are both 700 bar, and maximum temperature is 150 degrees Celsius. The core holder is mounted horizontally and takes cores of 1 or 1.5 inches in diameter and 2 to 6 inches in length, with other sizes on request. Pressure taps are optional and wetted parts are Hastelloy. The system runs on 220 VAC at 50 Hz and needs compressed air at 7 bar. It suits universities and service laboratories building up core flood capability.",
+      "description": "Not every laboratory needs a fully automated, multi-pump core flood rig, and the BCF 700 provides a lower-cost route into reservoir-condition flooding. It can evaluate secondary and tertiary recovery methods such as water flooding, polymer injection, alkaline-surfactant-polymer injection, miscible and immiscible gas flooding and microbial flooding. From the results, relative permeability at irreducible water saturation and residual oil saturation, displacement efficiency and incremental oil recovery can be determined. The standard configuration is intended to be extended: dual monitoring taps, a gas injection line, an automatic fraction collector and an air bath can be added as needs grow. Maximum pore and confining pressure are both 700 bar, and maximum temperature is 150 degrees Celsius. The core holder is mounted horizontally and takes cores of 1 or 1.5 inches in diameter and 2 to 6 inches in length, with other sizes on request. Pressure taps are optional and wetted parts are a corrosion-resistant nickel alloy. The system runs on 220 VAC at 50 Hz and needs compressed air at 7 bar. It suits universities and service laboratories building up core flood capability.",
       "keySpecs": [
         {
           "label": "Maximum pore pressure",
@@ -1581,7 +1584,7 @@
         },
         {
           "label": "Wetted parts",
-          "value": "Hastelloy"
+          "value": "Corrosion-resistant nickel alloy"
         },
         {
           "label": "Power supply",
@@ -1617,7 +1620,7 @@
         "name": "BCF 700 نظام مكتبي لغمر العينات اللبية",
         "category": "الاستخلاص المعزز للنفط",
         "summary": "BCF 700 نظام مكتبي اقتصادي لغمر العينات اللبية لدراسات تدفق السوائل والاستخلاص المعزز للنفط (EOR) عند ضغط ودرجة حرارة المكمن، بتصنيف 700 bar و150°C. ويتعامل مع الغمر بالماء والبوليمر وASP والغاز والميكروبات، ويمكن ترقيته بمنافذ قياس الضغط وخط غاز وجامع أجزاء وحمام هوائي.",
-        "description": "لا يحتاج كل مختبر إلى منصة غمر عينات لبية آلية بالكامل ومتعددة المضخات، ويوفر BCF 700 طريقاً أقل كلفة إلى الغمر في ظروف المكمن. ويمكنه تقييم طرائق الاستخلاص الثانوي والثالثي مثل الغمر بالماء وحقن البوليمر وحقن القلوي والمادة الخافضة للتوتر السطحي والبوليمر (ASP) والغمر بالغاز الممتزج وغير الممتزج والغمر الميكروبي. ومن النتائج يمكن تحديد النفاذية النسبية عند تشبع الماء غير القابل للاختزال وتشبع النفط المتبقي وكفاءة الإزاحة والاستخلاص الإضافي للنفط. والتكوين القياسي مُعدّ للتوسعة: إذ يمكن إضافة منفذين للمراقبة وخط حقن غاز وجامع أجزاء آلي وحمام هوائي مع نمو الاحتياجات. والحد الأقصى لضغط المسام وضغط الحصر كلاهما 700 bar، والحد الأقصى لدرجة الحرارة 150°C. ويُركَّب حامل العينات أفقياً ويستوعب عينات بقطر 1 أو 1.5 بوصة وطول من 2 إلى 6 بوصات، مع أحجام أخرى عند الطلب. وتُركَّب منافذ قياس الضغط اختيارياً، والأجزاء الملامسة من Hastelloy. ويعمل النظام بجهد 220 VAC عند 50 Hz ويحتاج إلى هواء مضغوط بضغط 7 bar. وهو مناسب للجامعات ومختبرات الخدمات التي تبني قدرات غمر العينات اللبية.",
+        "description": "لا يحتاج كل مختبر إلى منصة غمر عينات لبية آلية بالكامل ومتعددة المضخات، ويوفر BCF 700 طريقاً أقل تكلفة إلى الغمر في ظروف المكمن. ويمكنه تقييم طرائق الاستخلاص الثانوي والثالثي مثل الغمر بالماء وحقن البوليمر وحقن القلوي والمادة الخافضة للتوتر السطحي والبوليمر (ASP) والغمر بالغاز الممتزج وغير الممتزج والغمر الميكروبي. ومن النتائج يمكن تحديد النفاذية النسبية عند تشبع الماء غير القابل للاختزال وتشبع النفط المتبقي وكفاءة الإزاحة والاستخلاص الإضافي للنفط. والتكوين القياسي مُعدّ للتوسعة: إذ يمكن إضافة منفذين للمراقبة وخط حقن غاز وجامع أجزاء آلي وحمام هوائي مع نمو الاحتياجات. والحد الأقصى لضغط المسام وضغط الحصر كلاهما 700 bar، والحد الأقصى لدرجة الحرارة 150°C. ويُركَّب حامل العينات أفقياً ويستوعب عينات بقطر 1 أو 1.5 بوصة وطول من 2 إلى 6 بوصات، مع أحجام أخرى عند الطلب. وتُركَّب منافذ قياس الضغط اختيارياً، والأجزاء الملامسة من سبيكة نيكل مقاومة للتآكل. ويعمل النظام بجهد 220 VAC عند 50 Hz ويحتاج إلى هواء مضغوط بضغط 7 bar. وهو مناسب للجامعات ومختبرات الخدمات التي تبني قدرات غمر العينات اللبية.",
         "applications": [
           "الغمر بالماء والغمر بالبوليمر",
           "الغمر بـ ASP والغمر الميكروبي",
@@ -1656,7 +1659,7 @@
           },
           {
             "label": "الأجزاء الملامسة للسوائل",
-            "value": "Hastelloy"
+            "value": "سبيكة نيكل مقاومة للتآكل"
           },
           {
             "label": "مصدر الطاقة",
@@ -1669,7 +1672,7 @@
       "name": "HEP-P Helium Porosimeter",
       "model": "HEP-P",
       "slug": "hep-p",
-      "category": "Routine core analysis",
+      "category": "Routine Core Analysis",
       "priority": "core",
       "summary": "HEP-P is a helium gas-expansion porosimeter that measures grain volume and pore volume of 1 inch or 1.5 inch core plugs, from which porosity and grain density are calculated. Interchangeable matrix cups and check plugs support calibration, and an optional Hassler holder allows pore volume measurement under stress.",
       "description": "Porosity is the first number requested from any core, and helium expansion is the standard way to get it, because helium enters very small pores and does not react with the rock. The HEP-P measures grain volume by expanding helium from a reference chamber into the sample cell, then applying Boyle's and Charles' laws under isothermal conditions. With the grain volume and the sample's bulk dimensions, porosity and grain density follow. A data acquisition system takes care of calibration, logging and calculation. Each matrix cup is interchangeable and is delivered with stainless steel calibration check plugs, so the user can verify the instrument at any time. A full-diameter matrix cup is optional for whole-core porosity, and pore volume can be measured with the sample inside an optional Hassler-type core holder connected to the porosimeter. Samples are 1 or 1.5 inches in diameter and up to 3 inches long, or 4 inches in diameter and up to 12 inches long with the options. Porosity range is up to 60 percent, reference charge pressure is 200 psi and pressure sensor accuracy is 0.1 percent. Helium or nitrogen is supplied at 500 psi and dry air at 100 psi.",
@@ -1712,7 +1715,7 @@
         "Core plug porosity",
         "Grain density determination",
         "Whole-core porosity with full-diameter cup",
-        "Routine core analysis programmes",
+        "Routine core analysis programs",
         "University petrophysics teaching"
       ],
       "industries": [
@@ -1781,5 +1784,5 @@
       }
     }
   ],
-  "brandSummaryAr": "Vinci Technologies شركة فرنسية مصنِّعة لأجهزة المختبرات الخاصة بتوصيف المكامن، يقع مقرها في Nanterre قرب باريس ولها شركات تابعة في الولايات المتحدة والهند. وتغطي سلسلة Rocks and Fluids لديها تحضير العينات اللبية وتحليلها، والاستخلاص المعزز للنفط، وتضرر التكوين، واختبارات PVT، كما تصنّع الشركة معدات اختبار المحفزات والترسيب بالتفريغ. ونظام الجودة لديها حاصل على شهادة ISO 9001."
+  "brandSummaryAr": "Vinci Technologies شركة فرنسية مصنِّعة لأجهزة المختبرات الخاصة بتوصيف المكامن، يقع مقرها في Nanterre قرب باريس. وتغطي سلسلة Rocks and Fluids لديها تحضير العينات اللبية وتحليلها، والاستخلاص المعزز للنفط، وتضرر التكوين، واختبارات PVT، كما تصنّع الشركة معدات اختبار المحفزات والترسيب بالتفريغ. وعمليات التصنيع لدى Vinci Technologies نفسها حاصلة على شهادة ISO 9001."
 }

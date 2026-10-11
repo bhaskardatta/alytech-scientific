@@ -10,7 +10,7 @@
       "name": "B-ONE PLUS Rotational Viscometer",
       "model": "B-ONE PLUS",
       "slug": "b-one-plus",
-      "category": "Rotational viscometer",
+      "category": "Rotational Viscometer",
       "priority": "core",
       "summary": "The B-ONE PLUS is a springless rotational viscometer with a 7-inch touchscreen, intended for routine viscosity checks on food, coatings, cosmetics and chemical products. Speed can be set freely from 0.3 to 250 rpm, a low-torque version extends the range downward, and operator login with a locked-method mode keeps quality-control tests repeatable.",
       "description": "The B-ONE PLUS measures dynamic viscosity by rotating a spindle in the sample and reading the torque needed to hold the chosen speed. Because the drive is springless, the instrument does not depend on a calibrated spring and can cover a wider torque window than classic dial-type designs. The standard model reads 0.05 to 13 mNm; the LR version reads from 0.005 mNm, which suits thin liquids such as inks, varnishes and light oils. Operators work from a 7-inch touchscreen that shows viscosity, speed, shear rate, shear stress, torque and time, and the instrument flags results that fall outside viscosity limits for the selected spindle and speed. A login code and a locked mode prevent unplanned changes to test conditions, which is useful in audited quality systems. Results are stored internally and exported through USB. The head accepts LV, RV, vane, Krebs, DIN, small-sample and ultra-low-viscosity spindles, and it connects to the EVA LR-BV PLUS, RT-1 PLUS and EVA MS-DIN PLUS temperature units. It is the entry point to the Lamy touchscreen viscometer range.",
@@ -76,7 +76,12 @@
         "benchtop viscometer for QC lab",
         "LV RV spindle viscometer",
         "viscometer with Krebs spindle",
-        "low viscosity measurement viscometer"
+        "low viscosity measurement viscometer",
+        "rotational viscometre with touchscreen",
+        "benchtop viscometre for QC lab",
+        "LV RV spindle viscometre",
+        "viscometre with Krebs spindle",
+        "low viscosity measurement viscometre"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/b-one-plus-2/",
@@ -146,7 +151,7 @@
       "name": "PORTABLE B-ONE Viscometer",
       "model": "PORTABLE B-ONE",
       "slug": "portable-b-one",
-      "category": "Portable viscometer",
+      "category": "Portable Viscometer",
       "priority": "niche",
       "summary": "The PORTABLE B-ONE is a battery-powered springless viscometer for viscosity checks at the production line, in the warehouse or at a delivery point. The head weighs little, a carrying case holds the full kit, and the instrument runs for more than an hour on its internal battery with the same touchscreen interface as the bench models.",
       "description": "Quality problems often show up on the shop floor rather than in the laboratory, and the PORTABLE B-ONE brings a controlled viscosity measurement to that location. It uses the same springless rotational principle as the benchtop B-ONE PLUS, with free speed selection between 0.3 and 250 rpm and a torque range of 0.05 to 13 mNm. A 7-inch touchscreen displays viscosity, speed, shear rate, shear stress, torque and time, and a charge indicator shows the remaining battery life, which exceeds one hour. Operators can sign in with a user code, and a locked mode protects test conditions so that results taken in different plants remain comparable. The instrument can display viscosity limits for each spindle and speed combination, and it calculates kinematic viscosity when the sample density is entered. The measuring head has a diameter of 90 mm and the complete unit weighs 2 kg, so it fits in the supplied carrying case. It works with RV, LV, BV, vane, DIN, small-sample, Krebs and ultra-low-viscosity spindles.",
@@ -206,7 +211,10 @@
         "portable viscometer battery",
         "handheld viscosity meter for production floor",
         "field viscometer with carrying case",
-        "on-site viscosity measurement"
+        "on-site viscosity measurement",
+        "portable viscometre battery",
+        "handheld viscosity metre for production floor",
+        "field viscometre with carrying case"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/portable-b-one/",
@@ -272,7 +280,7 @@
       "name": "FIRST PLUS Programmable Viscometer",
       "model": "FIRST PLUS",
       "slug": "first-plus",
-      "category": "Rotational viscometer",
+      "category": "Rotational Viscometer",
       "priority": "core",
       "summary": "The FIRST PLUS is a springless touchscreen viscometer with programmable speed sequences, an included PT100 temperature probe and a choice of standard or high-sensitivity torque. It connects by RS232, USB or Ethernet and works with RheoTex software, which suits laboratories that need to log results into a LIMS.",
       "description": "The FIRST PLUS sits above the B-ONE PLUS in the Lamy viscometer range by adding programming and stronger connectivity. Speeds from 0.3 to 250 rpm can be set freely, and methods can be stored for repeat use, so different operators run identical test conditions. Torque is available in a standard version from 0.05 to 13 mNm and a high-sensitivity LR version from 0.005 to 0.8 mNm. A PT100 sensor is supplied and reads sample temperature between -50 and +300 degrees Celsius. The 7-inch touchscreen shows viscosity, speed, shear rate, shear stress, torque, time and temperature, and a torque gauge indicates how close a test is to the working limits. Results are stored in the instrument and can be exported by USB, RS232 or Ethernet, or sent to a USB printer. RheoTex software handles curve plotting and LIMS integration. A four-digit operator code and a protected mode lock the measurement conditions. The head accepts DIN, RV/LV, BV, vane, ultra-low-viscosity, Krebs and small-sample measuring systems and pairs with the EVA MS-DIN PLUS, EVA LR-BV PLUS and RT-1 PLUS temperature units.",
@@ -333,7 +341,12 @@
         "viscometer with LIMS connection",
         "viscometer with PT100 temperature probe",
         "rotational viscometer Ethernet USB",
-        "QC viscometer with method storage"
+        "QC viscometer with method storage",
+        "programmable viscometre",
+        "viscometre with LIMS connection",
+        "viscometre with PT100 temperature probe",
+        "rotational viscometre Ethernet USB",
+        "QC viscometre with method storage"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/first-plus-2/",
@@ -346,7 +359,7 @@
         "name": "FIRST PLUS مقياس لزوجة قابل للبرمجة",
         "category": "مقياس لزوجة دوراني",
         "summary": "FIRST PLUS مقياس لزوجة بلا زنبرك بشاشة لمس وتسلسلات سرعة قابلة للبرمجة، ومسبار درجة حرارة PT100 مرفق، وخيار عزم قياسي أو عالي الحساسية. يتصل عبر RS232 أو USB أو Ethernet ويعمل مع برنامج RheoTex، مما يناسب المختبرات التي تحتاج إلى تسجيل النتائج في LIMS.",
-        "description": "يأتي FIRST PLUS فوق B-ONE PLUS في مجموعة مقاييس اللزوجة من Lamy بما يضيفه من إمكانات البرمجة واتصال أقوى. ويمكن ضبط السرعات من 0.3 إلى 250 rpm بحرية، وتُخزَّن الطرائق لإعادة استخدامها، فيشغّل مختلف المشغّلين ظروف الاختبار نفسها. ويتوفر العزم بإصدار قياسي من 0.05 إلى 13 mNm وإصدار LR عالي الحساسية من 0.005 إلى 0.8 mNm. ويُرفق حساس PT100 يقرأ درجة حرارة العينة بين -50 و+300°C. وتعرض شاشة اللمس مقاس 7 بوصات اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة، ويبيّن مؤشر العزم مدى قرب الاختبار من حدود التشغيل. وتُخزَّن النتائج في الجهاز ويمكن تصديرها عبر USB أو RS232 أو Ethernet، أو إرسالها إلى طابعة USB. ويتولى برنامج RheoTex رسم المنحنيات والتكامل مع LIMS. ويقفل رمز مشغّل من 4 أرقام ووضع محمي ظروف القياس. ويقبل الرأس أنظمة القياس DIN وRV/LV وBV والريشية (vane) ومنخفضة اللزوجة جداً وKrebs والعينات الصغيرة، ويقترن بوحدات التحكم في درجة الحرارة EVA MS-DIN PLUS وEVA LR-BV PLUS وRT-1 PLUS.",
+        "description": "يأتي FIRST PLUS فوق B-ONE PLUS في مجموعة مقاييس اللزوجة من Lamy بما يضيفه من إمكانات البرمجة واتصال أقوى. ويمكن ضبط السرعات من 0.3 إلى 250 rpm بحرية، وتُخزَّن الطرائق لإعادة استخدامها، فيشغّل مختلف المشغّلين ظروف الاختبار نفسها. ويتوفر العزم بإصدار قياسي من 0.05 إلى 13 mNm وإصدار LR عالي الحساسية من 0.005 إلى 0.8 mNm. ويُرفق حساس PT100 يقرأ درجة حرارة العينة بين −50 و+300°C. وتعرض شاشة اللمس مقاس 7 بوصات اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة، ويبيّن مؤشر العزم مدى قرب الاختبار من حدود التشغيل. وتُخزَّن النتائج في الجهاز ويمكن تصديرها عبر USB أو RS232 أو Ethernet، أو إرسالها إلى طابعة USB. ويتولى برنامج RheoTex رسم المنحنيات والتكامل مع LIMS. ويقفل رمز مشغّل من 4 أرقام ووضع محمي ظروف القياس. ويقبل الرأس أنظمة القياس DIN وRV/LV وBV والريشية (vane) ومنخفضة اللزوجة جداً وKrebs والعينات الصغيرة، ويقترن بوحدات التحكم في درجة الحرارة EVA MS-DIN PLUS وEVA LR-BV PLUS وRT-1 PLUS.",
         "applications": [
           "طرائق اختبار اللزوجة المبرمجة",
           "مراقبة الجودة المرتبطة بـ LIMS",
@@ -369,7 +382,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "الدقة",
@@ -398,7 +411,7 @@
       "name": "FIRST PRO PLUS Multistep Viscometer",
       "model": "FIRST PRO PLUS",
       "slug": "first-pro-plus",
-      "category": "Rotational viscometer",
+      "category": "Rotational Viscometer",
       "priority": "core",
       "summary": "The FIRST PRO PLUS is a springless touchscreen viscometer with multistep method programming, USB data recording and quality-control limits. It carries the same programming tools as the larger Lamy instruments, which helps laboratories improve the repeatability of their viscosity tests without moving to a full rheometer.",
       "description": "Repeatability in viscosity testing depends mostly on whether every operator applies the same speeds, dwell times and temperature. The FIRST PRO PLUS addresses this by letting a supervisor build multistep methods on the instrument and lock them so that technicians only select and run the test. The speed range is 0.3 to 250 rpm, with torque from 0.05 to 13 mNm in the standard version and 0.005 to 0.8 mNm in the LR version for very thin samples. A PT100 probe measures sample temperature from -50 to +300 degrees Celsius, and the 7-inch touchscreen reports viscosity, speed, shear rate, shear stress, torque, time and temperature. Measurement data can be saved to a USB drive or sent through RS232 and Ethernet to a PC, where RheoTex software supports quality-control reporting and LIMS integration. Operators identify themselves with a four-digit code. The instrument accepts DIN, RV/LV, BV, vane, ultra-low-viscosity, Krebs and small-sample measuring systems, which covers most paint, adhesive, food and personal-care methods.",
@@ -459,7 +472,11 @@
         "viscometer with programmable methods",
         "repeatable viscosity testing QC",
         "touchscreen rotational viscometer",
-        "viscometer LR low viscosity version"
+        "viscometer LR low viscosity version",
+        "multistep viscometre",
+        "viscometre with programmable methods",
+        "touchscreen rotational viscometre",
+        "viscometre LR low viscosity version"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/first-pro-plus-2/",
@@ -472,7 +489,7 @@
         "name": "FIRST PRO PLUS مقياس لزوجة متعدد الخطوات",
         "category": "مقياس لزوجة دوراني",
         "summary": "FIRST PRO PLUS مقياس لزوجة بلا زنبرك بشاشة لمس وبرمجة طرائق متعددة الخطوات وتسجيل بيانات عبر USB وحدود لمراقبة الجودة. ويوفر أدوات البرمجة نفسها المتاحة في أجهزة Lamy الأكبر، مما يساعد المختبرات على تحسين قابلية تكرار اختبارات اللزوجة دون الانتقال إلى مقياس ريولوجيا كامل.",
-        "description": "تعتمد قابلية التكرار في اختبار اللزوجة في معظمها على تطبيق كل مشغّل السرعات وأزمنة الثبات ودرجة الحرارة نفسها. ويعالج FIRST PRO PLUS ذلك بتمكين المشرف من بناء طرائق متعددة الخطوات على الجهاز وقفلها، بحيث يقتصر دور الفنيين على اختيار الاختبار وتشغيله. يتراوح مدى السرعة من 0.3 إلى 250 rpm، مع عزم من 0.05 إلى 13 mNm في الإصدار القياسي ومن 0.005 إلى 0.8 mNm في إصدار LR للعينات قليلة اللزوجة جداً. ويقيس مسبار PT100 درجة حرارة العينة من -50 إلى +300°C، وتعرض شاشة اللمس مقاس 7 بوصات اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة. ويمكن حفظ بيانات القياس على قرص USB أو إرسالها عبر RS232 وEthernet إلى حاسوب، حيث يدعم برنامج RheoTex إعداد تقارير مراقبة الجودة والتكامل مع LIMS. ويُعرّف المشغّلون بأنفسهم برمز من 4 أرقام. ويقبل الجهاز أنظمة القياس DIN وRV/LV وBV والريشية (vane) ومنخفضة اللزوجة جداً وKrebs والعينات الصغيرة، وهو ما يغطي معظم طرائق الدهانات والمواد اللاصقة والأغذية والعناية الشخصية.",
+        "description": "تعتمد قابلية التكرار في اختبار اللزوجة في معظمها على تطبيق كل مشغّل السرعات وأزمنة الثبات ودرجة الحرارة نفسها. ويعالج FIRST PRO PLUS ذلك بتمكين المشرف من بناء طرائق متعددة الخطوات على الجهاز وقفلها، بحيث يقتصر دور الفنيين على اختيار الاختبار وتشغيله. يتراوح مدى السرعة من 0.3 إلى 250 rpm، مع عزم من 0.05 إلى 13 mNm في الإصدار القياسي ومن 0.005 إلى 0.8 mNm في إصدار LR للعينات قليلة اللزوجة جداً. ويقيس مسبار PT100 درجة حرارة العينة من −50 إلى +300°C، وتعرض شاشة اللمس مقاس 7 بوصات اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة. ويمكن حفظ بيانات القياس على قرص USB أو إرسالها عبر RS232 وEthernet إلى حاسوب، حيث يدعم برنامج RheoTex إعداد تقارير مراقبة الجودة والتكامل مع LIMS. ويُعرّف المشغّلون بأنفسهم برمز من 4 أرقام. ويقبل الجهاز أنظمة القياس DIN وRV/LV وBV والريشية (vane) ومنخفضة اللزوجة جداً وKrebs والعينات الصغيرة، وهو ما يغطي معظم طرائق الدهانات والمواد اللاصقة والأغذية والعناية الشخصية.",
         "applications": [
           "طرائق اللزوجة متعددة الخطوات",
           "اختبارات الإفراج عن الدفعات",
@@ -495,7 +512,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "الدقة",
@@ -524,7 +541,7 @@
       "name": "FIRST PRODIG Viscometer",
       "model": "FIRST PRODIG",
       "slug": "first-prodig",
-      "category": "Rotational viscometer",
+      "category": "Rotational Viscometer",
       "priority": "flagship",
       "summary": "The FIRST PRODIG is the most complete instrument of the FIRST viscometer family. Its touchscreen draws the curve live, supports constant, multistep and ramp methods, and prints a report directly, so a technician can run and document a full viscosity profile without a computer.",
       "description": "The FIRST PRODIG is built for laboratories that want rheology-style test sequences from a viscometer-class instrument. Methods are created on the 7-inch touchscreen as constant-speed, multistep or ramp programs and saved for later use. During a run, the measured curve is drawn on screen, and the results can be sent to a desktop printer or exported by USB, RS232 or Ethernet. Speed is adjustable between 0.3 and 250 rpm, and torque covers 0.05 to 13 mNm in the standard version or 0.005 to 0.8 mNm in the LR version. A PT100 probe reports sample temperature across a range of -50 to +300 degrees Celsius, and the display also shows shear rate, shear stress, torque and time. Compatible measuring systems include DIN, RV/LV, BV, vane, Krebs, ultra-low-viscosity and small-sample geometries, and the head can be paired with the EVA MS-DIN PLUS, EVA LR-BV PLUS or RT-1 PLUS temperature units. Accuracy is plus or minus 1 percent of full scale with 0.2 percent repeatability, figures shared across the touchscreen range.",
@@ -585,7 +602,12 @@
         "viscometer curve display printer",
         "FIRST PRODIG viscometer",
         "lab viscometer with report printing",
-        "touchscreen viscometer multistep ramp"
+        "touchscreen viscometer multistep ramp",
+        "viscometre with ramp method",
+        "viscometre curve display printer",
+        "FIRST PRODIG viscometre",
+        "lab viscometre with report printing",
+        "touchscreen viscometre multistep ramp"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/first-prodig-2/",
@@ -597,8 +619,8 @@
       "ar": {
         "name": "FIRST PRODIG مقياس لزوجة",
         "category": "مقياس لزوجة دوراني",
-        "summary": "FIRST PRODIG هو أكمل أجهزة عائلة مقاييس اللزوجة FIRST. ترسم شاشة اللمس فيه المنحنى مباشرة، وتدعم الطرائق ثابتة السرعة ومتعددة الخطوات والتصاعدية (Ramp)، وتطبع التقرير مباشرة، فيستطيع الفني تشغيل ملف لزوجة كامل وتوثيقه دون حاسوب.",
-        "description": "صُمم FIRST PRODIG للمختبرات التي تريد تسلسلات اختبار بأسلوب الريولوجيا من جهاز في فئة مقاييس اللزوجة. تُنشأ الطرائق على شاشة اللمس مقاس 7 بوصات كبرامج ثابتة السرعة أو متعددة الخطوات أو تصاعدية (Ramp) وتُحفظ للاستخدام لاحقاً. وأثناء التشغيل يُرسم المنحنى المقاس على الشاشة، ويمكن إرسال النتائج إلى طابعة مكتبية أو تصديرها عبر USB أو RS232 أو Ethernet. وتُضبط السرعة بين 0.3 و250 rpm، ويغطي العزم من 0.05 إلى 13 mNm في الإصدار القياسي أو من 0.005 إلى 0.8 mNm في إصدار LR. ويقرأ مسبار PT100 درجة حرارة العينة ضمن مدى من -50 إلى +300°C، وتعرض الشاشة أيضاً معدل القص وإجهاد القص وعزم الدوران والزمن. وتشمل أنظمة القياس المتوافقة هندسات DIN وRV/LV وBV والريشية (vane) وKrebs ومنخفضة اللزوجة جداً والعينات الصغيرة، ويمكن اقتران الرأس بوحدات التحكم في درجة الحرارة EVA MS-DIN PLUS أو EVA LR-BV PLUS أو RT-1 PLUS. والدقة ±1% من المدى الكامل مع قابلية تكرار 0.2%، وهي قيم مشتركة في مجموعة طرازات شاشة اللمس.",
+        "summary": "FIRST PRODIG هو أكمل أجهزة سلسلة مقاييس اللزوجة FIRST. ترسم شاشة اللمس فيه المنحنى مباشرة، وتدعم الطرائق ثابتة السرعة ومتعددة الخطوات والتصاعدية (Ramp)، وتطبع التقرير مباشرة، فيستطيع الفني تشغيل ملف لزوجة كامل وتوثيقه دون حاسوب.",
+        "description": "صُمم FIRST PRODIG للمختبرات التي تريد تسلسلات اختبار بأسلوب الريولوجيا من جهاز في فئة مقاييس اللزوجة. تُنشأ الطرائق على شاشة اللمس مقاس 7 بوصات كبرامج ثابتة السرعة أو متعددة الخطوات أو تصاعدية (Ramp) وتُحفظ للاستخدام لاحقاً. وأثناء التشغيل يُرسم المنحنى المقاس على الشاشة، ويمكن إرسال النتائج إلى طابعة مكتبية أو تصديرها عبر USB أو RS232 أو Ethernet. وتُضبط السرعة بين 0.3 و250 rpm، ويغطي العزم من 0.05 إلى 13 mNm في الإصدار القياسي أو من 0.005 إلى 0.8 mNm في إصدار LR. ويقرأ مسبار PT100 درجة حرارة العينة ضمن مدى من −50 إلى +300°C، وتعرض الشاشة أيضاً معدل القص وإجهاد القص وعزم الدوران والزمن. وتشمل أنظمة القياس المتوافقة هندسات DIN وRV/LV وBV والريشية (vane) وKrebs ومنخفضة اللزوجة جداً والعينات الصغيرة، ويمكن اقتران الرأس بوحدات التحكم في درجة الحرارة EVA MS-DIN PLUS أو EVA LR-BV PLUS أو RT-1 PLUS. والدقة ±1% من المدى الكامل مع قابلية تكرار 0.2%، وهي قيم مشتركة في مجموعة طرازات شاشة اللمس.",
         "applications": [
           "اختبارات منحنى الانسياب والاختبارات التصاعدية",
           "تحديد ملفات اللزوجة مع تقارير مطبوعة",
@@ -621,7 +643,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "الدقة",
@@ -650,10 +672,10 @@
       "name": "FIRST PRODIG CP-1000 Cone-Plate Viscometer",
       "model": "FIRST PRODIG CP-1000",
       "slug": "first-prodig-cp-1000",
-      "category": "Cone-plate viscometer",
+      "category": "Cone-Plate Viscometer",
       "priority": "core",
       "summary": "The FIRST PRODIG CP-1000 is a touchscreen viscometer with a cone-plate stand for measuring very small samples at ambient or controlled temperature. It can also take RV, Krebs and vane spindles for beaker work, giving one head two measuring modes.",
-      "description": "Cone-plate geometry measures viscosity on a thin film of sample squeezed between a rotating cone and a flat plate, so the shear rate is uniform across the gap and only a fraction of a millilitre is needed. The FIRST PRODIG CP-1000 combines that geometry with the programmable touchscreen electronics of the FIRST PRODIG. Speed can be set between 0.3 and 250 rpm, and torque spans 0.05 to 13 mNm. The head is mounted on a stand that also supports cone-plate and parallel-plate systems as well as MS RV/LV, Krebs and vane spindles, which allows the same instrument to be used for small-volume work on pastes, resins and cosmetics and for beaker measurements on larger samples. Viscosity, speed, shear rate, shear stress, torque, time and temperature appear on the 7-inch screen, and a PT100 sensor covers -50 to +300 degrees Celsius. Data leave the instrument by USB, RS232 or Ethernet. The unit measures D320 x H550 x W200 mm and weighs 14 kg. Accuracy is plus or minus 1 percent of full scale and repeatability is 0.2 percent.",
+      "description": "Cone-plate geometry measures viscosity on a thin film of sample squeezed between a rotating cone and a flat plate, so the shear rate is uniform across the gap and only a fraction of a milliliter is needed. The FIRST PRODIG CP-1000 combines that geometry with the programmable touchscreen electronics of the FIRST PRODIG. Speed can be set between 0.3 and 250 rpm, and torque spans 0.05 to 13 mNm. The head is mounted on a stand that also supports cone-plate and parallel-plate systems as well as MS RV/LV, Krebs and vane spindles, which allows the same instrument to be used for small-volume work on pastes, resins and cosmetics and for beaker measurements on larger samples. Viscosity, speed, shear rate, shear stress, torque, time and temperature appear on the 7-inch screen, and a PT100 sensor covers -50 to +300 degrees Celsius. Data leave the instrument by USB, RS232 or Ethernet. The unit measures D320 x H550 x W200 mm and weighs 14 kg. Accuracy is plus or minus 1 percent of full scale and repeatability is 0.2 percent.",
       "keySpecs": [
         {
           "label": "Rotation speed",
@@ -710,7 +732,10 @@
         "cone plate viscometer",
         "small sample viscosity measurement",
         "cone and plate viscometer touchscreen",
-        "low volume viscometer for pastes"
+        "low volume viscometer for pastes",
+        "cone plate viscometre",
+        "cone and plate viscometre touchscreen",
+        "low volume viscometre for pastes"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/fisrt-prodig-cp-1000/",
@@ -723,7 +748,7 @@
         "name": "FIRST PRODIG CP-1000 مقياس لزوجة بالمخروط والصفيحة",
         "category": "مقياس لزوجة بالمخروط والصفيحة",
         "summary": "FIRST PRODIG CP-1000 مقياس لزوجة بشاشة لمس مع حامل للمخروط والصفيحة لقياس عينات صغيرة جداً عند درجة حرارة المحيط أو عند درجة حرارة مضبوطة. ويمكنه أيضاً استقبال مغازل RV وKrebs والمغازل الريشية لأعمال الكأس، فيمنح رأساً واحداً وضعي قياس.",
-        "description": "تقيس هندسة المخروط والصفيحة اللزوجة على طبقة رقيقة من العينة محصورة بين مخروط دوّار وصفيحة مسطحة، فيكون معدل القص منتظماً عبر الفجوة ولا يلزم سوى جزء من المللتر. ويجمع FIRST PRODIG CP-1000 هذه الهندسة مع إلكترونيات شاشة اللمس القابلة للبرمجة في FIRST PRODIG. ويمكن ضبط السرعة بين 0.3 و250 rpm، ويمتد العزم من 0.05 إلى 13 mNm. ويُركَّب الرأس على حامل يدعم أيضاً أنظمة المخروط والصفيحة والصفيحتين المتوازيتين إضافةً إلى مغازل MS RV/LV وKrebs والمغازل الريشية (vane)، مما يتيح استخدام الجهاز نفسه في الأعمال ذات الحجوم الصغيرة على المعاجين والراتنجات ومستحضرات التجميل، وفي قياسات الكأس على العينات الأكبر. وتظهر اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة على الشاشة مقاس 7 بوصات، ويغطي حساس PT100 المدى من -50 إلى +300°C. وتخرج البيانات من الجهاز عبر USB أو RS232 أو Ethernet. وأبعاد الوحدة D320 x H550 x W200 mm ووزنها 14 kg. والدقة ±1% من المدى الكامل وقابلية التكرار 0.2%.",
+        "description": "تقيس هندسة المخروط والصفيحة اللزوجة على طبقة رقيقة من العينة محصورة بين مخروط دوّار وصفيحة مسطحة، فيكون معدل القص منتظماً عبر الفجوة ولا يلزم سوى جزء من المللتر. ويجمع FIRST PRODIG CP-1000 هذه الهندسة مع إلكترونيات شاشة اللمس القابلة للبرمجة في FIRST PRODIG. ويمكن ضبط السرعة بين 0.3 و250 rpm، ويمتد العزم من 0.05 إلى 13 mNm. ويُركَّب الرأس على حامل يدعم أيضاً أنظمة المخروط والصفيحة والصفيحتين المتوازيتين إضافةً إلى مغازل MS RV/LV وKrebs والمغازل الريشية (vane)، مما يتيح استخدام الجهاز نفسه في الأعمال ذات الحجوم الصغيرة على المعاجين والراتنجات ومستحضرات التجميل، وفي قياسات الكأس على العينات الأكبر. وتظهر اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة على الشاشة مقاس 7 بوصات، ويغطي حساس PT100 المدى من −50 إلى +300°C. وتخرج البيانات من الجهاز عبر USB أو RS232 أو Ethernet. وأبعاد الوحدة D320 x H550 x W200 mm ووزنها 14 kg. والدقة ±1% من المدى الكامل وقابلية التكرار 0.2%.",
         "applications": [
           "اختبار اللزوجة للحجوم الصغيرة",
           "قياسات المخروط والصفيحة على المعاجين والراتنجات",
@@ -742,7 +767,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "الدقة",
@@ -775,7 +800,7 @@
       "name": "RM 100 PLUS Viscometer",
       "model": "RM 100 PLUS",
       "slug": "rm-100-plus",
-      "category": "Rotational viscometer",
+      "category": "Rotational Viscometer",
       "priority": "flagship",
       "summary": "The RM 100 PLUS is a springless viscometer with the widest speed and torque window in the Lamy range, reaching 1,500 rpm and 30 mNm. Multistep methods, quality-control limits and LIMS and MODBUS functions make it a laboratory workhorse for thick, thin and shear-sensitive products alike.",
       "description": "Some products need both a gentle start and a high shear finish, and the RM 100 PLUS is designed for that spread. Rotation speed is free between 0.3 and 1,500 rpm, and torque runs from 0.05 to 30 mNm, so one head covers samples from light liquids to heavy pastes. Methods with several steps can be programmed and stored, and a viscosity-limit display tells the operator when a reading falls outside the acceptable window for the selected spindle and speed. The 7-inch touchscreen shows viscosity, speed, shear rate, shear stress, torque, time and temperature, and a PT100 probe reads from -50 to +300 degrees Celsius. Data transfer is by USB, RS232 or Ethernet, with LIMS and MODBUS functions for integration into plant systems and direct control of a connected temperature unit. The head is compatible with DIN, RV/LV, BV, vane, R, ultra-low-viscosity, Krebs and small-sample measuring systems, and with the EVA MS-DIN PLUS, EVA MS-R PLUS, EVA LR-BV PLUS and RT-1 PLUS temperature units. Accuracy is plus or minus 1 percent of full scale.",
@@ -836,7 +861,12 @@
         "high speed rotational viscometer",
         "wide range viscometer for QC",
         "viscometer with MODBUS LIMS",
-        "RM 100 PLUS viscometer"
+        "RM 100 PLUS viscometer",
+        "viscometre 1500 rpm",
+        "high speed rotational viscometre",
+        "wide range viscometre for QC",
+        "viscometre with MODBUS LIMS",
+        "RM 100 PLUS viscometre"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/rm-100-plus-2/",
@@ -849,7 +879,7 @@
         "name": "RM 100 PLUS مقياس لزوجة",
         "category": "مقياس لزوجة دوراني",
         "summary": "RM 100 PLUS مقياس لزوجة بلا زنبرك يتمتع بأوسع نطاق للسرعة والعزم في مجموعة Lamy، إذ يصل إلى 1,500 rpm و30 mNm. وتجعله الطرائق متعددة الخطوات وحدود مراقبة الجودة ووظائف LIMS وMODBUS جهازاً مخبرياً أساسياً للمنتجات الثقيلة والخفيفة والحساسة للقص على حد سواء.",
-        "description": "تحتاج بعض المنتجات إلى بداية هادئة ونهاية بقص عالٍ، وقد صُمم RM 100 PLUS لهذا التباين. فسرعة الدوران حرة بين 0.3 و1,500 rpm، ويمتد العزم من 0.05 إلى 30 mNm، فيغطي رأس واحد عينات من السوائل الخفيفة إلى المعاجين الثقيلة. ويمكن برمجة طرائق متعددة الخطوات وتخزينها، ويُعلم عرض حدود اللزوجة المشغّلَ عندما تقع القراءة خارج النطاق المقبول للمغزل والسرعة المختارين. وتعرض شاشة اللمس مقاس 7 بوصات اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة، ويقرأ مسبار PT100 من -50 إلى +300°C. ويتم نقل البيانات عبر USB أو RS232 أو Ethernet، مع وظائف LIMS وMODBUS للتكامل مع أنظمة المصنع وللتحكم المباشر في وحدة درجة الحرارة المتصلة. والرأس متوافق مع أنظمة القياس DIN وRV/LV وBV والريشية (vane) وR ومنخفضة اللزوجة جداً وKrebs والعينات الصغيرة، ومع وحدات التحكم في درجة الحرارة EVA MS-DIN PLUS وEVA MS-R PLUS وEVA LR-BV PLUS وRT-1 PLUS. والدقة ±1% من المدى الكامل.",
+        "description": "تحتاج بعض المنتجات إلى بداية هادئة ونهاية بقص عالٍ، وقد صُمم RM 100 PLUS لهذا التباين. فسرعة الدوران حرة بين 0.3 و1,500 rpm، ويمتد العزم من 0.05 إلى 30 mNm، فيغطي رأس واحد عينات من السوائل الخفيفة إلى المعاجين الثقيلة. ويمكن برمجة طرائق متعددة الخطوات وتخزينها، ويُعلم عرض حدود اللزوجة المشغّلَ عندما تقع القراءة خارج النطاق المقبول للمغزل والسرعة المختارين. وتعرض شاشة اللمس مقاس 7 بوصات اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة، ويقرأ مسبار PT100 من −50 إلى +300°C. ويتم نقل البيانات عبر USB أو RS232 أو Ethernet، مع وظائف LIMS وMODBUS للتكامل مع أنظمة المصنع وللتحكم المباشر في وحدة درجة الحرارة المتصلة. والرأس متوافق مع أنظمة القياس DIN وRV/LV وBV والريشية (vane) وR ومنخفضة اللزوجة جداً وKrebs والعينات الصغيرة، ومع وحدات التحكم في درجة الحرارة EVA MS-DIN PLUS وEVA MS-R PLUS وEVA LR-BV PLUS وRT-1 PLUS. والدقة ±1% من المدى الكامل.",
         "applications": [
           "اختبار اللزوجة على نطاق واسع",
           "طرائق القص متعددة الخطوات",
@@ -868,7 +898,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "الدقة",
@@ -901,7 +931,7 @@
       "name": "RM 100 CP-1000 PLUS Cone-Plate Viscometer",
       "model": "RM 100 CP-1000 PLUS",
       "slug": "rm-100-cp-1000-plus",
-      "category": "Cone-plate viscometer",
+      "category": "Cone-Plate Viscometer",
       "priority": "core",
       "summary": "The RM 100 CP-1000 PLUS pairs the 1,500 rpm RM 100 head with a cone-plate stand and fluid circulation for temperature control. A quick coupling and manual gap lift speed up sample changes, and beaker spindles remain available for conventional tests.",
       "description": "Cone-plate viscometry is the usual choice when only a small sample is available or when a defined, uniform shear rate is required, for example with coatings, inks, resins and cosmetic emulsions. The RM 100 CP-1000 PLUS gives that geometry the full speed and torque range of the RM 100 PLUS head: free speeds from 0.3 to 1,500 rpm and torque from 0.05 to 30 mNm. The cone is attached with a quick coupling, and a manual lift sets the gap, which shortens the time between samples. A fluid circulation system holds the plate at the chosen temperature, and an integrated PT100 probe covers -50 to +300 degrees Celsius. Methods with several steps can be programmed on the 7-inch touchscreen, and quality-control limits, LIMS and MODBUS functions are included. Measuring systems include cone-plate, RV/LV, vane and Krebs types, so the instrument can switch to beaker measurements when needed. Data leave through USB, RS232 or Ethernet, and the instrument works with RheoTex software. The unit measures D320 x H550 x W200 mm and weighs 14 kg. Accuracy is plus or minus 1 percent of full scale.",
@@ -961,7 +991,11 @@
         "cone plate viscometer high shear",
         "temperature controlled cone plate viscometer",
         "ICI cone and plate viscometer",
-        "small volume viscometer for coatings"
+        "small volume viscometer for coatings",
+        "cone plate viscometre high shear",
+        "temperature controlled cone plate viscometre",
+        "ICI cone and plate viscometre",
+        "small volume viscometre for coatings"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/rm-100-cp-1000-plus-2/",
@@ -974,7 +1008,7 @@
         "name": "RM 100 CP-1000 PLUS مقياس لزوجة بالمخروط والصفيحة",
         "category": "مقياس لزوجة بالمخروط والصفيحة",
         "summary": "يقرن RM 100 CP-1000 PLUS رأس RM 100 البالغة سرعته 1,500 rpm بحامل للمخروط والصفيحة ودورة سائل للتحكم في درجة الحرارة. وتسرّع وصلة سريعة ورافعة يدوية للفجوة تغيير العينات، وتبقى مغازل الكأس متاحة للاختبارات التقليدية.",
-        "description": "قياس اللزوجة بالمخروط والصفيحة هو الخيار المعتاد عند توفر عينة صغيرة فقط أو عند الحاجة إلى معدل قص محدد ومنتظم، كما في الطلاءات والأحبار والراتنجات والمستحلبات التجميلية. ويمنح RM 100 CP-1000 PLUS هذه الهندسة كامل نطاق السرعة والعزم في رأس RM 100 PLUS: سرعات حرة من 0.3 إلى 1,500 rpm وعزم من 0.05 إلى 30 mNm. ويُثبَّت المخروط بوصلة سريعة، وتضبط رافعة يدوية الفجوة، مما يقصّر الزمن بين العينات. ويُبقي نظام دورة السائل الصفيحة عند درجة الحرارة المختارة، ويغطي مسبار PT100 المدمج المدى من -50 إلى +300°C. ويمكن برمجة طرائق متعددة الخطوات على شاشة اللمس مقاس 7 بوصات، وتُضمَّن حدود مراقبة الجودة ووظائف LIMS وMODBUS. وتشمل أنظمة القياس أنواع المخروط والصفيحة وRV/LV والريشية (vane) وKrebs، فيمكن للجهاز التحول إلى قياسات الكأس عند الحاجة. وتخرج البيانات عبر USB أو RS232 أو Ethernet، ويعمل الجهاز مع برنامج RheoTex. وأبعاد الوحدة D320 x H550 x W200 mm ووزنها 14 kg. والدقة ±1% من المدى الكامل.",
+        "description": "قياس اللزوجة بالمخروط والصفيحة هو الخيار المعتاد عند توفر عينة صغيرة فقط أو عند الحاجة إلى معدل قص محدد ومنتظم، كما في الطلاءات والأحبار والراتنجات والمستحلبات التجميلية. ويمنح RM 100 CP-1000 PLUS هذه الهندسة كامل نطاق السرعة والعزم في رأس RM 100 PLUS: سرعات حرة من 0.3 إلى 1,500 rpm وعزم من 0.05 إلى 30 mNm. ويُثبَّت المخروط بوصلة سريعة، وتضبط رافعة يدوية الفجوة، مما يقصّر الزمن بين العينات. ويُبقي نظام دورة السائل الصفيحة عند درجة الحرارة المختارة، ويغطي مسبار PT100 المدمج المدى من −50 إلى +300°C. ويمكن برمجة طرائق متعددة الخطوات على شاشة اللمس مقاس 7 بوصات، وتُضمَّن حدود مراقبة الجودة ووظائف LIMS وMODBUS. وتشمل أنظمة القياس أنواع المخروط والصفيحة وRV/LV والريشية (vane) وKrebs، فيمكن للجهاز التحول إلى قياسات الكأس عند الحاجة. وتخرج البيانات عبر USB أو RS232 أو Ethernet، ويعمل الجهاز مع برنامج RheoTex. وأبعاد الوحدة D320 x H550 x W200 mm ووزنها 14 kg. والدقة ±1% من المدى الكامل.",
         "applications": [
           "لزوجة الطلاءات والأحبار بالمخروط والصفيحة",
           "اختبار العينات الصغيرة",
@@ -993,7 +1027,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "الدقة",
@@ -1026,10 +1060,10 @@
       "name": "RM 200 PLUS Rheometer",
       "model": "RM 200 PLUS",
       "slug": "rm-200-plus",
-      "category": "Rotational rheometer",
+      "category": "Rotational Rheometer",
       "priority": "flagship",
       "summary": "The RM 200 PLUS is a springless rheometer that produces flow curves, yield point and thixotropy results directly on its touchscreen, with regression fitting built in. No external software is needed for routine rheological characterization of pastes, gels, coatings and food products.",
-      "description": "Single-point viscosity rarely describes a structured fluid, which is why many quality teams move to flow-curve measurements. The RM 200 PLUS runs programmed speed sequences between 0.3 and 1,500 rpm, records torque from 0.05 to 30 mNm and builds the flow curve on the 7-inch touchscreen. From the curve it can derive yield point and thixotropic behaviour and apply regression models to calculate viscosity, all without a computer. Large internal storage keeps methods and results, and a PT100 probe reports sample temperature between -50 and +300 degrees Celsius. The display shows viscosity, speed, shear rate, shear stress, torque, time and temperature. Results leave the instrument through USB, RS232 or Ethernet, or print directly to a USB printer. It accepts DIN, RV/LV, BV, vane, R, Krebs, ultra-low-viscosity and small-sample measuring systems and combines with the EVA MS-DIN PLUS, EVA MS-R PLUS, EVA LR-BV PLUS and RT-1 PLUS temperature units. Typical uses include food, chocolate, building materials, chemicals, cosmetics, pharmaceutical preparations, automotive products and paints. Accuracy is plus or minus 1 percent of full scale with repeatability of 0.2 percent.",
+      "description": "Single-point viscosity rarely describes a structured fluid, which is why many quality teams move to flow-curve measurements. The RM 200 PLUS runs programmed speed sequences between 0.3 and 1,500 rpm, records torque from 0.05 to 30 mNm and builds the flow curve on the 7-inch touchscreen. From the curve it can derive yield point and thixotropic behavior and apply regression models to calculate viscosity, all without a computer. Large internal storage keeps methods and results, and a PT100 probe reports sample temperature between -50 and +300 degrees Celsius. The display shows viscosity, speed, shear rate, shear stress, torque, time and temperature. Results leave the instrument through USB, RS232 or Ethernet, or print directly to a USB printer. It accepts DIN, RV/LV, BV, vane, R, Krebs, ultra-low-viscosity and small-sample measuring systems and combines with the EVA MS-DIN PLUS, EVA MS-R PLUS, EVA LR-BV PLUS and RT-1 PLUS temperature units. Typical uses include food, chocolate, building materials, chemicals, cosmetics, pharmaceutical preparations, automotive products and paints. Accuracy is plus or minus 1 percent of full scale with repeatability of 0.2 percent.",
       "keySpecs": [
         {
           "label": "Rotation speed",
@@ -1096,7 +1130,7 @@
         "name": "RM 200 PLUS مقياس ريولوجيا",
         "category": "مقياس ريولوجيا دوراني",
         "summary": "RM 200 PLUS مقياس ريولوجيا بلا زنبرك ينتج منحنيات الانسياب ونقطة الخضوع ونتائج الثيكسوتروبية مباشرة على شاشة اللمس، مع ملاءمة بالانحدار مدمجة. ولا حاجة إلى برنامج خارجي في التوصيف الريولوجي الروتيني للمعاجين والهلامات والطلاءات والمنتجات الغذائية.",
-        "description": "نادراً ما تصف اللزوجة عند نقطة واحدة سائلاً ذا بنية، ولذلك ينتقل كثير من فرق الجودة إلى قياس منحنيات الانسياب. يشغّل RM 200 PLUS تسلسلات سرعة مبرمجة بين 0.3 و1,500 rpm، ويسجل العزم من 0.05 إلى 30 mNm، ويبني منحنى الانسياب على شاشة اللمس مقاس 7 بوصات. ويستطيع استخلاص نقطة الخضوع وسلوك الثيكسوتروبية من المنحنى وتطبيق نماذج الانحدار لحساب اللزوجة، وكل ذلك دون حاسوب. ويحفظ تخزين داخلي كبير الطرائق والنتائج، ويعرض مسبار PT100 درجة حرارة العينة بين -50 و+300°C. وتعرض الشاشة اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة. وتخرج النتائج من الجهاز عبر USB أو RS232 أو Ethernet، أو تُطبع مباشرة على طابعة USB. ويقبل أنظمة القياس DIN وRV/LV وBV والريشية (vane) وR وKrebs ومنخفضة اللزوجة جداً والعينات الصغيرة، ويقترن بوحدات التحكم في درجة الحرارة EVA MS-DIN PLUS وEVA MS-R PLUS وEVA LR-BV PLUS وRT-1 PLUS. وتشمل الاستخدامات المعتادة الأغذية والشوكولاتة ومواد البناء والكيماويات ومستحضرات التجميل والمستحضرات الدوائية ومنتجات السيارات والدهانات. والدقة ±1% من المدى الكامل مع قابلية تكرار 0.2%.",
+        "description": "نادراً ما تصف اللزوجة عند نقطة واحدة سائلاً ذا بنية، ولذلك ينتقل كثير من فرق الجودة إلى قياس منحنيات الانسياب. يشغّل RM 200 PLUS تسلسلات سرعة مبرمجة بين 0.3 و1,500 rpm، ويسجل العزم من 0.05 إلى 30 mNm، ويبني منحنى الانسياب على شاشة اللمس مقاس 7 بوصات. ويستطيع استخلاص نقطة الخضوع وسلوك الثيكسوتروبية من المنحنى وتطبيق نماذج الانحدار لحساب اللزوجة، وكل ذلك دون حاسوب. ويحفظ تخزين داخلي كبير الطرائق والنتائج، ويعرض مسبار PT100 درجة حرارة العينة بين −50 و+300°C. وتعرض الشاشة اللزوجة والسرعة ومعدل القص وإجهاد القص وعزم الدوران والزمن ودرجة الحرارة. وتخرج النتائج من الجهاز عبر USB أو RS232 أو Ethernet، أو تُطبع مباشرة على طابعة USB. ويقبل أنظمة القياس DIN وRV/LV وBV والريشية (vane) وR وKrebs ومنخفضة اللزوجة جداً والعينات الصغيرة، ويقترن بوحدات التحكم في درجة الحرارة EVA MS-DIN PLUS وEVA MS-R PLUS وEVA LR-BV PLUS وRT-1 PLUS. وتشمل الاستخدامات المعتادة الأغذية والشوكولاتة ومواد البناء والكيماويات ومستحضرات التجميل والمستحضرات الدوائية ومنتجات السيارات والدهانات. والدقة ±1% من المدى الكامل مع قابلية تكرار 0.2%.",
         "applications": [
           "منحنيات الانسياب ونقطة الخضوع",
           "اختبار الثيكسوتروبية",
@@ -1115,7 +1149,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "الدقة",
@@ -1144,7 +1178,7 @@
       "name": "DSR 500 Rheometer",
       "model": "DSR 500",
       "slug": "dsr-500",
-      "category": "Rotational rheometer",
+      "category": "Rotational Rheometer",
       "priority": "flagship",
       "summary": "The DSR 500 is an imposed-shear-rate rheometer with a 7-inch touchscreen that plots curves live and prints reports directly. It runs constant, multistep and ramp methods up to 1,500 rpm and lists petroleum products among its applications, alongside food, paints and building materials.",
       "description": "The DSR 500 controls the shear rate applied to the sample and reads the resulting torque, which gives viscosity and yield point from a single programmed test. Speeds are free between 0.3 and 1,500 rpm and torque spans 0.05 to 30 mNm, a combination that covers light fluids through heavy gels. The touchscreen draws the curve as the test progresses, applies regression analysis directly on the instrument and can send a finished report to a desktop printer. Constant, multistep and ramp methods can be stored, and a time-to-stop function ends a test at a defined point. A PT100 probe measures sample temperature from -50 to +300 degrees Celsius, and a connected temperature unit can be controlled from the same screen. Compatible measuring systems include DIN, RV/LV, BV, vane, Krebs, R, HT, ultra-low-viscosity and small-sample geometries, together with the EVA MS-DIN PLUS, EVA MS-R PLUS, EVA LR-BV PLUS and RT-1 PLUS units. Data transfer is by USB, RS232 or Ethernet, and LIMS and quality-control limit functions are included. Lamy lists petroleum products, pharmaceuticals, chemicals, coatings, chocolate and automotive materials among its applications.",
@@ -1219,7 +1253,7 @@
         "name": "DSR 500 مقياس ريولوجيا",
         "category": "مقياس ريولوجيا دوراني",
         "summary": "DSR 500 مقياس ريولوجيا بمعدل قص مفروض وشاشة لمس مقاس 7 بوصات ترسم المنحنيات مباشرة وتطبع التقارير مباشرة. يشغّل الطرائق ثابتة السرعة ومتعددة الخطوات والتصاعدية (Ramp) حتى 1,500 rpm، ويذكر المنتجات البترولية ضمن تطبيقاته إلى جانب الأغذية والدهانات ومواد البناء.",
-        "description": "يتحكم DSR 500 في معدل القص المطبَّق على العينة ويقرأ العزم الناتج، فيعطي اللزوجة ونقطة الخضوع من اختبار مبرمج واحد. وتتراوح السرعات بحرية بين 0.3 و1,500 rpm ويمتد العزم من 0.05 إلى 30 mNm، وهو مزيج يغطي من السوائل الخفيفة إلى الهلامات الثقيلة. وترسم شاشة اللمس المنحنى مع تقدّم الاختبار، وتطبّق تحليل الانحدار مباشرة على الجهاز، ويمكنها إرسال تقرير منجز إلى طابعة مكتبية. ويمكن تخزين الطرائق ثابتة السرعة ومتعددة الخطوات والتصاعدية، وتنهي وظيفة الوقت حتى الإيقاف الاختبار عند نقطة محددة. ويقيس مسبار PT100 درجة حرارة العينة من -50 إلى +300°C، ويمكن التحكم في وحدة درجة حرارة متصلة من الشاشة نفسها. وتشمل أنظمة القياس المتوافقة هندسات DIN وRV/LV وBV والريشية (vane) وKrebs وR وHT ومنخفضة اللزوجة جداً والعينات الصغيرة، إلى جانب وحدات EVA MS-DIN PLUS وEVA MS-R PLUS وEVA LR-BV PLUS وRT-1 PLUS. ويتم نقل البيانات عبر USB أو RS232 أو Ethernet، وتُضمَّن وظائف LIMS وحدود مراقبة الجودة. وتذكر Lamy المنتجات البترولية والمستحضرات الدوائية والكيماويات والطلاءات والشوكولاتة ومواد السيارات ضمن تطبيقاته.",
+        "description": "يتحكم DSR 500 في معدل القص المطبَّق على العينة ويقرأ العزم الناتج، فيعطي اللزوجة ونقطة الخضوع من اختبار مبرمج واحد. وتتراوح السرعات بحرية بين 0.3 و1,500 rpm ويمتد العزم من 0.05 إلى 30 mNm، وهو مزيج يغطي من السوائل الخفيفة إلى الهلامات الثقيلة. وترسم شاشة اللمس المنحنى مع تقدّم الاختبار، وتطبّق تحليل الانحدار مباشرة على الجهاز، ويمكنها إرسال تقرير منجز إلى طابعة مكتبية. ويمكن تخزين الطرائق ثابتة السرعة ومتعددة الخطوات والتصاعدية، وتنهي وظيفة الوقت حتى الإيقاف الاختبار عند نقطة محددة. ويقيس مسبار PT100 درجة حرارة العينة من −50 إلى +300°C، ويمكن التحكم في وحدة درجة حرارة متصلة من الشاشة نفسها. وتشمل أنظمة القياس المتوافقة هندسات DIN وRV/LV وBV والريشية (vane) وKrebs وR وHT ومنخفضة اللزوجة جداً والعينات الصغيرة، إلى جانب وحدات EVA MS-DIN PLUS وEVA MS-R PLUS وEVA LR-BV PLUS وRT-1 PLUS. ويتم نقل البيانات عبر USB أو RS232 أو Ethernet، وتُضمَّن وظائف LIMS وحدود مراقبة الجودة. وتذكر Lamy المنتجات البترولية والمستحضرات الدوائية والكيماويات والطلاءات والشوكولاتة ومواد السيارات ضمن تطبيقاته.",
         "applications": [
           "ريولوجيا معدل القص المفروض",
           "اللزوجة ونقطة الخضوع",
@@ -1238,7 +1272,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "الدقة",
@@ -1271,7 +1305,7 @@
       "name": "RM 100 L In-Line Process Viscometer",
       "model": "RM 100 L",
       "slug": "rm-100-l",
-      "category": "Industrial viscometer",
+      "category": "Industrial Viscometer",
       "priority": "core",
       "summary": "The RM 100 L is a springless viscometer for continuous in-line measurement in production. A magnetic coupling seals the measuring cell, a 4-20 mA output feeds process control, and a 15 m cable separates the measuring head from the control box. Petroleum products and chemicals are among its stated applications.",
       "description": "Laboratory checks tell a plant what a batch was; an in-line viscometer tells it what the batch is doing. The RM 100 L fits into a pipe or vessel and measures viscosity continuously so that operators can correct dosing, dilution or temperature straight away. A magnetic coupling transmits rotation through the housing wall, which keeps the measuring cell sealed. Speed is free between 5 and 600 rpm, and torque covers 0.5 to 13 mNm. The control box has a 7-inch touchscreen with viscosity, speed, shear rate, shear stress, torque, time and temperature, and a 4-20 mA output sends the reading to a PLC or DCS. A 15 m cable links the measuring head to the control box, with an optional extension. Multistep methods, quality-control limits and LIMS and MODBUS functions are available, and an external temperature probe can be added. The measuring head has a diameter of 100 mm, the box weighs 4 kg, and each unit ships with a calibration certificate and verification report. Lamy lists petroleum products, chemicals, coatings, food and cosmetics among its applications.",
@@ -1332,7 +1366,10 @@
         "online viscosity measurement process",
         "process viscometer 4-20 mA",
         "continuous viscosity monitoring production line",
-        "industrial viscometer magnetic coupling"
+        "industrial viscometer magnetic coupling",
+        "in-line viscometre",
+        "process viscometre 4-20 mA",
+        "industrial viscometre magnetic coupling"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/rm-100-l-2/",
@@ -1397,7 +1434,7 @@
       "name": "TX-700 Texture Analyzer",
       "model": "TX-700",
       "slug": "tx-700",
-      "category": "Texture analyzer",
+      "category": "Texture Analyzer",
       "priority": "core",
       "summary": "The TX-700 is a compression and traction texture analyzer with a 7-inch touchscreen, six interchangeable load cells from 10 N to 500 N and a built-in PT100 probe. It runs TPA, penetration, relaxation and compression tests on foods, gels, creams and packaging, with curves displayed directly.",
       "description": "Texture analysis quantifies what people feel when they bite, spread or squeeze a product, by pressing or pulling a probe into the sample and recording force against distance and time. The TX-700 offers interchangeable force sensors rated 10, 20, 50, 100, 250 and 500 N, with 0.001 N resolution up to 100 N and 0.01 N above that, so one frame can test soft gels and firm solids. Test speed is selectable from 0.1 to 10 mm per second. Operating modes include compression, relaxation, traction, TPA cycle, penetrometry and relative compression. The 7-inch touchscreen draws force curves live, and test programs can be saved and recalled. A PT100 sensor records temperature from -50 to +300 degrees Celsius, and a height-adjustable tray with a 160 mm turntable accommodates different sample sizes. A wide choice of probes and cells is available, and RheoTex software can be added for analysis. Data transfer is by USB or RS232, with LIMS support. Accuracy is plus or minus 0.5 percent of full scale. The instrument measures D610 x W340 x H710 mm and weighs 25 kg.",
@@ -1456,9 +1493,13 @@
       "searchKeywords": [
         "texture analyzer",
         "TPA texture profile analysis instrument",
-        "texture analyser for food QC",
+        "texture analyzer for food QC",
         "compression and tensile tester for gels",
-        "penetrometer texture analyzer touchscreen"
+        "penetrometer texture analyzer touchscreen",
+        "texture analyser",
+        "texture analyser for food QC",
+        "penetrometer texture analyser touchscreen",
+        "penetrometre texture analyzer touchscreen"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/tx-700-2/",
@@ -1471,7 +1512,7 @@
         "name": "TX-700 محلل القوام",
         "category": "محلل القوام",
         "summary": "TX-700 محلل قوام بالانضغاط والشد بشاشة لمس مقاس 7 بوصات و6 خلايا حمل قابلة للتبديل من 10 N إلى 500 N ومسبار PT100 مدمج. ينفّذ اختبارات TPA والاختراق والاسترخاء والانضغاط على الأغذية والهلامات والكريمات والتغليف، مع عرض المنحنيات مباشرة.",
-        "description": "يحوّل تحليل القوام إلى قيم كمية ما يشعر به الناس عند العضّ على المنتج أو دهنه أو الضغط عليه، وذلك بضغط مسبار في العينة أو سحبه منها وتسجيل القوة مقابل المسافة والزمن. ويقدّم TX-700 حساسات قوة قابلة للتبديل بتصنيف 10 و20 و50 و100 و250 و500 N، باستبانة 0.001 N حتى 100 N و0.01 N فوق ذلك، فيستطيع هيكل واحد اختبار الهلامات الطرية والمواد الصلبة المتماسكة. وتُختار سرعة الاختبار من 0.1 إلى 10 mm في الثانية. وتشمل أوضاع التشغيل الانضغاط والاسترخاء والشد ودورة TPA وقياس الاختراق والانضغاط النسبي. وترسم شاشة اللمس مقاس 7 بوصات منحنيات القوة مباشرة، ويمكن حفظ برامج الاختبار واستدعاؤها. ويسجل حساس PT100 درجة الحرارة من -50 إلى +300°C، وتستوعب صينية قابلة لتعديل الارتفاع بمنصة دوّارة بمقاس 160 mm أحجام العينات المختلفة. وتتوفر تشكيلة واسعة من المسابير والخلايا، ويمكن إضافة برنامج RheoTex للتحليل. ويتم نقل البيانات عبر USB أو RS232 مع دعم LIMS. والدقة ±0.5% من المدى الكامل. وأبعاد الجهاز D610 x W340 x H710 mm ووزنه 25 kg.",
+        "description": "يحوّل تحليل القوام إلى قيم كمية ما يشعر به الناس عند العضّ على المنتج أو دهنه أو الضغط عليه، وذلك بضغط مسبار في العينة أو سحبه منها وتسجيل القوة مقابل المسافة والزمن. ويقدّم TX-700 حساسات قوة قابلة للتبديل بتصنيف 10 و20 و50 و100 و250 و500 N، باستبانة 0.001 N حتى 100 N و0.01 N فوق ذلك، فيستطيع هيكل واحد اختبار الهلامات الطرية والمواد الصلبة المتماسكة. وتُختار سرعة الاختبار من 0.1 إلى 10 mm في الثانية. وتشمل أوضاع التشغيل الانضغاط والاسترخاء والشد ودورة TPA وقياس الاختراق والانضغاط النسبي. وترسم شاشة اللمس مقاس 7 بوصات منحنيات القوة مباشرة، ويمكن حفظ برامج الاختبار واستدعاؤها. ويسجل حساس PT100 درجة الحرارة من −50 إلى +300°C، وتستوعب صينية قابلة لتعديل الارتفاع بمنصة دوّارة بمقاس 160 mm أحجام العينات المختلفة. وتتوفر تشكيلة واسعة من المسابير والخلايا، ويمكن إضافة برنامج RheoTex للتحليل. ويتم نقل البيانات عبر USB أو RS232 مع دعم LIMS. والدقة ±0.5% من المدى الكامل. وأبعاد الجهاز D610 x W340 x H710 mm ووزنه 25 kg.",
         "applications": [
           "تحليل ملف القوام للأغذية",
           "صلابة الهلامات والكريمات",
@@ -1502,7 +1543,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "المنصة الدوارة",
@@ -1523,10 +1564,10 @@
       "name": "GT-300 PLUS Gel Timer",
       "model": "GT-300 PLUS",
       "slug": "gt-300-plus",
-      "category": "Gel timer",
+      "category": "Gel Timer",
       "priority": "niche",
       "summary": "The GT-300 PLUS is a gel timer that measures the curing time of resins, adhesives and similar reactive products. It uses low-cost disposable hooks and cups, supports an optional temperature-controlled bath, and shares the 7-inch touchscreen and 1,500 rpm drive of the RM 100 family.",
-      "description": "Gel time is the interval between mixing a reactive system and the moment it stops flowing, and it is a standard control point for epoxies, polyesters, adhesives and similar thermosetting products. The GT-300 PLUS tracks the rise in torque as the sample cures and records the time at which the product reaches the gel point. Measurements use disposable aluminium cups and steel hooks, which removes cleaning time and keeps the cost per test low, and low-volume hooks are offered for small samples. The instrument is available with a temperature control unit so that curing takes place at a defined temperature. Speed is selectable between 0.3 and 1,500 rpm and torque reads 0.05 to 30 mNm, while a PT100 channel reports temperature, and an optional breakable thermocouple can follow the sample. Quality-control limits, LIMS and MODBUS functions, operator login and a protected mode are included. Data leave by USB, RS232 or Ethernet, and RheoTex software is supplied. The version without a temperature unit measures D320 x H650 x W200 mm and weighs 14 kg; the version with the unit weighs 22 kg.",
+      "description": "Gel time is the interval between mixing a reactive system and the moment it stops flowing, and it is a standard control point for epoxies, polyesters, adhesives and similar thermosetting products. The GT-300 PLUS tracks the rise in torque as the sample cures and records the time at which the product reaches the gel point. Measurements use disposable aluminum cups and steel hooks, which removes cleaning time and keeps the cost per test low, and low-volume hooks are offered for small samples. The instrument is available with a temperature control unit so that curing takes place at a defined temperature. Speed is selectable between 0.3 and 1,500 rpm and torque reads 0.05 to 30 mNm, while a PT100 channel reports temperature, and an optional breakable thermocouple can follow the sample. Quality-control limits, LIMS and MODBUS functions, operator login and a protected mode are included. Data leave by USB, RS232 or Ethernet, and RheoTex software is supplied. The version without a temperature unit measures D320 x H650 x W200 mm and weighs 14 kg; the version with the unit weighs 22 kg.",
       "keySpecs": [
         {
           "label": "Rotation speed",
@@ -1550,7 +1591,7 @@
         },
         {
           "label": "Consumables",
-          "value": "Disposable aluminium cups and steel hooks"
+          "value": "Disposable aluminum cups and steel hooks"
         },
         {
           "label": "Connectivity",
@@ -1582,7 +1623,8 @@
         "gel time measurement instrument",
         "resin curing time tester",
         "epoxy gel time meter",
-        "disposable hook gel timer"
+        "disposable hook gel timer",
+        "epoxy gel time metre"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/gt-300-plus-2/",
@@ -1594,8 +1636,8 @@
       "ar": {
         "name": "GT-300 PLUS مؤقّت التهلّم",
         "category": "مؤقّت التهلّم",
-        "summary": "GT-300 PLUS مؤقّت تهلّم يقيس زمن المعالجة للراتنجات والمواد اللاصقة والمنتجات التفاعلية المماثلة. يستخدم خطاطيف وأكواباً منخفضة التكلفة للاستعمال الواحد، ويدعم حماماً اختيارياً مضبوط درجة الحرارة، ويشارك عائلة RM 100 شاشة اللمس مقاس 7 بوصات ومحرك 1,500 rpm.",
-        "description": "زمن التهلّم هو الفترة بين خلط منظومة تفاعلية واللحظة التي يتوقف فيها المنتج عن الانسياب، وهو نقطة مراقبة قياسية للإيبوكسي والبوليستر والمواد اللاصقة والمنتجات المتصلدة بالحرارة المماثلة. يتتبع GT-300 PLUS ارتفاع العزم أثناء معالجة العينة، ويسجل الزمن الذي يبلغ عنده المنتج نقطة التهلّم. وتُجرى القياسات بأكواب من الألومنيوم وخطاطيف من الفولاذ للاستعمال الواحد، مما يلغي زمن التنظيف ويُبقي كلفة الاختبار منخفضة، وتتوفر خطاطيف للحجوم الصغيرة للعينات الصغيرة. ويتوفر الجهاز مع وحدة تحكم في درجة الحرارة لتتم المعالجة عند درجة حرارة محددة. وتُختار السرعة بين 0.3 و1,500 rpm ويقرأ العزم من 0.05 إلى 30 mNm، بينما تُبلغ قناة PT100 عن درجة الحرارة، ويمكن لمزدوج حراري اختياري قابل للكسر أن يتتبع العينة. وتُضمَّن حدود مراقبة الجودة ووظائف LIMS وMODBUS وتسجيل دخول المشغّل ووضع محمي. وتخرج البيانات عبر USB أو RS232 أو Ethernet، ويُرفق برنامج RheoTex. ويقيس الإصدار الذي بلا وحدة درجة حرارة D320 x H650 x W200 mm ويزن 14 kg؛ أما الإصدار المزوّد بالوحدة فيزن 22 kg.",
+        "summary": "GT-300 PLUS مؤقّت تهلّم يقيس زمن المعالجة للراتنجات والمواد اللاصقة والمنتجات التفاعلية المماثلة. يستخدم خطاطيف وأكواباً منخفضة التكلفة للاستعمال الواحد، ويدعم حماماً اختيارياً مضبوط درجة الحرارة، ويشارك سلسلة RM 100 شاشة اللمس مقاس 7 بوصات ومحرك 1,500 rpm.",
+        "description": "زمن التهلّم هو الفترة بين خلط منظومة تفاعلية واللحظة التي يتوقف فيها المنتج عن الانسياب، وهو نقطة مراقبة قياسية للإيبوكسي والبوليستر والمواد اللاصقة والمنتجات المتصلدة بالحرارة المماثلة. يتتبع GT-300 PLUS ارتفاع العزم أثناء معالجة العينة، ويسجل الزمن الذي يبلغ عنده المنتج نقطة التهلّم. وتُجرى القياسات بأكواب من الألومنيوم وخطاطيف من الفولاذ للاستعمال الواحد، مما يلغي زمن التنظيف ويُبقي تكلفة الاختبار منخفضة، وتتوفر خطاطيف للحجوم الصغيرة للعينات الصغيرة. ويتوفر الجهاز مع وحدة تحكم في درجة الحرارة لتتم المعالجة عند درجة حرارة محددة. وتُختار السرعة بين 0.3 و1,500 rpm ويقرأ العزم من 0.05 إلى 30 mNm، بينما تُبلغ قناة PT100 عن درجة الحرارة، ويمكن لمزدوج حراري اختياري قابل للكسر أن يتتبع العينة. وتُضمَّن حدود مراقبة الجودة ووظائف LIMS وMODBUS وتسجيل دخول المشغّل ووضع محمي. وتخرج البيانات عبر USB أو RS232 أو Ethernet، ويُرفق برنامج RheoTex. ويقيس الإصدار الذي بلا وحدة درجة حرارة D320 x H650 x W200 mm ويزن 14 kg؛ أما الإصدار المزوّد بالوحدة فيزن 22 kg.",
         "applications": [
           "زمن تهلّم الراتنجات والمواد اللاصقة",
           "زمن معالجة الطلاءات",
@@ -1622,7 +1664,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "المواد الاستهلاكية",
@@ -1647,7 +1689,7 @@
       "name": "LV SPRING Spring Viscometer",
       "model": "LV SPRING (N800000)",
       "slug": "lv-spring",
-      "category": "Spring viscometer",
+      "category": "Spring Viscometer",
       "priority": "core",
       "summary": "The LV SPRING is a spring-type rotational viscometer with a 7-inch touchscreen, an electronic bubble level and a PT100 probe. It uses LV spindles and shares the connectivity and software of the newer Lamy range, serving labs whose methods call for a spring-torque design.",
       "description": "Many industry test methods and customer specifications were written around spring-torque viscometers with LV and RV spindle sets, and laboratories often keep that format to stay comparable with historical data. The LV SPRING keeps the spring measuring principle while adding modern electronics: a 7-inch touchscreen, free speed selection between 0.1 and 250 rpm, and a display of viscosity, speed, shear rate, torque, stress, time and temperature. An electronic bubble level helps the operator set the head level before a test. A PT100 sensor reads sample temperature between -50 and +300 degrees Celsius. Results transfer through RS232, Ethernet or USB, and a USB host port supports PCL/5 printers. Operator login with a four-digit code and a protected mode lock the test conditions. The kit includes four LV spindles, a GuardLeg, a rack stand, a user manual, a calibration and checking certificate and a carrying case. It accepts LV, RV, SV and ULA spring measuring systems and works with the EVA LR, EVA MS DIN and RT-1 PLUS temperature units through an adaptation kit. Accuracy is plus or minus 1 percent of full scale.",
@@ -1708,7 +1750,12 @@
         "LV spindle viscometer touchscreen",
         "spring type rotational viscometer",
         "viscometer with bubble level",
-        "LV RV spring viscometer"
+        "LV RV spring viscometer",
+        "spring viscometre LV",
+        "LV spindle viscometre touchscreen",
+        "spring type rotational viscometre",
+        "viscometre with bubble level",
+        "LV RV spring viscometre"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/lv-spring-2/",
@@ -1721,7 +1768,7 @@
         "name": "LV SPRING مقياس لزوجة بالزنبرك",
         "category": "مقياس لزوجة بالزنبرك",
         "summary": "LV SPRING مقياس لزوجة دوراني من نوع الزنبرك بشاشة لمس مقاس 7 بوصات وميزان فقاعي إلكتروني ومسبار PT100. يستخدم مغازل LV ويشارك مجموعة Lamy الأحدث اتصالاتها وبرمجياتها، ويخدم المختبرات التي تتطلب طرائقها تصميماً بعزم الزنبرك.",
-        "description": "كُتب كثير من طرائق الاختبار الصناعية ومواصفات العملاء حول مقاييس لزوجة بعزم الزنبرك مع أطقم مغازل LV وRV، وغالباً ما تحتفظ المختبرات بهذا النمط لتبقى نتائجها قابلة للمقارنة بالبيانات التاريخية. ويحتفظ LV SPRING بمبدأ القياس بالزنبرك مع إضافة إلكترونيات حديثة: شاشة لمس مقاس 7 بوصات، واختيار حر للسرعة بين 0.1 و250 rpm، وعرض للزوجة والسرعة ومعدل القص والعزم والإجهاد والزمن ودرجة الحرارة. ويساعد ميزان فقاعي إلكتروني المشغّل على ضبط استواء الرأس قبل الاختبار. ويقرأ حساس PT100 درجة حرارة العينة بين -50 و+300°C. وتُنقل النتائج عبر RS232 أو Ethernet أو USB، ويدعم منفذ USB مضيف طابعات PCL/5. ويقفل تسجيل دخول المشغّل برمز من 4 أرقام ووضع محمي ظروف الاختبار. وتضم المجموعة 4 مغازل LV وGuardLeg وحاملاً من نوع rack stand ودليل مستخدم وشهادة معايرة وفحص وحقيبة حمل. ويقبل أنظمة قياس الزنبرك LV وRV وSV وULA، ويعمل مع وحدات التحكم في درجة الحرارة EVA LR وEVA MS DIN وRT-1 PLUS عبر طقم تهيئة. والدقة ±1% من المدى الكامل.",
+        "description": "كُتب كثير من طرائق الاختبار الصناعية ومواصفات العملاء حول مقاييس لزوجة بعزم الزنبرك مع أطقم مغازل LV وRV، وغالباً ما تحتفظ المختبرات بهذا النمط لتبقى نتائجها قابلة للمقارنة بالبيانات التاريخية. ويحتفظ LV SPRING بمبدأ القياس بالزنبرك مع إضافة إلكترونيات حديثة: شاشة لمس مقاس 7 بوصات، واختيار حر للسرعة بين 0.1 و250 rpm، وعرض للزوجة والسرعة ومعدل القص والعزم والإجهاد والزمن ودرجة الحرارة. ويساعد ميزان فقاعي إلكتروني المشغّل على ضبط استواء الرأس قبل الاختبار. ويقرأ حساس PT100 درجة حرارة العينة بين −50 و+300°C. وتُنقل النتائج عبر RS232 أو Ethernet أو USB، ويدعم منفذ USB مضيف طابعات PCL/5. ويقفل تسجيل دخول المشغّل برمز من 4 أرقام ووضع محمي ظروف الاختبار. وتضم المجموعة 4 مغازل LV وGuardLeg وحاملاً من نوع rack stand ودليل مستخدم وشهادة معايرة وفحص وحقيبة حمل. ويقبل أنظمة قياس الزنبرك LV وRV وSV وULA، ويعمل مع وحدات التحكم في درجة الحرارة EVA LR وEVA MS DIN وRT-1 PLUS عبر طقم تهيئة. والدقة ±1% من المدى الكامل.",
         "applications": [
           "طرائق اللزوجة بعزم الزنبرك",
           "المقارنة ببيانات LV/RV التاريخية",
@@ -1744,7 +1791,7 @@
           },
           {
             "label": "استشعار درجة الحرارة (PT100)",
-            "value": "-50 °C إلى +300 °C"
+            "value": "−50 °C إلى +300 °C"
           },
           {
             "label": "شاشة العرض",
@@ -1773,7 +1820,7 @@
       "name": "EVA MS-DIN PLUS Temperature Control System",
       "model": "EVA MS-DIN PLUS",
       "slug": "eva-ms-din-plus",
-      "category": "Temperature control",
+      "category": "Temperature Control",
       "priority": "core",
       "summary": "The EVA MS-DIN PLUS is a temperature control unit for cylindrical measuring systems built to DIN 53019 and ISO 3219. Available in fluid, electric and Peltier versions, it holds the sample within 0.2 degrees Celsius so that viscosity results can be compared between runs and laboratories.",
       "description": "Viscosity changes sharply with temperature, so any serious viscosity or rheology method controls the sample temperature as carefully as it controls shear. The EVA MS-DIN PLUS surrounds a coaxial cylinder measuring system, such as the DIN, SV, ULV, chocolate or R types, and holds the sample at a defined temperature. The design follows DIN 53019 and ISO 3219 for rotational viscometry with cylinder geometries. Three versions exist, using fluid circulation, electric heating or a Peltier element, with an overall working range from -20 to +150 degrees Celsius that depends on the model. Temperature accuracy is plus or minus 0.2 degrees Celsius, and the display shows both the set value and the actual temperature of the unit. The unit works with the B-ONE PLUS, FIRST PLUS, FIRST PRO PLUS, FIRST PRODIG, RM 100 PLUS, RM 200 PLUS, DSR 500, RV SPRING and LV SPRING instruments, and on the touchscreen models it can be controlled directly from the viscometer. A metal bracket and rod for mounting the viscometer or rheometer are included, and an optional rack kit is available. The unit measures L610 x W340 x H650 mm and weighs 15 kg.",
@@ -1833,7 +1880,10 @@
         "Peltier temperature control for viscometer",
         "DIN 53019 temperature control",
         "ISO 3219 viscosity temperature bath",
-        "heated cylinder system viscometer"
+        "heated cylinder system viscometer",
+        "viscometre temperature control unit",
+        "Peltier temperature control for viscometre",
+        "heated cylinder system viscometre"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.lamyrheology.com/en/produits/eva-ms-din-plus-ms-din-ms-r/",
@@ -1846,7 +1896,7 @@
         "name": "EVA MS-DIN PLUS نظام التحكم في درجة الحرارة",
         "category": "التحكم في درجة الحرارة",
         "summary": "EVA MS-DIN PLUS وحدة تحكم في درجة الحرارة لأنظمة القياس الأسطوانية المصنّعة وفق DIN 53019 وISO 3219. تتوفر بإصدارات بالسائل والكهرباء وPeltier، وتُبقي العينة ضمن 0.2°C كي تكون نتائج اللزوجة قابلة للمقارنة بين التشغيلات والمختبرات.",
-        "description": "تتغير اللزوجة بشدة مع درجة الحرارة، ولذلك فإن أي طريقة جادة لقياس اللزوجة أو الريولوجيا تضبط درجة حرارة العينة بالعناية نفسها التي تضبط بها القص. وتحيط EVA MS-DIN PLUS بنظام قياس بأسطوانات متحدة المحور، مثل أنواع DIN وSV وULV والشوكولاتة وR، وتُبقي العينة عند درجة حرارة محددة. ويتبع التصميم DIN 53019 وISO 3219 الخاصين بقياس اللزوجة الدوراني بهندسات الأسطوانات. وتوجد 3 إصدارات تعتمد دورة السائل أو التسخين الكهربائي أو عنصر Peltier، بمدى تشغيل إجمالي من -20 إلى +150°C يتوقف على الطراز. ودقة درجة الحرارة ±0.2°C، وتعرض الشاشة القيمة المضبوطة ودرجة الحرارة الفعلية للوحدة. وتعمل الوحدة مع أجهزة B-ONE PLUS وFIRST PLUS وFIRST PRO PLUS وFIRST PRODIG وRM 100 PLUS وRM 200 PLUS وDSR 500 وRV SPRING وLV SPRING، ويمكن التحكم فيها مباشرة من مقياس اللزوجة في طرازات شاشة اللمس. وتُرفق كتيفة معدنية وقضيب لتركيب مقياس اللزوجة أو الريولوجيا، ويتوفر طقم رف اختياري. وأبعاد الوحدة L610 x W340 x H650 mm ووزنها 15 kg.",
+        "description": "تتغير اللزوجة بشدة مع درجة الحرارة، ولذلك فإن أي طريقة جادة لقياس اللزوجة أو الريولوجيا تضبط درجة حرارة العينة بالعناية نفسها التي تضبط بها القص. وتحيط EVA MS-DIN PLUS بنظام قياس بأسطوانات متحدة المحور، مثل أنواع DIN وSV وULV والشوكولاتة وR، وتُبقي العينة عند درجة حرارة محددة. ويتوافق التصميم مع DIN 53019 وISO 3219 الخاصين بقياس اللزوجة الدوراني بهندسات الأسطوانات. وتوجد 3 إصدارات تعتمد دورة السائل أو التسخين الكهربائي أو عنصر Peltier، بمدى تشغيل إجمالي من −20 إلى +150°C يتوقف على الطراز. ودقة درجة الحرارة ±0.2°C، وتعرض الشاشة القيمة المضبوطة ودرجة الحرارة الفعلية للوحدة. وتعمل الوحدة مع أجهزة B-ONE PLUS وFIRST PLUS وFIRST PRO PLUS وFIRST PRODIG وRM 100 PLUS وRM 200 PLUS وDSR 500 وRV SPRING وLV SPRING، ويمكن التحكم فيها مباشرة من مقياس اللزوجة في طرازات شاشة اللمس. وتُرفق كتيفة معدنية وقضيب لتركيب مقياس اللزوجة أو الريولوجيا، ويتوفر طقم رف اختياري. وأبعاد الوحدة L610 x W340 x H650 mm ووزنها 15 kg.",
         "applications": [
           "اختبار اللزوجة مع التحكم في درجة الحرارة",
           "قياس الريولوجيا بهندسة الأسطوانات وفق DIN 53019",
@@ -1857,7 +1907,7 @@
         "keySpecs": [
           {
             "label": "مدى درجات الحرارة",
-            "value": "-20 °C إلى +150 °C حسب الإصدار"
+            "value": "−20 °C إلى +150 °C حسب الإصدار"
           },
           {
             "label": "دقة درجة الحرارة",

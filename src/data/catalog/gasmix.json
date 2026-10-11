@@ -3,7 +3,7 @@
   "brandSlug": "gasmix",
   "brandUrl": "https://gasmix.com",
   "headquarters": "Juvisy-sur-Orge, France",
-  "brandSummary": "GasMix is the gas mixing and dilution line from AlyTech France, designed and assembled in Juvisy-sur-Orge. The range covers dynamic gas diluters from two to sixteen channels, a liquid-to-gas vapour generator, an LPG vaporizer and one control software, AlySoft, used to produce traceable calibration gases on site instead of buying a cylinder for every concentration.",
+  "brandSummary": "GasMix is the gas mixing and dilution line from AlyTech France, designed and assembled in Juvisy-sur-Orge. The range covers dynamic gas diluters from two to sixteen channels, a liquid-to-gas vapor generator, an LPG vaporizer and one control software, AlySoft, used to produce traceable calibration gases on site instead of buying a cylinder for every concentration.",
   "brandSummaryAr": "GasMix هو خط منتجات خلط الغازات وتخفيفها من AlyTech France، صُمِّم وجُمِّع في Juvisy-sur-Orge. تغطي المجموعة مخففات غاز ديناميكية من 2 إلى 16 قناة، ومولّد أبخرة من سائل إلى غاز، ومبخِّر لغاز البترول المسال (LPG)، وبرنامج تحكم واحدًا هو AlySoft، يُستخدم لإنتاج غازات معايرة قابلة للتتبع في الموقع بدلًا من شراء أسطوانة لكل تركيز.",
   "logoUrl": "https://gasmix.com/wp-content/uploads/2026/02/GasMix-logo-01.png",
   "products": [
@@ -14,7 +14,7 @@
       "category": "Gas Mixer / Gas Diluter",
       "priority": "flagship",
       "summary": "Aiolos III is a modular laboratory gas mixer and diluter that blends two to six gas streams through mass flow controllers to produce calibration standards on demand, from percent levels down to ppb. It runs under AlySoft on a Windows PC, reports the uncertainty of every mixture, and accepts cascade dilution, an injection valve, FReD or a multiplexer.",
-      "description": "A dynamic gas diluter meters a concentrated reference gas and a diluent through mass flow controllers and combines them in a calculated ratio, so one parent cylinder can yield any concentration the application needs. Aiolos III applies that principle across two to six channels, which lets a single instrument serve several analyzers and several target mixtures. Every MFC is characterised at the factory with a 400-point calibration for each gas matrix ordered, and the software corrects automatically for the gas in use through K-factors. AlySoft, running on a Windows PC over Ethernet, turns target concentrations into channel flows, executes programmed dilution, injection and flush sequences, synchronises with a GC, µGC or process analyzer, and issues a certificate listing the concentration and uncertainty of each point together with a full audit trail. The standard dilution factor is 10⁴, and the optional cascade second stage extends it to 10⁸, which is how ppb-level standards are made from a percent-level cylinder. Typical users are refinery and petrochemical laboratories calibrating GC, µGC, RGA/NGA and elemental analyzers, environmental stations validating ambient and emission analyzers, and research groups running linearity, LOD/LOQ and hysteresis studies. Channels and options can be added after purchase.",
+      "description": "A dynamic gas diluter meters a concentrated reference gas and a diluent through mass flow controllers and combines them in a calculated ratio, so one parent cylinder can yield any concentration the application needs. Aiolos III applies that principle across two to six channels, which lets a single instrument serve several analyzers and several target mixtures. Every MFC is characterized at the factory with a 400-point calibration for each gas matrix ordered, and the software corrects automatically for the gas in use through K-factors. AlySoft, running on a Windows PC over Ethernet, turns target concentrations into channel flows, executes programmed dilution, injection and flush sequences, synchronizes with a GC, µGC or process analyzer, and issues a certificate listing the concentration and uncertainty of each point together with a full audit trail. The standard dilution factor is 10⁴, and the optional cascade second stage extends it to 10⁸, which is how ppb-level standards are made from a percent-level cylinder. Typical users are refinery and petrochemical laboratories calibrating GC, µGC, RGA/NGA and elemental analyzers, environmental stations validating ambient and emission analyzers, and research groups running linearity, LOD/LOQ and hysteresis studies. Channels and options can be added after purchase.",
       "keySpecs": [
         {
           "label": "Gas channels",
@@ -97,8 +97,8 @@
       "ar": {
         "name": "Aiolos III خالط ومخفف غاز",
         "category": "خالط الغاز / مخفف الغاز",
-        "summary": "Aiolos III خالط ومخفف غاز مخبري معياري التصميم يمزج من 2 إلى 6 تيارات غازية عبر وحدات التحكم في التدفق الكتلي لإنتاج معايير المعايرة عند الطلب، من مستويات النسبة المئوية وحتى ppb. يعمل ببرنامج AlySoft على حاسوب Windows، ويُبلغ عن عدم اليقين لكل خليط، ويدعم التخفيف المتتالي (Cascade) أو صمام الحقن أو FReD أو المُوزِّع متعدد المنافذ (Multiplexer).",
-        "description": "يقيس مخفف الغاز الديناميكي كمية من غاز مرجعي مركّز وكمية من غاز التخفيف عبر وحدات التحكم في التدفق الكتلي، ثم يمزجهما بنسبة محسوبة، بحيث تتيح أسطوانة أم واحدة الحصول على أي تركيز يتطلبه التطبيق. يطبّق Aiolos III هذا المبدأ على 2 إلى 6 قنوات، ما يسمح لجهاز واحد بخدمة عدة محلّلات وعدة خلائط مستهدفة. تُعاير كل وحدة MFC في المصنع بمعايرة من 400 نقطة لكل مصفوفة غازية يتم طلبها، ويصحّح البرنامج تلقائيًا بحسب الغاز المستخدم عبر معاملات K (K-factors). ويحوّل AlySoft، العامل على حاسوب Windows عبر Ethernet، التراكيز المستهدفة إلى تدفقات للقنوات، وينفّذ تسلسلات مبرمجة للتخفيف والحقن والشطف، ويتزامن مع GC أو µGC أو محلل عمليات، ويُصدر شهادة تتضمن التركيز وعدم اليقين لكل نقطة إلى جانب سجل تدقيق كامل. معامل التخفيف القياسي هو 10⁴، وتمدّه مرحلة التخفيف المتتالي الثانية الاختيارية إلى 10⁸، وبهذه الطريقة تُحضَّر معايير بمستوى ppb انطلاقًا من أسطوانة بتركيز بمستوى النسبة المئوية. المستخدمون المعتادون هم مختبرات المصافي والبتروكيماويات التي تعاير محلّلات GC وµGC وRGA/NGA ومحلّلات العناصر، ومحطات الرصد البيئي التي تتحقق من محلّلات الهواء المحيط والانبعاثات، والمجموعات البحثية التي تجري دراسات الخطية وLOD/LOQ والتخلّف (Hysteresis). يمكن إضافة القنوات والخيارات بعد الشراء.",
+        "summary": "Aiolos III خالط ومخفف غاز مخبري معياري التصميم يمزج من 2 إلى 6 تيارات غازية عبر وحدات التحكم في التدفق الكتلي لإنتاج معايير المعايرة عند الطلب، من مستويات النسبة المئوية وحتى ppb. يعمل ببرنامج AlySoft على حاسوب Windows، ويُبلغ عن عدم اليقين لكل مخلوط، ويدعم التخفيف المتتالي (Cascade) أو صمام الحقن أو FReD أو المُوزِّع متعدد المنافذ (Multiplexer).",
+        "description": "يقيس مخفف الغاز الديناميكي كمية من غاز مرجعي مركّز وكمية من غاز التخفيف عبر وحدات التحكم في التدفق الكتلي، ثم يمزجهما بنسبة محسوبة، بحيث تتيح أسطوانة أم واحدة الحصول على أي تركيز يتطلبه التطبيق. يطبّق Aiolos III هذا المبدأ على 2 إلى 6 قنوات، ما يسمح لجهاز واحد بخدمة عدة محلّلات وعدة مخاليط مستهدفة. تُعاير كل وحدة MFC في المصنع بمعايرة من 400 نقطة لكل مصفوفة غازية يتم طلبها، ويصحّح البرنامج تلقائيًا بحسب الغاز المستخدم عبر معاملات K (K-factors). ويحوّل AlySoft، العامل على حاسوب Windows عبر Ethernet، التراكيز المستهدفة إلى تدفقات للقنوات، وينفّذ تسلسلات مبرمجة للتخفيف والحقن والشطف، ويتزامن مع GC أو µGC أو محلل عمليات، ويُصدر شهادة تتضمن التركيز وعدم اليقين لكل نقطة إلى جانب سجل تدقيق كامل. معامل التخفيف القياسي هو 10⁴، وتمدّه مرحلة التخفيف المتتالي الثانية الاختيارية إلى 10⁸، وبهذه الطريقة تُحضَّر معايير بمستوى ppb انطلاقًا من أسطوانة بتركيز بمستوى النسبة المئوية. المستخدمون المعتادون هم مختبرات المصافي والبتروكيماويات التي تعاير محلّلات GC وµGC وRGA/NGA ومحلّلات العناصر، ومحطات الرصد البيئي التي تتحقق من محلّلات الهواء المحيط والانبعاثات، والمجموعات البحثية التي تجري دراسات الخطية وLOD/LOQ والتخلّف (Hysteresis). يمكن إضافة القنوات والخيارات بعد الشراء.",
         "applications": [
           "المعايرة متعددة النقاط لمحلّلات GC وµGC وRGA/NGA",
           "فحوصات الخطية والتحقق من LOD/LOQ",
@@ -163,8 +163,8 @@
       "slug": "zephyr-ii",
       "category": "Gas Mixer / Gas Diluter",
       "priority": "flagship",
-      "summary": "Zephyr II is a compact two-channel gas diluter that combines one span gas with one diluent to create calibration standards on the bench or in the field. A 7-inch touchscreen runs AlySoft inside the unit, so no PC is needed, and an optional battery supports about six hours without mains power.",
-      "description": "Zephyr II brings two-gas dynamic dilution to a bench-top unit that needs no external computer. One span gas and one diluent are metered through two calibrated mass flow controllers, and the embedded AlySoft software on a 7-inch colour touchscreen converts a target concentration into the two setpoints. A Smart Sequence builder generates a complete multi-point calibration series from a start value, an end value and a number of points, and the instrument can trigger an analyzer through a dry contact or TTL signal so a GC or µGC runs unattended. Uncertainty is calculated for every mixture from the MFC flows and the parent-cylinder certificate, and events are logged for traceability. The standard dilution ratio is 1:2 000, extendable to 1:10 000. Wetted parts are 316 stainless steel with an inert coating and Kalrez seals, which suits sulfur compounds, NOx, NH₃ and VOCs. An optional rechargeable battery gives roughly six hours of autonomy, so the same unit can calibrate analyzers in a shelter, a mobile laboratory or a control room. It is the simplest way to replace several premixed calibration cylinders with a single standard.",
+      "summary": "Zephyr II is a compact two-channel gas diluter that combines one span gas with one diluent to create calibration standards on the bench or in the field. A 7-inch touchscreen runs AlySoft inside the unit, so no PC is needed, and an optional battery supports about six hours without AC power.",
+      "description": "Zephyr II brings two-gas dynamic dilution to a bench-top unit that needs no external computer. One span gas and one diluent are metered through two calibrated mass flow controllers, and the embedded AlySoft software on a 7-inch color touchscreen converts a target concentration into the two setpoints. A Smart Sequence builder generates a complete multi-point calibration series from a start value, an end value and a number of points, and the instrument can trigger an analyzer through a dry contact or TTL signal so a GC or µGC runs unattended. Uncertainty is calculated for every mixture from the MFC flows and the parent-cylinder certificate, and events are logged for traceability. The standard dilution ratio is 1:2 000, extendable to 1:10 000. Wetted parts are 316 stainless steel with an inert coating and perfluoroelastomer (FFKM) seals, which suits sulfur compounds, NOx, NH₃ and VOCs. An optional rechargeable battery gives roughly six hours of autonomy, so the same unit can calibrate analyzers in a shelter, a mobile laboratory or a control room. It offers a simple way to replace several premixed calibration cylinders with a single standard.",
       "keySpecs": [
         {
           "label": "Gas channels",
@@ -188,11 +188,11 @@
         },
         {
           "label": "Interface",
-          "value": "7″ colour touchscreen with embedded AlySoft; analyzer sync by dry contact or TTL"
+          "value": "7″ color touchscreen with embedded AlySoft; analyzer sync by dry contact or TTL"
         },
         {
           "label": "Wetted materials",
-          "value": "316 stainless steel with inert coating; Kalrez seals; Swagelok 1/8″ connections"
+          "value": "316 stainless steel with inert coating; FFKM seals; 1/8″ compression-fitting connections"
         },
         {
           "label": "Inlet / outlet pressure",
@@ -246,7 +246,7 @@
         "name": "Zephyr II مخفف غاز مدمج ثنائي القنوات",
         "category": "خالط الغاز / مخفف الغاز",
         "summary": "Zephyr II مخفف غاز مدمج ثنائي القنوات يمزج غاز مدى واحدًا (span) مع غاز تخفيف واحد لإنتاج معايير المعايرة على المنضدة أو في الميدان. تشغّل شاشة لمس مقاس 7 بوصات برنامج AlySoft داخل الجهاز، فلا حاجة إلى حاسوب، كما تتيح بطارية اختيارية العمل نحو 6 ساعات دون الاتصال بالتيار الكهربائي.",
-        "description": "يوفّر Zephyr II التخفيف الديناميكي بغازين في جهاز مكتبي لا يحتاج إلى حاسوب خارجي. يُقاس غاز مدى واحد وغاز تخفيف واحد عبر وحدتي تحكم معايرتين في التدفق الكتلي، ويحوّل برنامج AlySoft المدمج على شاشة لمس ملونة مقاس 7 بوصات التركيز المستهدف إلى نقطتي الضبط. وتنشئ أداة Smart Sequence سلسلة معايرة كاملة متعددة النقاط انطلاقًا من قيمة بداية وقيمة نهاية وعدد النقاط، ويمكن للجهاز تشغيل محلل عبر تلامس جاف أو إشارة TTL بحيث يعمل GC أو µGC دون إشراف. يُحسب عدم اليقين لكل خليط من تدفقات MFC وشهادة الأسطوانة الأم، وتُسجَّل الأحداث لأغراض التتبع. نسبة التخفيف القياسية 1:2 000، وهي قابلة للتمديد إلى 1:10 000. الأجزاء الملامسة للغاز من الفولاذ المقاوم للصدأ 316 بطلاء خامل وأختام Kalrez، وهو ما يناسب مركبات الكبريت وNOx وNH₃ والمركبات العضوية المتطايرة. وتمنح بطارية اختيارية قابلة لإعادة الشحن استقلالية تقارب 6 ساعات، فيمكن للجهاز نفسه معايرة المحلّلات داخل مقصورة أو مختبر متنقل أو غرفة تحكم. وهو أبسط وسيلة لاستبدال عدة أسطوانات معايرة مخلوطة مسبقًا بمعيار واحد.",
+        "description": "يوفّر Zephyr II التخفيف الديناميكي بغازين في جهاز مكتبي لا يحتاج إلى حاسوب خارجي. يُقاس غاز مدى واحد وغاز تخفيف واحد عبر وحدتي تحكم معايرتين في التدفق الكتلي، ويحوّل برنامج AlySoft المدمج على شاشة لمس ملونة مقاس 7 بوصات التركيز المستهدف إلى نقطتي الضبط. وتنشئ أداة Smart Sequence سلسلة معايرة كاملة متعددة النقاط انطلاقًا من قيمة بداية وقيمة نهاية وعدد النقاط، ويمكن للجهاز تشغيل محلل عبر تلامس جاف أو إشارة TTL بحيث يعمل GC أو µGC دون إشراف. يُحسب عدم اليقين لكل مخلوط من تدفقات MFC وشهادة الأسطوانة الأم، وتُسجَّل الأحداث لأغراض التتبع. نسبة التخفيف القياسية 1:2 000، وهي قابلة للتمديد إلى 1:10 000. الأجزاء الملامسة للغاز من الفولاذ المقاوم للصدأ 316 بطلاء خامل وأختام FFKM (إيلاستومر مفلور بالكامل)، وهو ما يناسب مركبات الكبريت وNOx وNH₃ والمركبات العضوية المتطايرة. وتمنح بطارية اختيارية قابلة لإعادة الشحن استقلالية تقارب 6 ساعات، فيمكن للجهاز نفسه معايرة المحلّلات داخل مقصورة أو مختبر متنقل أو غرفة تحكم. وهو وسيلة بسيطة لاستبدال عدة أسطوانات معايرة مخلوطة مسبقًا بمعيار واحد.",
         "applications": [
           "فحوصات الخطية ومعايرة GC (FID وTCD وPID وSCD وMS)",
           "معايرة محلّلات المصافي والعمليات",
@@ -282,7 +282,7 @@
           },
           {
             "label": "المواد الملامسة",
-            "value": "فولاذ مقاوم للصدأ 316 مع طلاء خامل؛ أختام Kalrez؛ وصلات Swagelok 1/8″"
+            "value": "فولاذ مقاوم للصدأ 316 مع طلاء خامل؛ أختام FFKM؛ وصلات انضغاطية 1/8″"
           },
           {
             "label": "ضغط المدخل / المخرج",
@@ -374,7 +374,8 @@
         "mobile laboratory gas calibration",
         "on-site analyzer calibration",
         "gas dilution system in carry case",
-        "AMS calibration gas generator"
+        "AMS calibration gas generator",
+        "on-site analyser calibration"
       ],
       "whyMiddleEast": "A field-portable diluter fits the emission and ambient-air monitoring work carried out at industrial sites and monitoring stations across the GCC.",
       "sourceUrl": "https://gasmix.com/products/nomad/",
@@ -386,8 +387,8 @@
       "ar": {
         "name": "Nomad خالط ومخفف غاز محمول",
         "category": "خالط الغاز / مخفف الغاز",
-        "summary": "Nomad خالط ومخفف غاز محمول من GasMix في حقيبة حمل صلبة، صُمّم لمعايرة المحلّلات والتحقق منها خارج المختبر. يوفّر 3 أو 4 قنوات MFC، ويشغّل AlySoft على حاسوب مدمج أو خارجي، وينتج خلائط قابلة للتتبع وفق ISO 6145-7 لأعمال التدقيق والمختبرات المتنقلة ومحطات الرصد.",
-        "description": "يجمع Nomad التخفيف الديناميكي من GasMix في حقيبة صلبة بحيث تُنتَج غازات المعايرة عند المحلل بدلًا من شحنها إليه. تضم التركيبات المعتادة 3 أو 4 قنوات من وحدات التحكم في التدفق الكتلي، مثل غازي مدى وغاز تداخل وغاز تخفيف، وهو ما يكفي لتنفيذ معايرة الصفر والمدى واختبارات الخطية والتكرارية واختبارات النقاء أو التداخل في تسلسل واحد. يعمل AlySoft على حاسوب صناعي مدمج (تتوفر شاشة لمس كخيار) أو على حاسوب خارجي متصل عبر Ethernet. ويخزّن مكتبة الغازات وجداول معايرة MFC متعددة النقاط ومعلمات التحكم في المحلل، ويحسب تدفق كل قناة من التركيز المستهدف، ويحتفظ بسجل تدقيق. تحمل كل وحدة MFC معايرة مصنعية من 400 نقطة لكل مصفوفة غازية مع تصحيح K-factor تلقائي، ويُبلغ البرنامج عن عدم اليقين ويُصدر شهادة لكل تسلسل. تأتي الطاقة من محوّل 24 V DC، ويعمل الجهاز بين 10 و50 °C. المستخدمون المعتادون هم المدققون ومشغّلو أنظمة CEMS ومحطات الهواء المحيط والمختبرات المتنقلة وفرق بناء نماذج FTIR أو Raman التي تحتاج إلى خلائط اصطناعية مضبوطة في الموقع.",
+        "summary": "Nomad خالط ومخفف غاز محمول من GasMix في حقيبة حمل صلبة، صُمّم لمعايرة المحلّلات والتحقق منها خارج المختبر. يوفّر 3 أو 4 قنوات MFC، ويشغّل AlySoft على حاسوب مدمج أو خارجي، وينتج مخاليط قابلة للتتبع وفق ISO 6145-7 لأعمال التدقيق والمختبرات المتنقلة ومحطات الرصد.",
+        "description": "يجمع Nomad التخفيف الديناميكي من GasMix في حقيبة صلبة بحيث تُنتَج غازات المعايرة عند المحلل بدلًا من شحنها إليه. تضم التركيبات المعتادة 3 أو 4 قنوات من وحدات التحكم في التدفق الكتلي، مثل غازي مدى وغاز تداخل وغاز تخفيف، وهو ما يكفي لتنفيذ معايرة الصفر والمدى واختبارات الخطية والتكرارية واختبارات النقاء أو التداخل في تسلسل واحد. يعمل AlySoft على حاسوب صناعي مدمج (تتوفر شاشة لمس كخيار) أو على حاسوب خارجي متصل عبر Ethernet. ويخزّن مكتبة الغازات وجداول معايرة MFC متعددة النقاط ومعلمات التحكم في المحلل، ويحسب تدفق كل قناة من التركيز المستهدف، ويحتفظ بسجل تدقيق. تحمل كل وحدة MFC معايرة مصنعية من 400 نقطة لكل مصفوفة غازية مع تصحيح K-factor تلقائي، ويُبلغ البرنامج عن عدم اليقين ويُصدر شهادة لكل تسلسل. تأتي الطاقة من محوّل 24 V DC، ويعمل الجهاز بين 10 و50 °C. المستخدمون المعتادون هم المدققون ومشغّلو أنظمة CEMS ومحطات الهواء المحيط والمختبرات المتنقلة وفرق بناء نماذج FTIR أو Raman التي تحتاج إلى مخاليط اصطناعية مضبوطة في الموقع.",
         "applications": [
           "معايرة GC وµGC ومحلّلات الغاز في الموقع",
           "فحوصات نظام القياس الآلي (AMS) للانبعاثات والهواء المحيط",
@@ -447,7 +448,7 @@
       "category": "Gas Mixer / Gas Diluter",
       "priority": "core",
       "summary": "Hurricane is the highest-capacity instrument in the GasMix range, blending up to 16 gases at once, with custom builds to 20 channels. It is designed for synthetic atmospheres, interference testing, spectrometer model building and complex calibration benches, with the software computing every flow and logging an audit trail.",
-      "description": "Hurricane is built for mixtures that are too complex for a handful of channels. Standard configurations blend up to 16 gases simultaneously, and custom systems reach 20, which covers synthetic atmospheres, interference studies, chemometric model development for FTIR and Raman spectrometers, sensor test benches, and calibration of RGA/NGA and GC/µGC methods for complex hydrocarbon streams. With this many components, manual flow arithmetic is impractical, so the PC software calculates dilution and span flows for nested, multi-step recipes, applies multi-point MFC calibration curves per gas matrix, and stores sequences that can be recalled and run automatically. It supports analyzer synchronisation and remote start, logs every event in an audit trail, and can stop mixing when a user-defined alarm trips. Options include the FReD automated flow regulator, heated tubing, and an inert build for aggressive gases such as H₂S, ammonia and sulfur compounds. Each MFC is calibrated at 400 points per gas matrix, with ±1 % setpoint accuracy and repeatability better than 0.1 % when operated between 10 and 100 % of full scale. Channels can be added as requirements grow.",
+      "description": "Hurricane is built for mixtures that are too complex for a handful of channels. Standard configurations blend up to 16 gases simultaneously, and custom systems reach 20, which covers synthetic atmospheres, interference studies, chemometric model development for FTIR and Raman spectrometers, sensor test benches, and calibration of RGA/NGA and GC/µGC methods for complex hydrocarbon streams. With this many components, manual flow arithmetic is impractical, so the PC software calculates dilution and span flows for nested, multi-step recipes, applies multi-point MFC calibration curves per gas matrix, and stores sequences that can be recalled and run automatically. It supports analyzer synchronization and remote start, logs every event in an audit trail, and can stop mixing when a user-defined alarm trips. Options include the FReD automated flow regulator, heated tubing, and an inert build for aggressive gases such as H₂S, ammonia and sulfur compounds. Each MFC is calibrated at 400 points per gas matrix, with ±1 % setpoint accuracy and repeatability better than 0.1 % when operated between 10 and 100 % of full scale. Channels can be added as requirements grow.",
       "keySpecs": [
         {
           "label": "Gas channels",
@@ -475,7 +476,7 @@
         },
         {
           "label": "Wetted materials",
-          "value": "316 stainless steel with inert coating; Kalrez seals"
+          "value": "316 stainless steel with inert coating; FFKM seals"
         },
         {
           "label": "Control",
@@ -499,7 +500,7 @@
         "Gas sensor test benches (LOD/LOQ and linearity)",
         "RGA/NGA and GC/µGC calibration for complex hydrocarbons",
         "Engine bench tests and emission control development",
-        "Customised secondary standards"
+        "Customized secondary standards"
       ],
       "industries": [
         "oil-gas",
@@ -528,9 +529,9 @@
         "name": "Hurricane خالط غاز عالي عدد القنوات",
         "category": "خالط الغاز / مخفف الغاز",
         "summary": "Hurricane هو الجهاز الأعلى سعة في مجموعة GasMix، إذ يمزج حتى 16 غازًا في آن واحد، مع تركيبات مخصصة تصل إلى 20 قناة. صُمّم للأجواء الاصطناعية واختبار التداخل وبناء نماذج المطيافات ومنصات المعايرة المعقدة، ويحسب البرنامج كل تدفق ويحتفظ بسجل تدقيق.",
-        "description": "Hurricane مصمم للخلائط الأشد تعقيدًا من أن تكفيها بضع قنوات. تمزج التكوينات القياسية حتى 16 غازًا في وقت واحد، وتصل الأنظمة المخصصة إلى 20، ما يغطي الأجواء الاصطناعية ودراسات التداخل وتطوير النماذج الكيمومترية لمطيافات FTIR وRaman ومنصات اختبار المستشعرات ومعايرة طرق RGA/NGA وGC/µGC لتيارات الهيدروكربونات المعقدة. ومع هذا العدد من المكوّنات يصبح الحساب اليدوي للتدفقات غير عملي، لذا يحسب برنامج الحاسوب تدفقات التخفيف والمدى للوصفات المتداخلة متعددة الخطوات، ويطبّق منحنيات معايرة MFC متعددة النقاط لكل مصفوفة غازية، ويخزّن تسلسلات يمكن استدعاؤها وتشغيلها تلقائيًا. ويدعم مزامنة المحلل والتشغيل عن بُعد، ويسجّل كل حدث في سجل تدقيق، ويمكنه إيقاف الخلط عند تفعيل إنذار يحدده المستخدم. تشمل الخيارات منظّم التدفق الآلي FReD والأنابيب المسخّنة وتصميمًا خاملًا للغازات العدوانية مثل H₂S والأمونيا ومركبات الكبريت. تُعاير كل وحدة MFC عند 400 نقطة لكل مصفوفة غازية، بدقة نقطة ضبط ±1 % وتكرارية أفضل من 0.1 % عند التشغيل بين 10 و100 % من المقياس الكامل. ويمكن إضافة قنوات مع تزايد المتطلبات.",
+        "description": "Hurricane مصمم للمخاليط الأشد تعقيدًا من أن تكفيها بضع قنوات. تمزج التكوينات القياسية حتى 16 غازًا في وقت واحد، وتصل الأنظمة المخصصة إلى 20، ما يغطي الأجواء الاصطناعية ودراسات التداخل وتطوير النماذج الكيمومترية لمطيافات FTIR وRaman ومنصات اختبار المستشعرات ومعايرة طرق RGA/NGA وGC/µGC لتيارات الهيدروكربونات المعقدة. ومع هذا العدد من المكوّنات يصبح الحساب اليدوي للتدفقات غير عملي، لذا يحسب برنامج الحاسوب تدفقات التخفيف والمدى للوصفات المتداخلة متعددة الخطوات، ويطبّق منحنيات معايرة MFC متعددة النقاط لكل مصفوفة غازية، ويخزّن تسلسلات يمكن استدعاؤها وتشغيلها تلقائيًا. ويدعم مزامنة المحلل والتشغيل عن بُعد، ويسجّل كل حدث في سجل تدقيق، ويمكنه إيقاف الخلط عند تفعيل إنذار يحدده المستخدم. تشمل الخيارات منظّم التدفق الآلي FReD والأنابيب المسخّنة وتصميمًا خاملًا للغازات العدوانية مثل H₂S والأمونيا ومركبات الكبريت. تُعاير كل وحدة MFC عند 400 نقطة لكل مصفوفة غازية، بدقة نقطة ضبط ±1 % وتكرارية أفضل من 0.1 % عند التشغيل بين 10 و100 % من المقياس الكامل. ويمكن إضافة قنوات مع تزايد المتطلبات.",
         "applications": [
-          "خلائط الغازات الاصطناعية المعقدة واختبار التداخل",
+          "مخاليط الغازات الاصطناعية المعقدة واختبار التداخل",
           "تطوير النماذج الكيمومترية لمطيافات FTIR وRaman",
           "منصات اختبار مستشعرات الغاز (LOD/LOQ والخطية)",
           "معايرة RGA/NGA وGC/µGC للهيدروكربونات المعقدة",
@@ -564,7 +565,7 @@
           },
           {
             "label": "المواد الملامسة",
-            "value": "فولاذ مقاوم للصدأ 316 مع طلاء خامل؛ أختام Kalrez"
+            "value": "فولاذ مقاوم للصدأ 316 مع طلاء خامل؛ أختام FFKM"
           },
           {
             "label": "التحكم",
@@ -579,7 +580,7 @@
             "value": "تقريباً 25 kg"
           }
         ],
-        "whyMiddleEast": "تُستخدم الخلائط المعقدة متعددة المكوّنات في معايرة محلّلات غاز المصافي (RGA) ومحلّلات الغاز الطبيعي في مختبرات التكرير ومعالجة الغاز."
+        "whyMiddleEast": "تُستخدم المخاليط المعقدة متعددة المكوّنات في معايرة محلّلات غاز المصافي (RGA) ومحلّلات الغاز الطبيعي في مختبرات التكرير ومعالجة الغاز."
       }
     },
     {
@@ -589,7 +590,7 @@
       "category": "Gas Mixer / Gas Diluter",
       "priority": "core",
       "summary": "GRack is a 19-inch rack-mounted GasMix gas mixer and diluter for continuous-duty QA/QC benches, analyzer shelters and automated calibration stations. It provides two to six channels under AlySoft, with PLC/DCS-ready digital I/O. The GMRack variant adds a touch screen to the same instrument.",
-      "description": "GRack is the industrial rack implementation of the GasMix architecture, designed for continuous operation and high-throughput laboratories. Calibrated mass flow modules, valves and safety functions are integrated into one 19-inch chassis that provides two to six channels, and a multiplexer can be added to select among more cylinders or to feed several analyzers or sampling lines. AlySoft on a Windows PC over Ethernet handles recipes, programmed sequences, analyzer synchronisation, uncertainty calculation, user management, audit trail and certificates, and OEM remote integration is supported. Digital I/O (dry contacts or TTL) and optional communication modules allow connection to a PLC or DCS for remote operation and status monitoring. The GMRack is simply the GRack with a touch screen added. Typical duties include CEMS calibration and QA/QC routines such as QAL2 and QAL3 linearity checks under EN 14181, hydrogen impurity checks for ISO 14687, and multi-point calibration of analyzer benches. For reactive gases such as H₂S, SO₂, NOx, NH₃ and VOCs, the wetted path can be specified in 316 stainless steel with inert passivation and Kalrez or Chemraz seals. Every MFC carries a 400-point factory calibration per gas matrix.",
+      "description": "GRack is the industrial rack implementation of the GasMix architecture, designed for continuous operation and high-throughput laboratories. Calibrated mass flow modules, valves and safety functions are integrated into one 19-inch chassis that provides two to six channels, and a multiplexer can be added to select among more cylinders or to feed several analyzers or sampling lines. AlySoft on a Windows PC over Ethernet handles recipes, programmed sequences, analyzer synchronization, uncertainty calculation, user management, audit trail and certificates, and OEM remote integration is supported. Digital I/O (dry contacts or TTL) and optional communication modules allow connection to a PLC or DCS for remote operation and status monitoring. The GMRack is simply the GRack with a touch screen added. Typical duties include CEMS calibration and QA/QC routines such as QAL2 and QAL3 linearity checks under EN 14181, hydrogen impurity checks for ISO 14687, and multi-point calibration of analyzer benches. For reactive gases such as H₂S, SO₂, NOx, NH₃ and VOCs, the wetted path can be specified in 316 stainless steel with inert passivation and perfluoroelastomer (FFKM) seals. Every MFC carries a 400-point factory calibration per gas matrix.",
       "keySpecs": [
         {
           "label": "Format",
@@ -625,7 +626,7 @@
         },
         {
           "label": "Wetted materials",
-          "value": "316 stainless steel with inert passivation; Kalrez or Chemraz seals"
+          "value": "316 stainless steel with inert passivation; FFKM seals"
         },
         {
           "label": "Weight",
@@ -659,7 +660,8 @@
         "CEMS calibration gas mixer",
         "analyzer shelter calibration system",
         "gas mixer with PLC interface",
-        "GMRack gas mixer"
+        "GMRack gas mixer",
+        "analyser shelter calibration system"
       ],
       "whyMiddleEast": "The rack format suits analyzer shelters at refineries and gas plants where emission and process analyzers are calibrated on an automated schedule.",
       "sourceUrl": "https://gasmix.com/products/grack/",
@@ -673,7 +675,7 @@
         "name": "GRack خالط غاز مُركَّب على حامل (GMRack)",
         "category": "خالط الغاز / مخفف الغاز",
         "summary": "GRack خالط ومخفف غاز من GasMix يُركَّب على حامل قياسي 19 بوصة، مخصص لمنصات QA/QC ذات التشغيل المستمر ومقصورات المحلّلات ومحطات المعايرة الآلية. يوفّر من 2 إلى 6 قنوات تحت AlySoft، مع مدخلات/مخرجات رقمية جاهزة للربط مع PLC/DCS. ويضيف المتغير GMRack شاشة لمس إلى الجهاز نفسه.",
-        "description": "GRack هو التنفيذ الصناعي المُركَّب على حامل لبنية GasMix، صُمّم للتشغيل المستمر والمختبرات عالية الإنتاجية. تُدمج وحدات التدفق الكتلي المعايرة والصمامات ووظائف الأمان في هيكل واحد بقياس 19 بوصة يوفّر من 2 إلى 6 قنوات، ويمكن إضافة مُوزِّع متعدد المنافذ (Multiplexer) لاختيار أسطوانات إضافية أو لتغذية عدة محلّلات أو خطوط أخذ عينات. يتولى AlySoft على حاسوب Windows عبر Ethernet إدارة الوصفات والتسلسلات المبرمجة ومزامنة المحلل وحساب عدم اليقين وإدارة المستخدمين وسجل التدقيق والشهادات، كما يُدعم التكامل عن بُعد مع أنظمة مصنّعي المعدات الأصلية (OEM). وتتيح المدخلات/المخرجات الرقمية (تلامسات جافة أو TTL) ووحدات الاتصال الاختيارية الربط مع PLC أو DCS للتشغيل عن بُعد ومراقبة الحالة. وGMRack هو ببساطة GRack مضافًا إليه شاشة لمس. تشمل المهام المعتادة معايرة CEMS وإجراءات QA/QC مثل فحوصات الخطية QAL2 وQAL3 وفق EN 14181، وفحوصات شوائب الهيدروجين وفق ISO 14687، والمعايرة متعددة النقاط لمنصات المحلّلات. وللغازات المتفاعلة مثل H₂S وSO₂ وNOx وNH₃ والمركبات العضوية المتطايرة يمكن تحديد المسار الملامس للغاز من الفولاذ المقاوم للصدأ 316 مع تخميل خامل وأختام Kalrez أو Chemraz. وتحمل كل وحدة MFC معايرة مصنعية من 400 نقطة لكل مصفوفة غازية.",
+        "description": "GRack هو التنفيذ الصناعي المُركَّب على حامل لبنية GasMix، صُمّم للتشغيل المستمر والمختبرات عالية الإنتاجية. تُدمج وحدات التدفق الكتلي المعايرة والصمامات ووظائف الأمان في هيكل واحد بقياس 19 بوصة يوفّر من 2 إلى 6 قنوات، ويمكن إضافة مُوزِّع متعدد المنافذ (Multiplexer) لاختيار أسطوانات إضافية أو لتغذية عدة محلّلات أو خطوط أخذ عينات. يتولى AlySoft على حاسوب Windows عبر Ethernet إدارة الوصفات والتسلسلات المبرمجة ومزامنة المحلل وحساب عدم اليقين وإدارة المستخدمين وسجل التدقيق والشهادات، كما يُدعم التكامل عن بُعد مع أنظمة مصنّعي المعدات الأصلية (OEM). وتتيح المدخلات/المخرجات الرقمية (تلامسات جافة أو TTL) ووحدات الاتصال الاختيارية الربط مع PLC أو DCS للتشغيل عن بُعد ومراقبة الحالة. وGMRack هو ببساطة GRack مضافًا إليه شاشة لمس. تشمل المهام المعتادة معايرة CEMS وإجراءات QA/QC مثل فحوصات الخطية QAL2 وQAL3 وفق EN 14181، وفحوصات شوائب الهيدروجين وفق ISO 14687، والمعايرة متعددة النقاط لمنصات المحلّلات. وللغازات المتفاعلة مثل H₂S وSO₂ وNOx وNH₃ والمركبات العضوية المتطايرة يمكن تحديد المسار الملامس للغاز من الفولاذ المقاوم للصدأ 316 مع تخميل خامل وأختام FFKM (إيلاستومر مفلور بالكامل). وتحمل كل وحدة MFC معايرة مصنعية من 400 نقطة لكل مصفوفة غازية.",
         "applications": [
           "منصات معايرة QA/QC الإنتاجية",
           "معايرة CEMS وفحوصات الخطية QAL2/QAL3",
@@ -689,7 +691,7 @@
           },
           {
             "label": "قنوات الغاز",
-            "value": "2 إلى 6، مع خيار مضاعِف لأسطوانات أو مخارج إضافية"
+            "value": "2 إلى 6، مع خيار مُوزِّع متعدد المنافذ لأسطوانات أو مخارج إضافية"
           },
           {
             "label": "نسبة التخفيف",
@@ -717,7 +719,7 @@
           },
           {
             "label": "المواد الملامسة",
-            "value": "فولاذ مقاوم للصدأ 316 مع تخميل خامل؛ أختام Kalrez أو Chemraz"
+            "value": "فولاذ مقاوم للصدأ 316 مع تخميل خامل؛ أختام FFKM"
           },
           {
             "label": "الوزن",
@@ -738,8 +740,8 @@
       "slug": "nephos",
       "category": "Liquid-to-Gas Standard Generator",
       "priority": "core",
-      "summary": "Nephos produces gas-phase calibration standards directly from pure liquids or liquid mixtures, including VOCs, alcohols, siloxanes and water vapour that cannot be supplied in cylinders. A Coriolis meter doses the liquid by mass, a heated chamber vaporises it, and AlySoft documents every point. It is the current generation of the LiqMix range.",
-      "description": "Nephos generates gas-phase standards straight from liquids, which is the practical route for VOCs, alcohols, siloxanes, water vapour and other compounds that are unstable, too heavy or too reactive to be bottled. Liquid is metered by a Coriolis mass flow meter, so the dosed mass is measured directly and does not depend on density, viscosity or temperature; changing solvent does not require re-tuning the dosing. The metered liquid is vaporised in a heated, temperature-controlled chamber into a carrier-gas stream, can be combined with one to four mass-flow-controlled gas channels or a second liquid channel, and is delivered through a heated line, 2 m as standard, so nothing recondenses before the analyzer. The optional cascade stage extends the dilution factor from 10⁴ to 10⁸ to span percent to ppb. AlySoft calculates flows and uncertainties, synchronises with GC, µGC and spectrometers, and records an audit trail and certificates. Typical work includes BTEX and odorous VOC standards, siloxane standards for biogas, humidity generation for sensor tests, ammonia at trace level for µGC, and carbon-filter studies. Wetted paths are inert-treated for reactive and corrosive compounds.",
+      "summary": "Nephos produces gas-phase calibration standards directly from pure liquids or liquid mixtures, including VOCs, alcohols, siloxanes and water vapor that cannot be supplied in cylinders. A Coriolis meter doses the liquid by mass, a heated chamber vaporizes it, and AlySoft documents every point. It is the current generation of the LiqMix range.",
+      "description": "Nephos generates gas-phase standards straight from liquids, which is the practical route for VOCs, alcohols, siloxanes, water vapor and other compounds that are unstable, too heavy or too reactive to be bottled. Liquid is metered by a Coriolis mass flow meter, so the dosed mass is measured directly and does not depend on density, viscosity or temperature; changing solvent does not require re-tuning the dosing. The metered liquid is vaporized in a heated, temperature-controlled chamber into a carrier-gas stream, can be combined with one to four mass-flow-controlled gas channels or a second liquid channel, and is delivered through a heated line, 2 m as standard, so nothing recondenses before the analyzer. The optional cascade stage extends the dilution factor from 10⁴ to 10⁸ to span percent to ppb. AlySoft calculates flows and uncertainties, synchronizes with GC, µGC and spectrometers, and records an audit trail and certificates. Typical work includes BTEX and odorous VOC standards, siloxane standards for biogas, humidity generation for sensor tests, ammonia at trace level for µGC, and carbon-filter studies. Wetted paths are inert-treated for reactive and corrosive compounds.",
       "keySpecs": [
         {
           "label": "Liquid channels",
@@ -771,7 +773,7 @@
         },
         {
           "label": "Wetted paths",
-          "value": "Sulfinert-treated; Swagelok 1/16″, 1/8″ and 1/4″ connections"
+          "value": "Inert-treated; 1/16″, 1/8″ and 1/4″ compression fittings"
         },
         {
           "label": "Control",
@@ -790,7 +792,7 @@
         "BTEX and VOC gas standards without cylinders",
         "Odorous VOC standards at ppb level",
         "Siloxane standards for biogas",
-        "Controlled humidity and water vapour generation",
+        "Controlled humidity and water vapor generation",
         "Ammonia and reactive-compound standards for µGC",
         "Carbon filter and gas sensor testing"
       ],
@@ -805,11 +807,14 @@
         "liquid to gas standard generator",
         "VOC calibration gas generator",
         "BTEX gas standard without cylinder",
-        "vapour generator for GC calibration",
+        "vapor generator for GC calibration",
         "siloxane calibration standard biogas",
         "humidity generator for sensor calibration",
         "Coriolis liquid vaporizer calibration",
-        "LiqMix Nephos"
+        "LiqMix Nephos",
+        "vapour generator for GC calibration",
+        "Coriolis liquid vapourizer calibration",
+        "Coriolis liquid vaporiser calibration"
       ],
       "whyMiddleEast": "Petrochemical and environmental laboratories can make BTEX and other VOC standards in-house instead of sourcing special-order cylinders for reactive or heavy compounds.",
       "sourceUrl": "https://gasmix.com/products/nephos/",
@@ -823,7 +828,7 @@
       "ar": {
         "name": "Nephos (LiqMix Nephos) مولّد معايير من سائل إلى غاز",
         "category": "مولّد معايير من سائل إلى غاز",
-        "summary": "ينتج Nephos معايير طور غازي مباشرة من سوائل نقية أو من خلائط سائلة، بما فيها المركبات العضوية المتطايرة والكحولات والسيلوكسانات وبخار الماء التي لا يمكن توريدها في أسطوانات. يحدّد مقياس كوريوليس جرعة السائل بالكتلة، وتُبخّره حجرة مسخّنة، ويوثّق AlySoft كل نقطة. وهو الجيل الحالي من مجموعة LiqMix.",
+        "summary": "ينتج Nephos معايير طور غازي مباشرة من سوائل نقية أو من مخاليط سائلة، بما فيها المركبات العضوية المتطايرة والكحولات والسيلوكسانات وبخار الماء التي لا يمكن توريدها في أسطوانات. يحدّد مقياس كوريوليس جرعة السائل بالكتلة، وتُبخّره حجرة مسخّنة، ويوثّق AlySoft كل نقطة. وهو الجيل الحالي من مجموعة LiqMix.",
         "description": "يولّد Nephos معايير طور غازي مباشرة من السوائل، وهي الطريقة العملية للمركبات العضوية المتطايرة والكحولات والسيلوكسانات وبخار الماء وغيرها من المركبات غير المستقرة أو الثقيلة جدًا أو شديدة التفاعل بحيث لا يمكن تعبئتها في أسطوانات. يُقاس السائل بواسطة مقياس تدفق كتلي من نوع كوريوليس، فتُقاس الكتلة المجرَّعة مباشرة ولا تعتمد على الكثافة أو اللزوجة أو درجة الحرارة؛ وتغيير المذيب لا يتطلب إعادة ضبط الجرعة. يُبخَّر السائل المقاس في حجرة مسخّنة ومضبوطة الحرارة ضمن تيار غاز حامل، ويمكن دمجه مع قناة غازية واحدة إلى 4 قنوات مضبوطة بوحدات تحكم في التدفق الكتلي أو مع قناة سائلة ثانية، ويُسلَّم عبر خط مسخّن بطول 2 m في التركيب القياسي، بحيث لا يتكاثف شيء مجددًا قبل المحلل. وتمدّ مرحلة التخفيف المتتالي الاختيارية معامل التخفيف من 10⁴ إلى 10⁸ ليغطي النطاق من النسبة المئوية إلى ppb. يحسب AlySoft التدفقات وعدم اليقين، ويتزامن مع GC وµGC والمطيافات، ويسجّل سجل التدقيق والشهادات. تشمل الأعمال المعتادة معايير BTEX والمركبات العضوية المتطايرة ذات الرائحة، ومعايير السيلوكسانات للغاز الحيوي، وتوليد الرطوبة لاختبارات المستشعرات، والأمونيا بمستوى الأثر لـ µGC، ودراسات مرشحات الكربون. وتخضع المسارات الملامسة للسائل والغاز لمعالجة خاملة للمركبات المتفاعلة والمسببة للتآكل.",
         "applications": [
           "معايير غاز BTEX والمركبات العضوية المتطايرة دون أسطوانات",
@@ -864,7 +869,7 @@
           },
           {
             "label": "المسارات الملامسة",
-            "value": "معالَجة بـ Sulfinert؛ وصلات Swagelok 1/16″ و1/8″ و1/4″"
+            "value": "معالَجة بطلاء خامل؛ وصلات انضغاطية 1/16″ و1/8″ و1/4″"
           },
           {
             "label": "التحكم",
@@ -889,7 +894,7 @@
       "category": "LPG Vaporizer",
       "priority": "core",
       "summary": "AURA II is a bench-top vaporizer that converts LPG and other liquefied gases into a stable, fully gaseous sample for GC, µGC and elemental analyzers. A regulated heating chamber and a heated transfer line prevent discrimination between light and heavy components, and pairing it with Aiolos III supports ASTM D6667 and D7551 calibration.",
-      "description": "Liquefied petroleum gas boils over a range, so if a cylinder or line is allowed to vaporise on its own, the light components leave first and the sample that reaches the analyzer no longer matches the liquid that was drawn. AURA II removes that error. The sample passes a 0.5 µm stainless steel filter at 2 to 50 bar, is vaporised in a heated chamber regulated between 40 and 160 °C, and is carried to the analyzer through internal lines and a 1 m insulated transfer line, all held at 120 °C, so heavy ends cannot recondense on the way. Outlet pressure is reduced to about 1 bar absolute (3 bar maximum) and output flow is regulated between 20 and 200 cc/min on methane. The entire flow path is inert-treated, which protects trace sulfur species from adsorption. Used alone it serves GC, µGC, GC-MS and total-sulfur analyzers; combined with a GasMix Aiolos mixer-diluter, a single certified sulfur standard can be diluted automatically to every calibration level for ASTM D6667 and D7551 workflows. Typical users are refineries, LPG terminals and petroleum testing laboratories.",
+      "description": "Liquefied petroleum gas boils over a range, so if a cylinder or line is allowed to vaporize on its own, the light components leave first and the sample that reaches the analyzer no longer matches the liquid that was drawn. AURA II removes that error. The sample passes a 0.5 µm stainless steel filter at 2 to 50 bar, is vaporized in a heated chamber regulated between 40 and 160 °C, and is carried to the analyzer through internal lines and a 1 m insulated transfer line, all held at 120 °C, so heavy ends cannot recondense on the way. Outlet pressure is reduced to about 1 bar absolute (3 bar maximum) and output flow is regulated between 20 and 200 cc/min on methane. The entire flow path is inert-treated, which protects trace sulfur species from adsorption. Used alone it serves GC, µGC, GC-MS and total-sulfur analyzers; combined with a GasMix Aiolos mixer-diluter, a single certified sulfur standard can be diluted automatically to every calibration level for ASTM D6667 and D7551 workflows. Typical users are refineries, LPG terminals and petroleum testing laboratories.",
       "keySpecs": [
         {
           "label": "Vaporizer temperature",
@@ -954,7 +959,15 @@
         "ASTM D7551 LPG sampling",
         "LPG sample vaporization without discrimination",
         "heated LPG vaporizer total sulfur analyzer",
-        "liquefied gas sampling for gas chromatography"
+        "liquefied gas sampling for gas chromatography",
+        "LPG vapourizer for GC",
+        "LPG vaporiser for GC",
+        "ASTM D6667 sulphur in LPG calibration",
+        "LPG sample vapourization without discrimination",
+        "heated LPG vaporizer total sulfur analyser",
+        "heated LPG vapourizer total sulfur analyzer",
+        "heated LPG vaporizer total sulphur analyzer",
+        "heated LPG vaporiser total sulfur analyzer"
       ],
       "whyMiddleEast": "LPG is a major fuel and export product of the Gulf, and the sulfur methods this vaporizer supports are routine quality checks at refineries, terminals and testing laboratories.",
       "sourceUrl": "https://gasmix.com/products/aura-ii/",
@@ -1026,8 +1039,8 @@
       "slug": "alysoft",
       "category": "Control Software",
       "priority": "core",
-      "summary": "AlySoft is the in-house software that drives every GasMix gas mixer and LiqMix liquid-to-gas system. It converts target concentrations into channel flows, calculates the uncertainty of each point, runs sequences with analyzer synchronisation, and records an audit trail and certificate. It is embedded in Zephyr II and runs on Windows for the other instruments.",
-      "description": "AlySoft is the single control layer behind the GasMix and LiqMix range, from the compact Zephyr II to the 16-channel Hurricane and the Nephos liquid-to-gas generator. The operator enters the concentration needed; the software calculates each channel flow using the stored multi-point MFC calibration curve for the selected gas matrix, applies K-factor correction, drives the mass flow controllers, and reports the uncertainty of the final concentration rather than just the setpoint. Programmable sequences cover dilution, injection and flushing, and a sequence builder creates multi-point calibration curves from a start value, an end value and a number of points. AlySoft synchronises with GC, µGC, FTIR and process analyzers so that a calibration runs unattended. Every action is written to an audit trail, role-based user access protects critical settings, and a certificate with concentrations and uncertainties is issued when a sequence finishes. Because the interface is common to all instruments, methods, gas libraries and operator training transfer between them. Zephyr II runs AlySoft embedded on its touchscreen; Aiolos III, Hurricane, GRack and Nephos run it on a Windows PC connected by Ethernet.",
+      "summary": "AlySoft is the in-house software that drives every GasMix gas mixer and LiqMix liquid-to-gas system. It converts target concentrations into channel flows, calculates the uncertainty of each point, runs sequences with analyzer synchronization, and records an audit trail and certificate. It is embedded in Zephyr II and runs on Windows for the other instruments.",
+      "description": "AlySoft is the single control layer behind the GasMix and LiqMix range, from the compact Zephyr II to the 16-channel Hurricane and the Nephos liquid-to-gas generator. The operator enters the concentration needed; the software calculates each channel flow using the stored multi-point MFC calibration curve for the selected gas matrix, applies K-factor correction, drives the mass flow controllers, and reports the uncertainty of the final concentration rather than just the setpoint. Programmable sequences cover dilution, injection and flushing, and a sequence builder creates multi-point calibration curves from a start value, an end value and a number of points. AlySoft synchronizes with GC, µGC, FTIR and process analyzers so that a calibration runs unattended. Every action is written to an audit trail, role-based user access protects critical settings, and a certificate with concentrations and uncertainties is issued when a sequence finishes. Because the interface is common to all instruments, methods, gas libraries and operator training transfer between them. Zephyr II runs AlySoft embedded on its touchscreen; Aiolos III, Hurricane, GRack and Nephos run it on a Windows PC connected by Ethernet.",
       "keySpecs": [
         {
           "label": "Instruments controlled",
@@ -1055,7 +1068,7 @@
         },
         {
           "label": "Analyzer integration",
-          "value": "Synchronisation with GC, µGC, FTIR and process analyzers"
+          "value": "Synchronization with GC, µGC, FTIR and process analyzers"
         },
         {
           "label": "Safety",
@@ -1069,7 +1082,7 @@
         "Automated multi-point calibration sequences",
         "Uncertainty calculation and calibration certificates",
         "QA/QC audit trails for regulated laboratories",
-        "Analyzer-synchronised unattended calibration",
+        "Analyzer-synchronized unattended calibration",
         "Cascade dilution control down to ppb"
       ],
       "industries": [
@@ -1085,7 +1098,8 @@
         "gas diluter software uncertainty calculation",
         "ISO 6145-7 software",
         "calibration certificate software gas analyzer",
-        "AlySoft"
+        "AlySoft",
+        "calibration certificate software gas analyser"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://gasmix.com/products/alysoft/",
@@ -1148,7 +1162,7 @@
       "category": "Accessory",
       "priority": "niche",
       "summary": "FReD adds software-controlled constant-flow delivery to a GasMix or LiqMix bench. It holds the flow reaching the analyzer at a chosen value and vents the surplus automatically, so the mixture arrives at a stable rate whatever total flow the mixer produces. Available as an external module or an integrated option.",
-      "description": "Many analyzers need a fixed sample flow, while a dilution is easiest to generate at whatever total flow the mass flow controllers are sized for. FReD bridges the two. It is a flow regulation device that holds the output of a GasMix or LiqMix instrument at a constant flow chosen in the software and sends any excess gas to vent, so the analyzer always sees the same flow even when the concentration changes between calibration points. Being software-controlled, flow regulation can form part of an automated multi-point calibration rather than a manual adjustment at a needle valve. It is available as an external add-on module or as an integrated option on instruments such as Aiolos III, GRack and Hurricane, and can be combined with a Multiplex to run the same sequence across several analyzers. A simplified manual alternative, the FL-KIT02-18, is also offered for benches where software control is not needed.",
+      "description": "Many analyzers need a fixed sample flow, while a dilution is easiest to generate at whatever total flow the mass flow controllers are sized for. FReD bridges the two. It is a flow regulation device that holds the output of a GasMix or LiqMix instrument at a constant flow chosen in the software and sends any excess gas to vent, so the analyzer always sees the same flow even when the concentration changes between calibration points. Being software-controlled, flow regulation can form part of an automated multi-point calibration rather than a manual adjustment at a needle valve. It is available as an external add-on module or as an integrated option on instruments such as Aiolos III, GRack and Hurricane, and can be combined with MULTIPLEX to run the same sequence across several analyzers. A simplified manual alternative, the FL-KIT02-18, is also offered for benches where software control is not needed.",
       "keySpecs": [
         {
           "label": "Function",
@@ -1164,7 +1178,7 @@
         },
         {
           "label": "Control",
-          "value": "Part of the AlySoft/MixSoft sequence"
+          "value": "Part of the AlySoft sequence"
         },
         {
           "label": "Fits",
@@ -1175,7 +1189,7 @@
       "applications": [
         "Constant sample flow to GC and µGC inlets",
         "Automated multi-point calibration with stable delivery",
-        "Multi-analyzer setups together with Multiplex"
+        "Multi-analyzer setups together with MULTIPLEX"
       ],
       "industries": [
         "oil-gas",
@@ -1199,12 +1213,12 @@
       "ar": {
         "name": "FReD جهاز تنظيم التدفق",
         "category": "ملحق",
-        "summary": "يضيف FReD تسليم تدفق ثابت يتحكم فيه البرنامج إلى منصة GasMix أو LiqMix. يثبّت التدفق الواصل إلى المحلل عند قيمة مختارة ويصرّف الفائض تلقائيًا، فيصل الخليط بمعدل مستقر مهما كان التدفق الكلي الذي ينتجه الخالط. متوفر كوحدة خارجية أو كخيار مدمج.",
-        "description": "تحتاج محلّلات كثيرة إلى تدفق عينة ثابت، بينما يسهل توليد التخفيف عند أي تدفق كلي صُمّمت له وحدات التحكم في التدفق الكتلي. يسدّ FReD هذه الفجوة. وهو جهاز لتنظيم التدفق يثبّت خرج جهاز GasMix أو LiqMix عند تدفق ثابت يُختار في البرنامج ويرسل أي غاز زائد إلى التنفيس، فيرى المحلل دائمًا التدفق نفسه حتى عندما يتغير التركيز بين نقاط المعايرة. ولأنه يُتحكَّم فيه بالبرنامج، يمكن أن يكون تنظيم التدفق جزءًا من معايرة آلية متعددة النقاط بدلًا من ضبط يدوي على صمام إبري. وهو متوفر كوحدة إضافية خارجية أو كخيار مدمج في أجهزة مثل Aiolos III وGRack وHurricane، ويمكن اقترانه بـ Multiplex لتشغيل التسلسل نفسه عبر عدة محلّلات. ويُعرض أيضًا بديل يدوي مبسّط هو FL-KIT02-18 للمنصات التي لا تحتاج إلى التحكم بالبرنامج.",
+        "summary": "يضيف FReD تسليم تدفق ثابت يتحكم فيه البرنامج إلى منصة GasMix أو LiqMix. يثبّت التدفق الواصل إلى المحلل عند قيمة مختارة ويصرّف الفائض تلقائيًا، فيصل المخلوط بمعدل مستقر مهما كان التدفق الكلي الذي ينتجه الخالط. متوفر كوحدة خارجية أو كخيار مدمج.",
+        "description": "تحتاج محلّلات كثيرة إلى تدفق عينة ثابت، بينما يسهل توليد التخفيف عند أي تدفق كلي صُمّمت له وحدات التحكم في التدفق الكتلي. يسدّ FReD هذه الفجوة. وهو جهاز لتنظيم التدفق يثبّت خرج جهاز GasMix أو LiqMix عند تدفق ثابت يُختار في البرنامج ويرسل أي غاز زائد إلى التنفيس، فيرى المحلل دائمًا التدفق نفسه حتى عندما يتغير التركيز بين نقاط المعايرة. ولأنه يُتحكَّم فيه بالبرنامج، يمكن أن يكون تنظيم التدفق جزءًا من معايرة آلية متعددة النقاط بدلًا من ضبط يدوي على صمام إبري. وهو متوفر كوحدة إضافية خارجية أو كخيار مدمج في أجهزة مثل Aiolos III وGRack وHurricane، ويمكن اقترانه بـ MULTIPLEX لتشغيل التسلسل نفسه عبر عدة محلّلات. ويُعرض أيضًا بديل يدوي مبسّط هو FL-KIT02-18 للمنصات التي لا تحتاج إلى التحكم بالبرنامج.",
         "applications": [
           "تدفق عينة ثابت إلى مداخل GC وµGC",
           "معايرة آلية متعددة النقاط مع تسليم مستقر",
-          "إعدادات متعددة المحلّلات مع Multiplex"
+          "إعدادات متعددة المحلّلات مع MULTIPLEX"
         ],
         "keySpecs": [
           {
@@ -1221,7 +1235,7 @@
           },
           {
             "label": "التحكم",
-            "value": "جزء من تسلسل AlySoft/MixSoft"
+            "value": "جزء من تسلسل AlySoft"
           },
           {
             "label": "التوافق",
@@ -1237,7 +1251,7 @@
       "category": "Accessory",
       "priority": "niche",
       "summary": "MULTIPLEX adds software-controlled routing to a GasMix or LiqMix bench, with up to 16 inputs or outputs. Installed upstream it selects the supply gas for a channel; installed downstream it directs the finished mixture to one of several analyzers, so a single sequence can serve a whole bench.",
-      "description": "A multiplexer extends what a gas mixer can reach without adding mass flow controllers. MULTIPLEX uses Valco selection valves to give up to 16 ports, and it can be installed on either side of the diluter. Upstream, it chooses which supply gas or cylinder feeds a given channel, which is useful when many different parent standards are held on a bench. Downstream, it routes the finished mixture from one outlet to several analyzers or sampling lines, one at a time, so the same programmed sequence can calibrate a whole analyzer shelter. Routing is under software control, so valve switching is part of the calibration sequence and is logged with the rest of the run. It is offered with the GasMix and LiqMix platforms, notably Aiolos III and GRack, and is typically combined with FReD when each destination needs a stable flow.",
+      "description": "A multiplexer extends what a gas mixer can reach without adding mass flow controllers. MULTIPLEX uses selection valves to give up to 16 ports, and it can be installed on either side of the diluter. Upstream, it chooses which supply gas or cylinder feeds a given channel, which is useful when many different parent standards are held on a bench. Downstream, it routes the finished mixture from one outlet to several analyzers or sampling lines, one at a time, so the same programmed sequence can calibrate a whole analyzer shelter. Routing is under software control, so valve switching is part of the calibration sequence and is logged with the rest of the run. It is offered with the GasMix and LiqMix platforms, notably Aiolos III and GRack, and is typically combined with FReD when each destination needs a stable flow.",
       "keySpecs": [
         {
           "label": "Ports",
@@ -1249,7 +1263,7 @@
         },
         {
           "label": "Valve type",
-          "value": "Valco selection valves"
+          "value": "Selection valves"
         },
         {
           "label": "Control",
@@ -1270,9 +1284,10 @@
       ],
       "searchKeywords": [
         "gas multiplexer for gas mixer",
-        "Valco stream selection calibration gas",
+        "stream selection calibration gas",
         "multi-analyzer calibration gas distribution",
-        "gas selection valve for gas diluter"
+        "gas selection valve for gas diluter",
+        "multi-analyser calibration gas distribution"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://gasmix.com/accessories/",
@@ -1284,8 +1299,8 @@
       "ar": {
         "name": "MULTIPLEX وحدة اختيار التيارات",
         "category": "ملحق",
-        "summary": "يضيف MULTIPLEX توجيهًا يتحكم فيه البرنامج إلى منصة GasMix أو LiqMix، بما يصل إلى 16 مدخلًا أو مخرجًا. عند تركيبه على المدخل يختار غاز التغذية لقناة ما؛ وعند تركيبه على المخرج يوجّه الخليط النهائي إلى أحد عدة محلّلات، فيخدم تسلسل واحد منصة كاملة.",
-        "description": "يوسّع المُوزِّع متعدد المنافذ ما يمكن للخالط الوصول إليه دون إضافة وحدات تحكم في التدفق الكتلي. يستخدم MULTIPLEX صمامات اختيار من Valco ليوفّر حتى 16 منفذًا، ويمكن تركيبه على أي جانب من المخفف. على جانب المدخل يختار أي غاز تغذية أو أسطوانة تغذي قناة معينة، وهو مفيد عندما تتوفر على المنصة معايير أم متعددة ومختلفة. وعلى جانب المخرج يوجّه الخليط النهائي من مخرج واحد إلى عدة محلّلات أو خطوط أخذ عينات، واحدًا تلو الآخر، فيمكن للتسلسل المبرمج نفسه معايرة مقصورة محلّلات كاملة. يتم التوجيه بالتحكم البرمجي، لذا يصبح تبديل الصمامات جزءًا من تسلسل المعايرة ويُسجَّل مع بقية التشغيل. يُعرض مع منصتي GasMix وLiqMix، ولا سيما Aiolos III وGRack، ويُقرن عادةً بـ FReD عندما تحتاج كل وجهة إلى تدفق مستقر.",
+        "summary": "يضيف MULTIPLEX توجيهًا يتحكم فيه البرنامج إلى منصة GasMix أو LiqMix، بما يصل إلى 16 مدخلًا أو مخرجًا. عند تركيبه على المدخل يختار غاز التغذية لقناة ما؛ وعند تركيبه على المخرج يوجّه المخلوط النهائي إلى أحد عدة محلّلات، فيخدم تسلسل واحد منصة كاملة.",
+        "description": "يوسّع المُوزِّع متعدد المنافذ ما يمكن للخالط الوصول إليه دون إضافة وحدات تحكم في التدفق الكتلي. يستخدم MULTIPLEX صمامات اختيار ليوفّر حتى 16 منفذًا، ويمكن تركيبه على أي جانب من المخفف. على جانب المدخل يختار أي غاز تغذية أو أسطوانة تغذي قناة معينة، وهو مفيد عندما تتوفر على المنصة معايير أم متعددة ومختلفة. وعلى جانب المخرج يوجّه المخلوط النهائي من مخرج واحد إلى عدة محلّلات أو خطوط أخذ عينات، واحدًا تلو الآخر، فيمكن للتسلسل المبرمج نفسه معايرة مقصورة محلّلات كاملة. يتم التوجيه بالتحكم البرمجي، لذا يصبح تبديل الصمامات جزءًا من تسلسل المعايرة ويُسجَّل مع بقية التشغيل. يُعرض مع منصتي GasMix وLiqMix، ولا سيما Aiolos III وGRack، ويُقرن عادةً بـ FReD عندما تحتاج كل وجهة إلى تدفق مستقر.",
         "applications": [
           "معايرة عدة محلّلات من خالط واحد",
           "الاختيار من بين عدة معايير أم",
@@ -1302,7 +1317,7 @@
           },
           {
             "label": "نوع الصمام",
-            "value": "صمامات اختيار Valco"
+            "value": "صمامات اختيار"
           },
           {
             "label": "التحكم",
@@ -1318,7 +1333,7 @@
       "category": "Accessory",
       "priority": "niche",
       "summary": "PReM holds a fixed, manually set pressure between the outlet of a GasMix diluter and the point of delivery, venting the excess gas. It is used to give GC and µGC inlets a steady supply pressure, often alongside an overpressure limiter.",
-      "description": "Analyzers and columns are sensitive to the pressure at which a calibration gas arrives. PReM, the Pressure Regulator Manifold, maintains a fixed pressure between the diluter outlet and the delivery point, and any gas beyond what the analyzer draws is vented. The pressure is set by hand and then stays constant for the run, which makes the delivery independent of changes in total flow or concentration. A typical stable-delivery setup pairs PReM with the overpressure limiter so that the instrument receives steady pressure and the column is protected from accidental over-pressurisation. PReM is installed downstream of a GasMix or LiqMix instrument and complements FReD, which regulates flow rather than pressure. A simplified, compact alternative using a calibrated safety valve is available as FL-KIT 01-18 for installations where only protection is needed.",
+      "description": "Analyzers and columns are sensitive to the pressure at which a calibration gas arrives. PReM, the Pressure Regulator Manifold, maintains a fixed pressure between the diluter outlet and the delivery point, and any gas beyond what the analyzer draws is vented. The pressure is set by hand and then stays constant for the run, which makes the delivery independent of changes in total flow or concentration. A typical stable-delivery setup pairs PReM with the overpressure limiter so that the instrument receives steady pressure and the column is protected from accidental over-pressurization. PReM is installed downstream of a GasMix or LiqMix instrument and complements FReD, which regulates flow rather than pressure. A simplified, compact alternative using a calibrated safety valve is available as FL-KIT 01-18 for installations where only protection is needed.",
       "keySpecs": [
         {
           "label": "Function",
@@ -1397,7 +1412,7 @@
       "category": "Accessory",
       "priority": "niche",
       "summary": "CleaC is an automated rinsing accessory for LiqMix and Nephos liquid-to-gas systems. Three 75 cc tanks flush the liquid lines between fluids, preventing carry-over from one compound to the next and stopping residue from clogging the lines, so trace-level standards stay clean.",
-      "description": "Liquid-to-gas generation has a problem that gas dilution does not: residue. When a LiqMix system switches from one compound to another, or sits idle with a heavy or reactive liquid in its lines, carry-over can contaminate the next standard and deposits can narrow the flow path. Systems such as Nephos meter liquid through a Coriolis flow meter and a control valve into a heated vaporisation chamber, so keeping that path clean matters for repeatable low-level standards. CleaC addresses this with automated rinsing from three tanks of 75 cc each. Automating the rinse removes a manual flush from the changeover and helps keep trace-level standards clean. It is intended for the LiqMix family, including Nephos, and is most useful where one instrument runs several different solvents, VOC mixes or siloxane standards.",
+      "description": "Liquid-to-gas generation has a problem that gas dilution does not: residue. When a LiqMix system switches from one compound to another, or sits idle with a heavy or reactive liquid in its lines, carry-over can contaminate the next standard and deposits can narrow the flow path. Systems such as Nephos meter liquid through a Coriolis flow meter and a control valve into a heated vaporization chamber, so keeping that path clean matters for repeatable low-level standards. CleaC addresses this with automated rinsing from three tanks of 75 cc each. Automating the rinse removes a manual flush from the changeover and helps keep trace-level standards clean. It is intended for the LiqMix family, including Nephos, and is most useful where one instrument runs several different solvents, VOC mixes or siloxane standards.",
       "keySpecs": [
         {
           "label": "Tank configuration",
@@ -1430,7 +1445,9 @@
         "LiqMix cleaning system",
         "automated rinsing liquid vaporizer",
         "carryover prevention liquid gas generator",
-        "Nephos accessories"
+        "Nephos accessories",
+        "automated rinsing liquid vapourizer",
+        "automated rinsing liquid vaporiser"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://gasmix.com/accessories/",
@@ -1443,9 +1460,9 @@
         "name": "CleaC أسطوانات تنظيف لـ LiqMix",
         "category": "ملحق",
         "summary": "CleaC ملحق غسل آلي لأنظمة LiqMix وNephos من سائل إلى غاز. تقوم ثلاثة خزانات سعة كل منها 75 cc بشطف خطوط السوائل بين مائع وآخر، فتمنع انتقال البقايا من مركب إلى آخر وتمنع البقايا من سدّ الخطوط، لتبقى معايير مستوى الأثر نظيفة.",
-        "description": "يواجه توليد الغاز من السوائل مشكلة لا يواجهها تخفيف الغاز: البقايا. فعندما يتحول نظام LiqMix من مركب إلى آخر، أو يبقى متوقفًا وفي خطوطه سائل ثقيل أو متفاعل، قد يلوّث انتقال البقايا (carry-over) المعيار التالي وقد تضيّق الرواسب مسار التدفق. تقيس أنظمة مثل Nephos السائل عبر مقياس تدفق كوريوليس وصمام تحكم إلى حجرة تبخير مسخّنة، لذا فإن إبقاء هذا المسار نظيفًا مهم للحصول على معايير منخفضة المستوى قابلة للتكرار. يعالج CleaC ذلك بغسل آلي من ثلاثة خزانات سعة 75 cc لكل منها. وتؤتمت عملية الغسل فتلغي خطوة الشطف اليدوي من عملية التبديل وتساعد على إبقاء معايير مستوى الأثر نظيفة. وهو مخصص لعائلة LiqMix، بما فيها Nephos، وتكون فائدته أكبر حيث يعمل جهاز واحد بعدة مذيبات أو خلائط مركبات عضوية متطايرة أو معايير سيلوكسانات.",
+        "description": "يواجه توليد الغاز من السوائل مشكلة لا يواجهها تخفيف الغاز: البقايا. فعندما يتحول نظام LiqMix من مركب إلى آخر، أو يبقى متوقفًا وفي خطوطه سائل ثقيل أو متفاعل، قد يلوّث انتقال البقايا (carry-over) المعيار التالي وقد تضيّق الرواسب مسار التدفق. تقيس أنظمة مثل Nephos السائل عبر مقياس تدفق كوريوليس وصمام تحكم إلى حجرة تبخير مسخّنة، لذا فإن إبقاء هذا المسار نظيفًا مهم للحصول على معايير منخفضة المستوى قابلة للتكرار. يعالج CleaC ذلك بغسل آلي من ثلاثة خزانات سعة 75 cc لكل منها. وتؤتمت عملية الغسل فتلغي خطوة الشطف اليدوي من عملية التبديل وتساعد على إبقاء معايير مستوى الأثر نظيفة. وهو مخصص لسلسلة LiqMix، بما فيها Nephos، وتكون فائدته أكبر حيث يعمل جهاز واحد بعدة مذيبات أو مخاليط مركبات عضوية متطايرة أو معايير سيلوكسانات.",
         "applications": [
-          "التبديل بين المذيبات أو خلائط المركبات العضوية المتطايرة دون تلوث متبادل",
+          "التبديل بين المذيبات أو مخاليط المركبات العضوية المتطايرة دون تلوث متبادل",
           "إبقاء خطوط السوائل نظيفة بعد المركبات الثقيلة أو المتفاعلة"
         ],
         "keySpecs": [

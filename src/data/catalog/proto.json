@@ -3,8 +3,8 @@
   "brandSlug": "proto",
   "brandUrl": "https://www.protoxrd.com",
   "headquarters": "Taylor, Michigan, USA",
-  "brandSummary": "Proto Manufacturing designs and builds x-ray diffraction and fluorescence instruments. It is best known for portable and laboratory residual stress analyzers, and also offers powder diffractometers, single-crystal Laue orientation systems, crystallography platforms and XRF spectrometers. The company produces its own x-ray tubes and detectors and states a lifetime support commitment for installed systems.",
-  "brandSummaryAr": "تصمّم Proto Manufacturing وتصنّع أجهزة حيود الأشعة السينية والفلورة بالأشعة السينية. وهي معروفة بصفة خاصة بمحلّلات الإجهاد المتبقي المحمولة والمخبرية، وتقدّم كذلك مقاييس حيود المساحيق وأنظمة Laue لتحديد اتجاه البلورات المفردة ومنصات علم البلورات ومطيافات XRF. وتنتج الشركة أنابيب الأشعة السينية والكواشف بنفسها، وتعلن التزامًا بالدعم مدى العمر للأنظمة المركّبة.",
+  "brandSummary": "Proto designs and builds X-ray diffraction and fluorescence instruments. It is best known for portable and laboratory residual stress analyzers, and also offers powder diffractometers, single-crystal Laue orientation systems, crystallography platforms and XRF spectrometers. The company produces its own X-ray tubes.",
+  "brandSummaryAr": "تصمّم Proto وتصنّع أجهزة حيود الأشعة السينية والفلورة بالأشعة السينية. وهي معروفة بصفة خاصة بمحلّلات الإجهاد المتبقي المحمولة والمخبرية، وتقدّم كذلك مقاييس حيود المساحيق وأنظمة Laue لتحديد اتجاه البلورات المفردة ومنصات علم البلورات ومطيافات XRF. وتنتج الشركة أنابيب الأشعة السينية بنفسها.",
   "logoUrl": "https://cdn.prod.website-files.com/5f03223e594ffa7755520340/5f03300d8041fa3c0db82fc6_Proto_Diffraction_Logo.png",
   "products": [
     {
@@ -13,8 +13,8 @@
       "slug": "ixrd",
       "category": "Portable Residual Stress Analyzer (XRD)",
       "priority": "flagship",
-      "summary": "The iXRD is Proto's modular portable x-ray diffraction system for residual stress and retained austenite measurement in the laboratory, on the shop floor and in the field. A 300 W self-contained control unit, interchangeable goniometers and field stands let it reach parts from pipelines to small bores.",
-      "description": "The iXRD measures residual stress by the sin²ψ multiple-exposure method, the same technique used on laboratory instruments, in a form that can be carried to the part. A compact 300 W control unit integrates the high-voltage supply, x-ray tube cooling, motor control and electronics with a display for kV, mA and interlocks, and provides ports for an enclosure or barrier and beacon lights for shutter and x-ray status. The goniometer is the interchangeable element: the MG40 balances size and versatility and can measure inside a 120 mm bore, the MGR40 adds an integrated phi axis for automated triaxial measurements, the MG30 reaches tighter locations, and miniature MG15 versions measure hoop stress in a 60 mm bore or axial stress in a 125 mm bore. Mounts and stands include the Cobra Arm, C-frame, the FS2 and FS4 field stands, and specialty pipeline, floor and tripod stands. Configurations extend to a Combo enclosure, Modular Mapping with a 300 × 200 mm XY stage, and an overhead Gantry. Patented residual stress mapping, automated retained austenite measurement down to 2 % in steels, x-ray elastic constant determination and XRDWIN software are available. Typical uses are pipelines, welds, shot-peened parts, power-generation components and aerospace hardware.",
+      "summary": "The iXRD is Proto's modular portable X-ray diffraction system for residual stress and retained austenite measurement in the laboratory, on the shop floor and in the field. A 300 W self-contained control unit, interchangeable goniometers and field stands let it reach parts from pipelines to small bores.",
+      "description": "The iXRD measures residual stress by the sin²ψ multiple-exposure method, the same technique used on laboratory instruments, in a form that can be carried to the part. A compact 300 W control unit integrates the high-voltage supply, X-ray tube cooling, motor control and electronics with a display for kV, mA and interlocks, and provides ports for an enclosure or barrier and beacon lights for shutter and X-ray status. The goniometer is the interchangeable element: the MG40 balances size and versatility and can measure inside a 120 mm bore, the MGR40 adds an integrated phi axis for automated triaxial measurements, the MG30 reaches tighter locations, and miniature MG15 versions measure hoop stress in a 60 mm bore or axial stress in a 125 mm bore. Mounts and stands include the Cobra Arm, C-frame, the FS2 and FS4 field stands, and specialty pipeline, floor and tripod stands. Configurations extend to a Combo enclosure, Modular Mapping with a 300 × 200 mm XY stage, and an overhead Gantry. Patented residual stress mapping, automated retained austenite measurement down to 2 % in steels, X-ray elastic constant determination and XRDWIN software are available. Typical uses are pipelines, welds, shot-peened parts, power-generation components and aerospace hardware.",
       "keySpecs": [
         {
           "label": "Method",
@@ -84,9 +84,10 @@
         "iXRD Proto",
         "residual stress in pipeline welds",
         "retained austenite measurement ASTM",
-        "portable x-ray diffraction stress",
+        "portable X-ray diffraction stress",
         "residual stress mapping system",
-        "sin2psi residual stress instrument"
+        "sin2psi residual stress instrument",
+        "portable residual stress analyser"
       ],
       "whyMiddleEast": "Field-portable stress measurement on pipelines, pressure equipment and welds supports integrity and fabrication-quality work at oil, gas and power facilities.",
       "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/ixrd-portable",
@@ -164,8 +165,8 @@
       "slug": "ixrd-mini",
       "category": "Portable Residual Stress Analyzer (XRD)",
       "priority": "core",
-      "summary": "The iXRD Mini is Proto's lower-cost portable residual stress diffractometer, with dual photon-counting detectors, a built-in 50 mm mapping slide and user-replaceable x-ray tubes. It packs into one travel case and operates at 20 W, 20 kV and 1 mA.",
-      "description": "The iXRD Mini is the entry point to Proto's portable residual stress family, designed for affordable measurements without the footprint of a laboratory diffractometer. It uses two photon-counting x-ray detectors and a full-range goniometer for sin²ψ multiple-exposure measurements, collecting data from both positive and negative ψ tilts so shear stress is evaluated correctly. A 50 mm linear mapping slide is built in, which allows basic residual stress maps to be recorded on the spot. The x-ray tube is user-replaceable and made by Proto, with anodes of Ti, V, Cr, Mn, Fe, Co and Cu available to suit steels, aluminium, titanium and other alloys. The 2θ range is 123° to 171° for residual stress and 70° to 171° for retained austenite. The goniometer weighs 2.5 kg and the power unit 8 kg, and the whole system fits in one travel case. Enclosures, radiation shields and a pendant for manual goniometer movement are offered for radiation safety and positioning. It operates from 90 to 240 VAC and runs Proto's XRDWIN software. The iXRD Mini suits quality laboratories, universities and field teams that need standards-compliant stress data at modest cost.",
+      "summary": "The iXRD Mini is Proto's lower-cost portable residual stress diffractometer, with dual photon-counting detectors, a built-in 50 mm mapping slide and user-replaceable X-ray tubes. It packs into one travel case and operates at 20 W, 20 kV and 1 mA.",
+      "description": "The iXRD Mini is the entry point to Proto's portable residual stress family, designed for affordable measurements without the footprint of a laboratory diffractometer. It uses two photon-counting X-ray detectors and a full-range goniometer for sin²ψ multiple-exposure measurements, collecting data from both positive and negative ψ tilts so shear stress is evaluated correctly. A 50 mm linear mapping slide is built in, which allows basic residual stress maps to be recorded on the spot. The X-ray tube is user-replaceable and made by Proto, with anodes of Ti, V, Cr, Mn, Fe, Co and Cu available to suit steels, aluminum, titanium and other alloys. The 2θ range is 123° to 171° for residual stress and 70° to 171° for retained austenite. The goniometer weighs 2.5 kg and the power unit 8 kg, and the whole system fits in one travel case. Enclosures, radiation shields and a pendant for manual goniometer movement are offered for radiation safety and positioning. It operates from 90 to 240 VAC and runs Proto's XRDWIN software. The iXRD Mini suits quality laboratories, universities and field teams that need standards-compliant stress data at modest cost.",
       "keySpecs": [
         {
           "label": "System power",
@@ -237,7 +238,8 @@
         "portable XRD stress system travel case",
         "low cost residual stress measurement",
         "EN 15305 residual stress instrument",
-        "residual stress diffractometer for university"
+        "residual stress diffractometer for university",
+        "affordable residual stress analyser"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/ixrd-mini",
@@ -249,8 +251,8 @@
       "ar": {
         "name": "iXRD Mini نظام محمول لقياس الإجهاد المتبقي",
         "category": "محلل الإجهاد المتبقي المحمول (XRD)",
-        "summary": "iXRD Mini هو مقياس حيود الإجهاد المتبقي المحمول الأقل كلفة من Proto، بكاشفين لعدّ الفوتونات ومنزلق رسم خرائط مدمج بطول 50 mm وأنابيب أشعة سينية يستبدلها المستخدم. يُحزَم في حقيبة سفر واحدة ويعمل عند 20 W و20 kV و1 mA.",
-        "description": "iXRD Mini هو نقطة الدخول إلى عائلة Proto للإجهاد المتبقي المحمولة، صُمم لقياسات ميسورة الكلفة دون المساحة التي يشغلها مقياس حيود مخبري. يستخدم كاشفين لعدّ فوتونات الأشعة السينية ومقياس زوايا كامل المدى لقياسات sin²ψ متعددة التعريض، ويجمع البيانات من ميلانات ψ الموجبة والسالبة بحيث يُقيَّم إجهاد القص بشكل صحيح. ويتضمن منزلق رسم خرائط خطيًا بطول 50 mm، ما يتيح تسجيل خرائط إجهاد متبقٍ أساسية في الموقع. وأنبوب الأشعة السينية يستبدله المستخدم وتصنعه Proto، وتتوفر مصاعد من Ti وV وCr وMn وFe وCo وCu لتناسب الفولاذ والألومنيوم والتيتانيوم وغيرها من السبائك. ونطاق 2θ هو من 123° إلى 171° للإجهاد المتبقي ومن 70° إلى 171° للأوستنيت المتبقي. ويزن مقياس الزوايا 2.5 kg ووحدة الطاقة 8 kg، ويتسع النظام كله في حقيبة سفر واحدة. وتُعرض حاويات ودروع إشعاعية ووحدة تحكم معلّقة (pendant) لتحريك مقياس الزوايا يدويًا لأغراض السلامة الإشعاعية والتموضع. ويعمل من 90 إلى 240 VAC ويشغّل برنامج XRDWIN من Proto. ويناسب iXRD Mini مختبرات الجودة والجامعات والفرق الميدانية التي تحتاج إلى بيانات إجهاد متوافقة مع المعايير بكلفة معتدلة.",
+        "summary": "iXRD Mini هو مقياس حيود الإجهاد المتبقي المحمول الأقل تكلفة من Proto، بكاشفين لعدّ الفوتونات ومنزلق رسم خرائط مدمج بطول 50 mm وأنابيب أشعة سينية يستبدلها المستخدم. يُحزَم في حقيبة سفر واحدة ويعمل عند 20 W و20 kV و1 mA.",
+        "description": "iXRD Mini هو نقطة الدخول إلى سلسلة Proto للإجهاد المتبقي المحمولة، صُمم لقياسات ميسورة التكلفة دون المساحة التي يشغلها مقياس حيود مخبري. يستخدم كاشفين لعدّ فوتونات الأشعة السينية ومقياس زوايا كامل المدى لقياسات sin²ψ متعددة التعريض، ويجمع البيانات من ميلانات ψ الموجبة والسالبة بحيث يُقيَّم إجهاد القص بشكل صحيح. ويتضمن منزلق رسم خرائط خطيًا بطول 50 mm، ما يتيح تسجيل خرائط إجهاد متبقٍ أساسية في الموقع. وأنبوب الأشعة السينية يستبدله المستخدم وتصنعه Proto، وتتوفر مصاعد من Ti وV وCr وMn وFe وCo وCu لتناسب الفولاذ والألومنيوم والتيتانيوم وغيرها من السبائك. ونطاق 2θ هو من 123° إلى 171° للإجهاد المتبقي ومن 70° إلى 171° للأوستنيت المتبقي. ويزن مقياس الزوايا 2.5 kg ووحدة الطاقة 8 kg، ويتسع النظام كله في حقيبة سفر واحدة. وتُعرض حاويات ودروع إشعاعية ووحدة تحكم معلّقة (pendant) لتحريك مقياس الزوايا يدويًا لأغراض السلامة الإشعاعية والتموضع. ويعمل من 90 إلى 240 VAC ويشغّل برنامج XRDWIN من Proto. ويناسب iXRD Mini مختبرات الجودة والجامعات والفرق الميدانية التي تحتاج إلى بيانات إجهاد متوافقة مع المعايير بتكلفة معتدلة.",
         "applications": [
           "قياس الإجهاد المتبقي الروتيني",
           "رسم خرائط الإجهاد المتبقي على خط بطول 50 mm",
@@ -309,7 +311,7 @@
       "category": "Portable Residual Stress Analyzer (XRD)",
       "priority": "core",
       "summary": "The mXRD is an ultra-portable residual stress diffractometer for field use on pipelines, pressure vessels and bridges. A 2.6 kg measuring head with dual photon-counting detectors and replaceable tubes meets ASTM E915, EN 15305 and JSMS-SD-10, and the system packs into a single travel case.",
-      "description": "The mXRD is built for residual stress work where access and transport are the constraints. The measuring head weighs 2.6 kg and measures 260 × 160 × 155 mm, while the power unit weighs 18 kg, and both fit a single travel case. Dual x-ray detectors and a full-range goniometer carry out sin²ψ multiple-exposure measurements, collecting data from positive and negative ψ tilts so shear stress is evaluated correctly and the method complies with ASTM E915, EN 15305 and JSMS-SD-10. The 40 W tube (20 kV, 2 mA) is user-replaceable and made by Proto, with anodes of Ti, V, Cr, Mn, Fe, Co and Cu for different materials. The photon-counting detector array covers 29.8° of 2θ over a range of 146.8° to 165.2°, and beam apertures of 1.0 and 1.5 mm are provided. Proto positions the instrument for pipelines, pressure vessels and bridges. Options include magnetic attachment feet, a laboratory stand, a small enclosure, portable safety shields and XY mapping. The system is listed as compliant with ANSI N43.2, UL, CSA and CE, and runs from 90 to 240 VAC. It suits integrity inspection teams, fabricators and service companies that need on-site stress data.",
+      "description": "The mXRD is built for residual stress work where access and transport are the constraints. The measuring head weighs 2.6 kg and measures 260 × 160 × 155 mm, while the power unit weighs 18 kg, and both fit a single travel case. Dual X-ray detectors and a full-range goniometer carry out sin²ψ multiple-exposure measurements, collecting data from positive and negative ψ tilts so shear stress is evaluated correctly and the method complies with ASTM E915, EN 15305 and JSMS-SD-10. The 40 W tube (20 kV, 2 mA) is user-replaceable and made by Proto, with anodes of Ti, V, Cr, Mn, Fe, Co and Cu for different materials. The photon-counting detector array covers 29.8° of 2θ over a range of 146.8° to 165.2°, and beam apertures of 1.0 and 1.5 mm are provided. Proto positions the instrument for pipelines, pressure vessels and bridges. Options include magnetic attachment feet, a laboratory stand, a small enclosure, portable safety shields and XY mapping. The system is listed as compliant with ANSI N43.2, UL, CSA and CE, and runs from 90 to 240 VAC. It suits integrity inspection teams, fabricators and service companies that need on-site stress data.",
       "keySpecs": [
         {
           "label": "Head dimensions / weight",
@@ -375,10 +377,11 @@
       "searchKeywords": [
         "portable residual stress measurement pipeline",
         "mXRD Proto",
-        "ultra portable x-ray stress analyzer",
+        "ultra portable X-ray stress analyzer",
         "residual stress pressure vessel field testing",
         "EN 15305 portable instrument",
-        "residual stress bridge steel measurement"
+        "residual stress bridge steel measurement",
+        "ultra portable X-ray stress analyser"
       ],
       "whyMiddleEast": "Pipelines, pressure vessels and structural steel are core assets in Gulf oil, gas, petrochemical and infrastructure projects, and a travel-case system allows on-site stress checks.",
       "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/mxrd-ultra-portable",
@@ -446,7 +449,7 @@
       "slug": "lxrd",
       "category": "Laboratory Residual Stress Analyzer (XRD)",
       "priority": "flagship",
-      "summary": "The LXRD is Proto's high-power laboratory and production residual stress system, built for round-the-clock operation. Enclosed versions from Standard to Gantry handle parts from 30 cm to several metres, with 1200 W goniometers, optional mapping and retained austenite measurement in as little as a minute.",
+      "summary": "The LXRD is Proto's high-power laboratory and production residual stress system, built for round-the-clock operation. Enclosed versions from Standard to Gantry handle parts from 30 cm to several meters, with 1200 W goniometers, optional mapping and retained austenite measurement in as little as a minute.",
       "description": "The LXRD is the laboratory counterpart of the iXRD, designed as an audit station for heavy-duty, continuous operation. It is supplied in a radiation-proof enclosure with an integrated chiller and several size options. The Standard cabinet passes through a single door and takes parts up to 30 cm, with a 400 mm automated z-axis and a 1200 W MG2000 goniometer. The Widebody extends capacity to 50 cm with a 500 mm z-axis. The Modular Mapping version offers over 2 m of measurement space and a removable mapping stage for oversized components, including titanium parts that are hard to measure at low power. The Gantry is a 3.5 m walk-in enclosure that moves the goniometer rather than the part, and the Dual-Axis adds a chi rotation stage and microarea apertures for research use. Stages include XY positioning, triaxial phi rotation and an X, Y, phi mapping table; apertures run from 0.2 to 4 mm round with several rectangular options, plus microbeam apertures. Automated retained austenite measurement is available down to 1 % in steels, along with XEC determination by four-point bend and pole figures. Measurements can take as little as a minute. Typical users are manufacturers, heat-treaters and testing laboratories.",
       "keySpecs": [
         {
@@ -514,7 +517,8 @@
         "XRD stress measurement large parts",
         "residual stress mapping gantry",
         "residual stress testing laboratory instrument",
-        "high power residual stress diffractometer"
+        "high power residual stress diffractometer",
+        "laboratory residual stress analyser"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.protoxrd.com/products/residual-stress-measurement/lxrd-laboratory",
@@ -637,7 +641,7 @@
       "searchKeywords": [
         "robotic residual stress measurement",
         "roboXRD",
-        "robot arm x-ray diffraction stress",
+        "robot arm X-ray diffraction stress",
         "automated residual stress mapping complex parts",
         "six axis XRD residual stress"
       ],
@@ -697,7 +701,7 @@
       "category": "Powder X-ray Diffractometer (Benchtop)",
       "priority": "flagship",
       "summary": "The AXRD Benchtop is a 600 W powder diffractometer with decoupled motors, a selectable 143 or 191 mm goniometer radius and integrated water cooling with no external chiller. It supports phase ID, Rietveld, GID, reflectivity and non-ambient work up to 500 °C in a bench-sized footprint.",
-      "description": "The AXRD Benchtop is designed to deliver laboratory-class powder diffraction in a footprint that fits on a bench. Its decoupled motors mean the geometry is not fixed to theta-2theta or theta-theta: the instrument can run rocking curves, glancing-incidence diffraction and theta oscillation during Bragg-Brentano scans, and it is described as the only benchtop diffractometer with an optional parallel-beam optic and long Soller slit for proper GID. The goniometer radius can be set to 143 mm for higher flux and faster measurements or 191 mm for narrower peaks, with FWHM resolution better than 0.05° 2θ at 143 mm and 0.03° at 191 mm. The 600 W tube is cooled by an integrated tank, pump and heat exchanger, so no external chiller is needed. An inclined tube prevents powders from spilling, and anodes can be swapped without a technician. Six- or eight-position sample changers, spinners and zero-background holders are available, along with optional heating stages to 150 °C or 500 °C that also support gas flow, humidity and operation from 10⁻¹ to 1 bar. Techniques include phase identification, Rietveld refinement, crystallinity, size and strain, pole figures, stress, reflectivity and GID.",
+      "description": "The AXRD Benchtop is designed to deliver laboratory-class powder diffraction in a footprint that fits on a bench. Its decoupled motors mean the geometry is not fixed to theta-2theta or theta-theta: the instrument can run rocking curves, glancing-incidence diffraction and theta oscillation during Bragg-Brentano scans, and an optional parallel-beam optic with a long Soller slit is available for GID. The goniometer radius can be set to 143 mm for higher flux and faster measurements or 191 mm for narrower peaks, with FWHM resolution better than 0.05° 2θ at 143 mm and 0.03° at 191 mm. The 600 W tube is cooled by an integrated tank, pump and heat exchanger, so no external chiller is needed. An inclined tube prevents powders from spilling, and anodes can be swapped without a technician. Six- or eight-position sample changers, spinners and zero-background holders are available, along with optional heating stages to 150 °C or 500 °C that also support gas flow, humidity and operation from 10⁻¹ to 1 bar. Techniques include phase identification, Rietveld refinement, crystallinity, size and strain, pole figures, stress, reflectivity and GID.",
       "keySpecs": [
         {
           "label": "X-ray power",
@@ -754,7 +758,7 @@
       "searchKeywords": [
         "benchtop XRD powder diffractometer",
         "AXRD Benchtop",
-        "benchtop x-ray diffractometer with sample changer",
+        "benchtop X-ray diffractometer with sample changer",
         "XRD for phase identification Rietveld",
         "benchtop XRD non ambient heating stage",
         "GID benchtop diffractometer",
@@ -771,7 +775,7 @@
         "name": "AXRD Benchtop مقياس حيود المساحيق",
         "category": "مقياس حيود الأشعة السينية للمساحيق (مكتبي)",
         "summary": "AXRD Benchtop مقياس حيود للمساحيق بقدرة 600 W بمحركات منفصلة ونصف قطر مقياس زوايا قابل للاختيار 143 أو 191 mm وتبريد مائي مدمج دون مبرّد خارجي. يدعم تحديد الأطوار وتنقيح Rietveld وGID والانعكاسية والعمل في ظروف غير محيطية حتى 500 °C ضمن حيز بحجم المنضدة.",
-        "description": "صُمم AXRD Benchtop لتقديم حيود مساحيق بمستوى مخبري ضمن حيز يتسع على منضدة. تعني محركاته المنفصلة أن الهندسة ليست مقيّدة بنمط theta-2theta أو theta-theta: إذ يمكن للجهاز تشغيل منحنيات التأرجح وحيود السقوط الانزلاقي وتذبذب theta أثناء مسوح Bragg-Brentano، ويوصف بأنه مقياس الحيود المكتبي الوحيد الذي يتوفر معه اختياريًا بصريات حزمة متوازية وشق Soller طويل لإجراء GID بصورة صحيحة. ويمكن ضبط نصف قطر مقياس الزوايا على 143 mm لتدفق أعلى وقياسات أسرع أو 191 mm لقمم أضيق، بدقة تمييز FWHM أفضل من 0.05° 2θ عند 143 mm و0.03° عند 191 mm. ويُبرَّد الأنبوب بقدرة 600 W بخزان ومضخة ومبادل حراري مدمجة، فلا حاجة إلى مبرّد خارجي. ويمنع الأنبوب المائل انسكاب المساحيق، ويمكن تبديل المصاعد دون فني. وتتوفر مبدّلات عينات بـ 6 أو 8 مواضع ومدوّرات عينات وحوامل ذات خلفية صفرية، إلى جانب منصات تسخين اختيارية حتى 150 °C أو 500 °C تدعم أيضًا تدفق الغاز والرطوبة والتشغيل من 10⁻¹ إلى 1 bar. وتشمل التقنيات تحديد الأطوار وتنقيح Rietveld والتبلور والحجم والانفعال والأشكال القطبية والإجهاد والانعكاسية وGID.",
+        "description": "صُمم AXRD Benchtop لتقديم حيود مساحيق بمستوى مخبري ضمن حيز يتسع على منضدة. تعني محركاته المنفصلة أن الهندسة ليست مقيّدة بنمط theta-2theta أو theta-theta: إذ يمكن للجهاز تشغيل منحنيات التأرجح وحيود السقوط الانزلاقي وتذبذب theta أثناء مسوح Bragg-Brentano، ويتوفر معه اختياريًا بصريات حزمة متوازية وشق Soller طويل لإجراء GID. ويمكن ضبط نصف قطر مقياس الزوايا على 143 mm لتدفق أعلى وقياسات أسرع أو 191 mm لقمم أضيق، بدقة تمييز FWHM أفضل من 0.05° 2θ عند 143 mm و0.03° عند 191 mm. ويُبرَّد الأنبوب بقدرة 600 W بخزان ومضخة ومبادل حراري مدمجة، فلا حاجة إلى مبرّد خارجي. ويمنع الأنبوب المائل انسكاب المساحيق، ويمكن تبديل المصاعد دون فني. وتتوفر مبدّلات عينات بـ 6 أو 8 مواضع ومدوّرات عينات وحوامل ذات خلفية صفرية، إلى جانب منصات تسخين اختيارية حتى 150 °C أو 500 °C تدعم أيضًا تدفق الغاز والرطوبة والتشغيل من 10⁻¹ إلى 1 bar. وتشمل التقنيات تحديد الأطوار وتنقيح Rietveld والتبلور والحجم والانفعال والأشكال القطبية والإجهاد والانعكاسية وGID.",
         "applications": [
           "تحديد الأطوار وتنقيح Rietveld",
           "تحليل التبلور والحجم/الانفعال",
@@ -828,7 +832,7 @@
       "category": "Powder X-ray Diffractometer (Laboratory)",
       "priority": "core",
       "summary": "The AXRD LPD is Proto's high-power multipurpose laboratory diffractometer, with tool-free pre-aligned exchange of optics, stages, chambers and detectors. Angular accuracy is better than ±0.01° over the full range, with sources up to 3000 W and a path to high-resolution diffraction.",
-      "description": "The AXRD LPD is a configurable platform for powder, thin-film, bulk and single-crystal diffraction. Optics, sample stages, environmental cells and detectors are exchanged through a tool-free, pre-aligned system, so the instrument can start in a standard configuration and be extended later, including upgrades to high-resolution diffraction. Angular accuracy is better than ±0.01° Δ2θ over the entire range. Sources reach 3000 W (60 kV, 50 mA) with Cu, Cr, Co, Mn, Mo, V or Ag tubes, and the optics list includes multilayer parallel or focusing optics, a parallel plate analyzer, Johansson Kα1 monochromator and a two-bounce Ge crystal. Accessories include an Eulerian cradle with phi rotation, XY mapping, bi-directional tilt and reflection/transmission stages, while chambers cover high-temperature, pressure, low-vacuum and high-vacuum work. Capabilities named by the manufacturer are phase identification, Rietveld refinement, texture and microstructure analysis, residual stress and retained austenite, GID and in-plane diffraction, reflectivity, rocking curves, reciprocal-space maps, PDF analysis, structure solution and SAXS/WAXS. It suits materials discovery, thin-film characterisation, microdiffraction and high-throughput sample handling in university and industrial research laboratories.",
+      "description": "The AXRD LPD is a configurable platform for powder, thin-film, bulk and single-crystal diffraction. Optics, sample stages, environmental cells and detectors are exchanged through a tool-free, pre-aligned system, so the instrument can start in a standard configuration and be extended later, including upgrades to high-resolution diffraction. Angular accuracy is better than ±0.01° Δ2θ over the entire range. Sources reach 3000 W (60 kV, 50 mA) with Cu, Cr, Co, Mn, Mo, V or Ag tubes, and the optics list includes multilayer parallel or focusing optics, a parallel plate analyzer, Johansson Kα1 monochromator and a two-bounce Ge crystal. Accessories include an Eulerian cradle with phi rotation, XY mapping, bi-directional tilt and reflection/transmission stages, while chambers cover high-temperature, pressure, low-vacuum and high-vacuum work. Capabilities named by the manufacturer are phase identification, Rietveld refinement, texture and microstructure analysis, residual stress and retained austenite, GID and in-plane diffraction, reflectivity, rocking curves, reciprocal-space maps, PDF analysis, structure solution and SAXS/WAXS. It suits materials discovery, thin-film characterization, microdiffraction and high-throughput sample handling in university and industrial research laboratories.",
       "keySpecs": [
         {
           "label": "Angular accuracy",
@@ -949,8 +953,8 @@
       "slug": "axrd-lpd-ht",
       "category": "Powder X-ray Diffractometer (High-Throughput)",
       "priority": "niche",
-      "summary": "The AXRD LPD-HT is a high-throughput powder diffractometer that uses a 96-well plate, a 2D Montel focusing optic and DECTRIS EIGER2 detectors for rapid screening of polymorphs, co-crystals and MOFs. A 21 CFR Part 11 compliant software version is offered for pharmaceutical use.",
-      "description": "The AXRD LPD-HT is built for rapid screening and in-situ characterisation of multifunctional molecular materials. Samples are set up in a 96-well plate for automated analysis, and a 2D Montel focusing optic gives the intensity and resolution needed to collect data quickly. Proto lists specialty chemicals, pharmaceutical co-crystals, polymorphs, coordination polymers and metal-organic frameworks as typical subjects, and the system supports materials discovery and drug development workflows where many small samples must be tested in a short time. Non-ambient experiments are supported with a range of temperature and pressure cells, and accessories include a capillary spinning stage, a pressurised capillary stage, Oxford cryostats, XY mapping and a laser-targeting system. Configurable components include high-brilliance microfocus tubes in the 50 to 70 W range, interchangeable pinhole collimators, and latest-generation DECTRIS EIGER2 2D detectors. For clients who create or store records regulated by the FDA, Proto offers a 21 CFR Part 11 compliant version of its powder XRD software. The company also names Solid4m Labs as a partner for high-throughput screening services. The LPD-HT suits pharmaceutical and materials research groups and contract screening laboratories.",
+      "summary": "The AXRD LPD-HT is a high-throughput powder diffractometer that uses a 96-well plate, a 2D Montel focusing optic and hybrid photon-counting detectors for rapid screening of polymorphs, co-crystals and MOFs. A 21 CFR Part 11 compliant software version is offered for pharmaceutical use.",
+      "description": "The AXRD LPD-HT is built for rapid screening and in-situ characterization of multifunctional molecular materials. Samples are set up in a 96-well plate for automated analysis, and a 2D Montel focusing optic gives the intensity and resolution needed to collect data quickly. Proto lists specialty chemicals, pharmaceutical co-crystals, polymorphs, coordination polymers and metal-organic frameworks as typical subjects, and the system supports materials discovery and drug development workflows where many small samples must be tested in a short time. Non-ambient experiments are supported with a range of temperature and pressure cells, and accessories include a capillary spinning stage, a pressurized capillary stage, cryostats, XY mapping and a laser-targeting system. Configurable components include high-brilliance microfocus tubes in the 50 to 70 W range, interchangeable pinhole collimators, and latest-generation hybrid photon-counting 2D detectors. For clients who create or store records regulated by the FDA, Proto offers a 21 CFR Part 11 compliant version of its powder XRD software. The LPD-HT suits pharmaceutical and materials research groups and contract screening laboratories.",
       "keySpecs": [
         {
           "label": "Sample format",
@@ -966,11 +970,11 @@
         },
         {
           "label": "Detectors",
-          "value": "DECTRIS EIGER2 family 2D detectors"
+          "value": "Hybrid photon-counting 2D detectors"
         },
         {
           "label": "Accessories",
-          "value": "Capillary spinning stage, pressurised capillary stage, Oxford cryostats, XY mapping, laser targeting"
+          "value": "Capillary spinning stage, pressurized capillary stage, cryostats, XY mapping, laser targeting"
         },
         {
           "label": "Non-ambient",
@@ -986,7 +990,7 @@
       ],
       "applications": [
         "Polymorph and co-crystal screening",
-        "Metal-organic framework and coordination polymer characterisation",
+        "Metal-organic framework and coordination polymer characterization",
         "Specialty chemicals screening",
         "In-situ non-ambient screening",
         "Pharmaceutical development under 21 CFR Part 11"
@@ -1003,7 +1007,8 @@
         "pharmaceutical powder XRD",
         "MOF characterization XRD",
         "AXRD LPD-HT",
-        "co-crystal screening instrument"
+        "co-crystal screening instrument",
+        "MOF characterisation XRD"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.protoxrd.com/products/powder-diffraction/axrd-lpd-ht",
@@ -1015,8 +1020,8 @@
       "ar": {
         "name": "AXRD LPD-HT مقياس حيود المساحيق عالي الإنتاجية",
         "category": "مقياس حيود الأشعة السينية للمساحيق (عالي الإنتاجية)",
-        "summary": "AXRD LPD-HT مقياس حيود للمساحيق عالي الإنتاجية يستخدم لوحًا ذا 96 بئرًا وبصريات تبئير Montel ثنائية الأبعاد وكواشف DECTRIS EIGER2 للفرز السريع للأشكال البلورية المتعددة والبلورات المشتركة وMOFs. ويتوفر إصدار برنامج متوافق مع 21 CFR Part 11 للاستخدام الدوائي.",
-        "description": "صُمم AXRD LPD-HT للفرز السريع والتوصيف في الموقع (in-situ) للمواد الجزيئية متعددة الوظائف. تُعدّ العينات في لوح ذي 96 بئرًا للتحليل الآلي، وتمنح بصريات تبئير Montel ثنائية الأبعاد الشدة والدقة اللازمتين لجمع البيانات بسرعة. وتدرج Proto الكيماويات المتخصصة والبلورات الدوائية المشتركة والأشكال البلورية المتعددة وبوليمرات التناسق والأطر المعدنية العضوية كموضوعات نموذجية، ويدعم النظام اكتشاف المواد وسير عمل تطوير الأدوية حيث يجب اختبار عينات صغيرة كثيرة في وقت قصير. وتُدعم التجارب في ظروف غير محيطية بمجموعة من خلايا الحرارة والضغط، وتشمل الملحقات منصة تدوير الشعيرات ومنصة شعيرات مضغوطة وكرايوستات Oxford ورسم خرائط XY ونظام استهداف بالليزر. وتشمل المكونات القابلة للتهيئة أنابيب تبئير دقيق عالية السطوع بقدرة من 50 إلى 70 W وموازِيات ثقبية قابلة للتبديل وكواشف DECTRIS EIGER2 ثنائية الأبعاد من أحدث جيل. وللعملاء الذين ينشئون أو يخزنون سجلات تخضع لتنظيم FDA، تقدم Proto إصدارًا من برنامج XRD للمساحيق متوافقًا مع 21 CFR Part 11. كما تذكر الشركة Solid4m Labs شريكًا لخدمات الفرز عالي الإنتاجية. ويناسب LPD-HT المجموعات البحثية الصيدلانية وفي علوم المواد ومختبرات الفرز التعاقدية.",
+        "summary": "AXRD LPD-HT مقياس حيود للمساحيق عالي الإنتاجية يستخدم لوحًا ذا 96 بئرًا وبصريات تبئير Montel ثنائية الأبعاد وكواشف هجينة لعدّ الفوتونات للفرز السريع للأشكال البلورية المتعددة والبلورات المشتركة وMOFs. ويتوفر إصدار برنامج متوافق مع 21 CFR Part 11 للاستخدام الدوائي.",
+        "description": "صُمم AXRD LPD-HT للفرز السريع والتوصيف في الموقع (in-situ) للمواد الجزيئية متعددة الوظائف. تُعدّ العينات في لوح ذي 96 بئرًا للتحليل الآلي، وتمنح بصريات تبئير Montel ثنائية الأبعاد الشدة والدقة اللازمتين لجمع البيانات بسرعة. وتدرج Proto الكيماويات المتخصصة والبلورات الدوائية المشتركة والأشكال البلورية المتعددة وبوليمرات التناسق والأطر المعدنية العضوية كموضوعات نموذجية، ويدعم النظام اكتشاف المواد وسير عمل تطوير الأدوية حيث يجب اختبار عينات صغيرة كثيرة في وقت قصير. وتُدعم التجارب في ظروف غير محيطية بمجموعة من خلايا الحرارة والضغط، وتشمل الملحقات منصة تدوير الشعيرات ومنصة شعيرات مضغوطة وكرايوستات ورسم خرائط XY ونظام استهداف بالليزر. وتشمل المكونات القابلة للتهيئة أنابيب تبئير دقيق عالية السطوع بقدرة من 50 إلى 70 W وموازِيات ثقبية قابلة للتبديل وكواشف هجينة لعدّ الفوتونات ثنائية الأبعاد من أحدث جيل. وللعملاء الذين ينشئون أو يخزنون سجلات تخضع لتنظيم FDA، تقدم Proto إصدارًا من برنامج XRD للمساحيق متوافقًا مع 21 CFR Part 11. ويناسب LPD-HT المجموعات البحثية في المجالين الصيدلاني وعلوم المواد ومختبرات الفرز التعاقدية.",
         "applications": [
           "فرز الأشكال البلورية المتعددة والبلورات المشتركة",
           "توصيف الأطر المعدنية العضوية وبوليمرات التناسق",
@@ -1039,11 +1044,11 @@
           },
           {
             "label": "الكواشف",
-            "value": "كواشف 2D من عائلة DECTRIS EIGER2"
+            "value": "كواشف 2D هجينة لعدّ الفوتونات"
           },
           {
             "label": "الملحقات",
-            "value": "منصة تدوير الأنابيب الشعرية، منصة الأنابيب الشعرية المضغوطة، مبرّدات كرايوجينية Oxford، رسم خرائط XY، استهداف بالليزر"
+            "value": "منصة تدوير الأنابيب الشعرية، منصة الأنابيب الشعرية المضغوطة، مبرّدات كرايوجينية، رسم خرائط XY، استهداف بالليزر"
           },
           {
             "label": "الظروف غير المحيطية",
@@ -1066,7 +1071,7 @@
       "category": "Powder X-ray Diffractometer (Non-Ambient)",
       "priority": "core",
       "summary": "The AXRD Theta-Theta is a compact floor-standing powder diffractometer with a vertical theta-theta geometry and a 1200 W source. It is built for large samples and non-ambient work, with temperature stages from −190 to 2000 °C and a 102 × 76 × 174 cm footprint.",
-      "description": "The AXRD Theta-Theta sits between the benchtop and full-size laboratory systems, giving non-ambient diffraction an affordable and compact home. Its vertical theta-theta geometry keeps the sample horizontal and stationary while the tube and detector move, which suits loose powders, large samples and the integration of heating, cooling and pressure stages. The goniometer radius is 190 to 220 mm depending on options, the x-ray system is rated at 1200 W, and detection uses a high-speed photon-counting detector. The footprint is 102 × 76 × 174 cm (W × D × H), and automated doors are available. Temperature stage options span −190 to 2000 °C, with chambers including a low-temperature chamber, compact heating stages, a reactor chamber, an oven chamber and strip-heater chambers. A PS30 variable-pressure stage, a motorised XYZ stage, a sample exchanger and custom holders extend the system further. Proto describes it as a dedicated workstation for solid-state, high-temperature and material-gas reaction studies, and it suits university and industrial laboratories that need temperature-dependent phase behaviour.",
+      "description": "The AXRD Theta-Theta sits between the benchtop and full-size laboratory systems, giving non-ambient diffraction an affordable and compact home. Its vertical theta-theta geometry keeps the sample horizontal and stationary while the tube and detector move, which suits loose powders, large samples and the integration of heating, cooling and pressure stages. The goniometer radius is 190 to 220 mm depending on options, the X-ray system is rated at 1200 W, and detection uses a high-speed photon-counting detector. The footprint is 102 × 76 × 174 cm (W × D × H), and automated doors are available. Temperature stage options span −190 to 2000 °C, with chambers including a low-temperature chamber, compact heating stages, a reactor chamber, an oven chamber and strip-heater chambers. A PS30 variable-pressure stage, a motorized XYZ stage, a sample exchanger and custom holders extend the system further. Proto describes it as a dedicated workstation for solid-state, high-temperature and material-gas reaction studies, and it suits university and industrial laboratories that need temperature-dependent phase behavior.",
       "keySpecs": [
         {
           "label": "Geometry",
@@ -1098,7 +1103,7 @@
         },
         {
           "label": "Options",
-          "value": "Sample exchanger, motorised xyz stage, automated doors"
+          "value": "Sample exchanger, motorized xyz stage, automated doors"
         }
       ],
       "standards": [],
@@ -1135,7 +1140,7 @@
         "name": "AXRD Theta-Theta مقياس حيود المساحيق في الظروف غير المحيطية",
         "category": "مقياس حيود الأشعة السينية للمساحيق (ظروف غير محيطية)",
         "summary": "AXRD Theta-Theta مقياس حيود للمساحيق مدمج قائم على الأرض بهندسة theta-theta رأسية ومصدر 1200 W. بُني للعينات الكبيرة والعمل في ظروف غير محيطية، مع منصات حرارة من −190 إلى 2000 °C وأبعاد 102 × 76 × 174 cm.",
-        "description": "يقع AXRD Theta-Theta بين الأنظمة المكتبية والأنظمة المخبرية كاملة الحجم، ويمنح الحيود في ظروف غير محيطية مقرًا ميسور الكلفة ومدمجًا. تُبقي هندسة theta-theta الرأسية العينة أفقية وثابتة بينما يتحرك الأنبوب والكاشف، وهو ما يناسب المساحيق السائبة والعينات الكبيرة ودمج منصات التسخين والتبريد والضغط. نصف قطر مقياس الزوايا من 190 إلى 220 mm بحسب الخيارات، ونظام الأشعة السينية بقدرة 1200 W، ويعتمد الكشف على كاشف عدّ فوتونات عالي السرعة. والأبعاد 102 × 76 × 174 cm (العرض × العمق × الارتفاع)، وتتوفر أبواب آلية. وتمتد خيارات منصات الحرارة من −190 إلى 2000 °C، مع حجرات تشمل حجرة للحرارة المنخفضة ومنصات تسخين مدمجة وحجرة مفاعل وحجرة فرن وحجرات سخان شريطي. وتوسّع منصة الضغط المتغير PS30 ومنصة XYZ بمحرك ومبدّل عينات وحوامل مخصصة النظام أكثر. وتصفه Proto بأنه محطة عمل مخصصة لدراسات الحالة الصلبة ودرجات الحرارة العالية وتفاعلات المادة والغاز، ويناسب المختبرات الجامعية والصناعية التي تحتاج إلى سلوك الأطوار المعتمد على درجة الحرارة.",
+        "description": "يقع AXRD Theta-Theta بين الأنظمة المكتبية والأنظمة المخبرية كاملة الحجم، ويمنح الحيود في ظروف غير محيطية مقرًا ميسور التكلفة ومدمجًا. تُبقي هندسة theta-theta الرأسية العينة أفقية وثابتة بينما يتحرك الأنبوب والكاشف، وهو ما يناسب المساحيق السائبة والعينات الكبيرة ودمج منصات التسخين والتبريد والضغط. نصف قطر مقياس الزوايا من 190 إلى 220 mm بحسب الخيارات، ونظام الأشعة السينية بقدرة 1200 W، ويعتمد الكشف على كاشف عدّ فوتونات عالي السرعة. والأبعاد 102 × 76 × 174 cm (العرض × العمق × الارتفاع)، وتتوفر أبواب آلية. وتمتد خيارات منصات الحرارة من −190 إلى 2000 °C، مع حجرات تشمل حجرة للحرارة المنخفضة ومنصات تسخين مدمجة وحجرة مفاعل وحجرة فرن وحجرات سخان شريطي. وتوسّع منصة الضغط المتغير PS30 ومنصة XYZ بمحرك ومبدّل عينات وحوامل مخصصة النظام أكثر. وتصفه Proto بأنه محطة عمل مخصصة لدراسات الحالة الصلبة ودرجات الحرارة العالية وتفاعلات المادة والغاز، ويناسب المختبرات الجامعية والصناعية التي تحتاج إلى سلوك الأطوار المعتمد على درجة الحرارة.",
         "applications": [
           "دراسات الأطوار في درجات الحرارة العالية والمنخفضة",
           "مراقبة تفاعلات الحالة الصلبة وتفاعلات المادة الصلبة والغاز",
@@ -1185,12 +1190,12 @@
       "slug": "mscan-xrf",
       "category": "X-ray Fluorescence Spectrometer (Micro-XRF)",
       "priority": "core",
-      "summary": "The mScan XRF is a compact micro-XRF spectrometer with a 15 micron spot, silicon drift detector and a spacious radiation-protected cabinet. It analyses Na to Am (C to Am with specialised detectors), with vacuum or helium options and mapping by point, line, rectangle or multi-point.",
-      "description": "The mScan XRF determines elemental composition and maps element distribution on samples of many sizes and materials. The element range runs from sodium to americium, and from carbon to americium when specialised detectors are fitted. A 15 micron spot size gives high spatial resolution, and a fast silicon drift detector provides the energy resolution and short collection times needed for mapping. Measurement areas can be a single point, a line, a rectangle or a set of points, so a rock section or a circuit board can be scanned and presented as multi-element maps. A stable vacuum pump with quick pump-down speeds sample loading, a helium flow-through option improves data for light elements, and a live-feed video microscope inside the enclosure confirms the analysed area. The XYZ sample stage moves at 100 mm/s and a joystick provides rapid targeting. The cabinet is radiation-protected and large enough for bigger samples. Proto positions the instrument for materials science, quality control and research, and software controls acquisition and mapping. It suits geology, electronics failure analysis, coatings and materials laboratories that need compositional detail on small features.",
+      "summary": "The mScan XRF is a compact micro-XRF spectrometer with a 15 micron spot, silicon drift detector and a spacious radiation-protected cabinet. It analyses Na to Am (C to Am with specialized detectors), with vacuum or helium options and mapping by point, line, rectangle or multi-point.",
+      "description": "The mScan XRF determines elemental composition and maps element distribution on samples of many sizes and materials. The element range runs from sodium to americium, and from carbon to americium when specialized detectors are fitted. A 15 micron spot size gives high spatial resolution, and a fast silicon drift detector provides the energy resolution and short collection times needed for mapping. Measurement areas can be a single point, a line, a rectangle or a set of points, so a rock section or a circuit board can be scanned and presented as multi-element maps. A stable vacuum pump with quick pump-down speeds sample loading, a helium flow-through option improves data for light elements, and a live-feed video microscope inside the enclosure confirms the analyzed area. The XYZ sample stage moves at 100 mm/s and a joystick provides rapid targeting. The cabinet is radiation-protected and large enough for bigger samples. Proto positions the instrument for materials science, quality control and research, and software controls acquisition and mapping. It suits geology, electronics failure analysis, coatings and materials laboratories that need compositional detail on small features.",
       "keySpecs": [
         {
           "label": "Element range",
-          "value": "Na to Am; C to Am with specialised detectors"
+          "value": "Na to Am; C to Am with specialized detectors"
         },
         {
           "label": "Spot size",
@@ -1303,8 +1308,8 @@
       "slug": "nspec-xrf",
       "category": "X-ray Fluorescence Spectrometer (ED-XRF)",
       "priority": "core",
-      "summary": "The nSpec XRF is a compact benchtop energy-dispersive XRF spectrometer for process control and routine quality checks on cements, metals, paints and coatings. It covers Na to Am (C to Am with specialised detectors), with a vacuum chamber, helium option and an automated door for robotic loading.",
-      "description": "The nSpec XRF is a benchtop ED-XRF spectrometer intended for routine investigation and quality control rather than imaging. Element coverage spans sodium to americium, and carbon to americium with specialised detectors. A vacuum chamber improves detection limits for light elements, and a helium gas chamber option is available where vacuum is unsuitable for the sample. The radiation-protected cabinet accepts samples up to 50 × 50 × 50 mm, and an automated door allows the instrument to be integrated into a robotic sample-handling system so that it can serve as a station in an automated line. Software and controls are designed for straightforward operation, and safety features are built into the cabinet. Proto names process control in cements, metals, paints and coatings as the main fields of use, which fits cement plants, metal processing, coating production and general analytical laboratories where fast compositional checks are needed. For small-spot analysis and elemental mapping, the same manufacturer's mScan XRF is the corresponding model, while the nSpec XRF is the simpler option for bulk composition of prepared samples.",
+      "summary": "The nSpec XRF is a compact benchtop energy-dispersive XRF spectrometer for process control and routine quality checks on cements, metals, paints and coatings. It covers Na to Am (C to Am with specialized detectors), with a vacuum chamber, helium option and an automated door for robotic loading.",
+      "description": "The nSpec XRF is a benchtop ED-XRF spectrometer intended for routine investigation and quality control rather than imaging. Element coverage spans sodium to americium, and carbon to americium with specialized detectors. A vacuum chamber improves detection limits for light elements, and a helium gas chamber option is available where vacuum is unsuitable for the sample. The radiation-protected cabinet accepts samples up to 50 × 50 × 50 mm, and an automated door allows the instrument to be integrated into a robotic sample-handling system so that it can serve as a station in an automated line. Software and controls are designed for straightforward operation, and safety features are built into the cabinet. Proto names process control in cements, metals, paints and coatings as the main fields of use, which fits cement plants, metal processing, coating production and general analytical laboratories where fast compositional checks are needed. For small-spot analysis and elemental mapping, the same manufacturer's mScan XRF is the corresponding model, while the nSpec XRF is the simpler option for bulk composition of prepared samples.",
       "keySpecs": [
         {
           "label": "Technique",
@@ -1312,7 +1317,7 @@
         },
         {
           "label": "Element range",
-          "value": "Na to Am; C to Am with specialised detectors"
+          "value": "Na to Am; C to Am with specialized detectors"
         },
         {
           "label": "Maximum sample size",
@@ -1407,7 +1412,7 @@
       "category": "Single-Crystal Laue Orientation System",
       "priority": "niche",
       "summary": "The Laue-COS Benchtop is a compact Laue back-reflection system for orienting single crystals such as scintillators, optical crystals, piezoelectrics, minerals and substrates. It determines orientation to 0.1° using an in-house scintillation detector, and is available in horizontal and vertical versions.",
-      "description": "The Laue-COS Benchtop determines the orientation of single-crystal materials in seconds without the space demands of a conventional Laue instrument. It is intended for production and research laboratories that grow, cut or inspect scintillation crystals, non-linear optical crystals, piezoelectrics, minerals and wafers. Orientation accuracy is 0.1°. The instrument has no consumables, such as detector gases, and uses a Proto tungsten x-ray tube. Its back-reflection detector is a scintillation design made in house, sensitive across 4 to 30 keV, with 2080 × 2080 pixels at a 61 micron pixel size over a 127 × 127 mm area; binning shortens collection times. Two configurations are offered. The horizontal version carries an X,Y stage with 4 inch travel per axis and accepts a manual goniometer or a crystal-cutting goniometer, so a crystal can be reoriented and moved straight to the saw without being removed from its mount. The vertical version is aimed at thin plates and wafers, including diamond plates, and adds a laser focusing system that can reveal subtle wedge shapes. Motorised joystick-controlled stages are optional. XRDWIN Laue software handles simulation, indexing and reorientation, with Crystallography Open Database integration.",
+      "description": "The Laue-COS Benchtop determines the orientation of single-crystal materials in seconds without the space demands of a conventional Laue instrument. It is intended for production and research laboratories that grow, cut or inspect scintillation crystals, non-linear optical crystals, piezoelectrics, minerals and wafers. Orientation accuracy is 0.1°. The instrument has no consumables, such as detector gases, and uses a Proto tungsten X-ray tube. Its back-reflection detector is a scintillation design made in house, sensitive across 4 to 30 keV, with 2080 × 2080 pixels at a 61 micron pixel size over a 127 × 127 mm area; binning shortens collection times. Two configurations are offered. The horizontal version carries an X,Y stage with 4 inch travel per axis and accepts a manual goniometer or a crystal-cutting goniometer, so a crystal can be reoriented and moved straight to the saw without being removed from its mount. The vertical version is aimed at thin plates and wafers, including diamond plates, and adds a laser focusing system that can reveal subtle wedge shapes. Motorized joystick-controlled stages are optional. XRDWIN Laue software handles simulation, indexing and reorientation, with Crystallography Open Database integration.",
       "keySpecs": [
         {
           "label": "Orientation accuracy",
@@ -1431,7 +1436,7 @@
         },
         {
           "label": "Sample stage",
-          "value": "Manual X,Y with 4 inch travel per axis; motorised option"
+          "value": "Manual X,Y with 4 inch travel per axis; motorized option"
         },
         {
           "label": "Consumables",
@@ -1460,7 +1465,7 @@
         "crystal orientation for cutting",
         "Laue-COS Benchtop",
         "orienting scintillator crystals",
-        "wafer orientation x-ray"
+        "wafer orientation X-ray"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.protoxrd.com/products/laue-single-crystal/laue-cos-benchtop",
@@ -1523,12 +1528,12 @@
       "slug": "sc-1-max",
       "category": "Single-Crystal X-ray Diffractometer",
       "priority": "niche",
-      "summary": "The SC-1 MAX is Proto's advanced single-crystal diffractometer for demanding experiments such as protein crystallography. It combines a liquid gallium or indium MetalJet source, a kappa goniometer, a photon-counting EIGER2 detector and cryo cooling from 80 to 500 K, with magnetic mounts for quick crystal changes.",
-      "description": "The SC-1 MAX targets experiments where data resolution and source brightness decide the outcome, including protein crystallography. Its x-ray source is the MetalJet D2+, which uses a liquid gallium or indium anode and delivers the highest x-ray flux in a laboratory system through very high brightness and an 80 micron beam, with performance the manufacturer compares to synchrotrons. The goniometer is a proprietary kappa design with a high-precision, high-accuracy bearing, and crystals are mounted on magnetic goniometer heads and bases for quick changeover. Detection uses direct capture of x-ray photons with zero noise and very wide dynamic range, with a DECTRIS EIGER2 detector shown on the product page and CdTe sensors available for higher quantum efficiency at harder wavelengths. Advanced multilayer optics provide beam intensity, and cryo coolers cover 80 to 500 kelvin. Novel data collection algorithms aim to maximise completeness and redundancy in the shortest possible time. The SC-1 MAX is aimed at structural biology and chemical crystallography groups in universities, institutes and pharmaceutical research that want in-house access to high-quality diffraction data. Related models in the same family are the SC-1 and SC-1 HP.",
+      "summary": "The SC-1 MAX is Proto's advanced single-crystal diffractometer for demanding experiments such as protein crystallography. It combines a liquid gallium or indium metal-jet source, a kappa goniometer, a hybrid photon-counting detector and cryo cooling from 80 to 500 K, with magnetic mounts for quick crystal changes.",
+      "description": "The SC-1 MAX targets experiments where data resolution and source brightness decide the outcome, including protein crystallography. Its X-ray source is a liquid-metal-jet design with a liquid gallium or indium anode, which delivers high X-ray flux for a laboratory system through very high brightness and an 80 micron beam; the manufacturer compares its performance to synchrotrons. The goniometer is a proprietary kappa design with a high-precision, high-accuracy bearing, and crystals are mounted on magnetic goniometer heads and bases for quick changeover. Detection uses direct capture of X-ray photons with very wide dynamic range, with a hybrid photon-counting detector and CdTe sensors available for higher quantum efficiency at harder wavelengths. Advanced multilayer optics provide beam intensity, and cryo coolers cover 80 to 500 kelvin. Data collection algorithms aim to maximize completeness and redundancy in the shortest possible time. The SC-1 MAX is aimed at structural biology and chemical crystallography groups in universities, institutes and pharmaceutical research that want in-house access to high-quality diffraction data. Related models in the same family are the SC-1 and SC-1 HP.",
       "keySpecs": [
         {
           "label": "X-ray source",
-          "value": "MetalJet D2+, liquid Ga or In anode, 80 micron beam"
+          "value": "Liquid-metal-jet source, liquid Ga or In anode, 80 micron beam"
         },
         {
           "label": "Goniometer",
@@ -1536,11 +1541,11 @@
         },
         {
           "label": "Detector",
-          "value": "Photon-counting DECTRIS EIGER2 R 4M (CdTe sensors available)"
+          "value": "Hybrid photon-counting detector (CdTe sensors available)"
         },
         {
           "label": "Optics",
-          "value": "Advanced multilayer x-ray optics"
+          "value": "Advanced multilayer X-ray optics"
         },
         {
           "label": "Cryo cooling",
@@ -1563,12 +1568,12 @@
         "pharmaceutical-biotech"
       ],
       "searchKeywords": [
-        "single crystal x-ray diffractometer",
+        "single crystal X-ray diffractometer",
         "protein crystallography home source",
-        "MetalJet diffractometer",
+        "liquid metal jet diffractometer",
         "SC-1 MAX",
-        "gallium MetalJet x-ray source",
-        "EIGER2 single crystal diffractometer"
+        "gallium liquid metal jet X-ray source",
+        "photon-counting single crystal diffractometer"
       ],
       "whyMiddleEast": "",
       "sourceUrl": "https://www.protoxrd.com/x-ray-crystallography/sc-1-max",
@@ -1580,8 +1585,8 @@
       "ar": {
         "name": "SC-1 MAX مقياس حيود الأشعة السينية للبلورة المفردة",
         "category": "مقياس حيود الأشعة السينية للبلورة المفردة",
-        "summary": "SC-1 MAX هو مقياس حيود البلورة المفردة المتقدم من Proto للتجارب الصعبة مثل علم بلورات البروتين. يجمع بين مصدر MetalJet من الغاليوم أو الإنديوم السائل ومقياس زوايا kappa وكاشف EIGER2 لعدّ الفوتونات وتبريدًا كرايوجينيًا من 80 إلى 500 K، مع حوامل مغناطيسية لتبديل البلورات بسرعة.",
-        "description": "يستهدف SC-1 MAX التجارب التي تحدد فيها دقة البيانات وسطوع المصدر النتيجة، ومنها علم بلورات البروتين. مصدر الأشعة السينية فيه هو MetalJet D2+، الذي يستخدم مصعدًا من الغاليوم أو الإنديوم السائل ويوفر أعلى تدفق للأشعة السينية في نظام مخبري عبر سطوع عالٍ جدًا وحزمة قطرها 80 ميكرون، بأداء تقارنه الشركة المصنّعة بمصادر السنكروترون. ومقياس الزوايا بتصميم kappa خاص بالشركة مع محمل عالي الدقة والضبط، وتُركَّب البلورات على رؤوس وقواعد مقياس زوايا مغناطيسية لتبديل سريع. ويعتمد الكشف على الالتقاط المباشر لفوتونات الأشعة السينية بضجيج صفري ومدى ديناميكي واسع جدًا، مع كاشف DECTRIS EIGER2 المعروض في صفحة المنتج، وتتوفر حساسات CdTe لكفاءة كمية أعلى عند الأطوال الموجية الأقصر (الأشعة الأكثر صلابة). وتوفر بصريات متعددة الطبقات المتقدمة شدة الحزمة، وتغطي مبرّدات الكرايو من 80 إلى 500 كلفن. وتهدف خوارزميات جمع البيانات الحديثة إلى تعظيم الاكتمال والتكرارية (redundancy) في أقصر وقت ممكن. ويستهدف SC-1 MAX مجموعات البيولوجيا البنيوية وعلم البلورات الكيميائي في الجامعات والمعاهد والأبحاث الدوائية التي تريد وصولًا داخليًا إلى بيانات حيود عالية الجودة. والطرازات ذات الصلة في العائلة نفسها هي SC-1 وSC-1 HP.",
+        "summary": "SC-1 MAX هو مقياس حيود البلورة المفردة المتقدم من Proto للتجارب الصعبة مثل علم بلورات البروتين. يجمع بين مصدر بنفث معدن سائل (غاليوم أو إنديوم) ومقياس زوايا kappa وكاشف هجين لعدّ الفوتونات وتبريدًا كرايوجينيًا من 80 إلى 500 K، مع حوامل مغناطيسية لتبديل البلورات بسرعة.",
+        "description": "يستهدف SC-1 MAX التجارب التي تحدد فيها دقة البيانات وسطوع المصدر النتيجة، ومنها علم بلورات البروتين. مصدر الأشعة السينية فيه من نوع النفث المعدني السائل، ويستخدم مصعدًا من الغاليوم أو الإنديوم السائل ويوفر تدفقًا عاليًا للأشعة السينية بالنسبة إلى نظام مخبري عبر سطوع عالٍ جدًا وحزمة قطرها 80 ميكرون، بأداء تقارنه الشركة المصنّعة بمصادر السنكروترون. ومقياس الزوايا بتصميم kappa خاص بالشركة مع محمل عالي الدقة والضبط، وتُركَّب البلورات على رؤوس وقواعد مقياس زوايا مغناطيسية لتبديل سريع. ويعتمد الكشف على الالتقاط المباشر لفوتونات الأشعة السينية بمدى ديناميكي واسع جدًا، مع كاشف هجين لعدّ الفوتونات، وتتوفر حساسات CdTe لكفاءة كمية أعلى عند الأطوال الموجية الأقصر (الأشعة الأكثر صلابة). وتوفر بصريات متعددة الطبقات المتقدمة شدة الحزمة، وتغطي مبرّدات الكرايو من 80 إلى 500 كلفن. وتهدف خوارزميات جمع البيانات إلى تعظيم الاكتمال والتكرارية (redundancy) في أقصر وقت ممكن. ويستهدف SC-1 MAX مجموعات البيولوجيا البنيوية وعلم البلورات الكيميائي في الجامعات والمعاهد والأبحاث الدوائية التي تريد وصولًا داخليًا إلى بيانات حيود عالية الجودة. والطرازات ذات الصلة في السلسلة نفسها هي SC-1 وSC-1 HP.",
         "applications": [
           "علم بلورات البروتين",
           "تحديد بنية البلورة المفردة للجزيئات الصغيرة",
@@ -1591,7 +1596,7 @@
         "keySpecs": [
           {
             "label": "مصدر الأشعة السينية",
-            "value": "MetalJet D2+، أنود سائل من Ga أو In، حزمة 80 ميكرون"
+            "value": "مصدر بنفث معدن سائل، أنود سائل من Ga أو In، حزمة 80 ميكرون"
           },
           {
             "label": "مقياس الزوايا",
@@ -1599,7 +1604,7 @@
           },
           {
             "label": "الكاشف",
-            "value": "كاشف DECTRIS EIGER2 R 4M لعدّ الفوتونات (تتوفر مستشعرات CdTe)"
+            "value": "كاشف هجين لعدّ الفوتونات (تتوفر مستشعرات CdTe)"
           },
           {
             "label": "البصريات",
@@ -1623,7 +1628,7 @@
       "category": "Sample Preparation (Electropolishing)",
       "priority": "niche",
       "summary": "The Proto Electropolisher 8818-V3 is a compact 8 kg unit for etching and polishing metal surfaces without introducing cold-work stress. It removes thin layers so residual stress and retained austenite can be re-measured at each depth, in the laboratory or on large parts in the field.",
-      "description": "Residual stress changes with depth, and mechanical grinding would alter the very stress state being measured. The 8818-V3 removes material electrolytically, so layers can be taken off without cold-working the surface and stress or retained austenite can then be re-measured at each depth. It also serves for general metallurgical preparation. The unit weighs 8 kg, measures 35 × 30 × 15 cm and offers dual-mode etching and polishing. Output is 0 to 65 VDC at up to 10 A from a 90 to 265 VAC input, with a timer that handles seconds, minutes and hours up to 300 hours, and the pump and electrodes switch off automatically at the end of a polish, signalled by a buzzer. A stainless steel self-priming gear pump with a brushless motor circulates electrolyte, flow is electronically adjustable, and a stainless tank with chill pockets holds the solution. Protection includes fused input and automatic overpower output protection. Replaceable spot tips of 6, 9, 12 and 15 mm, alligator and magnetic ground clips, a manual and an operation video are supplied. Optional accessories include a stand, travel case, custom electrodes and masking kit; Proto's non-toxic Electrolyte A is separate.",
+      "description": "Residual stress changes with depth, and mechanical grinding would alter the very stress state being measured. The 8818-V3 removes material electrolytically, so layers can be taken off without cold-working the surface and stress or retained austenite can then be re-measured at each depth. It also serves for general metallurgical preparation. The unit weighs 8 kg, measures 35 × 30 × 15 cm and offers dual-mode etching and polishing. Output is 0 to 65 VDC at up to 10 A from a 90 to 265 VAC input, with a timer that handles seconds, minutes and hours up to 300 hours, and the pump and electrodes switch off automatically at the end of a polish, signaled by a buzzer. A stainless steel self-priming gear pump with a brushless motor circulates electrolyte, flow is electronically adjustable, and a stainless tank with chill pockets holds the solution. Protection includes fused input and automatic overpower output protection. Replaceable spot tips of 6, 9, 12 and 15 mm, alligator and magnetic ground clips, a manual and an operation video are supplied. Optional accessories include a stand, travel case, custom electrodes and masking kit; Proto's Electrolyte A is supplied separately.",
       "keySpecs": [
         {
           "label": "Weight",
@@ -1689,7 +1694,7 @@
         "name": "جهاز الصقل الكهربائي طراز 8818-V3",
         "category": "تحضير العينات (الصقل الكهربائي)",
         "summary": "جهاز الصقل الكهربائي Proto Electropolisher 8818-V3 وحدة مدمجة بوزن 8 kg للنقش وصقل الأسطح المعدنية دون إدخال إجهاد التشغيل على البارد. يزيل طبقات رقيقة بحيث يمكن إعادة قياس الإجهاد المتبقي والأوستنيت المتبقي عند كل عمق، في المختبر أو على القطع الكبيرة في الميدان.",
-        "description": "يتغير الإجهاد المتبقي مع العمق، وسيؤدي الجلخ الميكانيكي إلى تغيير حالة الإجهاد نفسها التي يجري قياسها. يزيل 8818-V3 المادة إلكتروليتيًا، بحيث يمكن رفع الطبقات دون تشغيل السطح على البارد، ثم يمكن إعادة قياس الإجهاد أو الأوستنيت المتبقي عند كل عمق. ويصلح أيضًا لتحضير العينات المعدنية العام. تزن الوحدة 8 kg وأبعادها 35 × 30 × 15 cm وتوفر نمطًا مزدوجًا للنقش والصقل. الخرج من 0 إلى 65 VDC بتيار حتى 10 A من دخل 90 إلى 265 VAC، مع مؤقت يعالج الثواني والدقائق والساعات حتى 300 ساعة، وتتوقف المضخة والأقطاب تلقائيًا في نهاية الصقل مع تنبيه بجرس طنان. وتدوّر مضخة تروس ذاتية التحضير من الفولاذ المقاوم للصدأ بمحرك بلا فرش الإلكتروليت، ويُضبط التدفق إلكترونيًا، ويحتوي خزان من الفولاذ المقاوم للصدأ مزوّد بجيوب تبريد على المحلول. وتشمل وسائل الحماية مدخلًا مزوّدًا بصهيرة وحماية تلقائية للمخرج من القدرة الزائدة. وتُورَّد رؤوس نقطية قابلة للاستبدال بأقطار 6 و9 و12 و15 mm وملاقط تأريض تمساحية ومغناطيسية ودليل تشغيل وفيديو تشغيل. وتشمل الملحقات الاختيارية حاملًا وحقيبة سفر وأقطابًا مخصصة وعدة تغطية (masking)؛ أما Electrolyte A غير السام من Proto فيُورَّد بشكل منفصل.",
+        "description": "يتغير الإجهاد المتبقي مع العمق، وسيؤدي الجلخ الميكانيكي إلى تغيير حالة الإجهاد نفسها التي يجري قياسها. يزيل 8818-V3 المادة إلكتروليتيًا، بحيث يمكن رفع الطبقات دون تشغيل السطح على البارد، ثم يمكن إعادة قياس الإجهاد أو الأوستنيت المتبقي عند كل عمق. ويصلح أيضًا لتحضير العينات المعدنية العام. تزن الوحدة 8 kg وأبعادها 35 × 30 × 15 cm وتوفر نمطًا مزدوجًا للنقش والصقل. الخرج من 0 إلى 65 VDC بتيار حتى 10 A من دخل 90 إلى 265 VAC، مع مؤقت يعالج الثواني والدقائق والساعات حتى 300 ساعة، وتتوقف المضخة والأقطاب تلقائيًا في نهاية الصقل مع تنبيه بجرس طنان. وتدوّر مضخة تروس ذاتية التحضير من الفولاذ المقاوم للصدأ بمحرك بلا فرش الإلكتروليت، ويُضبط التدفق إلكترونيًا، ويحتوي خزان من الفولاذ المقاوم للصدأ مزوّد بجيوب تبريد على المحلول. وتشمل وسائل الحماية مدخلًا مزوّدًا بصهيرة وحماية تلقائية للمخرج من القدرة الزائدة. وتُورَّد رؤوس نقطية قابلة للاستبدال بأقطار 6 و9 و12 و15 mm وملاقط تأريض تمساحية ومغناطيسية ودليل تشغيل وفيديو تشغيل. وتشمل الملحقات الاختيارية حاملًا وحقيبة سفر وأقطابًا مخصصة وعدة تغطية (masking)؛ أما Electrolyte A من Proto فيُورَّد بشكل منفصل.",
         "applications": [
           "ملامح الإجهاد المتبقي مقابل العمق",
           "الأوستنيت المتبقي مقابل العمق",
@@ -1739,7 +1744,7 @@
       "category": "XRD Software",
       "priority": "core",
       "summary": "XRDWIN 2.0 is Proto's data collection and analysis software for its residual stress, Laue orientation and powder diffraction instruments. The stress package covers sin²ψ regression, triaxial analysis, patented stress mapping, XEC determination and retained austenite, with add-in modules for pole figures and more.",
-      "description": "XRDWIN 2.0 runs every Proto XRD instrument and comes in dedicated packages for residual stress, Laue orientation and powder diffraction. The residual stress package performs linear and elliptical regression of d versus sin²ψ data with error analysis, supports psi and omega geometries, and offers peak-fitting routines including parabolic, Gaussian, Pearson VII, Cauchy, centroid and mid-chord, with the Dolle-Hauk method for ψ+ and ψ−. Triaxial routines, manual or automated, give the stress tensor, principal stress, maximum shear and equivalent stress. Residual stress mapping uses square, rectangular and circular grids or hand-picked points with patented multi-level 3D display, map algebra and before-and-after comparison, and can combine stress, peak width, retained austenite and hardness in one map. Utilities cover principal stress calculation, material removal and penetration depth corrections, x-ray elastic constant determination and remote access over a network. Add-in modules include pole figure, expert system, database management, inline inspection stress monitor, strain gage monitor and four-peak retained austenite measurement. The Laue version provides pattern simulation, automated indexing and a production mode for orienting components such as turbine blades, and the powder package, XRDWIN PD with PDAnalysis, covers phase identification, Rietveld refinement and a 21 CFR Part 11 compliant option.",
+      "description": "XRDWIN 2.0 runs every Proto XRD instrument and comes in dedicated packages for residual stress, Laue orientation and powder diffraction. The residual stress package performs linear and elliptical regression of d versus sin²ψ data with error analysis, supports psi and omega geometries, and offers peak-fitting routines including parabolic, Gaussian, Pearson VII, Cauchy, centroid and mid-chord, with the Dolle-Hauk method for ψ+ and ψ−. Triaxial routines, manual or automated, give the stress tensor, principal stress, maximum shear and equivalent stress. Residual stress mapping uses square, rectangular and circular grids or hand-picked points with patented multi-level 3D display, map algebra and before-and-after comparison, and can combine stress, peak width, retained austenite and hardness in one map. Utilities cover principal stress calculation, material removal and penetration depth corrections, X-ray elastic constant determination and remote access over a network. Add-in modules include pole figure, expert system, database management, inline inspection stress monitor, strain gage monitor and four-peak retained austenite measurement. The Laue version provides pattern simulation, automated indexing and a production mode for orienting components such as turbine blades, and the powder package, XRDWIN PD with PDAnalysis, covers phase identification, Rietveld refinement and a 21 CFR Part 11 compliant option.",
       "keySpecs": [
         {
           "label": "Packages",
