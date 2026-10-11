@@ -17,21 +17,21 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { lab
 const timeline = [
   { y: '1999', en: 'AlyTech is founded in the Paris region. Its team of chemists and electronic and software engineers specialises in gas systems, chromatography and elemental analysis.', ar: 'تأسست AlyTech في منطقة باريس، ويتخصص فريقها من الكيميائيين ومهندسي الإلكترونيات والبرمجيات في أنظمة الغاز والكروماتوغرافيا والتحليل العنصري.' },
   { y: '2007', en: 'The first automated gas preparation systems are sold under the GasMix™ brand.', ar: 'بيع أولى أنظمة تحضير الغاز الآلية تحت علامة GasMix™.' },
-  { y: '2015', en: 'AlyTech opens its Middle East subsidiary, wholly owned by AlyTech France.', ar: 'افتتاح فرع AlyTech في الشرق الأوسط، المملوك بالكامل لشركة AlyTech فرنسا.' },
-  { y: ar ? 'اليوم' : 'Today', en: 'As AlyTech Scientific Equipment Trading LLC in Mussafah, Abu Dhabi, we represent nine specialist manufacturers and support customers across the Middle East.', ar: 'بصفتها AlyTech Scientific Equipment Trading LLC في مصفح بأبوظبي، نمثّل تسعة مصنّعين متخصصين وندعم العملاء في جميع أنحاء الشرق الأوسط.' },
+  { y: '2015', en: 'AlyTech launches in the Middle East.', ar: 'انطلاق AlyTech في الشرق الأوسط.' },
+  { y: ar ? 'اليوم' : 'Today', en: 'As AlyTech Scientific Equipment Trading LLC in Mussafah, Abu Dhabi, we represent manufacturers and support customers across the Middle East.', ar: 'بصفتها AlyTech Scientific Equipment Trading LLC في مصفح بأبوظبي، نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط.' },
 ];
 ---
 <Base
   lang={lang}
   title={ar ? 'من نحن | AlyTech Scientific أبوظبي' : 'About AlyTech Scientific | Abu Dhabi, UAE'}
-  description={ar ? 'AlyTech Scientific شركة تابعة لـ AlyTech فرنسا، الشركة المصنّعة لأجهزة GasMix، مقرها أبوظبي وتورّد وتدعم مختبرات الشرق الأوسط منذ 2015.' : 'AlyTech Scientific is the Abu Dhabi subsidiary of AlyTech France, maker of GasMix, supplying and supporting Middle East laboratories since 2015.'}
+  description={ar ? 'AlyTech Scientific في أبوظبي تمثّل مصنّعي الأجهزة المخبرية وتدعم العملاء في جميع أنحاء الشرق الأوسط منذ 2015، من التوريد إلى التركيب والصيانة.' : 'AlyTech Scientific, Abu Dhabi, represents laboratory instrument manufacturers and supports customers across the Middle East since 2015, from supply to service.'}
   schema={[breadcrumbLd(crumbs, L('/about/'))]}
 >
   <section class="border-b border-line bg-card pt-[72px]">
     <div class="wrap py-12 md:py-16">
       <Breadcrumbs items={crumbs} />
       <h1 class="display mt-10 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'شركة أجهزة فرنسية في جذورها، محلية في خدمتها.' : 'French instrument makers by origin. Local by service.'}</h1>
-      <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute">{ar ? 'نحن الذراع الإقليمية لشركة AlyTech فرنسا، مصممة ومصنّعة أجهزة GasMix™. نجمع بين خبرة المصنّع وفريق محلي يركّب ويدرّب ويصون في جميع أنحاء الشرق الأوسط.' : 'We are the regional arm of AlyTech France, designer and maker of GasMix™ instruments. We pair a manufacturer’s depth with a local team that installs, trains and maintains across the Middle East.'}</p>
+      <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute">{ar ? 'نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط. يتولى مهندسونا التركيب والتشغيل والتدريب والصيانة في الموقع، من أول تشغيل حتى عقد الصيانة السنوي.' : 'We represent manufacturers and support customers across the Middle East. Our own engineers install, commission, train and maintain on site, from the first start-up to the annual maintenance contract.'}</p>
     </div>
   </section>
 
@@ -55,7 +55,6 @@ const timeline = [
       <div>
         <p class="label text-mute">{ar ? 'الاسم القانوني' : 'Legal name'}</p>
         <p class="mt-2 font-semibold">{site.legalName}</p>
-        <p class="mt-1 text-mute">{ar ? 'شركة تابعة لـ AlyTech فرنسا' : 'A subsidiary of AlyTech France'}</p>
       </div>
       <div>
         <p class="label text-mute">{ar ? 'الشهادات' : 'Certification'}</p>
@@ -65,6 +64,7 @@ const timeline = [
         <p class="label text-mute">{ar ? 'المكتب' : 'Office'}</p>
         <p class="mt-2 font-semibold">{site.address.street}, {site.address.poBox}</p>
         <p class="text-mute">{site.address.city}, {ar ? 'الإمارات العربية المتحدة' : site.address.country}</p>
+        <a href={L('/contact/#office')} class="link-arrow tap mt-3">{ar ? 'عرض على الخريطة' : 'See it on the map'} <Icon name="arrow" size={16} flip /></a>
       </div>
     </div>
     <div class="wrap mt-12">

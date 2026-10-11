@@ -6,7 +6,6 @@ export const site = {
   legalName: 'ALYTECH SCIENTIFIC EQUIPMENT TRADING LLC',
   name: 'AlyTech Scientific',
   url: 'https://www.alytechme.com',
-  parent: 'AlyTech France',
   founded: '2015',
   email: 'alytech@alytechme.ae',
   // ponytail: placeholder until the client sends the WhatsApp Business number (digits only, intl format).
@@ -21,6 +20,4 @@ export const site = {
   geo: { lat: 24.3515556, lng: 54.4871667 },
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=24.3515556,54.4871667',
   certifications: ['ISO 9001'],
-  // ponytail: AlyTech Scientific has no LinkedIn page of its own yet; this is the parent's (AlyTech France). Add the subsidiary's pages here when they exist.
-  parentLinkedin: 'https://www.linkedin.com/company/alytech/',
 } as const;

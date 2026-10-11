@@ -1,0 +1,46 @@
+---
+/**
+ * Google Map of the office, loaded only when the visitor clicks (no Google request or cookie before that, and nothing heavy on first paint).
+ * The embed URL is the one Google's own share/embed flow produces for a coordinate search; no API key. CSP: frame-src https://www.google.com.
+ */
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+import type { Lang } from '../i18n';
+
+interface Props { lang: Lang; class?: string }
+const { lang, class: cls = '' } = Astro.props;
+const ar = lang === 'ar';
+const embed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${site.geo.lat},${site.geo.lng}!6i15!3m1!1s${lang}!5m1!1s${lang}`;
+---
+<div class:list={['relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-md)] border border-line bg-card md:aspect-[16/10]', cls]} data-map={embed} data-map-title={ar ? 'موقع مكتب AlyTech في مصفح، أبوظبي' : 'AlyTech office location, Mussafah, Abu Dhabi'}>
+  <div class="map-grid absolute inset-0" aria-hidden="true"></div>
+  <div class="relative flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
+    <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="pin" size={22} /></span>
+    <p class="label text-mute">{site.address.street} · {ar ? 'مصفح، أبوظبي' : 'Mussafah, Abu Dhabi'}</p>
+    <button type="button" class="btn btn-primary" data-map-load>{ar ? 'عرض الخريطة' : 'Show the map'}</button>
+    <p class="max-w-[34ch] text-[13px] text-mute">{ar ? 'تُحمَّل الخريطة من Google عند النقر.' : 'The map loads from Google when you click.'}</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-map-load]').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const box = btn.closest<HTMLElement>('[data-map]')!;
+      const frame = document.createElement('iframe');
+      frame.src = box.dataset.map!;
+      frame.title = box.dataset.mapTitle!;
+      frame.className = 'absolute inset-0 h-full w-full border-0';
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.allowFullscreen = true;
+      box.replaceChildren(frame);
+      frame.focus();
+    }),
+  );
+</script>
+
+<style>
+  .map-grid {
+    background-image: linear-gradient(rgb(100 90 140 / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(100 90 140 / 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+</style>

@@ -42,6 +42,7 @@ const copy: Record<Lang, { title: string; updated: string; sections: Section[] }
           'Essential storage remembers your cookie choice and the details you already gave us so you don’t retype them. If you click “Accept”, we also store a random visitor identifier that links your page views across visits, so we understand which instruments you’re researching and can follow up on your request in context. If you choose “Essential only”, your visits are not linked to you: each page view is only counted anonymously, as described above.',
           'If you click “Accept”, we also use PostHog, an analytics service hosted in the EU, to measure how the site is used and to record anonymous replays of how pages are used. Everything you type into forms is hidden in those replays, and we never send PostHog your name or contact details.',
           'The fonts on this site are served from our own domain, so loading a page does not send a request to a third-party font provider.',
+          'The office map on the Contact page loads from Google Maps only when you click “Show the map”. Google then receives your IP address and may set its own cookies, under Google’s privacy policy.',
           'You can change your cookie choice at any time with the “Cookie settings” link in the footer of every page.',
         ],
       },
@@ -56,7 +57,7 @@ const copy: Record<Lang, { title: string; updated: string; sections: Section[] }
       },
       {
         h: 'Who we share it with',
-        p: ['Our own staff, and service providers that host or process data for us: Vercel (website hosting), Supabase (database), Resend (email notifications), IPinfo (identifying the network an IP address belongs to) and, only if you click “Accept”, PostHog (website analytics, EU servers). Where relevant to your request, we may share your enquiry with the manufacturer of the instrument you asked about. We do not sell personal data.'],
+        p: ['Our own staff, and service providers that host or process data for us: Cloudflare and Vercel (website hosting), Supabase (database), Resend (email notifications), IPinfo (identifying the network an IP address belongs to) and, only if you click “Accept”, PostHog (website analytics, EU servers). Where relevant to your request, we may share your enquiry with the manufacturer of the instrument you asked about. We do not sell personal data.'],
       },
       {
         h: 'How long we keep it',
@@ -94,6 +95,7 @@ const copy: Record<Lang, { title: string; updated: string; sections: Section[] }
           'يتذكّر التخزين الأساسي اختيارك بشأن ملفات تعريف الارتباط والبيانات التي أدخلتها سابقاً حتى لا تضطر إلى إعادة كتابتها. وإذا ضغطت «موافق»، نخزّن كذلك معرّف زائر عشوائياً يربط بين مشاهداتك للصفحات عبر الزيارات المتعددة، لنفهم الأجهزة التي تبحث عنها ونتابع طلبك في سياقه. وإذا اخترت «الضرورية فقط» فلا نربط زياراتك بك، ونكتفي باحتساب كل مشاهدة للصفحة بصورة مجهولة كما هو موضح أعلاه.',
           'وإذا ضغطت «موافق»، نستخدم كذلك PostHog، وهي خدمة تحليلات مستضافة في الاتحاد الأوروبي، لقياس طريقة استخدام الموقع وتسجيل إعادة عرض مجهولة الهوية لطريقة استخدام الصفحات. ويُخفى كل ما تكتبه في النماذج في هذه التسجيلات، ولا نرسل إلى PostHog اسمك أو بيانات التواصل الخاصة بك مطلقاً.',
           'تُقدَّم الخطوط في هذا الموقع من نطاقنا الخاص، فلا يرسل تحميل الصفحة أي طلب إلى مزوّد خطوط خارجي.',
+          'لا تُحمَّل خريطة المكتب في صفحة التواصل من خرائط Google إلا عند الضغط على «عرض الخريطة». عندها تتلقى Google عنوان IP الخاص بك وقد تضع ملفات تعريف الارتباط الخاصة بها، وفق سياسة الخصوصية لدى Google.',
           'يمكنك تغيير اختيارك بشأن ملفات تعريف الارتباط في أي وقت عبر رابط «إعدادات ملفات تعريف الارتباط» في أسفل كل صفحة.',
         ],
       },
@@ -108,7 +110,7 @@ const copy: Record<Lang, { title: string; updated: string; sections: Section[] }
       },
       {
         h: 'مع من نشاركها',
-        p: ['موظفونا، ومزوّدو الخدمات الذين يستضيفون البيانات أو يعالجونها نيابةً عنا: Vercel (استضافة الموقع) وSupabase (قاعدة البيانات) وResend (إشعارات البريد الإلكتروني) وIPinfo (تحديد الشبكة التي ينتمي إليها عنوان IP)، وPostHog (تحليلات الموقع على خوادم في الاتحاد الأوروبي) فقط إذا ضغطت «موافق». وحين يكون ذلك ذا صلة بطلبك، قد نشارك استفسارك مع الشركة المصنّعة للجهاز الذي استفسرت عنه. ولا نبيع البيانات الشخصية.'],
+        p: ['موظفونا، ومزوّدو الخدمات الذين يستضيفون البيانات أو يعالجونها نيابةً عنا: Cloudflare وVercel (استضافة الموقع) وSupabase (قاعدة البيانات) وResend (إشعارات البريد الإلكتروني) وIPinfo (تحديد الشبكة التي ينتمي إليها عنوان IP)، وPostHog (تحليلات الموقع على خوادم في الاتحاد الأوروبي) فقط إذا ضغطت «موافق». وحين يكون ذلك ذا صلة بطلبك، قد نشارك استفسارك مع الشركة المصنّعة للجهاز الذي استفسرت عنه. ولا نبيع البيانات الشخصية.'],
       },
       {
         h: 'مدة الاحتفاظ بها',

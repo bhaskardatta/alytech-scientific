@@ -62,8 +62,7 @@ const strings = {
   'wa.greeting': { en: 'Hello AlyTech, I am interested in', ar: 'مرحباً AlyTech، أنا مهتم بـ' },
   'wa.general': { en: 'your laboratory instruments and services', ar: 'أجهزتكم المخبرية وخدماتكم' },
 
-  'footer.tagline': { en: 'Precision instruments for Middle East laboratories — supplied, installed and supported by our own engineers.', ar: 'أجهزة دقيقة لمختبرات الشرق الأوسط — نوردها ونركّبها وندعمها بمهندسينا.' },
-  'footer.subsidiary': { en: 'A subsidiary of AlyTech France, maker of GasMix™.', ar: 'شركة تابعة لـ AlyTech فرنسا، الشركة المصنعة لأجهزة GasMix™.' },
+  'footer.tagline': { en: 'We represent manufacturers and support customers across the Middle East.', ar: 'نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط.' },
   'footer.office': { en: 'Office', ar: 'المكتب' },
   'footer.explore': { en: 'Explore', ar: 'استكشف' },
   'footer.company': { en: 'Company', ar: 'الشركة' },

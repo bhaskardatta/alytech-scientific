@@ -38,8 +38,9 @@ export default defineConfig({
         "object-src 'none'",
         "base-uri 'self'",
         "form-action 'self'",
-        // The admin Analytics page can embed a shared PostHog dashboard (POSTHOG_SHARED_DASHBOARD_URL). Nothing else on the site frames anything.
-        'frame-src https://eu.posthog.com',
+        // The admin Analytics page can embed a shared PostHog dashboard (POSTHOG_SHARED_DASHBOARD_URL); the office map (OfficeMap.astro,
+        // loaded on click) is a Google Maps embed. Nothing else on the site frames anything.
+        'frame-src https://eu.posthog.com https://www.google.com',
       ],
       // The announcement bar's tiny pre-paint script is inline (Astro hashes its own bundled scripts, not is:inline ones), so its hash is added here.
       scriptDirective: { hashes: [`sha256-${createHash('sha256').update(announceBoot).digest('base64')}`] },

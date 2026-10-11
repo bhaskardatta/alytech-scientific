@@ -5,7 +5,7 @@ import ProductImage from '../components/ProductImage.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Icon from '../components/Icon.astro';
 import Ribbon from '../components/Ribbon.astro';
-import { claim, claimFull, type Brand } from '../data/brands';
+import { claim, origin, claimFull, type Brand } from '../data/brands';
 import { productsOf, brandPath, productPath, imageOf, shortName, type Product, type Spec } from '../data/catalog';
 import { industries } from '../data/industries';
 import { breadcrumbLd, productLd } from '../data/schema';
@@ -111,7 +111,8 @@ const assurances = ar
             </li>
           ))}
         </ul>
-        <p class:list={['label mt-8', brand.exclusive ? (gas ? 'text-brand-300' : 'text-brand-600') : gas ? 'text-white/50' : 'text-mute']}>{brand.exclusive ? claim(brand)[lang] : claimFull[lang]} · {brand.country[lang]}</p>
+        <p class:list={['label mt-8', brand.exclusive ? (gas ? 'text-brand-300' : 'text-brand-600') : gas ? 'text-white/50' : 'text-mute']}>{brand.exclusive ? claim(brand)[lang] : claimFull[lang]}</p>
+        <p class:list={['label mt-2', gas ? 'text-white/50' : 'text-mute']}>{brand.name} · {origin(brand)[lang]}</p>
       </div>
 
       <div class="order-1 lg:order-2">

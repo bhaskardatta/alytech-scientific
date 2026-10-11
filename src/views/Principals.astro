@@ -4,7 +4,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductImage from '../components/ProductImage.astro';
 import ServiceStrip from '../components/ServiceStrip.astro';
 import Icon from '../components/Icon.astro';
-import { brands, claim } from '../data/brands';
+import { brands, claim, origin } from '../data/brands';
 import { productsOf, brandPath, shortName } from '../data/catalog';
 import { breadcrumbLd } from '../data/schema';
 import { t, localize, type Lang } from '../i18n';
@@ -16,14 +16,14 @@ const L = (x: string) => localize(lang, x);
 const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.principals') }];
 const title = ar ? 'شركاؤنا المصنّعون | موزع معتمد في الإمارات | AlyTech' : 'Our Principals | Authorized Distributor UAE | AlyTech';
 const description = ar
-  ? 'AlyTech Scientific موزع معتمد لتسعة مصنّعين: GasMix وThermtest وProto وDucom وInstroTek وF-DGS وSchmidt + Haensch وLamy Rheology وVinci.'
+  ? 'AlyTech Scientific موزع معتمد في الشرق الأوسط لـ GasMix وThermtest وProto وDucom وInstroTek وF-DGS وSchmidt + Haensch وLamy Rheology وVinci.'
   : 'Authorized Middle East distributor for GasMix, Thermtest, Proto XRD, Ducom, InstroTek, F-DGS, Schmidt + Haensch, Lamy Rheology and Vinci Technologies.';
 ---
 <Base lang={lang} title={title} description={description} schema={[breadcrumbLd(crumbs, L('/principals/'))]}>
   <section class="border-b border-line bg-card pt-[72px]">
     <div class="wrap py-12 md:py-16">
       <Breadcrumbs items={crumbs} />
-      <h1 class="display mt-10 max-w-3xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'تسعة مصنّعين متخصصين. فريق دعم واحد.' : 'Nine specialist manufacturers. One support team.'}</h1>
+      <h1 class="display mt-10 max-w-3xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'المصنّعون الذين نمثّلهم. فريق دعم واحد.' : 'The manufacturers we represent. One support team.'}</h1>
       <p class="mt-5 max-w-2xl text-[17px] text-mute">{ar ? 'نختار شركاءنا لعمق تخصصهم، ثم نتولى كل ما يحدث بعد الشراء: التركيب والتدريب والصيانة وقطع الغيار.' : 'We choose principals for the depth of their specialism, then take care of everything after the purchase order: installation, training, maintenance and spares.'}</p>
     </div>
   </section>
@@ -36,8 +36,9 @@ const description = ar
           <li>
             <a href={L(brandPath(b))} class:list={['group grid items-center gap-6 rounded-[var(--radius-md)] border p-6 transition-[border-color,box-shadow] duration-200 md:grid-cols-[1fr_1.4fr_auto] md:p-8', b.slug === 'gasmix' ? 'on-dark border-transparent bg-night-900 text-white' : 'card hover:border-brand-200 hover:shadow-[var(--shadow-card)]']}>
               <div>
-                <p class:list={['label', b.exclusive ? (b.slug === 'gasmix' ? 'text-brand-300' : 'text-brand-600') : 'text-mute']}>{claim(b)[lang]} · {b.country[lang]}</p>
+                <p class:list={['label', b.exclusive ? (b.slug === 'gasmix' ? 'text-brand-300' : 'text-brand-600') : 'text-mute']}>{claim(b)[lang]}</p>
                 <p class="display mt-3 text-[clamp(1.6rem,2.6vw,2.2rem)]">{b.name}</p>
+                <p class:list={['label mt-1.5', b.slug === 'gasmix' ? 'text-white/55' : 'text-mute']}>{origin(b)[lang]}</p>
                 <p class:list={['mt-1', b.slug === 'gasmix' ? 'text-white/70' : 'text-ink-soft']}>{b.discipline[lang]}</p>
               </div>
               <ul class="grid grid-cols-3 gap-3">

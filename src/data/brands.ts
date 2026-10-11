@@ -1,4 +1,4 @@
-/** The nine principals (Tier 1). Claim wording is legally approved by the client — do not edit without them. */
+/** The principals (Tier 1). Claim wording is legally approved by the client — do not edit without them. */
 export interface Brand {
   slug: string;
   name: string;
@@ -59,6 +59,8 @@ export const brands: Brand[] = [
   },
 ];
 
+/** Manufacturer's country of origin, labelled so it is never read as our sales territory (we distribute across the Middle East). */
+export const origin = (b: Brand) => ({ en: `Origin · ${b.country.en}`, ar: `المنشأ · ${b.country.ar}` });
 export const claim = (b: Brand) => b.exclusive ?? { en: 'Authorized distributor', ar: 'موزع معتمد' };
 /** Mandated Tier-1 wording (CLAUDE.md), shown on every brand hub page. "Exclusive" stays separate: only GasMix and Vinci Technologies (Qatar). */
 export const claimFull = { en: 'Authorized Distributor · Supplied & supported by AlyTech', ar: 'موزع معتمد · توريد ودعم من AlyTech' };
