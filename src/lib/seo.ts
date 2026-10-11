@@ -19,10 +19,12 @@ export function fit(text: string, max: number, floor = Math.floor(max * 0.55)): 
   // `floor`: the shortest result we accept just to land on a sentence/clause end (default ~55% of the budget)
   const stop = Math.max(win.lastIndexOf('. '), win.lastIndexOf('! '), win.lastIndexOf('? '), win.lastIndexOf('؟ '));
   if (stop >= floor) return win.slice(0, stop + 1);
-  const clause = Math.max(win.lastIndexOf(', '), win.lastIndexOf('، '), win.lastIndexOf('; '), win.lastIndexOf(' — '), win.lastIndexOf(': '));
-  // no clause end in reach: cut before the last word that opens a modifier ("… by forcing", "… under pressure"), so the left side stays a whole phrase
-  let adjunct = -1;
-  for (const m of win.matchAll(ADJUNCT)) adjunct = m.index!;
+  // Clause and modifier cuts take the FIRST boundary past the floor, not the last: a later comma tends to sit inside a list
+  // ("…of compacted asphalt, maximum gravity of loose") and a later "as" inside a phrase ("…to as much as 1,800").
+  const first = (re: RegExp) => { for (const m of win.matchAll(re)) if (m.index! >= floor) return m.index!; return -1; };
+  const clause = first(/, |، |; | — |: /g);
+  // no clause end in reach: cut before the first word that opens a modifier ("… by forcing", "… under pressure"), so the left side stays a whole phrase
+  const adjunct = first(ADJUNCT);
   let cut = clause >= floor ? clause : adjunct >= floor ? adjunct : win.lastIndexOf(' ');
   if (cut < 1) cut = max;
   let out = win.slice(0, cut).replace(/[\s,;:،—–-]+$/, '');
@@ -67,17 +69,22 @@ export function titleFrom(candidates: (string | false | undefined)[], suffixes: 
 export function descOf(body: string, tails: string | string[] = [], max = 155, min = 120, hard = DESC_MAX): string {
   const closers = [...(Array.isArray(tails) ? tails : [tails]).filter(Boolean), ''];
   const sentences = body.replace(/\s+/g, ' ').trim().split(/(?<=[.!?؟])\s+/);
-  for (let n = 1; n <= sentences.length; n++) {
-    const head = sentences.slice(0, n).join(' ');
-    for (const tail of closers) {
-      const text = tail ? `${head} ${tail}` : head;
-      if (text.length >= min && text.length <= hard) return text;
+  // Whole sentences first; a complete but shorter description (down to 70 chars) beats one cut mid-sentence.
+  for (const floor of [min, 70]) {
+    for (let n = 1; n <= sentences.length; n++) {
+      const head = sentences.slice(0, n).join(' ');
+      for (const tail of closers) {
+        const text = tail ? `${head} ${tail}` : head;
+        if (text.length >= floor && text.length <= hard) return text;
+      }
     }
   }
+  if (process.env.SEO_DEBUG) console.warn('[seo] trimmed description:', body.slice(0, 80));
   const tail = closers[closers.length - 2] ?? '';
   const used = tail ? tail.length + 1 : 0;
   const room = max - used;
-  const b = fit(body, room, Math.min(room, Math.max(0, min - used)));
+  // a clean clause end from 60 chars on beats reaching `min` with a word cut
+  const b = fit(body, room, Math.min(room, 60));
   return tail ? `${b} ${tail}` : b;
 }
 
