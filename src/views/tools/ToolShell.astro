@@ -85,4 +85,12 @@ const webPage = {
       </ul>
     </div>
   </section>
+
+  <!-- Result pill for phones (the result panel sits below the form there). Decorative duplicate of the panel, so hidden from AT; the script fills it and fades it in while the panel is off-screen. -->
+  <div class="on-dark pointer-events-none fixed bottom-5 start-4 end-24 z-40 flex min-h-14 translate-y-3 flex-col justify-center rounded-[var(--radius-md)] border border-white/15 bg-night-900 px-4 py-2 text-white opacity-0 shadow-[var(--shadow-pop)] transition duration-200 data-[show]:translate-y-0 data-[show]:opacity-100 sm:end-44 lg:hidden" aria-hidden="true" data-result-bar>
+    <p class="label truncate text-white/70" data-bar-label></p>
+    <p class="mt-0.5 break-words font-mono text-[16px] font-medium leading-snug" data-bar-value></p>
+  </div>
+  <!-- The panel itself is not a live region (it would speak on every keystroke); the script announces the result here 600 ms after the last change. -->
+  <div class="sr-only" role="status" aria-live="polite" aria-atomic="true" data-announce></div>
 </Base>

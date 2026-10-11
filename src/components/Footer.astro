@@ -10,6 +10,8 @@ const { lang } = Astro.props;
 const L = (p: string) => localize(lang, p);
 const cfg = await getSiteSettings();
 const ext = { target: '_blank', rel: 'noopener noreferrer' };
+/** Footer link: 44px tap area on phones (.hit), fades to white and underlines on hover. */
+const lk = 'hit transition-colors duration-200 hover:text-white hover:underline hover:underline-offset-4';
 ---
 <footer class="on-dark relative overflow-hidden bg-night-950 text-white/80">
   <div class="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:py-20">
@@ -23,23 +25,23 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
       <p class="label mb-4 text-brand-300">{t(lang, 'nav.products')}</p>
       <ul class="space-y-2 text-[15px]">
         {brands.map((b) => (
-          <li><a class="hit hover:text-white" href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)}>{b.name}</a></li>
+          <li><a class={lk} href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)}>{b.name}</a></li>
         ))}
-        <li><a class="hit hover:text-white" href={L('/equipment/')}>{t(lang, 'nav.equipment')}</a></li>
-        <li><a class="hit hover:text-white" href={L('/standards/')}>{t(lang, 'nav.standards')}</a></li>
-        <li><a class="hit hover:text-white" href={L('/tools/')}>{t(lang, 'nav.tools')}</a></li>
+        <li><a class={lk} href={L('/equipment/')}>{t(lang, 'nav.equipment')}</a></li>
+        <li><a class={lk} href={L('/standards/')}>{t(lang, 'nav.standards')}</a></li>
+        <li><a class={lk} href={L('/tools/')}>{t(lang, 'nav.tools')}</a></li>
       </ul>
     </div>
 
     <div>
       <p class="label mb-4 text-brand-300">{t(lang, 'footer.company')}</p>
       <ul class="space-y-2 text-[15px]">
-        <li><a class="hit hover:text-white" href={L('/services/')}>{t(lang, 'nav.services')}</a></li>
-        <li><a class="hit hover:text-white" href={L('/industries/')}>{t(lang, 'nav.industries')}</a></li>
-        <li><a class="hit hover:text-white" href={L('/about/')}>{t(lang, 'nav.about')}</a></li>
-        <li><a class="hit hover:text-white" href={L('/contact/')}>{t(lang, 'nav.contact')}</a></li>
-        <li><a class="hit hover:text-white" href={L('/privacy/')}>{t(lang, 'footer.privacy')}</a></li>
-        <li><button type="button" class="hit cursor-pointer hover:text-white" data-consent-open>{t(lang, 'footer.cookies')}</button></li>
+        <li><a class={lk} href={L('/services/')}>{t(lang, 'nav.services')}</a></li>
+        <li><a class={lk} href={L('/industries/')}>{t(lang, 'nav.industries')}</a></li>
+        <li><a class={lk} href={L('/about/')}>{t(lang, 'nav.about')}</a></li>
+        <li><a class={lk} href={L('/contact/')}>{t(lang, 'nav.contact')}</a></li>
+        <li><a class={lk} href={L('/privacy/')}>{t(lang, 'footer.privacy')}</a></li>
+        <li><button type="button" class:list={[lk, 'cursor-pointer']} data-consent-open>{t(lang, 'footer.cookies')}</button></li>
       </ul>
     </div>
 
@@ -49,16 +51,19 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
         {site.addressLines[lang].map((line, i) => <>{i > 0 && <br />}{line}</>)}
       </address>
       <ul class="mt-4 space-y-3 text-[15px]">
-        <li><button type="button" class="hit inline-flex items-center gap-2 hover:text-white" data-lead="whatsapp"><Icon name="whatsapp" size={18} />{t(lang, 'wa.label')}</button></li>
-        <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={`mailto:${cfg.contactEmail}`}><Icon name="mail" size={18} />{cfg.contactEmail}</a></li>
-        <li><a class="hit inline-flex items-center gap-2 hover:text-white" href={site.mapUrl} {...ext}><Icon name="pin" size={18} />{lang === 'ar' ? 'افتح في الخرائط' : 'Open in Maps'}</a></li>
+        <li><button type="button" class:list={[lk, 'inline-flex items-center gap-2']} data-lead="whatsapp"><Icon name="whatsapp" size={18} />{t(lang, 'wa.label')}</button></li>
+        <li><a class:list={[lk, 'inline-flex items-center gap-2']} href={`mailto:${cfg.contactEmail}`}><Icon name="mail" size={18} />{cfg.contactEmail}</a></li>
+        <li><a class:list={[lk, 'inline-flex items-center gap-2']} href={site.mapUrl} {...ext}><Icon name="pin" size={18} />{lang === 'ar' ? 'افتح في الخرائط' : 'Open in Maps'}</a></li>
       </ul>
     </div>
   </div>
   <div class="border-t border-white/10">
-    <div class="wrap flex flex-col gap-2 py-6 text-[13px] text-white/60 sm:flex-row sm:justify-between">
+    <!-- pb-24 on phones keeps the last line clear of the floating WhatsApp button (fixed bottom-5, 56px tall) -->
+    <div class="wrap flex flex-col gap-2 pt-6 pb-24 text-[13px] text-white/60 sm:flex-row sm:justify-between sm:pb-6">
       <p>© <span data-year>2026</span> {site.legalName}. {t(lang, 'footer.rights')}</p>
-      <p>{lang === 'ar' ? 'GasMix™ علامة تجارية لشركة AlyTech France. العلامات الأخرى ملك لأصحابها.' : 'GasMix™ is a trademark of AlyTech France. Other brand names belong to their owners.'}</p>
+      {lang === 'ar'
+        ? <p><bdi dir="ltr">GasMix™</bdi> علامة تجارية لشركة <bdi dir="ltr">AlyTech France</bdi>. العلامات الأخرى ملك لأصحابها.</p>
+        : <p>GasMix™ is a trademark of AlyTech France. Other brand names belong to their owners.</p>}
     </div>
   </div>
 </footer>

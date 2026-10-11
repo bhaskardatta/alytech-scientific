@@ -1,6 +1,6 @@
 /** Gas dilution calculator: wires the server-rendered form to the maths in calc.ts. */
 import { dilute, flowsForTarget, curve, toPpm, fromPpm, toMl, fromMl, autoUnit, fmt, type ConcUnit, type FlowUnit } from './calc';
-import { $, h, row, list, setError, readField, type Msgs } from './ui';
+import { $, h, row, list, setError, readField, createReadout, type Msgs } from './ui';
 
 type Mode = 'forward' | 'inverse' | 'curve';
 const UNITS: ConcUnit[] = ['pct', 'ppm', 'ppb'];
@@ -30,7 +30,7 @@ function init(root: HTMLElement) {
     return { main: `${fmt(fromMl(ml, u))} ${flowLabel(u)}`, alt: `${fmt(fromMl(ml, other))} ${flowLabel(other)}` };
   };
 
-  const show = (...kids: Node[]) => out.replaceChildren(...kids);
+  const show = createReadout(root, out);
   const message = (text: string) => show(h('p', 'text-[15px] leading-relaxed text-white/70', text));
 
   function update(submitted = false) {
@@ -47,12 +47,14 @@ function init(root: HTMLElement) {
     const fl = (n: string, strict = true) => toMl(readField(form, n, strict ? { gt: 0 } : { min: 0 }, msgs, touched, errors), fu);
 
     let result: Node | null = null;
+    let main: [string, string] | undefined; // headline value for the phone pill
     if (m === 'forward') {
       const qs = fl('qs'), qd = fl('qd', false);
       if (![csPpm, qs, qd].some(Number.isNaN)) {
         const r = dilute(csPpm, qs, qd);
         const t = flow(r.qt, fu);
         result = list(row(M.r.out, conc(r.cOutPpm), concAlt(r.cOutPpm), true), row(M.r.ratio, `${fmt(r.ratio)} : 1`), row(M.r.total, t.main, t.alt));
+        main = [M.r.out, conc(r.cOutPpm)];
       }
     } else if (m === 'inverse') {
       const ct = tPpm('ct'), qt = fl('qt');
@@ -62,6 +64,7 @@ function init(root: HTMLElement) {
         else {
           const s = flow(r.qs, fu), d = flow(r.qd, fu);
           result = list(row(M.r.qs, s.main, s.alt, true), row(M.r.qd, d.main, d.alt, true), row(M.r.ratio, `${fmt(r.ratio)} : 1`));
+          main = [`${M.r.qsShort} · ${M.r.qdShort}`, `${s.main} · ${d.main}`];
         }
       }
     } else {
@@ -72,7 +75,10 @@ function init(root: HTMLElement) {
         else if (hi >= csPpm) errors.cmax = M.err.ctGeCs;
         else {
           const c = curve(csPpm, lo, hi, n, qt);
-          if (c.ok) result = curveTable(c.rows, fu);
+          if (c.ok) {
+            result = curveTable(c.rows, fu);
+            main = [M.r.curve, `${c.rows.length} · ${conc(c.rows[0].c)} – ${conc(c.rows[c.rows.length - 1].c)}`];
+          }
         }
       }
     }
@@ -80,7 +86,7 @@ function init(root: HTMLElement) {
     // Reflect errors on the fields (clear the rest) and in the live region.
     for (const name of ['cs', 'qs', 'qd', 'ct', 'qt', 'cmin', 'cmax', 'n']) setError(form, name, errors[name] ?? null);
     if (Object.keys(errors).length) return message(M.err.summary);
-    if (result) return show(result);
+    if (result) return show(result, main);
     message(M.hint);
   }
 

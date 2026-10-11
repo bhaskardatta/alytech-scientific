@@ -11,7 +11,8 @@ const ar = lang === 'ar';
 const cfg = await getSiteSettings();
 
 // One structure per language so both versions always carry the same sections; strings may hold <b> and the mail link.
-const mail = `<a href="mailto:${cfg.contactEmail}" dir="ltr">${cfg.contactEmail}</a>`;
+// `hit` gives the link a 44px tap area on phones without changing the line spacing of the paragraph around it.
+const mail = `<a href="mailto:${cfg.contactEmail}" dir="ltr" class="hit">${cfg.contactEmail}</a>`;
 const legal = `<bdi dir="ltr">${site.legalName}</bdi>`;
 const addr = site.address;
 type Section = { h: string; p?: string[]; ul?: string[] };
@@ -148,5 +149,6 @@ const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: localize(lang, 
   .prose-alytech :global(h2) { font-family: var(--font-display); font-size: 1.35rem; color: var(--color-ink); margin-bottom: 0.6rem; }
   .prose-alytech :global(p + p) { margin-top: 0.75rem; }
   .prose-alytech :global(ul) { list-style: disc; padding-inline-start: 1.25rem; display: grid; gap: 0.5rem; }
-  .prose-alytech :global(a) { color: var(--color-brand-600); text-decoration: underline; text-underline-offset: 2px; }
+  .prose-alytech :global(a) { color: var(--color-brand-600); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color 0.2s ease, text-decoration-thickness 0.2s ease; }
+  .prose-alytech :global(a:hover) { color: var(--color-brand-700); text-decoration-thickness: 2px; }
 </style>

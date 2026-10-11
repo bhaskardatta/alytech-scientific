@@ -58,3 +58,44 @@ export function row(label: string, value: string, alt?: string, big = false): HT
   return r;
 }
 export const list = (...rows: Node[]) => { const d = h('dl'); d.append(...rows); return d; };
+
+/** What a screen reader should hear for the current readout: each headline value, or the message, or the size of the table. */
+function speak(out: HTMLElement): string {
+  const rows = [...out.querySelectorAll('dl > div')];
+  if (rows.length) return rows.map((r) => `${r.querySelector('dt')!.textContent}: ${r.querySelector('dd > bdi')!.textContent}`).join('. ');
+  const cap = out.querySelector('caption');
+  return cap ? `${cap.textContent}: ${out.querySelectorAll('tbody tr').length}` : out.textContent || '';
+}
+
+/**
+ * Owns the readout. It is not a live region (typing would make it speak on every keystroke), so the result is
+ * announced through the hidden [data-announce] region once input has paused for 600 ms. The first render is never announced.
+ * `main` ([label, value]) is mirrored into the phone pill [data-result-bar] while the form is on screen and the readout is not;
+ * omit it when there is no result to show.
+ */
+export function createReadout(root: HTMLElement, out: HTMLElement) {
+  const live = document.querySelector<HTMLElement>('[data-announce]');
+  const bar = document.querySelector<HTMLElement>('[data-result-bar]');
+  const label = bar?.querySelector<HTMLElement>('[data-bar-label]');
+  const value = bar?.querySelector<HTMLElement>('[data-bar-value]');
+  let inRoot = false, inOut = false, has = false, timer: number | undefined, last: string | undefined;
+  const sync = () => bar?.toggleAttribute('data-show', has && inRoot && !inOut);
+
+  if (bar) {
+    // The bottom 88px is where the pill sits, so a readout peeking in there doesn't count as visible.
+    const io = new IntersectionObserver((es) => { for (const e of es) e.target === out ? (inOut = e.isIntersecting) : (inRoot = e.isIntersecting); sync(); }, { rootMargin: '0px 0px -88px 0px' });
+    io.observe(root);
+    io.observe(out);
+  }
+
+  return (node: Node, main?: [label: string, value: string]) => {
+    out.replaceChildren(node);
+    has = !!main;
+    if (main && label && value) { label.textContent = main[0]; value.replaceChildren(ltr(main[1])); }
+    sync();
+    const text = speak(out);
+    if (last === undefined) { last = text; return; }
+    clearTimeout(timer);
+    timer = window.setTimeout(() => { if (live && text !== last) live.textContent = last = text; }, 600);
+  };
+}

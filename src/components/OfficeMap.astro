@@ -17,8 +17,14 @@ const embed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${site
   <div class="relative flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
     <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="pin" size={22} /></span>
     <p class="label text-mute">{site.addressLines[lang][0]} · {ar ? 'أبوظبي' : 'Abu Dhabi'}</p>
-    <button type="button" class="btn btn-ghost" data-map-load>{ar ? 'عرض الخريطة' : 'Show the map'}</button>
-    <p class="max-w-[34ch] text-[13px] text-mute">{ar ? 'تُحمَّل الخريطة من Google عند النقر.' : 'The map loads from Google when you click.'}</p>
+    <div class="flex flex-col items-center gap-4" data-map-idle>
+      <button type="button" class="btn btn-ghost" data-map-load>{ar ? 'عرض الخريطة' : 'Show the map'}</button>
+      <p class="max-w-[34ch] text-[13px] text-mute">{ar ? 'تُحمَّل الخريطة من Google عند النقر.' : 'The map loads from Google when you click.'}</p>
+    </div>
+    <div class="flex flex-col items-center gap-4" role="status" data-map-wait hidden>
+      <p class="flex items-center gap-2 text-[14px] text-mute"><span class="h-4 w-4 animate-spin rounded-full border-2 border-line-strong border-t-brand-600" aria-hidden="true"></span>{ar ? 'جارٍ تحميل الخريطة…' : 'Loading map…'}</p>
+      <a class="btn btn-ghost" href={site.mapUrl} target="_blank" rel="noopener noreferrer" data-map-fallback hidden>{ar ? 'افتح في خرائط Google' : 'Open in Google Maps'}</a>
+    </div>
   </div>
 </div>
 
@@ -26,13 +32,26 @@ const embed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${site
   document.querySelectorAll<HTMLButtonElement>('[data-map-load]').forEach((btn) =>
     btn.addEventListener('click', () => {
       const box = btn.closest<HTMLElement>('[data-map]')!;
+      const wait = box.querySelector<HTMLElement>('[data-map-wait]')!;
       const frame = document.createElement('iframe');
       frame.src = box.dataset.map!;
       frame.title = box.dataset.mapTitle!;
-      frame.className = 'absolute inset-0 h-full w-full border-0';
+      // Invisible (and click-through, so the fallback link stays reachable) until Google's page has loaded; the placeholder shows underneath.
+      frame.className = 'pointer-events-none absolute inset-0 h-full w-full border-0 opacity-0 transition-opacity duration-300';
       frame.referrerPolicy = 'strict-origin-when-cross-origin';
       frame.allowFullscreen = true;
-      box.replaceChildren(frame);
+      box.querySelector<HTMLElement>('[data-map-idle]')!.hidden = true;
+      wait.hidden = false;
+      box.setAttribute('aria-busy', 'true');
+      // A slow or blocked embed would otherwise leave the visitor staring at "Loading map…".
+      const slow = window.setTimeout(() => { wait.querySelector<HTMLElement>('[data-map-fallback]')!.hidden = false; }, 8000);
+      frame.addEventListener('load', () => {
+        clearTimeout(slow);
+        box.removeAttribute('aria-busy');
+        wait.hidden = true;
+        frame.classList.remove('pointer-events-none', 'opacity-0');
+      }, { once: true });
+      box.append(frame);
       frame.focus();
     }),
   );

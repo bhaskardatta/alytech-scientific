@@ -14,6 +14,8 @@ const i18n = {
   none: ar ? 'لم نجد نتيجة مطابقة لـ' : 'No exact match for',
   noneSub: ar ? 'نورّد أكثر مما هو مدرج هنا. أخبرنا بما تحتاجه وسيرد عليك مهندس.' : 'We can source equipment beyond what is listed here. Tell us what you need and an engineer will come back to you.',
   count: ar ? 'نتيجة' : 'results',
+  loading: ar ? 'جارٍ التحميل…' : 'Loading…',
+  min: ar ? 'اكتب حرفين على الأقل' : 'Type at least 2 characters',
   ask: t(lang, 'cta.interest'),
 };
 ---
@@ -26,8 +28,16 @@ const i18n = {
         <Icon name="search" size={22} class="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-mute" />
         <input id="q" name="q" type="search" autocomplete="off" class="field h-14 ps-12 text-[17px]" placeholder={ar ? 'اسم الجهاز، الطراز، المعيار أو التطبيق' : 'Instrument, model, standard or application'} data-search-input />
       </form>
-      <p class="mt-4 text-[14px] text-mute" aria-live="polite" data-search-status></p>
+      <p class="mt-4 min-h-6 text-[14px] text-mute" aria-live="polite" data-search-status></p>
       <ul class="mt-4 divide-y divide-line border-y border-line empty:border-0" data-search-results></ul>
+      <div class="mt-6 rounded-[var(--radius-md)] border border-line bg-surface p-6" role="alert" data-search-error hidden>
+        <p class="display text-xl">{ar ? 'تعذّر تحميل البحث' : 'Search isn’t available right now'}</p>
+        <p class="mt-2 text-mute">{ar ? 'لم نتمكن من تحميل فهرس الأجهزة. تصفّح كل الأجهزة، أو راسل مهندساً وسنجد لك ما تحتاجه.' : 'We couldn’t load the instrument index. Browse all the equipment, or message an engineer and we’ll find what you need.'}</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href={L('/equipment/')} class="btn btn-primary">{ar ? 'تصفّح كل الأجهزة' : 'Browse all equipment'} <Icon name="arrow" size={18} flip /></a>
+          <button type="button" class="btn btn-wa" data-lead="whatsapp" data-product={ar ? 'البحث عن جهاز' : 'Instrument search'}><Icon name="whatsapp" size={18} />{t(lang, 'cta.whatsapp')}</button>
+        </div>
+      </div>
       <div class="mt-8 hidden rounded-[var(--radius-md)] border border-line bg-surface p-6" data-search-empty>
         <p class="display text-xl"><span data-none-label></span> {ar ? '«' : '“'}<span data-none-q></span>{ar ? '»' : '”'}</p>
         <p class="mt-2 text-mute">{i18n.noneSub}</p>
@@ -35,6 +45,7 @@ const i18n = {
       </div>
     </div>
   </section>
+  <template data-search-arrow><Icon name="arrow" size={18} flip class="shrink-0 text-mute transition-colors duration-200 group-hover:text-brand-600" /></template>
 </Base>
 <script is:inline type="application/json" id="search-i18n" set:html={JSON.stringify(i18n)} />
 
@@ -47,6 +58,8 @@ const i18n = {
   const status = document.querySelector<HTMLElement>('[data-search-status]')!;
   const empty = document.querySelector<HTMLElement>('[data-search-empty]')!;
   const lead = document.querySelector<HTMLElement>('[data-search-lead]')!;
+  const errBox = document.querySelector<HTMLElement>('[data-search-error]')!;
+  const arrow = document.querySelector<HTMLTemplateElement>('[data-search-arrow]')!;
   const prefix = I.lang === 'ar' ? '/ar' : '';
   // Latin: drop accents. Arabic: drop harakat, shadda and tatweel, and fold the letter variants people type interchangeably
   // (أ إ آ → ا, ى → ي, ة → ه), so "مولد هيدروجين" finds "مولّد هيدروجين" and "اجهزة" finds "أجهزة".
@@ -55,12 +68,20 @@ const i18n = {
   let index: (Entry & { hay: string; title: string })[] = [];
   let logTimer: number | undefined;
   let lastLogged = '';
+  let failed = false;
 
-  const ready = fetch('/search-index.json').then((r) => r.json()).then((d: Entry[]) => {
-    index = d.map((e) => ({ ...e, title: norm(`${e.en.t} ${e.ar.t}`), hay: norm(`${e.en.t} ${e.ar.t} ${e.en.s} ${e.ar.s} ${e.k}`) }));
-  });
+  status.textContent = I.loading;
+  const ready = fetch('/search-index.json')
+    .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+    .then((d: Entry[]) => {
+      index = d.map((e) => ({ ...e, title: norm(`${e.en.t} ${e.ar.t}`), hay: norm(`${e.en.t} ${e.ar.t} ${e.en.s} ${e.ar.s} ${e.k}`) }));
+      status.textContent = '';
+    })
+    // Without the index every query would look like "no match"; show a way out instead.
+    .catch(() => { failed = true; status.textContent = ''; errBox.hidden = false; });
 
   function run(q: string) {
+    if (failed) return;
     const terms = norm(q).split(/\s+/).filter((w) => w.length > 1);
     const hits = !terms.length ? [] : index
       .map((e) => ({ e, score: terms.reduce((s, w) => s + (e.title.includes(w) ? 3 : e.hay.includes(w) ? 1 : -10), 0) }))
@@ -71,15 +92,16 @@ const i18n = {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = prefix + e.u;
-      a.className = 'flex items-center justify-between gap-4 py-4 transition-colors hover:text-brand-700';
+      a.className = 'group flex items-center justify-between gap-4 py-4 transition-colors duration-200 hover:text-brand-700';
       const v = I.lang === 'ar' ? e.ar : e.en;
-      a.innerHTML = '<span><span class="block font-semibold"></span><span class="block text-[14px] text-mute"></span></span><span aria-hidden="true">→</span>';
+      a.innerHTML = '<span><span class="block font-semibold"></span><span class="block text-[14px] text-mute"></span></span>';
       a.querySelector('.font-semibold')!.textContent = v.t;
       a.querySelector('.text-mute')!.textContent = v.s;
+      a.append(arrow.content.cloneNode(true));
       li.append(a);
       return li;
     }));
-    status.textContent = terms.length ? `${hits.length} ${I.count}` : '';
+    status.textContent = terms.length ? `${hits.length} ${I.count}` : q.trim() ? I.min : '';
     empty.classList.toggle('hidden', !terms.length || hits.length > 0);
     document.querySelector('[data-none-label]')!.textContent = I.none;
     document.querySelector('[data-none-q]')!.textContent = q;

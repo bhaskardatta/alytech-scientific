@@ -1,6 +1,6 @@
 /** ppm <-> mg/m3 converter: wires the server-rendered form to the maths in calc.ts. */
 import { molarVolume, ppmToMgm3, mgm3ToPpm, GASES, CONDITIONS, PRESSURE_KPA, fmt, parseNum, type PressureUnit } from './calc';
-import { $, h, row, list, setError, readField, type Msgs } from './ui';
+import { $, h, row, list, setError, readField, createReadout, type Msgs } from './ui';
 
 type Dir = 'toMass' | 'toPpm';
 /** Gas-phase units in ppm, mass-concentration units in mg/m3. */
@@ -14,6 +14,8 @@ function init(root: HTMLElement) {
   const M = JSON.parse($(root, 'script[type="application/json"]').textContent || '{}');
   const form = $<HTMLFormElement>(root, 'form');
   const out = $(root, '[data-readout]');
+  const show = createReadout(root, out);
+  const message = (text: string) => show(h('p', 'text-[15px] leading-relaxed text-white/70', text));
   const touched = new Set<string>();
   const msgs: Msgs = { required: M.err.required, number: M.err.number, gt0: M.err.gt0, ge0: M.err.ge0, range: (lo, hi) => M.err.range.replace('{lo}', String(lo)).replace('{hi}', String(hi)), int: M.err.int };
   const f = (n: string) => $<HTMLInputElement & HTMLSelectElement>(form, `[name="${n}"]`);
@@ -43,8 +45,8 @@ function init(root: HTMLElement) {
     if (!Number.isNaN(tRaw) && !(tK > 0)) errors.temp = M.err.temp;
 
     for (const name of ['value', 'mm', 'temp', 'press']) setError(form, name, errors[name] ?? null);
-    if (Object.keys(errors).length) return void out.replaceChildren(h('p', 'text-[15px] leading-relaxed text-white/70', M.err.summary));
-    if ([v, mm, tK, pKpa].some(Number.isNaN)) return void out.replaceChildren(h('p', 'text-[15px] leading-relaxed text-white/70', M.hint));
+    if (Object.keys(errors).length) return message(M.err.summary);
+    if ([v, mm, tK, pKpa].some(Number.isNaN)) return message(M.hint);
 
     const vm = molarVolume(tK, pKpa);
     const toMass = dir() === 'toMass';
@@ -58,11 +60,11 @@ function init(root: HTMLElement) {
       ? `mg/m³ = ppm × M / Vₘ = ${fmt(base)} × ${fmt(mm)} / ${fmt(vm, 6)} = ${fmt(ppmToMgm3(base, mm, vm))}`
       : `ppm = mg/m³ × Vₘ / M = ${fmt(base)} × ${fmt(vm, 6)} / ${fmt(mm)} = ${fmt(mgm3ToPpm(base, mm, vm))}`;
     const factor = toMass ? `1 ppm = ${fmt(mm / vm)} mg/m³` : `1 mg/m³ = ${fmt(vm / mm)} ppm`;
-    out.replaceChildren(list(
+    show(list(
       row(M.r.result, `${fmt(res)} ${outU}`, undefined, true),
       row(M.r.vm, `${fmt(vm, 5)} L/mol`, `${fmt(tK - 273.15, 6)} °C · ${fmt(tK, 6)} K · ${fmt(pKpa, 6)} kPa`),
       row(M.r.factor, factor, working),
-    ));
+    ), [M.r.result, `${fmt(res)} ${outU}`]);
   }
 
   // Presets keep the molar mass in sync; typing a mass that matches no preset flips the menu to Custom.

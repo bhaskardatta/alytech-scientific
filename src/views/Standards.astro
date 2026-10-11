@@ -25,7 +25,7 @@ const T = ar
       note: 'الملخصات وصف مبسّط من AlyTech وليست نص المعايير. اعتمد على الإصدار الحالي الصادر عن ASTM وISO وCEN وسائر الجهات الناشرة.',
       filter: 'تصفية المعايير', ph: 'مثل D5334 أو نقطة الوميض أو الكرات الأربع', jump: 'الانتقال إلى جهة النشر',
       instr: (c: number) => (c === 1 ? 'جهاز واحد' : c === 2 ? 'جهازان' : `${c} أجهزة`),
-      count: (c: number) => `عرض ${c} من ${n}`, none: 'لا يوجد معيار مطابق. اطلب منا الطريقة التي تحتاجها.',
+      count: (c: number) => `عرض ${c} من ${n}`, none: 'لا يوجد معيار مطابق. اطلب منا الطريقة التي تحتاجها.', tell: 'أخبرنا بالمعيار', tellProduct: 'استفسار عن معيار اختبار',
       askH: 'لم تجد طريقتك؟', askP: 'نورّد أكثر مما هو مدرج هنا. أخبرنا بالمعيار الذي يعتمده مختبرك وسيرد عليك مهندس.',
       itemList: 'معايير الاختبار',
     }
@@ -38,7 +38,7 @@ const T = ar
       note: 'Summaries are our own descriptions, not the text of the standards. Work from the current edition issued by ASTM, ISO, CEN and the other publishers.',
       filter: 'Filter the standards', ph: 'e.g. D5334, flash point, four-ball', jump: 'Jump to publisher',
       instr: (c: number) => (c === 1 ? '1 instrument' : `${c} instruments`),
-      count: (c: number) => `Showing ${c} of ${n}`, none: 'No standard matches. Tell us the method you need.',
+      count: (c: number) => `Showing ${c} of ${n}`, none: 'No standard matches. Tell us the method you need.', tell: 'Tell us the standard', tellProduct: 'Test standard not listed',
       askH: 'Method not listed?', askP: 'We can source equipment for methods beyond this list. Tell us the standard your lab follows and an engineer will come back to you.',
       itemList: 'Test standards',
     };
@@ -73,10 +73,10 @@ const i18n = { count: T.count(-1).replace('-1', '{n}'), none: T.none };
           </div>
           <p class="mt-2 text-[13px] text-mute" aria-live="polite" data-std-status></p>
         </div>
-        <nav aria-label={T.jump}>
+        <nav aria-label={T.jump} data-std-nav>
           <ul class="flex flex-wrap gap-2">
             {groups.map((g) => (
-              <li><a href={`#org-${g.org.replace('/', '-')}`} class="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line-strong px-4 text-[14px] font-medium transition-colors hover:border-brand-500 hover:text-brand-700">{g.org}<span class="font-mono text-[12px] text-mute">{g.items.length}</span></a></li>
+              <li data-std-chip={`org-${g.org.replace('/', '-')}`}><a href={`#org-${g.org.replace('/', '-')}`} class="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line-strong px-4 text-[14px] font-medium transition-colors duration-200 hover:border-brand-500 hover:text-brand-700">{g.org}<span class="font-mono text-[12px] text-mute" data-std-n>{g.items.length}</span></a></li>
             ))}
           </ul>
         </nav>
@@ -107,7 +107,12 @@ const i18n = { count: T.count(-1).replace('-1', '{n}'), none: T.none };
       </section>
     ))}
   </div>
-  <p class="wrap hidden py-12 text-center text-mute" data-std-none>{T.none}</p>
+  <div class="wrap" data-std-none hidden>
+    <div class="flex flex-col items-center gap-5 py-14 text-center">
+      <p class="max-w-md text-[16px] text-mute">{T.none}</p>
+      <button type="button" class="btn btn-primary" data-lead="quote" data-product={T.tellProduct}>{T.tell} <Icon name="arrow" size={18} flip /></button>
+    </div>
+  </div>
 
   <section class="bg-card py-14 md:py-20" aria-labelledby="std-ask-h">
     <div class="wrap flex flex-wrap items-end justify-between gap-6">
