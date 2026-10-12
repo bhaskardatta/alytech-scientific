@@ -1,0 +1,24 @@
+---
+/** The enquiry form placed directly on the Contact page; scripts/lead.ts drives it exactly like the pop-up. */
+import Icon from './Icon.astro';
+import LeadFields from './LeadFields.astro';
+import { t, type Lang } from '../i18n';
+
+interface Props { lang: Lang; class?: string }
+const { lang, class: cls = '' } = Astro.props;
+const ar = lang === 'ar';
+const product = 'Contact page enquiry'; // English in both languages so the admin's lead list reads consistently (the lead keeps its language)
+---
+<section class:list={['card p-6 sm:p-8', cls]} aria-labelledby="contact-form-h" data-lead-inline data-product={product}>
+  <div data-lead-form-wrap>
+    <h2 id="contact-form-h" class="display text-[clamp(1.5rem,2.6vw,2rem)]">{ar ? 'أرسل متطلباتك' : 'Send us your requirement'}</h2>
+    <p class="mt-2 text-[15px] text-mute">{ar ? 'الجهاز أو المعيار أو العيّنة: أي تفصيل يساعد مهندسنا على الرد بالتهيئة المناسبة.' : 'The instrument, the standard or the sample: any detail helps our engineer reply with the right configuration.'}</p>
+    <div class="mt-6"><LeadFields lang={lang} id="contact" mode="quote" product={product} /></div>
+  </div>
+  <div data-lead-done class="hidden py-8 text-center">
+    <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="check" size={28} /></span>
+    <h2 class="display mt-5 text-2xl outline-none" tabindex="-1" aria-describedby="contact-done-body" data-lead-done-title>{t(lang, 'lead.done.title')}</h2>
+    <p id="contact-done-body" class="mt-2 text-mute">{t(lang, 'lead.done.body')}</p>
+    <button type="button" class="btn btn-ghost mt-6" data-lead-again>{ar ? 'إرسال طلب آخر' : 'Send another request'}</button>
+  </div>
+</section>

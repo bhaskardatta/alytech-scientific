@@ -1,0 +1,74 @@
+---
+/**
+ * The enquiry form's fields, shared by the pop-up (LeadModal) and the inline form on the Contact page (ContactForm).
+ * scripts/lead.ts drives every copy the same way (validation, partial saves, submit); `id` keeps the field ids unique.
+ */
+import Icon from './Icon.astro';
+import { t, localize, type Lang } from '../i18n';
+
+interface Props { lang: Lang; id: string; mode?: string; product?: string }
+const { lang, id, mode = '', product = '' } = Astro.props;
+const countries = lang === 'ar'
+  ? ['الإمارات العربية المتحدة', 'المملكة العربية السعودية', 'قطر', 'عُمان', 'الكويت', 'البحرين', 'العراق', 'الأردن', 'مصر', 'لبنان', 'دولة أخرى']
+  : ['United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Oman', 'Kuwait', 'Bahrain', 'Iraq', 'Jordan', 'Egypt', 'Lebanon', 'Other'];
+const f = (n: string) => `${id}-${n}`;
+---
+<form class="group/lead grid gap-4" novalidate data-lead-form>
+  <input type="hidden" name="mode" value={mode} />
+  <input type="hidden" name="product" value={product} />
+  <input type="hidden" name="brand" />
+  <input type="hidden" name="category" />
+  <div class="sr-only" aria-hidden="true"><input name="hp_url" tabindex="-1" autocomplete="off" /></div>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div class="sm:col-span-2">
+      <label for={f('name')} class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.name')} <span class="text-mute">({t(lang, 'lead.required')})</span></label>
+      <input id={f('name')} name="name" class="field" autocomplete="name" required aria-describedby={f('name-err')} />
+      <p id={f('name-err')} class="mt-1 hidden text-sm text-danger" data-err="name"></p>
+    </div>
+    <div>
+      <label for={f('phone')} class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.phone')}</label>
+      <input id={f('phone')} name="phone" type="tel" inputmode="tel" class="field" autocomplete="tel" dir="ltr" placeholder="+971" aria-describedby={`${f('contact-hint')} ${f('contact-err')}`} />
+    </div>
+    <div>
+      <label for={f('email')} class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.email')}</label>
+      <input id={f('email')} name="email" type="email" inputmode="email" class="field" autocomplete="email" dir="ltr" aria-describedby={`${f('contact-hint')} ${f('contact-err')}`} />
+    </div>
+    <p id={f('contact-hint')} class="-mt-2 text-[13px] text-mute sm:col-span-2">{t(lang, 'lead.contactHint')}</p>
+    <p id={f('contact-err')} class="-mt-2 hidden text-sm text-danger sm:col-span-2" data-err="contact"></p>
+    <div>
+      <label for={f('company')} class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.company')}</label>
+      <input id={f('company')} name="company" class="field" autocomplete="organization" />
+    </div>
+    <div>
+      <label for={f('country')} class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.country')}</label>
+      <select id={f('country')} name="country" class="field" autocomplete="country-name">
+        {countries.map((c) => <option>{c}</option>)}
+      </select>
+    </div>
+    <div class="sm:col-span-2">
+      <label for={f('message')} class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.message')}</label>
+      <textarea id={f('message')} name="message" rows="4" class="field resize-y"></textarea>
+    </div>
+  </div>
+  <label class="flex items-start gap-3 text-[14px] text-ink-soft">
+    <input type="checkbox" name="marketing" value="yes" class="mt-0.5 h-5 w-5 shrink-0 accent-brand-600" />
+    <span>{t(lang, 'lead.marketing')}</span>
+  </label>
+  <p class="hidden rounded-sm bg-danger/5 px-3 py-2 text-sm text-danger outline-none" role="alert" tabindex="-1" data-lead-error></p>
+  <p class="text-[12.5px] leading-relaxed text-mute">
+    {t(lang, 'lead.privacy')} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a>.
+  </p>
+  <!-- last in the form so, in the pop-up on phones, it can stick to the bottom without covering anything after it -->
+  <div class="lead-submit-row">
+    <button type="submit" class="btn btn-primary w-full" data-lead-submit>
+      <span data-lead-label>{t(lang, 'lead.submit.default')}</span>
+      <span class="hidden h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white group-aria-busy/lead:block" aria-hidden="true"></span>
+      <Icon name="arrow" size={18} flip class="group-aria-busy/lead:hidden" />
+    </button>
+  </div>
+</form>
+
+<style is:global>
+  /* A focused invalid field keeps the error colour: the global purple ring would hide that it's wrong */
+  .field[aria-invalid="true"]:focus { outline-color: var(--color-danger); border-color: var(--color-danger); box-shadow: 0 0 0 4px rgb(180 35 24 / 0.16); }
+</style>

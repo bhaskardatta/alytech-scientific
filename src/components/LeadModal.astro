@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import LeadFields from './LeadFields.astro';
 import { t, localize, type Lang } from '../i18n';
 import { getSiteSettings } from '../lib/settings';
 
@@ -7,9 +8,6 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const cfg = await getSiteSettings();
 const modes = ['whatsapp', 'datasheet', 'price', 'quote', 'specs', 'interest'] as const;
-const countries = lang === 'ar'
-  ? ['الإمارات العربية المتحدة', 'المملكة العربية السعودية', 'قطر', 'عُمان', 'الكويت', 'البحرين', 'العراق', 'الأردن', 'مصر', 'لبنان', 'دولة أخرى']
-  : ['United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Oman', 'Kuwait', 'Bahrain', 'Iraq', 'Jordan', 'Egypt', 'Lebanon', 'Other'];
 
 // Everything the client script needs, serialised once.
 const ar = lang === 'ar';
@@ -44,60 +42,7 @@ const i18n = {
     <h2 id="lead-title" class="display mt-3 pe-10 text-2xl sm:text-[28px]" data-lead-title></h2>
     <p class="mt-2 text-[15px] text-mute" data-lead-sub></p>
 
-    <form class="group/lead mt-6 grid gap-4" novalidate data-lead-form>
-      <input type="hidden" name="mode" />
-      <input type="hidden" name="product" />
-      <input type="hidden" name="brand" />
-      <input type="hidden" name="category" />
-      <div class="sr-only" aria-hidden="true"><input name="hp_url" tabindex="-1" autocomplete="off" /></div>
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div class="sm:col-span-2">
-          <label for="lead-name" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.name')} <span class="text-mute">({t(lang, 'lead.required')})</span></label>
-          <input id="lead-name" name="name" class="field" autocomplete="name" required aria-describedby="lead-name-err" />
-          <p id="lead-name-err" class="mt-1 hidden text-sm text-danger" data-err="name"></p>
-        </div>
-        <div>
-          <label for="lead-phone" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.phone')}</label>
-          <input id="lead-phone" name="phone" type="tel" inputmode="tel" class="field" autocomplete="tel" dir="ltr" placeholder="+971" aria-describedby="lead-contact-hint lead-contact-err" />
-        </div>
-        <div>
-          <label for="lead-email" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.email')}</label>
-          <input id="lead-email" name="email" type="email" inputmode="email" class="field" autocomplete="email" dir="ltr" aria-describedby="lead-contact-hint lead-contact-err" />
-        </div>
-        <p id="lead-contact-hint" class="-mt-2 text-[13px] text-mute sm:col-span-2">{t(lang, 'lead.contactHint')}</p>
-        <p id="lead-contact-err" class="-mt-2 hidden text-sm text-danger sm:col-span-2" data-err="contact"></p>
-        <div>
-          <label for="lead-company" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.company')}</label>
-          <input id="lead-company" name="company" class="field" autocomplete="organization" />
-        </div>
-        <div>
-          <label for="lead-country" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.country')}</label>
-          <select id="lead-country" name="country" class="field" autocomplete="country-name">
-            {countries.map((c) => <option>{c}</option>)}
-          </select>
-        </div>
-        <div class="sm:col-span-2">
-          <label for="lead-message" class="mb-1.5 block text-sm font-medium">{t(lang, 'lead.message')}</label>
-          <textarea id="lead-message" name="message" rows="3" class="field resize-y"></textarea>
-        </div>
-      </div>
-      <label class="flex items-start gap-3 text-[14px] text-ink-soft">
-        <input type="checkbox" name="marketing" value="yes" class="mt-0.5 h-5 w-5 shrink-0 accent-brand-600" />
-        <span>{t(lang, 'lead.marketing')}</span>
-      </label>
-      <p class="hidden rounded-sm bg-danger/5 px-3 py-2 text-sm text-danger outline-none" role="alert" tabindex="-1" data-lead-error></p>
-      <p class="text-[12.5px] leading-relaxed text-mute">
-        {t(lang, 'lead.privacy')} <a href={localize(lang, '/privacy/')} class="underline underline-offset-2 hover:text-ink">{t(lang, 'footer.privacy')}</a>.
-      </p>
-      <!-- last in the form so, on phones, it can stick to the bottom of the dialog without covering anything after it -->
-      <div class="lead-submit-row">
-        <button type="submit" class="btn btn-primary w-full" data-lead-submit>
-          <span data-lead-label></span>
-          <span class="hidden h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white group-aria-busy/lead:block" aria-hidden="true"></span>
-          <Icon name="arrow" size={18} flip class="group-aria-busy/lead:hidden" />
-        </button>
-      </div>
-    </form>
+    <div class="mt-6"><LeadFields lang={lang} id="lead" /></div>
   </div>
 
   <div data-lead-done class="hidden p-8 text-center sm:p-10">
@@ -124,12 +69,10 @@ const i18n = {
   .lead-dialog[open]::backdrop { background: rgb(8 6 15 / 0.6); backdrop-filter: blur(4px); animation: lead-fade 0.28s ease; }
   @keyframes lead-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
   @keyframes lead-fade { from { background: rgb(8 6 15 / 0); backdrop-filter: blur(0); } }
-  /* A focused invalid field keeps the error colour: the global purple ring would hide that it's wrong */
-  .field[aria-invalid="true"]:focus { outline-color: var(--color-danger); border-color: var(--color-danger); box-shadow: 0 0 0 4px rgb(180 35 24 / 0.16); }
   /* Phones (and landscape phones): the dialog scrolls a long way, so the send button stays in reach */
   @media (max-width: 639px), (max-height: 500px) {
     .lead-dialog { scroll-padding-bottom: 88px; }
-    .lead-submit-row { position: sticky; bottom: 0; z-index: 1; padding-block: 12px; background: var(--color-card); box-shadow: 0 -10px 12px -10px rgb(15 23 42 / 0.2); }
+    .lead-dialog :global(.lead-submit-row) { position: sticky; bottom: 0; z-index: 1; padding-block: 12px; background: var(--color-card); box-shadow: 0 -10px 12px -10px rgb(15 23 42 / 0.2); }
   }
   .lead-toast { opacity: 0; translate: 0 8px; pointer-events: none; transition: opacity 0.2s ease, translate 0.2s ease; }
   .lead-toast.is-on { opacity: 1; translate: 0 0; }

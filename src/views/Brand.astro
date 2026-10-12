@@ -7,6 +7,7 @@ import ServiceStrip from '../components/ServiceStrip.astro';
 import Icon from '../components/Icon.astro';
 import { claim, origin, claimFull, type Brand } from '../data/brands';
 import { productsOf, brandInfo, brandPath } from '../data/catalog';
+import { industries } from '../data/industries';
 import { breadcrumbLd } from '../data/schema';
 import { t, localize, type Lang } from '../i18n';
 import { titleOf, descOf } from '../lib/seo';
@@ -19,6 +20,13 @@ const info = brandInfo(brand.slug);
 const products = productsOf(brand.slug);
 const main = products.filter((p) => p.priority !== 'niche');
 const more = products.filter((p) => p.priority === 'niche');
+// Filters (brands with 8+ products): by industry, plus a search over name, model, type, standards and keywords in both languages.
+const filterable = products.length >= 8;
+const indCount = new Map<string, number>();
+for (const p of products) for (const i of p.industries ?? []) indCount.set(i, (indCount.get(i) ?? 0) + 1);
+const indChips = industries.filter((i) => indCount.has(i.slug)).map((i) => ({ slug: i.slug, name: i.name[lang], n: indCount.get(i.slug)! }));
+const hay = (p: (typeof products)[number]) =>
+  [p.name, p.model, p.category, p.ar?.name, p.ar?.category, ...(p.standards ?? []), ...(p.searchKeywords ?? [])].filter(Boolean).join(' ');
 const crumbs = [
   { label: ar ? 'الرئيسية' : 'Home', href: L('/') },
   { label: t(lang, 'nav.principals'), href: L('/principals/') },
@@ -57,16 +65,40 @@ const description = descOf(
   <section class="py-14 md:py-20" aria-labelledby="range-h">
     <div class="wrap">
       <h2 id="range-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? `أجهزة ${brand.name} التي نوردها` : `The ${brand.name} range we supply`}</h2>
-      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {main.map((p) => <ProductCard lang={lang} brand={brand} product={p} />)}
+      {filterable && (
+        <div class="mt-8 flex flex-col gap-4" data-pf>
+          <div class="relative max-w-md">
+            <label for="pf-q" class="sr-only">{ar ? 'ابحث بالاسم أو الطراز أو المعيار' : 'Search by name, model or standard'}</label>
+            <Icon name="search" size={18} class="pointer-events-none absolute start-3.5 top-1/2 -translate-y-1/2 text-mute" />
+            <input id="pf-q" type="search" class="field ps-11" placeholder={ar ? 'الاسم أو الطراز أو المعيار' : 'Name, model or standard'} autocomplete="off" data-pf-q />
+          </div>
+          <div class="-mx-4 flex gap-2 overflow-x-auto px-4 py-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0" role="group" aria-label={ar ? 'تصفية حسب القطاع' : 'Filter by industry'}>
+            <button type="button" class="pf-chip" aria-pressed="true" data-pf-ind="">{ar ? 'الكل' : 'All'} <span class="pf-n">{products.length}</span></button>
+            {indChips.map((c) => <button type="button" class="pf-chip" aria-pressed="false" data-pf-ind={c.slug}>{c.name} <span class="pf-n">{c.n}</span></button>)}
+          </div>
+        </div>
+      )}
+      {filterable && <p class="mt-4 text-[14px] text-mute" role="status" aria-live="polite" data-pf-count></p>}
+      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" data-pf-group>
+        {main.map((p) => <div class="grid" data-pf-item data-ind={(p.industries ?? []).join(' ')} data-hay={hay(p)}><ProductCard lang={lang} brand={brand} product={p} /></div>)}
       </div>
       {more.length > 0 && (
-        <>
+        <div data-pf-section>
           <h3 class="label mt-14 text-mute">{ar ? 'منتجات أخرى' : 'More products'}</h3>
-          <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {more.map((p) => <ProductCard lang={lang} brand={brand} product={p} />)}
+          <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" data-pf-group>
+            {more.map((p) => <div class="grid" data-pf-item data-ind={(p.industries ?? []).join(' ')} data-hay={hay(p)}><ProductCard lang={lang} brand={brand} product={p} /></div>)}
           </div>
-        </>
+        </div>
+      )}
+      {filterable && (
+        <div class="mt-8 hidden rounded-[var(--radius-md)] border border-dashed border-line-strong p-8 text-center" data-pf-empty>
+          <p class="display text-xl">{ar ? 'لا توجد منتجات مطابقة.' : 'No products match.'}</p>
+          <p class="mt-2 text-mute">{ar ? 'جرّب قطاعاً آخر أو كلمة بحث مختلفة، أو أخبرنا بما تحتاجه.' : 'Try another industry or search term, or tell us what you need.'}</p>
+          <div class="mt-5 flex flex-wrap justify-center gap-3">
+            <button type="button" class="btn btn-ghost" data-pf-reset>{ar ? 'مسح التصفية' : 'Clear filters'}</button>
+            <button type="button" class="btn btn-primary" data-lead="interest" data-brand={brand.name} data-product={`${brand.name} — other model`}>{t(lang, 'cta.interest')} <Icon name="arrow" size={18} flip /></button>
+          </div>
+        </div>
       )}
       <p class="mt-10 text-[15px] text-mute">
         {ar ? 'لا تجد الطراز الذي تحتاجه؟ ' : 'Looking for a model that isn’t listed? '}
@@ -77,3 +109,66 @@ const description = descOf(
 
   <ServiceStrip lang={lang} />
 </Base>
+
+<script>
+  // Brand range filter: industry chips + text search; state mirrors to ?industry=&q= so a filtered view can be shared.
+  const bar = document.querySelector<HTMLElement>('[data-pf]');
+  if (bar) {
+    const ar = document.documentElement.lang === 'ar';
+    const chips = [...bar.querySelectorAll<HTMLButtonElement>('[data-pf-ind]')];
+    const input = bar.querySelector<HTMLInputElement>('[data-pf-q]')!;
+    const items = [...document.querySelectorAll<HTMLElement>('[data-pf-item]')];
+    const count = document.querySelector<HTMLElement>('[data-pf-count]')!;
+    const empty = document.querySelector<HTMLElement>('[data-pf-empty]')!;
+    // Same folding as site search: case, accents, Arabic diacritics and letter variants
+    const norm = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f\u064b-\u065f\u0670\u0640]/g, '')
+      .replace(/[\u0623\u0625\u0622]/g, '\u0627').replace(/\u0649/g, '\u064a').replace(/\u0629/g, '\u0647').replace(/[-–—/]/g, ' ');
+    const hay = new Map(items.map((el) => [el, norm(el.dataset.hay || '')]));
+    const params = new URLSearchParams(location.search);
+    let ind = params.get('industry') || '';
+    if (!chips.some((c) => c.dataset.pfInd === ind)) ind = '';
+    input.value = params.get('q') || '';
+
+    function apply() {
+      const terms = norm(input.value).split(/\s+/).filter(Boolean);
+      let shown = 0;
+      for (const el of items) {
+        const ok = (!ind || (el.dataset.ind || '').split(' ').includes(ind)) && terms.every((t) => hay.get(el)!.includes(t));
+        el.hidden = !ok;
+        if (ok) shown++;
+      }
+      document.querySelectorAll<HTMLElement>('[data-pf-section]').forEach((sec) => (sec.hidden = !sec.querySelector('[data-pf-item]:not([hidden])')));
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.pfInd === ind)));
+      empty.classList.toggle('hidden', shown > 0);
+      const all = shown === items.length;
+      const arNoun = (n: number) => (n >= 3 && n <= 10 ? 'منتجات' : 'منتجاً');
+      count.textContent = all
+        ? (ar ? `${items.length} ${arNoun(items.length)}` : `${items.length} products`)
+        : (ar ? `عرض ${shown} من ${items.length}` : `Showing ${shown} of ${items.length}`);
+      const url = new URL(location.href);
+      ind ? url.searchParams.set('industry', ind) : url.searchParams.delete('industry');
+      input.value.trim() ? url.searchParams.set('q', input.value.trim()) : url.searchParams.delete('q');
+      history.replaceState(null, '', url);
+    }
+    chips.forEach((c) => c.addEventListener('click', () => { ind = c.dataset.pfInd || ''; apply(); }));
+    let t = 0;
+    input.addEventListener('input', () => { clearTimeout(t); t = window.setTimeout(apply, 150); });
+    document.querySelector('[data-pf-reset]')?.addEventListener('click', () => { ind = ''; input.value = ''; apply(); input.focus(); });
+    apply();
+  }
+</script>
+
+<style>
+  .pf-chip {
+    display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; white-space: nowrap; min-height: 40px; padding: 0 14px;
+    border: 1px solid var(--color-line-strong); border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--color-ink-soft);
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  }
+  @media (hover: hover) { .pf-chip:hover { border-color: var(--color-brand-500); color: var(--color-brand-700); } }
+  .pf-chip[aria-pressed="true"] { border-color: var(--color-brand-600); background: var(--color-brand-600); color: #fff; }
+  .pf-n { font-family: var(--font-mono); font-size: 12px; color: var(--color-mute); }
+  .pf-chip[aria-pressed="true"] .pf-n { color: rgb(255 255 255 / 0.85); }
+  @media (pointer: coarse), (max-width: 767px) { .pf-chip { min-height: 44px; } }
+  @media (forced-colors: active) { .pf-chip[aria-pressed="true"] { outline: 2px solid Highlight; } }
+</style>
+

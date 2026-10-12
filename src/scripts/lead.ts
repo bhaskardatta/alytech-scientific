@@ -80,78 +80,67 @@ function openWhatsApp(c: Ctx) {
   capture('whatsapp_click', { product: what || undefined });
 }
 
-// ---------- Modal ----------
-const dialog = document.getElementById('lead-dialog') as HTMLDialogElement | null;
-const form = dialog?.querySelector<HTMLFormElement>('[data-lead-form]');
-let ctx: Ctx = { mode: 'quote' };
-let leadKey = uid(); // one per opening: partial saves and the final submit upsert onto the same row
-let partialTimer: number | undefined;
-let autoMsg = ''; // the message we pre-filled last time: the next opening replaces it only while the visitor hasn't edited it
-
-const q = <T extends Element>(s: string) => dialog!.querySelector<T>(s)!;
-const field = (n: string) => form!.elements.namedItem(n) as HTMLInputElement;
-const fieldsOf = () => Object.fromEntries(new FormData(form!)) as Record<string, string>;
-const subject = () => ctx.product || ctx.category || ctx.brand || '';
-
-// A group's error: the text under it plus aria-invalid on its inputs (the red border and ring come from that attribute). No text clears both.
-const GROUPS = { name: ['name'], contact: ['phone', 'email'] } as const;
-const setErr = (key: keyof typeof GROUPS, msg = '') => {
-  const p = q<HTMLElement>(`[data-err="${key}"]`);
-  p.textContent = msg;
-  p.classList.toggle('hidden', !msg);
-  for (const n of GROUPS[key]) msg ? field(n).setAttribute('aria-invalid', 'true') : field(n).removeAttribute('aria-invalid');
-};
+// ---------- Enquiry forms ----------
+// The pop-up (#lead-dialog) and any inline form ([data-lead-inline], Contact page) share this controller: same fields
+// (LeadFields.astro), validation, partial saves and submit. Each keeps its own state.
 /** What the visitor reads when the send fails, by HTTP status (0 = offline). */
 const failText = (status: number) =>
   ({ 429: I.errTooMany, 400: I.errCheck, 422: I.errCheck, 403: I.errExpired } as Record<number, string>)[status] ?? I.errSend;
 
-export function openLead(next: Ctx) {
-  // ponytail: until the real number replaces the placeholder (Settings), WhatsApp buttons fall back to the request form.
-  if (next.mode === 'whatsapp' && I.waReady) return openWhatsApp(next);
-  if (!dialog || !form) return;
-  ctx = next;
-  leadKey = uid();
-  q('[data-lead-eyebrow] span').textContent = subject() || 'AlyTech Scientific';
-  q('[data-lead-title]').textContent = I.titles[ctx.mode] ?? I.titles.quote;
-  q('[data-lead-sub]').textContent = I.subDefault;
-  q('[data-lead-label]').textContent = I.submitDefault;
-  for (const k of ['mode', 'product', 'brand', 'category'] as const) field(k).value = (ctx as any)[k] || '';
+function leadController(root: HTMLElement) {
+  const form = root.querySelector<HTMLFormElement>('[data-lead-form]')!;
+  const dialog = root instanceof HTMLDialogElement ? root : null;
+  let ctx: Ctx = { mode: 'quote', product: root.dataset.product };
+  let leadKey = uid(); // one per opening: partial saves and the final submit upsert onto the same row
+  let partialTimer: number | undefined;
+  let autoMsg = ''; // the message we pre-filled last time: the next opening replaces it only while the visitor hasn't edited it
 
-  // Returning visitors: prefill what they gave us before.
-  const saved = JSON.parse(store.get('aly-contact') || '{}');
-  for (const k of ['name', 'email', 'phone', 'company', 'country']) {
-    const el = field(k);
-    if (!el || !saved[k]) continue;
-    // A <select> always has a value, so it takes the saved country only if that option exists (the lists differ by language).
-    if (el instanceof HTMLSelectElement) { if ([...el.options].some((o) => o.value === saved[k])) el.value = saved[k]; }
-    else if (!el.value) el.value = saved[k];
+  const q = <T extends Element>(s: string) => root.querySelector<T>(s);
+  const field = (n: string) => form.elements.namedItem(n) as HTMLInputElement;
+  const fieldsOf = () => Object.fromEntries(new FormData(form)) as Record<string, string>;
+  const subject = () => ctx.product || ctx.category || ctx.brand || '';
+
+  // A group's error: the text under it plus aria-invalid on its inputs (the red border and ring come from that attribute). No text clears both.
+  const GROUPS = { name: ['name'], contact: ['phone', 'email'] } as const;
+  const setErr = (key: keyof typeof GROUPS, msg = '') => {
+    const p = q<HTMLElement>(`[data-err="${key}"]`)!;
+    p.textContent = msg;
+    p.classList.toggle('hidden', !msg);
+    for (const n of GROUPS[key]) msg ? field(n).setAttribute('aria-invalid', 'true') : field(n).removeAttribute('aria-invalid');
+  };
+
+  /** Fresh state for a new enquiry: context, prefill from a returning visitor, no leftover errors. */
+  function prepare(next: Ctx) {
+    ctx = next;
+    leadKey = uid();
+    const eyebrow = q('[data-lead-eyebrow] span'); if (eyebrow) eyebrow.textContent = subject() || 'AlyTech Scientific';
+    const title = q('[data-lead-title]'); if (title) title.textContent = I.titles[ctx.mode] ?? I.titles.quote;
+    const sub = q('[data-lead-sub]'); if (sub) sub.textContent = I.subDefault;
+    q('[data-lead-label]')!.textContent = I.submitDefault;
+    for (const k of ['mode', 'product', 'brand', 'category'] as const) field(k).value = (ctx as any)[k] || '';
+
+    // Returning visitors: prefill what they gave us before.
+    const saved = JSON.parse(store.get('aly-contact') || '{}');
+    for (const k of ['name', 'email', 'phone', 'company', 'country']) {
+      const el = field(k);
+      if (!el || !saved[k]) continue;
+      // A <select> always has a value, so it takes the saved country only if that option exists (the lists differ by language).
+      if (el instanceof HTMLSelectElement) { if ([...el.options].some((o) => o.value === saved[k])) el.value = saved[k]; }
+      else if (!el.value) el.value = saved[k];
+    }
+    const msg = field('message');
+    const auto = dialog && subject() ? `${I.greeting} ${subject()}.` : ''; // the inline form has no product to quote
+    if (!msg.value || msg.value === autoMsg) msg.value = auto;
+    autoMsg = auto;
+
+    setErr('name'); setErr('contact');
+    q('[data-lead-error]')!.classList.add('hidden');
+    form.removeAttribute('aria-busy');
+    q<HTMLButtonElement>('[data-lead-submit]')!.disabled = false;
+    q('[data-lead-form-wrap]')!.classList.remove('hidden');
+    q('[data-lead-done]')!.classList.add('hidden');
   }
-  const msg = field('message');
-  const auto = subject() ? `${I.greeting} ${subject()}.` : '';
-  if (!msg.value || msg.value === autoMsg) msg.value = auto;
-  autoMsg = auto;
 
-  // Fresh state: nothing left over from the last opening
-  setErr('name'); setErr('contact');
-  q('[data-lead-error]').classList.add('hidden');
-  form.removeAttribute('aria-busy');
-  q<HTMLButtonElement>('[data-lead-submit]').disabled = false;
-  q('[data-lead-form-wrap]').classList.remove('hidden');
-  q('[data-lead-done]').classList.add('hidden');
-  // Return focus on close to the control that opened the dialog; if that control is gone (the mobile menu closed
-  // under it), fall back to the menu toggle or the main content.
-  const opener = document.activeElement as HTMLElement | null;
-  dialog.addEventListener('close', () => {
-    const target = opener?.isConnected && opener.offsetParent ? opener : document.querySelector<HTMLElement>('[data-mobile-toggle]')?.offsetParent ? document.querySelector<HTMLElement>('[data-mobile-toggle]') : document.getElementById('main');
-    target?.focus();
-  }, { once: true });
-  dialog.showModal();
-  dialog.scrollTop = 0;
-  field('name').focus();
-  track('lead_open', { mode: ctx.mode, product: ctx.product, brand: ctx.brand, category: ctx.category });
-}
-
-if (dialog && form) {
   form.addEventListener('input', (e) => {
     // Editing a field clears its own error straight away (it's re-checked on submit)
     const n = (e.target as HTMLInputElement).name;
@@ -171,7 +160,7 @@ if (dialog && form) {
     if (form.getAttribute('aria-busy') === 'true') return;
     clearTimeout(partialTimer);
     const f = fieldsOf();
-    const err = q<HTMLElement>('[data-lead-error]');
+    const err = q<HTMLElement>('[data-lead-error]')!;
     err.classList.add('hidden'); // last attempt's failure goes away the moment they try again
 
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email || '');
@@ -192,8 +181,8 @@ if (dialog && form) {
     const payload = { ...f, leadKey, visitorId, sessionId, lang: I.lang, path: location.pathname, referrer: document.referrer, ts: Date.now(), ...touch, ph: phSession() };
     const post = () => fetch('/api/lead/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
 
-    const btn = q<HTMLButtonElement>('[data-lead-submit]');
-    const label = q<HTMLElement>('[data-lead-label]');
+    const btn = q<HTMLButtonElement>('[data-lead-submit]')!;
+    const label = q<HTMLElement>('[data-lead-label]')!;
     const prev = label.textContent;
     btn.disabled = true; label.textContent = I.sending; form.setAttribute('aria-busy', 'true');
     let status = 0;
@@ -211,26 +200,60 @@ if (dialog && form) {
       err.focus();
       return;
     }
-    capture('lead_submitted', { mode: ctx.mode, product: ctx.product, brand: ctx.brand, category: ctx.category }); // no contact details
+    capture('lead_submitted', { mode: ctx.mode, product: ctx.product, brand: ctx.brand, category: ctx.category, inline: !dialog }); // no contact details
     const dl = q<HTMLElement>('[data-lead-specs]');
-    dl.replaceChildren(...(specs ?? []).map((sp) => {
-      const row = document.createElement('div');
-      row.className = 'grid gap-1 py-3 sm:grid-cols-[1fr_1.3fr] sm:gap-4';
-      const dt = document.createElement('dt'); dt.className = 'text-[14px] text-mute'; dt.textContent = sp.label;
-      // Values mix numbers and units: on Arabic pages each Latin/number run is isolated left-to-right so ranges read correctly.
-      const dd = document.createElement('dd'); dd.className = 'font-mono text-[13.5px]';
-      dd.innerHTML = ltr(sp.value, document.documentElement.lang === 'ar' ? 'ar' : 'en'); // ltr() escapes
-      row.append(dt, dd);
-      return row;
-    }));
-    dl.classList.toggle('hidden', !specs?.length);
-    q('[data-lead-form-wrap]').classList.add('hidden');
-    q('[data-lead-done]').classList.remove('hidden');
+    if (dl) {
+      dl.replaceChildren(...(specs ?? []).map((sp) => {
+        const row = document.createElement('div');
+        row.className = 'grid gap-1 py-3 sm:grid-cols-[1fr_1.3fr] sm:gap-4';
+        const dt = document.createElement('dt'); dt.className = 'text-[14px] text-mute'; dt.textContent = sp.label;
+        // Values mix numbers and units: on Arabic pages each Latin/number run is isolated left-to-right so ranges read correctly.
+        const dd = document.createElement('dd'); dd.className = 'font-mono text-[13.5px]';
+        dd.innerHTML = ltr(sp.value, document.documentElement.lang === 'ar' ? 'ar' : 'en'); // ltr() escapes
+        row.append(dt, dd);
+        return row;
+      }));
+      dl.classList.toggle('hidden', !specs?.length);
+    }
+    q('[data-lead-form-wrap]')!.classList.add('hidden');
+    q('[data-lead-done]')!.classList.remove('hidden');
     field('message').value = ''; autoMsg = ''; // sent: the next opening starts a fresh message
-    dialog.scrollTop = 0;
-    q<HTMLElement>('[data-lead-done-title]').focus(); // the focus move is what announces "Request received"
+    if (dialog) dialog.scrollTop = 0;
+    q<HTMLElement>('[data-lead-done-title]')!.focus(); // the focus move is what announces "Request received"
   });
+
+  return { prepare, field, dialog };
 }
+
+// The pop-up
+const dialogEl = document.getElementById('lead-dialog') as HTMLDialogElement | null;
+const modal = dialogEl?.querySelector('[data-lead-form]') ? leadController(dialogEl) : null;
+
+export function openLead(next: Ctx) {
+  // ponytail: until the real number replaces the placeholder (Settings), WhatsApp buttons fall back to the request form.
+  if (next.mode === 'whatsapp' && I.waReady) return openWhatsApp(next);
+  if (!modal || !dialogEl) return;
+  modal.prepare(next);
+  // Return focus on close to the control that opened the dialog; if that control is gone (the mobile menu closed
+  // under it), fall back to the menu toggle or the main content.
+  const opener = document.activeElement as HTMLElement | null;
+  dialogEl.addEventListener('close', () => {
+    const target = opener?.isConnected && opener.offsetParent ? opener : document.querySelector<HTMLElement>('[data-mobile-toggle]')?.offsetParent ? document.querySelector<HTMLElement>('[data-mobile-toggle]') : document.getElementById('main');
+    target?.focus();
+  }, { once: true });
+  dialogEl.showModal();
+  dialogEl.scrollTop = 0;
+  modal.field('name').focus();
+  track('lead_open', { mode: next.mode, product: next.product, brand: next.brand, category: next.category });
+}
+
+// Inline forms (Contact page): ready on load; "Send another request" starts a fresh enquiry in place.
+document.querySelectorAll<HTMLElement>('[data-lead-inline]').forEach((root) => {
+  const c = leadController(root);
+  const fresh = () => c.prepare({ mode: 'quote', product: root.dataset.product });
+  fresh();
+  root.querySelector('[data-lead-again]')?.addEventListener('click', () => { fresh(); c.field('name').focus(); });
+});
 
 // ---------- Page view + engagement ----------
 // The utm tags of THIS page's URL (not the saved first touch), so a campaign visit is counted once, on the page it lands on.
