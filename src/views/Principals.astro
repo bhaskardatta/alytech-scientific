@@ -1,4 +1,5 @@
 ---
+import CtaBand from '../components/CtaBand.astro';
 import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductImage from '../components/ProductImage.astro';
@@ -60,4 +61,10 @@ const description = ar
   </section>
 
   <ServiceStrip lang={lang} />
+
+  <CtaBand
+    lang={lang}
+    title={ar ? 'لست متأكداً من العلامة المناسبة؟' : 'Not sure which brand fits?'}
+    text={ar ? 'أخبرنا بالطريقة أو المعيار أو العيّنة، وسنوجّهك إلى الجهاز المناسب.' : 'Tell us the method, the standard or the sample, and we’ll point you to the right instrument.'}
+  />
 </Base>

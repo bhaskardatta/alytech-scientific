@@ -3,7 +3,11 @@ import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
-import { brands } from '../data/brands';
+import { brands, origin } from '../data/brands';
+import { brandPath } from '../data/catalog';
+import OfficeMap from '../components/OfficeMap.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { getSiteSettings } from '../lib/settings';
 import { breadcrumbLd } from '../data/schema';
 import { t, localize, type Lang } from '../i18n';
 
@@ -12,6 +16,26 @@ const { lang } = Astro.props;
 const ar = lang === 'ar';
 const L = (x: string) => localize(lang, x);
 const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.about') }];
+const cfg = await getSiteSettings();
+const hours = ar ? cfg.hours.ar : cfg.hours.en;
+
+const facts: [string, string][] = ar
+  ? [['تأسست AlyTech', '1999، باريس'], ['في الشرق الأوسط منذ', '2015'], ['المكتب', 'مصفح، أبوظبي'], ['الشهادة', 'ISO 9001']]
+  : [['AlyTech founded', '1999, Paris region'], ['In the Middle East since', '2015'], ['Office', 'Mussafah, Abu Dhabi'], ['Certification', 'ISO 9001']];
+
+const pillars = ar
+  ? [
+      { icon: 'layers', h: 'التوريد', p: 'نمثّل مصنّعين متخصصين ونساعدك على اختيار الجهاز المناسب لطريقتك ومعيارك.' },
+      { icon: 'wrench', h: 'التركيب والتشغيل', p: 'يركّب مهندسونا الجهاز ويشغّلونه في موقعك ويتحققون من أدائه قبل التسليم.' },
+      { icon: 'graduation', h: 'التدريب', p: 'تدريب عملي لفريقك على الطريقة والبرنامج والعناية الروتينية.' },
+      { icon: 'calendar', h: 'الصيانة والدعم', p: 'عقود صيانة سنوية وخدمة الضمان وقطع الغيار والإصلاح في المنطقة.' },
+    ]
+  : [
+      { icon: 'layers', h: 'Supply', p: 'We represent specialist manufacturers and help you choose the right instrument for your method and standard.' },
+      { icon: 'wrench', h: 'Install & commission', p: 'Our engineers install and commission the instrument at your site and verify its performance before handover.' },
+      { icon: 'graduation', h: 'Train', p: 'Hands-on training for your team on the method, the software and routine care.' },
+      { icon: 'calendar', h: 'Maintain & support', p: 'Annual maintenance contracts, warranty service, spare parts and repairs in the region.' },
+    ];
 
 // Sourced from the 2018 AlyTech Middle East site and the client brief.
 const timeline = [
@@ -31,47 +55,114 @@ const timeline = [
     <div class="wrap py-12 md:py-16">
       <Breadcrumbs items={crumbs} />
       <h1 class="display mt-10 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">{ar ? 'أجهزة متخصصة، ومهندسون في الموقع.' : 'Specialist instruments. Engineers on the ground.'}</h1>
-      <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-mute">{ar ? 'نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط. يتولى مهندسونا التركيب والتشغيل والتدريب والصيانة في الموقع، من أول تشغيل حتى عقد الصيانة السنوي.' : 'We represent manufacturers and support customers across the Middle East. Our own engineers install, commission, train and maintain on site, from the first start-up to the annual maintenance contract.'}</p>
+      <div class="mt-8 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-16">
+        <p class="max-w-2xl text-[17px] leading-relaxed text-mute">{ar ? 'نمثّل المصنّعين وندعم العملاء في جميع أنحاء الشرق الأوسط. يتولى مهندسونا التركيب والتشغيل والتدريب والصيانة في الموقع، من أول تشغيل حتى عقد الصيانة السنوي.' : 'We represent manufacturers and support customers across the Middle East. Our own engineers install, commission, train and maintain on site, from the first start-up to the annual maintenance contract.'}</p>
+      {/* Instrument-panel facts: only what the company states elsewhere on the site */}
+      <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line">
+        {facts.map(([k, v]) => (
+          <div class="bg-card p-5">
+            <dt class="label text-mute">{k}</dt>
+            <dd class="display mt-2 text-[17px] leading-snug">{v}</dd>
+          </div>
+        ))}
+      </dl>
+      </div>
     </div>
   </section>
 
-  <section class="py-16 md:py-24" aria-labelledby="story-h">
-    <div class="wrap grid gap-12 lg:grid-cols-[1fr_1.6fr]">
+  <!-- What we do -->
+  <section class="py-16 md:py-24" aria-labelledby="do-h">
+    <div class="wrap">
+      <p class="label text-brand-600">{ar ? 'ما نقوم به' : 'What we do'}</p>
+      <h2 id="do-h" class="display mt-3 max-w-3xl text-[clamp(1.7rem,3.2vw,2.6rem)] text-balance">{ar ? 'من اختيار الجهاز إلى صيانته.' : 'From choosing the instrument to keeping it running.'}</h2>
+      <ul class="mt-10 grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        {pillars.map((x) => (
+          <li class="flex flex-col gap-4 bg-card p-6 md:p-7">
+            <span class="flex h-11 w-11 items-center justify-center rounded-sm bg-brand-50 text-brand-600"><Icon name={x.icon} size={22} /></span>
+            <h3 class="display text-lg">{x.h}</h3>
+            <p class="text-[15px] leading-relaxed text-mute">{x.p}</p>
+          </li>
+        ))}
+      </ul>
+      <a href={L('/services/')} class="link-arrow mt-8">{ar ? 'الخدمة والدعم' : 'Service & support'} <Icon name="arrow" size={16} flip /></a>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="border-y border-line bg-card py-16 md:py-24" aria-labelledby="story-h">
+    <div class="wrap">
       <h2 id="story-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'قصتنا' : 'How we got here'}</h2>
-      <ol class="relative border-s border-line-strong">
+      <ol class="story mt-10 grid gap-0 md:grid-cols-4 md:gap-8">
         {timeline.map((e) => (
-          <li class="relative ps-8 pb-10 last:pb-0">
-            <span class="absolute -start-[5px] top-2 h-[9px] w-[9px] rounded-full bg-brand-600 ring-4 ring-surface"></span>
-            <p class="label text-brand-600">{e.y}</p>
-            <p class="mt-2 max-w-[60ch] text-[17px] leading-relaxed text-ink-soft">{e[lang]}</p>
+          <li class="story-step relative ps-8 pb-10 last:pb-0 md:ps-0 md:pt-8 md:pb-0">
+            <span class="absolute start-0 top-2 h-[11px] w-[11px] rounded-full bg-brand-600 ring-4 ring-card md:top-0" aria-hidden="true"></span>
+            <p class="display text-[clamp(1.6rem,2.6vw,2.2rem)] text-brand-600">{e.y}</p>
+            <p class="mt-3 max-w-[40ch] text-[16px] leading-relaxed text-ink-soft">{e[lang]}</p>
           </li>
         ))}
       </ol>
     </div>
   </section>
 
-  <section class="border-t border-line bg-card py-16 md:py-20">
-    <div class="wrap grid gap-10 md:grid-cols-3">
-      <div>
-        <p class="label text-mute">{ar ? 'الاسم القانوني' : 'Legal name'}</p>
-        <p class="mt-2 font-semibold">{site.legalName}</p>
+  <!-- The manufacturers -->
+  <section class="py-16 md:py-24" aria-labelledby="mfr-h">
+    <div class="wrap">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="label text-brand-600">{t(lang, 'nav.principals')}</p>
+          <h2 id="mfr-h" class="display mt-3 text-[clamp(1.7rem,3.2vw,2.6rem)]">{ar ? 'المصنّعون الذين نمثّلهم' : 'The manufacturers we represent'}</h2>
+        </div>
+        <a href={L('/principals/')} class="link-arrow">{ar ? 'كل الشركاء' : 'All principals'} <Icon name="arrow" size={16} flip /></a>
       </div>
-      <div>
-        <p class="label text-mute">{ar ? 'الشهادات' : 'Certification'}</p>
-        <p class="mt-2 flex items-center gap-2 font-semibold"><Icon name="shield" size={18} class="text-brand-600" />ISO 9001</p>
-      </div>
-      <div>
-        <p class="label text-mute">{ar ? 'المكتب' : 'Office'}</p>
-        <p class="mt-2 font-semibold">{site.addressLines[lang][0]}{ar ? '، ' : ', '}{site.addressLines[lang][1]}</p>
-        <p class="text-mute">{site.addressLines[lang][2]}</p>
-        <a href={L('/contact/#office')} class="link-arrow tap mt-3">{ar ? 'عرض على الخريطة' : 'See it on the map'} <Icon name="arrow" size={16} flip /></a>
-      </div>
-    </div>
-    <div class="wrap mt-12">
-      <p class="label text-mute">{t(lang, 'nav.principals')}</p>
-      <ul class="mt-4 flex flex-wrap gap-x-8 gap-y-3">
-        {brands.map((b) => <li><a href={L(b.slug === 'gasmix' ? '/gasmix/' : `/principals/${b.slug}/`)} class="tap display inline-block text-lg text-ink-soft transition-colors hover:text-brand-600">{b.name}</a></li>)}
+      <ul class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {brands.map((b) => (
+          <li>
+            <a href={L(brandPath(b))} class="group card flex h-full items-start justify-between gap-4 p-5 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
+              <span>
+                <span class="display block text-lg"><bdi dir="ltr">{b.name}</bdi></span>
+                <span class="label mt-1 block text-mute">{origin(b)[lang]}</span>
+                <span class="mt-3 block text-[14.5px] text-ink-soft">{b.discipline[lang]}</span>
+              </span>
+              <Icon name="arrow" size={18} flip class="mt-1 shrink-0 text-mute transition-colors duration-200 group-hover:text-brand-600" />
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </section>
+
+  <!-- Where to find us -->
+  <section class="border-t border-line bg-card py-16 md:py-24" aria-labelledby="office-h">
+    <div class="wrap grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-14">
+      <div>
+        <p class="label text-brand-600">{t(lang, 'footer.office')}</p>
+        <h2 id="office-h" class="display mt-3 text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'أين تجدنا' : 'Where to find us'}</h2>
+        <address class="mt-6 text-[17px] not-italic leading-relaxed text-ink-soft">{site.addressLines[lang].map((line, i) => <>{i > 0 && <br />}{line}</>)}</address>
+        {hours && <p class="mt-4 text-mute"><span class="label">{ar ? 'ساعات العمل' : 'Office hours'}</span><br />{hours}</p>}
+        <dl class="mt-8 grid gap-5 border-t border-line pt-6">
+          <div><dt class="label text-mute">{ar ? 'الاسم القانوني' : 'Legal name'}</dt><dd class="mt-1 font-semibold"><bdi dir="ltr">{site.legalName}</bdi></dd></div>
+          <div><dt class="label text-mute">{ar ? 'الشهادات' : 'Certification'}</dt><dd class="mt-1 flex items-center gap-2 font-semibold"><Icon name="shield" size={18} class="text-brand-600" />ISO 9001</dd></div>
+        </dl>
+        <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost mt-8 max-sm:w-full"><Icon name="pin" size={18} />{ar ? 'الاتجاهات في خرائط Google' : 'Directions in Google Maps'}</a>
+      </div>
+      <OfficeMap lang={lang} />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title={ar ? 'تحدّث مع مهندس من AlyTech.' : 'Talk to an AlyTech engineer.'}
+    text={ar ? 'أخبرنا بالطريقة أو المعيار أو نوع العيّنة، وسنقترح الجهاز المناسب.' : 'Tell us the method, the standard or the sample, and we’ll recommend the right instrument.'}
+  />
 </Base>
+
+<style>
+  /* Story line: vertical on phones, horizontal across the four milestones from md */
+  .story-step::before {
+    content: ""; position: absolute; inset-inline-start: 5px; top: 16px; bottom: 0; width: 1px; background: var(--color-line-strong);
+  }
+  .story-step:last-child::before { display: none; }
+  @media (min-width: 768px) {
+    .story-step::before { inset-inline-start: 18px; inset-inline-end: -32px; top: 5px; bottom: auto; width: auto; height: 1px; }
+  }
+</style>

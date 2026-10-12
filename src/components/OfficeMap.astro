@@ -1,6 +1,7 @@
 ---
 /**
- * Google Map of the office, loaded only when the visitor clicks (no Google request or cookie before that, and nothing heavy on first paint).
+ * Google Map of the office, shown directly (owner's decision, Oct 2026). The iframe is lazy, so it only loads when it
+ * scrolls near the screen and never competes with the page's first paint; the privacy policy discloses it.
  * The embed URL is the one Google's own share/embed flow produces for a coordinate search; no API key. CSP: frame-src https://www.google.com.
  */
 import Icon from './Icon.astro';
@@ -12,49 +13,47 @@ const { lang, class: cls = '' } = Astro.props;
 const ar = lang === 'ar';
 const embed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${site.geo.lat},${site.geo.lng}!6i15!3m1!1s${lang}!5m1!1s${lang}`;
 ---
-<div class:list={['relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-md)] border border-line bg-card md:aspect-[16/10]', cls]} data-map={embed} data-map-title={ar ? 'موقع مكتب AlyTech في مصفح، أبوظبي' : 'AlyTech office location, Mussafah, Abu Dhabi'}>
+<div class:list={['relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-md)] border border-line bg-card md:aspect-[16/10]', cls]} data-map aria-busy="true">
+  {/* Underneath the map: visible until Google's page paints over it, with a direct link if it never does */}
   <div class="map-grid absolute inset-0" aria-hidden="true"></div>
-  <div class="relative flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
     <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="pin" size={22} /></span>
     <p class="label text-mute">{site.addressLines[lang][0]} · {ar ? 'أبوظبي' : 'Abu Dhabi'}</p>
-    <div class="flex flex-col items-center gap-4" data-map-idle>
-      <button type="button" class="btn btn-ghost" data-map-load>{ar ? 'عرض الخريطة' : 'Show the map'}</button>
-      <p class="max-w-[34ch] text-[13px] text-mute">{ar ? 'تُحمَّل الخريطة من Google عند النقر.' : 'The map loads from Google when you click.'}</p>
-    </div>
-    <div class="flex flex-col items-center gap-4" role="status" data-map-wait hidden>
-      <p class="flex items-center gap-2 text-[14px] text-mute"><span class="h-4 w-4 animate-spin rounded-full border-2 border-line-strong border-t-brand-600" aria-hidden="true"></span>{ar ? 'جارٍ تحميل الخريطة…' : 'Loading map…'}</p>
-      <a class="btn btn-ghost" href={site.mapUrl} target="_blank" rel="noopener noreferrer" data-map-fallback hidden>{ar ? 'افتح في خرائط Google' : 'Open in Google Maps'}</a>
-    </div>
+    <p class="flex items-center gap-2 text-[14px] text-mute" role="status" data-map-wait><span class="h-4 w-4 animate-spin rounded-full border-2 border-line-strong border-t-brand-600" aria-hidden="true"></span>{ar ? 'جارٍ تحميل الخريطة…' : 'Loading map…'}</p>
+    <a class="btn btn-ghost" href={site.mapUrl} target="_blank" rel="noopener noreferrer" data-map-fallback hidden>{ar ? 'افتح في خرائط Google' : 'Open in Google Maps'}</a>
   </div>
+  <iframe
+    src={embed}
+    title={ar ? 'خريطة موقع مكتب AlyTech في مصفح، أبوظبي' : 'Map of the AlyTech office, Mussafah, Abu Dhabi'}
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+    class="absolute inset-0 h-full w-full border-0"
+    data-map-frame
+  ></iframe>
 </div>
 
 <script>
-  document.querySelectorAll<HTMLButtonElement>('[data-map-load]').forEach((btn) =>
-    btn.addEventListener('click', () => {
-      const box = btn.closest<HTMLElement>('[data-map]')!;
-      const wait = box.querySelector<HTMLElement>('[data-map-wait]')!;
-      const frame = document.createElement('iframe');
-      frame.src = box.dataset.map!;
-      frame.title = box.dataset.mapTitle!;
-      // Invisible (and click-through, so the fallback link stays reachable) until Google's page has loaded; the placeholder shows underneath.
-      frame.className = 'pointer-events-none absolute inset-0 h-full w-full border-0 opacity-0 transition-opacity duration-300';
-      frame.referrerPolicy = 'strict-origin-when-cross-origin';
-      frame.allowFullscreen = true;
-      box.querySelector<HTMLElement>('[data-map-idle]')!.hidden = true;
-      wait.hidden = false;
-      box.setAttribute('aria-busy', 'true');
-      // A slow or blocked embed would otherwise leave the visitor staring at "Loading map…".
-      const slow = window.setTimeout(() => { wait.querySelector<HTMLElement>('[data-map-fallback]')!.hidden = false; }, 8000);
-      frame.addEventListener('load', () => {
-        clearTimeout(slow);
+  document.querySelectorAll<HTMLElement>('[data-map]').forEach((box) => {
+    const frame = box.querySelector<HTMLIFrameElement>('[data-map-frame]')!;
+    let slow = 0;
+    const done = () => {
+      clearTimeout(slow);
+      box.removeAttribute('aria-busy');
+      box.querySelector<HTMLElement>('[data-map-wait]')!.hidden = true;
+    };
+    // A lazy iframe starts loading as it nears the viewport; give it time from then before offering the direct link.
+    new IntersectionObserver(([e], io) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      slow = window.setTimeout(() => {
         box.removeAttribute('aria-busy');
-        wait.hidden = true;
-        frame.classList.remove('pointer-events-none', 'opacity-0');
-      }, { once: true });
-      box.append(frame);
-      frame.focus();
-    }),
-  );
+        box.querySelector<HTMLElement>('[data-map-fallback]')!.hidden = false;
+        box.querySelector<HTMLElement>('[data-map-wait]')!.hidden = true;
+      }, 8000);
+    }).observe(box);
+    frame.addEventListener('load', done, { once: true });
+  });
 </script>
 
 <style>

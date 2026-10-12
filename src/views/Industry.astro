@@ -1,4 +1,5 @@
 ---
+import CtaBand from '../components/CtaBand.astro';
 import Base from '../layouts/Base.astro';
 import { ltr } from '../lib/bidi';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
@@ -112,4 +113,11 @@ const title = titleOf(ar ? `أجهزة ${industry.name.ar} في الإمارات
   </section>
 
   <ServiceStrip lang={lang} />
+
+  <CtaBand
+    lang={lang}
+    title={ar ? `تجهيز مختبر في قطاع ${industry.name.ar}؟` : `Equipping a lab for ${industry.name.en}?`}
+    text={ar ? 'أخبرنا بالطرق والمعايير التي تعمل بها، وسنقترح الأجهزة ونرسل عرض السعر.' : 'Tell us the methods and standards you work to, and we’ll recommend the instruments and send a quotation.'}
+    product={industry.name.en}
+  />
 </Base>

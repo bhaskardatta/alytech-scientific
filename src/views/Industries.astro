@@ -1,4 +1,5 @@
 ---
+import CtaBand from '../components/CtaBand.astro';
 import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
@@ -43,4 +44,10 @@ const name = (s: string) => brands.find((b) => b.slug === s)?.name;
       ))}
     </ul>
   </section>
+
+  <CtaBand
+    lang={lang}
+    title={ar ? 'لم تجد قطاعك؟' : 'Don’t see your sector?'}
+    text={ar ? 'أخبرنا بما يختبره مختبرك، وسيقترح مهندس من AlyTech الأجهزة المناسبة.' : 'Tell us what your lab tests, and an AlyTech engineer will recommend the right instruments.'}
+  />
 </Base>

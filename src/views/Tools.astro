@@ -1,4 +1,5 @@
 ---
+import CtaBand from '../components/CtaBand.astro';
 import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
@@ -90,4 +91,11 @@ const webPage = { '@context': 'https://schema.org', '@type': 'CollectionPage', n
       <a href={L('/standards/')} class="btn btn-ghost">{s.stdLink} <Icon name="arrow" size={18} flip /></a>
     </div>
   </section>
+
+  <CtaBand
+    lang={lang}
+    title={ar ? 'هل تحتاج إلى خالط أو مخفف غازات؟' : 'Need a gas mixer or diluter?'}
+    text={ar ? 'أخبرنا بالتراكيز والتدفقات التي تحتاجها، وسيقترح مهندس من AlyTech طراز GasMix المناسب.' : 'Tell us the concentrations and flows you need, and an AlyTech engineer will recommend the right GasMix model.'}
+    product="GasMix"
+  />
 </Base>
