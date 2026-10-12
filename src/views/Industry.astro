@@ -23,11 +23,16 @@ const L = (x: string) => localize(lang, x);
 const c = industryContent[industry.slug];
 const featured = c.brands.map((s) => brands.find((b) => b.slug === s)!).filter(Boolean);
 const rank = (slug: string) => { const i = c.brands.indexOf(slug); return i < 0 ? c.brands.length : i; };
-const items = brands
-  .flatMap((b) => productsOf(b.slug).filter((p) => p.priority !== 'niche' && p.industries.includes(industry.slug)).map((p) => ({ b, p })))
-  // The sector's own brands first (in its order), flagships first within a brand, at most 3 per brand so the grid stays varied.
-  .sort((x, y) => rank(x.b.slug) - rank(y.b.slug) || Number(y.p.priority === 'flagship') - Number(x.p.priority === 'flagship'))
-  .filter((x, i, all) => all.slice(0, i).filter((y) => y.b.slug === x.b.slug).length < 3)
+// The sector's own brands (all their tagged products, niche ones last); other brands only fill in if those give fewer than 4.
+const tagged = brands.flatMap((b) => productsOf(b.slug).filter((p) => p.industries.includes(industry.slug)).map((p) => ({ b, p })));
+const own = tagged.filter((x) => c.brands.includes(x.b.slug));
+const pool = own.length >= 4 ? own : [...own, ...tagged.filter((x) => !c.brands.includes(x.b.slug) && x.p.priority !== 'niche')];
+const perBrand = Math.max(3, Math.ceil(8 / Math.max(1, new Set(pool.map((x) => x.b.slug)).size))); // 2 brands: 4 each
+const tier = (p: { priority?: string }) => (p.priority === 'flagship' ? 0 : p.priority === 'niche' ? 2 : 1);
+const items = pool
+  // in the sector's brand order, flagships first, a few per brand so the grid stays varied
+  .sort((x, y) => rank(x.b.slug) - rank(y.b.slug) || tier(x.p) - tier(y.p))
+  .filter((x, i, all) => all.slice(0, i).filter((y) => y.b.slug === x.b.slug).length < perBrand)
   .slice(0, 8);
 // Tier-2 (unbranded) equipment relevant to this sector, grouped by family; the tagging lives on each category in equipment.json.
 const equip = families

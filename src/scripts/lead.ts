@@ -215,6 +215,7 @@ function leadController(root: HTMLElement) {
       }));
       dl.classList.toggle('hidden', !specs?.length);
     }
+    const doneBody = q('[data-lead-done-body]'); if (doneBody) doneBody.textContent = I.doneBody?.[ctx.mode] ?? I.doneDefault;
     q('[data-lead-form-wrap]')!.classList.add('hidden');
     q('[data-lead-done]')!.classList.remove('hidden');
     field('message').value = ''; autoMsg = ''; // sent: the next opening starts a fresh message

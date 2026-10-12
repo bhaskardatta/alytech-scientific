@@ -1,24 +1,32 @@
 import type { APIRoute } from 'astro';
-import { allProducts, productPath, brandPath, shortName } from '../data/catalog';
+import { allProducts, productPath, brandPath, shortName, imageOf } from '../data/catalog';
 import { brands } from '../data/brands';
-import { categories, categoryPath } from '../data/equipment';
+import { categories, categoryPath, renderOf } from '../data/equipment';
 import { industries } from '../data/industries';
 import { standards, standardPath } from '../data/standards';
 
-/** Static client-side search index. Contains no gated spec values. */
+/** Static client-side search index. Contains no gated spec values. `i` = thumbnail; `x` = the names and one-line focus of the
+ *  industries an item is tagged for, so a sector phrase ("air quality") finds the instruments that serve it. */
+const sectorWords = (slugs: string[] = []) =>
+  industries.filter((i) => slugs.includes(i.slug)).flatMap((i) => [i.name.en, i.name.ar, i.line.en, i.line.ar]);
 export const GET: APIRoute = () => {
   const entries = [
     ...allProducts().map(({ brand: b, product: p }) => ({
       u: productPath(b, p),
       en: { t: `${b.name} ${shortName(p)}`, s: p.category },
       ar: { t: `${b.name} ${shortName(p, 'ar')}`, s: p.ar?.category ?? p.category },
-      k: [p.name, p.model, p.category, p.ar?.category, ...p.standards, ...p.searchKeywords, ...p.applications].filter(Boolean).join(' '),
+      k: [p.name, p.model, p.category, p.ar?.name, p.ar?.category, ...p.standards, ...p.searchKeywords, ...p.applications].filter(Boolean).join(' '),
+      n: [p.name, p.ar?.name, p.category, p.ar?.category].filter(Boolean).join(' '),
+      x: sectorWords(p.industries).join(' '),
+      i: imageOf(b.slug, p.slug)?.src,
     })),
     ...categories.map(({ family: f, category: c }) => ({
       u: categoryPath(c),
       en: { t: c.name, s: f.name },
       ar: { t: c.ar?.name ?? c.name, s: f.ar?.name ?? f.name },
       k: [...c.searchKeywords, ...(c.ar?.searchKeywords ?? []), ...c.standards, ...c.variants, ...c.applications].join(' '),
+      x: sectorWords(c.industries).join(' '),
+      i: renderOf(c.slug)?.sm,
     })),
     ...brands.map((b) => ({ u: brandPath(b), en: { t: b.name, s: b.discipline.en }, ar: { t: b.name, s: b.discipline.ar }, k: b.discipline.en })),
     ...industries.map((i) => ({ u: `/industries/${i.slug}/`, en: { t: i.name.en, s: i.line.en }, ar: { t: i.name.ar, s: i.line.ar }, k: i.line.en })),

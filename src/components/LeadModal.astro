@@ -23,6 +23,11 @@ const i18n = {
   errCheck: ar ? 'تعذّر قبول البيانات. يرجى التحقق من الاسم والبريد الإلكتروني أو رقم الجوال ثم المحاولة مجدداً.' : 'We couldn’t accept those details. Please check your name, email and mobile number, then try again.',
   errExpired: ar ? 'انتهت صلاحية هذه الصفحة. يرجى إعادة تحميلها ثم المحاولة مجدداً.' : 'This page has expired. Please reload it and try again.',
   waOpening: ar ? 'جارٍ فتح واتساب…' : 'Opening WhatsApp…',
+  // What happens next, by request type (the default is lead.done.body)
+  doneBody: ar
+    ? { datasheet: 'شكراً لك. سيرسل لك مهندس من AlyTech النشرة الفنية عبر البريد الإلكتروني أو واتساب، عادةً خلال يوم عمل واحد.', price: 'شكراً لك. سيرسل لك مهندس تطبيقات السعر ومدة التوريد للتهيئة المناسبة، عادةً خلال يوم عمل واحد.', specs: 'شكراً لك. المواصفات النموذجية أدناه، وسيتواصل معك مهندس لتأكيد الطراز المناسب.' }
+    : { datasheet: 'Thank you. An AlyTech engineer will send you the datasheet by email or WhatsApp, usually within one working day.', price: 'Thank you. An application engineer will send pricing and lead time for the right configuration, usually within one working day.', specs: 'Thank you. The typical ranges are below, and an engineer will be in touch to confirm the right model.' },
+  doneDefault: t(lang, 'lead.done.body'),
   errSend: `${t(lang, 'lead.err.unavailable')} \u2066${cfg.contactEmail}\u2069`, // isolates keep the address intact inside Arabic text
   greeting: t(lang, 'wa.greeting'),
   general: t(lang, 'wa.general'),
@@ -49,7 +54,7 @@ const i18n = {
     <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="check" size={28} /></span>
     <!-- focus lands here on success, which is what announces it; the body is read as its description -->
     <h2 class="display mt-5 text-2xl outline-none" tabindex="-1" aria-describedby="lead-done-body" data-lead-done-title>{t(lang, 'lead.done.title')}</h2>
-    <p id="lead-done-body" class="mt-2 text-mute">{t(lang, 'lead.done.body')}</p>
+    <p id="lead-done-body" class="mt-2 text-mute" data-lead-done-body>{t(lang, 'lead.done.body')}</p>
     <dl class="mt-6 hidden divide-y divide-line border-y border-line text-start" data-lead-specs></dl>
     <form method="dialog" class="mt-6"><button class="btn btn-ghost">{t(lang, 'lead.close')}</button></form>
   </div>
@@ -90,7 +95,8 @@ const i18n = {
     e.preventDefault();
     openLead({
       mode: (trigger.dataset.lead as any) || 'quote',
-      product: trigger.dataset.product,
+      // A generic trigger (header "Request a quote") on a product or category page still says what the visitor was looking at
+      product: trigger.dataset.product || (trigger.closest('#site-header, .wa-fab') ? document.body.dataset.product : undefined),
       brand: trigger.dataset.brand,
       category: trigger.dataset.category,
     });

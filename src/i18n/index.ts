@@ -11,7 +11,7 @@ export const dir = (lang: Lang) => (lang === 'ar' ? 'rtl' : 'ltr');
 const strings = {
   'nav.products': { en: 'Products', ar: 'المنتجات' },
   'nav.gasmix': { en: 'GasMix', ar: 'GasMix' },
-  'nav.principals': { en: 'Principals', ar: 'الشركاء' },
+  'nav.principals': { en: 'Brands', ar: 'العلامات التجارية' },
   'nav.equipment': { en: 'Lab & test equipment', ar: 'معدات المختبرات والاختبار' },
   'nav.standards': { en: 'Test standards', ar: 'معايير الاختبار' },
   'nav.tools': { en: 'Engineering tools', ar: 'أدوات هندسية' },

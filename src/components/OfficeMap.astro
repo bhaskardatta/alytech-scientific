@@ -1,7 +1,8 @@
 ---
 /**
- * Google Map of the office, shown directly (owner's decision, Oct 2026). The iframe is lazy, so it only loads when it
- * scrolls near the screen and never competes with the page's first paint; the privacy policy discloses it.
+ * Google Map of the office, shown directly (owner's decision, Oct 2026) — except for visitors who chose "Essential only"
+ * cookies: they get a "Show the map" button instead, since the embed sets Google's own cookies. The iframe is lazy, so it
+ * only loads when it scrolls near the screen; the privacy policy discloses it.
  * The embed URL is the one Google's own share/embed flow produces for a coordinate search; no API key. CSP: frame-src https://www.google.com.
  */
 import Icon from './Icon.astro';
@@ -19,11 +20,12 @@ const embed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${site
   <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
     <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600"><Icon name="pin" size={22} /></span>
     <p class="label text-mute">{site.addressLines[lang][0]} · {ar ? 'أبوظبي' : 'Abu Dhabi'}</p>
+    <button type="button" class="btn btn-ghost" data-map-load hidden>{ar ? 'عرض الخريطة' : 'Show the map'}</button>
     <p class="flex items-center gap-2 text-[14px] text-mute" role="status" data-map-wait><span class="h-4 w-4 animate-spin rounded-full border-2 border-line-strong border-t-brand-600" aria-hidden="true"></span>{ar ? 'جارٍ تحميل الخريطة…' : 'Loading map…'}</p>
     <a class="btn btn-ghost" href={site.mapUrl} target="_blank" rel="noopener noreferrer" data-map-fallback hidden>{ar ? 'افتح في خرائط Google' : 'Open in Google Maps'}</a>
   </div>
   <iframe
-    src={embed}
+    data-src={embed}
     title={ar ? 'خريطة موقع مكتب AlyTech في مصفح، أبوظبي' : 'Map of the AlyTech office, Mussafah, Abu Dhabi'}
     loading="lazy"
     referrerpolicy="strict-origin-when-cross-origin"
@@ -34,25 +36,32 @@ const embed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${site
 </div>
 
 <script>
+  const declined = () => { try { return localStorage.getItem('aly-consent') === 'essential'; } catch { return false; } };
   document.querySelectorAll<HTMLElement>('[data-map]').forEach((box) => {
     const frame = box.querySelector<HTMLIFrameElement>('[data-map-frame]')!;
+    const wait = box.querySelector<HTMLElement>('[data-map-wait]')!;
+    const btn = box.querySelector<HTMLButtonElement>('[data-map-load]')!;
+    const fallback = box.querySelector<HTMLElement>('[data-map-fallback]')!;
     let slow = 0;
-    const done = () => {
-      clearTimeout(slow);
-      box.removeAttribute('aria-busy');
-      box.querySelector<HTMLElement>('[data-map-wait]')!.hidden = true;
+    frame.addEventListener('load', () => { if (!frame.src) return; clearTimeout(slow); box.removeAttribute('aria-busy'); wait.hidden = true; });
+    const load = () => {
+      if (frame.src) return;
+      btn.hidden = true; wait.hidden = false; frame.hidden = false;
+      box.setAttribute('aria-busy', 'true');
+      frame.src = frame.dataset.src!;
+      // A lazy iframe starts loading as it nears the viewport; from then, give Google 8 s before offering the direct link.
+      new IntersectionObserver(([e], io) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        slow = window.setTimeout(() => { box.removeAttribute('aria-busy'); wait.hidden = true; fallback.hidden = false; }, 8000);
+      }).observe(box);
     };
-    // A lazy iframe starts loading as it nears the viewport; give it time from then before offering the direct link.
-    new IntersectionObserver(([e], io) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
-      slow = window.setTimeout(() => {
-        box.removeAttribute('aria-busy');
-        box.querySelector<HTMLElement>('[data-map-fallback]')!.hidden = false;
-        box.querySelector<HTMLElement>('[data-map-wait]')!.hidden = true;
-      }, 8000);
-    }).observe(box);
-    frame.addEventListener('load', done, { once: true });
+    if (declined()) {
+      // "Essential only": no request to Google until the visitor asks for the map (or accepts cookies later)
+      frame.hidden = true; wait.hidden = true; box.removeAttribute('aria-busy'); btn.hidden = false;
+      btn.addEventListener('click', () => { load(); frame.focus(); });
+      addEventListener('aly-consent', (e) => { if ((e as CustomEvent).detail === 'all') load(); });
+    } else load();
   });
 </script>
 

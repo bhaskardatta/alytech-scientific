@@ -51,7 +51,7 @@ const i18n = {
 
 <script>
   import { track } from '../scripts/lead';
-  type Entry = { u: string; en: { t: string; s: string }; ar: { t: string; s: string }; k: string };
+  type Entry = { u: string; en: { t: string; s: string }; ar: { t: string; s: string }; k: string; n?: string; x?: string; i?: string };
   const I = JSON.parse(document.getElementById('search-i18n')!.textContent!);
   const input = document.querySelector<HTMLInputElement>('[data-search-input]')!;
   const list = document.querySelector<HTMLUListElement>('[data-search-results]')!;
@@ -65,7 +65,20 @@ const i18n = {
   // (أ إ آ → ا, ى → ي, ة → ه), so "مولد هيدروجين" finds "مولّد هيدروجين" and "اجهزة" finds "أجهزة".
   const norm = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f\u064b-\u065f\u0670\u0640]/g, '')
     .replace(/[\u0623\u0625\u0622]/g, '\u0627').replace(/\u0649/g, '\u064a').replace(/\u0629/g, '\u0647');
-  let index: (Entry & { hay: string; title: string })[] = [];
+  // Words, not substrings ("ph" must not match "phase"). Hyphens and slashes split words ("air-quality" = "air quality");
+  // Arabic words lose a leading article or attached preposition ("السكر", "للسكر", "بالسكر" all = "سكر").
+  const words = (s: string) => norm(s).split(/[^\p{L}\p{N}.]+/u).filter(Boolean)
+    .map((w) => w.replace(/^(?:[وبفك]?ال|لل)(?=\p{L}{2,})/u, '').replace(/\.$/, ''));
+  // Common Arabic transliterations of instrument names → the terms the catalog uses
+  const SYN: [RegExp, string][] = [
+    [/بولار?ي?م[يى]?ت[يى]?ر/g, 'استقطاب'], [/ساكاروم[يى]?تر/g, 'saccharomat'], [/ر?[يى]?فراكتوم[يى]?تر/g, 'انكسار'],
+    [/ف[يى]سكوم[يى]?تر/g, 'لزوجه'], [/ر[يى]وم[يى]?تر/g, 'ريولوجيا'], [/د[يى]فراكتوم[يى]?تر/g, 'حيود'], [/تر[يى]بوم[يى]?تر/g, 'ترايبومتر'],
+    [/د[يى]نس[يى]?تو?م[يى]?تر/g, 'كثافه'], [/كولور[يى]?م[يى]?تر/g, 'لون'],
+  ];
+  const expand = (q: string) => SYN.reduce((s, [re, to]) => s.replace(re, to), norm(q));
+  // A query word matches an entry word exactly when it's short (≤ 2), otherwise as a word prefix ("visco" → "viscometer").
+  const hit = (ws: string[], t: string) => (t.length <= 2 ? ws.includes(t) : ws.some((w) => w.startsWith(t)));
+  let index: (Entry & { hay: string[]; title: string[]; sector: string[] })[] = [];
   let logTimer: number | undefined;
   let lastLogged = '';
   let failed = false;
@@ -74,7 +87,7 @@ const i18n = {
   const ready = fetch('/search-index.json')
     .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
     .then((d: Entry[]) => {
-      index = d.map((e) => ({ ...e, title: norm(`${e.en.t} ${e.ar.t}`), hay: norm(`${e.en.t} ${e.ar.t} ${e.en.s} ${e.ar.s} ${e.k}`) }));
+      index = d.map((e) => ({ ...e, title: words(`${e.en.t} ${e.ar.t} ${e.n ?? ''}`), hay: words(`${e.en.t} ${e.ar.t} ${e.en.s} ${e.ar.s} ${e.k}`), sector: words(e.x ?? '') }));
       status.textContent = '';
     })
     // Without the index every query would look like "no match"; show a way out instead.
@@ -82,9 +95,14 @@ const i18n = {
 
   function run(q: string) {
     if (failed) return;
-    const terms = norm(q).split(/\s+/).filter((w) => w.length > 1);
+    const terms = words(expand(q)).filter((w) => w.length > 1 || /\d/.test(w));
+    // Every query word must appear (title words count triple). Sector text only counts for phrases of 2+ words ("air quality"):
+    // a single word is usually an instrument name, and sector text would drag in everything used in that sector.
+    // The query as a phrase inside an item's name or keywords, and having a picture (products, categories), rank higher.
+    const phrase = terms.join(' ');
     const hits = !terms.length ? [] : index
-      .map((e) => ({ e, score: terms.reduce((s, w) => s + (e.title.includes(w) ? 3 : e.hay.includes(w) ? 1 : -10), 0) }))
+      .map((e) => ({ e, score: terms.reduce((s, w) => s + (hit(e.title, w) ? 3 : hit(e.hay, w) ? 1 : terms.length > 1 && hit(e.sector, w) ? 0.5 : -100), 0)
+        + (terms.length > 1 && (e.title.join(' ').includes(phrase) || e.hay.join(' ').includes(phrase)) ? 4 : 0) + (e.i ? 0.5 : 0) }))
       .filter((h) => h.score > 0)
       .sort((a, b) => b.score - a.score)
       .slice(0, 30);
@@ -94,7 +112,10 @@ const i18n = {
       a.href = prefix + e.u;
       a.className = 'group flex items-center justify-between gap-4 py-4 transition-colors duration-200 hover:text-brand-700';
       const v = I.lang === 'ar' ? e.ar : e.en;
-      a.innerHTML = '<span><span class="block font-semibold"></span><span class="block text-[14px] text-mute"></span></span>';
+      a.innerHTML = '<span class="flex min-w-0 items-center gap-4"><span class="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-sm bg-surface" aria-hidden="true"></span><span class="min-w-0"><span class="block font-semibold"></span><span class="block text-[14px] text-mute"></span></span></span>';
+      const thumb = a.querySelector<HTMLElement>('[aria-hidden]')!;
+      if (e.i) { const img = document.createElement('img'); img.src = e.i; img.alt = ''; img.width = 56; img.height = 56; img.loading = 'lazy'; img.className = 'h-full w-full object-contain p-1 mix-blend-multiply'; thumb.append(img); }
+      else thumb.classList.add('hidden');
       a.querySelector('.font-semibold')!.textContent = v.t;
       a.querySelector('.text-mute')!.textContent = v.s;
       a.append(arrow.content.cloneNode(true));
