@@ -2,6 +2,10 @@
 /**
  * The GasMix string-art ribbon as static SVG — same maths as the 3D shell's side panel.
  * Server-rendered: zero client JS.
+ *
+ * Every line of a band is the same sine wave scaled vertically about the band's centre (y = c + s·amp·sin(…)), so each band's
+ * wave is drawn once in <defs> and every line is a <use> with translate+scale. Same picture, ~95% less markup than one
+ * full path per line (the inline SVG was most of the home page's HTML).
  */
 interface Props { class?: string; lines?: number; width?: number; height?: number }
 const { class: cls = '', lines = 36, width = 1200, height = 600 } = Astro.props;
@@ -11,21 +15,24 @@ const bands = [
   { c: 0.6, amp: 0.16, k: 1.7, ph: 2.4 },
 ];
 const steps = 120;
-const paths: { d: string; o: number }[] = [];
-for (const b of bands) {
+const id = `rb${Math.random().toString(36).slice(2, 8)}`; // unique per instance: a page can hold several ribbons
+const waves = bands.map((b) => {
+  let d = '';
+  for (let i = 0; i <= steps; i++) {
+    const tt = i / steps;
+    d += `${i ? 'L' : 'M'}${(tt * width).toFixed(1)} ${(b.amp * Math.sin(b.k * Math.PI * tt * 2 + b.ph) * height).toFixed(1)}`;
+  }
+  return d;
+});
+const uses: { band: number; y: number; s: number; o: number }[] = [];
+bands.forEach((b, band) => {
   for (let j = 0; j < lines; j++) {
     const s = (j / (lines - 1)) * 2 - 1;
-    let d = '';
-    for (let i = 0; i <= steps; i++) {
-      const tt = i / steps;
-      const x = tt * width;
-      const y = (b.c + s * b.amp * Math.sin(b.k * Math.PI * tt * 2 + b.ph)) * height;
-      d += `${i ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`;
-    }
-    paths.push({ d, o: 1 - Math.abs(s) * 0.75 });
+    uses.push({ band, y: b.c * height, s: s || 0.0001, o: 1 - Math.abs(s) * 0.75 });
   }
-}
+});
 ---
 <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" fill="none" aria-hidden="true" class={cls}>
-  {paths.map((p) => <path d={p.d} stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" opacity={p.o.toFixed(2)} />)}
+  <defs>{waves.map((d, i) => <path id={`${id}-${i}`} d={d} stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" />)}</defs>
+  {uses.map((u) => <use href={`#${id}-${u.band}`} transform={`translate(0 ${u.y.toFixed(1)}) scale(1 ${u.s.toFixed(4)})`} opacity={u.o.toFixed(2)} />)}
 </svg>
