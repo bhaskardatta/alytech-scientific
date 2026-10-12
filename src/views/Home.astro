@@ -5,6 +5,9 @@ import Icon from '../components/Icon.astro';
 import Ribbon from '../components/Ribbon.astro';
 import { brands, claim, origin } from '../data/brands';
 import { industries } from '../data/industries';
+import { industryContent } from '../data/industryContent';
+import { productsOf, imageOf } from '../data/catalog';
+import ProductImage from '../components/ProductImage.astro';
 import { families, renderOf } from '../data/equipment';
 import { t, localize, type Lang } from '../i18n';
 
@@ -14,6 +17,23 @@ const ar = lang === 'ar';
 const L = (p: string) => localize(lang, p);
 const gasmix = brands[0];
 const principals = brands.slice(1);
+
+// Industries: each card shows a real instrument we supply for that sector (manufacturer photo, a different one per card),
+// how many of our instruments serve it and the brands behind them.
+// Neighbouring cards picture different brands where the sector allows, so no two cards look alike.
+const used = new Set<string>();
+let lastBrand = '';
+const short = (name: string) => name.replace(/ (Instruments|Technologies)$/, '');
+const sectors = industries.map((ind) => {
+  const featured = (industryContent[ind.slug]?.brands ?? []).map((s) => brands.find((b) => b.slug === s)!).filter(Boolean);
+  const tagged = brands.flatMap((b) => productsOf(b.slug).filter((p) => p.industries?.includes(ind.slug)));
+  const options = featured
+    .flatMap((b) => productsOf(b.slug).filter((p) => p.industries?.includes(ind.slug) && imageOf(b.slug, p.slug)).sort((x, y) => Number(y.priority === 'flagship') - Number(x.priority === 'flagship')).map((p) => ({ b, p })))
+    .filter(({ b, p }) => !used.has(`${b.slug}/${p.slug}`));
+  const pick = options.find(({ b }) => b.slug !== lastBrand) ?? options[0];
+  if (pick) { used.add(`${pick.b.slug}/${pick.p.slug}`); lastBrand = pick.b.slug; }
+  return { ind, pick, count: tagged.length, names: featured.slice(0, 3).map((b) => short(b.name)) };
+});
 
 const lifecycle = ar
   ? [
@@ -144,15 +164,23 @@ const description = ar
     <div class="wrap">
       <p class="label text-brand-600">{t(lang, 'nav.industries')}</p>
       <h2 id="ind-h" class="display mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,3rem)]">{ar ? 'حيث تُستخدم أجهزتنا في المنطقة.' : 'Where our instruments work across the region.'}</h2>
-      <ul class="mt-12 grid border-t border-line md:grid-cols-3">
-        {industries.map((ind) => (
-          <li class="border-b border-line md:[&:not(:nth-child(3n))]:border-e">
-            <a href={L(`/industries/${ind.slug}/`)} class="group flex h-full flex-col gap-2 p-6 transition-colors duration-200 hover:bg-card md:p-7">
-              <span class="flex items-center justify-between gap-3">
-                <span class="display text-lg">{ind.name[lang]}</span>
-                <Icon name="arrow" size={18} flip class="shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
-              </span>
-              <span class="text-[15px] text-mute">{ind.line[lang]}</span>
+      {/* Phones: a swipeable rail (the next card peeks in); tablets and up: a grid */}
+      <ul class="-mx-4 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-2 md:mx-0 md:grid md:snap-none md:grid-cols-2 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3">
+        {sectors.map(({ ind, pick, count, names }) => (
+          <li class="w-[82%] shrink-0 snap-start md:w-auto">
+            <a href={L(`/industries/${ind.slug}/`)} class="group card flex h-full flex-col overflow-hidden transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-[var(--shadow-card)]">
+              <div class="sector-stage relative aspect-[16/10] overflow-hidden bg-surface">
+                <div class="sector-grid absolute inset-0" aria-hidden="true"></div>
+                {pick && <ProductImage brand={pick.b.slug} brandName={pick.b.name} slug={pick.p.slug} alt="" decorative class="absolute inset-0 h-full w-full p-6 transition-transform duration-500 group-hover:scale-[1.04]" sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 80vw" />}
+              </div>
+              <div class="flex flex-1 flex-col gap-2 p-5 md:p-6">
+                <span class="flex items-center justify-between gap-3">
+                  <span class="display text-lg">{ind.name[lang]}</span>
+                  <Icon name="arrow" size={18} flip class="shrink-0 text-mute transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-brand-600 rtl:group-hover:-translate-x-1" />
+                </span>
+                <span class="text-[15px] leading-relaxed text-mute">{ind.line[lang]}</span>
+                <span class="label mt-auto pt-3 text-ink-soft">{ar ? `${count} ${count >= 3 && count <= 10 ? 'أجهزة' : 'جهازاً'}` : `${count} instruments`} · <bdi dir="ltr">{names.join(', ')}</bdi></span>
+              </div>
             </a>
           </li>
         ))}
@@ -183,3 +211,11 @@ const description = ar
     </div>
   </section>
 </Base>
+
+<style>
+  .sector-grid {
+    background-image: linear-gradient(rgb(100 90 140 / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(100 90 140 / 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(75% 75% at 50% 50%, #000, transparent);
+  }
+</style>
