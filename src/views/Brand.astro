@@ -18,8 +18,8 @@ const ar = lang === 'ar';
 const L = (x: string) => localize(lang, x);
 const info = brandInfo(brand.slug);
 const products = productsOf(brand.slug);
-const main = products.filter((p) => p.priority !== 'niche');
-const more = products.filter((p) => p.priority === 'niche');
+const main = products.filter((p) => p.priority !== 'niche' && !p.listLast);
+const more = products.filter((p) => p.priority === 'niche' || p.listLast);
 // Filters (brands with 8+ products): by industry, plus a search over name, model, type, standards and keywords in both languages.
 const filterable = products.length >= 8;
 const indCount = new Map<string, number>();

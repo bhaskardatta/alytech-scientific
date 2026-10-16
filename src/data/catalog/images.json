@@ -10,11 +10,6 @@
     "src": "/images/products/ducom/abrasion-tester-abt-3.webp",
     "w": 461
   },
-  "ducom/bocle-aviation-fuel-lubricity-tester": {
-    "h": 1200,
-    "src": "/images/products/ducom/bocle-aviation-fuel-lubricity-tester.webp",
-    "w": 979
-  },
   "ducom/cleveland-flash-point-tester": {
     "h": 755,
     "opaque": true,
@@ -27,15 +22,29 @@
     "src": "/images/products/ducom/cloud-and-pour-point-tester.webp",
     "w": 666
   },
+  "ducom/diesel-injector-shear-stability-tester": {
+    "h": 1200,
+    "opaque": true,
+    "src": "/images/products/ducom/diesel-injector-shear-stability-tester.webp",
+    "w": 951
+  },
+  "ducom/fe8-bearing-wear-tester": {
+    "h": 993,
+    "opaque": true,
+    "src": "/images/products/ducom/fe8-bearing-wear-tester.webp",
+    "w": 1200
+  },
   "ducom/four-ball-tester-fbt-3": {
-    "h": 837,
+    "h": 740,
+    "opaque": true,
     "src": "/images/products/ducom/four-ball-tester-fbt-3.webp",
-    "w": 910
+    "w": 1200
   },
   "ducom/four-ball-tester-tr-30": {
     "h": 1200,
+    "opaque": true,
     "src": "/images/products/ducom/four-ball-tester-tr-30.webp",
-    "w": 832
+    "w": 695
   },
   "ducom/hfrr-fuel-lubricity-tester": {
     "h": 1123,
@@ -44,8 +53,9 @@
   },
   "ducom/krl-shear-stability-tester": {
     "h": 1200,
+    "opaque": true,
     "src": "/images/products/ducom/krl-shear-stability-tester.webp",
-    "w": 1072
+    "w": 1194
   },
   "ducom/noack-volatility-tester": {
     "h": 385,
@@ -60,9 +70,10 @@
     "w": 613
   },
   "ducom/pod-4-pin-on-disk-tribometer": {
-    "h": 776,
+    "h": 1141,
+    "opaque": true,
     "src": "/images/products/ducom/pod-4-pin-on-disk-tribometer.webp",
-    "w": 843
+    "w": 1200
   },
   "ducom/slurry-jet-erosion-tester": {
     "h": 1200,
@@ -70,7 +81,8 @@
     "w": 701
   },
   "ducom/unitest-universal-tester": {
-    "h": 1032,
+    "h": 849,
+    "opaque": true,
     "src": "/images/products/ducom/unitest-universal-tester.webp",
     "w": 1200
   },

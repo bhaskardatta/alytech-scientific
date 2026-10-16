@@ -18,6 +18,8 @@ export interface Product {
   searchKeywords: string[];
   whyMiddleEast?: string;
   datasheetUrl?: string | null;
+  /** Owner's ordering: listed after the brand's other products (on the brand page, in its lower section). */
+  listLast?: boolean;
   /** Arabic overrides, filled in by the translation pass. */
   ar?: Partial<Pick<Product, 'name' | 'category' | 'summary' | 'description' | 'applications'>>;
 }
@@ -31,7 +33,7 @@ const rank = { flagship: 0, core: 1, niche: 2 } as const;
 
 export const brandInfo = (slug: string) => byBrand.get(slug);
 export const productsOf = (brand: string) =>
-  [...(byBrand.get(brand)?.products ?? [])].sort((a, b) => rank[a.priority] - rank[b.priority]);
+  [...(byBrand.get(brand)?.products ?? [])].sort((a, b) => Number(!!a.listLast) - Number(!!b.listLast) || rank[a.priority] - rank[b.priority]);
 
 export const allProducts = () =>
   brands.flatMap((b) => productsOf(b.slug).map((p) => ({ brand: b, product: p })));

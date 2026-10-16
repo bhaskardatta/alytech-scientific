@@ -88,6 +88,7 @@
       "whyMiddleEast": "Lubricant blending plants and refinery quality labs across the Gulf can run EP and wear qualification in-house against ASTM and IP methods.",
       "sourceUrl": "https://www.ducom.com/four-ball-tester-fbt-3",
       "imageUrls": [
+        "file:images/ducom/four-ball-tester-fbt-3.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(FBT-3)/Website%20-%20Four%20Ball%20Tester%20(FBT-3)/Four-Ball-Tester-FBT-3-Screen-On.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(FBT-3)/Website%20-%20Four%20Ball%20Tester%20(FBT-3)/Image-Acquisition-System-FBT-3-Standalone.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(FBT-3)/FBT-3%20Images%20and%20Videos/FBT3%20wear%20scar%20prediction.png"
@@ -238,6 +239,7 @@
       "whyMiddleEast": "Established design suited to refinery and lubricant plant QC laboratories that need a rugged EP and wear tester for routine certification.",
       "sourceUrl": "https://www.ducom.com/four-ball-tester-tr-30-series",
       "imageUrls": [
+        "file:images/ducom/four-ball-tester-tr-30.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(TR%2030%20Series)/TR%2030%20Series%20-%20Manual%20Loading%20-%20No%20Background.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(TR%2030%20Series)/Four%20Ball%20Tester%20-%20KRL%20shear%20stability%20attachment.jpg",
         "https://www.ducom.com/hubfs/DUCOM/Products/Four%20Ball%20Tester%20(TR%2030%20Series)/Four%20Ball%20Tester%20-%20Rolling%20Contact%20Fatigue%20(IP300)%20attachment.jpg"
@@ -501,6 +503,7 @@
       "whyMiddleEast": "Useful for regional lubricant blenders qualifying hydraulic and gear oils for mining and construction fleets.",
       "sourceUrl": "https://www.ducom.com/krl-shear-stability-tester",
       "imageUrls": [
+        "file:images/ducom/krl-shear-stability-tester.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/KRL%20Shear%20Stability%20Tester/KRL%20Videos%20and%20Images/KRL%20Product%20Image.png"
       ],
       "datasheetUrl": null,
@@ -547,6 +550,259 @@
           }
         ],
         "whyMiddleEast": "مفيد لشركات خلط مواد التشحيم في المنطقة التي تؤهل الزيوت الهيدروليكية وزيوت التروس لأساطيل التعدين والإنشاءات."
+      }
+    },
+    {
+      "name": "Diesel Injector Shear Stability Tester TR-294",
+      "model": "TR-294",
+      "slug": "diesel-injector-shear-stability-tester",
+      "category": "Lubricant Shear Stability Tester",
+      "priority": "core",
+      "summary": "Diesel injector rig that measures how much viscosity a polymer-containing oil loses under mechanical shear. The oil is pumped repeatedly through a European diesel injector nozzle, and its viscosity before and after the run shows how well the viscosity modifier holds up, following ASTM D6278 and ASTM D7109.",
+      "description": "Multigrade engine oils and other polymer-containing fluids rely on long-chain viscosity modifiers, and the high shear inside pumps, injectors and gears cuts those chains, leaving the oil permanently thinner. The TR-294 reproduces this in the laboratory: a small charge of oil is driven through a European diesel injector nozzle at a set breaking pressure, cycle after cycle, and its kinematic viscosity is measured before and after the run. It is built for ASTM D6278 and for ASTM D7109, which reports the viscosity loss after 30 and after 90 cycles. The unit can be supplied complete with a safety enclosure and stand, and an optional chiller regulates the oil temperature, which otherwise runs at ambient. Engine oil formulators, additive suppliers developing viscosity modifiers and quality laboratories releasing multigrade oils use it to compare formulations and confirm their shear-loss performance.",
+      "keySpecs": [
+        {
+          "label": "Applicable methods",
+          "value": "ASTM D6278 and ASTM D7109"
+        },
+        {
+          "label": "Test cycles (ASTM D7109)",
+          "value": "30 and 90 cycles"
+        },
+        {
+          "label": "Motor",
+          "value": "1.1 kW at 925 ± 25 rpm"
+        },
+        {
+          "label": "Breaking pressure",
+          "value": "175 bar"
+        },
+        {
+          "label": "Flow rate",
+          "value": "170 ± 5 mL/min"
+        },
+        {
+          "label": "Fluid volume",
+          "value": "20 ± 5 mL"
+        },
+        {
+          "label": "Oil temperature",
+          "value": "Ambient; optional chiller for regulation"
+        },
+        {
+          "label": "Options",
+          "value": "Safety enclosure and stand, chiller"
+        }
+      ],
+      "standards": [
+        "ASTM D6278",
+        "ASTM D7109"
+      ],
+      "applications": [
+        "Shear stability of multigrade engine oils",
+        "Screening of viscosity modifier polymers",
+        "Viscosity loss testing of polymer-containing fluids",
+        "Formulation development and batch quality control"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "diesel injector shear stability tester",
+        "ASTM D6278 apparatus",
+        "ASTM D7109 tester",
+        "Kurt Orbahn shear stability test",
+        "polymer-containing fluid shear test",
+        "viscosity modifier shear stability testing equipment"
+      ],
+      "whyMiddleEast": "Useful for regional lubricant blenders qualifying multigrade engine oils, where viscosity loss under shear is a routine specification check.",
+      "sourceUrl": "https://www.ducom.com/product-shear-stability-tester-diesel-injector",
+      "imageUrls": [
+        "file:images/ducom/diesel-injector-shear-stability-tester.png",
+        "https://www.ducom.com/hubfs/Shear%20Stability%20Tester%20(Diesel%20Injector%20Apparatus)/Ducom%20Shear%20Stability%20Tester%20(Diesel%20Injector%20Apparatus)%20-%20Overview-1.png"
+      ],
+      "datasheetUrl": null,
+      "ar": {
+        "name": "جهاز اختبار ثبات القص بحاقن الديزل TR-294",
+        "category": "جهاز اختبار ثبات القص لمواد التشحيم",
+        "summary": "جهاز يعمل بحاقن ديزل لقياس مقدار ما يفقده الزيت المحتوي على بوليمرات من لزوجته تحت القص الميكانيكي. يُضخ الزيت مرارًا عبر فوهة حاقن ديزل أوروبي، وتبيّن لزوجته قبل التشغيل وبعده مدى صمود محسّن اللزوجة فيه، وفق ASTM D6278 وASTM D7109.",
+        "description": "تعتمد زيوت المحركات متعددة الدرجات وغيرها من السوائل المحتوية على بوليمرات على محسّنات لزوجة طويلة السلاسل، ويؤدي القص الشديد داخل المضخات والحواقن والتروس إلى تقطيع هذه السلاسل، فيصبح الزيت أرقّ بشكل دائم. ويحاكي الجهاز TR-294 ذلك في المختبر: تُدفع كمية صغيرة من الزيت عبر فوهة حاقن ديزل أوروبي عند ضغط فتح محدد، دورةً بعد دورة، وتُقاس لزوجتها الكينماتية قبل التشغيل وبعده. وهو مصمَّم للطريقة ASTM D6278 وللطريقة ASTM D7109 التي تسجّل فقد اللزوجة بعد 30 دورة وبعد 90 دورة. ويمكن توريد الجهاز مكتملًا مع حاوية أمان وحامل، ويضبط مبرّد اختياري درجة حرارة الزيت التي تكون في الوضع العادي بدرجة حرارة الغرفة. ويستخدمه مطوّرو تركيبات زيوت المحركات، ومورّدو الإضافات الذين يطوّرون محسّنات اللزوجة، ومختبرات الجودة التي تُجيز زيوت المحركات متعددة الدرجات، للمقارنة بين التركيبات والتحقق من أدائها في فقد اللزوجة بالقص.",
+        "applications": [
+          "ثبات القص لزيوت المحركات متعددة الدرجات",
+          "فحص بوليمرات محسّنات اللزوجة",
+          "اختبار فقد اللزوجة للسوائل المحتوية على بوليمرات",
+          "تطوير التركيبات ومراقبة جودة الدفعات"
+        ],
+        "keySpecs": [
+          {
+            "label": "الطرق المنطبقة",
+            "value": "ASTM D6278 وASTM D7109"
+          },
+          {
+            "label": "دورات الاختبار (ASTM D7109)",
+            "value": "30 و90 دورة"
+          },
+          {
+            "label": "المحرك",
+            "value": "1.1 kW عند 925 ± 25 rpm"
+          },
+          {
+            "label": "ضغط الفتح",
+            "value": "175 bar"
+          },
+          {
+            "label": "معدل التدفق",
+            "value": "170 ± 5 mL/min"
+          },
+          {
+            "label": "حجم السائل",
+            "value": "20 ± 5 mL"
+          },
+          {
+            "label": "درجة حرارة الزيت",
+            "value": "درجة حرارة الغرفة؛ مبرّد اختياري للضبط"
+          },
+          {
+            "label": "الخيارات",
+            "value": "حاوية أمان وحامل، مبرّد"
+          }
+        ],
+        "whyMiddleEast": "مفيد لشركات خلط مواد التشحيم في المنطقة التي تؤهل زيوت المحركات متعددة الدرجات، حيث يُعد فقد اللزوجة بالقص فحصًا روتينيًا ضمن المواصفات."
+      },
+      "listLast": true
+    },
+    {
+      "name": "FE8 Bearing Wear Tester",
+      "model": "FE8",
+      "slug": "fe8-bearing-wear-tester",
+      "category": "Rolling Bearing Lubricant Tester",
+      "priority": "core",
+      "summary": "Rolling bearing test rig for the FE8 method of DIN 51819, showing how well greases of NLGI classes 1 to 4 and lubricating oils protect bearings under heavy axial load. Two test bearings run at up to 6,000 rpm and 100 kN, with friction, vibration and bearing temperature monitored throughout.",
+      "description": "The FE8 test, defined in DIN 51819, runs real rolling bearings under heavy axial load to show how well a grease or oil protects them against wear. Ducom's FE8 Bearing Wear Tester carries two test bearings driven by a servo drive from 7.5 rpm up to 6,000 rpm, with an axial load of up to 100 kN applied through a disc spring assembly or an optional automated loading system and read by an in-line load sensor. Interchangeable test heads (V, J and K, as in DIN 51819) take tapered roller, angular contact ball, thrust roller, deep groove ball and spherical roller bearings on the same machine. A friction torque sensor follows small changes in frictional moment, while a three-axis vibration sensor and a bearing temperature sensor help catch damage early. For oil tests, a heated recirculation system feeds the oil at a controlled temperature; for greases, the accessories for greasing and for assembling and disassembling the bearings come with the instrument. Lubricant and additive developers, grease manufacturers and bearing laboratories use it for standard DIN 51819 runs or for their own load, speed and temperature programs.",
+      "keySpecs": [
+        {
+          "label": "Applicable methods",
+          "value": "DIN 51819-1, DIN 51819-2 and DIN 51819-3"
+        },
+        {
+          "label": "Axial load",
+          "value": "Up to 100 kN (disc springs or optional automated loading)"
+        },
+        {
+          "label": "Speed",
+          "value": "7.5 to 6,000 rpm, servo drive"
+        },
+        {
+          "label": "Friction torque",
+          "value": "± 60 N·m"
+        },
+        {
+          "label": "Recirculating oil heating",
+          "value": "Room temperature to 120 °C"
+        },
+        {
+          "label": "Bearing temperature measurement",
+          "value": "Up to 200 °C"
+        },
+        {
+          "label": "Test bearings",
+          "value": "Thrust roller 81212, tapered roller 31312, angular contact ball 7312B, deep groove ball 6312, spherical roller 21312"
+        },
+        {
+          "label": "Lubricants",
+          "value": "Oils, and greases of NLGI classes 1 to 4"
+        },
+        {
+          "label": "Sensors",
+          "value": "In-line load, friction torque, 3-axis vibration, bearing temperature"
+        }
+      ],
+      "standards": [
+        "DIN 51819-1",
+        "DIN 51819-2",
+        "DIN 51819-3"
+      ],
+      "applications": [
+        "Rolling bearing wear testing of greases, NLGI classes 1 to 4",
+        "Rolling bearing wear testing of lubricating oils",
+        "Friction and temperature behavior of bearing lubricants",
+        "Development of lubricants for heavily loaded industrial bearings",
+        "Lubricant testing under customized load, speed and temperature"
+      ],
+      "industries": [
+        "petrochemical-refining",
+        "materials-manufacturing",
+        "power-energy",
+        "research-academia"
+      ],
+      "searchKeywords": [
+        "FE8 bearing test rig",
+        "FE8 bearing wear tester",
+        "DIN 51819 test apparatus",
+        "FE 8 rolling bearing lubricant test",
+        "grease bearing wear tester",
+        "roller bearing lubricant test rig"
+      ],
+      "whyMiddleEast": "Useful for regional grease and lubricant producers qualifying products for heavily loaded bearings in industry, power generation and mining equipment.",
+      "sourceUrl": null,
+      "sourceDoc": "Ducom FE8 Bearing Wear Tester datasheet, 19 Feb 2026 (supplied by the owner)",
+      "imageUrls": [
+        "file:images/ducom/fe8-bearing-wear-tester.png"
+      ],
+      "datasheetUrl": null,
+      "ar": {
+        "name": "جهاز FE8 لاختبار بلى المحامل",
+        "category": "جهاز اختبار مواد تشحيم محامل التدحرج",
+        "summary": "جهاز لاختبار محامل التدحرج وفق طريقة FE8 في DIN 51819، يبيّن مدى حماية الشحوم من فئات NLGI من 1 إلى 4 وزيوت التشحيم للمحامل تحت حمل محوري كبير. وتدور فيه محملان اختباريان بسرعة تصل إلى 6000 rpm وحمل يصل إلى 100 kN، مع مراقبة الاحتكاك والاهتزاز ودرجة حرارة المحمل طوال الاختبار.",
+        "description": "يشغّل اختبار FE8، المحدد في DIN 51819، محامل تدحرج حقيقية تحت حمل محوري كبير ليبيّن مدى حماية الشحم أو الزيت لها من البلى. ويحمل جهاز FE8 من Ducom لاختبار بلى المحامل محملين اختباريين يديرهما نظام دفع مؤازر بسرعات من 7.5 rpm حتى 6000 rpm، مع حمل محوري يصل إلى 100 kN يُطبَّق عبر مجموعة نوابض قرصية أو نظام تحميل آلي اختياري، ويقيسه مستشعر حمل مدمج على الخط. وتستوعب رؤوس اختبار قابلة للتبديل (V وJ وK كما في DIN 51819) المحامل الأسطوانية المخروطية، ومحامل الكريات ذات التلامس الزاوي، ومحامل الدفع الأسطوانية، ومحامل الكريات ذات الأخدود العميق، والمحامل ذات البكرات الكروية على الجهاز نفسه. ويتابع مستشعر عزم الاحتكاك أدق التغيرات في عزم الاحتكاك، بينما يساعد مستشعر اهتزاز ثلاثي المحاور ومستشعر لدرجة حرارة المحمل على رصد الضرر مبكرًا. وفي اختبارات الزيت يغذّي نظام تدوير مزوّد بسخّان الزيتَ بدرجة حرارة مضبوطة، أما للشحوم فتأتي ملحقات التشحيم وتركيب المحامل وفكّها مع الجهاز. ويستخدمه مطوّرو مواد التشحيم والإضافات، ومصنّعو الشحوم، ومختبرات المحامل لإجراء اختبارات DIN 51819 القياسية أو برامج الحمل والسرعة والحرارة الخاصة بهم.",
+        "applications": [
+          "اختبار بلى الشحوم من فئات NLGI من 1 إلى 4 في محامل التدحرج",
+          "اختبار بلى زيوت التشحيم في محامل التدحرج",
+          "سلوك الاحتكاك ودرجة الحرارة لمواد تشحيم المحامل",
+          "تطوير مواد تشحيم للمحامل الصناعية عالية الحمل",
+          "اختبار مواد التشحيم بأحمال وسرعات ودرجات حرارة مخصصة"
+        ],
+        "keySpecs": [
+          {
+            "label": "الطرق المنطبقة",
+            "value": "DIN 51819-1 وDIN 51819-2 وDIN 51819-3"
+          },
+          {
+            "label": "الحمل المحوري",
+            "value": "حتى 100 kN (نوابض قرصية أو تحميل آلي اختياري)"
+          },
+          {
+            "label": "السرعة",
+            "value": "من 7.5 إلى 6000 rpm، دفع مؤازر"
+          },
+          {
+            "label": "عزم الاحتكاك",
+            "value": "± 60 N·m"
+          },
+          {
+            "label": "تسخين الزيت بالتدوير",
+            "value": "من درجة حرارة الغرفة حتى 120 °C"
+          },
+          {
+            "label": "قياس درجة حرارة المحمل",
+            "value": "حتى 200 °C"
+          },
+          {
+            "label": "محامل الاختبار",
+            "value": "دفع أسطواني 81212، أسطواني مخروطي 31312، كريات بتلامس زاوي 7312B، كريات بأخدود عميق 6312، بكرات كروية 21312"
+          },
+          {
+            "label": "مواد التشحيم",
+            "value": "زيوت، وشحوم من فئات NLGI من 1 إلى 4"
+          },
+          {
+            "label": "المستشعرات",
+            "value": "حمل مدمج، عزم الاحتكاك، اهتزاز ثلاثي المحاور، درجة حرارة المحمل"
+          }
+        ],
+        "whyMiddleEast": "مفيد لمنتجي الشحوم ومواد التشحيم في المنطقة الذين يؤهلون منتجاتهم للمحامل عالية الحمل في الصناعة وتوليد الطاقة ومعدات التعدين."
       }
     },
     {
@@ -617,6 +873,7 @@
       "whyMiddleEast": "Suited to university and national research centers in the region that need one flexible platform for wear, coating and materials programs.",
       "sourceUrl": "https://www.ducom.com/universal-tester-unitest",
       "imageUrls": [
+        "file:images/ducom/unitest-universal-tester.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/UniTest/UniTest%20-%20Render%201.10.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/UniTest/Ducom%20Instruments%20-%20Low%20Load%20Stage.jpg",
         "https://www.ducom.com/hubfs/DUCOM/Products/UniTest/Ducom%20Instruments%20-%20TriboCorrosion%20Cell.png"
@@ -749,6 +1006,7 @@
       "whyMiddleEast": "Common choice for university and industrial materials laboratories that need a single wear tester for coatings, polymers and lubricants.",
       "sourceUrl": "https://www.ducom.com/multi-capability-tribometer-pin/ball-on-disk",
       "imageUrls": [
+        "file:images/ducom/pod-4-pin-on-disk-tribometer.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/Pin%20on%20Disk%20(POD%204.0)/Videos%20and%20Images/POD%20rotary-1.png",
         "https://www.ducom.com/hubfs/DUCOM/Products/Pin%20on%20Disk%20(POD%204.0)/Videos%20and%20Images/Pin%20on%20Disk%20(POD-4.0)%20-%20High%20Temperature%20(4x3).png",
         "https://www.ducom.com/hubfs/DUCOM/Products/Pin%20on%20Disk%20(POD%204.0)/Videos%20and%20Images/POD%204.0%20-%20TriboCorrosion%20Module%20-%20Rotary%20Drive.14%20(4x3).png"
@@ -936,7 +1194,8 @@
           "DIN EN 22719"
         ],
         "whyMiddleEast": "نقطة الوميض اختبار روتيني للإفراج عن المنتجات وشحنها في المصافي والمحطات الطرفية ومختبرات الفحص التي تتعامل مع صادرات الوقود ومواد التشحيم في الخليج."
-      }
+      },
+      "listLast": true
     },
     {
       "name": "Cleveland Flash Point Tester CFP",
@@ -1209,7 +1468,8 @@
           }
         ],
         "whyMiddleEast": "تصدّر مصافي الخليج الديزل والزيوت الأساسية والنفط الخام إلى أسواق ذات مناخ بارد، ولذلك تحتاج إلى نتائج معتمدة لنقطتي التعكّر والانسكاب."
-      }
+      },
+      "listLast": true
     },
     {
       "name": "Noack Volatility Tester",
@@ -1329,7 +1589,8 @@
           }
         ],
         "whyMiddleEast": "يصنّف منتجو الزيوت الأساسية وشركات خلط مواد التشحيم في الخليج زيوت المحركات وفق حدود Noack الواردة في المواصفات الدولية."
-      }
+      },
+      "listLast": true
     },
     {
       "name": "Abrasion Tester ABT-3",
@@ -1538,123 +1799,6 @@
           }
         ],
         "whyMiddleEast": "تولّد سوائل الإنتاج المحمّلة بالرمال وخطوط أنابيب الملاط في عمليات النفط والغاز طلباً على الفحص الأولي لمقاومة التعرية في البطانات والطلاءات."
-      }
-    },
-    {
-      "name": "Ball on Cylinder Lubricity Evaluator BOCLE 2.0",
-      "model": "BOCLE 2.0",
-      "slug": "bocle-aviation-fuel-lubricity-tester",
-      "category": "Fuel Lubricity Tester",
-      "priority": "core",
-      "summary": "Fully automated tester for the lubricity of aviation turbine fuel under ASTM D5001. It runs the fluid pre-treatment and the loaded test phase without operator intervention, includes its own conditioned air unit, logs data continuously for traceability, and allows ten tests per ring to reduce consumable cost.",
-      "description": "Aviation turbine fuel that has been severely hydrotreated can lose the trace polar compounds that lubricate fuel pumps and control units, so the ball-on-cylinder lubricity evaluator is used to check it. In the test a stationary steel ball is pressed against a rotating, partially submerged steel ring in the fuel, and the wear scar on the ball measures lubricity. BOCLE 2.0 is Ducom's automated version, designed to comply with ASTM D5001. After the user starts a test from the software, the controller handles pre-treatment of the fluid with the specified air flows, switches valves and flow rates, and applies the calibrated 1000 g dead-weight load on completion of pre-treatment. It holds the standard conditions of 240 rpm, 25 °C fluid temperature, 50 ml of fluid and conditioned air at 10% relative humidity, and logs data for traceability. A built-in conditioned air unit with dryer, valves and sensors needs only a compressed air line. Numbered spacers shift the contact position so one ring supports ten tests. Refinery and airport fuel laboratories and fuel additive developers use it.",
-      "keySpecs": [
-        {
-          "label": "Load",
-          "value": "1000 ± 1 g"
-        },
-        {
-          "label": "Rotational speed",
-          "value": "240 ± 1 rpm"
-        },
-        {
-          "label": "Fluid volume",
-          "value": "50 ± 1.0 ml"
-        },
-        {
-          "label": "Fluid temperature",
-          "value": "25 ± 1 °C"
-        },
-        {
-          "label": "Air flow over fluid",
-          "value": "3.8 l/min for 30 min with load applied"
-        },
-        {
-          "label": "Fluid pre-treatment",
-          "value": "0.5 L/min through and 3.3 L/min over fluid for 15 min, no load"
-        },
-        {
-          "label": "Conditioned air",
-          "value": "10 ± 0.2% RH at 25 °C"
-        },
-        {
-          "label": "Tests per ring",
-          "value": "10 using numbered spacers"
-        }
-      ],
-      "standards": [
-        "ASTM D5001"
-      ],
-      "applications": [
-        "Lubricity testing of aviation turbine fuel",
-        "Evaluation of lubricity additives in jet fuel",
-        "Quality control of hydrotreated jet fuel",
-        "Fuel laboratory automation"
-      ],
-      "industries": [
-        "oil-gas",
-        "petrochemical-refining",
-        "research-academia"
-      ],
-      "searchKeywords": [
-        "BOCLE tester",
-        "ASTM D5001 ball on cylinder lubricity evaluator",
-        "jet fuel lubricity test equipment",
-        "aviation turbine fuel lubricity tester",
-        "automatic BOCLE apparatus"
-      ],
-      "whyMiddleEast": "Refineries producing hydrotreated Jet A-1 in the Gulf can check lubricity in-house instead of sending samples out.",
-      "sourceUrl": "https://www.ducom.com/product-ball-on-cylinder-lubricity-evaluator-bocle",
-      "imageUrls": [
-        "https://www.ducom.com/hubfs/01_BOCLE_.16_cropped.png"
-      ],
-      "datasheetUrl": null,
-      "ar": {
-        "name": "جهاز تقييم قدرة التزييت بالكرة على الأسطوانة BOCLE 2.0",
-        "category": "جهاز اختبار قدرة الوقود على التزييت",
-        "summary": "جهاز آلي بالكامل لاختبار قدرة وقود توربينات الطيران على التزييت وفق ASTM D5001. وينفّذ المعالجة المسبقة للسائل ومرحلة الاختبار تحت الحمل دون تدخل المشغّل، ويتضمن وحدة هواء مكيّف خاصة به، ويسجّل البيانات باستمرار لضمان إمكانية التتبع، ويتيح إجراء عشرة اختبارات على الحلقة الواحدة لخفض تكلفة المستهلكات.",
-        "description": "قد يفقد وقود توربينات الطيران المعالَج بالهيدروجين معالجةً شديدة المركّبات القطبية الأثرية التي تزيّت مضخات الوقود ووحدات التحكم، ولذلك يُستخدم مقيّم قدرة التزييت بالكرة على الأسطوانة للتحقق منه. وفي الاختبار تُضغط كرة فولاذية ثابتة على حلقة فولاذية دوّارة مغمورة جزئيًا في الوقود، ويقيس أثر البلى على الكرة قدرة الوقود على التزييت. والجهاز BOCLE 2.0 هو نسخة Ducom الآلية، المصمَّمة للامتثال لـ ASTM D5001. وبعد أن يبدأ المستخدم الاختبار من البرنامج، يتولى المتحكّم المعالجة المسبقة للسائل بتدفقات الهواء المحددة، ويبدّل الصمامات ومعدلات التدفق، ويطبّق حمل الأوزان الميتة المعاير 1000 g عند اكتمال المعالجة المسبقة. ويحافظ على الظروف القياسية: 240 rpm ودرجة حرارة سائل 25 °C و50 ml من السائل وهواء مكيّف عند رطوبة نسبية 10%، ويسجّل البيانات لضمان إمكانية التتبع. وتحتاج وحدة الهواء المكيّف المدمجة المزوّدة بمجفّف وصمامات ومستشعرات إلى خط هواء مضغوط فقط. وتنقل فواصل مرقّمة موضع التلامس بحيث تدعم حلقة واحدة عشرة اختبارات. وتستخدمه مختبرات المصافي ومختبرات وقود المطارات ومطوّرو إضافات الوقود.",
-        "applications": [
-          "اختبار قدرة وقود توربينات الطيران على التزييت",
-          "تقييم إضافات التزييت في وقود الطائرات النفاثة",
-          "مراقبة جودة وقود الطائرات النفاثة المعالَج بالهيدروجين",
-          "أتمتة مختبرات الوقود"
-        ],
-        "keySpecs": [
-          {
-            "label": "الحمل",
-            "value": "1000 ± 1 g"
-          },
-          {
-            "label": "سرعة الدوران",
-            "value": "240 ± 1 rpm"
-          },
-          {
-            "label": "حجم السائل",
-            "value": "50 ± 1.0 ml"
-          },
-          {
-            "label": "درجة حرارة السائل",
-            "value": "25 ± 1 °C"
-          },
-          {
-            "label": "تدفق الهواء فوق السائل",
-            "value": "3.8 l/min لمدة 30 min مع تطبيق الحمل"
-          },
-          {
-            "label": "المعالجة المسبقة للسائل",
-            "value": "0.5 L/min عبر السائل و3.3 L/min فوق السائل لمدة 15 min، دون حمل"
-          },
-          {
-            "label": "الهواء المكيّف",
-            "value": "10 ± 0.2% RH عند 25 °C"
-          },
-          {
-            "label": "عدد الاختبارات لكل حلقة",
-            "value": "10 باستخدام فواصل مرقّمة"
-          }
-        ],
-        "whyMiddleEast": "تستطيع مصافي الخليج المنتجة لوقود Jet A-1 المعالج هيدروجينياً فحص قدرة التزييت داخلياً بدلاً من إرسال العينات إلى الخارج."
       }
     },
     {
