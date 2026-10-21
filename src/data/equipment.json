@@ -6583,6 +6583,167 @@
       "intro": "Gas-sorption and density instruments that describe how much surface and pore volume a powder, catalyst or porous solid actually has. Refinery catalyst labs, battery and hydrogen researchers, pharmaceutical formulators and university materials groups depend on these analyzers to link material structure to performance.",
       "categories": [
         {
+          "name": "Particle Size Analyzer",
+          "slug": "particle-size-analyzer",
+          "summary": "An instrument that measures the particle size distribution of powders, suspensions and emulsions, most often by laser diffraction. Used to control grinding, milling and formulation in cement, minerals, pharmaceuticals, catalysts, paints and battery materials.",
+          "description": "A laser diffraction analyzer passes a laser beam through a dispersed sample and records the angle and intensity of the light the particles scatter. Large particles scatter light at small angles and small particles at wider angles, and the instrument converts the scattering pattern into a volume-based size distribution using Mie or Fraunhofer theory. Samples are dispersed either in a liquid, with stirring and ultrasound to break up agglomerates, or in a stream of dry air for free-flowing powders, and many instruments accept both units. A single measurement takes seconds to a few minutes and reports values such as D10, D50 and D90 together with the full distribution. Where a different range or more detail is needed, dynamic light scattering covers nanoparticles and colloids, and dynamic image analysis adds particle shape. Buyers include cement and mineral plants, pharmaceutical formulation and quality control laboratories, catalyst and chemical producers, paint and pigment manufacturers, battery material developers and universities. When specifying, define the size range of your materials, wet or dry dispersion (or both), the dispersant liquids you use, daily sample numbers, and whether the software must meet regulated-laboratory requirements such as data integrity and audit trails.",
+          "typicalSpecRanges": [
+            {
+              "label": "Measurement principle",
+              "value": "Laser diffraction, with Mie and Fraunhofer optical models"
+            },
+            {
+              "label": "Size range",
+              "value": "From about 0.01–0.1 µm up to 2,000–3,500 µm, depending on the model"
+            },
+            {
+              "label": "Light sources",
+              "value": "Red laser (around 630–650 nm), usually with a blue light source (around 405–470 nm) for sub-micron sensitivity"
+            },
+            {
+              "label": "Dispersion",
+              "value": "Wet unit with stirring and ultrasound; dry unit with compressed-air dispersion"
+            },
+            {
+              "label": "Repeatability",
+              "value": "Typically under 1 % variation in D50 on a stable reference material"
+            },
+            {
+              "label": "Measurement time",
+              "value": "Seconds per measurement; a few minutes per sample including dispersion and cleaning"
+            },
+            {
+              "label": "Sample amount",
+              "value": "Milligrams to grams, depending on the dispersion unit and material"
+            },
+            {
+              "label": "Software outputs",
+              "value": "D10, D50, D90, span and full distribution; audit-trail options for regulated laboratories"
+            }
+          ],
+          "variants": [
+            "laser diffraction with wet dispersion",
+            "laser diffraction with dry dispersion",
+            "combined wet and dry dispersion",
+            "dynamic light scattering for nanoparticles",
+            "dynamic image analysis for size and shape",
+            "online analyzer for process lines"
+          ],
+          "standards": [
+            "ISO 13320",
+            "ISO 22412",
+            "ISO 13322-2",
+            "USP <429>",
+            "ASTM B822"
+          ],
+          "applications": [
+            "Cement fineness and raw meal grinding control",
+            "Mineral and mining slurries",
+            "Pharmaceutical APIs, excipients and inhalation powders",
+            "Catalyst, pigment and filler powders",
+            "Emulsions, paints and inks",
+            "Battery cathode and anode materials"
+          ],
+          "industries": [
+            "construction-infrastructure",
+            "materials-manufacturing",
+            "pharmaceutical-biotech",
+            "petrochemical-refining",
+            "food-beverage",
+            "research-academia"
+          ],
+          "searchKeywords": [
+            "particle size analyzer",
+            "particle size analyser",
+            "laser diffraction particle size analyzer UAE",
+            "particle size distribution analyzer Dubai",
+            "PSD analyzer supplier Abu Dhabi",
+            "laser particle sizer for cement",
+            "particle size analyzer for pharmaceutical powders",
+            "wet and dry dispersion particle size analyzer",
+            "ISO 13320 laser diffraction",
+            "nanoparticle size analyzer Saudi Arabia",
+            "particle size and shape analyzer GCC"
+          ],
+          "faq": [
+            {
+              "q": "How does laser diffraction compare with sieve analysis?",
+              "a": "Sieving sorts particles mechanically and works best above about 40 µm, giving results by mass in a few size classes. Laser diffraction measures from well below a micrometer to several millimeters in seconds and gives a continuous, volume-based distribution. The two methods rarely give identical numbers, so laboratories moving from sieves to laser diffraction usually run both in parallel for a period to correlate the results."
+            },
+            {
+              "q": "Should I choose wet or dry dispersion?",
+              "a": "Dry dispersion is quick, avoids solvents and suits free-flowing powders such as cement and many pharmaceutical ingredients. Wet dispersion gives better control over fine, cohesive or fragile particles and is needed for suspensions and emulsions. Many laboratories buy an instrument with both units so they can choose per material."
+            },
+            {
+              "q": "What do D10, D50 and D90 mean?",
+              "a": "They are the particle sizes below which 10 %, 50 % and 90 % of the sample volume lies. D50 is the median size, and the spread between D10 and D90, often expressed as the span, shows how wide the distribution is. Most product specifications are written in these terms."
+            }
+          ],
+          "ar": {
+            "name": "محلل حجم الجسيمات",
+            "summary": "جهاز يقيس توزيع أحجام الجسيمات في المساحيق والمعلّقات والمستحلبات، وغالبًا بتقنية حيود الليزر. يُستخدم لضبط الطحن والتركيب في الإسمنت والمعادن والأدوية والمحفّزات والدهانات ومواد البطاريات.",
+            "description": "يمرّر محلل حيود الليزر شعاعًا ليزريًا عبر عيّنة مشتّتة، ويسجّل زاوية الضوء الذي تبعثره الجسيمات وشدّته. فالجسيمات الكبيرة تبعثر الضوء بزوايا صغيرة والجسيمات الصغيرة بزوايا أوسع، ويحوّل الجهاز نمط التبعثر إلى توزيع حجمي للأحجام باستخدام نظرية Mie أو Fraunhofer. تُشتَّت العيّنات إمّا في سائل مع التحريك والموجات فوق الصوتية لتفكيك التكتلات، أو في تيار من الهواء الجاف للمساحيق سهلة الانسياب، وتقبل أجهزة كثيرة الوحدتين معًا. يستغرق القياس الواحد من ثوانٍ إلى بضع دقائق، ويعطي قيمًا مثل D10 وD50 وD90 مع التوزيع الكامل. وعند الحاجة إلى نطاق آخر أو تفاصيل أكثر، يغطي تشتت الضوء الديناميكي الجسيمات النانوية والغرويات، ويضيف تحليل الصور الديناميكي شكل الجسيمات. يشمل المشترون مصانع الإسمنت والمعادن، ومختبرات تركيب الأدوية ومراقبة جودتها، ومنتجي المحفّزات والكيماويات، ومصنّعي الدهانات والأصباغ، ومطوّري مواد البطاريات، والجامعات. عند التحديد، حدّد نطاق أحجام موادك، والتشتيت الرطب أو الجاف أو كليهما، وسوائل التشتيت المستخدمة، وعدد العيّنات اليومي، وما إذا كان البرنامج يجب أن يستوفي متطلبات المختبرات الخاضعة للتنظيم مثل سلامة البيانات وسجل التدقيق.",
+            "variants": [
+              "حيود الليزر بتشتيت رطب",
+              "حيود الليزر بتشتيت جاف",
+              "وحدتا تشتيت رطب وجاف معًا",
+              "تشتت الضوء الديناميكي للجسيمات النانوية",
+              "تحليل الصور الديناميكي للحجم والشكل",
+              "محلل مباشر على خطوط الإنتاج"
+            ],
+            "applications": [
+              "نعومة الإسمنت وضبط طحن المواد الخام",
+              "معلّقات المعادن والتعدين",
+              "المواد الفعالة والسواغات الدوائية ومساحيق الاستنشاق",
+              "مساحيق المحفّزات والأصباغ والمواد المالئة",
+              "المستحلبات والدهانات والأحبار",
+              "مواد الكاثود والأنود في البطاريات"
+            ],
+            "specLabels": [
+              "مبدأ القياس",
+              "نطاق الأحجام",
+              "مصادر الضوء",
+              "التشتيت",
+              "قابلية التكرار",
+              "زمن القياس",
+              "كمية العيّنة",
+              "مخرجات البرنامج"
+            ],
+            "specValues": [
+              "حيود الليزر، مع النموذجين البصريين Mie وFraunhofer",
+              "من نحو 0.01–0.1 ميكرومتر حتى 2,000–3,500 ميكرومتر حسب الطراز",
+              "ليزر أحمر (نحو 630–650 نانومتر)، وعادةً مع مصدر ضوء أزرق (نحو 405–470 نانومتر) لحساسية أفضل دون الميكرومتر",
+              "وحدة رطبة مع التحريك والموجات فوق الصوتية؛ ووحدة جافة بالتشتيت بالهواء المضغوط",
+              "عادةً أقل من 1 % تباين في D50 على مادة مرجعية مستقرة",
+              "ثوانٍ لكل قياس؛ وبضع دقائق لكل عيّنة شاملةً التشتيت والتنظيف",
+              "من مليغرامات إلى غرامات حسب وحدة التشتيت والمادة",
+              "D10 وD50 وD90 والمدى والتوزيع الكامل؛ مع خيارات سجل التدقيق للمختبرات الخاضعة للتنظيم"
+            ],
+            "faq": [
+              {
+                "q": "كيف يقارن حيود الليزر بتحليل المناخل؟",
+                "a": "يفرز النخل الجسيمات ميكانيكيًا ويعمل على أفضل وجه فوق نحو 40 ميكرومتر، ويعطي نتائج بالكتلة في عدد قليل من فئات الأحجام. أمّا حيود الليزر فيقيس من أقل بكثير من ميكرومتر واحد حتى عدة مليمترات خلال ثوانٍ، ويعطي توزيعًا حجميًا متصلًا. ونادرًا ما تتطابق نتائج الطريقتين، لذا تشغّل المختبرات التي تنتقل من المناخل إلى حيود الليزر الطريقتين معًا لفترة لربط النتائج."
+              },
+              {
+                "q": "هل أختار التشتيت الرطب أم الجاف؟",
+                "a": "التشتيت الجاف سريع ولا يحتاج إلى مذيبات، ويناسب المساحيق سهلة الانسياب مثل الإسمنت وكثير من المكوّنات الدوائية. ويعطي التشتيت الرطب تحكمًا أفضل في الجسيمات الدقيقة أو المتماسكة أو الهشّة، وهو ضروري للمعلّقات والمستحلبات. وتشتري مختبرات كثيرة جهازًا بالوحدتين لتختار حسب المادة."
+              },
+              {
+                "q": "ماذا تعني D10 وD50 وD90؟",
+                "a": "هي أحجام الجسيمات التي يقع دونها 10 % و50 % و90 % من حجم العيّنة. وD50 هو الحجم الوسيط، ويُظهر الفرق بين D10 وD90، الذي يُعبَّر عنه غالبًا بالمدى، مدى اتساع التوزيع. وتُكتب معظم مواصفات المنتجات بهذه القيم."
+              }
+            ],
+            "searchKeywords": [
+              "محلل حجم الجسيمات",
+              "جهاز قياس حجم الجسيمات بحيود الليزر الإمارات",
+              "محلل توزيع حجم الجسيمات دبي",
+              "جهاز قياس حجم الجسيمات للإسمنت",
+              "محلل حجم الجسيمات للمساحيق الدوائية",
+              "محلل الجسيمات النانوية السعودية"
+            ]
+          }
+        },
+        {
           "name": "BET Surface Area Analyzer",
           "slug": "bet-surface-area-analyzer",
           "summary": "A gas adsorption instrument that measures specific surface area and pore size distribution of powders and porous solids by recording how much nitrogen adsorbs at liquid nitrogen temperature. The BET method is the universal standard for catalysts, adsorbents, battery materials, cement additives and pharmaceutical excipients.",

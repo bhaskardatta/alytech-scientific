@@ -69,8 +69,9 @@ const copy = {
           <a href={L('/principals/')} class="btn btn-primary">{t(lang, 'cta.explore')} <Icon name="arrow" size={18} flip /></a>
           <button type="button" class="btn btn-wa" data-lead="whatsapp"><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'cta.whatsapp')}</button>
         </div>
-        {/* Desktop: the brands are visible from the first screen (phones and tablets keep the room for the instrument) */}
-        <p class="hero-brands label text-white/55"><span class="text-brand-300">{ar ? 'موزع معتمد' : 'Authorized distributor'}</span> · <bdi dir="ltr">{brands.map((b) => b.name.replace(/ (Instruments|Technologies)$/, '')).join(' · ')}</bdi></p>
+        {/* Desktop: the brands are visible from the first screen (phones and tablets keep the room for the instrument).
+            GasMix is left out: the instrument on screen is GasMix, and it is an exclusive line, not "authorized". */}
+        <p class="hero-brands label text-white/55"><span class="text-brand-300">{ar ? 'موزع معتمد' : 'Authorized distributor'}</span> · <bdi dir="ltr">{brands.slice(1).map((b) => b.name.replace(/ (Instruments|Technologies)$/, '')).join(' · ')}</bdi></p>
       </div>
 
       {[[copy.s1k, copy.s1h, copy.s1p], [copy.s2k, copy.s2h, copy.s2p], [copy.s3k, copy.s3h, copy.s3p]].map(([k, h, p], i) => (

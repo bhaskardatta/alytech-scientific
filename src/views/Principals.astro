@@ -5,6 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductImage from '../components/ProductImage.astro';
 import ServiceStrip from '../components/ServiceStrip.astro';
 import Icon from '../components/Icon.astro';
+import Ribbon from '../components/Ribbon.astro';
 import { brands, claim, origin } from '../data/brands';
 import { productsOf, brandPath, shortName, imageOf } from '../data/catalog';
 import { breadcrumbLd } from '../data/schema';
@@ -15,10 +16,15 @@ const { lang } = Astro.props;
 const ar = lang === 'ar';
 const L = (x: string) => localize(lang, x);
 const crumbs = [{ label: ar ? 'الرئيسية' : 'Home', href: L('/') }, { label: t(lang, 'nav.principals') }];
+// GasMix gets its own section; the other principals share one identical row each (same split as the home page).
+const gasmix = brands[0];
+const principals = brands.slice(1);
+const topOf = (slug: string) => [...new Map(productsOf(slug).filter((p) => p.priority === 'flagship').concat(productsOf(slug)).map((p) => [p.slug, p])).values()].slice(0, 3);
+const count = (slug: string) => { const n = productsOf(slug).length; return `${n} ${ar ? (n <= 10 ? 'منتجات' : 'منتجاً') : 'products'}`; };
 const title = ar ? 'العلامات التجارية التي نمثّلها | موزع معتمد في الإمارات | AlyTech' : 'Brands We Represent | Authorized Distributor UAE | AlyTech';
 const description = ar
-  ? 'AlyTech Scientific موزع معتمد في الشرق الأوسط لـ GasMix وThermtest وProto وDucom وInstroTek وF-DGS وSchmidt + Haensch وLamy Rheology وVinci.'
-  : 'Authorized Middle East distributor for GasMix, Thermtest, Proto XRD, Ducom, InstroTek, F-DGS, Schmidt + Haensch, Lamy Rheology and Vinci Technologies.';
+  ? 'موزع GasMix الحصري، وموزع معتمد في الشرق الأوسط لـ Thermtest وProto وDucom وInstroTek وF-DGS وSchmidt + Haensch وLamy Rheology وVinci.'
+  : 'Exclusive GasMix distributor; authorized Middle East distributor for Thermtest, Proto XRD, Ducom, InstroTek, F-DGS, Schmidt + Haensch, Lamy Rheology and Vinci.';
 ---
 <Base lang={lang} title={title} description={description} schema={[breadcrumbLd(crumbs, L('/principals/'))]}>
   <section class="border-b border-line bg-card pt-[72px]">
@@ -29,35 +35,62 @@ const description = ar
     </div>
   </section>
 
-  <section class="py-12 md:py-16">
-    <ul class="wrap grid gap-3">
-      {brands.map((b) => {
-        const top = productsOf(b.slug).filter((p) => p.priority === 'flagship').concat(productsOf(b.slug)).slice(0, 3);
-        return (
+  <!-- GasMix: a section of its own, above the principals -->
+  <section class="pt-12 md:pt-16" aria-labelledby="gasmix-h">
+    <div class="wrap">
+      <a href={L(brandPath(gasmix))} class="group on-dark relative grid items-center gap-8 overflow-hidden rounded-[var(--radius-md)] bg-night-900 p-6 text-white transition-shadow duration-300 hover:shadow-[var(--shadow-pop)] md:grid-cols-[1fr_1.4fr_auto] md:p-10">
+        <Ribbon class="absolute inset-0 h-full w-full text-brand-500 opacity-40 transition-opacity duration-500 group-hover:opacity-70" lines={28} />
+        <div class="relative">
+          <p class="label inline-block rounded-xs border border-brand-300/40 px-2.5 py-1.5 text-balance text-brand-300">{claim(gasmix)[lang]}</p>
+          <h2 id="gasmix-h" class="display mt-5 text-[clamp(2.2rem,4vw,3.2rem)] leading-none"><bdi dir="ltr">GasMix™</bdi></h2>
+          <p class="label mt-3 text-white/55">{origin(gasmix)[lang]}</p>
+          <p class="mt-2 text-white/75">{ar ? 'خلط الغازات وتخفيفها، من تصميم وتصنيع AlyTech في فرنسا' : 'Gas mixing & dilution, designed and built by AlyTech in France'}</p>
+        </div>
+        <ul class="relative grid grid-cols-3 gap-3">
+          {topOf(gasmix.slug).map((p) => (
+            <li class="flex flex-col items-center gap-2 text-center">
+              <span class="relative aspect-square w-full overflow-hidden rounded-sm bg-surface">
+                <ProductImage brand={gasmix.slug} brandName={gasmix.name} slug={p.slug} alt={`${gasmix.name} ${p.name}`} class="absolute inset-0 h-full w-full p-3" sizes="120px" />
+              </span>
+              <span class="line-clamp-1 text-[12.5px] text-white/60">{shortName(p, lang)}</span>
+            </li>
+          ))}
+        </ul>
+        <span class="link-arrow relative justify-self-start md:justify-self-end">{count(gasmix.slug)} <Icon name="arrow" size={18} flip /></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Principals: one identical row per brand -->
+  <section class="py-12 md:py-16" aria-labelledby="principals-h">
+    <div class="wrap">
+      <h2 id="principals-h" class="display text-[clamp(1.6rem,3vw,2.4rem)]">{ar ? 'مصنّعون متخصصون نمثّلهم' : 'Specialist manufacturers we represent'}</h2>
+      <ul class="mt-8 grid gap-3">
+        {principals.map((b) => (
           <li>
-            <a href={L(brandPath(b))} class:list={['group grid items-center gap-6 rounded-[var(--radius-md)] border p-6 transition-[border-color,box-shadow] duration-200 md:grid-cols-[1fr_1.4fr_auto] md:p-8', b.slug === 'gasmix' ? 'on-dark border-transparent bg-night-900 text-white' : 'card hover:border-brand-200 hover:shadow-[var(--shadow-card)]']}>
+            <a href={L(brandPath(b))} class="group card grid items-center gap-6 p-6 transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-[var(--shadow-card)] md:grid-cols-[1fr_1.4fr_auto] md:p-8">
               <div>
-                <p class:list={['label', b.exclusive ? (b.slug === 'gasmix' ? 'text-brand-300' : 'text-brand-600') : 'text-mute']}>{claim(b)[lang]}</p>
+                <p class:list={['label', b.exclusive ? 'text-brand-600' : 'text-mute']}>{claim(b)[lang]}</p>
                 <p class="display mt-3 text-[clamp(1.6rem,2.6vw,2.2rem)]">{b.name}</p>
-                <p class:list={['label mt-1.5', b.slug === 'gasmix' ? 'text-white/55' : 'text-mute']}>{origin(b)[lang]}</p>
-                <p class:list={['mt-1', b.slug === 'gasmix' ? 'text-white/70' : 'text-ink-soft']}>{b.discipline[lang]}</p>
+                <p class="label mt-1.5 text-mute">{origin(b)[lang]}</p>
+                <p class="mt-1 text-ink-soft">{b.discipline[lang]}</p>
               </div>
               <ul class="grid grid-cols-3 gap-3">
-                {[...new Map(top.map((p) => [p.slug, p])).values()].map((p) => (
+                {topOf(b.slug).map((p) => (
                   <li class="flex flex-col items-center gap-2 text-center">
-                    <span class:list={['relative aspect-square w-full overflow-hidden rounded-sm', imageOf(b.slug, p.slug)?.dark ? 'bg-[#242424]' : b.slug === 'gasmix' && !imageOf(b.slug, p.slug)?.opaque ? 'bg-white/[0.05]' : 'bg-surface']}>
+                    <span class:list={['relative aspect-square w-full overflow-hidden rounded-sm', imageOf(b.slug, p.slug)?.dark ? 'bg-[#242424]' : 'bg-surface']}>
                       <ProductImage brand={b.slug} brandName={b.name} slug={p.slug} alt={`${b.name} ${p.name}`} class="absolute inset-0 h-full w-full p-3" sizes="120px" />
                     </span>
-                    <span class:list={['line-clamp-1 text-[12.5px]', b.slug === 'gasmix' ? 'text-white/60' : 'text-mute']}>{shortName(p, lang)}</span>
+                    <span class="line-clamp-1 text-[12.5px] text-mute">{shortName(p, lang)}</span>
                   </li>
                 ))}
               </ul>
-              <span class="link-arrow justify-self-start md:justify-self-end">{productsOf(b.slug).length} {ar ? (productsOf(b.slug).length <= 10 ? 'منتجات' : 'منتجاً') : 'products'} <Icon name="arrow" size={18} flip /></span>
+              <span class="link-arrow justify-self-start md:justify-self-end">{count(b.slug)} <Icon name="arrow" size={18} flip /></span>
             </a>
           </li>
-        );
-      })}
-    </ul>
+        ))}
+      </ul>
+    </div>
   </section>
 
   <ServiceStrip lang={lang} />

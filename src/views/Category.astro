@@ -36,7 +36,7 @@ const description = descOf(A.summary ?? c.summary, ar
 ---
 <Base lang={lang} title={title} description={description} product={c.name} productLabel={name} schema={[faqLd(faqs), breadcrumbLd(crumbs, url)]}>
   <section class="border-b border-line bg-card pt-[72px]">
-    <div class="wrap grid gap-10 py-10 md:py-14 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16">
+    <div class:list={['wrap grid gap-10 py-10 md:py-14', render && 'lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16']}>
       <div class="order-1">
         <Breadcrumbs items={crumbs} />
         <p class="label mt-8 text-brand-600">{fam}</p>
@@ -48,20 +48,13 @@ const description = descOf(A.summary ?? c.summary, ar
           <button type="button" class="btn btn-wa" data-lead="whatsapp" data-category={c.name} data-product={c.name}><Icon name="whatsapp" size={18} class="text-whatsapp" />{t(lang, 'wa.label')}</button>
         </div>
       </div>
-      <div class="order-2">
-        {render ? (
-          <figure class="overflow-hidden rounded-[var(--radius-lg)] ring-1 ring-line">
-            <img src={render.src} width={render.w} height={render.h} alt={ar ? `صورة توضيحية: ${name}` : `${c.name}, illustrative render`} class="block h-auto w-full max-lg:max-h-[380px] max-lg:object-cover" fetchpriority="high" decoding="async" />
-          </figure>
-        ) : (
-          <div class="render-slot relative flex aspect-[4/3] flex-col items-center justify-center gap-3 overflow-hidden rounded-[var(--radius-lg)] bg-surface p-8 text-center ring-1 ring-line">
-            <Icon name="layers" size={28} class="text-brand-500" />
-            <p class="label text-mute">{ar ? 'صورة ثلاثية الأبعاد قيد الإعداد' : '3D render in production'}</p>
-            <p class="max-w-[28ch] text-[13px] text-mute">{name}</p>
-          </div>
-        )}
-        <p class="mt-3 text-[12.5px] text-mute">{ar ? 'صورة توضيحية — يُحدَّد الطراز حسب مواصفاتك.' : 'Illustrative render — the model is specified to your requirement.'}</p>
-      </div>
+      {/* Only a real photograph gets the right-hand column; without one the header is text only (no placeholder box). */}
+      {render && (
+        <figure class="order-2">
+          <img src={render.src} width={render.w} height={render.h} alt={ar ? `مثال على ${name}` : `Example of a ${c.name.toLowerCase()}`} class="block h-auto w-full overflow-hidden rounded-[var(--radius-lg)] ring-1 ring-line max-lg:max-h-[380px] max-lg:object-cover" fetchpriority="high" decoding="async" />
+          <figcaption class="mt-3 text-[12.5px] text-mute">{ar ? 'صورة لمثال. يُحدَّد الطراز حسب مواصفاتك.' : 'Example shown. The model is specified to your requirement.'}</figcaption>
+        </figure>
+      )}
     </div>
   </section>
 
@@ -140,10 +133,3 @@ const description = descOf(A.summary ?? c.summary, ar
     </section>
   )}
 </Base>
-
-<style>
-  .render-slot {
-    background-image: linear-gradient(rgb(100 90 140 / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(100 90 140 / 0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-</style>

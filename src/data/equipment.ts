@@ -28,5 +28,6 @@ export const specsFor = (key: string, lang: 'en' | 'ar' = 'en') => {
   return c.typicalSpecRanges.map((s, i) => ({ label: specLabels[i] || s.label, value: specValues[i] || s.value }));
 };
 
-/** Our own neutral renders (generated, untraceable to any vendor). */
+/** Category photos, by slug. Empty since the generated renders were removed (owner's request, Oct 2026); real photographs go
+ *  in equipment-images.json and appear on every card and page automatically. Never vendor photos (Tier 2). */
 export const renderOf = (slug: string) => (renders as Record<string, { src: string; sm: string; w: number; h: number }>)[slug];

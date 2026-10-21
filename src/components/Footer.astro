@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import OfficeMap from './OfficeMap.astro';
 import { site } from '../data/site';
 import { brands } from '../data/brands';
 import { getSiteSettings } from '../lib/settings';
@@ -9,7 +10,6 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const L = (p: string) => localize(lang, p);
 const cfg = await getSiteSettings();
-const ext = { target: '_blank', rel: 'noopener noreferrer' };
 /** Footer link: 44px tap area on phones (.hit), fades to white and underlines on hover. */
 const lk = 'hit transition-colors duration-200 hover:text-white hover:underline hover:underline-offset-4';
 ---
@@ -53,8 +53,9 @@ const lk = 'hit transition-colors duration-200 hover:text-white hover:underline 
       <ul class="mt-4 space-y-3 text-[15px]">
         <li><button type="button" class:list={[lk, 'inline-flex items-center gap-2']} data-lead="whatsapp"><Icon name="whatsapp" size={18} />{t(lang, 'wa.label')}</button></li>
         <li><a class:list={[lk, 'inline-flex items-center gap-2']} href={`mailto:${cfg.contactEmail}`}><Icon name="mail" size={18} />{cfg.contactEmail}</a></li>
-        <li><a class:list={[lk, 'inline-flex items-center gap-2']} href={site.mapUrl} {...ext}><Icon name="pin" size={18} />{lang === 'ar' ? 'افتح في الخرائط' : 'Open in Maps'}</a></li>
       </ul>
+      {/* Small office map: the whole tile opens Google Maps */}
+      <OfficeMap lang={lang} compact class="mt-5" />
     </div>
   </div>
   <div class="border-t border-white/10">
